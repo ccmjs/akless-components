@@ -10,7 +10,7 @@ ccm.files[ 'configs.js' ] = {
     "content": [ "ccm.component", "https://ccmjs.github.io/akless-components/content/versions/ccm.content-2.0.0.js" ],
     "cloze_builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/cloze_builder/versions/ccm.cloze_builder-1.3.0.js" ],
     "teambuild_builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/teambuild_builder/versions/ccm.teambuild_builder-2.2.0.js" ],
-    "thumb_rating": [ "ccm.component", "https://tkless.github.io/akless-components/thumb_rating/versions/ccm.thumb_rating-1.0.0.js", [ "ccm.get", "https://tkless.github.io/akless-components/thumb_rating/resources/configs.js", "demo" ] ],
+    "thumb_rating": [ "ccm.component", "https://ccmjs.github.io/tkless-components/thumb_rating/versions/ccm.thumb_rating-1.0.0.js", [ "ccm.get", "https://ccmjs.github.io/tkless-components/thumb_rating/resources/configs.js", "demo" ] ],
     "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-2.0.0.js" ],
     "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-1.0.0.js", [ 'ccm.get', 'https://ccmjs.github.io/akless-components/log/resources/configs.js', 'greedy' ] ],
     "data": {
@@ -24,8 +24,8 @@ ccm.files[ 'configs.js' ] = {
     "content": [ "ccm.component", "https://ccmjs.github.io/akless-components/content/versions/ccm.content-2.0.0.js" ],
     "cloze_builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/cloze_builder/versions/ccm.cloze_builder-1.3.0.js" ],
     "teambuild_builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/teambuild_builder/versions/ccm.teambuild_builder-2.2.0.js" ],
-    "thumb_rating": [ "ccm.component", "https://tkless.github.io/akless-components/thumb_rating/versions/ccm.thumb_rating-1.0.0.js", {
-      "key": [ "ccm.get", "https://tkless.github.io/akless-components/thumb_rating/resources/configs.js", "demo" ],
+    "thumb_rating": [ "ccm.component", "https://ccmjs.github.io/tkless-components/thumb_rating/versions/ccm.thumb_rating-1.0.0.js", {
+      "key": [ "ccm.get", "https://ccmjs.github.io/tkless-components/thumb_rating/resources/configs.js", "demo" ],
       "data": { "store": [ "ccm.store", { "store": "submit_rating", "url": "wss://ccm.inf.h-brs.de" } ] }
     } ],
     "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-2.0.0.js", { "sign_on": "hbrsinfkaul" } ],
@@ -59,8 +59,8 @@ ccm.files[ 'configs.js' ] = {
     "content": [ "ccm.component", "https://ccmjs.github.io/akless-components/content/versions/ccm.content-2.0.0.min.js" ],
     "cloze_builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/cloze_builder/versions/ccm.cloze_builder-1.3.0.min.js" ],
     "teambuild_builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/teambuild_builder/versions/ccm.teambuild_builder-2.2.0.min.js" ],
-    "thumb_rating": [ "ccm.component", "https://tkless.github.io/akless-components/thumb_rating/versions/ccm.thumb_rating-1.0.0.min.js", {
-      "key": [ "ccm.get", "https://tkless.github.io/akless-components/thumb_rating/resources/configs.min.js", "demo" ],
+    "thumb_rating": [ "ccm.component", "https://ccmjs.github.io/tkless-components/thumb_rating/versions/ccm.thumb_rating-1.0.0.min.js", {
+      "key": [ "ccm.get", "https://ccmjs.github.io/tkless-components/thumb_rating/resources/configs.min.js", "demo" ],
       "data": { "store": [ "ccm.store", { "store": "submit_rating", "url": "wss://ccm.inf.h-brs.de" } ] }
     } ],
     "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-2.0.0.min.js", { "sign_on": "demo" } ],

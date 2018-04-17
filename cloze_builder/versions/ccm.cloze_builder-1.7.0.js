@@ -722,11 +722,11 @@
         ]
       },
       "css": [ "ccm.load",
-        "https://tkless.github.io/akless-components/libs/bootstrap/css/bootstrap.css",
-        { "context": "head", "url": "https://tkless.github.io/akless-components/libs/bootstrap/css/font-face.css" },
+        "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/bootstrap.css",
+        { "context": "head", "url": "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/font-face.css" },
         "https://ccmjs.github.io/akless-components/cloze_builder/resources/default.css"
       ],
-      "editor": [ "ccm.component", "https://tkless.github.io/akless-components/editor/versions/ccm.editor-2.0.0.min.js",
+      "editor": [ "ccm.component", "https://ccmjs.github.io/tkless-components/editor/versions/ccm.editor-2.0.0.min.js",
         { "settings.modules.toolbar": [
           [ { 'header': [ 1, 2, 3, 4, 5, 6, false ] } ],
           [ "bold", "italic", "underline" ],                    // toggled buttons

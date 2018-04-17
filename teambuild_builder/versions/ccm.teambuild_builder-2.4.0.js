@@ -750,8 +750,8 @@
         ]
       },
       "css": [ "ccm.load",
-        "https://tkless.github.io/akless-components/libs/bootstrap/css/bootstrap.css",
-        { "context": "head", "url": "https://tkless.github.io/akless-components/libs/bootstrap/css/font-face.css" },
+        "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/bootstrap.css",
+        { "context": "head", "url": "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/font-face.css" },
         "https://ccmjs.github.io/akless-components/teambuild_builder/resources/default.css"
       ],
       "submit_button": true,
