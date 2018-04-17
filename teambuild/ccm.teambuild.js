@@ -102,8 +102,8 @@
   //  names: [ "Team Red", "Team Blue" ],
   //  max_teams: 10,
   //  max_members: 3,
-  //  user: [ "ccm.instance", "https://ccmjs.github.io/ccm-components/user/versions/ccm.user-2.0.0.min.js" ],
-  //  logger: [ "ccm.instance", "https://ccmjs.github.io/ccm-components/log/versions/ccm.log-1.0.0.min.js", [ "ccm.get", "https://ccmjs.github.io/ccm-components/log/resources/log_configs.min.js", "greedy" ] ],
+  //  user: [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-2.0.0.min.js" ],
+  //  logger: [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-1.0.0.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/log_configs.min.js", "greedy" ] ],
 
     },
 

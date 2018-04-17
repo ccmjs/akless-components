@@ -12,15 +12,15 @@ ccm.files[ 'configs.js' ] = {
     "onfinish": { "restart": true }
   },
   "demo": {
-    "css": [ "ccm.load", "https://ccmjs.github.io/ccm-components/youtube/resources/default.css" ],
-    "logger": [ "ccm.instance", "https://ccmjs.github.io/ccm-components/log/versions/ccm.log-2.0.0.min.js", [ "ccm.get", "https://ccmjs.github.io/ccm-components/log/resources/configs.min.js", "greedy" ] ],
-    "user": [ "ccm.instance", "https://ccmjs.github.io/ccm-components/user/versions/ccm.user-2.0.1.min.js" ],
+    "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/youtube/resources/default.css" ],
+    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-2.0.0.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.min.js", "greedy" ] ],
+    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-2.0.1.min.js" ],
     "onfinish": { "restart": true }
   },
   "se_ws17": {
     "video": "LV8StucDmC4",
-    "logger": [ "ccm.instance", "https://ccmjs.github.io/ccm-components/log/versions/ccm.log-2.0.1.min.js", [ "ccm.get", "https://ccmjs.github.io/ccm-components/log/resources/configs.min.js", "se_ws17_youtube" ] ],
-    "user": [ "ccm.instance", "https://ccmjs.github.io/ccm-components/user/versions/ccm.user-2.0.1.min.js", { "sign_on": "hbrsinfkaul", "logged_in": true } ],
+    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-2.0.1.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.min.js", "se_ws17_youtube" ] ],
+    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-2.0.1.min.js", { "sign_on": "hbrsinfkaul", "logged_in": true } ],
     "onfinish": { "restart": true }
   }
 };

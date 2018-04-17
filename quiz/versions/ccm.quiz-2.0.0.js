@@ -110,7 +110,7 @@
           "inner": "%%"
         }
       },
-      "css": [ "ccm.load", "https://ccmjs.github.io/ccm-components/quiz/resources/default.css" ],
+      "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/quiz/resources/default.css" ],
       "questions": {},
       "placeholder": {
         "cancel": "Cancel",

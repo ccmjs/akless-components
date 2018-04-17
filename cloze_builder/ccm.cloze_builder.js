@@ -194,17 +194,17 @@
                           {
                             "tag": "option",
                             "inner": "Guest Mode",
-                            "value": "['ccm.instance','https://ccmjs.github.io/ccm-components/user/ccm.user.js',{'sign_on':'guest'}]"
+                            "value": "['ccm.instance','https://ccmjs.github.io/akless-components/user/ccm.user.js',{'sign_on':'guest'}]"
                           },
                           {
                             "tag": "option",
                             "inner": "Demo Mode",
-                            "value": "['ccm.instance','https://ccmjs.github.io/ccm-components/user/versions/ccm.user-2.0.0.min.js',{'sign_on':'demo'}]"
+                            "value": "['ccm.instance','https://ccmjs.github.io/akless-components/user/versions/ccm.user-2.0.0.min.js',{'sign_on':'demo'}]"
                           },
                           {
                             "tag": "option",
                             "inner": "H-BRS FB02",
-                            "value": "['ccm.instance','https://ccmjs.github.io/ccm-components/user/versions/ccm.user-2.0.0.min.js',{'sign_on':'hbrsinfkaul'}]"
+                            "value": "['ccm.instance','https://ccmjs.github.io/akless-components/user/versions/ccm.user-2.0.0.min.js',{'sign_on':'hbrsinfkaul'}]"
                           }
                         ]
                       }
@@ -242,17 +242,17 @@
                           {
                             "tag": "option",
                             "inner": "Default",
-                            "value": "['ccm.load','https://ccmjs.github.io/ccm-components/cloze/resources/default.css']"
+                            "value": "['ccm.load','https://ccmjs.github.io/akless-components/cloze/resources/default.css']"
                           },
                           {
                             "tag": "option",
                             "inner": "LEA-like",
-                            "value": "['ccm.load','https://ccmjs.github.io/ccm-components/cloze/resources/lea.css','https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css',{'context': 'head','url':'https://fonts.googleapis.com/css?family=Montserrat:200'}]"
+                            "value": "['ccm.load','https://ccmjs.github.io/akless-components/cloze/resources/lea.css','https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css',{'context': 'head','url':'https://fonts.googleapis.com/css?family=Montserrat:200'}]"
                           },
                           {
                             "tag": "option",
                             "inner": "PBWorks-like",
-                            "value": "['ccm.load','https://ccmjs.github.io/ccm-components/cloze/resources/pbworks.css','https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css',{'context': 'head','url':'https://fonts.googleapis.com/css?family=Montserrat:200'}]"
+                            "value": "['ccm.load','https://ccmjs.github.io/akless-components/cloze/resources/pbworks.css','https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css',{'context': 'head','url':'https://fonts.googleapis.com/css?family=Montserrat:200'}]"
                           }
                         ]
                       }
@@ -714,11 +714,11 @@
         ]
       },
       "css": [ "ccm.load",
-        "https://tkless.github.io/ccm-components/libs/bootstrap/css/bootstrap.css",
-        { "context": "head", "url": "https://tkless.github.io/ccm-components/libs/bootstrap/css/font-face.css" },
+        "https://tkless.github.io/akless-components/libs/bootstrap/css/bootstrap.css",
+        { "context": "head", "url": "https://tkless.github.io/akless-components/libs/bootstrap/css/font-face.css" },
         "../cloze_builder/resources/default.css"
       ],
-      "editor": [ "ccm.component", "https://tkless.github.io/ccm-components/editor/versions/ccm.editor-2.0.0.min.js",
+      "editor": [ "ccm.component", "https://tkless.github.io/akless-components/editor/versions/ccm.editor-2.0.0.min.js",
         { "settings.modules.toolbar": [
           [ { 'header': [ 1, 2, 3, 4, 5, 6, false ] } ],
           [ "bold", "italic", "underline" ],                    // toggled buttons
@@ -739,7 +739,7 @@
 
   /*
       "start_values": {
-        "css": "['ccm.load','https://ccmjs.github.io/ccm-components/cloze/resources/lea.css']",
+        "css": "['ccm.load','https://ccmjs.github.io/akless-components/cloze/resources/lea.css']",
         "text": "<p>In order to [[s(e)rv(e)|solv(e)]] you well, Karma needs to know about your project in order to test it and this is done via a configuration file. The easiest way to generate an initial configuration file is by using the karma init command. This page lists all of the available configuration options.</p>",
         "captions": {
           "start": "Start",
@@ -754,7 +754,7 @@
         "feedback": true,
         "retry": true,
         "solutions": false,
-        "user": "['ccm.instance','https://ccmjs.github.io/ccm-components/user/versions/ccm.user-2.0.0.min.js',{'sign_on':'demo'}]",
+        "user": "['ccm.instance','https://ccmjs.github.io/akless-components/user/versions/ccm.user-2.0.0.min.js',{'sign_on':'demo'}]",
         "onfinish": { "restart": true }
       }
   */

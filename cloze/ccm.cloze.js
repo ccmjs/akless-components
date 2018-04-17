@@ -110,8 +110,8 @@
   //  retry: true
   //  solutions: true,
   //  cancel_button: true,
-  //  user:   [ 'ccm.instance', 'https://ccmjs.github.io/ccm-components/user/versions/ccm.user-2.0.0.min.js' ],
-  //  logger: [ 'ccm.instance', 'https://ccmjs.github.io/ccm-components/log/versions/ccm.log-1.0.0.min.js', [ 'ccm.get', 'https://ccmjs.github.io/ccm-components/log/resources/configs.min.js', 'greedy' ] ],
+  //  user:   [ 'ccm.instance', 'https://ccmjs.github.io/akless-components/user/versions/ccm.user-2.0.0.min.js' ],
+  //  logger: [ 'ccm.instance', 'https://ccmjs.github.io/akless-components/log/versions/ccm.log-1.0.0.min.js', [ 'ccm.get', 'https://ccmjs.github.io/akless-components/log/resources/configs.min.js', 'greedy' ] ],
   //  onstart: function ( instance ) { console.log( 'Fill-in-the-blank text started' ); },
   //  oncancel: function ( instance ) { console.log( 'Fill-in-the-blank text canceled' ); },
   //  onvalidation: function ( instance, data ) { if ( data.gap % 2 ) data.correct = data.nearly = true; console.log( data ); },

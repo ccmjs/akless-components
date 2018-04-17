@@ -98,7 +98,7 @@
           ]
         }
       },
-      "css": [ "ccm.load", "https://ccmjs.github.io/ccm-components/kanban_card/resources/default.css" ],
+      "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/kanban_card/resources/default.css" ],
       "icons": [
         "ccm.load",
         {

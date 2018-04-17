@@ -42,8 +42,8 @@
   //  "onPlaybackRateChange",       {function} onPlaybackRateChange - [onPlaybackRateChange]{@link https://developers.google.com/youtube/iframe_api_reference#onPlaybackRateChange} callback
   //  "onError",                    {function} onError - [onError]{@link https://developers.google.com/youtube/iframe_api_reference#onError} callback
   //  "onApiChange",                {function} onApiChange - [onApiChange]{@link https://developers.google.com/youtube/iframe_api_reference#onApiChange} callback
-  //  logger: [ 'ccm.instance', 'https://ccmjs.github.io/ccm-components/log/versions/ccm.log-2.0.0.min.js', [ 'ccm.get', 'https://ccmjs.github.io/ccm-components/log/resources/configs.min.js', 'greedy' ] ],
-  //  user:   [ 'ccm.instance', 'https://ccmjs.github.io/ccm-components/user/versions/ccm.user-2.0.1.min.js' ]
+  //  logger: [ 'ccm.instance', 'https://ccmjs.github.io/akless-components/log/versions/ccm.log-2.0.0.min.js', [ 'ccm.get', 'https://ccmjs.github.io/akless-components/log/resources/configs.min.js', 'greedy' ] ],
+  //  user:   [ 'ccm.instance', 'https://ccmjs.github.io/akless-components/user/versions/ccm.user-2.0.1.min.js' ]
 
     },
 

@@ -65,7 +65,7 @@
           ]
         }
       },
-      "css": [ "ccm.load", "https://ccmjs.github.io/ccm-components/testsuite/resources/default.css" ],
+      "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/testsuite/resources/default.css" ],
       "onfinish": { "log": true }
     },
 

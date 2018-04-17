@@ -76,7 +76,7 @@
           "inner": "%%"
         }
       },
-      "css": [ "ccm.load", "https://ccmjs.github.io/ccm-components/cloze/resources/default.css" ],
+      "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/cloze/resources/default.css" ],
       "text": "Hello, [[(W)o(rl)d]]!",
       "captions": {
         "cancel": "Cancel",

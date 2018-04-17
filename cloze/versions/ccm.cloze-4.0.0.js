@@ -1,35 +1,15 @@
 /**
  * @overview ccm component for rendering a fill-in-the-blank text
- * @author André Kless <andre.kless@web.de> 2017
+ * @author André Kless <andre.kless@web.de> 2017-2018
  * @license The MIT License (MIT)
- * @version 3.2.1
+ * @version 4.0.0
  * @changes
- * version 3.2.1 (17.11.2017):
- * - bugfix for length of text gaps
- * - no cleared text gap on correctness only feedback
- * version 3.2.0 (13.11.2017):
- * - customizable caption for start button
- * version 3.1.0 (10.11.2017):
- * - more than one solution word for a gap
- * version 3.0.0 (10.11.2017):
- * - uses ECMAScript 6 syntax
- * - uses ccm v12.12.0
- * version 2.2.0 (16.10.2017):
- * - gap length equal to longest word if all gaps have same length
- * version 2.1.0 (15.10.2017):
- * - optional finish button
- * - it is possible to show correctness without solutions in feedback
- * version 2.0.0 (18.09.2017):
- * - uses ccm v11.5.0 instead of v8.1.0
- * - shortened component backbone
- * - renaming of some instance properties
- * - add HTML template for a button
- * - visual feedback as default,
- * - default value for finish event
- * - reductions in HTML template for start button
- * - remove no more needed ccm.helper.protect call
- * - feedback instead of finish when timer has expired
- * version 1.0.0 (12.07.2017)
+ * version 4.0.0 (13.04.2018): changed marking of gaps
+ * - '*' instead of '[[' and ']]' (more easy to find on keyboards)
+ * - '/' instead of '|' (more easy to find on keyboards)
+ * - configurable character that marks a gap
+ * - uses ccm v16.1.0
+ * (for older version changes see ccm.cloze.js-3.9.0.js)
  */
 
 {
@@ -45,15 +25,15 @@
      * component version
      * @type {number[]}
      */
-    version: [ 3, 2, 1 ],
+    version: [ 4, 0, 0 ],
 
     /**
      * reference to used framework version
      * @type {object}
      */
     ccm: {
-      url: 'https://ccmjs.github.io/ccm/version/ccm-12.12.0.min.js',
-      integrity: 'sha384-1pDRNaBU2okRlEuyNp8icKgmsidtnoBsvFtbReMBrQv1bgQqCun0aw5DuTKu61Ts',
+      url: 'https://ccmjs.github.io/ccm/version/ccm-16.1.0.min.js',
+      integrity: 'sha384-4X0IFdACgz2SAKu0knklA+SRQ6OVU4GipKhm7p6l7e7k/CIM8cjCFprWmM4qkbQz',
       crossorigin: 'anonymous'
     },
 
@@ -75,26 +55,45 @@
         "main": {
           "id": "main",
           "inner": [
-            { "id": "keywords" },
-            { "id": "text" },
             {
-              "id": "buttons",
+              "class": "row",
+              "id": "keywords"
+            },
+            {
+              "id": "box",
+              "class": "row",
               "inner": [
-                { "id": "cancel" },
-                { "id": "submit" },
-                { "id": "finish" },
-                { "id": "timer" }
+                { "id": "text" },
+                {
+                  "id": "buttons",
+                  "inner": [
+                    { "id": "cancel" },
+                    { "id": "submit" },
+                    { "id": "finish" },
+                    { "id": "timer" }
+                  ]
+                }
               ]
             }
           ]
         },
         "keyword": {
           "class": "keyword",
-          "inner": "%%"
+          "inner": "%keyword%",
+          "onclick": "%click%"
+        },
+        "input": {
+          "tag": "input",
+          "type": "text",
+          "size": 10,
+          "autocorrect": "off",
+          "autocapitalize": "none",
+          "required": true,
+          "oninput": "%oninput%",
+          "onchange": "%onchange%"
         },
         "button": {
           "tag": "button",
-          "disabled": "%disabled%",
           "inner": "%caption%",
           "onclick": "%click%"
         },
@@ -103,12 +102,14 @@
           "inner": "%%"
         }
       },
-      "css": [ "ccm.load", "https://ccmjs.github.io/ccm-components/cloze/resources/default.css" ],
-      "text": "Hello, [[(W)o(rl)d]]!",
+      "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/cloze/resources/default.css" ],
+      "mark": "*",
+      "text": "Hello, *(W)o(rl)d*!",
       "captions": {
         "start": "Start",
         "cancel": "Cancel",
         "submit": "Submit",
+        "retry": "Retry",
         "finish": "Finish"
       }
 
@@ -117,13 +118,14 @@
   //  blank: true,
   //  time: 60,
   //  feedback: true,
+  //  retry: true
   //  solutions: true,
   //  cancel_button: true,
-  //  user:   [ 'ccm.instance', 'https://ccmjs.github.io/ccm-components/user/versions/ccm.user-2.0.0.min.js' ],
-  //  logger: [ 'ccm.instance', 'https://ccmjs.github.io/ccm-components/log/versions/ccm.log-1.0.0.min.js', [ 'ccm.get', 'https://ccmjs.github.io/ccm-components/log/resources/configs.min.js', 'greedy' ] ],
+  //  user:   [ 'ccm.instance', 'https://ccmjs.github.io/akless-components/user/versions/ccm.user-2.0.0.min.js' ],
+  //  logger: [ 'ccm.instance', 'https://ccmjs.github.io/akless-components/log/versions/ccm.log-1.0.0.min.js', [ 'ccm.get', 'https://ccmjs.github.io/akless-components/log/resources/configs.min.js', 'greedy' ] ],
   //  onstart: function ( instance ) { console.log( 'Fill-in-the-blank text started' ); },
   //  oncancel: function ( instance ) { console.log( 'Fill-in-the-blank text canceled' ); },
-  //  onvalidation: function ( instance, data ) { console.log( data ); return true; },
+  //  onvalidation: function ( instance, data ) { if ( data.gap % 2 ) data.correct = data.nearly = true; console.log( data ); },
   //  onfeedback: function ( instance, data ) { console.log( data ); },
   //  onchange: function ( instance, data ) { console.log( data ); },
   //  oninput:  function ( instance, data ) { console.log( data ); },
@@ -162,10 +164,16 @@
       let keywords = [];
 
       /**
+       * result data
+       * @type {object}
+       */
+      let results = null;
+
+      /**
        * is called once after all dependencies are solved and is then deleted
        * @param {function} callback - called after all synchronous and asynchronous operations are complete
        */
-      this.init = function ( callback ) {
+      this.init = callback => {
 
         // fill-in-the-blank text is given via inner HTML of own Custom Element? => use it with higher priority
         if ( self.inner && self.inner.innerHTML.trim() ) self.text = self.inner.innerHTML;
@@ -185,17 +193,21 @@
         // privatize all possible instance members
         my = $.privatize( self );
 
-        const regex_keyword = /\[\[.+?\]\]/g;   // regular expression for finding all gaps/keywords in the text
-        const regex_given = /\(.+?\)/g;         // regular expression for finding all given characters of a keyword
+        const regex_keyword   = new RegExp( '\\' + my.mark + '.+?\\' + my.mark, 'g' );  // regular expression for finding all gaps/keywords in the text
+        const regex_given     = /\(.+?\)/g;                                             // regular expression for finding all given characters of a keyword
+        const regex_reference = /^#(\d+)$/;                                             // regular expression for finding a gap reference
 
         // iterate all keywords in the text to determine the information data for each keyword
         ( my.text.match( regex_keyword ) || [] ).map( keyword => {
 
-          // remove distinguishing characteristic '[[' and ']]'
-          keyword = keyword.substr( 2, keyword.length - 4 );
+          // remove distinguishing characteristic '*'
+          keyword = keyword.substr( 1, keyword.length - 2 );
+
+          // the same as a previous gap? => use reference of previous gap
+          if ( regex_reference.test( keyword ) ) return keywords.push( keywords[ keyword.substr( 1 ) - 1 ] );
 
           const entry = [];
-          keyword.split( '|' ).map( keyword => entry.push( determineKeywordData( keyword ) ) );
+          keyword.split( '/' ).map( keyword => entry.push( determineKeywordData( keyword.trim() ) ) );
           keywords.push( entry );
 
           function determineKeywordData( keyword ) {
@@ -204,7 +216,8 @@
             const keyw__d = keyword.replace( '*', '#' ).replace( regex_given, given => {
               const length = given.length - 2;
               given = '';
-              for ( let i = 0; i < length; i++ ) given += '*';
+              for ( let i = 0; i < length; i++ )
+                given += '*';
               return given;
             } );
 
@@ -234,8 +247,11 @@
        */
       this.start = callback => {
 
+        // set initial result data
+        results = { details: [] };
+
         // has logger instance? => log 'render' event
-        if ( self.logger ) self.logger.log( 'render' );
+        self.logger && self.logger.log( 'render' );
 
         // user must click on a start button before fill-in-the-blank text is starting? => render start button
         if ( my.start_button ) $.setContent( self.element, $.html( my.html.start, { caption: my.captions.start, click: start } ) );
@@ -243,19 +259,13 @@
         else start();
 
         // rendering completed => perform callback
-        if ( callback ) callback();
+        callback && callback();
 
         /** starts the fill-in-the-blank text */
         function start() {
 
-          /**
-           * initial result data
-           * @type {object}
-           */
-          const results = { details: [] };
-
           // has logger instance? => log 'start' event
-          if ( self.logger ) self.logger.log( 'start', my );
+          self.logger && self.logger.log( 'start', $.clone( my ) );
 
           // prepare main HTML structure
           const main_elem = $.html( my.html.main );
@@ -268,20 +278,20 @@
           const  timer_elem = main_elem.querySelector( '#timer'  );
 
           // remove unneeded buttons
-          if ( !my.cancel_button ) $.removeElement( cancel_elem );
-          if ( !my.feedback      ) $.removeElement( submit_elem );
+          !my.cancel_button && $.removeElement( cancel_elem );
+          !my.feedback      && $.removeElement( submit_elem );
 
           // add content for inner containers
           renderKeywords();
           renderText();
-          updateButtons();
+          renderInitialButtons();
           renderTimer();
 
           // set content of own website area
           $.setContent( self.element, main_elem );
 
           // has individual 'start' callback? => perform it
-          if ( self.onstart ) self.onstart( self );
+          self.onstart && self.onstart( self );
 
           /**
            * @summary renders given keywords for text gaps
@@ -306,20 +316,17 @@
              */
             const entries = [];
 
-            // individual keyword list
-            if ( Array.isArray( my.keywords ) ) my.keywords.map( keyword => {
-              entries.push( $.html( my.html.keyword, Array.isArray( my.keywords ) ? keyword : keyword.word ) );
+            // prepare keyword containers
+            ( my.keywords === true ? keywords : my.keywords ).map( keyword => {
+              entries.push( $.html( my.html.keyword, {
+                keyword: my.keywords === true ? keyword[ 0 ].word : keyword,
+                click: function () { this.classList.toggle( 'marked' ); }
+              } ) );
             } );
 
-            // generated keyword list
-            else {
-              keywords.map( keyword => {
-                entries.push( $.html( my.html.keyword, Array.isArray( my.keywords ) ? keyword : keyword[ 0 ].word ) );
-              } );
-
-              // sort keywords lexicographical (keyword order gives no hint about correct solution)
+            // generated keyword list? => sort keywords lexicographical (keyword order gives no hint about correct solution)
+            if ( my.keywords === true )
               entries.sort( ( a, b ) => a.innerHTML.localeCompare( b.innerHTML ) );
-            }
 
             // add each inner keyword container to container for keywords
             entries.map( entry => keywords_elem.appendChild( entry ) );
@@ -338,26 +345,14 @@
             } ) );
 
             // iterate over all gap => render input field into each gap
-            $.makeIterable( main_elem.querySelectorAll( '.gap' ) ).map( ( gap_elem, i ) => {
-
-              // blank input fields and shown keywords? => input fields should give no hint for the length of the searched word
-              size = my.blank && my.keywords ? size : ( () => {
-                let max = 0;
-                keywords[ i ].map( keyword => {
-                  if ( keyword.word.length > max ) max = keyword.word.length;
-                } );
-                return max;
-              } )();
+            [ ...main_elem.querySelectorAll( '.gap' ) ].map( ( gap_elem, i ) => {
 
               // prepare ccm HTML data for the input field
-              const input = {
-                tag: 'input',
-                type: 'text',
-                oninput: onInput,
-                onchange: onChange,
-                maxlength: size,
-                size: size * 1.5  // works tolerably for words with a length up to 30
-              };
+              const input = $.html( my.html.input, { oninput: onInput, onchange: onChange } );
+
+              // resizing of the input field
+              input.onkeypress = input.onkeydown = function () { this.size = this.value.length > 10 ? this.value.length : 10; };
+              input.onpaste = function () { $.wait( 0, () => this.size = this.value.length > 10 ? this.value.length : 10 ); };
 
               // no blank input fields? => set placeholder attribute (gives informations about the characters of the searched word)
               if ( !my.blank ) {
@@ -380,10 +375,10 @@
                 const event_data = { gap: 1 + i, input: this.value };
 
                 // has logger instance? => log 'input' event
-                if ( self.logger ) self.logger.log( 'input', event_data );
+                self.logger && self.logger.log( 'input', $.clone( event_data ) );
 
                 // has individual 'input' callback? => perform it
-                if ( self.oninput ) self.oninput( self, event_data );
+                self.oninput && self.oninput( self, $.clone( event_data ) );
 
               }
 
@@ -397,40 +392,27 @@
                 const event_data = { gap: 1 + i, input: this.value };
 
                 // has logger instance? => log 'change' event
-                if ( self.logger ) self.logger.log( 'change', event_data );
+                self.logger && self.logger.log( 'change', $.clone( event_data ) );
 
                 // has individual 'change' callback? => perform it
-                if ( self.onchange ) self.onchange( self, event_data );
+                self.onchange && self.onchange( self, $.clone( event_data ) );
 
               }
 
             } );
-
           }
 
-          /** (re)renders the buttons */
-          function updateButtons() {
+          /** renders the buttons */
+          function renderInitialButtons() {
 
             // render 'cancel' button (if needed)
-            if ( my.cancel_button ) $.setContent( cancel_elem, $.html( my.html.button, {
-              disabled: '',
-              caption: my.captions.cancel,
-              click: () => self.oncancel ? self.oncancel( self ) : self.start( callback )
-            } ) );
+            my.cancel_button && renderButton( cancel_elem, my.captions.cancel, () => self.oncancel ? self.oncancel( self ) : self.start( callback ) );
 
             // render 'submit' button (if needed)
-            if ( my.feedback ) $.setContent( submit_elem, $.html( my.html.button, {
-              disabled: results.details.length > 0 || '',
-              caption: my.captions.submit,
-              click: evaluate
-            } ) );
+            my.feedback && renderButton( submit_elem, my.captions.submit, evaluate );
 
             // render 'finish' button (if needed)
-            if ( self.onfinish ) $.setContent( finish_elem, $.html( my.html.button, {
-              disabled: '',
-              caption: my.captions.finish,
-              click: onFinish
-            } ) );
+            self.onfinish && renderButton( finish_elem, my.captions.finish, onFinish );
 
           }
 
@@ -471,26 +453,23 @@
           /** evaluates the fill-in-the-blank text and shows feedback */
           function evaluate() {
 
+            // set initial state for detail informations of the gap results
+            results.details = [];
+
             // iterate over all gap input fields
-            $.makeIterable( main_elem.querySelectorAll( '.gap input' ) ).map( ( gap, i ) => {
+            [ ...main_elem.querySelectorAll( '.gap input' ) ].map( ( gap, i ) => {
 
               /**
                * event data (contains informations about the input field)
                * @type {object}
                */
-              const event_data = { gap: 1 + i, input: gap.value };
-
-              /**
-               * correct user input value
-               * @type {boolean}
-               */
-              let correct = false;
-
-              /**
-               * almost correct user input value
-               * @type {boolean}
-               */
-              let nearly  = false;
+              const event_data = {
+                gap:      1 + i,      // number of the text gap
+                input:    gap.value,  // user input
+                solution: [],         // list of correct solution words
+                correct:  false,      // true: correct user input value
+                nearly:   false       // true: almost correct user input value
+              };
 
               // add solution information to event data
               event_data.solution = [];
@@ -498,34 +477,96 @@
                 event_data.solution.push( keyword.word );
 
                 // determine correctness of the user input value
-                if ( gap.value === keyword.word ) correct = true;
-                if ( gap.value.toLowerCase().trim() === keyword.word.toLowerCase().trim() ) nearly = true;
+                if ( keyword.used ) return;
+                gap.value = gap.value.trim();
+                if ( gap.value === keyword.word ) event_data.correct = true;
+                if ( gap.value.toLowerCase() === keyword.word.toLowerCase() ) { event_data.nearly = true; keyword.used = true; }
+                self.onvalidation && !self.onvalidation( self, event_data );  // has individual 'validation' callback? => perform it
               } );
-
-              // has individual 'validation' callback? => perform it (reset evaluation if user input value is not valid)
-              if ( self.onvalidation && !self.onvalidation( self, $.clone( event_data ) ) ) return results.details = [];
 
               // give visual feedback for correctness
               gap.disabled = true;
-              if ( !nearly && my.solutions ) gap.value = '';
-              if ( my.solutions ) gap.setAttribute( 'placeholder', keywords[ i ][ 0 ].word );
-              gap.parentNode.classList.add( correct ? 'correct' : ( nearly ? 'nearly' : 'wrong' ) );
+              if ( !event_data.nearly && my.solutions ) gap.value = '';
+              if ( my.solutions ) {
+                let placeholder = '';
+                for ( let j = 0; j < keywords[ i ].length; j++ )
+                  if ( !keywords[ i ][ j ].used ) { placeholder = keywords[ i ][ j ].word; break; }
+                gap.setAttribute( 'placeholder', placeholder );
+                placeholder.length <= 0 ? gap.size = gap.value.length : gap.size = placeholder.length;
+              }
+              gap.parentNode.classList.add( event_data.correct ? 'correct' : ( event_data.nearly ? 'nearly' : 'wrong' ) );
 
               // set detail informations for current gap result
               results.details.push( event_data );
 
             } );
 
+            // restore original keywords information data
+            keywords.map( keyword => keyword.map( keyword => delete keyword.used ) );
+
             // no evaluation results? => abort
             if ( results.details.length === 0 ) return;
 
             // has logger instance? => log 'feedback' event
-            if ( self.logger ) self.logger.log( 'feedback', results );
+            self.logger && self.logger.log( 'feedback', $.clone( results ) );
 
             // has individual 'feedback' callback? => perform it
-            if ( self.onfeedback ) self.onfeedback( self, $.clone( results ) );
+            self.onfeedback && self.onfeedback( self, $.clone( results ) );
 
-            updateButtons();
+            // change buttons
+            updateButtons( true );
+
+          }
+
+          /** removes the feedback and enables the input fields */
+          function retry() {
+
+            // iterate over all gap input fields
+            [ ...self.element.querySelectorAll( '.gap' ) ].map( gap => {
+
+              // remove visual feedback
+              gap.classList.remove( 'correct', 'nearly', 'wrong' );
+              const input = gap.querySelector( 'input' );
+              input.disabled = false;
+
+            } );
+
+            // has logger instance? => log 'retry' event
+            self.logger && self.logger.log( 'retry' );
+
+            // change buttons
+            updateButtons( false );
+
+          }
+
+          /**
+           * (re)renders the buttons
+           * @param {boolean} evaluated - fill-in-the-blank text is evaluated
+           */
+          function updateButtons( evaluated ) {
+
+            // no visual feedback? => abort
+            if ( !my.feedback ) return;
+
+            // the fill-in-the-blank text is not evaluated? => render 'submit' button
+            if ( !evaluated )
+              renderButton( submit_elem, my.captions.submit, evaluate );
+            // evaluated and retry is allowed? => render 'retry' button
+            else if ( my.retry && !my.solutions )
+              renderButton( submit_elem, my.captions.retry, retry );
+            // evaluated without retry? => disable 'submit' button
+            else
+              submit_elem.querySelector( 'button' ).disabled = true;
+
+          }
+
+          /** renders a single button */
+          function renderButton( element, caption, click ) {
+
+            $.setContent( element, $.html( my.html.button, {
+              caption: caption,
+              click: click
+            } ) );
 
           }
 
@@ -541,7 +582,7 @@
             function proceed() {
 
               // no evaluation results? => evaluate fill-in-the-blank text
-              if ( results.details.length === 0 ) evaluate();
+              results.details.length === 0 && evaluate();
 
               // make sure that user could not use 'finish' button again
               $.removeElement( finish_elem );
@@ -551,7 +592,7 @@
               if ( self.user ) results.user = self.user.data().name;
 
               // has logger instance? => log 'finish' event
-              if ( self.logger ) self.logger.log( 'finish', results );
+              self.logger && self.logger.log( 'finish', $.clone( results ) );
 
               // perform 'finish' actions and provide result data
               $.onFinish( self, results );
@@ -563,6 +604,12 @@
         }
 
       };
+
+      /**
+       * returns the current result data
+       * @returns {object} current result data
+       */
+      this.getValue = () => results;
 
     }
 

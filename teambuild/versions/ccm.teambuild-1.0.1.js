@@ -73,7 +73,7 @@
           ]
         }
       },
-      "css": [ "ccm.load", "https://ccmjs.github.io/ccm-components/teambuild/resources/default.css" ],
+      "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/teambuild/resources/default.css" ],
       "icons": [ "ccm.load",
         {
           "context": "head",

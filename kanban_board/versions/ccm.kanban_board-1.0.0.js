@@ -61,7 +61,7 @@
           "onclick": "%%"
         }
       },
-      "css": [ "ccm.load", "https://ccmjs.github.io/ccm-components/kanban_board/resources/default.css" ],
+      "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/kanban_board/resources/default.css" ],
       "data": {
         "store": [ "ccm.store", {} ],
         "key": "local"

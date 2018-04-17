@@ -14,11 +14,11 @@ ccm.files[ 'configs.js' ] = {
     "blank": true,
     "retry": true,
     "captions.finish": "Restart",
-    "logger": [ "ccm.instance", "https://ccmjs.github.io/ccm-components/log/versions/ccm.log-2.0.1.min.js", [ "ccm.get", "https://ccmjs.github.io/ccm-components/log/resources/configs.min.js", "greedy" ] ],
+    "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
     "onfinish": { "log": true, "restart": true }
   },
   "demo": {
-    "css": [ "ccm.load", "https://ccmjs.github.io/ccm-components/cloze/resources/pbworks.css", { "context": "head", "url": "https://fonts.googleapis.com/css?family=Montserrat:200", "type": "css" } ],
+    "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/cloze/resources/pbworks.css", { "context": "head", "url": "https://fonts.googleapis.com/css?family=Montserrat:200", "type": "css" } ],
     "feedback": true,
     "time": 300,
     "keywords": [ "convenience", "conducting", "objectives", "durable", "competitive", "breakdown", "reasons", "evaluate", "adding", "breakthroughs", "withdraw", "patterns", "non-durable", "deleting", "feasible", "making", "sources", "niche" ],
@@ -26,11 +26,11 @@ ccm.files[ 'configs.js' ] = {
     "blank": true,
     "retry": true,
     "captions.finish": "Restart",
-    "logger": [ "ccm.instance", "https://ccmjs.github.io/ccm-components/log/versions/ccm.log-2.0.1.min.js", [ "ccm.get", "https://ccmjs.github.io/ccm-components/log/resources/configs.min.js", "greedy" ] ],
+    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-2.0.1.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.min.js", "greedy" ] ],
     "onfinish": { "log": true, "restart": true }
   },
   "lea": {
-    "css": [ "ccm.load", "https://ccmjs.github.io/ccm-components/cloze/resources/lea.css" ],
+    "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/cloze/resources/lea.css" ],
     "feedback": true,
     "time": 300,
     "keywords": [ "convenience", "conducting", "objectives", "durable", "competitive", "breakdown", "reasons", "evaluate", "adding", "breakthroughs", "withdraw", "patterns", "non-durable", "deleting", "feasible", "making", "sources", "niche" ],
@@ -38,27 +38,28 @@ ccm.files[ 'configs.js' ] = {
     "blank": true,
     "retry": true,
     "captions.finish": "Restart",
-    "user": [ "ccm.instance", "https://ccmjs.github.io/ccm-components/user/versions/ccm.user-3.1.0.min.js", [ "ccm.get", "https://ccmjs.github.io/ccm-components/user/resources/configs.min.js", "lea" ] ],
-    "logger": [ "ccm.instance", "https://ccmjs.github.io/ccm-components/log/versions/ccm.log-2.0.1.min.js", [ "ccm.get", "https://ccmjs.github.io/ccm-components/log/resources/configs.min.js", "greedy" ] ],
+    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-3.1.0.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.min.js", "lea" ] ],
+    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-2.0.1.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.min.js", "greedy" ] ],
     "onfinish": {
       "log": true,
-      "restart": true,
       "login": true,
       "store": {
         "settings": {
-          "store": "cloze_results",
-          "url": "https://ccm.inf.h-brs.de"
+          "store": "cloze_demo_results",
+          "url": "https://ccm-data.bib.h-brs.de"
         },
         "user": true,
         "permissions": {
-          "creator": "akless2m",
+          "realm": "LEA",
           "access": {
             "get": "all",
             "set": "creator",
             "del": "creator"
           }
         }
-      }
+      },
+      "alert": "Saved!",
+      "restart": true
     }
   }
 };

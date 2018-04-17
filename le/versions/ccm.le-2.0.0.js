@@ -72,7 +72,7 @@
         }
       },
       "target": "_blank",
-      "content": [ "ccm.component", "https://ccmjs.github.io/ccm-components/content/versions/ccm.content-2.0.0.min.js" ]
+      "content": [ "ccm.component", "https://ccmjs.github.io/akless-components/content/versions/ccm.content-2.0.0.min.js" ]
     },
 
     Instance: function () {

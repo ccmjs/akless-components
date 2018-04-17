@@ -12,7 +12,7 @@
     ccm: 'https://ccmjs.github.io/ccm/ccm.js',
 
     config:  {
-      component_obj: [ "ccm.component", "https://ccmjs.github.io/ccm-components/blank/ccm.blank.js" ],
+      component_obj: [ "ccm.component", "https://ccmjs.github.io/akless-components/blank/ccm.blank.js" ],
       times: 5
     },
 

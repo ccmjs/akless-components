@@ -86,7 +86,7 @@
           ]
         }
       },
-      "css": [ "ccm.load", "https://ccmjs.github.io/ccm-components/input/resources/default.css" ],
+      "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/input/resources/default.css" ],
       "inputs": []
     },
 

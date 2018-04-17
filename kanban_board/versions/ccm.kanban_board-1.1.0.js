@@ -65,7 +65,7 @@
           "onclick": "%%"
         }
       },
-      "css": [ "ccm.load", "https://ccmjs.github.io/ccm-components/kanban_board/resources/default.css" ],
+      "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/kanban_board/resources/default.css" ],
       "data": {
         "store": [ "ccm.store", {} ],
         "key": "local"
@@ -73,7 +73,7 @@
       "lanes": [ "ToDo", "Doing", "Done" ],
       "del": "Do you really want to delete this card?"
 
-  //  "card": { "component": "https://ccmjs.github.io/ccm-components/kanban_card/ccm.kanban_card.js", "config": { "data": {} } }
+  //  "card": { "component": "https://ccmjs.github.io/akless-components/kanban_card/ccm.kanban_card.js", "config": { "data": {} } }
 
     },
 

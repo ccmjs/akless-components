@@ -63,8 +63,8 @@
       "sign_on": "guest",
       "guest": "guest"
 
-  //  css: [ 'ccm.load', 'https://ccmjs.github.io/ccm-components/user/resources/default.css' ],
-  //  logger: [ 'ccm.instance', 'https://ccmjs.github.io/ccm-components/log/versions/ccm.log-1.0.0.min.js', [ 'ccm.get', 'https://ccmjs.github.io/ccm-components/log/resources/log_configs.min.js', 'greedy' ] ]
+  //  css: [ 'ccm.load', 'https://ccmjs.github.io/akless-components/user/resources/default.css' ],
+  //  logger: [ 'ccm.instance', 'https://ccmjs.github.io/akless-components/log/versions/ccm.log-1.0.0.min.js', [ 'ccm.get', 'https://ccmjs.github.io/akless-components/log/resources/log_configs.min.js', 'greedy' ] ]
 
     },
 

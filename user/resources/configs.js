@@ -12,16 +12,16 @@ ccm.files[ 'configs.js' ] = {
   },
   "demo": {
     "realm": "demo",
-    "css": [ "ccm.load", "https://ccmjs.github.io/ccm-components/user/resources/default.css" ],
-    "logger": [ "ccm.instance", "https://ccmjs.github.io/ccm-components/log/versions/ccm.log-2.0.1.js", [ "ccm.get", "https://ccmjs.github.io/ccm-components/log/resources/configs.min.js", "greedy" ] ]
+    "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/user/resources/default.css" ],
+    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-2.0.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.min.js", "greedy" ] ]
   },
   "lea": {
     "realm": "LEA",
     "css": [ "ccm.load",
-      "https://ccmjs.github.io/ccm-components/user/resources/tea.css",
-      "https://tkless.github.io/ccm-components/libs/bootstrap/css/bootstrap.css",
-      { "context": "head", "url": "https://tkless.github.io/ccm-components/libs/bootstrap/css/font-face.css" }
+      "https://ccmjs.github.io/akless-components/user/resources/tea.css",
+      "https://tkless.github.io/akless-components/libs/bootstrap/css/bootstrap.css",
+      { "context": "head", "url": "https://tkless.github.io/akless-components/libs/bootstrap/css/font-face.css" }
     ],
-    "logger": [ "ccm.instance", "https://ccmjs.github.io/ccm-components/log/versions/ccm.log-2.0.1.js", [ "ccm.get", "https://ccmjs.github.io/ccm-components/log/resources/configs.min.js", "greedy" ] ]
+    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-2.0.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.min.js", "greedy" ] ]
   }
 };

@@ -92,8 +92,8 @@
         ]
       }
 
-  //  "css": [ "ccm.load", "https://ccmjs.github.io/ccm-components/le/resources/weblysleek.css", { "context": "head", "url": "https://ccmjs.github.io/ccm-components/libs/weblysleekui/font.css" } ],
-  //  "wrapper": [ "ccm.component", "https://ccmjs.github.io/ccm-components/content/ccm.content.js" ],
+  //  "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/le/resources/weblysleek.css", { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/weblysleekui/font.css" } ],
+  //  "wrapper": [ "ccm.component", "https://ccmjs.github.io/akless-components/content/ccm.content.js" ],
   //  "content": "Hello, World!",
   //  "logo": "https://ccmjs.github.io/akless/we/logo.png",
   //  "topic": "Title of Learning Unit",

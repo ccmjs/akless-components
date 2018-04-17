@@ -54,8 +54,8 @@
       "libs": [ "ccm.load", "https://code.highcharts.com/highcharts.js" ],
       "data": {}
 
-  //  "css": [ "ccm.load": "https://ccmjs.github.io/ccm-components/highchart/resources/default.css" ],
-  //  "logger": [ "ccm.instance", "https://ccmjs.github.io/ccm-components/log/versions/ccm.log-2.0.0.min.js", [ "ccm.get", "https://ccmjs.github.io/ccm-components/log/resources/configs.min.js", "greedy" ] ],
+  //  "css": [ "ccm.load": "https://ccmjs.github.io/akless-components/highchart/resources/default.css" ],
+  //  "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-2.0.0.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.min.js", "greedy" ] ],
   //  "chart": "line",  // line|area|bar|column|pie|pie-semi-circle
   //  "switcher": true,
   //  "settings": {},

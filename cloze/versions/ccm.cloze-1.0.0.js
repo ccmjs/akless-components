@@ -54,7 +54,7 @@
           "inner": "%%"
         }
       },
-      "css_layout": [ "ccm.load", "https://ccmjs.github.io/ccm-components/resources/default.css" ],
+      "css_layout": [ "ccm.load", "https://ccmjs.github.io/akless-components/resources/default.css" ],
       "placeholder" : {
         "start": "Start",
         "cancel": "Cancel",

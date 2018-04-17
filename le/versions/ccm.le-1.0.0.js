@@ -19,9 +19,9 @@
     version: [ 1, 0, 0 ],
 
     config: {
-      "css_file": "https://ccmjs.github.io/ccm-components/le/resources/weblysleek.css",
-      "font": "https://ccmjs.github.io/ccm-components/libs/weblysleekui/font.css",
-      "content": [ "ccm.component", "https://ccmjs.github.io/ccm-components/content/versions/ccm.content-1.0.0.min.js" ],
+      "css_file": "https://ccmjs.github.io/akless-components/le/resources/weblysleek.css",
+      "font": "https://ccmjs.github.io/akless-components/libs/weblysleekui/font.css",
+      "content": [ "ccm.component", "https://ccmjs.github.io/akless-components/content/versions/ccm.content-1.0.0.min.js" ],
       "topic_prefix": "Learning Unit:",
       "link_prefix": "Link: "
     },

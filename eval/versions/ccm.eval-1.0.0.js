@@ -35,7 +35,7 @@
           ]
         }
       },
-      "css": [ "ccm.load", "https://ccmjs.github.io/ccm-components/eval/resources/default.css" ],
+      "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/eval/resources/default.css" ],
       "expression": '"Hello, World!"'
     },
 

@@ -113,7 +113,7 @@
           "inner": "%%"
         }
       },
-      "css": [ "ccm.load", "https://ccmjs.github.io/ccm-components/quiz/resources/default.css" ],
+      "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/quiz/resources/default.css" ],
       "questions": {},
       "placeholder": {
         "cancel": "Cancel",
@@ -139,8 +139,8 @@
   //  attributes: {},
   //  encode: true,
   //  swap: true,
-  //  user: [ 'ccm.instance', 'https://ccmjs.github.io/ccm-components/user/ccm.user.min.js' ],
-  //  logger: [ 'ccm.instance', 'https://ccmjs.github.io/ccm-components/log/ccm.log.min.js', [ 'ccm.get', 'https://ccmjs.github.io/ccm-components/log/resources/log_configs.min.js', 'greedy' ] ],
+  //  user: [ 'ccm.instance', 'https://ccmjs.github.io/akless-components/user/ccm.user.min.js' ],
+  //  logger: [ 'ccm.instance', 'https://ccmjs.github.io/akless-components/log/ccm.log.min.js', [ 'ccm.get', 'https://ccmjs.github.io/akless-components/log/resources/log_configs.min.js', 'greedy' ] ],
   //  onstart: function ( instance ) { console.log( 'Quiz started' ); },
   //  oncancel: function ( instance ) { console.log( 'Quiz canceled' ); },
   //  onprev: function ( instance, data ) { console.log( data ); },

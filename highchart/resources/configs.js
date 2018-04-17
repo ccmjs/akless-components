@@ -8,7 +8,7 @@ ccm.files[ 'configs.js' ] = {
   "line": {
     "css": [ "ccm.load", "../highchart/resources/default.css" ],
     "libs": [ "ccm.load", [ "https://code.highcharts.com/highcharts.js", "https://code.highcharts.com/modules/series-label.js", "https://code.highcharts.com/modules/exporting.js" ] ],
-    "logger": [ "ccm.instance", "https://ccmjs.github.io/ccm-components/log/versions/ccm.log-2.0.0.min.js", [ "ccm.get", "https://ccmjs.github.io/ccm-components/log/resources/configs.min.js", "greedy" ] ],
+    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-2.0.0.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.min.js", "greedy" ] ],
     "chart": "line",
     "switcher": true,
     "title": "Solar Employment Growth by Sector, 2010-2016",
@@ -41,7 +41,7 @@ ccm.files[ 'configs.js' ] = {
   "area": {
     "css": [ "ccm.load", "../highchart/resources/default.css" ],
     "libs": [ "ccm.load", [ "https://code.highcharts.com/highcharts.js", "https://code.highcharts.com/modules/exporting.js" ] ],
-    "logger": [ "ccm.instance", "https://ccmjs.github.io/ccm-components/log/versions/ccm.log-2.0.0.min.js", [ "ccm.get", "https://ccmjs.github.io/ccm-components/log/resources/configs.min.js", "greedy" ] ],
+    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-2.0.0.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.min.js", "greedy" ] ],
     "chart": "area",
     "switcher": true,
     "title": "US and USSR nuclear stockpiles",
@@ -75,7 +75,7 @@ ccm.files[ 'configs.js' ] = {
   "bar": {
     "css": [ "ccm.load", "../highchart/resources/default.css" ],
     "libs": [ "ccm.load", [ "https://code.highcharts.com/highcharts.js", "https://code.highcharts.com/modules/exporting.js" ] ],
-    "logger": [ "ccm.instance", "https://ccmjs.github.io/ccm-components/log/versions/ccm.log-2.0.0.min.js", [ "ccm.get", "https://ccmjs.github.io/ccm-components/log/resources/configs.min.js", "greedy" ] ],
+    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-2.0.0.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.min.js", "greedy" ] ],
     "chart": "bar",
     "switcher": true,
     "title": "Historic World Population by Region",
@@ -101,7 +101,7 @@ ccm.files[ 'configs.js' ] = {
   "column": {
     "css": [ "ccm.load", "../highchart/resources/default.css" ],
     "libs": [ "ccm.load", [ "https://code.highcharts.com/highcharts.js", "https://code.highcharts.com/modules/exporting.js" ] ],
-    "logger": [ "ccm.instance", "https://ccmjs.github.io/ccm-components/log/versions/ccm.log-2.0.0.min.js", [ "ccm.get", "https://ccmjs.github.io/ccm-components/log/resources/configs.min.js", "greedy" ] ],
+    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-2.0.0.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.min.js", "greedy" ] ],
     "chart": "column",
     "switcher": true,
     "title": "Monthly Average Rainfall",
@@ -131,7 +131,7 @@ ccm.files[ 'configs.js' ] = {
   "pie": {
     "css": [ "ccm.load", "../highchart/resources/default.css" ],
     "libs": [ "ccm.load", [ "https://code.highcharts.com/highcharts.js", "https://code.highcharts.com/modules/exporting.js" ] ],
-    "logger": [ "ccm.instance", "https://ccmjs.github.io/ccm-components/log/versions/ccm.log-2.0.0.min.js", [ "ccm.get", "https://ccmjs.github.io/ccm-components/log/resources/configs.min.js", "greedy" ] ],
+    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-2.0.0.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.min.js", "greedy" ] ],
     "chart": "pie",
     "switcher": true,
     "title": "Browser market shares January, 2015 to May, 2015",
@@ -168,7 +168,7 @@ ccm.files[ 'configs.js' ] = {
   "pie-semi-circle": {
     "css": [ "ccm.load", "../highchart/resources/default.css" ],
     "libs": [ "ccm.load", [ "https://code.highcharts.com/highcharts.js", "https://code.highcharts.com/modules/exporting.js" ] ],
-    "logger": [ "ccm.instance", "https://ccmjs.github.io/ccm-components/log/versions/ccm.log-2.0.0.min.js", [ "ccm.get", "https://ccmjs.github.io/ccm-components/log/resources/configs.min.js", "greedy" ] ],
+    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-2.0.0.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.min.js", "greedy" ] ],
     "chart": "pie-semi-circle",
     "switcher": true,
     "title": "Browser<br>shares<br>2015",
@@ -191,7 +191,7 @@ ccm.files[ 'configs.js' ] = {
   },
   "spiderweb": {
     "libs": [ "ccm.load", [ "https://code.jquery.com/jquery-3.1.1.min.js", "https://code.highcharts.com/highcharts.js", "https://code.highcharts.com/highcharts-more.js", "https://code.highcharts.com/modules/exporting.js" ] ],
-    "logger": [ "ccm.instance", "https://ccmjs.github.io/ccm-components/log/versions/ccm.log-2.0.0.min.js", [ "ccm.get", "https://ccmjs.github.io/ccm-components/log/resources/configs.min.js", "greedy" ] ],
+    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-2.0.0.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.min.js", "greedy" ] ],
     "settings": {
       "chart": {
         "polar": true,
