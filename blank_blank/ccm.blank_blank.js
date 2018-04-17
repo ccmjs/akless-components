@@ -9,7 +9,7 @@
 
     name: 'blank_blank',
 
-    ccm: 'https://akless.github.io/ccm/ccm.js',
+    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
 
     config: {
       "instance_a": [ "ccm.start", "https://akless.github.io/ccm-components/blank/ccm.blank.js" ],
