@@ -17,7 +17,7 @@ ccm.files[ 'configs.js' ] = {
   "demo": {
     "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/teambuild/resources/akless.css" ],
     "data": {
-      "store": [ "ccm.store", { "store": "teambuild", "url": "wss://ccm.inf.h-brs.de", "db": "redis" } ],
+      "store": [ "ccm.store", { "store": "teambuild", "url": "wss://ccm2.inf.h-brs.de", "db": "redis" } ],
       "key": "demo"
     },
     "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-2.0.0.min.js", { "logged_in": true, "sign_on": "guest" } ],
@@ -26,7 +26,7 @@ ccm.files[ 'configs.js' ] = {
   "clicker": {
     "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/teambuild/resources/akless.css" ],
     "data": {
-      "store": [ "ccm.store", { "store": "teambuild", "url": "wss://ccm.inf.h-brs.de", "db": "redis" } ],
+      "store": [ "ccm.store", { "store": "teambuild", "url": "wss://ccm2.inf.h-brs.de", "db": "redis" } ],
       "key": "clicker"
     },
     "names": [ "Stimmt", "Stimmt nicht", "Kommt drauf an" ],
@@ -38,7 +38,7 @@ ccm.files[ 'configs.js' ] = {
   "se_ws17_gr1": {  // created for ccm.teambuild-1.0.0.js
     "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/teambuild/resources/akless.css" ],
     "data": {
-      "store": [ "ccm.store", { "store": "teambuild", "url": "wss://ccm.inf.h-brs.de" } ],
+      "store": [ "ccm.store", { "store": "teambuild", "url": "wss://ccm2.inf.h-brs.de" } ],
       "key": "se_ws17_gr1"
     },
     "editable": false,
@@ -49,7 +49,7 @@ ccm.files[ 'configs.js' ] = {
   "se_ws17_gr2": {  // created for ccm.teambuild-1.0.0.js
     "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/teambuild/resources/akless.css" ],
     "data": {
-      "store": [ "ccm.store", { "store": "teambuild", "url": "wss://ccm.inf.h-brs.de" } ],
+      "store": [ "ccm.store", { "store": "teambuild", "url": "wss://ccm2.inf.h-brs.de" } ],
       "key": "se_ws17_gr2"
     },
     "editable": false,
@@ -60,7 +60,7 @@ ccm.files[ 'configs.js' ] = {
   "se_ws17_gr3": {  // created for ccm.teambuild-1.0.0.js
     "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/teambuild/resources/akless.css" ],
     "data": {
-      "store": [ "ccm.store", { "store": "teambuild", "url": "wss://ccm.inf.h-brs.de" } ],
+      "store": [ "ccm.store", { "store": "teambuild", "url": "wss://ccm2.inf.h-brs.de" } ],
       "key": "se_ws17_gr3"
     },
     "editable": false,
@@ -71,7 +71,7 @@ ccm.files[ 'configs.js' ] = {
   "se_ws17_gr4": {  // created for ccm.teambuild-1.0.0.js
     "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/teambuild/resources/akless.css" ],
     "data": {
-      "store": [ "ccm.store", { "store": "teambuild", "url": "wss://ccm.inf.h-brs.de" } ],
+      "store": [ "ccm.store", { "store": "teambuild", "url": "wss://ccm2.inf.h-brs.de" } ],
       "key": "se_ws17_gr4"
     },
     "editable": false,
@@ -82,7 +82,7 @@ ccm.files[ 'configs.js' ] = {
   "se_ws17_gr5": {  // created for ccm.teambuild-1.0.0.js
     "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/teambuild/resources/akless.css" ],
     "data": {
-      "store": [ "ccm.store", { "store": "teambuild", "url": "wss://ccm.inf.h-brs.de" } ],
+      "store": [ "ccm.store", { "store": "teambuild", "url": "wss://ccm2.inf.h-brs.de" } ],
       "key": "se_ws17_gr5"
     },
     "editable": false,
@@ -93,7 +93,7 @@ ccm.files[ 'configs.js' ] = {
   "se_ws17_gr6": {  // created for ccm.teambuild-1.0.0.js
     "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/teambuild/resources/akless.css" ],
     "data": {
-      "store": [ "ccm.store", { "store": "teambuild", "url": "wss://ccm.inf.h-brs.de" } ],
+      "store": [ "ccm.store", { "store": "teambuild", "url": "wss://ccm2.inf.h-brs.de" } ],
       "key": "se_ws17_gr6"
     },
     "editable": false,
@@ -104,7 +104,7 @@ ccm.files[ 'configs.js' ] = {
   "sks_ws17": {  // created for ccm.teambuild-1.0.0.js
     "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/teambuild/resources/akless.css" ],
     "data": {
-      "store": [ "ccm.store", { "store": "teambuild", "url": "wss://ccm.inf.h-brs.de" } ],
+      "store": [ "ccm.store", { "store": "teambuild", "url": "wss://ccm2.inf.h-brs.de" } ],
       "key": "sks_ws17"
     },
     "names": [ "Gruppe Prof. Dr. Manfred Kaul", "Gruppe Prof. Dr. Rudolf Berrendorf", "Gruppe Prof. Dr. Sascha Alda", "Gruppe Prof. Dr. Simone Bürsner" ],

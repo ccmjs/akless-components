@@ -474,7 +474,7 @@
                           {
                             "tag": "option",
                             "inner": "Web Component Cloud (W2C)",
-                            "value": "['ccm.store',{'store':'w2c_teambuild_data','url':'wss://ccm.inf.h-brs.de'}]"
+                            "value": "['ccm.store',{'store':'w2c_teambuild_data','url':'wss://ccm2.inf.h-brs.de'}]"
                           }
                         ]
                       }

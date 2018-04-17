@@ -26,7 +26,7 @@ ccm.files[ 'configs.js' ] = {
     "font": [ "ccm.load", { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/weblysleekui/font.css" } ],
     "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/kanban_card/resources/weblysleek.css" ],
     "data": {
-      "store": [ "ccm.store", { "store": "kanban_card", "url": "wss://ccm.inf.h-brs.de" } ],
+      "store": [ "ccm.store", { "store": "kanban_card", "url": "wss://ccm2.inf.h-brs.de" } ],
       "key": "demo",
       "permission_settings": { "access": "group" }
     },

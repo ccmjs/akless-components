@@ -23,7 +23,7 @@ ccm.files[ 'configs.js' ] = {
     "hash": [ "ccm.load", "https://ccmjs.github.io/akless-components/libs/md5/md5.min.js" ],
     "onfinish": {
       "store": {
-        "settings": { "store": "se_ws17_pdf_viewer_log", "url": "https://ccm.inf.h-brs.de" },
+        "settings": { "store": "se_ws17_pdf_viewer_log", "url": "https://ccm2.inf.h-brs.de" },
         "permissions": {
           "creator": "akless2m",
           "group": {
@@ -46,7 +46,7 @@ ccm.files[ 'configs.js' ] = {
     "hash": [ "ccm.load", "https://ccmjs.github.io/akless-components/libs/md5/md5.min.js" ],
     "onfinish": {
       "store": {
-        "settings": { "store": "se_ws17_youtube_log", "url": "https://ccm.inf.h-brs.de" },
+        "settings": { "store": "se_ws17_youtube_log", "url": "https://ccm2.inf.h-brs.de" },
         "permissions": {
           "creator": "mkaul2m",
           "group": {
@@ -88,7 +88,7 @@ ccm.files[ 'configs.js' ] = {
     },
     "hash": [ "ccm.load", "https://ccmjs.github.io/akless-components/libs/md5/md5.min.js" ],
     "onfinish": {
-      "store_settings": { "store": "se_ws17_teambuild_log", "url": "https://ccm.inf.h-brs.de" },
+      "store_settings": { "store": "se_ws17_teambuild_log", "url": "https://ccm2.inf.h-brs.de" },
       "permissions": {
         "creator": "akless2m",
         "group": {
@@ -129,7 +129,7 @@ ccm.files[ 'configs.js' ] = {
     },
     "hash": [ "ccm.load", "https://ccmjs.github.io/akless-components/libs/md5/md5.min.js" ],
     "onfinish": {
-      "store_settings": { "store": "sks_ws17_teambuild_log", "url": "https://ccm.inf.h-brs.de" },
+      "store_settings": { "store": "sks_ws17_teambuild_log", "url": "https://ccm2.inf.h-brs.de" },
       "permissions": {
         "creator": "akless2m",
         "group": {

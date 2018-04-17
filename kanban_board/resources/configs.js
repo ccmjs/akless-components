@@ -26,7 +26,7 @@ ccm.files[ 'configs.js' ] = {
   "remote": {
     "css": [ "ccm.load", "../kanban_board/resources/default.css" ],
     "data": {
-      "store": [ "ccm.store", { "store": "kanban_board", "url": "wss://ccm.inf.h-brs.de" } ],
+      "store": [ "ccm.store", { "store": "kanban_board", "url": "wss://ccm2.inf.h-brs.de" } ],
       "key": "test"
     },
     "card": {
@@ -35,7 +35,7 @@ ccm.files[ 'configs.js' ] = {
         "font": [ "ccm.load", { "context": "head", "url": "../libs/weblysleekui/font.css" } ],
         "css": [ "ccm.load", "../kanban_card/resources/weblysleek.css" ],
         "data": {
-          "store": [ "ccm.store", { "store": "kanban_card", "url": "wss://ccm.inf.h-brs.de" } ],
+          "store": [ "ccm.store", { "store": "kanban_card", "url": "wss://ccm2.inf.h-brs.de" } ],
           "permission_settings": { "access": "group" }
         },
         "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ]
@@ -46,7 +46,7 @@ ccm.files[ 'configs.js' ] = {
   "demo": {
     "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/kanban_board/resources/default.css" ],
     "data": {
-      "store": [ "ccm.store", { "store": "kanban_board", "url": "wss://ccm.inf.h-brs.de" } ],
+      "store": [ "ccm.store", { "store": "kanban_board", "url": "wss://ccm2.inf.h-brs.de" } ],
       "key": "demo"
     },
     "card": {
@@ -55,7 +55,7 @@ ccm.files[ 'configs.js' ] = {
         "font": [ "ccm.load", { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/weblysleekui/font.css" } ],
         "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/kanban_card/resources/weblysleek.css" ],
         "data": {
-          "store": [ "ccm.store", { "store": "kanban_card", "url": "wss://ccm.inf.h-brs.de" } ],
+          "store": [ "ccm.store", { "store": "kanban_card", "url": "wss://ccm2.inf.h-brs.de" } ],
           "permission_settings": { "access": "group" }
         },
         "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-1.0.0.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.min.js", "greedy" ] ]

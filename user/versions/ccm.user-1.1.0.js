@@ -157,7 +157,7 @@
             success( { user: my.guest } );
             break;
           case 'demo':
-            self.ccm.load( { url: 'https://ccm.inf.h-brs.de', params: { realm: 'ccm' } }, success );
+            self.ccm.load( { url: 'https://ccm2.inf.h-brs.de', params: { realm: 'ccm' } }, success );
             break;
           case 'hbrsinfkaul':
             self.ccm.load( { url: 'https://kaul.inf.h-brs.de/login/login.php', params: { realm: 'hbrsinfkaul' } }, success);
@@ -217,7 +217,7 @@
             success();
             break;
           case 'demo':
-            self.ccm.load( { url: 'https://ccm.inf.h-brs.de', params: { realm: 'ccm', token: dataset.token } } );
+            self.ccm.load( { url: 'https://ccm2.inf.h-brs.de', params: { realm: 'ccm', token: dataset.token } } );
             success();
             break;
           case 'hbrsinfkaul':
