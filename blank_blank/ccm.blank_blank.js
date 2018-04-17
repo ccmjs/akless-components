@@ -10,10 +10,10 @@
     name: 'blank_blank',
 
     ccm: 'https://ccmjs.github.io/ccm/ccm.js',
-
+   
     config: {
-      "instance_a": [ "ccm.start", "https://akless.github.io/ccm-components/blank/ccm.blank.js" ],
-      "instance_b": [ "ccm.start", "https://akless.github.io/ccm-components/blank/ccm.blank.js" ]
+      "instance_a": [ "ccm.start", "https://ccmjs.github.io/ccm-components/blank/ccm.blank.js" ],
+      "instance_b": [ "ccm.start", "https://ccmjs.github.io/ccm-components/blank/ccm.blank.js" ]
     },
 
     Instance: function () {

@@ -39,7 +39,7 @@
      * @type {object}
      */
     ccm: {
-      url: 'https://akless.github.io/ccm/version/ccm-12.12.0.min.js',
+      url: 'https://ccmjs.github.io/ccm/version/ccm-12.12.0.min.js',
       integrity: 'sha384-1pDRNaBU2okRlEuyNp8icKgmsidtnoBsvFtbReMBrQv1bgQqCun0aw5DuTKu61Ts',
       crossorigin: 'anonymous'
     },
@@ -321,17 +321,17 @@
                       {
                         "tag": "option",
                         "inner": "Guest Mode",
-                        "value": "['ccm.instance','https://akless.github.io/ccm-components/user/versions/ccm.user-2.0.0.min.js',{'sign_on':'guest','logged_in':true}]"
+                        "value": "['ccm.instance','https://ccmjs.github.io/ccm-components/user/versions/ccm.user-2.0.0.min.js',{'sign_on':'guest','logged_in':true}]"
                       },
                       {
                         "tag": "option",
                         "inner": "Demo Mode",
-                        "value": "['ccm.instance','https://akless.github.io/ccm-components/user/versions/ccm.user-2.0.0.min.js',{'sign_on':'demo','logged_in':true}]"
+                        "value": "['ccm.instance','https://ccmjs.github.io/ccm-components/user/versions/ccm.user-2.0.0.min.js',{'sign_on':'demo','logged_in':true}]"
                       },
                       {
                         "tag": "option",
                         "inner": "H-BRS FB02",
-                        "value": "['ccm.instance','https://akless.github.io/ccm-components/user/versions/ccm.user-2.0.0.min.js',{'sign_on':'hbrsinfkaul','logged_in':true}]"
+                        "value": "['ccm.instance','https://ccmjs.github.io/ccm-components/user/versions/ccm.user-2.0.0.min.js',{'sign_on':'hbrsinfkaul','logged_in':true}]"
                       }
                     ]
                   }
@@ -369,12 +369,12 @@
                       {
                         "tag": "option",
                         "inner": "default",
-                        "value": "['ccm.load','https://akless.github.io/ccm-components/teambuild/resources/default.css']"
+                        "value": "['ccm.load','https://ccmjs.github.io/ccm-components/teambuild/resources/default.css']"
                       },
                       {
                         "tag": "option",
                         "inner": "akless",
-                        "value": "['ccm.load','https://akless.github.io/ccm-components/teambuild/resources/akless.css']"
+                        "value": "['ccm.load','https://ccmjs.github.io/ccm-components/teambuild/resources/akless.css']"
                       }
                     ]
                   }
@@ -715,10 +715,10 @@
       "css": [ "ccm.load",
         "https://tkless.github.io/ccm-components/libs/bootstrap/css/bootstrap.css",
         { "context": "head", "url": "https://tkless.github.io/ccm-components/libs/bootstrap/css/font-face.css" },
-        "https://akless.github.io/ccm-components/teambuild_builder/resources/default.css"
+        "https://ccmjs.github.io/ccm-components/teambuild_builder/resources/default.css"
       ],
       "submit_button": true,
-      "teambuild": [ "ccm.component", "https://akless.github.io/ccm-components/teambuild/ccm.teambuild.js" ],
+      "teambuild": [ "ccm.component", "https://ccmjs.github.io/ccm-components/teambuild/ccm.teambuild.js" ],
       "onfinish": { "log": true }
 
   //  start_values
@@ -778,7 +778,7 @@
         if ( !my.start_values[ 'data.key' ] ) my.start_values[ 'data.key' ] = $.generateKey();
 
         // guest login mode as default
-        if ( !my.start_values.user ) my.start_values.user = "['ccm.instance','https://akless.github.io/ccm-components/user/versions/ccm.user-2.0.0.min.js',{'sign_on':'guest','logged_in':true}]";
+        if ( !my.start_values.user ) my.start_values.user = "['ccm.instance','https://ccmjs.github.io/ccm-components/user/versions/ccm.user-2.0.0.min.js',{'sign_on':'guest','logged_in':true}]";
 
         // security check for start values
         my.start_values = $.protect( my.start_values );

@@ -38,7 +38,7 @@
      * @type {object}
      */
     ccm: {
-      url: 'https://akless.github.io/ccm/version/ccm-15.0.2.min.js',
+      url: 'https://ccmjs.github.io/ccm/version/ccm-15.0.2.min.js',
       integrity: 'sha384-4X0IFdACgz2SAKu0knklA+SRQ6OVU4GipKhm7p6l7e7k/CIM8cjCFprWmM4qkbQz',
       crossorigin: 'anonymous'
     },
@@ -84,8 +84,8 @@
       "sign_on": "guest",
       "guest": "guest"
 
-  //  "css": [ "ccm.load", "https://akless.github.io/ccm-components/user/resources/default.css" ],
-  //  "logger": [ "ccm.instance", "https://akless.github.io/ccm-components/log/versions/ccm.log-2.0.1.js", [ "ccm.get", "https://akless.github.io/ccm-components/log/resources/configs.js", "greedy" ] ]
+  //  "css": [ "ccm.load", "https://ccmjs.github.io/ccm-components/user/resources/default.css" ],
+  //  "logger": [ "ccm.instance", "https://ccmjs.github.io/ccm-components/log/versions/ccm.log-2.0.1.js", [ "ccm.get", "https://ccmjs.github.io/ccm-components/log/resources/configs.js", "greedy" ] ]
 
     },
 

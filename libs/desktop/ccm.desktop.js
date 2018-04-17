@@ -5,7 +5,7 @@
 ( function () {
 
     var ccm_version = '9.0.0';
-    var ccm_url = 'https://akless.github.io/ccm/ccm.min.js';
+    var ccm_url = 'https://ccmjs.github.io/ccm/ccm.min.js';
 
     var component_name = 'desktop';
     var component_obj = {
@@ -14,9 +14,9 @@
 
         config: {
             style: [
-                ['ccm.load', 'https://akless.github.io/ccm-components/libs/desktop/styles/example/desktop.css']
+                ['ccm.load', 'https://ccmjs.github.io/ccm-components/libs/desktop/styles/example/desktop.css']
             ],
-            apps: [ "ccm.get", "https://akless.github.io/ccm-components/libs/desktop/apps_config.js", "example"],
+            apps: [ "ccm.get", "https://ccmjs.github.io/ccm-components/libs/desktop/apps_config.js", "example"],
             html_templates: {
                 'main': {
                     tag: 'div',

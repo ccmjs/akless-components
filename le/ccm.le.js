@@ -36,7 +36,7 @@
      * recommended used framework version
      * @type {string}
      */
-    ccm: 'https://akless.github.io/ccm/ccm.js',
+    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
 
     /**
      * default instance configuration
@@ -85,10 +85,10 @@
   //  "css": [ "ccm.load", "../le/resources/weblysleek.css", { "context": "head", "url": "../libs/weblysleekui/font.css" } ],
   //  "wrapper": [ "ccm.component", "../content/ccm.content.js" ],
   //  "content": "Hello, World!",
-  //  "logo": "https://akless.github.io/akless/we/logo.png",
+  //  "logo": "https://ccmjs.github.io/akless/we/logo.png",
   //  "topic": "Title of Learning Unit",
   //  "topic_prefix": "Learning Unit:",
-  //  "video_poster": "https://akless.github.io/akless/we/poster.jpg",
+  //  "video_poster": "https://ccmjs.github.io/akless/we/poster.jpg",
   //  "link_prefix": "Link:",
   //  "link_target": "_blank",
   //  "author": "John Doe"

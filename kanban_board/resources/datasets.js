@@ -23,19 +23,19 @@ ccm.files[ 'datasets.js' ] = {
     "lanes": [
       {
         "cards": [
-          [ "ccm.instance", "https://akless.github.io/ccm-components/kanban_card/versions/ccm.kanban_card-1.0.0.min.js", [ "ccm.get", "https://akless.github.io/ccm-components/kanban_card/resources/configs.min.js", "test" ] ],
-          [ "ccm.instance", "https://akless.github.io/ccm-components/kanban_card/versions/ccm.kanban_card-1.0.0.min.js", [ "ccm.get", "https://akless.github.io/ccm-components/kanban_card/resources/configs.min.js", "realtime" ] ]
+          [ "ccm.instance", "https://ccmjs.github.io/ccm-components/kanban_card/versions/ccm.kanban_card-1.0.0.min.js", [ "ccm.get", "https://ccmjs.github.io/ccm-components/kanban_card/resources/configs.min.js", "test" ] ],
+          [ "ccm.instance", "https://ccmjs.github.io/ccm-components/kanban_card/versions/ccm.kanban_card-1.0.0.min.js", [ "ccm.get", "https://ccmjs.github.io/ccm-components/kanban_card/resources/configs.min.js", "realtime" ] ]
         ]
       },
       {
         "cards": [
-          [ "ccm.instance", "https://akless.github.io/ccm-components/kanban_card/versions/ccm.kanban_card-1.0.0.min.js", [ "ccm.get", "https://akless.github.io/ccm-components/kanban_card/resources/configs.min.js", "w2c" ] ]
+          [ "ccm.instance", "https://ccmjs.github.io/ccm-components/kanban_card/versions/ccm.kanban_card-1.0.0.min.js", [ "ccm.get", "https://ccmjs.github.io/ccm-components/kanban_card/resources/configs.min.js", "w2c" ] ]
         ]
       },
       {
         "cards": [
-          [ "ccm.instance", "https://akless.github.io/ccm-components/kanban_card/versions/ccm.kanban_card-1.0.0.min.js", [ "ccm.get", "https://akless.github.io/ccm-components/kanban_card/resources/configs.min.js", "lea" ] ],
-          [ "ccm.instance", "https://akless.github.io/ccm-components/kanban_card/versions/ccm.kanban_card-1.0.0.min.js", [ "ccm.get", "https://akless.github.io/ccm-components/kanban_card/resources/configs.min.js", "more" ] ]
+          [ "ccm.instance", "https://ccmjs.github.io/ccm-components/kanban_card/versions/ccm.kanban_card-1.0.0.min.js", [ "ccm.get", "https://ccmjs.github.io/ccm-components/kanban_card/resources/configs.min.js", "lea" ] ],
+          [ "ccm.instance", "https://ccmjs.github.io/ccm-components/kanban_card/versions/ccm.kanban_card-1.0.0.min.js", [ "ccm.get", "https://ccmjs.github.io/ccm-components/kanban_card/resources/configs.min.js", "more" ] ]
         ]
       }
     ]
@@ -46,18 +46,18 @@ ccm.files[ 'datasets.js' ] = {
     "lanes": [
       {
         "cards": [
-          [ "ccm.instance", "https://akless.github.io/ccm-components/kanban_card/versions/ccm.kanban_card-1.0.0.min.js", [ "ccm.get", "https://akless.github.io/ccm-components/kanban_card/resources/configs.min.js", "realtime" ] ]
+          [ "ccm.instance", "https://ccmjs.github.io/ccm-components/kanban_card/versions/ccm.kanban_card-1.0.0.min.js", [ "ccm.get", "https://ccmjs.github.io/ccm-components/kanban_card/resources/configs.min.js", "realtime" ] ]
         ]
       },
       {
         "cards": [
-          [ "ccm.instance", "https://akless.github.io/ccm-components/quiz/versions/ccm.quiz-2.0.0.min.js", [ "ccm.get", "https://akless.github.io/ccm-components/quiz/resources/configs.min.js", "demo" ] ]
+          [ "ccm.instance", "https://ccmjs.github.io/ccm-components/quiz/versions/ccm.quiz-2.0.0.min.js", [ "ccm.get", "https://ccmjs.github.io/ccm-components/quiz/resources/configs.min.js", "demo" ] ]
         ]
       },
       {
         "cards": [
-          [ "ccm.instance", "https://akless.github.io/ccm-components/blank/ccm.blank.min.js" ],
-          [ "ccm.instance", "https://akless.github.io/ccm-components/eval/versions/ccm.eval-1.0.0.min.js", [ "ccm.get", "https://akless.github.io/ccm-components/eval/resources/configs.min.js", "demo" ] ]
+          [ "ccm.instance", "https://ccmjs.github.io/ccm-components/blank/ccm.blank.min.js" ],
+          [ "ccm.instance", "https://ccmjs.github.io/ccm-components/eval/versions/ccm.eval-1.0.0.min.js", [ "ccm.get", "https://ccmjs.github.io/ccm-components/eval/resources/configs.min.js", "demo" ] ]
         ]
       }
     ]

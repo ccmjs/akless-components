@@ -31,7 +31,7 @@
      * @type {object}
      */
     ccm: {
-      url: 'https://akless.github.io/ccm/version/ccm-12.12.0.min.js',
+      url: 'https://ccmjs.github.io/ccm/version/ccm-12.12.0.min.js',
       integrity: 'sha384-1pDRNaBU2okRlEuyNp8icKgmsidtnoBsvFtbReMBrQv1bgQqCun0aw5DuTKu61Ts',
       crossorigin: 'anonymous'
     },
@@ -67,7 +67,7 @@
           "onclick": "%%"
         }
       },
-      "css": [ "ccm.load", "https://akless.github.io/ccm-components/kanban_board/resources/default.css" ],
+      "css": [ "ccm.load", "https://ccmjs.github.io/ccm-components/kanban_board/resources/default.css" ],
       "data": {
         "store": [ "ccm.store", {} ],
         "key": "local"
@@ -75,8 +75,8 @@
       "lanes": [ "ToDo", "Doing", "Done" ],
       "del": "Do you really want to delete this card?"
 
-  //  "card": { "component": "https://akless.github.io/ccm-components/kanban_card/ccm.kanban_card.js", "config": { "data": {} } }
-  //  "logger": [ "ccm.instance", "https://akless.github.io/ccm-components/log/versions/ccm.log-1.0.0.min.js", [ "ccm.get", "https://akless.github.io/ccm-components/log/resources/configs.min.js", "greedy" ] ]
+  //  "card": { "component": "https://ccmjs.github.io/ccm-components/kanban_card/ccm.kanban_card.js", "config": { "data": {} } }
+  //  "logger": [ "ccm.instance", "https://ccmjs.github.io/ccm-components/log/versions/ccm.log-1.0.0.min.js", [ "ccm.get", "https://ccmjs.github.io/ccm-components/log/resources/configs.min.js", "greedy" ] ]
 
     },
 

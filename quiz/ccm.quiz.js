@@ -24,7 +24,7 @@
 
     name: 'quiz',
 
-    ccm: 'https://akless.github.io/ccm/ccm.js',
+    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
 
     config: {
 
@@ -138,8 +138,8 @@
   //  attributes: {},
   //  encode: true,
   //  swap: true,
-  //  user: [ 'ccm.instance', 'https://akless.github.io/ccm-components/user/ccm.user.min.js' ],
-  //  logger: [ 'ccm.instance', 'https://akless.github.io/ccm-components/log/ccm.log.min.js', [ 'ccm.get', 'https://akless.github.io/ccm-components/log/resources/log_configs.min.js', 'greedy' ] ],
+  //  user: [ 'ccm.instance', 'https://ccmjs.github.io/ccm-components/user/ccm.user.min.js' ],
+  //  logger: [ 'ccm.instance', 'https://ccmjs.github.io/ccm-components/log/ccm.log.min.js', [ 'ccm.get', 'https://ccmjs.github.io/ccm-components/log/resources/log_configs.min.js', 'greedy' ] ],
   //  onstart: function ( instance ) { console.log( 'Quiz started' ); },
   //  oncancel: function ( instance ) { console.log( 'Quiz canceled' ); },
   //  onprev: function ( instance, data ) { console.log( data ); },

@@ -25,7 +25,7 @@
      * @type {object}
      */
     ccm: {
-      url: 'https://akless.github.io/ccm/version/ccm-14.3.0.min.js',
+      url: 'https://ccmjs.github.io/ccm/version/ccm-14.3.0.min.js',
       integrity: 'sha384-4q30fhc2E3uY9omytSc6dKdoMNQ37dSozhTxgG/wH/9lv+N37TBhwd1jg/u03bRt',
       crossorigin: 'anonymous'
     },
@@ -40,7 +40,7 @@
         "id": "player",
         "inner": { "id": "iframe" }
       },
-      "css": [ "ccm.load", "https://akless.github.io/ccm-components/youtube/resources/default.css" ],
+      "css": [ "ccm.load", "https://ccmjs.github.io/ccm-components/youtube/resources/default.css" ],
       "video": "bHQqvYy5KYo"
 
   //  "height",                     {number} height - player height (default: 390)
@@ -52,8 +52,8 @@
   //  "onPlaybackRateChange",       {function} onPlaybackRateChange - [onPlaybackRateChange]{@link https://developers.google.com/youtube/iframe_api_reference#onPlaybackRateChange} callback
   //  "onError",                    {function} onError - [onError]{@link https://developers.google.com/youtube/iframe_api_reference#onError} callback
   //  "onApiChange",                {function} onApiChange - [onApiChange]{@link https://developers.google.com/youtube/iframe_api_reference#onApiChange} callback
-  //  logger: [ 'ccm.instance', 'https://akless.github.io/ccm-components/log/versions/ccm.log-2.0.0.min.js', [ 'ccm.get', 'https://akless.github.io/ccm-components/log/resources/configs.min.js', 'greedy' ] ],
-  //  user:   [ 'ccm.instance', 'https://akless.github.io/ccm-components/user/versions/ccm.user-2.0.1.min.js' ]
+  //  logger: [ 'ccm.instance', 'https://ccmjs.github.io/ccm-components/log/versions/ccm.log-2.0.0.min.js', [ 'ccm.get', 'https://ccmjs.github.io/ccm-components/log/resources/configs.min.js', 'greedy' ] ],
+  //  user:   [ 'ccm.instance', 'https://ccmjs.github.io/ccm-components/user/versions/ccm.user-2.0.1.min.js' ]
 
     },
 

@@ -10,7 +10,7 @@
   var filename = 'ccm.quiz-1.0.0.min.js';
 
   var ccm_version = '8.1.0';
-  var ccm_url     = 'https://akless.github.io/ccm/version/ccm-8.1.0.min.js';
+  var ccm_url     = 'https://ccmjs.github.io/ccm/version/ccm-8.1.0.min.js';
 
   var component_name = 'quiz';
   var component_obj  = {
@@ -103,7 +103,7 @@
           inner: '%%'
         }
       },
-      css_layout: [ 'ccm.load', 'https://akless.github.io/ccm-components/quiz/resources/default.css' ],
+      css_layout: [ 'ccm.load', 'https://ccmjs.github.io/ccm-components/quiz/resources/default.css' ],
       placeholder: {
         question: 'Question',
         start: 'Start',
@@ -130,8 +130,8 @@
   //  attributes: {},
   //  encode: true,
   //  swap: true,
-  //  user: [ 'ccm.instance', 'https://akless.github.io/ccm-components/user/ccm.user.min.js' ],
-  //  logger: [ 'ccm.instance', 'https://akless.github.io/ccm-components/log/ccm.log.min.js', [ 'ccm.get', 'https://akless.github.io/ccm-components/log/resources/log_configs.min.js', 'greedy' ] ],
+  //  user: [ 'ccm.instance', 'https://ccmjs.github.io/ccm-components/user/ccm.user.min.js' ],
+  //  logger: [ 'ccm.instance', 'https://ccmjs.github.io/ccm-components/log/ccm.log.min.js', [ 'ccm.get', 'https://ccmjs.github.io/ccm-components/log/resources/log_configs.min.js', 'greedy' ] ],
   //  onstart: function ( instance ) { console.log( 'Quiz started' ); },
   //  oncancel: function ( instance ) { console.log( 'Quiz canceled' ); },
   //  onprev: function ( instance, data ) { console.log( data ); },

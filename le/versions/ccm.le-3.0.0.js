@@ -43,7 +43,7 @@
      * @type {object}
      */
     ccm: {
-      url: 'https://akless.github.io/ccm/version/ccm-12.12.0.min.js',
+      url: 'https://ccmjs.github.io/ccm/version/ccm-12.12.0.min.js',
       integrity: 'sha384-1pDRNaBU2okRlEuyNp8icKgmsidtnoBsvFtbReMBrQv1bgQqCun0aw5DuTKu61Ts',
       crossorigin: 'anonymous'
     },
@@ -92,13 +92,13 @@
         ]
       }
 
-  //  "css": [ "ccm.load", "https://akless.github.io/ccm-components/le/resources/weblysleek.css", { "context": "head", "url": "https://akless.github.io/ccm-components/libs/weblysleekui/font.css" } ],
-  //  "wrapper": [ "ccm.component", "https://akless.github.io/ccm-components/content/ccm.content.js" ],
+  //  "css": [ "ccm.load", "https://ccmjs.github.io/ccm-components/le/resources/weblysleek.css", { "context": "head", "url": "https://ccmjs.github.io/ccm-components/libs/weblysleekui/font.css" } ],
+  //  "wrapper": [ "ccm.component", "https://ccmjs.github.io/ccm-components/content/ccm.content.js" ],
   //  "content": "Hello, World!",
-  //  "logo": "https://akless.github.io/akless/we/logo.png",
+  //  "logo": "https://ccmjs.github.io/akless/we/logo.png",
   //  "topic": "Title of Learning Unit",
   //  "topic_prefix": "Learning Unit:",
-  //  "video_poster": "https://akless.github.io/akless/we/poster.jpg",
+  //  "video_poster": "https://ccmjs.github.io/akless/we/poster.jpg",
   //  "link_prefix": "Link:",
   //  "link_target": "_blank",
   //  "author": "John Doe"

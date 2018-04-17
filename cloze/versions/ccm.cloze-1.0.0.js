@@ -10,7 +10,7 @@
   var filename = 'ccm.cloze-1.0.0.min.js';
 
   var ccm_version = '8.1.0';
-  var ccm_url     = 'https://akless.github.io/ccm/version/ccm-8.1.0.min.js';
+  var ccm_url     = 'https://ccmjs.github.io/ccm/version/ccm-8.1.0.min.js';
 
   var component_name = 'cloze';
   var component_obj  = {
@@ -54,7 +54,7 @@
           "inner": "%%"
         }
       },
-      "css_layout": [ "ccm.load", "https://akless.github.io/ccm-components/resources/default.css" ],
+      "css_layout": [ "ccm.load", "https://ccmjs.github.io/ccm-components/resources/default.css" ],
       "placeholder" : {
         "start": "Start",
         "cancel": "Cancel",

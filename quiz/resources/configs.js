@@ -6,9 +6,9 @@
 
 ccm.files[ 'configs.js' ] = {
   "demo": {
-    "css": [ "ccm.load", "https://akless.github.io/ccm-components/quiz/resources/weblysleek.css", { "context": "head", "url": "https://akless.github.io/ccm-components/libs/weblysleekui/font.css" } ],
-    "user": [ "ccm.instance", "https://akless.github.io/ccm-components/user/versions/ccm.user-1.0.0.min.js" ],
-    "logger": [ "ccm.instance", "https://akless.github.io/ccm-components/log/versions/ccm.log-1.0.0.min.js", [ "ccm.get", "https://akless.github.io/ccm-components/log/resources/configs.min.js", "greedy" ] ],
+    "css": [ "ccm.load", "https://ccmjs.github.io/ccm-components/quiz/resources/weblysleek.css", { "context": "head", "url": "https://ccmjs.github.io/ccm-components/libs/weblysleekui/font.css" } ],
+    "user": [ "ccm.instance", "https://ccmjs.github.io/ccm-components/user/versions/ccm.user-1.0.0.min.js" ],
+    "logger": [ "ccm.instance", "https://ccmjs.github.io/ccm-components/log/versions/ccm.log-1.0.0.min.js", [ "ccm.get", "https://ccmjs.github.io/ccm-components/log/resources/configs.min.js", "greedy" ] ],
     "questions": [
       {
         "text": "How many of these answers are correct?",
@@ -113,12 +113,12 @@ ccm.files[ 'configs.js' ] = {
   },
   "se_ws17_testabdeckung": {
     "quiz_key": "quiz_testabdeckung",
-    "logger": [ "ccm.instance", "https://akless.github.io/ccm-components/log/versions/ccm.log-2.0.1.min.js", [ "ccm.get", "https://kaul.inf.h-brs.de/data/2017/se1/json/log_configs.js", "se_ws17_quiz" ] ],
-    "css": [ "ccm.load", "https://akless.github.io/ccm-components/quiz/resources/weblysleek.css", {
+    "logger": [ "ccm.instance", "https://ccmjs.github.io/ccm-components/log/versions/ccm.log-2.0.1.min.js", [ "ccm.get", "https://kaul.inf.h-brs.de/data/2017/se1/json/log_configs.js", "se_ws17_quiz" ] ],
+    "css": [ "ccm.load", "https://ccmjs.github.io/ccm-components/quiz/resources/weblysleek.css", {
       "context": "head",
-      "url": "https://akless.github.io/ccm-components/libs/weblysleekui/font.css"
+      "url": "https://ccmjs.github.io/ccm-components/libs/weblysleekui/font.css"
     } ],
-    "user": [ "ccm.instance", "https://akless.github.io/ccm-components/user/versions/ccm.user-2.0.1.min.js", {
+    "user": [ "ccm.instance", "https://ccmjs.github.io/ccm-components/user/versions/ccm.user-2.0.1.min.js", {
       "sign_on": "hbrsinfkaul",
       "logged_in": true
     } ],

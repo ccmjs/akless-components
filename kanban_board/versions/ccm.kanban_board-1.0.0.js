@@ -25,7 +25,7 @@
      * @type {object}
      */
     ccm: {
-      url: 'https://akless.github.io/ccm/version/ccm-12.12.0.min.js',
+      url: 'https://ccmjs.github.io/ccm/version/ccm-12.12.0.min.js',
       integrity: 'sha384-1pDRNaBU2okRlEuyNp8icKgmsidtnoBsvFtbReMBrQv1bgQqCun0aw5DuTKu61Ts',
       crossorigin: 'anonymous'
     },
@@ -61,7 +61,7 @@
           "onclick": "%%"
         }
       },
-      "css": [ "ccm.load", "https://akless.github.io/ccm-components/kanban_board/resources/default.css" ],
+      "css": [ "ccm.load", "https://ccmjs.github.io/ccm-components/kanban_board/resources/default.css" ],
       "data": {
         "store": [ "ccm.store", {} ],
         "key": "local"

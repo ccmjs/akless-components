@@ -21,7 +21,7 @@
     version: [ 2, 0, 1 ],
 
     ccm: {
-      url: 'https://akless.github.io/ccm/version/ccm-11.5.0.min.js',
+      url: 'https://ccmjs.github.io/ccm/version/ccm-11.5.0.min.js',
       integrity: 'sha384-7lrORUPPd2raLsrPJYo0Arz8csPcGzgyNbKOr9Rx3k0ECU0T8BP+B1ejo8+wmUzh',
       crossorigin: 'anonymous'
     },
@@ -63,8 +63,8 @@
       "sign_on": "guest",
       "guest": "guest"
 
-  //  css: [ 'ccm.load', 'https://akless.github.io/ccm-components/user/resources/default.css' ],
-  //  logger: [ 'ccm.instance', 'https://akless.github.io/ccm-components/log/versions/ccm.log-1.0.0.min.js', [ 'ccm.get', 'https://akless.github.io/ccm-components/log/resources/log_configs.min.js', 'greedy' ] ]
+  //  css: [ 'ccm.load', 'https://ccmjs.github.io/ccm-components/user/resources/default.css' ],
+  //  logger: [ 'ccm.instance', 'https://ccmjs.github.io/ccm-components/log/versions/ccm.log-1.0.0.min.js', [ 'ccm.get', 'https://ccmjs.github.io/ccm-components/log/resources/log_configs.min.js', 'greedy' ] ]
 
     },
 
@@ -370,7 +370,7 @@
 
     /**
      * @external ccm.types
-     * @see {@link https://akless.github.io/ccm/api/ccm.types.html}
+     * @see {@link https://ccmjs.github.io/ccm/api/ccm.types.html}
      */
 
   };

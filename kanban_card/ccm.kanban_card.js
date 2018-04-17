@@ -18,7 +18,7 @@
 
     name: 'kanban_card',
 
-    ccm: 'https://akless.github.io/ccm/ccm.js',
+    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
 
     config: {
 
@@ -124,8 +124,8 @@
       "members": [ "John", "Jane" ],
       "priorities": [ "A", "B", "C" ]
 
-  //  logger: [ 'ccm.instance', 'https://akless.github.io/ccm-components/log/versions/ccm.log-1.0.0.min.js', [ 'ccm.get', 'https://akless.github.io/ccm-components/log/resources/configs.js', 'greedy' ] ],
-  //  user: [ 'ccm.instance', 'https://akless.github.io/ccm-components/user/versions/ccm.user-1.0.0.min.js' ]
+  //  logger: [ 'ccm.instance', 'https://ccmjs.github.io/ccm-components/log/versions/ccm.log-1.0.0.min.js', [ 'ccm.get', 'https://ccmjs.github.io/ccm-components/log/resources/configs.js', 'greedy' ] ],
+  //  user: [ 'ccm.instance', 'https://ccmjs.github.io/ccm-components/user/versions/ccm.user-1.0.0.min.js' ]
 
     },
 

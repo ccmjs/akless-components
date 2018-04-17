@@ -26,7 +26,7 @@
      * @type {object}
      */
     ccm: {
-      url: 'https://akless.github.io/ccm/version/ccm-12.12.0.min.js',
+      url: 'https://ccmjs.github.io/ccm/version/ccm-12.12.0.min.js',
       integrity: 'sha384-1pDRNaBU2okRlEuyNp8icKgmsidtnoBsvFtbReMBrQv1bgQqCun0aw5DuTKu61Ts',
       crossorigin: 'anonymous'
     },
@@ -381,17 +381,17 @@
                         {
                           "tag": "option",
                           "inner": "Guest Mode",
-                          "value": "['ccm.instance','https://akless.github.io/ccm-components/user/ccm.user.js',{'sign_on':'guest'}]"
+                          "value": "['ccm.instance','https://ccmjs.github.io/ccm-components/user/ccm.user.js',{'sign_on':'guest'}]"
                         },
                         {
                           "tag": "option",
                           "inner": "Demo Mode",
-                          "value": "['ccm.instance','https://akless.github.io/ccm-components/user/versions/ccm.user-2.0.0.min.js',{'sign_on':'demo'}]"
+                          "value": "['ccm.instance','https://ccmjs.github.io/ccm-components/user/versions/ccm.user-2.0.0.min.js',{'sign_on':'demo'}]"
                         },
                         {
                           "tag": "option",
                           "inner": "H-BRS FB02",
-                          "value": "['ccm.instance','https://akless.github.io/ccm-components/user/versions/ccm.user-2.0.0.min.js',{'sign_on':'hbrsinfkaul'}]"
+                          "value": "['ccm.instance','https://ccmjs.github.io/ccm-components/user/versions/ccm.user-2.0.0.min.js',{'sign_on':'hbrsinfkaul'}]"
                         }
                       ]
                     }
@@ -442,17 +442,17 @@
                         {
                           "tag": "option",
                           "inner": "Default",
-                          "value": "['ccm.load','https://akless.github.io/ccm-components/cloze/resources/default.css']"
+                          "value": "['ccm.load','https://ccmjs.github.io/ccm-components/cloze/resources/default.css']"
                         },
                         {
                           "tag": "option",
                           "inner": "LEA-like",
-                          "value": "['ccm.load','https://akless.github.io/ccm-components/cloze/resources/lea.css']"
+                          "value": "['ccm.load','https://ccmjs.github.io/ccm-components/cloze/resources/lea.css']"
                         },
                         {
                           "tag": "option",
                           "inner": "PBWorks-like",
-                          "value": "['ccm.load','https://akless.github.io/ccm-components/cloze/resources/pbworks.css','https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css']"
+                          "value": "['ccm.load','https://ccmjs.github.io/ccm-components/cloze/resources/pbworks.css','https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css']"
                         }
                       ]
                     }
@@ -507,14 +507,14 @@
           [ { "align": [] } ]
         ], "settings.placeholder": "Type here..." }
       ],
-      "target": [ "ccm.component", "https://akless.github.io/ccm-components/cloze/versions/beta/ccm.cloze-3.2.0.min.js" ],
+      "target": [ "ccm.component", "https://ccmjs.github.io/ccm-components/cloze/versions/beta/ccm.cloze-3.2.0.min.js" ],
       "submit_button": true,
       "preview": true,
       "onfinish": { "log": true }
 
       /*
           "start_values": {
-            "css": "['ccm.load','https://akless.github.io/ccm-components/cloze/resources/lea.css']",
+            "css": "['ccm.load','https://ccmjs.github.io/ccm-components/cloze/resources/lea.css']",
             "text": "<p>In order to [[s(e)rv(e)|solv(e)]] you well, Karma needs to know about your project in order to test it and this is done via a configuration file. The easiest way to generate an initial configuration file is by using the karma init command. This page lists all of the available configuration options.</p>",
             "captions": {
               "start": "Start",
@@ -529,8 +529,8 @@
             "feedback": true,
             "solutions": true,
             "cancel_button": true,
-            "user": "['ccm.instance','https://akless.github.io/ccm-components/user/versions/ccm.user-2.0.0.min.js',{'sign_on':'demo'}]",
-            "logger": "['ccm.instance','https://akless.github.io/ccm-components/log/versions/ccm.log-1.0.0.min.js',['ccm.get','https://akless.github.io/ccm-components/log/resources/configs.min.js','greedy']]",
+            "user": "['ccm.instance','https://ccmjs.github.io/ccm-components/user/versions/ccm.user-2.0.0.min.js',{'sign_on':'demo'}]",
+            "logger": "['ccm.instance','https://ccmjs.github.io/ccm-components/log/versions/ccm.log-1.0.0.min.js',['ccm.get','https://ccmjs.github.io/ccm-components/log/resources/configs.min.js','greedy']]",
             "onfinish": { "restart": true }
           }
       */

@@ -32,7 +32,7 @@
      * recommended used framework version
      * @type {string}
      */
-    ccm: 'https://akless.github.io/ccm/ccm.js',
+    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
 
     /**
      * default instance configuration
@@ -42,10 +42,10 @@
 
       "data": { "store": [ "ccm.store", {} ] }
 
-  //  "content": [ "ccm.component", "https://akless.github.io/ccm-components/content/ccm.content.js" ],
+  //  "content": [ "ccm.component", "https://ccmjs.github.io/ccm-components/content/ccm.content.js" ],
   //  "inner": ...,
-  //  "user":   [ 'ccm.instance', 'https://akless.github.io/ccm-components/user/versions/ccm.user-2.0.0.min.js' ],
-  //  "logger": [ 'ccm.instance', 'https://akless.github.io/ccm-components/log/versions/ccm.log-1.0.0.min.js', [ 'ccm.get', 'https://akless.github.io/ccm-components/log/resources/configs.min.js', 'greedy' ] ],
+  //  "user":   [ 'ccm.instance', 'https://ccmjs.github.io/ccm-components/user/versions/ccm.user-2.0.0.min.js' ],
+  //  "logger": [ 'ccm.instance', 'https://ccmjs.github.io/ccm-components/log/versions/ccm.log-1.0.0.min.js', [ 'ccm.get', 'https://ccmjs.github.io/ccm-components/log/resources/configs.min.js', 'greedy' ] ],
   //  "onfinish": { "log": true }
 
     },

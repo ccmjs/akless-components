@@ -45,7 +45,7 @@
      * reference to used framework version
      * @type {object}
      */
-    ccm: 'https://akless.github.io/ccm/version/beta/ccm-16.0.0.min.js',
+    ccm: 'https://ccmjs.github.io/ccm/version/beta/ccm-16.0.0.min.js',
 
     /**
      * default instance configuration
@@ -378,8 +378,8 @@
       "realm": "guest",
       "guest": "guest"
 
-  //  "css": [ "ccm.load", "https://akless.github.io/ccm-components/user/resources/default.css" ],
-  //  "logger": [ "ccm.instance", "https://akless.github.io/ccm-components/log/versions/ccm.log-2.0.1.js", [ "ccm.get", "https://akless.github.io/ccm-components/log/resources/configs.js", "greedy" ] ]
+  //  "css": [ "ccm.load", "https://ccmjs.github.io/ccm-components/user/resources/default.css" ],
+  //  "logger": [ "ccm.instance", "https://ccmjs.github.io/ccm-components/log/versions/ccm.log-2.0.1.js", [ "ccm.get", "https://ccmjs.github.io/ccm-components/log/resources/configs.js", "greedy" ] ]
 
     },
 

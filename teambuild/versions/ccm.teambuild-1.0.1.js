@@ -19,7 +19,7 @@
     version: [ 1, 0, 1 ],
 
     ccm: {
-      url: 'https://akless.github.io/ccm/version/ccm-12.12.0.min.js',
+      url: 'https://ccmjs.github.io/ccm/version/ccm-12.12.0.min.js',
       integrity: 'sha384-1pDRNaBU2okRlEuyNp8icKgmsidtnoBsvFtbReMBrQv1bgQqCun0aw5DuTKu61Ts',
       crossorigin: 'anonymous'
     },
@@ -73,7 +73,7 @@
           ]
         }
       },
-      "css": [ "ccm.load", "https://akless.github.io/ccm-components/teambuild/resources/default.css" ],
+      "css": [ "ccm.load", "https://ccmjs.github.io/ccm-components/teambuild/resources/default.css" ],
       "icons": [ "ccm.load",
         {
           "context": "head",

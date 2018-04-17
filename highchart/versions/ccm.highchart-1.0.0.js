@@ -33,7 +33,7 @@
      * @type {object}
      */
     ccm: {
-      url: 'https://akless.github.io/ccm/version/ccm-12.12.0.min.js',
+      url: 'https://ccmjs.github.io/ccm/version/ccm-12.12.0.min.js',
       integrity: 'sha384-1pDRNaBU2okRlEuyNp8icKgmsidtnoBsvFtbReMBrQv1bgQqCun0aw5DuTKu61Ts',
       crossorigin: 'anonymous'
     },
@@ -54,8 +54,8 @@
       "libs": [ "ccm.load", "https://code.highcharts.com/highcharts.js" ],
       "data": {}
 
-  //  "css": [ "ccm.load": "https://akless.github.io/ccm-components/highchart/resources/default.css" ],
-  //  "logger": [ "ccm.instance", "https://akless.github.io/ccm-components/log/versions/ccm.log-2.0.0.min.js", [ "ccm.get", "https://akless.github.io/ccm-components/log/resources/configs.min.js", "greedy" ] ],
+  //  "css": [ "ccm.load": "https://ccmjs.github.io/ccm-components/highchart/resources/default.css" ],
+  //  "logger": [ "ccm.instance", "https://ccmjs.github.io/ccm-components/log/versions/ccm.log-2.0.0.min.js", [ "ccm.get", "https://ccmjs.github.io/ccm-components/log/resources/configs.min.js", "greedy" ] ],
   //  "chart": "line",  // line|area|bar|column|pie|pie-semi-circle
   //  "switcher": true,
   //  "settings": {},

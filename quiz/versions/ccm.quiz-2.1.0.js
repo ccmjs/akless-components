@@ -23,7 +23,7 @@
     version: [ 2, 1, 0 ],
 
     ccm: {
-      url: 'https://akless.github.io/ccm/version/ccm-11.5.0.min.js',
+      url: 'https://ccmjs.github.io/ccm/version/ccm-11.5.0.min.js',
       integrity: 'sha384-7lrORUPPd2raLsrPJYo0Arz8csPcGzgyNbKOr9Rx3k0ECU0T8BP+B1ejo8+wmUzh',
       crossorigin: 'anonymous'
     },
@@ -113,7 +113,7 @@
           "inner": "%%"
         }
       },
-      "css": [ "ccm.load", "https://akless.github.io/ccm-components/quiz/resources/default.css" ],
+      "css": [ "ccm.load", "https://ccmjs.github.io/ccm-components/quiz/resources/default.css" ],
       "questions": {},
       "placeholder": {
         "cancel": "Cancel",
@@ -139,8 +139,8 @@
   //  attributes: {},
   //  encode: true,
   //  swap: true,
-  //  user: [ 'ccm.instance', 'https://akless.github.io/ccm-components/user/ccm.user.min.js' ],
-  //  logger: [ 'ccm.instance', 'https://akless.github.io/ccm-components/log/ccm.log.min.js', [ 'ccm.get', 'https://akless.github.io/ccm-components/log/resources/log_configs.min.js', 'greedy' ] ],
+  //  user: [ 'ccm.instance', 'https://ccmjs.github.io/ccm-components/user/ccm.user.min.js' ],
+  //  logger: [ 'ccm.instance', 'https://ccmjs.github.io/ccm-components/log/ccm.log.min.js', [ 'ccm.get', 'https://ccmjs.github.io/ccm-components/log/resources/log_configs.min.js', 'greedy' ] ],
   //  onstart: function ( instance ) { console.log( 'Quiz started' ); },
   //  oncancel: function ( instance ) { console.log( 'Quiz canceled' ); },
   //  onprev: function ( instance, data ) { console.log( data ); },

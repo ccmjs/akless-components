@@ -26,7 +26,7 @@
      * recommended used framework version
      * @type {string}
      */
-    ccm: 'https://akless.github.io/ccm/ccm.js',
+    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
 
     /**
      * default instance configuration
@@ -44,8 +44,8 @@
       "libs": [ "ccm.load", "https://code.highcharts.com/highcharts.js" ],
       "data": {}
 
-  //  "css": [ "ccm.load", "https://akless.github.io/ccm-components/highchart/resources/default.css" ],
-  //  "logger": [ "ccm.instance", "https://akless.github.io/ccm-components/log/versions/ccm.log-2.0.0.min.js", [ "ccm.get", "https://akless.github.io/ccm-components/log/resources/configs.min.js", "greedy" ] ],
+  //  "css": [ "ccm.load", "https://ccmjs.github.io/ccm-components/highchart/resources/default.css" ],
+  //  "logger": [ "ccm.instance", "https://ccmjs.github.io/ccm-components/log/versions/ccm.log-2.0.0.min.js", [ "ccm.get", "https://ccmjs.github.io/ccm-components/log/resources/configs.min.js", "greedy" ] ],
   //  "chart": "line",  // line|area|bar|column|pie|pie-semi-circle
   //  "switcher": true,
   //  "settings": {},
