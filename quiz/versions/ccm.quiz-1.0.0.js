@@ -10,7 +10,7 @@
   var filename = 'ccm.quiz-1.0.0.min.js';
 
   var ccm_version = '8.1.0';
-  var ccm_url     = 'https://ccmjs.github.io/ccm/version/ccm-8.1.0.min.js';
+  var ccm_url     = 'https://ccmjs.github.io/ccm/versions/ccm-8.1.0.min.js';
 
   var component_name = 'quiz';
   var component_obj  = {

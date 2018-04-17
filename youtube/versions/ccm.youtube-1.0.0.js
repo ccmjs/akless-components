@@ -25,7 +25,7 @@
      * @type {object}
      */
     ccm: {
-      url: 'https://ccmjs.github.io/ccm/version/ccm-14.3.0.min.js',
+      url: 'https://ccmjs.github.io/ccm/versions/ccm-14.3.0.min.js',
       integrity: 'sha384-4q30fhc2E3uY9omytSc6dKdoMNQ37dSozhTxgG/wH/9lv+N37TBhwd1jg/u03bRt',
       crossorigin: 'anonymous'
     },
