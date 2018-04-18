@@ -44,8 +44,9 @@ ccm.files[ 'configs.js' ] = {
       "login": true,
       "store": {
         "settings": {
+          "url": "https://10.100.2.108",
           "store": "cloze_demo_results",
-          "url": "https://ccm-data.bib.h-brs.de"
+          "method": "POST"
         },
         "user": true,
         "permissions": {
