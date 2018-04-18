@@ -1,6 +1,6 @@
 /**
  * @overview example component for reusing an undefined number of ccm instances of the same component
- * @author André Kless <andre.kless@web.de> 2017
+ * @author André Kless <andre.kless@web.de> 2017-2018
  * @license The MIT License (MIT)
  */
 
@@ -13,7 +13,7 @@
 
     config:  {
       component_obj: [ "ccm.component", "https://ccmjs.github.io/akless-components/blank/ccm.blank.js" ],
-      times: 5
+      times: 3
     },
 
     Instance: function () {
