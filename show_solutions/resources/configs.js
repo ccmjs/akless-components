@@ -14,7 +14,7 @@ ccm.files[ 'configs.js' ] = {
     "target": [ "ccm.component", "https://ccmjs.github.io/tkless-components/table/ccm.table.js" ]
   },
   "we_ss18_le01_a1": {
-    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/beta/ccm.user-4.0.0.min.js", { "realm": "hbrsinfkaul", "logged_in": true } ],
+    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-4.0.0.min.js", { "realm": "hbrsinfkaul", "logged_in": true } ],
     "data": {
       "store": [ "ccm.store", { "url": "https://ccm2.inf.h-brs.de", "store": "we_ss18_solutions", "method": "POST" } ],
       "key": { "_id": { "$regex": "le01_a1$" } }
