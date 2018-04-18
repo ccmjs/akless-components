@@ -45,8 +45,8 @@ ccm.files[ 'configs.js' ] = {
       "store": {
         "settings": {
           "url": "https://10.100.2.108",
-          "store": "cloze_demo_results",
-          "method": "POST"
+          "method": "POST",
+          "store": "cloze_demo_results"
         },
         "user": true,
         "permissions": {
