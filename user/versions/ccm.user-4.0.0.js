@@ -5,7 +5,7 @@
  * @version 4.0.0
  * @changes
  * version 4.0.0 (07.04.2018):
- * - uses ccm v16.0.0
+ * - uses ccm v16.1.0
  * - uses ccm-cloud v3.0.0
  * - 'realm' instead of 'sign_on'
  * - updated LEA sign-on
@@ -45,7 +45,7 @@
      * reference to used framework version
      * @type {object}
      */
-    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-16.0.0.min.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-16.1.0.min.js',
 
     /**
      * default instance configuration
