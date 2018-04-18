@@ -1,6 +1,6 @@
 /**
  * @overview blank template for a ccm component
- * @author André Kless <andre.kless@web.de> 2017
+ * @author André Kless <andre.kless@web.de> 2017-2018
  * @license The MIT License (MIT)
  */
 
@@ -17,7 +17,7 @@
 
         this.element.innerHTML = 'Hello, World!';
 
-        if ( callback ) callback();
+        callback && callback();
       };
 
     }
