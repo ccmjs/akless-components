@@ -1,6 +1,6 @@
 /**
  * @overview example ccm component for the reuse of two ccm instances
- * @author André Kless <andre.kless@web.de> 2017-208
+ * @author André Kless <andre.kless@web.de> 2017-2018
  * @license The MIT License (MIT)
  */
 
@@ -24,7 +24,7 @@
         this.element.appendChild( this.instance_a.root );
         this.element.appendChild( this.instance_b.root );
 
-        if ( callback ) callback();
+        callback && callback();
       };
 
     }
