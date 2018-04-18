@@ -9,6 +9,7 @@
  * - '/' instead of '|' (more easy to find on keyboards)
  * - configurable character that marks a gap
  * - uses ccm v16.1.0
+ * - no default css
  * (for older version changes see ccm.cloze.js-3.9.0.js)
  */
 
@@ -39,7 +40,7 @@
 
     /**
      * default instance configuration
-     * @type {object}
+     * @type {Object}
      */
     config: {
 
@@ -102,7 +103,6 @@
           "inner": "%%"
         }
       },
-      "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/cloze/resources/default.css" ],
       "mark": "*",
       "text": "Hello, *(W)o(rl)d*!",
       "captions": {
@@ -113,23 +113,24 @@
         "finish": "Finish"
       }
 
-  //  start_button: true,
-  //  keywords: [ 'keyword1', 'keyword2', ... ],
-  //  blank: true,
-  //  time: 60,
-  //  feedback: true,
-  //  retry: true
-  //  solutions: true,
-  //  cancel_button: true,
-  //  user:   [ 'ccm.instance', 'https://ccmjs.github.io/akless-components/user/ccm.user.js' ],
-  //  logger: [ 'ccm.instance', 'https://ccmjs.github.io/akless-components/log/ccm.log.js', [ 'ccm.get', 'https://ccmjs.github.io/akless-components/log/resources/configs.js', 'greedy' ] ],
-  //  onstart: function ( instance ) { console.log( 'Fill-in-the-blank text started' ); },
-  //  oncancel: function ( instance ) { console.log( 'Fill-in-the-blank text canceled' ); },
-  //  onvalidation: function ( instance, data ) { if ( data.gap % 2 ) data.correct = data.nearly = true; console.log( data ); },
-  //  onfeedback: function ( instance, data ) { console.log( data ); },
-  //  onchange: function ( instance, data ) { console.log( data ); },
-  //  oninput:  function ( instance, data ) { console.log( data ); },
-  //  onfinish: { "clear": true, "log": true },
+  //  "css": [ "ccm.load", "../cloze/resources/default.css" ],
+  //  "start_button": true,
+  //  "keywords": [ "keyword1", "keyword2", "..." ],
+  //  "blank": true,
+  //  "time": 60,
+  //  "feedback": true,
+  //  "retry": true
+  //  "solutions": true,
+  //  "cancel_button": true,
+  //  "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-4.0.1.js" ],
+  //  "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-3.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
+  //  "onstart": function ( instance ) { console.log( 'Fill-in-the-blank text started' ); },
+  //  "oncancel": function ( instance ) { console.log( 'Fill-in-the-blank text canceled' ); },
+  //  "onvalidation": function ( instance, data ) { if ( data.gap % 2 ) data.correct = data.nearly = true; console.log( data ); },
+  //  "onfeedback": function ( instance, data ) { console.log( data ); },
+  //  "onchange": function ( instance, data ) { console.log( data ); },
+  //  "oninput":  function ( instance, data ) { console.log( data ); },
+  //  "onfinish": { "clear": true, "log": true }
 
     },
 
@@ -147,7 +148,7 @@
 
       /**
        * privatized instance members
-       * @type {object}
+       * @type {Object}
        */
       let my;
 
@@ -165,7 +166,7 @@
 
       /**
        * result data
-       * @type {object}
+       * @type {Object}
        */
       let results = null;
 
@@ -370,7 +371,7 @@
 
                 /**
                  * event data (contains informations about the input field)
-                 * @type {object}
+                 * @type {Object}
                  */
                 const event_data = { gap: 1 + i, input: this.value };
 
@@ -387,7 +388,7 @@
 
                 /**
                  * event data (contains informations about the input field)
-                 * @type {object}
+                 * @type {Object}
                  */
                 const event_data = { gap: 1 + i, input: this.value };
 
@@ -461,7 +462,7 @@
 
               /**
                * event data (contains informations about the input field)
-               * @type {object}
+               * @type {Object}
                */
               const event_data = {
                 gap:      1 + i,      // number of the text gap
@@ -607,7 +608,7 @@
 
       /**
        * returns the current result data
-       * @returns {object} current result data
+       * @returns {Object} current result data
        */
       this.getValue = () => results;
 
