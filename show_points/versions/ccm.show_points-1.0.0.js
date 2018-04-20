@@ -147,7 +147,7 @@
 
           } );
 
-          // render content
+          // render main HTML structure
           $.setContent( self.element, $.html( my.html, { user: user, points: sum.toString() } ) );
 
           // render point list of user
