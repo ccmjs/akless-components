@@ -1,5 +1,5 @@
 /**
- * @overview configurations of ccm component for rendering a listing
+ * @overview configurations of ccm component for rendering a list of all submitted solutions
  * @author André Kless <andre.kless@web.de> 2018
  * @license The MIT License (MIT)
  */
