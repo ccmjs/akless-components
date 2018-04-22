@@ -3,7 +3,7 @@
  * @description This code is based on the ccm component 'ccm.fill_in_the_blank_blank_text_builder-2.0.0.js' by Tea Kless.
  * @author André Kless <andre.kless@web.de>, 2017-2018
  * @license The MIT License (MIT)
- * @version latest (2.0.0)
+ * @version 2.0.0
  * @changes
  * version 2.0.0 (22.04.2018):
  * - uses ccm v16.2.0
@@ -12,7 +12,7 @@
  * - uses 'data' property convention instead of 'start_values'
  * - default setting for feedback is 'Show only correctness with retry'
  * - uses ccm.helper.fillForm()
- * - better encode handling
+ * - better encode/decode handling
  * - simplified section switch
  * (for older version changes see ccm.cloze_builder-1.7.0.js)
  */
@@ -27,10 +27,20 @@
     name: 'cloze_builder',
 
     /**
-     * recommended used framework version
-     * @type {string}
+     * component version
+     * @type {number[]}
      */
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    version: [ 2, 0, 0 ],
+
+    /**
+     * reference to used framework version
+     * @type {Object}
+     */
+    ccm: {
+      url: 'https://ccmjs.github.io/ccm/versions/ccm-16.2.0.min.js',
+      integrity: 'sha384-tFwI0D9J0n9rkOqiTBYov46x5mxnc9/XaucHFnDDti1BcLDeya0xjkXD0zyPTDLc',
+      crossorigin: 'anonymous'
+    },
 
     /**
      * default instance configuration
@@ -713,7 +723,7 @@
       "css": [ "ccm.load",
         "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/bootstrap.css",
         { "context": "head", "url": "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/font-face.css" },
-        "../cloze_builder/resources/default.css"
+        "https://ccmjs.github.io/akless-components/cloze_builder/resources/default.css"
       ],
       "defaults": {
         "text": 'Hello, *W(or)l(d)!*',
