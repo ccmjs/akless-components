@@ -6,7 +6,7 @@
  * @changes
  * version 4.0.0 (07.04.2018):
  * - bugfix for replacement of placeholders
- * - uses ccm v16.0.0
+ * - uses ccm v16.2.0
  * version 3.1.0 (06.04.2018):
  * - standard configurations specified in component dependencies are considered
  * version 3.0.0 (07.03.2018):
@@ -44,7 +44,11 @@
      * reference to used framework version
      * @type {string|Object}
      */
-    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-16.0.0.min.js',
+    ccm: {
+      url: 'https://ccmjs.github.io/ccm/versions/ccm-16.2.0.min.js',
+      integrity: 'sha384-1bV9GS/A1bJ+2emyAJpoX2X5zjQlSckf/g7NeR5NMMHsu5WyM6oUCTh4dDALoWrl',
+      crossorigin: 'anonymous'
+    },
 
     /**
      * default instance configuration

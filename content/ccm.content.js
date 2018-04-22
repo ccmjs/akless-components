@@ -6,7 +6,7 @@
  * @changes
  * version 4.0.0 (07.04.2018):
  * - bugfix for replacement of placeholders
- * - uses ccm v16.0.0
+ * - uses ccm v16.2.0
  * version 3.1.0 (06.04.2018):
  * - standard configurations specified in component dependencies are considered
  * version 3.0.0 (07.03.2018):
