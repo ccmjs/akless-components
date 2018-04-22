@@ -36,7 +36,7 @@
  * version 3.0.0 (10.11.2017):
  * - uses ECMAScript 6 syntax
  * - uses ccm v12.12.0
- * (for older version changes see ccm.cloze.js-2.2.0.js)
+ * (for older version changes see ccm.cloze-2.2.0.js)
  */
 
 {

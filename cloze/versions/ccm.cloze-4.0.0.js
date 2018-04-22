@@ -10,7 +10,7 @@
  * - configurable character that marks a gap
  * - uses ccm v16.1.0
  * - no default css
- * (for older version changes see ccm.cloze.js-3.9.0.js)
+ * (for older version changes see ccm.cloze-3.9.0.js)
  */
 
 {
