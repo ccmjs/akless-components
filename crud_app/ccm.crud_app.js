@@ -1,5 +1,5 @@
 /**
- * @overview ccm component for Create/Read/Update/Delete a Modular App
+ * @overview ccm component for Create/Read/Update/Delete a ccm-based app
  * @author André Kless <andre.kless@web.de>, 2018
  * @license The MIT License (MIT)
  * @version latest (1.0.0)
@@ -24,7 +24,7 @@
 
     /**
      * default instance configuration
-     * @type {object}
+     * @type {Object}
      */
     config: {
 
@@ -215,7 +215,7 @@
 
       /**
        * privatized instance members
-       * @type {object}
+       * @type {Object}
        */
       let my;
 
@@ -227,7 +227,7 @@
 
       /**
        * current app builder instance
-       * @type {object}
+       * @type {Object}
        */
       let builder;
 
@@ -316,7 +316,7 @@
 
             /**
              * current app configuration from the app builder
-             * @type {object}
+             * @type {Object}
              */
             const config = builder.getValue();
 
@@ -408,7 +408,7 @@
 
             /**
              * current app configuration from the app builder
-             * @type {object}
+             * @type {Object}
              */
             const config = builder.getValue();
 
@@ -464,7 +464,7 @@
 
         /**
          * gives the app to the user
-         * @param {object} app - app configuration
+         * @param {Object} app - app configuration
          */
         function handoverApp( app ) {
 
@@ -507,7 +507,7 @@
 
       /**
        * returns the resulting instance configuration for the target component
-       * @returns {object} instance configuration for target component
+       * @returns {Object} instance configuration for target component
        */
       this.getValue = () => builder && builder.getValue && builder.getValue() || null;
 
