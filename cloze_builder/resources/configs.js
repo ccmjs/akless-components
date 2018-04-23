@@ -11,8 +11,9 @@ ccm.files[ 'configs.js' ] = {
       { "context": "head", "url": "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/font-face.css" },
       "../cloze_builder/resources/default.css"
     ],
+    "submit_button": 'Submit',
     "target": [ "ccm.component", "../cloze/ccm.cloze.js" ],
-    "submit_button": true,
+    "logger": [ "ccm.instance", "../log/versions/ccm.log-3.0.0.min.js", [ "ccm.get", "../log/resources/configs.min.js", "greedy" ] ],
     "onfinish": { "log": true }
   },
   "demo": {
@@ -21,20 +22,21 @@ ccm.files[ 'configs.js' ] = {
       { "context": "head", "url": "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/font-face.css" },
       "https://ccmjs.github.io/akless-components/cloze_builder/resources/default.css"
     ],
+    "submit_button": 'Submit',
     "target": [ "ccm.component", "https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-4.0.0.js" ],
-    "submit_button": true,
+    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-3.0.0.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.min.js", "greedy" ] ],
     "onfinish": { "log": true }
   },
   "lea": {
-    "html.inner.1.inner.2.inner.0.inner.0.inner.2.inner.7": {
+    "html.inner.1.inner.2.inner.0.inner.1.inner.1.inner.7": {
       "tag": "h5",
       "inner": "H-BRS LEA"
     },
-    "html.inner.1.inner.2.inner.0.inner.0.inner.2.inner.8": {
+    "html.inner.1.inner.2.inner.0.inner.1.inner.1.inner.8": {
       "tag": "p",
       "inner": "Authentication with a valid account from the LEA platform at Hochschule Bonn-Rhein-Sieg University of Applied Sciences."
     },
-    "html.inner.1.inner.2.inner.0.inner.1.inner.4": {
+    "html.inner.1.inner.2.inner.0.inner.2.inner.4": {
       "tag": "option",
       "inner": "H-BRS LEA",
       "value": "['ccm.instance','https://ccmjs.github.io/akless-components/user/versions/ccm.user-4.0.1.min.js',{'realm':'LEA'}]"
@@ -46,8 +48,8 @@ ccm.files[ 'configs.js' ] = {
       { "context": "head", "url": "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/font-face.css" },
       "https://ccmjs.github.io/akless-components/cloze_builder/resources/default.css"
     ],
+    "submit_button": 'Submit',
     "target": [ "ccm.component", "https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-4.0.0.js" ],
-    "submit_button": true,
     "onfinish": { "log": true }
   }
 };

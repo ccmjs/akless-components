@@ -3,7 +3,7 @@
  * @description This code is based on the ccm component 'ccm.fill_in_the_blank_blank_text_builder-2.0.0.js' by Tea Kless.
  * @author André Kless <andre.kless@web.de>, 2017-2018
  * @license The MIT License (MIT)
- * @version latest (2.1.0)
+ * @version 2.1.0
  * @changes
  * version 2.1.0 (23.04.2018):
  * - changes in HTML templates
@@ -30,10 +30,20 @@
     name: 'cloze_builder',
 
     /**
-     * recommended used framework version
-     * @type {string}
+     * component version
+     * @type {number[]}
      */
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    version: [ 2, 1, 0 ],
+
+    /**
+     * reference to used framework version
+     * @type {Object}
+     */
+    ccm: {
+      url: 'https://ccmjs.github.io/ccm/versions/ccm-16.2.0.min.js',
+      integrity: 'sha384-1bV9GS/A1bJ+2emyAJpoX2X5zjQlSckf/g7NeR5NMMHsu5WyM6oUCTh4dDALoWrl',
+      crossorigin: 'anonymous'
+    },
 
     /**
      * default instance configuration
