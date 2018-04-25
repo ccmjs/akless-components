@@ -3,8 +3,10 @@
  * @description This code is based on the ccm component 'ccm.fill_in_the_blank_blank_text_builder-2.0.0.js' by Tea Kless.
  * @author André Kless <andre.kless@web.de>, 2017-2018
  * @license The MIT License (MIT)
- * @version 2.1.0
+ * @version 2.1.1
  * @changes
+ * version 2.1.1 (25.04.2018):
+ * - bugfix at optional submit button
  * version 2.1.0 (23.04.2018):
  * - changes in HTML templates
  * - optional logging support
@@ -33,7 +35,7 @@
      * component version
      * @type {number[]}
      */
-    version: [ 2, 1, 0 ],
+    version: [ 2, 1, 1 ],
 
     /**
      * reference to used framework version
@@ -867,7 +869,7 @@
             else $.removeElement( self.element.querySelector( '.preview' ) );
 
             // no submit button wanted? => remove submit button
-            !my.submit_button && $.removeElement( self.element.querySelector( '.submit' ) );
+            !my.submit_button && $.removeElement( self.element.querySelector( '#button-submit' ) );
 
             // individual caption for submit button? => set caption of submit button
             if ( typeof my.submit_button === 'string' ) self.element.querySelector( '#button-submit' ).value = my.submit_button;
@@ -1048,7 +1050,7 @@
         if ( !result.user ) result.user = '';
 
         // now values of input elements are transformed to resulting instance configuration
-        return result;
+        return $.clone( result );
 
       };
 

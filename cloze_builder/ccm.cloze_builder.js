@@ -3,8 +3,10 @@
  * @description This code is based on the ccm component 'ccm.fill_in_the_blank_blank_text_builder-2.0.0.js' by Tea Kless.
  * @author André Kless <andre.kless@web.de>, 2017-2018
  * @license The MIT License (MIT)
- * @version latest (2.1.0)
+ * @version latest (2.1.1)
  * @changes
+ * version 2.1.1 (25.04.2018):
+ * - bugfix at optional submit button
  * version 2.1.0 (23.04.2018):
  * - changes in HTML templates
  * - optional logging support
@@ -754,7 +756,7 @@
           [ "image" ]
         ], "settings.placeholder": "Type here..."
       } ],
-      "target": [ "ccm.component", "https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-4.0.0.js" ],
+      "target": [ "ccm.component", "../cloze/ccm.cloze.js" ],
       "preview": true
 
   //  "data": { "store": [ "ccm.store", "test": { ... } ], "key": "test" }
@@ -857,7 +859,7 @@
             else $.removeElement( self.element.querySelector( '.preview' ) );
 
             // no submit button wanted? => remove submit button
-            !my.submit_button && $.removeElement( self.element.querySelector( '.submit' ) );
+            !my.submit_button && $.removeElement( self.element.querySelector( '#button-submit' ) );
 
             // individual caption for submit button? => set caption of submit button
             if ( typeof my.submit_button === 'string' ) self.element.querySelector( '#button-submit' ).value = my.submit_button;

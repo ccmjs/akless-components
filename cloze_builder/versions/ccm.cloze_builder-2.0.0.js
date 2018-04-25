@@ -736,7 +736,7 @@
           "finish": "Finish"
         }
       },
-      "editor": [ "ccm.component", "https://ccmjs.github.io/tkless-components/editor/versions/ccm.editor-2.0.0.js", {
+      "editor": [ "ccm.component", "https://ccmjs.github.io/tkless-components/editor/versions/ccm.editor-2.0.0.min.js", {
         "settings.modules.toolbar": [
           [ { 'header': [ 1, 2, 3, 4, 5, 6, false ] } ],
           [ "bold", "italic", "underline" ],
@@ -746,7 +746,7 @@
           [ "image" ]
         ], "settings.placeholder": "Type here..." }
       ],
-      "target": [ "ccm.component", "https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-4.0.0.js" ],
+      "target": [ "ccm.component", "https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-4.0.0.min.js" ],
       "preview": true
 
   //  "data": { "store": [ "ccm.store", "test": { ... } ], "key": "test" }
