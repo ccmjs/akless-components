@@ -260,7 +260,7 @@
 
           if ( $.isObject( data ) || Array.isArray( data ) )
             for ( const i in data )
-              data[ i ] = checkData( data[ i ] );
+              data[ i ] = prepareData( data[ i ] );
 
           return data;
 
