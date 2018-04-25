@@ -759,7 +759,7 @@
 
   //  "data": { "store": [ "ccm.store", "test": { ... } ], "key": "test" }
   //  "submit_button": true,
-  //  "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-3.0.0.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.min.js", "greedy" ] ],
+  //  "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-3.1.0.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.min.js", "greedy" ] ],
   //  "onchange": instance => console.log( instance.getValue() ),
   //  "onfinish": { "log": true }
 
@@ -1038,7 +1038,7 @@
         if ( !result.user ) result.user = '';
 
         // now values of input elements are transformed to resulting instance configuration
-        return result;
+        return $.clone( result );
 
       };
 
