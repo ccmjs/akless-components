@@ -26,7 +26,7 @@ ccm.files[ 'configs.js' ] = {
     "blank": true,
     "retry": true,
     "captions.finish": "Restart",
-    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-3.0.0.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.min.js", "greedy" ] ],
+    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-3.1.0.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.min.js", "greedy" ] ],
     "onfinish": { "log": true, "restart": true }
   },
   "lea": {
@@ -38,7 +38,7 @@ ccm.files[ 'configs.js' ] = {
     "blank": true,
     "retry": true,
     "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-4.0.1.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.min.js", "lea" ] ],
-    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-3.0.0.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.min.js", "greedy" ] ],
+    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-3.1.0.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.min.js", "greedy" ] ],
     "onfinish": {
       "log": true,
       "login": true,
