@@ -2,7 +2,7 @@
  * @overview ccm component for data logging
  * @author André Kless <andre.kless@web.de> 2016-2018
  * @license The MIT License (MIT)
- * @version latest (3.1.0)
+ * @version 3.1.0
  * @changes
  * version 3.1.0 (25.04.2018)
  * - prevent logging of complex objects
@@ -20,10 +20,6 @@
  * - for pseudonymization, md5 is applied only once
  * - uses ccm v12.12.0
  * version 1.0.0 (19.10.2017)
- * TODO: docu comments -> API
- * TODO: unit tests
- * TODO: factory
- * TODO: multilingualism
  */
 
 {
@@ -36,10 +32,20 @@
     name: 'log',
 
     /**
-     * recommended used framework version
-     * @type {string}
+     * component version
+     * @type {number[]}
      */
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    version: [ 3, 1, 0 ],
+
+    /**
+     * reference to used framework version
+     * @type {Object}
+     */
+    ccm: {
+      url: 'https://ccmjs.github.io/ccm/versions/ccm-16.2.0.min.js',
+      integrity: 'sha384-1bV9GS/A1bJ+2emyAJpoX2X5zjQlSckf/g7NeR5NMMHsu5WyM6oUCTh4dDALoWrl',
+      crossorigin: 'anonymous'
+    },
 
     /**
      * default instance configuration
