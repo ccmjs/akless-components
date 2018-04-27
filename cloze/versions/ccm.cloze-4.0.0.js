@@ -8,8 +8,8 @@
  * - '*' instead of '[[' and ']]' (more easy to find on keyboards)
  * - '/' instead of '|' (more easy to find on keyboards)
  * - configurable character that marks a gap
- * - uses ccm v16.1.0
  * - no default css
+ * - uses ccm v16.3.3
  * (for older version changes see ccm.cloze-3.9.0.js)
  */
 
@@ -33,8 +33,8 @@
      * @type {object}
      */
     ccm: {
-      url: 'https://ccmjs.github.io/ccm/versions/ccm-16.1.0.min.js',
-      integrity: 'sha384-4X0IFdACgz2SAKu0knklA+SRQ6OVU4GipKhm7p6l7e7k/CIM8cjCFprWmM4qkbQz',
+      url: 'https://ccmjs.github.io/ccm/versions/ccm-16.3.3.js',
+      integrity: 'sha384-dUJya0pfEJfY80xj9lVb1kVelpENJJ9l460ZeZVJPtZwFYJ3f29HLLa8CmYJXqBQ',
       crossorigin: 'anonymous'
     },
 

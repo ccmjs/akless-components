@@ -9,6 +9,7 @@
  * - '/' instead of '|' (more easy to find on keyboards)
  * - configurable character that marks a gap
  * - no default css
+ * - uses ccm v16.3.3
  * (for older version changes see ccm.cloze-3.9.0.js)
  * TODO: $.html( my.text )
  */
