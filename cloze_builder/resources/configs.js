@@ -5,17 +5,23 @@
  */
 
 ccm.files[ 'configs.js' ] = {
+
   "local": {
     "css": [ "ccm.load",
       "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/bootstrap.css",
       { "context": "head", "url": "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/font-face.css" },
       "../cloze_builder/resources/default.css"
     ],
+    "data": {
+      "store": [ "ccm.store", "../cloze_builder/resources/datasets.js" ],
+      "key": "test"
+    },
     "submit_button": "Submit",
     "target": [ "ccm.component", "../cloze/ccm.cloze.js" ],
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
     "onfinish": { "log": true }
   },
+
   "localhost": {
     "css": [ "ccm.load",
       "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/bootstrap.css",
@@ -38,6 +44,7 @@ ccm.files[ 'configs.js' ] = {
       "alert": "Saved!"
     }
   },
+
   "demo": {
     "css": [ "ccm.load",
       "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/bootstrap.css",
