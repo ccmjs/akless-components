@@ -8,25 +8,12 @@ ccm.files[ 'datasets.js' ] = {
 
   "test": {
     "key" : "test",
-    "css" : [
-      "ccm.load",
-      "https://ccmjs.github.io/akless-components/cloze/resources/default.css"
-    ],
-    "keywords" : false,
     "feedback" : true,
-    "blank" : false,
-    "start_button" : false,
-    "captions" : {
-      "retry" : "Retry",
-      "submit" : "Submit",
-      "start" : "Start",
-      "finish" : "Finish"
-    },
-    "text" : "<p>Hello, *W(or)l(d)*!</p>",
-    "retry" : true,
-    "solutions" : false,
+    "retry" : false,
+    "solutions" : true,
+    "blank" : true,
     "onfinish" : {
-      "restart" : false
+      "restart" : true
     }
   }
 

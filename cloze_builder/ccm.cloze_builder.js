@@ -749,7 +749,7 @@
           "start": "Start",
           "submit": "Submit",
           "retry": "Retry",
-          "finish": "Finish"
+          "finish": "Restart"
         }
       },
       "editor": [ "ccm.component", "https://ccmjs.github.io/tkless-components/editor/versions/ccm.editor-2.0.0.js", {
