@@ -11,10 +11,32 @@ ccm.files[ 'configs.js' ] = {
       { "context": "head", "url": "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/font-face.css" },
       "../cloze_builder/resources/default.css"
     ],
-    "submit_button": 'Submit',
+    "submit_button": "Submit",
     "target": [ "ccm.component", "../cloze/ccm.cloze.js" ],
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
     "onfinish": { "log": true }
+  },
+  "localhost": {
+    "css": [ "ccm.load",
+      "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/bootstrap.css",
+      { "context": "head", "url": "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/font-face.css" },
+      "../cloze_builder/resources/default.css"
+    ],
+    "data": {
+      "store": [ "ccm.store", { "store": "cloze_builder", "url": "http://localhost:8080" } ],
+      "key": "test"
+    },
+    "submit_button": "Submit",
+    "target": [ "ccm.component", "../cloze/ccm.cloze.js" ],
+    "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
+    "onfinish": {
+      "log": true,
+      "store": {
+        "settings": { "store": "cloze_builder", "url": "http://localhost:8080" },
+        "key": "test"
+      },
+      "alert": "Saved!"
+    }
   },
   "demo": {
     "css": [ "ccm.load",
