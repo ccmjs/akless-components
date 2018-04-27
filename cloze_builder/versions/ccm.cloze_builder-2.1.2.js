@@ -10,7 +10,7 @@
  * - bugfix for logging of 'change' event
  * - bugfix for getting value of onfinish.restart checkbox
  * - switch to non minified files
- * - uses ccm v16.3.2
+ * - uses ccm v16.3.3
  * version 2.1.1 (25.04.2018):
  * - bugfix at optional submit button
  * version 2.1.0 (23.04.2018):
@@ -45,11 +45,11 @@
 
     /**
      * reference to used framework version
-     * @type {Object}
+     * @type {object}
      */
     ccm: {
-      url: 'https://ccmjs.github.io/ccm/versions/ccm-16.3.2.js',
-      integrity: 'sha384-TV18s4Ot1nWu1t+AbWgIHtDNxOTM2K4C+nmOfF2NOiMgf6Vz0ChipVQglQpA09YI',
+      url: 'https://ccmjs.github.io/ccm/versions/ccm-16.3.3.js',
+      integrity: 'sha384-dUJya0pfEJfY80xj9lVb1kVelpENJJ9l460ZeZVJPtZwFYJ3f29HLLa8CmYJXqBQ',
       crossorigin: 'anonymous'
     },
 
