@@ -1039,7 +1039,7 @@
         result.feedback  = result.feedback !== 'none';
 
         // finalize 'onfinish' property
-        if ( result.onfinish && !result.onfinish.restart ) delete result.onfinish;
+        if ( !result.onfinish || !result.onfinish.restart ) result.onfinish = '';
 
         // convert dot notation properties to deeper objects
         result = $.solveDotNotation( result );
