@@ -45,7 +45,7 @@
 
     /**
      * reference to used framework version
-     * @type {object}
+     * @type {Object}
      */
     ccm: {
       url: 'https://ccmjs.github.io/ccm/versions/ccm-16.3.3.js',
