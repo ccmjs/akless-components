@@ -3,7 +3,7 @@
  * @description This code is based on the ccm component 'ccm.fill_in_the_blank_blank_text_builder-2.0.0.js' by Tea Kless.
  * @author André Kless <andre.kless@web.de>, 2017-2018
  * @license The MIT License (MIT)
- * @version latest (2.1.3)
+ * @version 2.1.3
  * @changes
  * version 2.1.3 (29.04.2018):
  * - bugfix for unset of onfinish.restart
@@ -40,10 +40,20 @@
     name: 'cloze_builder',
 
     /**
-     * recommended used framework version
-     * @type {string}
+     * component version
+     * @type {number[]}
      */
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    version: [ 2, 1, 3 ],
+
+    /**
+     * reference to used framework version
+     * @type {Object}
+     */
+    ccm: {
+      url: 'https://ccmjs.github.io/ccm/versions/ccm-16.3.3.js',
+      integrity: 'sha384-51FgfvkXogUvOYbZedQJsIpMSa8pTO+Jb+okyeP4ESLdJWpZzKjQdhTpXnfWbli0',
+      crossorigin: 'anonymous'
+    },
 
     /**
      * default instance configuration
@@ -741,7 +751,7 @@
       "css": [ "ccm.load",
         "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/bootstrap.css",
         { "context": "head", "url": "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/font-face.css" },
-        "../cloze_builder/resources/default.css"
+        "https://ccmjs.github.io/akless-components/cloze_builder/resources/default.css"
       ],
       "defaults": {
         "text": 'Hello, *W(or)l(d)*!',
@@ -764,7 +774,7 @@
           [ "image" ]
         ], "settings.placeholder": "Type here..."
       } ],
-      "target": [ "ccm.component", "../cloze/ccm.cloze.js" ],
+      "target": [ "ccm.component", "https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-4.0.0.js" ],
       "preview": true
 
   //  "data": { "store": [ "ccm.store", "test": { ... } ], "key": "test" },
