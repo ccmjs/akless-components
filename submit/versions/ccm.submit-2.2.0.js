@@ -2,7 +2,7 @@
  * @overview ccm component for submitting data
  * @author André Kless <andre.kless@web.de> 2018
  * @license The MIT License (MIT)
- * @version latest (2.2.0)
+ * @version 2.2.0
  * @changes
  * version 2.2.0 (29.04.2018)
  * - give only deep copies of results to outside
@@ -15,12 +15,6 @@
  * - uses ccm v16.0.0
  * version 1.0.1 (23.02.2018): bugfix for accepting string as Light DOM
  * version 1.0.0 (26.01.2018)
- * TODO: callbacks (onchange, ...)
- * TODO: getValue()
- * TODO: docu comments -> API
- * TODO: unit tests
- * TODO: builder component (not needed -> HTML focused)
- * TODO: i18n
  */
 
 {
@@ -33,10 +27,20 @@
     name: 'submit',
 
     /**
-     * recommended used framework version
-     * @type {string}
+     * component version
+     * @type {number[]}
      */
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    version: [ 2, 2, 0 ],
+
+    /**
+     * reference to used framework version
+     * @type {Object}
+     */
+    ccm: {
+      url: 'https://ccmjs.github.io/ccm/versions/ccm-16.3.3.js',
+      integrity: 'sha384-51FgfvkXogUvOYbZedQJsIpMSa8pTO+Jb+okyeP4ESLdJWpZzKjQdhTpXnfWbli0',
+      crossorigin: 'anonymous'
+    },
 
     /**
      * default instance configuration
