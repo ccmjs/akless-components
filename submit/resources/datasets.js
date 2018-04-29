@@ -29,7 +29,8 @@ ccm.files[ 'datasets.js' ] = {
     "textarea": "My Story",
     "contenteditable": "This is editable text.",
     "complex-data": { "A": [ "B", "C" ] },
-    "deep": { "property": "A" }
+    "deep": { "property": "A" },
+    "cloze_builder": [ "ccm.get", "../cloze_builder/resources/datasets.js", "test" ]
   }
 
 };
