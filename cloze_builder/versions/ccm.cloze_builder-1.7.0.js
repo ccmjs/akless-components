@@ -13,7 +13,7 @@
  * version 1.3.0 (22.11.2017): revised distribution of the input mask (pull request by Tea Kless)
  * version 1.2.0 (18.11.2017): uses ccm.cloze.js v3.3.0 and updated help text
  * version 1.1.0 (15.11.2017): help texts for input elements
- * version 1.0.0 (13.11.2017)
+ * version 1.0.0 (13.11.2017): copy of 'ccm.fill_in_the_blank_blank_text_builder-2.0.0.js' by Tea Kless
  */
 
 {
