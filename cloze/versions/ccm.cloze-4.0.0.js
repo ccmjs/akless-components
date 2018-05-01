@@ -9,7 +9,7 @@
  * - '/' instead of '|' (more easy to find on keyboards)
  * - configurable character that marks a gap
  * - no default css
- * - uses ccm v16.3.3
+ * - uses ccm v16.5.0
  * (for older version changes see ccm.cloze-3.9.0.js)
  */
 
@@ -33,8 +33,8 @@
      * @type {object}
      */
     ccm: {
-      url: 'https://ccmjs.github.io/ccm/versions/ccm-16.3.3.js',
-      integrity: 'sha384-51FgfvkXogUvOYbZedQJsIpMSa8pTO+Jb+okyeP4ESLdJWpZzKjQdhTpXnfWbli0',
+      url: 'https://ccmjs.github.io/ccm/versions/ccm-16.5.0.js',
+      integrity: 'sha384-T7G337W0ODDj5MTIONvKmlJKZsbg6aNvkBXN/Yn7RZWGM7SUEZ0Qe2346QErahsU',
       crossorigin: 'anonymous'
     },
 
