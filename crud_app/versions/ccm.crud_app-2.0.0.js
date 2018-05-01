@@ -26,10 +26,20 @@
     name: 'crud_app',
 
     /**
-     * recommended used framework version
-     * @type {string}
+     * component version
+     * @type {number[]}
      */
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    version: [ 2, 0, 0 ],
+
+    /**
+     * reference to used framework version
+     * @type {Object}
+     */
+    ccm: {
+      url: 'https://ccmjs.github.io/ccm/versions/ccm-16.5.0.js',
+      integrity: 'sha384-T7G337W0ODDj5MTIONvKmlJKZsbg6aNvkBXN/Yn7RZWGM7SUEZ0Qe2346QErahsU',
+      crossorigin: 'anonymous'
+    },
 
     /**
      * default instance configuration
@@ -204,8 +214,8 @@
         "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/bootstrap.css",
         { "context": "head", "url": "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/font-face.css" }
       ],
-      "builder": [ "ccm.component", "../cloze_builder/ccm.cloze_builder.js", { "submit_button": false } ],
-      "url": "../cloze/ccm.cloze.js",
+      "builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/cloze_builder/versions/ccm.cloze_builder-2.1.3.js", { "submit_button": false } ],
+      "url": "https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-4.0.0.js",
       "store": [ "ccm.store" ],
       "warning": "Are you sure you want to delete this App?"
 
