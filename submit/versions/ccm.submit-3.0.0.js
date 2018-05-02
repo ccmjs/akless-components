@@ -2,7 +2,7 @@
  * @overview ccm component for submitting data
  * @author André Kless <andre.kless@web.de> 2018
  * @license The MIT License (MIT)
- * @version latest (3.0.0)
+ * @version 3.0.0
  * @changes
  * version 3.0.0 (02.05.2018): support of browser validation for input fields
  * - content is wrapped with a form element
@@ -32,10 +32,20 @@
     name: 'submit',
 
     /**
-     * recommended used framework version
-     * @type {string}
+     * component version
+     * @type {number[]}
      */
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    version: [ 3, 0, 0 ],
+
+    /**
+     * reference to used framework version
+     * @type {Object}
+     */
+    ccm: {
+      url: 'https://ccmjs.github.io/ccm/versions/ccm-16.5.0.js',
+      integrity: 'sha384-T7G337W0ODDj5MTIONvKmlJKZsbg6aNvkBXN/Yn7RZWGM7SUEZ0Qe2346QErahsU',
+      crossorigin: 'anonymous'
+    },
 
     /**
      * default instance configuration
