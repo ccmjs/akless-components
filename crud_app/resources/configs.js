@@ -17,5 +17,10 @@ ccm.files[ 'configs.js' ] = {
     "store": [ "ccm.store", { "store": "cloze", "url": "https://ccm2.inf.h-brs.de" } ],
     "url": "https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-4.0.0.js",
     "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-3.1.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ]
+  },
+  "lea": {
+    "builder": [ "ccm.component", "https://ccm-comp.bib.h-brs.de/ccm-components/cloze_builder/versions/ccm.cloze_builder-2.1.3.js" ],
+    "store": [ "ccm.store", { "store": "cloze", "url": "https://ccm-data.bib.h-brs.de" } ],
+    "url": "https://ccm-comp.bib.h-brs.de/ccm-components/cloze/versions/ccm.cloze-4.0.0.js"
   }
 };
