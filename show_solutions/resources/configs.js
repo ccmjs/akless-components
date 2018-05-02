@@ -5,7 +5,7 @@
  */
 
 ccm.files[ 'configs.js' ] = {
-  "local": {
+  "localhost": {
     "data": {
       "store": [ "ccm.store", { "url": "http://localhost:8080", "store": "show_solutions", "method": "POST" } ],
       "key": "{}"
@@ -15,7 +15,7 @@ ccm.files[ 'configs.js' ] = {
   "we_ss18": {
     "data": {
       "store": [ "ccm.store", { "url": "https://ccm2.inf.h-brs.de", "store": "we_ss18_solutions", "method": "POST" } ],
-      "key": { "_id": { "$regex": ",le01_a1$" } }
+      "key": { "_id": { "$regex": ",le02_a1$" } }
     },
     "target": [ "ccm.component", "https://ccmjs.github.io/tkless-components/table/ccm.table.min.js" ]
   }
