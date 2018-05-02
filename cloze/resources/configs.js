@@ -38,7 +38,6 @@ ccm.files[ 'configs.js' ] = {
     "blank": true,
     "retry": true,
     "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-4.0.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "lea" ] ],
-    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-3.1.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
     "onfinish": {
       "log": true,
       "login": true,
