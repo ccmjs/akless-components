@@ -21,7 +21,6 @@ ccm.files[ 'configs.js' ] = {
       "https://ccmjs.github.io/akless-components/user/resources/tea.css",
       "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/bootstrap.css",
       { "context": "head", "url": "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/font-face.css" }
-    ],
-    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-3.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.min.js", "greedy" ] ]
+    ]
   }
 };
