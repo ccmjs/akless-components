@@ -191,7 +191,7 @@
           $.setContent( self.element, content ? content.root : my.inner );
 
           // remember element that contains the Light DOM
-          element = content ? content.element : form;
+          element = content ? content.element : self.element;
 
           /**
            * submit button
