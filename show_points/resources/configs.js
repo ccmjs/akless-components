@@ -5,22 +5,6 @@
  */
 
 ccm.files[ 'configs.js' ] = {
-  "local": {
-    "html.inner.0.inner": "Punktekonto von %user%",
-    "html.inner.2.inner": "Summe: %points% Punkte",
-    "css": [ "ccm.load", "../show_points/resources/default.css" ],
-    "store": [ "ccm.store", { "url": "http://localhost:8080", "store": "show_solutions", "method": "POST" } ],
-    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-4.0.0.min.js", { "realm": "hbrsinfkaul", "logged_in": true } ],
-    "target": [ "ccm.component", "https://ccmjs.github.io/tkless-components/table/ccm.table.js" ],
-    "mapping": {
-      "le01_a1": { "points": 5, "deadline": "2018-04-19T08:00" },
-      "le01_a2": { "points": 5, "deadline": "2018-04-19T08:00" },
-      "le02_a1": { "points": 2, "deadline": "2018-04-26T08:00" },
-      "le02_a2": { "points": 2, "deadline": "2018-04-26T08:00" },
-      "le02_a3": { "points": 2, "deadline": "2018-04-26T08:00" },
-      "le02_a4": { "points": 4, "deadline": "2018-04-26T08:00" }
-    }
-  },
   "we_ss18": {
     "html.inner.0.inner": "Punktekonto von %user%",
     "html.inner.2.inner": "Summe: %points% Punkte",
@@ -34,7 +18,13 @@ ccm.files[ 'configs.js' ] = {
       "le02_a1": { "points": 2, "deadline": "2018-04-26T08:00" },
       "le02_a2": { "points": 2, "deadline": "2018-04-26T08:00" },
       "le02_a3": { "points": 2, "deadline": "2018-04-26T08:00" },
-      "le02_a4": { "points": 4, "deadline": "2018-04-26T08:00" }
+      "le02_a4": { "points": 4, "deadline": "2018-04-26T08:00" },
+      "le03_a1": { "points": 2, "deadline": "2018-05-03T08:00" },
+      "le03_a2": { "points": 2, "deadline": "2018-05-03T08:00" },
+      "le03_a3": { "points": 4, "deadline": "2018-05-03T08:00" },
+      "le03_a4": { "points": 3, "deadline": "2018-05-03T08:00" },
+      "le04_a1": { "points": 5, "deadline": "2018-05-17T08:00" },
+      "le04_a2": { "points": 5, "deadline": "2018-05-17T08:00" }
     }
   }
 };
