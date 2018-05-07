@@ -2,7 +2,7 @@
  * @overview ccm component for submitting data
  * @author André Kless <andre.kless@web.de> 2018
  * @license The MIT License (MIT)
- * @version latest (3.1.1)
+ * @version 3.1.1
  * @changes
  * version 3.1.1 (07.05.2018):
  * - deep copy of initial given Light DOM
@@ -37,10 +37,20 @@
     name: 'submit',
 
     /**
-     * recommended used framework version
-     * @type {string}
+     * component version
+     * @type {number[]}
      */
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    version: [ 3, 1, 1 ],
+
+    /**
+     * reference to used framework version
+     * @type {Object}
+     */
+    ccm: {
+      url: 'https://ccmjs.github.io/ccm/versions/ccm-16.5.1.js',
+      integrity: 'sha384-KZGgSb/NYKtO8XoAg5kU8K9O+dx3rbTwExHW1H6/b5JodEnfNIUdMCmTE/PAF0Of',
+      crossorigin: 'anonymous'
+    },
 
     /**
      * default instance configuration
