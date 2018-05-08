@@ -874,7 +874,7 @@
             if ( my.preview ) updatePreview();
 
             // no preview desired? => remove preview section
-            else $.removeElement( self.element.querySelector( '.preview' ) );
+            else $.removeElement( self.element.querySelector( '#preview' ) );
 
             // no submit button wanted? => remove submit button
             !my.submit_button && $.removeElement( self.element.querySelector( '#button-submit' ) );
