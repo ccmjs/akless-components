@@ -7,7 +7,7 @@
 ccm.files[ 'configs.js' ] = {
 
   "local": {
-    "css": [ "ccm.load", "../menu/resources/default.css" ],
+    "css": [ "ccm.load", "../menu/resources/tabs.css" ],
     "data": {
       "store": [ "ccm.store", "../menu/resources/datasets.js" ],
       "key": "demo"
