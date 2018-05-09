@@ -4,6 +4,10 @@
  * @license The MIT License (MIT)
  */
 
+#main {
+  font-family: Verdana,Arial,sans-serif;
+}
+
 #entries {
   display: flex;
   display: -webkit-flex;
@@ -42,4 +46,8 @@
 
 .entry:hover {
   background-color: #64f8ff;
+}
+
+#content {
+  margin: 1em;
 }
