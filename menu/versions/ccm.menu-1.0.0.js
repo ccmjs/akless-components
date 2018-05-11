@@ -17,10 +17,20 @@
     name: 'menu',
 
     /**
-     * recommended used framework version
-     * @type {string}
+     * component version
+     * @type {number[]}
      */
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    version: [ 1, 0, 0 ],
+
+    /**
+     * reference to used framework version
+     * @type {object}
+     */
+    ccm: {
+      url: 'https://ccmjs.github.io/ccm/versions/ccm-16.5.1.js',
+      integrity: 'sha384-KZGgSb/NYKtO8XoAg5kU8K9O+dx3rbTwExHW1H6/b5JodEnfNIUdMCmTE/PAF0Of',
+      crossorigin: 'anonymous'
+    },
 
     /**
      * default instance configuration
