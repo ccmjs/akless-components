@@ -37,4 +37,38 @@ ccm.files[ 'configs.js' ] = {
     "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/ccm.log.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ]
   },
 
+  "bootstrap": {
+    "html": {
+      "main": {
+        "id": "main",
+        "inner": [
+          {
+            "class": "text-center",
+            "inner": {
+              "id": "entries",
+              "class": "btn-group"
+            }
+          },
+          { "id": "content" }
+        ]
+      },
+      "entry": {
+        "class": "entry btn btn-default",
+        "onclick": "%click%",
+        "inner": {
+          "class": "title"
+        }
+      }
+    },
+    "css": [ "ccm.load",
+      "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/bootstrap.css",
+      { "context": "head", "url": "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/font-face.css" }
+    ],
+    "data": {
+      "store": [ "ccm.store", "https://ccmjs.github.io/akless-components/menu/resources/datasets.js" ],
+      "key": "demo"
+    },
+    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/ccm.log.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ]
+  }
+
 };

@@ -24,7 +24,7 @@
 
     /**
      * reference to used framework version
-     * @type {object}
+     * @type {Object}
      */
     ccm: {
       url: 'https://ccmjs.github.io/ccm/versions/ccm-16.5.1.js',
@@ -54,7 +54,7 @@
           }
         }
       },
-      "css": [ "ccm.load", "../menu/resources/default.css" ],
+      "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/menu/resources/default.css" ],
       "data": { "store": [ "ccm.store" ] }
 
   //  "selected": 2,
