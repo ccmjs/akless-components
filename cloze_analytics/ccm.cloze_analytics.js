@@ -324,7 +324,7 @@
                        * contains table row values for current fill-in-the-blank text result
                        * @type {string[]}
                        */
-                      const row = [ user_value, key_value, '', '', result.created_at, result.updated_at, '<a>' ];
+                      const row = [ user_value, key_value, 0, '', result.created_at, result.updated_at, '<a>' ];
 
                       // determine missing values for table row
                       result.details.map( detail => detail.correct && row[ 2 ]++ );
