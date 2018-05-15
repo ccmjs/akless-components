@@ -57,7 +57,13 @@
                       "id": "section-results-user-input",
                       "class": "form-control",
                       "onchange": "%onchange%",
-                      "inner": [ { "tag": "option" } ]
+                      "inner": [
+                        {
+                          "tag": "option",
+                          "value": "",
+                          "inner": "Show All"
+                        }
+                      ]
                     }
                   ]
                 },
@@ -69,20 +75,41 @@
                       "tag": "label",
                       "id": "section-results-key-label",
                       "for": "section-results-key-input",
-                      "inner": "Cloze"
+                      "inner": "Key"
                     },
                     {
                       "tag": "select",
                       "id": "section-results-key-input",
                       "class": "form-control",
                       "onchange": "%onchange%",
-                      "inner": [ { "tag": "option" } ]
+                      "inner": [
+                        {
+                          "tag": "option",
+                          "value": "",
+                          "inner": "Show All"
+                        }
+                      ]
                     }
                   ]
                 }
               ],
             },
             { "id": "table" }
+          ]
+        },
+        "details": {
+          "id": "details",
+          "inner": [
+            {
+              "id": "back",
+              "class": "btn btn-default",
+              "onclick": "%onclick%",
+              "inner": [
+                { "tag": "span", "class": "glyphicon glyphicon-arrow-left" },
+                "Back"
+              ]
+            },
+            { "id": "cloze" }
           ]
         }
       },
@@ -91,13 +118,17 @@
         { "context": "head", "url": "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/font-face.css" },
         "https://ccmjs.github.io/akless-components/cloze_analytics/resources/default.css"
       ],
-      "results": [ "ccm.store" ],
       "sections": {},
-      "menu": [ "ccm.instance", "https://ccmjs.github.io/akless-components/menu/versions/ccm.menu-1.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/menu/resources/configs.js", "bootstrap" ] ]
+      "menu": [ "ccm.instance", "https://ccmjs.github.io/akless-components/menu/versions/ccm.menu-1.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/menu/resources/configs.js", "bootstrap" ] ],
+      "cloze": {
+        "component": [ "ccm.component", "https://ccmjs.github.io/akless-components/cloze/ccm.cloze.js" ],
+        "configs": [ "ccm.store" ],
+        "results": [ "ccm.store" ]
+      }
 
-  //  "table": [ "ccm.component", "https://ccmjs.github.io/tkless-components/table/ccm.table.js" ],
   //  "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-4.0.1.js" ],
-  //  "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-3.1.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ]
+  //  "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-3.1.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
+  //  "table": [ "ccm.component", "https://ccmjs.github.io/tkless-components/table/ccm.table.js" ],
 
     },
 
@@ -181,7 +212,7 @@
 
           results: () => {
 
-            my.store.get( '{}', results => {
+            my.cloze.results.get( '{}', results => {
 
               $.setContent( content_elem, $.html( my.html.results, { onchange: updateTable } ) );
 
@@ -207,26 +238,74 @@
                 else if (  user_value &&  key_value ) query = { "_id": user_value + ',' + key_value };
                 else                                  query = '{}';
 
-                my.store.get( query, results => {
-
-                  console.log( results );
+                my.cloze.results.get( query, results => {
 
                   const values = [];
 
                   results.map( result => {
-                    const row = [ 0, '', result.created_at, result.updated_at ];
+                    const row = [ user_value, key_value, '', '', result.created_at, result.updated_at, '<a>' ];
                     result.details.map( detail => {
-                      if ( detail.correct ) row[ 0 ]++;
+                      if ( detail.correct ) row[ 2 ]++;
                     } );
-                    row[ 1 ] = Math.round( row[ 0 ] * 100 / result.details.length ) + '%';
-                    row[ 0 ] = row[ 0 ] + '/' + result.details.length;
+                    row[ 3 ] = Math.round( row[ 2 ] * 100 / result.details.length ) + '%';
+                    row[ 2 ] = row[ 2 ] + '/' + result.details.length;
+                    if ( Array.isArray( result.key ) ) {
+                      row[ 1 ] = result.key[ 1 ];
+                      row[ 0 ] = result.key[ 0 ];
+                    }
                     values.push( row );
                   } );
 
                   my.table.start( {
                     root: content_elem.querySelector( '#table' ),
-                    table_head: [ "Gaps", "Result", "Created", "Last Update" ],
+                    table_head: [ "User", "Key", "Correct", "Result", "Created", "Last Update", "" ],
                     data: { values: values }
+                  }, instance => {
+
+                    [ ...instance.element.querySelectorAll( 'a' ) ].map( ( button_elem, i ) => {
+
+                      button_elem.innerHTML = 'Details';
+                      button_elem.classList.add( 'btn', 'btn-primary', 'btn-xs' );
+                      button_elem.addEventListener( 'click', () => {
+                        console.log( 'click', i );
+
+                        // hide main HTML structure
+                        main_elem.style.display = 'none';
+
+                        my.cloze.configs.get( results[ i ].key[ 1 ], config => {
+
+                          const details_elem = $.html( my.html.details, {
+                            onclick: () => {
+                              $.removeElement( details_elem );
+                              main_elem.style.display = 'block';
+                            }
+                          } );
+
+                          Object.assign( config, {
+                            root: details_elem.querySelector( '#cloze' ),
+                            data: results[ i ],
+                            feedback: true,
+                            retry: false,
+                            solutions: false,
+                          } );
+                          delete config.keywords;
+                          delete config.onfinish;
+                          delete config.time;
+
+                          $.append( self.element, details_elem );
+
+                          my.cloze.comp.start( config, cloze_inst => {
+                            const submit_button = cloze_inst.element.querySelector( '#submit > *' );
+                            cloze_inst.element.querySelector( '#submit > *' ).click();
+                            $.removeElement( submit_button );
+                          } );
+
+                        } );
+
+                      } );
+
+                    } );
+
                   } );
 
                 } );

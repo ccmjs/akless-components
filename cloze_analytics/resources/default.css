@@ -30,5 +30,14 @@
   content: ':'
 }
 
-#content {
+select {
+  cursor: pointer;
+}
+
+#details {
+  padding: 0.5em;
+}
+
+#back span {
+  padding-right: 0.3em;
 }
