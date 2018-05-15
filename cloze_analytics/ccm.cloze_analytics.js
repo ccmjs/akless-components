@@ -32,6 +32,7 @@
         "main": {
           "id": "main",
           "inner": [
+            { "id": "user" },
             { "id": "menu" },
             { "id": "content" }
           ]
@@ -40,6 +41,7 @@
           "id": "section-results",
           "inner": [
             {
+              "tag": "div",
               "id": "inputs",
               "inner": [
                 {
@@ -50,7 +52,7 @@
                       "tag": "label",
                       "id": "section-results-user-label",
                       "for": "section-results-user-input",
-                      "inner": "User"
+                      "inner": "%user%"
                     },
                     {
                       "tag": "select",
@@ -61,7 +63,7 @@
                         {
                           "tag": "option",
                           "value": "",
-                          "inner": "Show All"
+                          "inner": "%show_all%"
                         }
                       ]
                     }
@@ -75,7 +77,7 @@
                       "tag": "label",
                       "id": "section-results-key-label",
                       "for": "section-results-key-input",
-                      "inner": "Key"
+                      "inner": "%cloze%"
                     },
                     {
                       "tag": "select",
@@ -86,13 +88,13 @@
                         {
                           "tag": "option",
                           "value": "",
-                          "inner": "Show All"
+                          "inner": "%show_all%"
                         }
                       ]
                     }
                   ]
                 }
-              ],
+              ]
             },
             { "id": "table" }
           ]
@@ -101,7 +103,7 @@
           "id": "details",
           "inner": [
             {
-              "id": "back",
+              "id": "back1",
               "class": "btn btn-default",
               "onclick": "%onclick%",
               "inner": [
@@ -109,7 +111,34 @@
                 "Back"
               ]
             },
-            { "id": "cloze" }
+            {
+              "id": "back2",
+              "class": "btn btn-default",
+              "onclick": "%onclick%",
+              "inner": [
+                { "tag": "span", "class": "glyphicon glyphicon-arrow-left" },
+                "Back"
+              ]
+            },
+            { "id": "cloze" },
+            {
+              "id": "back3",
+              "class": "btn btn-default",
+              "onclick": "%onclick%",
+              "inner": [
+                { "tag": "span", "class": "glyphicon glyphicon-arrow-left" },
+                "Back"
+              ]
+            },
+            {
+              "id": "back4",
+              "class": "btn btn-default",
+              "onclick": "%onclick%",
+              "inner": [
+                { "tag": "span", "class": "glyphicon glyphicon-arrow-left" },
+                "Back"
+              ]
+            }
           ]
         }
       },
@@ -124,6 +153,13 @@
         "component": [ "ccm.component", "https://ccmjs.github.io/akless-components/cloze/ccm.cloze.js" ],
         "configs": [ "ccm.store" ],
         "results": [ "ccm.store" ]
+      },
+      "placeholder": {
+        "user": "User",
+        "cloze": "Fill-in-the-Blank Text",
+        "show_all": "Show All",
+        "details": "Details",
+        "table_head": [ "User", "Fill-in-the-Blank Text", "Correct", "Result", "Created", "Last Update", "" ]
       }
 
   //  "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-4.0.1.js" ],
@@ -198,106 +234,175 @@
          */
         const main_elem = $.html( my.html.main );
 
-        /**
-         * contains section content
-         * @type {Element}
-         */
-        const content_elem = main_elem.querySelector( '#content' );
+        // render login/logout area
+        self.user ? self.user.start( () => { $.setContent( main_elem.querySelector( '#user' ), self.user.root ); proceed(); } ) : proceed();
 
-        /**
-         * contains render function for each section
-         * @type {{results: results}}
-         */
-        const sections = {
+        function proceed() {
 
-          results: () => {
+          /**
+           * contains section content
+           * @type {Element}
+           */
+          const content_elem = main_elem.querySelector( '#content' );
 
-            my.cloze.results.get( '{}', results => {
+          /**
+           * contains render function for each section
+           * @type {Object.<string,function>}
+           */
+          const sections = {
 
-              $.setContent( content_elem, $.html( my.html.results, { onchange: updateTable } ) );
+            results: () => {
 
-              const user_elem = content_elem.querySelector( '#section-results-user-input' );
-              const  key_elem = content_elem.querySelector( '#section-results-key-input'  );
+              // get fill-in-the-blank text results
+              my.cloze.results.get( '{}', results => {
 
-              results.map( result => {
-                if ( !Array.isArray( result.key ) || result.key.length < 2 ) return;
-                if ( !content_elem.querySelector( '#section-results-user-input option[value="'+result.key[0]+'"]' ) ) $.append( user_elem, $.html( { tag: 'option', value: result.key[ 0 ], inner: result.key[ 0 ] } ) );
-                if ( !content_elem.querySelector( '#section-results-key-input  option[value="'+result.key[1]+'"]' ) ) $.append(  key_elem, $.html( { tag: 'option', value: result.key[ 1 ], inner: result.key[ 1 ] } ) );
-              } );
+                // render main HTML structure of results section
+                $.setContent( content_elem, $.html( my.html.results, {
+                  user: my.placeholder.user,
+                  cloze: my.placeholder.cloze,
+                  show_all: my.placeholder.show_all,
+                  onchange: updateTable
+                } ) );
 
-              updateTable();
+                /**
+                 * selector box for user
+                 * @type {Element}
+                 */
+                const user_elem = content_elem.querySelector( '#section-results-user-input' );
 
-              function updateTable() {
+                /**
+                 * selector box for fill-in-the-blank
+                 * @type {Element}
+                 */
+                const key_elem = content_elem.querySelector( '#section-results-key-input'  );
 
-                const user_value = user_elem.value;
-                const  key_value =  key_elem.value;
+                // fill selector boxes with entries
+                results.map( result => {
+                  if ( !Array.isArray( result.key ) || result.key.length < 2 ) return;
+                  if ( !content_elem.querySelector( '#section-results-user-input option[value="' + result.key[ 0 ] + '"]' ) ) $.append( user_elem, $.html( { tag: 'option', value: result.key[ 0 ], inner: result.key[ 0 ] } ) );
+                  if ( !content_elem.querySelector( '#section-results-key-input  option[value="' + result.key[ 1 ] + '"]' ) ) $.append(  key_elem, $.html( { tag: 'option', value: result.key[ 1 ], inner: result.key[ 1 ] } ) );
+                } );
 
-                let query;
-                     if (  user_value && !key_value ) query = { "_id": { $regex: '^' + user_value + ',' } };
-                else if ( !user_value &&  key_value ) query = { "_id": { $regex: ',' +  key_value + '$' } };
-                else if (  user_value &&  key_value ) query = { "_id": user_value + ',' + key_value };
-                else                                  query = '{}';
+                // render table
+                updateTable();
 
-                my.cloze.results.get( query, results => {
+                /** (re)renders the result table */
+                function updateTable() {
 
-                  const values = [];
+                  /**
+                   * selected user
+                   * @type {string}
+                   */
+                  const user_value = user_elem.value;
 
-                  results.map( result => {
-                    const row = [ user_value, key_value, '', '', result.created_at, result.updated_at, '<a>' ];
-                    result.details.map( detail => {
-                      if ( detail.correct ) row[ 2 ]++;
+                  /**
+                   * selected fill-in-the-blank text
+                   * @type {string}
+                   */
+                  const key_value =  key_elem.value;
+
+                  // prepare database query for getting relevant fill-in-the-blank text results
+                  let query;
+                  if (  user_value && !key_value ) query = { "_id": { $regex: '^' + user_value + ',' } };
+                  else if ( !user_value &&  key_value ) query = { "_id": { $regex: ',' + key_value + '(,|$)' } };
+                  else if (  user_value &&  key_value ) query = { "_id": { $regex: '^' + user_value + ',' + key_value + '(,|$)' } };
+                  else                                  query = '{}';
+
+                  // get relevant results
+                  my.cloze.results.get( query, results => {
+
+                    /**
+                     * contains values of all table rows
+                     * @type {Array[]}
+                     */
+                    const values = [];
+
+                    // iterate over each fill-in-the-blank text result
+                    results.map( result => {
+
+                      /**
+                       * contains table row values for current fill-in-the-blank text result
+                       * @type {string[]}
+                       */
+                      const row = [ user_value, key_value, '', '', result.created_at, result.updated_at, '<a>' ];
+
+                      // determine missing values for table row
+                      result.details.map( detail => detail.correct && row[ 2 ]++ );
+                      row[ 3 ] = Math.round( row[ 2 ] * 100 / result.details.length ) + '%';
+                      row[ 2 ] = row[ 2 ] + '/' + result.details.length;
+                      if ( Array.isArray( result.key ) ) { row[ 1 ] = result.key[ 1 ]; row[ 0 ] = result.key[ 0 ]; }
+                      values.push( row );
+
                     } );
-                    row[ 3 ] = Math.round( row[ 2 ] * 100 / result.details.length ) + '%';
-                    row[ 2 ] = row[ 2 ] + '/' + result.details.length;
-                    if ( Array.isArray( result.key ) ) {
-                      row[ 1 ] = result.key[ 1 ];
-                      row[ 0 ] = result.key[ 0 ];
-                    }
-                    values.push( row );
-                  } );
 
-                  my.table.start( {
-                    root: content_elem.querySelector( '#table' ),
-                    table_head: [ "User", "Key", "Correct", "Result", "Created", "Last Update", "" ],
-                    data: { values: values }
-                  }, instance => {
+                    // render table
+                    my.table.start( {
+                      root: content_elem.querySelector( '#table' ),
+                      table_head: my.placeholder.table_head,
+                      data: { values: values }
+                    }, instance => {
 
-                    [ ...instance.element.querySelectorAll( 'a' ) ].map( ( button_elem, i ) => {
+                      // select 'Details' buttons
+                      [ ...instance.element.querySelectorAll( 'a' ) ].map( ( button_elem, i ) => {
 
-                      button_elem.innerHTML = 'Details';
-                      button_elem.classList.add( 'btn', 'btn-primary', 'btn-xs' );
-                      button_elem.addEventListener( 'click', () => {
-                        console.log( 'click', i );
+                        // set button caption
+                        button_elem.innerHTML = my.placeholder.details;
 
-                        // hide main HTML structure
-                        main_elem.style.display = 'none';
+                        // set button styling via bootstrap classes
+                        button_elem.classList.add( 'btn', 'btn-primary', 'btn-xs' );
 
-                        my.cloze.configs.get( results[ i ].key[ 1 ], config => {
+                        // set button click event
+                        button_elem.addEventListener( 'click', () => {
 
-                          const details_elem = $.html( my.html.details, {
-                            onclick: () => {
-                              $.removeElement( details_elem );
-                              main_elem.style.display = 'block';
-                            }
-                          } );
+                          // hide main HTML structure
+                          main_elem.style.display = 'none';
 
-                          Object.assign( config, {
-                            root: details_elem.querySelector( '#cloze' ),
-                            data: results[ i ],
-                            feedback: true,
-                            retry: false,
-                            solutions: false,
-                          } );
-                          delete config.keywords;
-                          delete config.onfinish;
-                          delete config.time;
+                          // get fill-in-the-blank text configuration
+                          my.cloze.configs.get( results[ i ].key[ 1 ], config => {
 
-                          $.append( self.element, details_elem );
+                            /**
+                             * contains rendered details of fill-in-the-blank text
+                             * @type {Element}
+                             */
+                            const details_elem = $.html( my.html.details, {
+                              onclick: () => {
+                                $.removeElement( details_elem );
+                                main_elem.style.display = 'block';
+                              }
+                            } );
 
-                          my.cloze.comp.start( config, cloze_inst => {
-                            const submit_button = cloze_inst.element.querySelector( '#submit > *' );
-                            cloze_inst.element.querySelector( '#submit > *' ).click();
-                            $.removeElement( submit_button );
+                            // adjust fill-in-the-blank configuration
+                            Object.assign( config, {
+                              root: details_elem.querySelector( '#cloze' ),
+                              data: results[ i ],
+                              feedback: true,
+                              retry: false,
+                              solutions: false,
+                            } );
+                            delete config.keywords;
+                            delete config.onfinish;
+                            delete config.time;
+
+                            // render fill-in-the-blank text
+                            my.cloze.comp.start( config, cloze_inst => {
+
+                              /**
+                               * submit button of fill-in-the-blank text
+                               * @type {Element}
+                               */
+                              const submit_button = cloze_inst.element.querySelector( '#submit > *' );
+
+                              // trigger click event of submit button to show feedback
+                              cloze_inst.element.querySelector( '#submit > *' ).click();
+
+                              // remove submit button
+                              $.removeElement( submit_button );
+
+                            } );
+
+                            // put rendered details in frontend
+                            $.append( self.element, details_elem );
+
                           } );
 
                         } );
@@ -308,41 +413,41 @@
 
                   } );
 
-                } );
+                }
 
-              }
+              } );
 
+            }
+
+          };
+
+          /**
+           * header menu entries data
+           * @type {Object[]}
+           */
+          const entries = [];
+
+          // add relevant menu entries
+          for ( const key in my.sections )
+            entries.push( {
+              title: my.sections[ key ],
+              actions: event_data => { $.setContent( content_elem, '' ); !event_data.selected && sections[ key ](); }
             } );
 
-          }
+          // render header menu
+          $.setContent( main_elem.querySelector( '#menu' ), self.menu.root );
+          self.menu.data = { entries: entries };
+          self.menu.start( () => {
 
-        };
+            // put main HTML structure into frontend
+            $.setContent( self.element, main_elem );
 
-        /**
-         * header menu entries data
-         * @type {Object[]}
-         */
-        const entries = [];
+            // rendering completed => perform callback
+            callback && callback();
 
-        // add relevant menu entries
-        for ( const key in my.sections )
-          entries.push( {
-            title: my.sections[ key ],
-            actions: event_data => { $.setContent( content_elem, '' ); !event_data.selected && sections[ key ](); }
           } );
 
-        // render header menu
-        $.setContent( main_elem.querySelector( '#menu' ), self.menu.root );
-        self.menu.data = { entries: entries };
-        self.menu.start( () => {
-
-          // put main HTML structure into frontend
-          $.setContent( self.element, main_elem );
-
-          // rendering completed => perform callback
-          callback && callback();
-
-        } );
+        }
 
       };
 

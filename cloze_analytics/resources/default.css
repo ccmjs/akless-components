@@ -7,6 +7,11 @@
 #main {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   padding: 1em;
+  white-space: nowrap;
+}
+
+#user {
+  float: right;
 }
 
 #inputs {
@@ -38,6 +43,10 @@ select {
   padding: 0.5em;
 }
 
-#back span {
+#details .btn span {
   padding-right: 0.3em;
+}
+
+#back2, #back4 {
+  float: right;
 }
