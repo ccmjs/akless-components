@@ -26,3 +26,7 @@
 #login-form .input-group {
   margin-bottom: 25px;
 }
+
+#btn-abort {
+  float: right;
+}
