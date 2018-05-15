@@ -2,7 +2,7 @@
  * @overview ccm component for rendering a fill-in-the-blank text
  * @author André Kless <andre.kless@web.de> 2017-2018
  * @license The MIT License (MIT)
- * @version latest (4.1.0)
+ * @version 4.1.0
  * @changes
  * version 4.1.0 (15.05.2018)
  * - supports initial values for text gaps by result data
@@ -28,10 +28,20 @@
     name: 'cloze',
 
     /**
-     * recommended used framework version
-     * @type {string}
+     * component version
+     * @type {number[]}
      */
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    version: [ 4, 1, 0 ],
+
+    /**
+     * reference to used framework version
+     * @type {Object}
+     */
+    ccm: {
+      url: 'https://ccmjs.github.io/ccm/versions/ccm-16.5.1.js',
+      integrity: 'sha384-KZGgSb/NYKtO8XoAg5kU8K9O+dx3rbTwExHW1H6/b5JodEnfNIUdMCmTE/PAF0Of',
+      crossorigin: 'anonymous'
+    },
 
     /**
      * default instance configuration
