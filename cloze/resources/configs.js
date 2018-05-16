@@ -111,12 +111,8 @@ ccm.files[ 'configs.js' ] = {
 
   "demo1_user": {
     "key": "demo1_user",
-    "css": [
-      "ccm.load",
-      "https://ccmjs.github.io/akless-components/cloze/resources/default.css"
-    ],
+    "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/cloze/resources/default.css" ],
     "data": {
-      "login": true,
       "store": [ "ccm.store", { "store": "cloze_results", "url": "https://ccm2.inf.h-brs.de", "method": "POST" } ],
       "key": "demo1_user",
       "user": true
@@ -131,7 +127,7 @@ ccm.files[ 'configs.js' ] = {
       "start": "Start",
       "finish": "Restart"
     },
-    "user": [ "ccm.instance", "../user/ccm.user.js", { "realm": "demo" } ],
+    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/ccm.user.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "demo" ] ],
     "onfinish": {
       "login": true,
       "store": {
@@ -168,7 +164,6 @@ ccm.files[ 'configs.js' ] = {
       "https://ccmjs.github.io/akless-components/cloze/resources/default.css"
     ],
     "data": {
-      "login": true,
       "store": [ "ccm.store", { "store": "cloze_results", "url": "https://ccm2.inf.h-brs.de", "method": "POST" } ],
       "key": "demo2_user",
       "user": true
@@ -183,7 +178,7 @@ ccm.files[ 'configs.js' ] = {
       "start": "Start",
       "finish": "Restart"
     },
-    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-4.0.1.js", { "realm": "demo" } ],
+    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/ccm.user.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "demo" ] ],
     "onfinish": {
       "login": true,
       "store": {
@@ -220,7 +215,6 @@ ccm.files[ 'configs.js' ] = {
       "https://ccmjs.github.io/akless-components/cloze/resources/default.css"
     ],
     "data": {
-      "login": true,
       "store": [ "ccm.store", { "store": "cloze_results", "url": "https://ccm2.inf.h-brs.de", "method": "POST" } ],
       "key": "demo3_user",
       "user": true
@@ -235,7 +229,7 @@ ccm.files[ 'configs.js' ] = {
       "start": "Start",
       "finish": "Restart"
     },
-    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-4.0.1.js", { "realm": "demo" } ],
+    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/ccm.user.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "demo" ] ],
     "onfinish": {
       "login": true,
       "store": {
