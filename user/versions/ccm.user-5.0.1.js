@@ -670,7 +670,7 @@
           if ( self.parent && self.parent.element && self.parent.element.parentNode ) {
 
             // move own root element back to original position
-            parent.appendChild( self.root );
+            parent && parent.appendChild( self.root );
 
             // show content of the parent instance
             self.parent.element.style.display = 'block';
