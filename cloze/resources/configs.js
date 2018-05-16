@@ -127,7 +127,7 @@ ccm.files[ 'configs.js' ] = {
       "start": "Start",
       "finish": "Restart"
     },
-    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/ccm.user.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "demo" ] ],
+    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-5.0.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "demo" ] ],
     "onfinish": {
       "login": true,
       "store": {
@@ -178,7 +178,7 @@ ccm.files[ 'configs.js' ] = {
       "start": "Start",
       "finish": "Restart"
     },
-    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/ccm.user.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "demo" ] ],
+    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-5.0.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "demo" ] ],
     "onfinish": {
       "login": true,
       "store": {
@@ -229,7 +229,7 @@ ccm.files[ 'configs.js' ] = {
       "start": "Start",
       "finish": "Restart"
     },
-    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/ccm.user.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "demo" ] ],
+    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-5.0.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "demo" ] ],
     "onfinish": {
       "login": true,
       "store": {
