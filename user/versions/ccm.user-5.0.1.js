@@ -2,7 +2,7 @@
  * @overview ccm component for user authentication
  * @author André Kless <andre.kless@web.de> 2017-2018
  * @license The MIT License (MIT)
- * @version latest (5.0.1)
+ * @version 5.0.1
  * @changes
  * version 5.0.1 (16.05.2018)
  * - bugfix for close of login form in case of no given own website area
@@ -44,10 +44,20 @@
     name: 'user',
 
     /**
-     * recommended used framework version
-     * @type {string}
+     * component version
+     * @type {number[]}
      */
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    version: [ 5, 0, 1 ],
+
+    /**
+     * reference to used framework version
+     * @type {Object}
+     */
+    ccm: {
+      url: 'https://ccmjs.github.io/ccm/versions/ccm-16.6.0.js',
+      integrity: 'sha384-LcGBJPmX/Aq5Jkre3q9yE+UCsd7vPWIgeBb9ayc4TIAl5H1nJpewlkKCDK8eCc7s',
+      crossorigin: 'anonymous'
+    },
 
     /**
      * default instance configuration
