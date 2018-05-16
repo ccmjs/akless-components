@@ -43,9 +43,12 @@ select {
   padding: 0.5em;
 }
 
+#details .btn {
+  margin: 1em 0;
+}
+
 #details .btn span {
   padding-right: 0.3em;
-  margin: 1em 0;
 }
 
 #back2, #back4 {
