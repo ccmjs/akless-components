@@ -379,7 +379,6 @@
                               retry: false,
                               solutions: false,
                             } );
-                            delete config.keywords;
                             delete config.onfinish;
                             delete config.time;
 
