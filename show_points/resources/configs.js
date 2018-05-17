@@ -24,7 +24,10 @@ ccm.files[ 'configs.js' ] = {
       "le03_a3": { "points": 4, "deadline": "2018-05-03T08:00" },
       "le03_a4": { "points": 3, "deadline": "2018-05-03T08:00" },
       "le04_a1": { "points": 5, "deadline": "2018-05-17T08:00" },
-      "le04_a2": { "points": 5, "deadline": "2018-05-17T08:00" }
+      "le04_a2": { "points": 5, "deadline": "2018-05-17T08:00" },
+      "le05_a1": { "points": 2, "deadline": "2018-05-24T08:00" },
+      "le05_a2": { "points": 2, "deadline": "2018-05-24T08:00" },
+      "le05_a3": { "points": 6, "deadline": "2018-05-24T08:00" }
     }
   }
 };
