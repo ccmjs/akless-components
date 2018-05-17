@@ -110,22 +110,24 @@
 
           }
 
-          // iterate over each submitted solution
-          solutions.map( solution => {
-
-            // remove not relevant solution properties
-            delete solution.created_at; delete solution.updated_at; delete solution._;
-
-          } );
-
           /**
            * headlines of table columns
            * @type {string[]}
            */
-          const table_head = Object.keys( solutions[ 0 ] );
+          let table_head = {};
+
+          // iterate over each submitted solution
+          solutions.map( solution => {
+
+            // remove not relevant solution properties
+            delete solution.created_at; delete solution.updated_at; delete solution._; delete solution.key;
+
+            if ( Object.keys( solution ).length > Object.keys( table_head ).length ) table_head = Object.keys( solution );
+
+          } );
 
           // render list of submitted solutions
-          my.target.start( { root: self.element, data: solutions, table_head: table_head }, () => callback && callback() );
+          my.target.start( { root: self.element, data: solutions, table_head: table_head, table_col: Object.keys( table_head ).length }, () => callback && callback() );
 
         } );
 
