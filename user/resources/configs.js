@@ -11,7 +11,7 @@ ccm.files[ 'configs.js' ] = {
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ]
   },
   "demo": {
-    "realm": "LEA",
+    "realm": "demo",
     "css": [ "ccm.load",
       "https://ccmjs.github.io/akless-components/user/resources/bootstrap.css",
       "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/bootstrap.css",
