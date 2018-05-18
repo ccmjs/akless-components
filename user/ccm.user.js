@@ -197,8 +197,8 @@
         // remember index of parent instance
         owner = self.parent && self.parent.index;
 
-        // parent listens to login/logout events in context mode? => listen to all login/logout events in ccm context
-        if ( self.onchange && self.parent && self.context ) { self.addObserver( self.parent.index, self.onchange ); delete self.onchange; }
+        // parent listens to login/logout events? => listen to all login/logout events in ccm context
+        if ( self.onchange && self.parent ) { self.addObserver( self.parent.index, self.onchange ); delete self.onchange; }
 
         // immediate login? => login user
         my.logged_in ? self.login( callback ) : callback();
