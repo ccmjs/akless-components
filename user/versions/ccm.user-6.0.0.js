@@ -2,7 +2,7 @@
  * @overview ccm component for user authentication
  * @author André Kless <andre.kless@web.de> 2017-2018
  * @license The MIT License (MIT)
- * @version latest (6.0.0)
+ * @version 6.0.0
  * @changes
  * version 6.0.0
  * - context mode skips user instances with user realm
@@ -52,10 +52,20 @@
     name: 'user',
 
     /**
-     * recommended used framework version
-     * @type {string|{url: string, integrity: string, crossorigin: string}}
+     * component version
+     * @type {number[]}
      */
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    version: [ 6, 0, 0 ],
+
+    /**
+     * reference to used framework version
+     * @type {Object}
+     */
+    ccm: {
+      url: 'https://ccmjs.github.io/ccm/versions/ccm-16.6.0.js',
+      integrity: 'sha384-LcGBJPmX/Aq5Jkre3q9yE+UCsd7vPWIgeBb9ayc4TIAl5H1nJpewlkKCDK8eCc7s',
+      crossorigin: 'anonymous'
+    },
 
     /**
      * default instance configuration
