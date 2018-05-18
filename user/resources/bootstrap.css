@@ -5,23 +5,29 @@
  * @license The MIT License (MIT)
  */
 
-#element {
-  padding: 0.2em;
-}
-
 #logged_in {
   display: flex;
+  align-items: flex-end;
+}
+
+#logged_in,
+#logged_out {
+  float: right;
 }
 
 #logged_in #button {
   margin-left: 0.5em;
 }
 
+.glyphicon {
+  margin-right: 0.3em;
+}
+
 #login-form #loginbox {
-  margin-top:50px;
+  margin-top: 50px;
 }
 #login-form .panel-body {
-  padding-top:30px
+  padding-top: 30px
 }
 
 #login-form .input-group {
