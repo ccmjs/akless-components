@@ -105,7 +105,7 @@
         $ = self.ccm.helper;
 
         // has logger instance? => log 'ready' event
-        self.logger && self.logger.log( 'ready', $.filterProperties( self, 'css', 'data', 'html' ) );
+        self.logger && self.logger.log( 'ready', { html: self.html, css: self.css, data: $.clone( self.data ) } );
 
         callback();
       };
