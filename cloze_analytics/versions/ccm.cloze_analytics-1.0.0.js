@@ -17,20 +17,10 @@
     name: 'cloze_analytics',
 
     /**
-     * component version
-     * @type {number[]}
+     * recommended used framework version
+     * @type {string}
      */
-    version: [ 1, 0, 0 ],
-
-    /**
-     * reference to used framework version
-     * @type {Object}
-     */
-    ccm: {
-      url: 'https://ccmjs.github.io/ccm/versions/ccm-16.6.0.js',
-      integrity: 'sha384-LcGBJPmX/Aq5Jkre3q9yE+UCsd7vPWIgeBb9ayc4TIAl5H1nJpewlkKCDK8eCc7s',
-      crossorigin: 'anonymous'
-    },
+    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
 
     /**
      * default instance configuration
