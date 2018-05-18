@@ -201,6 +201,9 @@
         // set shortcut to help functions
         $ = self.ccm.helper;
 
+        // listen to login/logout events => restart
+        if ( self.user ) self.user.onchange = () => self.start();
+
         callback();
       };
 
@@ -284,7 +287,7 @@
                 } );
 
                 // render table
-                updateTable();
+                content_elem.querySelector( 'option:only-child' ) ? $.setContent( content_elem, 'Nothing to display.' ) : updateTable();
 
                 /** (re)renders the result table */
                 function updateTable() {

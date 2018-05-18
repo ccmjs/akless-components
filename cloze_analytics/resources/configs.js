@@ -36,7 +36,7 @@ ccm.files[ 'configs.js' ] = {
       "results": "Show Results"
     },
     "menu": [ "ccm.instance", "https://ccmjs.github.io/akless-components/menu/versions/ccm.menu-1.1.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/menu/resources/configs.js", "bootstrap" ] ],
-    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-5.0.1.js", { "key": [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "demo" ], "logged_in": true } ],
+    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-6.0.0.js", { "key": [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "demo" ], "logged_in": true } ],
     "table": [ "ccm.component", "https://ccmjs.github.io/tkless-components/table/ccm.table.js" ],
     "cloze": {
       "comp": [ "ccm.component", "https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-4.1.0.js" ],

@@ -14,11 +14,15 @@
   float: right;
 }
 
+#content {
+  padding: 1em 0;
+}
+
 #inputs {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  padding: 2em 0;
+  padding: 1em 0;
 }
 
 .entry {
