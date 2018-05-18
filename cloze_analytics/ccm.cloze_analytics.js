@@ -19,7 +19,7 @@
      * reference to used framework version
      * @type {Object}
      */
-    ccm: 'https://ccmjs.github.io/ccm//ccm.js',
+    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
 
     /**
      * default instance configuration
