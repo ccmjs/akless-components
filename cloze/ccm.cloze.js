@@ -29,7 +29,7 @@
 
     /**
      * recommended used framework version
-     * @type {string}
+     * @type {string|{url: string, integrity: string, crossorigin: string}}
      */
     ccm: 'https://ccmjs.github.io/ccm/ccm.js',
 
