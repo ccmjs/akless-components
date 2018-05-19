@@ -33,7 +33,8 @@ ccm.files[ 'configs.js' ] = {
       "https://ccmjs.github.io/akless-components/cloze_analytics/resources/default.css"
     ],
     "sections": {
-      "results": "Show Results"
+      "results": "Show Results",
+      "gaps": "Gap Analysis"
     },
     "menu": [ "ccm.instance", "https://ccmjs.github.io/akless-components/menu/versions/ccm.menu-1.1.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/menu/resources/configs.js", "bootstrap" ] ],
     "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-6.0.0.js", { "key": [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "demo" ] } ],
@@ -42,7 +43,8 @@ ccm.files[ 'configs.js' ] = {
       "comp": [ "ccm.component", "https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-4.1.0.js" ],
       "configs": [ "ccm.store", "https://ccmjs.github.io/akless-components/cloze/resources/configs.js" ],
       "results": [ "ccm.store", { "url": "https://ccm2.inf.h-brs.de", "store": "cloze_results" } ]
-    }
+    },
+    "chart": [ "ccm.component", "https://ccmjs.github.io/akless-components/highchart/ccm.highchart.js" ]
   }
 
 };

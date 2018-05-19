@@ -2,7 +2,7 @@
  * @overview ccm component for rendering fill-in-the-blank analytics
  * @author André Kless <andre.kless@web.de> 2018
  * @license The MIT License (MIT)
- * @version latest (1.2.0)
+ * @version 1.2.0
  * @changes
  * version 1.2.0 (19.05.2018)
  * - added gaps section that contains chart for Gaps Analysis
@@ -21,10 +21,20 @@
     name: 'cloze_analytics',
 
     /**
+     * component version
+     * @type {number[]}
+     */
+    version: [ 1, 2, 0 ],
+
+    /**
      * reference to used framework version
      * @type {Object}
      */
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    ccm: {
+      url: 'https://ccmjs.github.io/ccm/versions/ccm-16.6.0.js',
+      integrity: 'sha384-LcGBJPmX/Aq5Jkre3q9yE+UCsd7vPWIgeBb9ayc4TIAl5H1nJpewlkKCDK8eCc7s',
+      crossorigin: 'anonymous'
+    },
 
     /**
      * default instance configuration
