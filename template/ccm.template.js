@@ -2,7 +2,7 @@
  * @overview ccm component template
  * @author André Kless <andre.kless@web.de> 2018
  * @license The MIT License (MIT)
- * @version 1.0.0
+ * @version latest (1.0.0)
  * @changes
  * version 1.0.0 (11.05.2018)
  */
@@ -18,7 +18,7 @@
 
     /**
      * recommended used framework version
-     * @type {string}
+     * @type {string|{url: string, integrity: string, crossorigin: string}}
      */
     ccm: 'https://ccmjs.github.io/ccm/ccm.js',
 
