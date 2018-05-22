@@ -5,13 +5,13 @@
  */
 
 ccm.files[ 'configs.js' ] = {
-  "local": {
-    "css": [ "ccm.load", "../teambuild/resources/akless.css" ],
+  "localhost": {
+    "css": [ "ccm.load", "../teambuild/resources/default.css" ],
     "data": {
-      "store": [ "ccm.store", {} ],
-      "key": "demo"
+      "store": [ "ccm.store", { "store": "teambuild", "url": "ws://localhost:8080" } ],
+      "key": "test"
     },
-    "user": [ "ccm.instance", "../user/ccm.user.js", { "logged_in": true, "sign_on": "demo" } ],
+    "user": [ "ccm.instance", "../user/ccm.user.js", { "key": [ "ccm.get", "../user/resources/configs.js", "demo" ], "realm": "guest", "guest": "studentA", "logged_in": true } ],
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ]
   },
   "demo": {
