@@ -9,6 +9,56 @@ ccm.files[ 'configs.js' ] = {
     "css": [ "ccm.load", "../user/resources/default.css" ],
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ]
   },
+  "guest": {
+    "css": [ "ccm.load",
+      "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/bootstrap.css",
+      { "context": "head", "url": "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/font-face.css" },
+      "https://ccmjs.github.io/akless-components/user/resources/bootstrap.css"
+    ],
+    "html": {
+      "logged_in": {
+        "id": "logged_in",
+        "class": "well well-sm",
+        "inner": [
+          {
+            "id": "user",
+            "inner": [
+              { "class": "glyphicon glyphicon-user" },
+              "%user%"
+            ]
+          },
+          {
+            "id": "button",
+            "class": "btn btn-default btn-xs",
+            "inner": [
+              {
+                "tag": "span",
+                "class": "glyphicon glyphicon-log-out"
+              },
+              "Logout"
+            ],
+            "onclick": "%click%"
+          }
+        ]
+      },
+      "logged_out": {
+        "id": "logged_out",
+        "class": "well well-sm",
+        "inner": {
+          "id": "button",
+          "class": "btn btn-default btn-xs",
+          "inner": [
+            {
+              "tag": "span",
+              "class": "glyphicon glyphicon-log-in"
+            },
+            "Login"
+          ],
+          "onclick": "%click%"
+        }
+      }
+    }
+  },
   "demo": {
     "realm": "demo",
     "css": [ "ccm.load",
@@ -58,7 +108,6 @@ ccm.files[ 'configs.js' ] = {
           "onclick": "%click%"
         }
       },
-      // HTML template 'login_form' by Tea Kless <tea.kless@web.de> 2018
       "login_form": {
         "id": "login-form",
         "class": "container",
@@ -358,6 +407,57 @@ ccm.files[ 'configs.js' ] = {
             }
           }
         ]
+      }
+    }
+  },
+  "hbrsinfkaul": {
+    "realm": "hbrsinfkaul",
+    "css": [ "ccm.load",
+      "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/bootstrap.css",
+      { "context": "head", "url": "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/font-face.css" },
+      "https://ccmjs.github.io/akless-components/user/resources/bootstrap.css"
+    ],
+    "html": {
+      "logged_in": {
+        "id": "logged_in",
+        "class": "well well-sm",
+        "inner": [
+          {
+            "id": "user",
+            "inner": [
+              { "class": "glyphicon glyphicon-user" },
+              "%user%"
+            ]
+          },
+          {
+            "id": "button",
+            "class": "btn btn-default btn-xs",
+            "inner": [
+              {
+                "tag": "span",
+                "class": "glyphicon glyphicon-log-out"
+              },
+              "Logout"
+            ],
+            "onclick": "%click%"
+          }
+        ]
+      },
+      "logged_out": {
+        "id": "logged_out",
+        "class": "well well-sm",
+        "inner": {
+          "id": "button",
+          "class": "btn btn-default btn-xs",
+          "inner": [
+            {
+              "tag": "span",
+              "class": "glyphicon glyphicon-log-in"
+            },
+            "Login"
+          ],
+          "onclick": "%click%"
+        }
       }
     }
   },

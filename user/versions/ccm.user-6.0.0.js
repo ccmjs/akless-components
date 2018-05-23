@@ -238,7 +238,7 @@
 
           $.setContent( self.element, $.html( my.html.logged_in, {
             user: dataset.user,
-            click: () => self.logout( self.start, '#' )
+            click: () => self.logout( undefined, '#' )
           } ) );
 
         }
@@ -247,7 +247,7 @@
         function renderLoggedOut() {
 
           $.setContent( self.element, $.html( my.html.logged_out, {
-            click: () => self.login( self.start, '#' )
+            click: () => self.login( undefined, '#' )
           } ) );
 
         }
