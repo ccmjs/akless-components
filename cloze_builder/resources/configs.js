@@ -53,7 +53,7 @@ ccm.files[ 'configs.js' ] = {
     ],
     "data": {
       "store": [ "ccm.store", { "store": "cloze", "url": "https://ccm2.inf.h-brs.de" } ],
-      "key": "test"
+      "key": "demo"
     },
     "submit_button": 'Submit',
     "target": [ "ccm.component", "https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-4.0.0.min.js" ],
@@ -62,7 +62,7 @@ ccm.files[ 'configs.js' ] = {
       "log": true,
       "store": {
         "settings": { "store": "cloze", "url": "https://ccm2.inf.h-brs.de" },
-        "key": "test"
+        "key": "demo"
       },
       "alert": "Saved!"
     }
