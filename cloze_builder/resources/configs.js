@@ -16,7 +16,7 @@ ccm.files[ 'configs.js' ] = {
       "store": [ "ccm.store", "../cloze_builder/resources/datasets.js" ],
       "key": "test"
     },
-    "submit_button": "Submit",
+    "submit_button": true,
     "target": [ "ccm.component", "../cloze/ccm.cloze.js" ],
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
     "onfinish": { "log": true }
@@ -34,7 +34,6 @@ ccm.files[ 'configs.js' ] = {
     },
     "submit_button": "Submit",
     "target": [ "ccm.component", "../cloze/ccm.cloze.js" ],
-    "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
     "onfinish": {
       "log": true,
       "store": {
