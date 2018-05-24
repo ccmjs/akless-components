@@ -1,43 +1,54 @@
 /**
- * @overview default layout of ccm component for teambuild builder
+ * @overview default layout of ccm component for building a team building
+ * @author André Kless <andre.kless@web.de.de> 2017-2018
  * @author Tea Kless <tea.kless@web.de.de> 2017
  * @license The MIT License (MIT)
  */
 
 a, input[type="checkbox"], select {
-    cursor: pointer;
+  cursor: pointer;
 }
 
-a.active + div {
-    display: block;
+a + div.alert {
+  display: none;
 }
 
-a + div {
-    display: none;
+a.active + div.alert {
+  display: block;
 }
 
-a.active + div + div {
-    display: block;
+a + div + div.alert {
+  display: none;
 }
 
-a + div + div {
-    display: none;
+a.active + div + div.alert {
+  display: block;
 }
 
 .alert {
-    margin-bottom: 0px !important;
-}
-
-div.check-boxes {
-    margin-top: 30px !important;
-    margin-bottom: 30px !important;
+  margin-bottom: 0 !important;
 }
 
 label {
-    font-size: 15px;
+  font-size: 1.1em;
 }
 
-.checkbox{
-    margin-left: 16px;
-    vertical-align: bottom !important;
+a {
+  padding-left: 0.3em;
+}
+
+.checkbox {
+  margin-left: 1em;
+  vertical-align: bottom !important;
+}
+
+#grid {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: 1em;
+}
+
+#button-submit {
+  margin-top: 0.5em;
+  margin-bottom: 2em;
 }
