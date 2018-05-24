@@ -10,7 +10,7 @@
  * - supports onchange callback
  * - message in case of zero not joinable teams
  * - uses ECMAScript 6 syntax
- * - uses ccm v16.6.0
+ * - uses ccm v16.6.1
  * version 1.0.1 (08.11.2017)
  * - changes in default instance configuration
  * - bugfix for default and initial team names
