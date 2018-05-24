@@ -8,6 +8,7 @@
  * - changes in default configuration
  * - changes in logging handling
  * - supports onchange callback
+ * - message in case of zero not joinable teams
  * - uses ECMAScript 6 syntax
  * - uses ccm v16.6.0
  * version 1.0.1 (08.11.2017)
@@ -78,16 +79,17 @@
         }
       },
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/teambuild/resources/default.css" ],
+      "data": {},
       "text": {
         "team": "Team",
         "leave": "leave",
         "join": "join",
-        "free": "free"
+        "free": "free",
+        "message": "Nothing to display."
       },
       "icon": {},
       "editable": true
 
-  //  "data": { "store": [ "ccm.store" ] },
   //  "names": [ "Team Red", "Team Blue" ],
   //  "max_teams": 5,
   //  "max_members": 3,
@@ -134,7 +136,7 @@
         if ( self.user ) self.user.onchange = () => self.start();
 
         // listen to datastore changes => restart
-        if ( self.data.store ) self.data.store.onchange = () => self.start();
+        if ( $.isObject( self.data ) && $.isDatastore( self.data.store ) ) self.data.store.onchange = () => self.start();
 
         callback();
       };
@@ -210,6 +212,9 @@
 
               // unlimited number of teams, last team is not empty and teams are joinable? => add empty team
               else if ( ( dataset.teams.length === 0 || !isEmptyTeam( dataset.teams[ dataset.teams.length - 1 ] ) ) && joinableTeams() ) addEmptyTeam();
+
+              // no teams? => show message
+              if ( dataset.teams.length === 0 ) $.setContent( teams_elem, my.text.message );
 
               /**
                * adds a team to the main HTML structure
