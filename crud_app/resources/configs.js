@@ -15,8 +15,12 @@ ccm.files[ 'configs.js' ] = {
   "demo": {
     "builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/cloze_builder/versions/ccm.cloze_builder-2.1.3.js" ],
     "store": [ "ccm.store", { "store": "cloze", "url": "https://ccm2.inf.h-brs.de" } ],
-    "url": "https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-4.0.0.js",
-    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-3.1.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ]
+    "url": "https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-4.0.0.js"
+  },
+  "teambuild": {
+    "builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/teambuild_builder/versions/ccm.teambuild_builder-3.0.0.js" ],
+    "store": [ "ccm.store", { "store": "teambuild", "url": "https://ccm2.inf.h-brs.de" } ],
+    "url": "https://ccmjs.github.io/akless-components/teambuild/versions/ccm.teambuild-2.0.0.js"
   },
   "lea": {
     "builder": [ "ccm.component", "https://ccm-comp.bib.h-brs.de/ccm-components/cloze_builder/versions/ccm.cloze_builder-2.1.3.js" ],
