@@ -713,7 +713,7 @@
           "message": "Nothing to display."
         },
         "data.store": "['ccm.store',{'store':'teambuild_data','url':'wss://ccm2.inf.h-brs.de'}]",
-        "user": "['ccm.instance','https://ccmjs.github.io/akless-components/user/versions/ccm.user-6.0.0.js',['ccm.get','https://ccmjs.github.io/akless-components/user/resources/configs.js','guest']]"
+        "user": "['ccm.instance','https://ccmjs.github.io/akless-components/user/versions/ccm.user-6.0.0.js',['ccm.get','https://ccmjs.github.io/akless-components/user/resources/configs.js','demo']]"
       },
       "target": [ "ccm.component", "https://ccmjs.github.io/akless-components/teambuild/versions/ccm.teambuild-2.0.0.js" ],
       "preview": true
