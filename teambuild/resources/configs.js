@@ -1,5 +1,5 @@
 /**
- * @overview configurations of ccm component for realtime team building
+ * @overview configurations of ccm component for team building
  * @author André Kless <andre.kless@web.de> 2017-2018
  * @license The MIT License (MIT)
  */
@@ -11,7 +11,7 @@ ccm.files[ 'configs.js' ] = {
       "store": [ "ccm.store", { "store": "teambuild", "url": "ws://localhost:8080" } ],
       "key": "test"
     },
-    "user": [ "ccm.instance", "../user/ccm.user.js", { "key": [ "ccm.get", "../user/resources/configs.js", "demo" ], "realm": "guest", "guest": "studentA", "logged_in": true } ],
+    "user": [ "ccm.instance", "../user/ccm.user.js", { "key": [ "ccm.get", "../user/resources/configs.js", "guest" ], "guest": "studentA", "logged_in": true } ],
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ]
   },
   "demo": {
