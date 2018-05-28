@@ -23,10 +23,10 @@
   add( 'show_points', '<i>ccm</i> component for rendering a point list of an user', true );
   add( 'show_solutions', '<i>ccm</i> component for rendering a list of all submitted solutions', true );
   add( 'submit', '<i>ccm</i> component for submitting data' );
-  add( 'teambuild', '<i>ccm</i> component for realtime team building', true );
+  add( 'teambuild', '<i>ccm</i> component for realtime team building' );
   add( 'teambuild_builder', '<i>ccm</i> component for building a realtime team building', true );
   add( 'testsuite', '<i>ccm</i> component for unit testing', true );
-  add( 'user', '<i>ccm</i> component for user authentication', true );
+  add( 'user', '<i>ccm</i> component for user authentication' );
   add( 'youtube', '<i>ccm</i> component for rendering a YouTube Player' );
   function add( name, description, no_demo ) {
     document.body.querySelector( 'table' ).innerHTML += '<tr><td>ccm.' + name + '.js</td><td>' + description + '</td><td>' + ( no_demo ? '-' : '<a href="' + name + '">Link</a>' ) + '</td></tr>';
