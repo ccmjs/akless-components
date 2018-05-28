@@ -2,7 +2,7 @@
  * @overview ccm component for user authentication
  * @author André Kless <andre.kless@web.de> 2017-2018
  * @license The MIT License (MIT)
- * @version latest (7.0.0)
+ * @version 7.0.0
  * @changes
  * version 7.0.0
  * - bootstrap is used for default layout
@@ -58,10 +58,20 @@
     name: 'user',
 
     /**
-     * recommended used framework version
-     * @type {string|{url: string, integrity: string, crossorigin: string}}
+     * component version
+     * @type {number[]}
      */
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    version: [ 7, 0, 0 ],
+
+    /**
+     * reference to used framework version
+     * @type {Object}
+     */
+    ccm: {
+      url: 'https://ccmjs.github.io/ccm/versions/ccm-16.6.1.js',
+      integrity: 'sha384-zCsUcQEg4NqpF91vJatXIU7aDUcYENcTCchNCwisDiA1ZzTR+ShsqJtmYIHG120k',
+      crossorigin: 'anonymous'
+    },
 
     /**
      * default instance configuration
