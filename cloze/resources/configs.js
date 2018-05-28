@@ -36,7 +36,7 @@ ccm.files[ 'configs.js' ] = {
           "method": "POST",
           "store": "cloze_results"
         },
-        "key": "test",
+        "key": "localhost",
         "user": true,
         "unique": true,
         "permissions": {

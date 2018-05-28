@@ -16,12 +16,7 @@ ccm.files[ 'configs.js' ] = {
       "results": "Show Results",
       "gaps": "Gap Analysis"
     },
-    "user": [ "ccm.instance", "../user/ccm.user.js", {
-      "key": [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "demo" ],
-      "realm": "guest",
-      "guest": "teacher",
-      "logged_in": true
-    } ],
+    "user": [ "ccm.instance", "../user/ccm.user.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "guest" ] ],
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
     "menu": [ "ccm.instance", "../menu/ccm.menu.js", [ "ccm.get", "../menu/resources/configs.js", "bootstrap" ] ],
     "table": [ "ccm.component", "https://ccmjs.github.io/tkless-components/table/ccm.table.js" ],
@@ -43,7 +38,7 @@ ccm.files[ 'configs.js' ] = {
       "results": "Show Results",
       "gaps": "Gap Analysis"
     },
-    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-6.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "demo" ] ],
+    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-7.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "guest" ] ],
     "menu": [ "ccm.instance", "https://ccmjs.github.io/akless-components/menu/versions/ccm.menu-1.1.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/menu/resources/configs.js", "bootstrap" ] ],
     "cloze": {
       "comp": [ "ccm.component", "https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-4.1.0.js" ],
