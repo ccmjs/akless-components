@@ -9,7 +9,7 @@ ccm.files[ 'configs.js' ] = {
     "realm": "guest",
     "title": "Guest Mode: Please enter any username",
     "no_password": true,
-    "css.3": "../user/resources/bootstrap.css",
+    "css.3": "../user/resources/default.css",
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ]
   },
   "localhost": {
@@ -17,7 +17,7 @@ ccm.files[ 'configs.js' ] = {
     "url": "http://localhost:8080",
     "title": "Demo Mode: Please enter any username",
     "no_password": true,
-    "css.3": "../user/resources/bootstrap.css",
+    "css.3": "../user/resources/default.css",
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ]
   },
   "guest": {

@@ -425,7 +425,7 @@
       "css": [ "ccm.load",
         "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/bootstrap.css",
         { "context": "head", "url": "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/font-face.css" },
-        "https://ccmjs.github.io/akless-components/user/resources/bootstrap.css"
+        "https://ccmjs.github.io/akless-components/user/resources/default.css"
       ],
       "context": true,
       "realm": "guest",
