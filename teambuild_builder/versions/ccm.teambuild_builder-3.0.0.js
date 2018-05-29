@@ -818,7 +818,7 @@
           function prepareValues() {
 
             // set default value for dataset key of app-specific teambuild data
-            my.defaults[ 'data.key' ] = $.generateKey();
+            if ( !my.defaults[ 'data.key' ] ) my.defaults[ 'data.key' ] = $.generateKey();
 
             // integrate default values into initial values
             dataset = $.integrate( my.defaults, dataset, true );
