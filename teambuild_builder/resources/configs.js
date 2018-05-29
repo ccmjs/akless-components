@@ -41,9 +41,8 @@ ccm.files[ 'configs.js' ] = {
         "message": "Nothing to display."
       },
       "data.store": "['ccm.store',{'store':'teambuild_data','url':'ws://localhost:8080'}]",
-      "user": "['ccm.instance','https://ccmjs.github.io/akless-components/user/versions/ccm.user-6.0.0.js',['ccm.get','https://ccmjs.github.io/akless-components/user/resources/configs.js','demo']]"
+      "user": "['ccm.instance','https://ccmjs.github.io/akless-components/user/versions/ccm.user-7.0.0.js',['ccm.get','https://ccmjs.github.io/akless-components/user/resources/configs.js','guest']]"
     },
-    "submit_button": "Submit",
     "target": [ "ccm.component", "../teambuild/ccm.teambuild.js" ],
     "onfinish": {
       "log": true,
@@ -79,7 +78,7 @@ ccm.files[ 'configs.js' ] = {
         "message": "Nothing to display."
       },
       "data.store": "['ccm.store',{'store':'teambuild_data','url':'wss://ccm2.inf.h-brs.de'}]",
-      "user": "['ccm.instance','https://ccmjs.github.io/akless-components/user/versions/ccm.user-6.0.0.js',['ccm.get','https://ccmjs.github.io/akless-components/user/resources/configs.js','demo']]"
+      "user": "['ccm.instance','https://ccmjs.github.io/akless-components/user/versions/ccm.user-7.0.0.js',['ccm.get','https://ccmjs.github.io/akless-components/user/resources/configs.js','guest']]"
     },
     "submit_button": "Submit",
     "target": [ "ccm.component", "https://ccmjs.github.io/akless-components/teambuild/versions/ccm.teambuild-2.0.0.js" ],
