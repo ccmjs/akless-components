@@ -47,6 +47,31 @@ ccm.files[ 'configs.js' ] = {
     },
     "table": [ "ccm.component", "https://ccmjs.github.io/tkless-components/table/ccm.table.js" ],
     "chart": [ "ccm.component", "https://ccmjs.github.io/akless-components/highchart/versions/ccm.highchart-1.0.0.js" ]
+  },
+
+  "teacher": {
+    "css": [ "ccm.load",
+      "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/bootstrap.css",
+      { "context": "head", "url": "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/font-face.css" },
+      "https://ccmjs.github.io/akless-components/cloze_analytics/resources/default.css"
+    ],
+    "sections": {
+      "results": "Show Results",
+      "gaps": "Gap Analysis"
+    },
+    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-7.0.0.js", {
+      "key": [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "guest" ],
+      "guest": "teacher",
+      "logged_in": true
+    } ],
+    "menu": [ "ccm.instance", "https://ccmjs.github.io/akless-components/menu/versions/ccm.menu-1.1.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/menu/resources/configs.js", "bootstrap" ] ],
+    "cloze": {
+      "comp": [ "ccm.component", "https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-4.1.0.js" ],
+      "configs": [ "ccm.store", "https://ccmjs.github.io/akless-components/cloze/resources/configs.js" ],
+      "results": [ "ccm.store", { "url": "wss://ccm2.inf.h-brs.de", "store": "cloze_results" } ]
+    },
+    "table": [ "ccm.component", "https://ccmjs.github.io/tkless-components/table/ccm.table.js" ],
+    "chart": [ "ccm.component", "https://ccmjs.github.io/akless-components/highchart/versions/ccm.highchart-1.0.0.js" ]
   }
 
 };
