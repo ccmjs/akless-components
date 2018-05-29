@@ -34,6 +34,7 @@ ccm.files[ 'configs.js' ] = {
     },
     "submit_button": "Submit",
     "target": [ "ccm.component", "../cloze/ccm.cloze.js" ],
+    "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
     "onfinish": {
       "log": true,
       "store": {
@@ -55,8 +56,7 @@ ccm.files[ 'configs.js' ] = {
       "key": "demo"
     },
     "submit_button": "Submit",
-    "target": [ "ccm.component", "https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-4.0.0.min.js" ],
-    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-3.1.0.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.min.js", "greedy" ] ],
+    "target": [ "ccm.component", "https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-4.1.0.js" ],
     "onfinish": {
       "log": true,
       "store": {
