@@ -7,16 +7,11 @@
 ccm.files[ 'configs.js' ] = {
 
   "local": {
-    "css": [ "ccm.load",
-      "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/bootstrap.css",
-      { "context": "head", "url": "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/font-face.css" },
-      "../teambuild_builder/resources/default.css"
-    ],
+    "css.3": "../teambuild_builder/resources/default.css",
     "data": {
       "store": [ "ccm.store", "../teambuild_builder/resources/datasets.js" ],
       "key": "test"
     },
-    "submit_button": true,
     "target": [ "ccm.component", "../teambuild/ccm.teambuild.js" ],
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
     "onfinish": { "log": true }

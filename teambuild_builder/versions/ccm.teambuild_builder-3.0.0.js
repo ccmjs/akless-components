@@ -301,15 +301,7 @@
                               },
                               {
                                 "tag": "p",
-                                "inner": "Every user will automatically logged in as the user \"guest\". This mode is mostly used for test scenarios."
-                              },
-                              {
-                                "tag": "h5",
-                                "inner": "Demo Mode"
-                              },
-                              {
-                                "tag": "p",
-                                "inner": "The user can authenticate with any username and without password. This mode is mostly used for demo scenarios."
+                                "inner": "The user can authenticate with any username and without password. This mode is mostly used for test and demo scenarios."
                               },
                               {
                                 "tag": "h5",
@@ -338,17 +330,12 @@
                           {
                             "tag": "option",
                             "inner": "Guest Mode",
-                            "value": "['ccm.instance','https://ccmjs.github.io/akless-components/user/versions/ccm.user-6.0.0.js',['ccm.get','https://ccmjs.github.io/akless-components/user/resources/configs.js','guest']]"
-                          },
-                          {
-                            "tag": "option",
-                            "inner": "Demo Mode",
-                            "value": "['ccm.instance','https://ccmjs.github.io/akless-components/user/versions/ccm.user-6.0.0.js',['ccm.get','https://ccmjs.github.io/akless-components/user/resources/configs.js','demo']]"
+                            "value": "['ccm.instance','https://ccmjs.github.io/akless-components/user/versions/ccm.user-7.0.0.js',['ccm.get','https://ccmjs.github.io/akless-components/user/resources/configs.js','guest']]"
                           },
                           {
                             "tag": "option",
                             "inner": "H-BRS FB02",
-                            "value": "['ccm.instance','https://ccmjs.github.io/akless-components/user/versions/ccm.user-6.0.0.js',['ccm.get','https://ccmjs.github.io/akless-components/user/resources/configs.js','hbrsinfkaul']]"
+                            "value": "['ccm.instance','https://ccmjs.github.io/akless-components/user/versions/ccm.user-7.0.0.js',['ccm.get','https://ccmjs.github.io/akless-components/user/resources/configs.js','hbrsinfkaul']]"
                           }
                         ]
                       }
@@ -723,13 +710,13 @@
           "message": "Nothing to display."
         },
         "data.store": "['ccm.store',{'store':'teambuild_data','url':'wss://ccm2.inf.h-brs.de'}]",
-        "user": "['ccm.instance','https://ccmjs.github.io/akless-components/user/versions/ccm.user-6.0.0.js',['ccm.get','https://ccmjs.github.io/akless-components/user/resources/configs.js','demo']]"
+        "user": "['ccm.instance','https://ccmjs.github.io/akless-components/user/versions/ccm.user-7.0.0.js',['ccm.get','https://ccmjs.github.io/akless-components/user/resources/configs.js','guest']]"
       },
       "target": [ "ccm.component", "https://ccmjs.github.io/akless-components/teambuild/versions/ccm.teambuild-2.0.0.js" ],
+      "submit_button": true,
       "preview": true
 
   //  "data": { "store": [ "ccm.store", { "test": { ... } } ], "key": "test" },
-  //  "submit_button": true,
   //  "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-3.1.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
   //  "onchange": instance => console.log( instance.getValue() ),
   //  "onfinish": { "log": true }
