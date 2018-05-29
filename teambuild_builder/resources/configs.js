@@ -41,6 +41,7 @@ ccm.files[ 'configs.js' ] = {
         "message": "Nothing to display."
       },
       "data.store": "['ccm.store',{'store':'teambuild_data','url':'ws://localhost:8080'}]",
+      "data.key": "test",
       "user": "['ccm.instance','https://ccmjs.github.io/akless-components/user/versions/ccm.user-7.0.0.js',['ccm.get','https://ccmjs.github.io/akless-components/user/resources/configs.js','guest']]"
     },
     "target": [ "ccm.component", "../teambuild/ccm.teambuild.js" ],
@@ -78,6 +79,7 @@ ccm.files[ 'configs.js' ] = {
         "message": "Nothing to display."
       },
       "data.store": "['ccm.store',{'store':'teambuild_data','url':'wss://ccm2.inf.h-brs.de'}]",
+      "data.key": "demo",
       "user": "['ccm.instance','https://ccmjs.github.io/akless-components/user/versions/ccm.user-7.0.0.js',['ccm.get','https://ccmjs.github.io/akless-components/user/resources/configs.js','guest']]"
     },
     "submit_button": "Submit",
