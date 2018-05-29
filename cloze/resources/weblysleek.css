@@ -83,3 +83,47 @@ code {
   padding: 0.5em;
   font-size: 80%;
 }
+
+#points {
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 15px;
+  font-stretch: expanded;
+}
+
+#buttons {
+  padding-top: 0.25em;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+#buttons > div {
+  padding: 0.25em;
+}
+
+#conclusion > div {
+  width: 25rem;
+  margin: 2em 0;
+  padding: 0.5em 1em;
+  display: flex;
+  align-items: center;
+  border: 1px solid lightgray;
+  border-radius: 20px;
+}
+
+#points {
+  margin-right: 0.5em;
+  top: 2px;
+}
+
+#feedback {
+  width: 100%;
+  background-color: #ddd;
+  border-radius: 10px;
+}
+
+#progress-bar {
+  width: 0;
+  height: 20px;
+  background-color: #4CAF50;
+}

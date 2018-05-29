@@ -57,7 +57,7 @@ ccm.files[ 'configs.js' ] = {
 
   "demo": {
     "css": [ "ccm.load",
-      "https://ccmjs.github.io/akless-components/cloze/resources/pbworks.css",
+      "https://ccmjs.github.io/akless-components/cloze/resources/default.css",
       { "context": "head", "url": "https://fonts.googleapis.com/css?family=Montserrat:200", "type": "css" }
     ],
     "data": {

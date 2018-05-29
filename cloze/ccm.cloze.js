@@ -70,7 +70,8 @@
                   ]
                 }
               ]
-            }
+            },
+            { "id": "conclusion" }
           ]
         },
         "keyword": {
@@ -96,6 +97,20 @@
         "timer": {
           "tag": "span",
           "inner": "%%"
+        },
+        "feedback": {
+          "inner": [
+            {
+              "id": "points",
+              "inner": "%points%"
+            },
+            {
+              "id": "feedback",
+              "inner": {
+                "id": "progress-bar"
+              }
+            }
+          ]
         }
       },
       "mark": "*",
@@ -459,7 +474,7 @@
             function evaluate() {
 
               // set initial state for detail informations of the gap results
-              results.details = [];
+              results.details = []; results.correct = 0;
 
               // iterate over all gap input fields
               [ ...main_elem.querySelectorAll( '.gap input' ) ].map( ( gap, i ) => {
@@ -484,7 +499,7 @@
                   // determine correctness of the user input value
                   if ( keyword.used ) return;
                   gap.value = gap.value.trim();
-                  if ( gap.value === keyword.word ) event_data.correct = true;
+                  if ( gap.value === keyword.word ) { event_data.correct = true; results.correct++; }
                   if ( gap.value.toLowerCase() === keyword.word.toLowerCase() ) { event_data.nearly = true; keyword.used = true; }
                   self.onvalidation && !self.onvalidation( self, event_data );  // has individual 'validation' callback? => perform it
                 } );
@@ -521,10 +536,33 @@
               // change buttons
               updateButtons( true );
 
+              // render feedback for results
+              renderProgressBar( results.correct );
+
+              function renderProgressBar( correct ) {
+                $.setContent( main_elem.querySelector( '#conclusion' ), $.html( my.html.feedback, { points: correct + '/' + keywords.length } ) );
+                const goal = correct * main_elem.querySelector( '#feedback' ).offsetWidth / keywords.length; //parseInt( self.element.querySelector( '#progress-bar' ).style.width, 10);
+                let width = 1;
+                let id = setInterval(frame, 10);
+
+                function frame() {
+                  if ( width >= goal ) {
+                    clearInterval( id );
+                  } else {
+                    width++;
+                    main_elem.querySelector( '#progress-bar' ).style.width = width + 'px';
+                  }
+                }
+
+              }
+
             }
 
             /** removes the feedback and enables the input fields */
             function retry() {
+
+              // clear conclusion area
+              $.setContent( main_elem.querySelector( '#conclusion' ), '' );
 
               // iterate over all gap input fields
               [ ...self.element.querySelectorAll( '.gap' ) ].map( gap => {
