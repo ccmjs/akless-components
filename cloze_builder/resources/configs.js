@@ -54,7 +54,7 @@ ccm.files[ 'configs.js' ] = {
       "store": [ "ccm.store", { "store": "cloze", "url": "https://ccm2.inf.h-brs.de" } ],
       "key": "demo"
     },
-    "submit_button": 'Submit',
+    "submit_button": "Submit",
     "target": [ "ccm.component", "https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-4.0.0.min.js" ],
     "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-3.1.0.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.min.js", "greedy" ] ],
     "onfinish": {
