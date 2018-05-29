@@ -768,10 +768,10 @@
         ], "settings.placeholder": "Type here..."
       } ],
       "target": [ "ccm.component", "https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-4.1.0.js" ],
+      "submit_button": true,
       "preview": true
 
   //  "data": { "store": [ "ccm.store", { "test": { ... } } ], "key": "test" },
-  //  "submit_button": true,
   //  "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-3.1.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
   //  "onchange": instance => console.log( instance.getValue() ),
   //  "onfinish": { "log": true }
