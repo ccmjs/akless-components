@@ -13,9 +13,9 @@ ccm.files[ 'configs.js' ] = {
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ]
   },
   "demo": {
-    "builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/cloze_builder/versions/ccm.cloze_builder-2.1.3.js" ],
+    "builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/cloze_builder/versions/ccm.cloze_builder-2.2.0.js" ],
     "store": [ "ccm.store", { "store": "cloze", "url": "https://ccm2.inf.h-brs.de" } ],
-    "url": "https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-4.0.0.js"
+    "url": "https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-4.1.0.js"
   },
   "teambuild": {
     "builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/teambuild_builder/versions/ccm.teambuild_builder-3.0.0.js" ],
