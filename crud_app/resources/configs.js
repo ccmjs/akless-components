@@ -25,7 +25,7 @@ ccm.files[ 'configs.js' ] = {
     "url": "https://ccmjs.github.io/akless-components/teambuild/versions/ccm.teambuild-2.0.0.js"
   },
   "lea_cloze": {
-    "builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/teambuild_builder/versions/ccm.teambuild_builder-3.0.0.js", {
+    "builder": [ "ccm.component", "https://ccm-comp.bib.h-brs.de/ccm-components/cloze_builder/versions/ccm.cloze_builder-2.2.0.js", {
       "html.inner.1.inner.2.inner.0.inner.1.inner.1.inner.5": {
         "tag": "h5",
         "inner": "H-BRS LEA"
