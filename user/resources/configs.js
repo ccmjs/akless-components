@@ -6,18 +6,26 @@
 
 ccm.files[ 'configs.js' ] = {
   "local": {
+    "css": [ "ccm.load",
+      "../libs/bootstrap/css/bootstrap.css",
+      { "context": "head", "url": "../libs/bootstrap/css/font-face.css" },
+      "../user/resources/default.css"
+    ],
     "realm": "guest",
     "title": "Guest Mode: Please enter any username",
     "no_password": true,
-    "css.3": "../user/resources/default.css",
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ]
   },
   "localhost": {
+    "css": [ "ccm.load",
+      "../libs/bootstrap/css/bootstrap.css",
+      { "context": "head", "url": "../libs/bootstrap/css/font-face.css" },
+      "../user/resources/default.css"
+    ],
     "realm": "demo",
     "url": "http://localhost:8080",
     "title": "Demo Mode: Please enter any username",
     "no_password": true,
-    "css.3": "../user/resources/default.css",
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ]
   },
   "guest": {
