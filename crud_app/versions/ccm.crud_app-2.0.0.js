@@ -214,8 +214,8 @@
         "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/bootstrap.css",
         { "context": "head", "url": "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/font-face.css" }
       ],
-      "builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/cloze_builder/versions/ccm.cloze_builder-2.1.3.js", { "submit_button": false } ],
-      "url": "https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-4.0.0.js",
+      "builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/cloze_builder/versions/ccm.cloze_builder-2.2.0.js", { "submit_button": false } ],
+      "url": "https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-4.1.0.js",
       "store": [ "ccm.store" ],
       "warning": "Are you sure you want to delete this App?"
 
