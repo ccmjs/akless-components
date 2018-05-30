@@ -5,10 +5,220 @@
  */
 
 ccm.files[ 'configs.js' ] = {
+  "test": {
+    "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/quiz/resources/weblysleek.css", { "context": "head", "url": "https://akless.github.io/ccm-components/libs/weblysleekui/font.css" } ],
+    "feedback": true,
+    "start_button": true,
+    "navigation": true,
+    "anytime_finish": true,
+    "random": true,
+    "onfinish": { "restart": true },
+    "placeholder": {
+      "start": "Quiz starten",
+      "question": "Frage",
+      "prev": "Zurück",
+      "submit": "Auflösung",
+      "next": "Nächste Frage",
+      "finish": "Beenden"
+    },
+    "questions": [
+      /*
+      {
+        "text": "Was ist ein HTML-Tag?",
+        "description": "Wählen Sie unter den folgenden Antworten die richtige Antwort aus.",
+        "input": "radio",
+        "answers": [
+          {
+            "text": "ein Auszeichnungselement",
+            "comment": "Reflektieren Sie was <a target=\"_blank\" href=\"https://de.wikipedia.org/w/index.php?title=Auszeichnungselement\">Auszeichnungselement</a> in Bezug auf HTML genau bedeutet."
+          },
+          "ein Befehl",
+          "ein Feiertag",
+          "ein Platzhalter",
+          "ein Sonderzeichen",
+          "eine Anweisung",
+          "eine Eigenschaft",
+          "eine Instruktion",
+          "eine Variable"
+        ],
+        "correct": 0
+      },
+      {
+        "text": "Wofür nutzt man einen HTML-Tag?",
+        "description": "<b style='color: orangered;'>Mehrfachauswahl möglich</b>",
+        "input": "checkbox",
+        "answers": [
+          {
+            "text": "Für eine darstellungsorientierte Textauszeichnung",
+            "comment": "Ein HTML-Tag dient nur zur beschreibenden und nicht zur verfahrens- oder darstellungsorientierten Textauszeichnung."
+          },
+          {
+            "text": "Um Angaben zur Textpräsentation zu machen",
+            "comment": "Ein HTML-Tag dient vielmehr zur strukturierenden Auszeichnung, um Textbereichen eine Bedeutung zu geben."
+          },
+          {
+            "text": "Um dynamische Abläufe zu beschreiben",
+            "comment": "HTML-Tags beschreiben die Struktur und Semantik der Inhalte eines digitalen Dokuments."
+          },
+          {
+            "text": "Zur Einbettung weiterer Inhalte, die über Text hinausgehen",
+            "comment": "Über HTML-Tags können beispielsweise weitere Inhalte wie Bilder, Audios und Videos in die Webseite eingebettet werden."
+          },
+          {
+            "text": "Zum Markieren von Feiertagen",
+            "comment": "Ein HTML-Tag dient zur Markierung von Textbereichen in digitalen Dokumenten, um ihnen eine Bedeutung zu geben."
+          },
+          {
+            "text": "Zur Formatierung von Texten",
+            "comment": "Ein HTML-Tag dient nur der reinen semantischen Strukturierung von Texten und nicht zu dessen Formatierung."
+          },
+          {
+            "text": "Zur Identifizierung von Textzeilen",
+            "comment": "HTML-Tags dienen zur Identifizierung von Inhaltstypen. Also welche Textbereiche beispielsweise vom Typ Überschrift sind."
+          },
+          {
+            "text": "Zur Steuerung des Webbrowsers",
+            "comment": "Mit HTML-Tags steuert man den strukturellen Aufbau einer Webseite."
+          },
+          "Zur Strukturierung von Webseiteninhalten"
+        ],
+        "correct": [ 3, 8 ]
+      },
+      */
+      {
+        "text": "Woraus besteht ein HTML-Tag und wie setzt man ihn ein?",
+        "description": "Geben Sie für die folgenden HTML-Codes an, in welchen davon die enthaltenen HTML-Tags korrekt eingesetzt werden.<br><br><b style='color: orangered;'>Mehrfachauswahl möglich</b>",
+        "input": "checkbox",
+        "encode": true,
+        "answers": [
+          {
+            "text": "<h1>Überschrift<h1>",
+            "comment": "Hier fehlt beim schließenden <h1>-Tag der Schrägstrich."
+          },
+          "<h2>Überschrift</h2>",
+          {
+            "text": "<h3>Überschrift</h4>",
+            "comment": "Hier werden zwei HTML-Tags mit unterschiedlichem Namen verwendet."
+          },
+          {
+            "text": "<p>Paragraph",
+            "comment": "Hier fehlt der schließende <p>-Tag."
+          },
+          {
+            "text": "<p>Paragraph<p>",
+            "comment": "Hier fehlt beim schließenden <p>-Tag der Schrägstrich."
+          },
+          "<p>Paragraph</p>",
+          "Hallo Welt!<br>Willkommen.",
+          {
+            "text": "Hallo Welt!<br/>Willkommen.",
+            "comment": "Die Schreibweise <br/> gibt es in HTML5 nicht mehr."
+          },
+          {
+            "text": "Hallo Welt!<br></br>Willkommen.",
+            "comment": "Bei <br>-Tags wird nur ein öffnender HTML-Tag benötigt."
+          }
+        ],
+        "correct": [ 1, 5, 6 ]
+      },
+      {
+        "text": "Welche HTML-Tags dienen zur Markierung von Überschriften?",
+        "description": "<b style='color: orangered;'>Mehrfachauswahl möglich</b>",
+        "input": "checkbox",
+        "encode": true,
+        "answers": [
+          "<br>",
+          "<h>",
+          "<h1>",
+          "<h2>",
+          "<h3>",
+          "<h4>",
+          "<h5>",
+          "<h6>",
+          "<p>"
+        ],
+        "correct": [ 2, 3, 4, 5, 6, 7 ]
+      },
+      {
+        "text": "Welcher HTML-Tag dient zur Markierung von Paragraphen?",
+        "input": "radio",
+        "encode": true,
+        "answers": [
+          "<br>",
+          "<h>",
+          "<h1>",
+          "<h2>",
+          "<h3>",
+          "<h4>",
+          "<h5>",
+          "<h6>",
+          "<p>"
+        ],
+        "correct": 8
+      },
+      {
+        "text": "Welcher HTML-Tag dient zur Markierung von Zeilenumbrüchen?",
+        "input": "radio",
+        "encode": true,
+        "answers": [
+          "<br>",
+          "<h>",
+          "<h1>",
+          "<h2>",
+          "<h3>",
+          "<h4>",
+          "<h5>",
+          "<h6>",
+          "<p>"
+        ],
+        "correct": 0
+      },
+      {
+        "text": "Wie schreibt man einen Kommentar in HTML?",
+        "input": "radio",
+        "answers": [
+          {
+            "text": "! Kommentar",
+            "comment": "So schreibt man einen Zeilenkommentar in Programmiersprachen wie <a target=\"_blank\" href=\"https://de.wikipedia.org/wiki/Fortran\">Fortran</a>"
+          },
+          {
+            "text": "# Kommentar",
+            "comment": "So schreibt man einen Zeilenkommentar in Programmiersprachen wie <a target=\"_blank\" href=\"https://de.wikipedia.org/wiki/Perl_(Programmiersprache)\">Perl</a>, <a target=\"_blank\" href=\"https://de.wikipedia.org/wiki/Python_(Programmiersprache)\">Python</a>, <a target=\"_blank\" href=\"https://de.wikipedia.org/wiki/R_(Programmiersprache)\">R</a> und <a target=\"_blank\" href=\"https://de.wikipedia.org/wiki/Ruby_(Programmiersprache)\">Ruby</a>."
+          },
+          {
+            "text": "' Kommentar",
+            "comment": "So schreibt man einen Zeilenkommentar in Programmiersprachen wie <a target=\"_blank\" href=\"https://de.wikipedia.org/wiki/BASIC\">BASIC</a> und <a target=\"_blank\" href=\"https://de.wikipedia.org/wiki/Visual_Basic\">Visual Basic</a>."
+          },
+          {
+            "text": "/* Kommentar */",
+            "comment": "So schreibt man einen Blockkommentar in Programmiersprachen wie <a target=\"_blank\" href=\"https://de.wikipedia.org/wiki/C_(Programmiersprache)\">C</a>, <a target=\"_blank\" href=\"https://de.wikipedia.org/wiki/C%2B%2B\">C++</a>, <a target=\"_blank\" href=\"https://de.wikipedia.org/wiki/C-Sharp\">C#</a>, <a target=\"_blank\" href=\"https://de.wikipedia.org/wiki/D_(Programmiersprache)\">D</a>, <a target=\"_blank\" href=\"https://de.wikipedia.org/wiki/Pascal_(Programmiersprache)\">Pascal</a>, <a target=\"_blank\" href=\"https://de.wikipedia.org/wiki/JavaScript\">JavaScript</a>, <a target=\"_blank\" href=\"https://de.wikipedia.org/wiki/PHP\">PHP</a> und <a target=\"_blank\" href=\"https://de.wikipedia.org/wiki/Java_(Programmiersprache)\">Java</a>."
+          },
+          {
+            "text": "/** Kommentar */",
+            "comment": "So schreibt man einen Dokumentationskommentar in Programmiersprachen wie <a target=\"_blank\" href=\"https://de.wikipedia.org/wiki/Java_(Programmiersprache)\">Java</a> und <a target=\"_blank\" href=\"https://de.wikipedia.org/wiki/JavaScript\">JavaScript</a>."
+          },
+          {
+            "text": "// Kommentar",
+            "comment": "So schreibt man einen Zeilenkommentar in Programmiersprachen wie <a target=\"_blank\" href=\"https://de.wikipedia.org/wiki/C_(Programmiersprache)\">C</a>, <a target=\"_blank\" href=\"https://de.wikipedia.org/wiki/C%2B%2B\">C++</a>, <a target=\"_blank\" href=\"https://de.wikipedia.org/wiki/C-Sharp\">C#</a>, <a target=\"_blank\" href=\"https://de.wikipedia.org/wiki/Pascal_(Programmiersprache)\">Pascal</a>, <a target=\"_blank\" href=\"https://de.wikipedia.org/wiki/JavaScript\">JavaScript</a>, <a target=\"_blank\" href=\"https://de.wikipedia.org/wiki/PHP\">PHP</a> und <a target=\"_blank\" href=\"https://de.wikipedia.org/wiki/Java_(Programmiersprache)\">Java</a>."
+          },
+          {
+            "text": "; Kommentar",
+            "comment": "So schreibt man einen Zeilenkommentar in Programmiersprachen wie <a target=\"_blank\" href=\"https://de.wikipedia.org/wiki/Assemblersprache\">Assembler</a>."
+          },
+          "&lt;!-- Kommentar -->",
+          {
+            "text": "{ Kommentar }",
+            "comment": "So schreibt man einen Blockkommentar in Programmiersprachen wie <a target=\"_blank\" href=\"https://de.wikipedia.org/wiki/Pascal_(Programmiersprache)\">Pascal</a>."
+          }
+        ],
+        "correct": 7
+      }
+    ]
+  },
   "demo": {
     "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/quiz/resources/weblysleek.css", { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/weblysleekui/font.css" } ],
-    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-1.1.0.min.js" ],
-    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-1.0.0.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.min.js", "greedy" ] ],
+    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-1.1.0.js" ],
+    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-1.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
     "questions": [
       {
         "text": "How many of these answers are correct?",
@@ -113,12 +323,12 @@ ccm.files[ 'configs.js' ] = {
   },
   "se_ws17_testabdeckung": {
     "quiz_key": "quiz_testabdeckung",
-    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-2.0.1.min.js", [ "ccm.get", "https://kaul.inf.h-brs.de/data/2017/se1/json/log_configs.js", "se_ws17_quiz" ] ],
+    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-2.0.1.js", [ "ccm.get", "https://kaul.inf.h-brs.de/data/2017/se1/json/log_configs.js", "se_ws17_quiz" ] ],
     "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/quiz/resources/weblysleek.css", {
       "context": "head",
       "url": "https://ccmjs.github.io/akless-components/libs/weblysleekui/font.css"
     } ],
-    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-2.0.1.min.js", {
+    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-2.0.1.js", {
       "sign_on": "hbrsinfkaul",
       "logged_in": true
     } ],

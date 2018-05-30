@@ -95,8 +95,8 @@
   //  form: true,
   //  button: true,
   //  initial: {},
-  //  user: [ 'ccm.instance', 'https://ccmjs.github.io/akless-components/user/versions/ccm.user-1.0.0.min.js' ],
-  //  logger: [ 'ccm.instance', 'https://ccmjs.github.io/akless-components/log/versions/ccm.log-1.0.0.min.js', [ 'ccm.get', 'https://ccmjs.github.io/akless-components/log/resources/log_configs.min.js', 'greedy' ] ],
+  //  user: [ 'ccm.instance', 'https://ccmjs.github.io/akless-components/user/versions/ccm.user-1.0.0.js' ],
+  //  logger: [ 'ccm.instance', 'https://ccmjs.github.io/akless-components/log/versions/ccm.log-1.0.0.js', [ 'ccm.get', 'https://ccmjs.github.io/akless-components/log/resources/log_configs.js', 'greedy' ] ],
   //  oninput: function ( instance, data ) { console.log( data ); },
   //  onchange: function ( instance, results, name ) { console.log( name, results ); },
   //  onfinish: function ( instance, results ) { console.log( results ); }

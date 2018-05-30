@@ -33,7 +33,7 @@
      * @type {object}
      */
     ccm: {
-      url: 'https://ccmjs.github.io/ccm/versions/ccm-12.12.0.min.js',
+      url: 'https://ccmjs.github.io/ccm/versions/ccm-12.12.0.js',
       integrity: 'sha384-1pDRNaBU2okRlEuyNp8icKgmsidtnoBsvFtbReMBrQv1bgQqCun0aw5DuTKu61Ts',
       crossorigin: 'anonymous'
     },
@@ -55,7 +55,7 @@
       "data": {}
 
   //  "css": [ "ccm.load": "https://ccmjs.github.io/akless-components/highchart/resources/default.css" ],
-  //  "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-2.0.0.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.min.js", "greedy" ] ],
+  //  "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-2.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
   //  "chart": "line",  // line|area|bar|column|pie|pie-semi-circle
   //  "switcher": true,
   //  "settings": {},

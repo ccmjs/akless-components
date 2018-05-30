@@ -48,7 +48,7 @@
      * @type {object}
      */
     ccm: {
-      url: 'https://ccmjs.github.io/ccm/versions/ccm-16.1.0.min.js',
+      url: 'https://ccmjs.github.io/ccm/versions/ccm-16.1.0.js',
       integrity: 'sha384-4X0IFdACgz2SAKu0knklA+SRQ6OVU4GipKhm7p6l7e7k/CIM8cjCFprWmM4qkbQz',
       crossorigin: 'anonymous'
     },

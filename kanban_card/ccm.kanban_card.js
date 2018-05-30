@@ -124,8 +124,8 @@
       "members": [ "John", "Jane" ],
       "priorities": [ "A", "B", "C" ]
 
-  //  logger: [ 'ccm.instance', 'https://ccmjs.github.io/akless-components/log/versions/ccm.log-1.0.0.min.js', [ 'ccm.get', 'https://ccmjs.github.io/akless-components/log/resources/configs.js', 'greedy' ] ],
-  //  user: [ 'ccm.instance', 'https://ccmjs.github.io/akless-components/user/versions/ccm.user-1.0.0.min.js' ]
+  //  logger: [ 'ccm.instance', 'https://ccmjs.github.io/akless-components/log/versions/ccm.log-1.0.0.js', [ 'ccm.get', 'https://ccmjs.github.io/akless-components/log/resources/configs.js', 'greedy' ] ],
+  //  user: [ 'ccm.instance', 'https://ccmjs.github.io/akless-components/user/versions/ccm.user-1.0.0.js' ]
 
     },
 

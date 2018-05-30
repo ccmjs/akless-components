@@ -23,19 +23,19 @@ ccm.files[ 'datasets.js' ] = {
     "lanes": [
       {
         "cards": [
-          [ "ccm.instance", "https://ccmjs.github.io/akless-components/kanban_card/versions/ccm.kanban_card-1.0.0.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/kanban_card/resources/configs.min.js", "test" ] ],
-          [ "ccm.instance", "https://ccmjs.github.io/akless-components/kanban_card/versions/ccm.kanban_card-1.0.0.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/kanban_card/resources/configs.min.js", "realtime" ] ]
+          [ "ccm.instance", "https://ccmjs.github.io/akless-components/kanban_card/versions/ccm.kanban_card-1.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/kanban_card/resources/configs.js", "test" ] ],
+          [ "ccm.instance", "https://ccmjs.github.io/akless-components/kanban_card/versions/ccm.kanban_card-1.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/kanban_card/resources/configs.js", "realtime" ] ]
         ]
       },
       {
         "cards": [
-          [ "ccm.instance", "https://ccmjs.github.io/akless-components/kanban_card/versions/ccm.kanban_card-1.0.0.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/kanban_card/resources/configs.min.js", "w2c" ] ]
+          [ "ccm.instance", "https://ccmjs.github.io/akless-components/kanban_card/versions/ccm.kanban_card-1.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/kanban_card/resources/configs.js", "w2c" ] ]
         ]
       },
       {
         "cards": [
-          [ "ccm.instance", "https://ccmjs.github.io/akless-components/kanban_card/versions/ccm.kanban_card-1.0.0.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/kanban_card/resources/configs.min.js", "lea" ] ],
-          [ "ccm.instance", "https://ccmjs.github.io/akless-components/kanban_card/versions/ccm.kanban_card-1.0.0.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/kanban_card/resources/configs.min.js", "more" ] ]
+          [ "ccm.instance", "https://ccmjs.github.io/akless-components/kanban_card/versions/ccm.kanban_card-1.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/kanban_card/resources/configs.js", "lea" ] ],
+          [ "ccm.instance", "https://ccmjs.github.io/akless-components/kanban_card/versions/ccm.kanban_card-1.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/kanban_card/resources/configs.js", "more" ] ]
         ]
       }
     ]
@@ -46,18 +46,18 @@ ccm.files[ 'datasets.js' ] = {
     "lanes": [
       {
         "cards": [
-          [ "ccm.instance", "https://ccmjs.github.io/akless-components/kanban_card/versions/ccm.kanban_card-1.0.0.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/kanban_card/resources/configs.min.js", "realtime" ] ]
+          [ "ccm.instance", "https://ccmjs.github.io/akless-components/kanban_card/versions/ccm.kanban_card-1.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/kanban_card/resources/configs.js", "realtime" ] ]
         ]
       },
       {
         "cards": [
-          [ "ccm.instance", "https://ccmjs.github.io/akless-components/quiz/versions/ccm.quiz-2.0.0.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/quiz/resources/configs.min.js", "demo" ] ]
+          [ "ccm.instance", "https://ccmjs.github.io/akless-components/quiz/versions/ccm.quiz-2.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/quiz/resources/configs.js", "demo" ] ]
         ]
       },
       {
         "cards": [
-          [ "ccm.instance", "https://ccmjs.github.io/akless-components/blank/ccm.blank.min.js" ],
-          [ "ccm.instance", "https://ccmjs.github.io/akless-components/eval/versions/ccm.eval-1.0.0.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/eval/resources/configs.min.js", "demo" ] ]
+          [ "ccm.instance", "https://ccmjs.github.io/akless-components/blank/ccm.blank.js" ],
+          [ "ccm.instance", "https://ccmjs.github.io/akless-components/eval/versions/ccm.eval-1.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/eval/resources/configs.js", "demo" ] ]
         ]
       }
     ]

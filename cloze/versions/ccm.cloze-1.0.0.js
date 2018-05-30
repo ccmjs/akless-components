@@ -7,10 +7,10 @@
 
 ( function () {
 
-  var filename = 'ccm.cloze-1.0.0.min.js';
+  var filename = 'ccm.cloze-1.0.0.js';
 
   var ccm_version = '8.1.0';
-  var ccm_url     = 'https://ccmjs.github.io/ccm/versions/ccm-8.1.0.min.js';
+  var ccm_url     = 'https://ccmjs.github.io/ccm/versions/ccm-8.1.0.js';
 
   var component_name = 'cloze';
   var component_obj  = {

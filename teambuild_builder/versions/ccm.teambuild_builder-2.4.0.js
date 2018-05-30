@@ -40,7 +40,7 @@
      * @type {object}
      */
     ccm: {
-      url: 'https://ccmjs.github.io/ccm/versions/ccm-15.0.2.min.js',
+      url: 'https://ccmjs.github.io/ccm/versions/ccm-15.0.2.js',
       integrity: 'sha384-4X0IFdACgz2SAKu0knklA+SRQ6OVU4GipKhm7p6l7e7k/CIM8cjCFprWmM4qkbQz',
       crossorigin: 'anonymous'
     },
@@ -356,17 +356,17 @@
                           {
                             "tag": "option",
                             "inner": "Guest Mode",
-                            "value": "['ccm.instance','https://ccmjs.github.io/akless-components/user/versions/ccm.user-2.0.0.min.js',{'sign_on':'guest','logged_in':true}]"
+                            "value": "['ccm.instance','https://ccmjs.github.io/akless-components/user/versions/ccm.user-2.0.0.js',{'sign_on':'guest','logged_in':true}]"
                           },
                           {
                             "tag": "option",
                             "inner": "Demo Mode",
-                            "value": "['ccm.instance','https://ccmjs.github.io/akless-components/user/versions/ccm.user-2.0.0.min.js',{'sign_on':'demo','logged_in':true}]"
+                            "value": "['ccm.instance','https://ccmjs.github.io/akless-components/user/versions/ccm.user-2.0.0.js',{'sign_on':'demo','logged_in':true}]"
                           },
                           {
                             "tag": "option",
                             "inner": "H-BRS FB02",
-                            "value": "['ccm.instance','https://ccmjs.github.io/akless-components/user/versions/ccm.user-2.0.0.min.js',{'sign_on':'hbrsinfkaul','logged_in':true}]"
+                            "value": "['ccm.instance','https://ccmjs.github.io/akless-components/user/versions/ccm.user-2.0.0.js',{'sign_on':'hbrsinfkaul','logged_in':true}]"
                           }
                         ]
                       }
@@ -815,7 +815,7 @@
         if ( !my.start_values[ 'data.key' ] ) my.start_values[ 'data.key' ] = $.generateKey();
 
         // guest login mode as default
-        if ( !my.start_values.user ) my.start_values.user = "['ccm.instance','https://ccmjs.github.io/akless-components/user/versions/ccm.user-2.0.0.min.js',{'sign_on':'guest','logged_in':true}]";
+        if ( !my.start_values.user ) my.start_values.user = "['ccm.instance','https://ccmjs.github.io/akless-components/user/versions/ccm.user-2.0.0.js',{'sign_on':'guest','logged_in':true}]";
 
         // security check for start values
         my.start_values = $.protect( my.start_values );

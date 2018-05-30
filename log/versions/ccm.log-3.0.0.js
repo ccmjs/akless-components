@@ -39,7 +39,7 @@
      * @type {object}
      */
     ccm: {
-      url: 'https://ccmjs.github.io/ccm/versions/ccm-16.1.0.min.js',
+      url: 'https://ccmjs.github.io/ccm/versions/ccm-16.1.0.js',
       integrity: 'sha384-r24jejuYIIhSni8Amc8zyYL5rY1/HgzO8QhUHioxtOzjr7WUDAs9HHRnHOt/gZZS',
       crossorigin: 'anonymous'
     },
@@ -59,7 +59,7 @@
   //  logging.user:    {boolean|string[]} log user informations
   //  logging.website: {boolean|string[]} log website informations
   //  only: {Object.<string,string[]|object>} settings for logging only specific subsets
-  //  hash: [ 'ccm.module', 'https://ccmjs.github.io/akless-components/modules/md5.min.js' ]
+  //  hash: [ 'ccm.module', 'https://ccmjs.github.io/akless-components/modules/md5.js' ]
   //  onfinish: function ( instance, results ) { console.log( results ); }
 
     },

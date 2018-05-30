@@ -7,10 +7,10 @@
 
 ( function () {
 
-  var filename = 'ccm.le-1.0.0.min.js';
+  var filename = 'ccm.le-1.0.0.js';
 
   var ccm_version = '8.1.0';
-  var ccm_url     = 'https://ccmjs.github.io/ccm/versions/ccm-8.1.0.min.js';
+  var ccm_url     = 'https://ccmjs.github.io/ccm/versions/ccm-8.1.0.js';
 
   var component_name = 'le';
   var component_obj  = {
@@ -21,7 +21,7 @@
     config: {
       "css_file": "https://ccmjs.github.io/akless-components/le/resources/weblysleek.css",
       "font": "https://ccmjs.github.io/akless-components/libs/weblysleekui/font.css",
-      "content": [ "ccm.component", "https://ccmjs.github.io/akless-components/content/versions/ccm.content-1.0.0.min.js" ],
+      "content": [ "ccm.component", "https://ccmjs.github.io/akless-components/content/versions/ccm.content-1.0.0.js" ],
       "topic_prefix": "Learning Unit:",
       "link_prefix": "Link: "
     },

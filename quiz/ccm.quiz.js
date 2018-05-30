@@ -138,8 +138,8 @@
   //  attributes: {},
   //  encode: true,
   //  swap: true,
-  //  user: [ 'ccm.instance', 'https://ccmjs.github.io/akless-components/user/ccm.user.min.js' ],
-  //  logger: [ 'ccm.instance', 'https://ccmjs.github.io/akless-components/log/ccm.log.min.js', [ 'ccm.get', 'https://ccmjs.github.io/akless-components/log/resources/log_configs.min.js', 'greedy' ] ],
+  //  user: [ 'ccm.instance', 'https://ccmjs.github.io/akless-components/user/ccm.user.js' ],
+  //  logger: [ 'ccm.instance', 'https://ccmjs.github.io/akless-components/log/ccm.log.js', [ 'ccm.get', 'https://ccmjs.github.io/akless-components/log/resources/log_configs.js', 'greedy' ] ],
   //  onstart: function ( instance ) { console.log( 'Quiz started' ); },
   //  oncancel: function ( instance ) { console.log( 'Quiz canceled' ); },
   //  onprev: function ( instance, data ) { console.log( data ); },
@@ -748,7 +748,7 @@
                       [ ...self.element.querySelectorAll( '.clicked' ) ].map( elem => elem !== this && elem.classList.remove( 'clicked' ) );
                       this.classList.toggle( 'clicked' );
                     },
-                    comment: answer.encode ? self.ccm.helper.htmlEncode( answer.comment ) : answer.comment,
+                    comment: answer.html ? self.ccm.helper.escapeHTML( answer.comment ) : answer.comment,
                   } ) );
 
                 } );

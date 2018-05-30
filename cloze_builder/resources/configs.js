@@ -62,13 +62,13 @@ ccm.files[ 'configs.js' ] = {
     "html.inner.1.inner.2.inner.0.inner.2.inner.4": {
       "tag": "option",
       "inner": "H-BRS LEA",
-      "value": "['ccm.instance','https://ccmjs.github.io/akless-components/user/versions/ccm.user-4.0.1.min.js',{'realm':'LEA'}]"
+      "value": "['ccm.instance','https://ccmjs.github.io/akless-components/user/versions/ccm.user-4.0.1.js',{'realm':'LEA'}]"
     },
     "data": {
       "store": [ "ccm.store", { "store": "cloze", "url": "https://ccm-data.bib.h-brs.de" } ],
       "key": "test"
     },
-    "defaults.user": "['ccm.instance','https://ccmjs.github.io/akless-components/user/versions/ccm.user-4.0.1.min.js',{'realm':'LEA'}]",
+    "defaults.user": "['ccm.instance','https://ccmjs.github.io/akless-components/user/versions/ccm.user-4.0.1.js',{'realm':'LEA'}]",
     "defaults.css": "['ccm.load','https://ccmjs.github.io/akless-components/cloze/resources/lea.css','https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css',{'context':'head','url':'https://fonts.googleapis.com/css?family=Montserrat:200'}]",
     "css": [ "ccm.load",
       "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/bootstrap.css",

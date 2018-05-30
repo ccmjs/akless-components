@@ -21,7 +21,7 @@
     version: [ 2, 0, 1 ],
 
     ccm: {
-      url: 'https://ccmjs.github.io/ccm/versions/ccm-11.5.0.min.js',
+      url: 'https://ccmjs.github.io/ccm/versions/ccm-11.5.0.js',
       integrity: 'sha384-7lrORUPPd2raLsrPJYo0Arz8csPcGzgyNbKOr9Rx3k0ECU0T8BP+B1ejo8+wmUzh',
       crossorigin: 'anonymous'
     },
@@ -64,7 +64,7 @@
       "guest": "guest"
 
   //  css: [ 'ccm.load', 'https://ccmjs.github.io/akless-components/user/resources/default.css' ],
-  //  logger: [ 'ccm.instance', 'https://ccmjs.github.io/akless-components/log/versions/ccm.log-1.0.0.min.js', [ 'ccm.get', 'https://ccmjs.github.io/akless-components/log/resources/log_configs.min.js', 'greedy' ] ]
+  //  logger: [ 'ccm.instance', 'https://ccmjs.github.io/akless-components/log/versions/ccm.log-1.0.0.js', [ 'ccm.get', 'https://ccmjs.github.io/akless-components/log/resources/log_configs.js', 'greedy' ] ]
 
     },
 

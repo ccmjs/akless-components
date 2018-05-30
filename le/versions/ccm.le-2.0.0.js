@@ -25,7 +25,7 @@
     version: [ 2, 0, 0 ],
 
     ccm: {
-      url: 'https://ccmjs.github.io/ccm/versions/ccm-11.5.0.min.js',
+      url: 'https://ccmjs.github.io/ccm/versions/ccm-11.5.0.js',
       integrity: 'sha384-7lrORUPPd2raLsrPJYo0Arz8csPcGzgyNbKOr9Rx3k0ECU0T8BP+B1ejo8+wmUzh',
       crossorigin: 'anonymous'
     },
@@ -72,7 +72,7 @@
         }
       },
       "target": "_blank",
-      "content": [ "ccm.component", "https://ccmjs.github.io/akless-components/content/versions/ccm.content-2.0.0.min.js" ]
+      "content": [ "ccm.component", "https://ccmjs.github.io/akless-components/content/versions/ccm.content-2.0.0.js" ]
     },
 
     Instance: function () {
