@@ -7,7 +7,7 @@
  * version 4.1.0 (15.05.2018)
  * - supports initial values for text gaps by result data
  * - updated logging for ready and start event
- * - uses ccm v16.5.1
+ * - uses ccm v16.6.1
  * version 4.0.0 (13.04.2018): changed marking of gaps
  * - '*' instead of '[[' and ']]' (more easy to find on keyboards)
  * - '/' instead of '|' (more easy to find on keyboards)
@@ -38,8 +38,8 @@
      * @type {Object}
      */
     ccm: {
-      url: 'https://ccmjs.github.io/ccm/versions/ccm-16.5.1.js',
-      integrity: 'sha384-KZGgSb/NYKtO8XoAg5kU8K9O+dx3rbTwExHW1H6/b5JodEnfNIUdMCmTE/PAF0Of',
+      url: 'https://ccmjs.github.io/ccm/versions/ccm-16.6.1.js',
+      integrity: 'sha384-zCsUcQEg4NqpF91vJatXIU7aDUcYENcTCchNCwisDiA1ZzTR+ShsqJtmYIHG120k',
       crossorigin: 'anonymous'
     },
 
