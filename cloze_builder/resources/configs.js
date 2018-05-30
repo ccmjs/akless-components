@@ -66,22 +66,15 @@ ccm.files[ 'configs.js' ] = {
     },
     "data": {
       "store": [ "ccm.store", { "store": "cloze", "url": "https://ccm-data.bib.h-brs.de" } ],
-      "key": "test"
+      "key": "demo"
     },
     "defaults.user": "['ccm.instance','https://ccmjs.github.io/akless-components/user/versions/ccm.user-4.0.1.js',{'realm':'LEA'}]",
     "defaults.css": "['ccm.load','https://ccmjs.github.io/akless-components/cloze/resources/lea.css','https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css',{'context':'head','url':'https://fonts.googleapis.com/css?family=Montserrat:200'}]",
-    "css": [ "ccm.load",
-      "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/bootstrap.css",
-      { "context": "head", "url": "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/font-face.css" },
-      "https://ccmjs.github.io/akless-components/cloze_builder/resources/default.css"
-    ],
     "submit_button": 'Submit',
-    "target": [ "ccm.component", "https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-4.0.0.js" ],
     "onfinish": {
-      "log": true,
       "store": {
         "settings": { "store": "cloze", "url": "https://ccm-data.bib.h-brs.de" },
-        "key": "test"
+        "key": "demo"
       },
       "alert": "Saved!"
     }
