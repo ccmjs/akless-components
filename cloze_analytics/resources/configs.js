@@ -8,8 +8,8 @@ ccm.files[ 'configs.js' ] = {
 
   "localhost": {
     "css": [ "ccm.load",
-      "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/bootstrap.css",
-      { "context": "head", "url": "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/font-face.css" },
+      "../libs/bootstrap/css/bootstrap.css",
+      { "context": "head", "url": "../libs/bootstrap/css/font-face.css" },
       "../cloze_analytics/resources/default.css"
     ],
     "sections": {
@@ -29,11 +29,6 @@ ccm.files[ 'configs.js' ] = {
   },
 
   "demo": {
-    "css": [ "ccm.load",
-      "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/bootstrap.css",
-      { "context": "head", "url": "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/font-face.css" },
-      "https://ccmjs.github.io/akless-components/cloze_analytics/resources/default.css"
-    ],
     "sections": {
       "results": "Show Results",
       "gaps": "Gap Analysis"
@@ -50,11 +45,6 @@ ccm.files[ 'configs.js' ] = {
   },
 
   "teacher": {
-    "css": [ "ccm.load",
-      "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/bootstrap.css",
-      { "context": "head", "url": "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/font-face.css" },
-      "https://ccmjs.github.io/akless-components/cloze_analytics/resources/default.css"
-    ],
     "sections": {
       "results": "Show Results",
       "gaps": "Gap Analysis"
