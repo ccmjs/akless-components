@@ -6,11 +6,19 @@
 
 ccm.files[ 'configs.js' ] = {
   "local": {
+    "css": [ "ccm.load",
+      "../libs/bootstrap/css/bootstrap.css",
+      { "context": "head", "url": "../libs/bootstrap/css/font-face.css" }
+    ],
     "builder": [ "ccm.component", "../cloze_builder/ccm.cloze_builder.js", { "submit_button": false } ],
     "url": "../cloze/ccm.cloze.js",
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ]
   },
   "localhost": {
+    "css": [ "ccm.load",
+      "../libs/bootstrap/css/bootstrap.css",
+      { "context": "head", "url": "../libs/bootstrap/css/font-face.css" }
+    ],
     "store": [ "ccm.store", { "store": "cloze", "url": "http://localhost:8080" } ],
     "builder": [ "ccm.component", "../cloze_builder/ccm.cloze_builder.js", { "submit_button": false } ],
     "url": "../cloze/ccm.cloze.js",
