@@ -88,7 +88,7 @@ ccm.files[ 'configs.js' ] = {
   "lea": {
     "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/cloze/resources/lea.css" ],
     "data": {
-      "store": [ "ccm.store", { "store": "cloze_results", "url": "https://ccm2.inf.h-brs.de", "method": "POST" } ],
+      "store": [ "ccm.store", { "store": "cloze_results", "url": "https://ccm-data.bib.h-brs.de", "method": "POST" } ],
       "key": "demo",
       "user": true
     },
