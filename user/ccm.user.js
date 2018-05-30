@@ -713,7 +713,7 @@
         function lea() {
 
           // render login form
-          renderLoginForm( { title: 'Sign in' }, ( username, password ) => {
+          renderLoginForm( { title: my.title }, ( username, password ) => {
 
             // perform login
             soap( {
@@ -734,7 +734,7 @@
               const token = />([^>]+::.+)<\/sid>/.exec( result )[ 1 ];
 
               // perform success callback
-              success( { user: username, token: token } );
+              success( username );
 
             }, () =>
               confirm( 'Try again?' ) && lea() );  // render login form again if user credentials are invalid
