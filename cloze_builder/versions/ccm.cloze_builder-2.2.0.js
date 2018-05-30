@@ -740,8 +740,8 @@
         ]
       },
       "css": [ "ccm.load",
-        "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/bootstrap.css",
-        { "context": "head", "url": "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/font-face.css" },
+        "https://ccmjs.github.io/akless-components/libs/bootstrap/css/bootstrap.css",
+        { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/bootstrap/css/font-face.css" },
         "https://ccmjs.github.io/akless-components/cloze_builder/resources/default.css"
       ],
       "defaults": {
@@ -756,6 +756,18 @@
         }
       },
       "editor": [ "ccm.component", "https://ccmjs.github.io/tkless-components/editor/versions/ccm.editor-2.0.0.js", {
+        "editor": [ "ccm.load",
+          [
+            [
+              "https://ccmjs.github.io/akless-components/libs/highlight/darcula.min.css",
+              "https://ccmjs.github.io/akless-components/libs/highlight/highlight.min.js"
+            ],
+            [
+              "https://ccmjs.github.io/akless-components/libs/quill/quill.min.js",
+              "https://ccmjs.github.io/akless-components/libs/quill/quill.snow.css"
+            ]
+          ]
+        ],
         "settings.modules.toolbar": [
           [ { 'header': [ 1, 2, 3, 4, 5, 6, false ] } ],
           [ "bold", "italic", "underline" ],

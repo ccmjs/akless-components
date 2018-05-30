@@ -7,22 +7,54 @@
 ccm.files[ 'configs.js' ] = {
 
   "local": {
-    "css.3": "../cloze_builder/resources/default.css",
+    "css": [ "ccm.load",
+      "../libs/bootstrap/css/bootstrap.css",
+      { "context": "head", "url": "../libs/bootstrap/css/font-face.css" },
+      "../cloze_builder/resources/default.css"
+    ],
     "data": {
       "store": [ "ccm.store", "../cloze_builder/resources/datasets.js" ],
       "key": "test"
     },
+    "editor.2.editor": [ "ccm.load",
+      [
+        [
+          "../libs/highlight/darcula.min.css",
+          "../libs/highlight/highlight.min.js"
+        ],
+        [
+          "../libs/quill/quill.min.js",
+          "../libs/quill/quill.snow.css"
+        ]
+      ]
+    ],
     "target": [ "ccm.component", "../cloze/ccm.cloze.js" ],
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
     "onfinish": { "log": true }
   },
 
   "localhost": {
-    "css.3": "../cloze_builder/resources/default.css",
+    "css": [ "ccm.load",
+      "../libs/bootstrap/css/bootstrap.css",
+      { "context": "head", "url": "../libs/bootstrap/css/font-face.css" },
+      "../cloze_builder/resources/default.css"
+    ],
     "data": {
       "store": [ "ccm.store", { "store": "cloze", "url": "http://localhost:8080" } ],
       "key": "test"
     },
+    "editor.2.editor": [ "ccm.load",
+      [
+        [
+          "../libs/highlight/darcula.min.css",
+          "../libs/highlight/highlight.min.js"
+        ],
+        [
+          "../libs/quill/quill.min.js",
+          "../libs/quill/quill.snow.css"
+        ]
+      ]
+    ],
     "target": [ "ccm.component", "../cloze/ccm.cloze.js" ],
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
     "onfinish": {
