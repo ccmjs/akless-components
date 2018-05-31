@@ -217,8 +217,6 @@ ccm.files[ 'configs.js' ] = {
   },
   "demo": {
     "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/quiz/resources/weblysleek.css", { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/weblysleekui/font.css" } ],
-    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-1.1.0.js" ],
-    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-1.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
     "questions": [
       {
         "text": "How many of these answers are correct?",
@@ -266,7 +264,7 @@ ccm.files[ 'configs.js' ] = {
     "feedback": true,
     "navigation": true,
     "placeholder.finish": "Restart",
-    "onfinish": { "restart": true }
+    "onfinish": { "log": true, "restart": true }
   },
   "local": {
     "css": [ "ccm.load", "../quiz/resources/weblysleek.css", { "context": "head", "url": "../libs/weblysleekui/font.css" } ],
