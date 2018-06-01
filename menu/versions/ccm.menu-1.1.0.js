@@ -8,6 +8,7 @@
  * - no privatization
  * - updated logged event data
  * - updated menu entry content and click handling
+ * - uses ccm v16.6.1
  * version 1.0.0 (09.05.2018): modernisation of old menu component
  */
 
@@ -31,8 +32,8 @@
      * @type {Object}
      */
     ccm: {
-      url: 'https://ccmjs.github.io/ccm/versions/ccm-16.5.1.js',
-      integrity: 'sha384-KZGgSb/NYKtO8XoAg5kU8K9O+dx3rbTwExHW1H6/b5JodEnfNIUdMCmTE/PAF0Of',
+      url: 'https://ccmjs.github.io/ccm/versions/ccm-16.6.1.js',
+      integrity: 'sha384-zCsUcQEg4NqpF91vJatXIU7aDUcYENcTCchNCwisDiA1ZzTR+ShsqJtmYIHG120k',
       crossorigin: 'anonymous'
     },
 
