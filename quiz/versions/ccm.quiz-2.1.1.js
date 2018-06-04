@@ -2,7 +2,7 @@
  * @overview ccm component for rendering a quiz
  * @author André Kless <andre.kless@web.de> 2016-2018
  * @license The MIT License (MIT)
- * @version latest (2.1.1)
+ * @version 2.1.1
  * @changes
  * version 2.1.1 (04.06.2018):
  * - uses ccm v16.6.1
@@ -27,7 +27,21 @@
 
     name: 'quiz',
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    /**
+     * component version
+     * @type {number[]}
+     */
+    version: [ 2, 1, 1 ],
+
+    /**
+     * reference to used framework version
+     * @type {Object}
+     */
+    ccm: {
+      url: 'https://ccmjs.github.io/ccm/versions/ccm-16.6.1.js',
+      integrity: 'sha384-zCsUcQEg4NqpF91vJatXIU7aDUcYENcTCchNCwisDiA1ZzTR+ShsqJtmYIHG120k',
+      crossorigin: 'anonymous'
+    },
 
     config: {
 
