@@ -42,7 +42,6 @@
      */
     name: 'cloze_builder',
 
-
     /**
      * component version
      * @type {number[]}
