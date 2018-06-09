@@ -101,7 +101,7 @@ ccm.files[ 'configs.js' ] = {
       "key": "demo"
     },
     "defaults.user": "['ccm.instance','https://ccmjs.github.io/akless-components/user/versions/ccm.user-7.0.0.js',{'realm':'LEA'}]",
-    "defaults.css": "['ccm.load','https://ccmjs.github.io/akless-components/cloze/resources/lea.css','https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css',{'context':'head','url':'https://fonts.googleapis.com/css?family=Montserrat:200'}]",
+    "defaults.css": "['ccm.load','https://ccmjs.github.io/akless-components/cloze/resources/lea.css']",
     "submit_button": "Submit",
     "onfinish": {
       "store": {
