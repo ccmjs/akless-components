@@ -20,19 +20,18 @@ ccm.files[ 'configs.js' ] = {
       "store": [ "ccm.store", { "store": "teambuild", "url": "wss://ccm2.inf.h-brs.de" } ],
       "key": "demo"
     },
-    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-7.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "guest" ] ]
+    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-7.0.0.js", { "key": [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "guest" ], "logged_in": true } ]
   },
   "clicker": {
-    "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/teambuild/resources/akless.css" ],
+    "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/teambuild/resources/default.css" ],
     "data": {
-      "store": [ "ccm.store", { "store": "teambuild", "url": "wss://ccm2.inf.h-brs.de", "db": "redis" } ],
+      "store": [ "ccm.store", { "store": "teambuild", "url": "wss://ccm2.inf.h-brs.de" } ],
       "key": "clicker"
     },
-    "names": [ "Stimmt", "Stimmt nicht", "Kommt drauf an" ],
+    "names": [ "Right", "Wrong", "Don't Know" ],
     "max_teams": 3,
     "editable": { "join": true, "leave": true, "rename": false },
-    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-2.0.1.js", { "logged_in": true, "sign_on": "demo" } ],
-    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-1.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ]
+    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-7.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "guest" ] ]
   },
   "se_ws17_gr1": {  // created for ccm.teambuild-1.0.0.js
     "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/teambuild/resources/akless.css" ],
