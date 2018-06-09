@@ -51,7 +51,7 @@
           { "id": "chart" }
         ]
       },
-      "libs": [ "ccm.load", "https://code.highcharts.com/highcharts.js" ],
+      "libs": [ "ccm.load", "https://ccmjs.github.io/akless-components/libs/highcharts/highcharts.min.js" ],
       "data": {}
 
   //  "css": [ "ccm.load": "https://ccmjs.github.io/akless-components/highchart/resources/default.css" ],

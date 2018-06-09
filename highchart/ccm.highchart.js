@@ -30,7 +30,7 @@
 
     /**
      * default instance configuration
-     * @type {object}
+     * @type {Object}
      */
     config: {
 
@@ -41,7 +41,7 @@
           { "id": "chart" }
         ]
       },
-      "libs": [ "ccm.load", "https://code.highcharts.com/highcharts.js" ],
+      "libs": [ "ccm.load", "https://ccmjs.github.io/akless-components/libs/highcharts/highcharts.min.js" ],
       "data": {}
 
   //  "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/highchart/resources/default.css" ],
@@ -75,7 +75,7 @@
 
       /**
        * privatized instance members
-       * @type {object}
+       * @type {Object}
        */
       let my;
 
@@ -178,7 +178,7 @@
 
           /**
            * returns the chart settings
-           * @type {object}
+           * @type {Object}
            */
           function getChartSettings() {
 
