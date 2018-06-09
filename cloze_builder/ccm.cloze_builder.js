@@ -274,12 +274,12 @@
                           {
                             "tag": "option",
                             "inner": "LEA-like",
-                            "value": "['ccm.load','https://ccmjs.github.io/akless-components/cloze/resources/lea.css','https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css',{'context':'head','url':'https://fonts.googleapis.com/css?family=Montserrat:200'}]"
+                            "value": "['ccm.load','https://ccmjs.github.io/akless-components/cloze/resources/lea.css']"
                           },
                           {
                             "tag": "option",
                             "inner": "PBWorks-like",
-                            "value": "['ccm.load','https://ccmjs.github.io/akless-components/cloze/resources/pbworks.css','https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css',{'context':'head','url':'https://fonts.googleapis.com/css?family=Montserrat:200'}]"
+                            "value": "['ccm.load','https://ccmjs.github.io/akless-components/cloze/resources/pbworks.css']"
                           }
                         ]
                       }

@@ -48,7 +48,7 @@ ccm.files[ 'configs.js' ] = {
         "value": "['ccm.instance','https://ccm-comp.bib.h-brs.de/ccm-components/user/versions/ccm.user-7.0.0.js',{'realm':'LEA'}]"
       },
       "defaults.user": "['ccm.instance','https://ccm-comp.bib.h-brs.de/ccm-components/user/versions/ccm.user-7.0.0.js',{'realm':'LEA'}]",
-      "defaults.css": "['ccm.load','https://ccm-comp.bib.h-brs.de/ccm-components/cloze/resources/lea.css','https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css',{'context':'head','url':'https://fonts.googleapis.com/css?family=Montserrat:200'}]",
+      "defaults.css": "['ccm.load','https://ccm-comp.bib.h-brs.de/ccm-components/cloze/resources/lea.css']",
       "submit_button": false
     } ],
     "store": [ "ccm.store", { "store": "cloze", "url": "https://ccm2.inf.h-brs.de" } ]
@@ -69,7 +69,6 @@ ccm.files[ 'configs.js' ] = {
         "value": "['ccm.instance','https://ccm-comp.bib.h-brs.de/ccm-components/user/versions/ccm.user-7.0.0.js',{'realm':'LEA'}]"
       },
       "defaults.user": "['ccm.instance','https://ccm-comp.bib.h-brs.de/ccm-components/user/versions/ccm.user-7.0.0.js',{'realm':'LEA'}]",
-      "defaults.css": "['ccm.load','https://ccm-comp.bib.h-brs.de/ccm-components/cloze/resources/lea.css','https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css',{'context':'head','url':'https://fonts.googleapis.com/css?family=Montserrat:200'}]",
       "submit_button": false
     } ],
     "store": [ "ccm.store", { "store": "teambuild", "url": "https://ccm2.inf.h-brs.de" } ]
