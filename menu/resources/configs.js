@@ -20,8 +20,7 @@ ccm.files[ 'configs.js' ] = {
     "data": {
       "store": [ "ccm.store", "https://ccmjs.github.io/akless-components/menu/resources/datasets.js" ],
       "key": "demo"
-    },
-    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/ccm.log.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ]
+    }
   },
 
   "icon": {
@@ -33,8 +32,7 @@ ccm.files[ 'configs.js' ] = {
     "data": {
       "store": [ "ccm.store", "https://ccmjs.github.io/akless-components/menu/resources/datasets.js" ],
       "key": "icon"
-    },
-    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/ccm.log.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ]
+    }
   },
 
   "bootstrap": {
@@ -67,8 +65,7 @@ ccm.files[ 'configs.js' ] = {
     "data": {
       "store": [ "ccm.store", "https://ccmjs.github.io/akless-components/menu/resources/datasets.js" ],
       "key": "demo"
-    },
-    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/ccm.log.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ]
+    }
   }
 
 };
