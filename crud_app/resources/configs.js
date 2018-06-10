@@ -32,6 +32,18 @@ ccm.files[ 'configs.js' ] = {
     "store": [ "ccm.store", { "store": "teambuild", "url": "https://ccm2.inf.h-brs.de" } ],
     "url": "https://ccmjs.github.io/akless-components/teambuild/versions/ccm.teambuild-2.0.0.js"
   },
+  "pdf_viewer": {
+    "builder": [ "ccm.component", "https://ccmjs.github.io/tkless-components/pdf_viewer_builder/versions/ccm.pdf_viewer_builder-2.0.0.js", {
+      "html.inner.1.inner.0": "",
+      "preview": true,
+      "file_upload": [ "ccm.component", "https://ccmjs.github.io/tkless-components/file_upload/versions/ccm.file_upload-2.0.0.js", {
+        "data_type": "pdf",
+        "data": { "store": [ "ccm.store", { "store": "file_upload", "url": "https://ccm2.inf.h-brs.de", "method": "POST" } ] },
+      } ]
+    } ],
+    "store": [ "ccm.store", { "store": "pdf_viewer", "url": "https://ccm2.inf.h-brs.de", "method": "POST" } ],
+    "url": "https://ccmjs.github.io/tkless-components/pdf_viewer/versions/ccm.pdf_viewer-3.0.0.js"
+  },
   "lea_cloze": {
     "builder": [ "ccm.component", "https://ccm-comp.bib.h-brs.de/ccm-components/cloze_builder/versions/ccm.cloze_builder-2.2.0.js", {
       "html.inner.1.inner.2.inner.0.inner.1.inner.1.inner.5": {
@@ -71,6 +83,7 @@ ccm.files[ 'configs.js' ] = {
       "defaults.user": "['ccm.instance','https://ccm-comp.bib.h-brs.de/ccm-components/user/versions/ccm.user-7.0.0.js',{'realm':'LEA'}]",
       "submit_button": false
     } ],
-    "store": [ "ccm.store", { "store": "teambuild", "url": "https://ccm2.inf.h-brs.de" } ]
+    "store": [ "ccm.store", { "store": "teambuild", "url": "https://ccm2.inf.h-brs.de" } ],
+    "url": "https://ccmjs.github.io/akless-components/teambuild/versions/ccm.teambuild-2.0.0.js"
   }
 };
