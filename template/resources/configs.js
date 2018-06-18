@@ -7,7 +7,7 @@
 ccm.files[ 'configs.js' ] = {
 
   "local": {
-    "css": [ "ccm.load", "../cloze/resources/default.css" ],
+    "css": [ "ccm.load", "../template/resources/default.css" ],
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
     "onfinish": { "log": true }
   },
