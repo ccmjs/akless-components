@@ -2,7 +2,7 @@
  * @overview ccm component for user authentication
  * @author André Kless <andre.kless@web.de> 2017-2018
  * @license The MIT License (MIT)
- * @version latest (7.0.1)
+ * @version 7.0.1
  * @changes
  * version 7.0.1 (18.06.2018)
  * - bugfix for context mode
