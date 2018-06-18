@@ -60,10 +60,20 @@
     name: 'user',
 
     /**
-     * recommended used framework version
-     * @type {string|{url: string, integrity: string, crossorigin: string}}
+     * component version
+     * @type {number[]}
      */
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    version: [ 7, 0, 1 ],
+
+    /**
+     * reference to used framework version
+     * @type {Object}
+     */
+    ccm: {
+      url: 'https://ccmjs.github.io/ccm/versions/ccm-16.6.1.js',
+      integrity: 'sha384-zCsUcQEg4NqpF91vJatXIU7aDUcYENcTCchNCwisDiA1ZzTR+ShsqJtmYIHG120k',
+      crossorigin: 'anonymous'
+    },
 
     /**
      * default instance configuration
