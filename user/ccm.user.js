@@ -847,7 +847,7 @@
       this.getRealm = () => {
 
         // context mode? => delegate method call
-        if ( my.context ) return my.context.getRealm();
+        if ( my && my.context ) return my.context.getRealm();
 
         return my ? my.realm : self.realm;
       };
