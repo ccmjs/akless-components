@@ -51,7 +51,7 @@
           }
         }
       },
-      "css": [ "ccm.load", "../menu/resources/default.css" ],
+      "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/menu/resources/default.css" ],
       "data": { "store": [ "ccm.store" ] }
 
   //  "selected": 2,
