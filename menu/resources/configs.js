@@ -66,6 +66,98 @@ ccm.files[ 'configs.js' ] = {
       "store": [ "ccm.store", "https://ccmjs.github.io/akless-components/menu/resources/datasets.js" ],
       "key": "demo"
     }
+  },
+
+  "tabs": {
+    "html": {
+      "main": {
+        "id": "main",
+        "inner": [
+          {
+            "tag": "ul",
+            "class": "nav nav-tabs",
+            "id": "entries"
+          },
+          {
+            "id": "content",
+            "style": "padding: 0.5rem;"
+          }
+        ]
+      },
+      "entry": {
+        "tag": "li",
+        "class": "entry",
+        "onclick": "%click%",
+        "style": "cursor: pointer",
+        "inner": {
+          "tag": "a",
+          "class": "title"
+        }
+      }
+    },
+    "css": [ "ccm.load",
+      "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/bootstrap.css",
+      { "context": "head", "url": "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/font-face.css" }
+    ],
+    "data": {
+      "store": [ "ccm.store", "https://ccmjs.github.io/akless-components/menu/resources/datasets.js" ],
+      "key": "demo"
+    },
+    "selected": 1
+  },
+
+  "list_group": {
+    "html": {
+      "main": {
+        "id": "main",
+        "inner": [
+          {
+            "class": "col-md-2",
+            "inner": {
+              "class": "list-group",
+              "id": "entries"
+            }
+          },
+          {
+            "id": "content",
+            "style": "padding: 0 16px 0 16px"
+          }
+        ]
+      },
+      "entry": {
+        "tag": "a",
+        "class": "entry list-group-item",
+        "onclick": "%click%",
+        "style": "cursor: pointer",
+        "inner": {
+          "class": "title"
+        }
+      }
+    },
+    "css": [ "ccm.load",
+      "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/bootstrap.css",
+      { "context": "head", "url": "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/font-face.css" }
+    ],
+    "data": {
+      "entries": [
+        {
+          "title": "Menu Item A",
+          "content": "Content of menu entry A",
+          "actions": [ [ "console.log", "Performed action of menu entry A." ] ]
+        },
+        {
+          "title": "Menu Item B",
+          "content": "Content of menu entry B",
+          "actions": [ [ "console.log", "Performed action of menu entry B." ] ]
+        },
+        {
+          "title": "Menu Item C",
+          "content": "Content of menu entry C",
+          "actions": [ [ "console.log", "Performed action of menu entry C." ] ]
+        }
+      ]
+    },
+    "selected": 1
   }
 
 };
