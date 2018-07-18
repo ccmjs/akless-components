@@ -2,7 +2,7 @@
  * @overview ccm component for rendering a menu
  * @author André Kless <andre.kless@web.de> 2015-2016, 2018
  * @license The MIT License (MIT)
- * @version latest (1.2.1)
+ * @version 1.2.1
  * @changes
  * version 1.2.1 (18.07.2018)
  * - bugfix for onclick callback
@@ -26,10 +26,20 @@
     name: 'menu',
 
     /**
-     * recommended used framework version
-     * @type {string}
+     * component version
+     * @type {number[]}
      */
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    version: [ 1, 2, 1 ],
+
+    /**
+     * reference to used framework version
+     * @type {Object}
+     */
+    ccm: {
+      url: 'https://ccmjs.github.io/ccm/versions/ccm-16.7.0.js',
+      integrity: 'sha384-fk3OkuRXEnsul8MjBArcaNMkvTUS+Vr6YJMivVosPwMWyslsN2x0OFN8QoYyqWXL',
+      crossorigin: 'anonymous'
+    },
 
     /**
      * default instance configuration
