@@ -2,7 +2,7 @@
  * @overview ccm component for user authentication
  * @author André Kless <andre.kless@web.de> 2017-2018
  * @license The MIT License (MIT)
- * @version latest (7.1.0)
+ * @version 7.1.0
  * @changes
  * version 7.1.0 (20.08.2018) based on suggestions for changes by mkaul
  * - added realm 'hbrsinfpseudo'
@@ -62,10 +62,20 @@
     name: 'user',
 
     /**
-     * recommended used framework version
-     * @type {string|{url: string, integrity: string, crossorigin: string}}
+     * component version
+     * @type {number[]}
      */
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    version: [ 7, 1, 0 ],
+
+    /**
+     * reference to used framework version
+     * @type {Object}
+     */
+    ccm: {
+      url: 'https://ccmjs.github.io/ccm/versions/ccm-16.7.0.js',
+      integrity: 'sha384-fk3OkuRXEnsul8MjBArcaNMkvTUS+Vr6YJMivVosPwMWyslsN2x0OFN8QoYyqWXL',
+      crossorigin: 'anonymous'
+    },
 
     /**
      * default instance configuration

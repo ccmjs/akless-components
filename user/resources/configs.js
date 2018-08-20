@@ -52,6 +52,9 @@ ccm.files[ 'configs.js' ] = {
   "hbrsinfkaul": {
     "realm": "hbrsinfkaul"
   },
+  "hbrsinfpseudo": {
+    "realm": "hbrsinfpseudo"
+  },
   "lea": {
     "realm": "LEA",
     "title": "Please enter your LEA username and password"
