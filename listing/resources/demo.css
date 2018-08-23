@@ -1,0 +1,50 @@
+/**
+ * @overview demo layout of ccm component for a listing
+ * @author André Kless <andre.kless@web.de.de> 2018
+ * @license MIT License
+ */
+
+#element {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+#entries {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#entries.empty::before {
+  content: 'Nothing to display';
+}
+
+#entries .entry {
+  padding: 1em;
+  overflow: hidden;
+  display: flex;
+  cursor: pointer;
+}
+
+#entries .entry:hover {
+  border-radius: 0.5em;
+  background-color: rgba(153, 153, 153, 0.06);
+}
+
+#entries .entry .left {
+  margin-right: 0.5em;
+  width: 2em;
+  height: 2em;
+}
+
+#entries .entry .title {
+  font-size: 16px;
+  white-space: nowrap;
+  padding-left: 2px;
+}
+
+#entries .entry .subtitle {
+  font-family: Verdana, sans-serif;
+  font-size: 12px;
+  color: #999999;
+  white-space: nowrap;
+  padding-left: 2px;
+}
