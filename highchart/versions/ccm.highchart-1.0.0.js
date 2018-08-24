@@ -34,7 +34,7 @@
      */
     ccm: {
       url: 'https://ccmjs.github.io/ccm/versions/ccm-12.12.0.js',
-      integrity: 'sha384-1pDRNaBU2okRlEuyNp8icKgmsidtnoBsvFtbReMBrQv1bgQqCun0aw5DuTKu61Ts',
+      integrity: 'sha384-L9TzqdmJce0cLw1KNytOxpD6Ujh5xy2yZr74nlNVnHRCbWMsrdRWnV037xYTBOj6',
       crossorigin: 'anonymous'
     },
 
