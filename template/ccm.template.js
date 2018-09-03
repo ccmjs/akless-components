@@ -13,7 +13,7 @@
 
     name: 'template',
 
-    ccm: '../../ccm/ccm.js',
+    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
 
     config: {
 
