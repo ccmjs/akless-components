@@ -2,7 +2,7 @@
  * @overview ccm component for data logging
  * @author André Kless <andre.kless@web.de> 2016-2018
  * @license The MIT License (MIT)
- * @version latest (4.0.1)
+ * @version 4.0.1
  * @changes
  * version 4.0.1 (03.09.2018)
  * - bug fix for cloning event specific informations
@@ -32,7 +32,13 @@
 
     name: 'log',
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    version: [ 4, 0, 1 ],
+
+    ccm: {
+      url: 'https://ccmjs.github.io/ccm/versions/ccm-18.0.0.js',
+      integrity: 'sha384-Z24PAygnEDOMzSZcSDCUKH7KAsmQy9m7cjG5RgbfDIxzCKmJPxrs7duDV9T0Hqdd',
+      crossorigin: 'anonymous'
+    },
 
     config: {
 
