@@ -6,6 +6,7 @@
  * @changes
  * version 7.1.0 (20.08.2018) based on suggestions for changes by mkaul
  * - added realm 'hbrsinfpseudo'
+ * - bugfix: input field for username and password is required
  * version 7.0.1 (18.06.2018)
  * - bugfix for context mode
  * version 7.0.0
@@ -150,6 +151,7 @@
                         "id": "loginform",
                         "class": "form-horizontal",
                         "role": "form",
+                        "onsubmit": "%login%",
                         "inner": [
                           {
                             "id": "username-entry",
@@ -203,11 +205,11 @@
                               "class": "col-sm-12 controls",
                               "inner": [
                                 {
-                                  "tag": "a",
+                                  "tag": "input",
+                                  "type": "submit",
                                   "id": "btn-login",
                                   "class": "btn btn-success",
-                                  "onclick": "%login%",
-                                  "inner": "Login"
+                                  "value": "Login"
                                 },
                                 {
                                   "tag": "a",
@@ -682,7 +684,7 @@
           } ) );
 
           // no password needed? => hide input field for password
-          if ( my.no_password ) self.element.querySelector( '#password-entry' ).style.display = 'none';
+          if ( my.no_password ) $.removeElement( self.element.querySelector( '#password-entry' ) );
 
         }
 
