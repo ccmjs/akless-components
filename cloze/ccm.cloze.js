@@ -27,7 +27,7 @@
 
     name: 'cloze',
 
-    ccm: '../../ccm/ccm.js',
+    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
 
     config: {
 
