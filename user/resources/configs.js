@@ -13,7 +13,6 @@ ccm.files[ 'configs.js' ] = {
     ],
     "realm": "guest",
     "title": "Guest Mode: Please enter any username",
-    "no_password": true,
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ]
   },
   "localhost": {
@@ -23,27 +22,22 @@ ccm.files[ 'configs.js' ] = {
       "../user/resources/default.css"
     ],
     "realm": "demo",
-    "url": "http://localhost:8080",
     "title": "Demo Mode: Please enter any username",
-    "no_password": true,
+    "url": "http://localhost:8080",
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ]
   },
   "guest": {
     "realm": "guest",
-    "title": "Guest Mode: Please enter any username",
-    "no_password": true
+    "title": "Guest Mode: Please enter any username"
   },
   "pseudo": {
     "realm": "guest",
-    "guest": true,
-    "title": "Guest Mode: Please enter any username",
-    "no_password": true
+    "guest": true
   },
   "demo": {
     "realm": "demo",
-    "url": "https://ccm2.inf.h-brs.de",
     "title": "Demo Mode: Please enter any username",
-    "no_password": true
+    "url": "https://ccm2.inf.h-brs.de"
   },
   "cloud": {
     "realm": "cloud",
@@ -54,9 +48,5 @@ ccm.files[ 'configs.js' ] = {
   },
   "hbrsinfpseudo": {
     "realm": "hbrsinfpseudo"
-  },
-  "lea": {
-    "realm": "LEA",
-    "title": "Please enter your LEA username and password"
   }
 };
