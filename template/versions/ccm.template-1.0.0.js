@@ -17,7 +17,7 @@
 
     ccm: {
       url: 'https://ccmjs.github.io/ccm/versions/ccm-18.0.0.js',
-      integrity: 'sha384-Z24PAygnEDOMzSZcSDCUKH7KAsmQy9m7cjG5RgbfDIxzCKmJPxrs7duDV9T0Hqdd',
+      integrity: 'sha384-2cJB/tabO0FVwBrGWbiO4Y4x8HNczYheiARkttBCpEmlJNZAi049MRpyS7Y1BPq2',
       crossorigin: 'anonymous'
     },
 
