@@ -13,11 +13,11 @@ ccm.files[ 'configs.js' ] = {
     },
     "content": [ "ccm.component", "../content/ccm.content.js" ],
     "cloze_builder": [ "ccm.component", "../cloze_builder/ccm.cloze_builder.js", {
-      "key": [ "ccm.get", "https://ccmjs.github.io/akless-components/cloze_builder/resources/configs.js", "local" ],
+      "key": [ "ccm.get", "../cloze_builder/resources/configs.js", "local" ],
       "submit_button": false
     } ],
     "teambuild_builder": [ "ccm.component", "../teambuild_builder/ccm.teambuild_builder.js", {
-      "key": [ "ccm.get", "https://ccmjs.github.io/akless-components/teambuild_builder/resources/configs.js", "local" ],
+      "key": [ "ccm.get", "../teambuild_builder/resources/configs.js", "local" ],
       "submit_button": false
     } ],
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
@@ -31,11 +31,11 @@ ccm.files[ 'configs.js' ] = {
     },
     "content": [ "ccm.component", "../content/ccm.content.js" ],
     "cloze_builder": [ "ccm.component", "../cloze_builder/ccm.cloze_builder.js", {
-      "key": [ "ccm.get", "https://ccmjs.github.io/akless-components/cloze_builder/resources/configs.js", "localhost" ],
+      "key": [ "ccm.get", "../cloze_builder/resources/configs.js", "localhost" ],
       "submit_button": false
     } ],
     "teambuild_builder": [ "ccm.component", "../teambuild_builder/ccm.teambuild_builder.js", {
-      "key": [ "ccm.get", "https://ccmjs.github.io/akless-components/teambuild_builder/resources/configs.js", "localhost" ],
+      "key": [ "ccm.get", "../teambuild_builder/resources/configs.js", "localhost" ],
       "submit_button": false
     } ],
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
