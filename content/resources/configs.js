@@ -5,10 +5,10 @@
  */
 
 ccm.files[ 'configs.js' ] = {
-  "demo": {
-    "inner": "<source src=https://ccmjs.github.io/akless-components/blank/ccm.blank.js>Welcome.<ccm-blank></ccm-blank>"
-  },
   "local": {
     "inner": "<source src=../blank/ccm.blank.js>Welcome.<ccm-blank></ccm-blank>"
+  },
+  "demo": {
+    "inner": "<source src=https://ccmjs.github.io/akless-components/blank/ccm.blank.js>Welcome.<ccm-blank></ccm-blank>"
   }
 };
