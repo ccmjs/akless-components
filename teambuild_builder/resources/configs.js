@@ -19,8 +19,8 @@ ccm.files[ 'configs.js' ] = {
 
   "localhost": {
     "css": [ "ccm.load",
-      "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/bootstrap.css",
-      { "context": "head", "url": "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/font-face.css" },
+      "../libs/bootstrap/css/bootstrap.css",
+      { "context": "head", "url": "../libs/bootstrap/css/font-face.css" },
       "../teambuild_builder/resources/default.css"
     ],
     "data": {
@@ -42,7 +42,7 @@ ccm.files[ 'configs.js' ] = {
       },
       "data.store": "['ccm.store',{'store':'teambuild_data','url':'ws://localhost:8080'}]",
       "data.key": "test",
-      "user": "['ccm.instance','https://ccmjs.github.io/akless-components/user/versions/ccm.user-7.0.0.js',['ccm.get','https://ccmjs.github.io/akless-components/user/resources/configs.js','guest']]"
+      "user": "['ccm.instance','../user/ccm.user.js',['ccm.get','resources/configs.js','guest']]"
     },
     "target": [ "ccm.component", "../teambuild/ccm.teambuild.js" ],
     "onfinish": {
@@ -57,8 +57,8 @@ ccm.files[ 'configs.js' ] = {
 
   "demo": {
     "css": [ "ccm.load",
-      "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/bootstrap.css",
-      { "context": "head", "url": "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/font-face.css" },
+      "https://ccmjs.github.io/akless-components/libs/bootstrap/css/bootstrap.css",
+      { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/bootstrap/css/font-face.css" },
       "https://ccmjs.github.io/akless-components/teambuild_builder/resources/default.css"
     ],
     "data": {
@@ -80,7 +80,7 @@ ccm.files[ 'configs.js' ] = {
       },
       "data.store": "['ccm.store',{'store':'teambuild_data','url':'wss://ccm2.inf.h-brs.de'}]",
       "data.key": "demo",
-      "user": "['ccm.instance','https://ccmjs.github.io/akless-components/user/versions/ccm.user-7.0.0.js',['ccm.get','https://ccmjs.github.io/akless-components/user/resources/configs.js','guest']]"
+      "user": "['ccm.instance','https://ccmjs.github.io/akless-components/user/versions/ccm.user-7.1.0.js',['ccm.get','https://ccmjs.github.io/akless-components/user/resources/configs.js','guest']]"
     },
     "submit_button": "Submit",
     "target": [ "ccm.component", "https://ccmjs.github.io/akless-components/teambuild/versions/ccm.teambuild-2.0.0.js" ],
@@ -95,8 +95,8 @@ ccm.files[ 'configs.js' ] = {
 
   "crud": {
     "css": [ "ccm.load",
-      "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/bootstrap.css",
-      { "context": "head", "url": "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/font-face.css" },
+      "https://ccmjs.github.io/akless-components/libs/bootstrap/css/bootstrap.css",
+      { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/bootstrap/css/font-face.css" },
       "https://ccmjs.github.io/akless-components/teambuild_builder/resources/default.css"
     ],
     "data": {
@@ -116,7 +116,7 @@ ccm.files[ 'configs.js' ] = {
         "message": "Nothing to display."
       },
       "data.store": "['ccm.store',{'store':'teambuild_data','url':'wss://ccm2.inf.h-brs.de'}]",
-      "user": "['ccm.instance','https://ccmjs.github.io/akless-components/user/versions/ccm.user-7.0.0.js',['ccm.get','https://ccmjs.github.io/akless-components/user/resources/configs.js','guest']]"
+      "user": "['ccm.instance','https://ccmjs.github.io/akless-components/user/versions/ccm.user-7.1.0.js',['ccm.get','https://ccmjs.github.io/akless-components/user/resources/configs.js','guest']]"
     },
     "submit_button": "Submit",
     "target": [ "ccm.component", "https://ccmjs.github.io/akless-components/teambuild/versions/ccm.teambuild-2.0.0.js" ],
