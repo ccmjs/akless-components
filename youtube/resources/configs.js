@@ -12,7 +12,6 @@ ccm.files[ 'configs.js' ] = {
   },
   "demo": {
     "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/youtube/resources/default.css" ],
-    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-2.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
     "onfinish": { "restart": true }
   },
   "se_ws17": {
