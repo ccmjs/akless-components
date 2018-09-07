@@ -2,8 +2,10 @@
  * @overview ccm component for submitting data
  * @author André Kless <andre.kless@web.de> 2018
  * @license The MIT License (MIT)
- * @version latest (3.1.2)
+ * @version latest (4.0.0)
  * @changes
+ * version 4.0.0 (??.??.2018):
+ * - ...
  * version 3.1.2 (14.05.2018):
  * - bugfix for ccm-based input elements
  * version 3.1.1 (07.05.2018):
@@ -29,25 +31,14 @@
  * version 1.0.0 (26.01.2018)
  */
 
-{
-  var component  = {
+( function () {
 
-    /**
-     * unique component name
-     * @type {string}
-     */
+  const component = {
+
     name: 'submit',
 
-    /**
-     * recommended used framework version
-     * @type {string}
-     */
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    ccm: '../../ccm/ccm.js',
 
-    /**
-     * default instance configuration
-     * @type {Object}
-     */
     config: {
 
       "data": { "store": [ "ccm.store" ] }
@@ -59,28 +50,8 @@
 
     },
 
-    /**
-     * for creating instances of this component
-     * @constructor
-     */
     Instance: function () {
 
-      /**
-       * own reference for inner functions
-       * @type {Instance}
-       */
-      let self = this;
-
-      /**
-       * privatized instance members
-       * @type {Object}
-       */
-      let my;
-
-      /**
-       * shortcut to help functions
-       * @type {Object}
-       */
       let $;
 
       /**
@@ -95,51 +66,26 @@
        */
       let element;
 
-      /**
-       * is called once after the initialization and is then deleted
-       * @param {function} callback - called after all synchronous and asynchronous operations are complete
-       */
-      this.ready = callback => {
+      this.ready = async () => {
 
         // set shortcut to help functions
-        $ = self.ccm.helper;
+        $ = this.ccm.helper;
 
-        // privatize all possible instance members
-        my = $.privatize( self );
+        // logging of 'ready' event
+        this.logger && this.logger.log( 'ready', $.privatize( this, true ) );
 
-        // no given Light DOM? => abort
-        if ( !my.inner ) return callback();
-
-        // Light DOM is given as string? => convert to DOM structure
-        if ( typeof my.inner === 'string' ) {
-          const div = document.createElement( 'div' );
-          div.innerHTML = my.inner;
-          my.inner = div;
-        }
-
-        // Light DOM is given as ccm HTML data? => convert it to Element Node
-        if ( !$.isElementNode( my.inner ) ) my.inner = $.html( my.inner );
-
-        // has logger instance? => log 'ready' event
-        self.logger && self.logger.log( 'ready', $.clone( my ) );
-
-        callback();
       };
 
-      /**
-       * starts the instance
-       * @param {function} [callback] - called after all synchronous and asynchronous operations are complete
-       */
-      this.start = callback => {
+      this.start = async () => {
 
-        // no given Light DOM? => abort
-        if ( !my.inner ) { callback && callback(); return; }
+        // no Light DOM? => abort
+        if ( !this.inner ) return;
 
         /**
          * deep copy of initial Light DOM
          * @type {Element}
          */
-        const inner = my.inner.cloneNode( true );
+        const inner = this.inner.cloneNode( true );
 
         // reset data for ccm-based input elements
         inputs = [];
@@ -176,10 +122,10 @@
             default: // manage ccm-based input elements
 
               // check whether there is a dependent subcomponent in this config for this input type
-              if ( !my[ type ] ) return;
+              if ( !this[ type ] ) return;
 
               // create a loading symbol
-              let loading = $.loading( self );
+              let loading = $.loading( this );
 
               // remember this loading element, the type und the name of this input element
               inputs.push( {
@@ -195,134 +141,120 @@
 
         } );
 
-        // has given content component? => process the Light DOM via the content component
-        my.content ? my.content.start( { inner: inner }, proceed ) : proceed();
+        // has given content component? => process Light DOM via content component
+        const content = this.content && await this.content.start( { inner: inner } );
 
-        /** @param {Object} content - ccm instance of content component */
-        function proceed( content ) {
+        // put LightDOM into ShadowDOM
+        $.setContent( this.element, content ? content.root : inner );
 
-          // put LightDOM into ShadowDOM
-          $.setContent( self.element, content ? content.root : inner );
+        // remember element that contains the Light DOM
+        element = content ? content.element : this.element;
 
-          // remember element that contains the Light DOM
-          element = content ? content.element : self.element;
+        /**
+         * submit button
+         * @type {Element}
+         */
+        const submit = element.querySelector( 'input[type=submit]' );
 
-          /**
-           * submit button
-           * @type {Element}
-           */
-          const submit = element.querySelector( 'input[type=submit]' );
+        // has submit button?
+        if ( submit ) {
 
-          // has submit button?
-          if ( submit ) {
+          // submit button is disabled until all subcomponents are ready
+          submit.disabled = true;
 
-            // submit button is disabled until all subcomponents are ready
-            submit.disabled = true;
+          // wrap own content with a form tag to support browser validation on input fields
+          const form = document.createElement( 'form' );
+          element.parentNode.replaceChild( form, element );
+          form.appendChild( element );
 
-            // wrap own content with a form tag to support browser validation on input fields
-            const form = document.createElement( 'form' );
-            element.parentNode.replaceChild( form, element );
-            form.appendChild( element );
+          // set submit event
+          form.onsubmit = async event => {
 
-            // set submit event
-            form.onsubmit = () => {
+            // prevent page reload
+            event.preventDefault();
 
-              // has user instance? => login user (if not already logged in)
-              if ( self.user ) self.user.login( proceed ); else proceed();
-
-              // prevent page reload
-              return false;
-
-              function proceed() {
-
-                /**
-                 * resulting form data
-                 * @type {Object}
-                 */
-                let results = self.getValue();
-
-                // should events be logged? => log submit event
-                if ( self.logger ) self.logger.log( 'submit', results );
-
-                // perform 'finish' actions and provide result data
-                self.onfinish && $.onFinish( self, results );
-
-              }
-
-            };
-
-          }
-
-          // get start values for input elements
-          $.dataset( my.data, dataset => {
-
-            // has logger instance? => log 'start' event
-            self.logger && self.logger.log( 'start', $.clone( dataset ) );
-
-            // fill input elements with the start values
-            $.fillForm( element, dataset );
+            // has user instance? => login user (if not already logged in)
+            this.user && await this.user.login();
 
             /**
-             * counter for parallel asynchronous operations
-             * @type {number}
+             * resulting form data
+             * @type {Object}
              */
-            let counter = 1;
+            let results = this.getValue();
 
-            // iterate over all collected data for ccm-based input elements
-            inputs.map( input => {
+            // logging of 'submit' event
+            this.logger && this.logger.log( 'submit', results );
 
-              // start of a new asynchron operation => increment counter
-              counter++;
+            // perform 'finish' actions and provide result data
+            this.onfinish && $.onFinish( this, results );
 
-              // create and start a ccm instance for each ccm-based input element
-              my[ input.type ].start( {
-                data: {
-                  store: [ 'ccm.store', { config: dataset[ input.name ] } ],
-                  key: 'config'
-                }
-              }, instance => {
+          };
 
-                // add instance to collected data of this ccm-based input element
-                input.instance = instance;
+        }
 
-                // replace loading symbol with the instance content
-                input.elem.parentNode.replaceChild( instance.root, input.elem );
+        // get start values for input elements
+        const dataset = await $.dataset( this.data );
 
-                // check if this was the last asynchronous operation
-                check();
+        // logging of 'start' event
+        this.logger && this.logger.log( 'start', $.clone( dataset ) );
 
-              } );
+        // fill input elements with the start values
+        $.fillForm( element, dataset );
 
-            } );
+        /**
+         * counter for parallel asynchronous operations
+         * @type {number}
+         */
+        let counter = 1;
 
-            // check if no asynchronous operations were started
+        // iterate over all collected data for ccm-based input elements
+        inputs.forEach( input => {
+
+          // start of a new asynchron operation => increment counter
+          counter++;
+
+          // create and start a ccm instance for each ccm-based input element
+          this[ input.type ].start( {
+            data: {
+              store: [ 'ccm.store', { config: dataset[ input.name ] } ],
+              key: 'config'
+            }
+          }, instance => {
+
+            // add instance to collected data of this ccm-based input element
+            input.instance = instance;
+
+            // replace loading symbol with the instance content
+            input.elem.parentNode.replaceChild( instance.root, input.elem );
+
+            // check if this was the last asynchronous operation
             check();
 
-            /** check if all started asynchronous operations have been completed */
-            function check() {
-
-              // a asynchronous operation is finished => decrease counter
-              counter--;
-
-              // another started asynchronous operations is not finished yet? => abort
-              if ( counter > 0 ) return;
-
-              // submit button is enabled when all ccm-based input elements are ready
-              if ( submit ) submit.disabled = false;
-
-              // rendering completed => perform callback
-              callback && callback();
-
-            }
-
           } );
+
+        } );
+
+        // check if no asynchronous operations were started
+        check();
+
+        /** check if all started asynchronous operations have been completed */
+        function check() {
+
+          // a asynchronous operation is finished => decrease counter
+          counter--;
+
+          // another started asynchronous operations is not finished yet? => abort
+          if ( counter > 0 ) return;
+
+          // submit button is enabled when all ccm-based input elements are ready
+          if ( submit ) submit.disabled = false;
 
         }
 
       };
 
       /**
-       * returns the resulting form data
+       * returns resulting form data
        * @returns {Object} resulting form data
        */
       this.getValue = () => {
@@ -345,5 +277,5 @@
 
   };
 
-  function p(){window.ccm[v].component(component)}const f="ccm."+component.name+(component.version?"-"+component.version.join("."):"")+".js";if(window.ccm&&null===window.ccm.files[f])window.ccm.files[f]=component;else{const n=window.ccm&&window.ccm.components[component.name];n&&n.ccm&&(component.ccm=n.ccm),"string"===typeof component.ccm&&(component.ccm={url:component.ccm});var v=component.ccm.url.split("/").pop().split("-");if(v.length>1?(v=v[1].split("."),v.pop(),"min"===v[v.length-1]&&v.pop(),v=v.join(".")):v="latest",window.ccm&&window.ccm[v])p();else{const e=document.createElement("script");document.head.appendChild(e),component.ccm.integrity&&e.setAttribute("integrity",component.ccm.integrity),component.ccm.crossorigin&&e.setAttribute("crossorigin",component.ccm.crossorigin),e.onload=function(){p(),document.head.removeChild(e)},e.src=component.ccm.url}}
-}
+  let b="ccm."+component.name+(component.version?"-"+component.version.join("."):"")+".js";if(window.ccm&&null===window.ccm.files[b])return window.ccm.files[b]=component;(b=window.ccm&&window.ccm.components[component.name])&&b.ccm&&(component.ccm=b.ccm);"string"===typeof component.ccm&&(component.ccm={url:component.ccm});let c=(component.ccm.url.match(/(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)/)||["latest"])[0];if(window.ccm&&window.ccm[c])window.ccm[c].component(component);else{var a=document.createElement("script");document.head.appendChild(a);component.ccm.integrity&&a.setAttribute("integrity",component.ccm.integrity);component.ccm.crossorigin&&a.setAttribute("crossorigin",component.ccm.crossorigin);a.onload=function(){window.ccm[c].component(component);document.head.removeChild(a)};a.src=component.ccm.url}
+} )();

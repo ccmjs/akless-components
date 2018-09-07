@@ -5,14 +5,10 @@
  * @license The MIT License (MIT)
  */
 
-#logged_in {
-  display: flex;
-  align-items: flex-end;
-}
-
 #logged_in,
 #logged_out {
-  float: right;
+  display: inline-flex;
+  align-items: flex-end;
 }
 
 #logged_in #button {

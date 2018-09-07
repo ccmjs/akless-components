@@ -34,11 +34,7 @@
 
     version: [ 4, 0, 1 ],
 
-    ccm: {
-      url: 'https://ccmjs.github.io/ccm/versions/ccm-18.0.0.js',
-      integrity: 'sha384-Z24PAygnEDOMzSZcSDCUKH7KAsmQy9m7cjG5RgbfDIxzCKmJPxrs7duDV9T0Hqdd',
-      crossorigin: 'anonymous'
-    },
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-18.0.0.js',
 
     config: {
 

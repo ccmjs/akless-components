@@ -7,11 +7,11 @@
 
 ( function () {
 
-  var component = {
+  const component = {
 
     name: 'testsuite',
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    ccm: '../../ccm/ccm.js',
 
     config: {
 
@@ -61,7 +61,7 @@
           ]
         }
       },
-      "css": [ "ccm.load", "../testsuite/resources/default.css" ],
+      "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/testsuite/resources/default.css" ],
       "onfinish": { "log": true }
 
   //  tests
@@ -71,44 +71,48 @@
 
     Instance: function () {
 
-      var self = this;
-      var my;           // contains privatized instance members
+      let $;
 
       /**
        * higher collected setup functions that have to be performed before each test
        * @type {function[]}
        */
-      var setups = [];
+      const setups = [];
 
       /**
        * higher collected finalize functions that have to be performed after each test
        * @type {function[]}
        */
-      var finallies = [];
+      const finallies = [];
 
-      this.ready = function ( callback ) {
+      this.ready = async () => {
 
-        // privatize all possible instance members
-        my = self.ccm.helper.privatize( self );
+        // set shortcut to help functions
+        $ = this.ccm.helper;
 
         // no package path? => abort
-        if ( !my.package ) return callback();
+        if ( !this.package ) return;
 
         // navigate to the relevant test package and collect setup and finally functions along the way
-        var array = my.package.split( '.' );
+        const array = this.package.split( '.' );
         while ( array.length > 0 ) {
-          if ( my.tests.setup ) setups.push( my.tests.setup );            // collect founded setup    function
-          if ( my.tests.finally ) finallies.unshift( my.tests.finally );  // collect founded finalize function
-          my.tests = my.tests[ array.shift() ];
+          if ( this.tests.setup   ) setups.push( this.tests.setup );          // collect founded setup    function
+          if ( this.tests.finally ) finallies.unshift( this.tests.finally );  // collect founded finalize function
+          this.tests = this.tests[ array.shift() ];
         }
 
-        callback();
       };
 
-      this.start = function ( callback ) {
+      this.start = async () => {
+
+        /**
+         * own reference for inner functions
+         * @type {Instance}
+         */
+        const self = this;
 
         // set initial result data
-        var results = {
+        const results = {
           executed: 0,  // number of executed tests
           passed:   0,  // number of   passed tests
           failed:   0,  // number of   failed tests
@@ -116,19 +120,20 @@
         };
 
         // has website area? => render main HTML structure
+        let main_elem, packages_elem;
         if ( self.element ) {
-          var main_elem     = self.ccm.helper.html( my.html.main );
-          var packages_elem = main_elem.querySelector( '#packages' );
-          self.ccm.helper.setContent( self.element, main_elem );
+          main_elem = $.html( self.html.main );
+          packages_elem = main_elem.querySelector( '#packages' );
+          $.setContent( self.element, main_elem );
         }
 
         // process relevant test package (including all subpackages)
-        processPackage( my.package || '', my.tests, setups, finallies, finish );
+        processPackage( self.package || '', self.tests || {}, setups, finallies, finish );
 
         /**
-         * processes current test package (recursive function)
+         * processes current test package (recursive)
          * @param {string} package_path - path to current test package
-         * @param {object} package_obj - data of the current test package
+         * @param {Object} package_obj - data of current test package
          * @param {function[]} setups - setup functions that have to be performed before each test
          * @param {function[]} finallies - finalize functions that have to be performed after each test
          * @param {function} callback
@@ -142,7 +147,7 @@
           if ( package_obj.finally ) { finallies = finallies.slice(); finallies.unshift( package_obj.finally ); }
 
           // has tests? => perform all these tests
-          if ( package_obj.tests ) runTests( proceed ); else proceed();
+          package_obj.tests ? runTests( proceed ) : proceed();
 
           function proceed() {
 
@@ -156,8 +161,8 @@
             /** processes current subpackage (recursive function) */
             function processNextSubpackage() {
 
-              for ( var key in package_obj ) {
-                var package = package_obj[ key ];
+              for ( const key in package_obj ) {
+                const package = package_obj[ key ];
                 delete package_obj[ key ];
                 processPackage( ( package_path ? package_path + '.' : '' ) + key, package, setups, finallies, processNextSubpackage );  // recursive call
                 return;
@@ -173,43 +178,48 @@
           /** performs all directly contained tests of the current test package */
           function runTests( callback ) {
 
-            var tests = prepareTests();
-            var i = 0;
+            const tests = prepareTests();
+            let i = 0;
 
             // has website area? => render (empty) test package
+            let table_elem;
             if ( self.element ) {
-              var package_elem = self.ccm.helper.html( my.html.package, package_path );
-              var table_elem = package_elem.querySelector( '.table' );
+              const package_elem = $.html( self.html.package, package_path );
+              table_elem = package_elem.querySelector( '.table' );
               packages_elem.appendChild( package_elem );
             }
 
             // run first contained test
             runNextTest();
 
-            /** runs current test (recursive function) */
+            /** runs current test (recursive) */
             function runNextTest() {
+
+              let test_elem;
 
               // all tests finished? => abort and perform callback
               if ( i === tests.length ) return callback();
+
+              let result_elem;
 
               // has website area?
               if ( self.element ) {
 
                 // show that another test will be executed
-                main_elem.querySelector( '#executed' ).appendChild( self.ccm.helper.loading( self ) );
+                main_elem.querySelector( '#executed' ).appendChild( $.loading( self ) );
 
                 // render table row for current test
-                var test_elem = self.ccm.helper.html( my.html.test, tests[ i ].name );
+                test_elem = $.html( self.html.test, tests[ i ].name );
                 table_elem.appendChild( test_elem ) ;
 
                 // for the moment render loading as result
-                var result_elem = test_elem.querySelector( '.result' );
-                result_elem.appendChild( self.ccm.helper.loading( self ) );
+                result_elem = test_elem.querySelector( '.result' );
+                result_elem.appendChild( $.loading( self ) );
 
               }
 
               // prepare test suite object for the current test
-              var suite = {
+              const suite = {
 
                 ccm: self.ccm,  // provide reference to ccm framework
 
@@ -249,11 +259,11 @@
 
                 /**
                  * finishes current test with positive result if given expected and actual value contains same data
-                 * @param {object} expected
-                 * @param {object} actual
+                 * @param {Object} expected
+                 * @param {Object} actual
                  */
                 assertSame: function ( expected, actual ) {
-                  var result = expected === actual;
+                  const result = expected === actual;
                   addResult( result );
                   if ( !result ) addComparison( expected, actual );
                   finishTest();
@@ -261,8 +271,8 @@
 
                 /**
                  * finishes current test with positive result if given expected value equals given actual value
-                 * @param {object} expected
-                 * @param {object} actual
+                 * @param {Object} expected
+                 * @param {Object} actual
                  */
                 assertEquals: function ( expected, actual ) {
                   suite.assertSame( JSON.stringify( expected ), JSON.stringify( actual ) );
@@ -270,19 +280,19 @@
 
                 /**
                  * finishes current test with positive result if given expected and actual value NOT contains same data
-                 * @param {object} expected
-                 * @param {object} actual
+                 * @param {Object} expected
+                 * @param {Object} actual
                  */
                 assertNotSame: function ( expected, actual ) {
-                  var result = expected !== actual;
+                  const result = expected !== actual;
                   addResult( result );
                   finishTest();
                 },
 
                 /**
                  * finishes current test with positive result if given expected value NOT equals given actual value
-                 * @param {object} expected
-                 * @param {object} actual
+                 * @param {Object} expected
+                 * @param {Object} actual
                  */
                 assertNotEquals: function ( expected, actual ) {
                   suite.assertNotSame( JSON.stringify( expected ), JSON.stringify( actual ) );
@@ -295,7 +305,7 @@
 
               /** runs all relevant setup functions (recursive function) */
               function runSetups( callback ) {
-                var i = 0;                           // Remember: Each setup function could be asynchron
+                let i = 0;                           // Remember: Each setup function could be asynchron
                 runSetup();                          //           and must performed sequentially
                 function runSetup() {                //           to avoid mutual influence.
                   if ( i === setups.length )
@@ -306,21 +316,21 @@
 
               /** replaces loading icon with test result and increases passed or failed counter */
               function addResult( result ) {
-                var value = result ? 'passed' : 'failed';
+                const value = result ? 'passed' : 'failed';
                 if ( result ) results.passed++; else results.failed++;
-                if ( self.element ) self.ccm.helper.setContent( result_elem, self.ccm.helper.html( my.html.result, { value: value } ) );
+                if ( self.element ) $.setContent( result_elem, $.html( self.html.result, { value: value } ) );
                 results.details[ package_path + '.' + tests[ i ].name ] = result;
               }
 
               /** show message as detail information for a failed test */
               function addMessage( message ) {
-                if ( self.element ) test_elem.appendChild( self.ccm.helper.html( my.html.message, message ) );
+                if ( self.element ) test_elem.appendChild( $.html( self.html.message, message ) );
                 results.details[ package_path + '.' + tests[ i ].name ] = message;
               }
 
               /** show expected and actual value as detail information for a failed test */
               function addComparison( expected, actual ) {
-                if ( self.element ) test_elem.appendChild( self.ccm.helper.html( my.html.comparison, expected, actual ) );
+                if ( self.element ) test_elem.appendChild( $.html( self.html.comparison, expected, actual ) );
                 results.details[ package_path + '.' + tests[ i ].name ] = { expected: expected, actual: actual };
               }
 
@@ -336,7 +346,7 @@
 
                 /** runs all relevant finally functions (recursive function) */
                 function runFinallies( callback ) {
-                  var i = 0;                           // Remember: Each finalize function could be asynchron
+                  let i = 0;                           // Remember: Each finalize function could be asynchron
                   runFinally();                        //           and must performed sequentially
                   function runFinally() {              //           to avoid mutual influence.
                     if ( i === finallies.length )
@@ -369,7 +379,7 @@
 
         /** callback when all tests in all relevant test packages are finished */
         function finish() {
-          self.ccm.helper.onFinish( self, results );
+          $.onFinish( self, results );
           if ( callback ) callback();
         }
 
@@ -379,5 +389,5 @@
 
   };
 
-  function p(){window.ccm[v].component(component)}var f="ccm."+component.name+(component.version?"-"+component.version.join("."):"")+".js";if(window.ccm&&null===window.ccm.files[f])window.ccm.files[f]=component;else{var n=window.ccm&&window.ccm.components[component.name];n&&n.ccm&&(component.ccm=n.ccm),"string"==typeof component.ccm&&(component.ccm={url:component.ccm});var v=component.ccm.url.split("/").pop().split("-");if(v.length>1?(v=v[1].split("."),v.pop(),"min"===v[v.length-1]&&v.pop(),v=v.join(".")):v="latest",window.ccm&&window.ccm[v])p();else{var e=document.createElement("script");document.head.appendChild(e),component.ccm.integrity&&e.setAttribute("integrity",component.ccm.integrity),component.ccm.crossorigin&&e.setAttribute("crossorigin",component.ccm.crossorigin),e.onload=function(){p(),document.head.removeChild(e)},e.src=component.ccm.url}}
+  let b="ccm."+component.name+(component.version?"-"+component.version.join("."):"")+".js";if(window.ccm&&null===window.ccm.files[b])return window.ccm.files[b]=component;(b=window.ccm&&window.ccm.components[component.name])&&b.ccm&&(component.ccm=b.ccm);"string"===typeof component.ccm&&(component.ccm={url:component.ccm});let c=(component.ccm.url.match(/(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)/)||["latest"])[0];if(window.ccm&&window.ccm[c])window.ccm[c].component(component);else{var a=document.createElement("script");document.head.appendChild(a);component.ccm.integrity&&a.setAttribute("integrity",component.ccm.integrity);component.ccm.crossorigin&&a.setAttribute("crossorigin",component.ccm.crossorigin);a.onload=function(){window.ccm[c].component(component);document.head.removeChild(a)};a.src=component.ccm.url}
 }() );

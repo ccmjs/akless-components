@@ -18,7 +18,7 @@
      * recommended used framework version
      * @type {string}
      */
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-16.7.0.js',
 
     /**
      * default instance configuration
@@ -106,19 +106,37 @@
            */
           let table_head = {};
 
+          let col_settings = [];
+
+          const mapping = [];
+
           // iterate over each submitted solution
-          solutions.map( solution => {
+          solutions.map( ( solution, i, solutions ) => {
 
             // remove not relevant solution properties
-            delete solution.created_at; delete solution.updated_at; delete solution._; delete solution.key;
+            delete solution.created_at; delete solution.updated_at; delete solution._; solution.key = solution.key.toString();
+            mapping[ i ] = solution.key;
+            if ( !solution.zero ) solution.zero = false;
 
             if ( Object.keys( solution ).length > Object.keys( table_head ).length ) table_head = Object.keys( solution );
+
+            col_settings.push( i === table_head.length - 1 ? { type: "checkbox" } : { "disabled": true, type: "textarea" } );
 
           } );
 
           // render list of submitted solutions
-          my.target.start( { root: self.element, data: solutions, table_head: table_head, table_col: Object.keys( table_head ).length }, () => callback && callback() );
-
+          my.target.start( {
+            root: self.element,
+            data: solutions,
+            table_head: table_head,
+            table_col: Object.keys( table_head ).length, col_settings: col_settings,
+            submit: true,
+            onfinish: ( instance, results ) => {
+              results.values.map( ( value, i ) => {
+                console.log( '?', value[ value.length - 1 ], mapping[ i ] );
+              } );
+            }
+          }, () => callback && callback() );
         } );
 
       };
