@@ -983,8 +983,8 @@
         };
 
         /**
-         * returns the resulting instance configuration for the target component
-         * @returns {Object} instance configuration for target component
+         * returns current resulting config
+         * @returns {Object}
          */
         this.getValue = () => {
 
