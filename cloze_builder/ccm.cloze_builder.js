@@ -826,7 +826,7 @@
           } ) );
 
           // prepare text editor
-          prepareEditor( () => {
+          prepareEditor( async () => {
 
             // fill form with initial values
             $.fillForm( this.element, dataset );
@@ -835,7 +835,7 @@
             setVisibility();
 
             // render preview
-            if ( this.preview ) updatePreview();
+            if ( this.preview ) await updatePreview();
 
             // no preview desired? => remove preview section
             else $.removeElement( this.element.querySelector( '#section-preview' ) );
@@ -924,13 +924,13 @@
           }
 
           /** callback if an input value has changed */
-          function onChange() {
+          async function onChange() {
 
             // hide and show input elements for which this is necessary
             setVisibility();
 
             // update preview considering the changed input value
-            updatePreview();
+            await updatePreview();
 
             // perform change actions
             self.onchange && self.onchange( self );
