@@ -316,6 +316,9 @@
         // (re)render own content
         await this.start();
 
+        // perform 'onchange' callback
+        this.onchange && this.onchange( this.isLoggedIn() );
+
         /**
          * renders login form
          * @param {string} title - login form title
@@ -411,6 +414,9 @@
 
         // (re)render own content
         await this.start();
+
+        // perform 'onchange' callback
+        this.onchange && this.onchange( this.isLoggedIn() );
 
       };
 
