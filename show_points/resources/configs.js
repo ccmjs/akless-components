@@ -10,7 +10,7 @@ ccm.files[ 'configs.js' ] = {
     "html.inner.2.inner": "Summe: %points% Punkte",
     "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/show_points/resources/default.css" ],
     "store": [ "ccm.store", { "url": "https://ccm2.inf.h-brs.de", "store": "we_ss18_solutions", "method": "POST" } ],
-    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-4.0.0.js", { "realm": "guest", "guest": "dludwi2s", "logged_in": true } ],
+    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-4.0.0.js", { "realm": "hbrsinfkaul", "logged_in": true } ],
     "target": [ "ccm.component", "https://ccmjs.github.io/tkless-components/table/ccm.table.js" ],
     "mapping": {
       "le01_a1": { "points": 5, "deadline": "2018-04-19T08:00" },
