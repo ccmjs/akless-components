@@ -786,6 +786,9 @@
         // set shortcut to help functions
         $ = this.ccm.helper;
 
+        // logging of 'ready' event
+        this.logger && this.logger.log( 'ready', $.privatize( this, true ) );
+
       };
 
       this.start = async () => {
@@ -795,6 +798,9 @@
          * @type {Object}
          */
         let dataset = await $.dataset( this.data );
+
+        // logging of 'start' event
+        this.logger && this.logger.log( 'start', $.clone( dataset ) );
 
         const self = this;
         return new Promise( resolve => {
