@@ -952,7 +952,7 @@
 
           }
 
-          /** (re)renders the preview based on the entered values */
+          /** (re)renders preview based on entered values */
           async function updatePreview() {
 
             // no preview desired? => abort
@@ -968,62 +968,62 @@
 
       };
 
-        /** triggers submit for entered data */
-        this.submit = event => {
+      /** triggers submit for entered data */
+      this.submit = event => {
 
-          // prevent page reload
-          event && event.preventDefault();
+        // prevent page reload
+        event && event.preventDefault();
 
-          // logging of 'finish' event
-          this.logger && this.logger.log( 'finish', this.getValue() );
+        // logging of 'finish' event
+        this.logger && this.logger.log( 'finish', this.getValue() );
 
-          // perform finish actions
-          $.onFinish( this );
+        // perform finish actions
+        $.onFinish( this );
 
-        };
+      };
+
+      /**
+       * returns current resulting config
+       * @returns {Object}
+       */
+      this.getValue = () => {
 
         /**
-         * returns current resulting config
-         * @returns {Object}
+         * values of the input elements
+         * @type {Object}
          */
-        this.getValue = () => {
+        let result = $.formData( this.element.querySelector( 'form' ) );
 
-          /**
-           * values of the input elements
-           * @type {Object}
-           */
-          let result = $.formData( this.element.querySelector( 'form' ) );
+        // finalize 'text' property
+        result.text = editor.get().root.innerHTML;
 
-          // finalize 'text' property
-          result.text = editor.get().root.innerHTML;
+        // finalize 'keywords' property
+        if ( result.keywords === 'manually' ) {
+          const manually = result.manually.split( ',' );
+          manually.map( keyword => keyword.trim() );
+          result.keywords = manually;
+        }
+        else result.keywords = result.keywords === 'auto';
+        delete result.manually;
 
-          // finalize 'keywords' property
-          if ( result.keywords === 'manually' ) {
-            const manually = result.manually.split( ',' );
-            manually.map( keyword => keyword.trim() );
-            result.keywords = manually;
-          }
-          else result.keywords = result.keywords === 'auto';
-          delete result.manually;
+        // finalize 'feedback', 'retry' and 'solutions' property
+        result.retry     = result.feedback === 'retry';
+        result.solutions = result.feedback === 'solutions';
+        result.feedback  = result.feedback !== 'none';
 
-          // finalize 'feedback', 'retry' and 'solutions' property
-          result.retry     = result.feedback === 'retry';
-          result.solutions = result.feedback === 'solutions';
-          result.feedback  = result.feedback !== 'none';
+        // finalize 'onfinish' property
+        if ( !result.onfinish || !result.onfinish.restart ) result.onfinish = '';
 
-          // finalize 'onfinish' property
-          if ( !result.onfinish || !result.onfinish.restart ) result.onfinish = '';
+        // convert dot notation properties to deeper objects
+        result = $.solveDotNotation( result );
 
-          // convert dot notation properties to deeper objects
-          result = $.solveDotNotation( result );
+        // use empty string if no value was specified
+        if ( !result.user ) result.user = '';
 
-          // use empty string if no value was specified
-          if ( !result.user ) result.user = '';
+        // now values of input elements are transformed to resulting instance configuration
+        return $.clone( result );
 
-          // now values of input elements are transformed to resulting instance configuration
-          return $.clone( result );
-
-        };
+      };
 
     }
 
