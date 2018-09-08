@@ -209,12 +209,12 @@
                           {
                             "tag": "option",
                             "inner": "Guest Mode",
-                            "value": "['ccm.instance','https://ccmjs.github.io/akless-components/user/versions/ccm.user-7.0.0.js',['ccm.get','https://ccmjs.github.io/akless-components/user/resources/configs.js','guest']]"
+                            "value": "['ccm.instance','https://ccmjs.github.io/akless-components/user/versions/ccm.user-8.0.0.js',['ccm.get','https://ccmjs.github.io/akless-components/user/resources/configs.js','guest']]"
                           },
                           {
                             "tag": "option",
                             "inner": "H-BRS FB02",
-                            "value": "['ccm.instance','https://ccmjs.github.io/akless-components/user/versions/ccm.user-7.0.0.js',['ccm.get','https://ccmjs.github.io/akless-components/user/resources/configs.js','hbrsinfkaul']]"
+                            "value": "['ccm.instance','https://ccmjs.github.io/akless-components/user/versions/ccm.user-8.0.0.js',['ccm.get','https://ccmjs.github.io/akless-components/user/resources/configs.js','hbrsinfkaul']]"
                           }
                         ]
                       }
@@ -736,7 +736,7 @@
           "finish": "Restart"
         }
       },
-      "editor": [ "ccm.component", "https://ccmjs.github.io/tkless-components/editor/versions/ccm.editor-2.0.0.js", {
+      "editor": [ "ccm.component", "https://ccmjs.github.io/tkless-components/editor/versions/ccm.editor-3.0.0.js", {
         "editor": [ "ccm.load",
           [
             [
@@ -789,7 +789,7 @@
 
       };
 
-      this.start = async () => {
+      this.start = async () => { const self = this;
 
         /**
          * initial form values
@@ -800,171 +800,163 @@
         // logging of 'start' event
         this.logger && this.logger.log( 'start', $.clone( dataset ) );
 
-        const self = this;
-        return new Promise( resolve => {
+        // prepare initial form values
+        prepareValues();
 
-          // prepare initial form values
-          prepareValues();
+        // render main HTML structure
+        $.setContent( this.element, $.html( this.html, {
+          basic:    () => switchSection( '#button-basic', '#button-advanced', '#section-basic', '#section-advanced' ),
+          advanced: () => switchSection( '#button-advanced', '#button-basic', '#section-advanced', '#section-basic' ),
+          submit: this.submit,
+          change: onChange,
+          help: function () {
 
-          // render main HTML structure
-          $.setContent( this.element, $.html( this.html, {
-            basic:    () => switchSection( '#button-basic', '#button-advanced', '#section-basic', '#section-advanced' ),
-            advanced: () => switchSection( '#button-advanced', '#button-basic', '#section-advanced', '#section-basic' ),
-            submit: this.submit,
-            change: onChange,
-            help: function () {
+            // hide and show help texts
+            const this_a = this;
+            [ ...this.element.querySelectorAll( 'a' ) ].forEach( other_a => other_a !== this_a && other_a.classList.remove( 'active' ) );
+            this.classList.toggle( 'active' );
 
-              // hide and show help texts
-              const this_a = this;
-              [ ...this.element.querySelectorAll( 'a' ) ].forEach( other_a => other_a !== this_a && other_a.classList.remove( 'active' ) );
-              this.classList.toggle( 'active' );
-
-              // logging of 'help' event
-              this.logger && this.logger.log( 'help', { name: this.id.split( '-' )[ 0 ], active: this.classList.contains( 'active' ) } );
-
-            }
-          } ) );
-
-          // prepare text editor
-          prepareEditor( async () => {
-
-            // fill form with initial values
-            $.fillForm( this.element, dataset );
-
-            // hide input elements for which this is necessary
-            setVisibility();
-
-            // render preview
-            if ( this.preview ) await updatePreview();
-
-            // no preview desired? => remove preview section
-            else $.removeElement( this.element.querySelector( '#section-preview' ) );
-
-            // no submit button wanted? => remove submit button
-            !this.submit_button && $.removeElement( this.element.querySelector( '#button-submit' ) );
-
-            // individual caption for submit button? => set caption of submit button
-            if ( typeof this.submit_button === 'string' ) this.element.querySelector( '#button-submit' ).value = this.submit_button;
-
-            resolve();
-          } );
-
-          /** prepares initial form values */
-          function prepareValues() {
-
-            // given default values? => integrate them as defaults into initial values
-            dataset = $.integrate( self.defaults, dataset, true );
-
-            // encode dependencies
-            $.encodeDependencies( dataset );
-
-            // prepare 'keywords' and 'manually' entry
-            if ( Array.isArray( dataset.keywords ) )
-              dataset.manually = dataset.keywords.join( ', ' );
-            dataset.keywords = dataset.keywords ? ( dataset.keywords === true ? 'auto' : 'manually' ) : 'none';
-
-            // convert initial values to dot notation
-            dataset = $.toDotNotation( dataset );
-
-            // prepare 'feedback' entry
-            dataset.feedback = dataset.feedback ? ( dataset.retry ? 'retry' : ( dataset.solutions ? 'solutions' : 'correctness' ) ) : 'none';
-            delete dataset.solutions;
+            // logging of 'help' event
+            this.logger && this.logger.log( 'help', { name: this.id.split( '-' )[ 0 ], active: this.classList.contains( 'active' ) } );
 
           }
+        } ) );
+
+        // prepare text editor
+        await prepareEditor();
+
+        // fill form with initial values
+        $.fillForm( this.element, dataset );
+
+        // hide input elements for which this is necessary
+        setVisibility();
+
+        // render preview
+        if ( this.preview ) await updatePreview();
+
+        // no preview desired? => remove preview section
+        else $.removeElement( this.element.querySelector( '#section-preview' ) );
+
+        // no submit button wanted? => remove submit button
+        !this.submit_button && $.removeElement( this.element.querySelector( '#button-submit' ) );
+
+        // individual caption for submit button? => set caption of submit button
+        if ( typeof this.submit_button === 'string' ) this.element.querySelector( '#button-submit' ).value = this.submit_button;
+
+        /** prepares initial form values */
+        function prepareValues() {
+
+          // given default values? => integrate them as defaults into initial values
+          dataset = $.integrate( self.defaults, dataset, true );
+
+          // encode dependencies
+          $.encodeDependencies( dataset );
+
+          // prepare 'keywords' and 'manually' entry
+          if ( Array.isArray( dataset.keywords ) )
+            dataset.manually = dataset.keywords.join( ', ' );
+          dataset.keywords = dataset.keywords ? ( dataset.keywords === true ? 'auto' : 'manually' ) : 'none';
+
+          // convert initial values to dot notation
+          dataset = $.toDotNotation( dataset );
+
+          // prepare 'feedback' entry
+          dataset.feedback = dataset.feedback ? ( dataset.retry ? 'retry' : ( dataset.solutions ? 'solutions' : 'correctness' ) ) : 'none';
+          delete dataset.solutions;
+
+        }
+
+        /**
+         * switches to basic or advanced section
+         * @param {string} active - selector for active section button
+         * @param {string} inactive - selector for inactive section button
+         * @param {string} showed - selector for showed section element
+         * @param {string} hidden - selector for hidden section element
+         */
+        function switchSection( active, inactive, showed, hidden ) {
+
+          // activate section button
+          self.element.querySelector( active   ).classList.add   ( 'active' );
+          self.element.querySelector( inactive ).classList.remove( 'active' );
+
+          // show section element
+          self.element.querySelector( showed ).classList.remove( 'hide' );
+          self.element.querySelector( hidden ).classList.add   ( 'hide' );
+
+          // logging of 'section' event
+          self.logger && self.logger.log( 'section', showed.substr( 1 ).split( '-' )[ 1 ] );
+
+        }
+
+        /**
+         * prepares text editor
+         * @returns {Promise}
+         */
+        async function prepareEditor() {
 
           /**
-           * switches to basic or advanced section
-           * @param {string} active - selector for active section button
-           * @param {string} inactive - selector for inactive section button
-           * @param {string} showed - selector for showed section element
-           * @param {string} hidden - selector for hidden section element
+           * HTML element in which the text editor is rendered
+           * @type {Element}
            */
-          function switchSection( active, inactive, showed, hidden ) {
+          const text_elem = self.element.querySelector( '#text-entry' );
 
-            // activate section button
-            self.element.querySelector( active   ).classList.add   ( 'active' );
-            self.element.querySelector( inactive ).classList.remove( 'active' );
+          // should not Quill be used as text editor? => abort (default is <textarea>)
+          if ( !self.editor ) return;
 
-            // show section element
-            self.element.querySelector( showed ).classList.remove( 'hide' );
-            self.element.querySelector( hidden ).classList.add   ( 'hide' );
+          // render Quill
+          editor = await self.editor.start( { root: text_elem } );
 
-            // logging of 'section' event
-            self.logger && self.logger.log( 'section', showed.substr( 1 ).split( '-' )[ 1 ] );
+          // given initial text? => put it into Quill
+          if ( dataset.text ) { $.setContent( editor.get().root, dataset.text ); delete dataset.text; }
 
-          }
+          // set 'change' event
+          $.wait( 0, () => editor.get().on( 'text-change', onChange ) );
 
-          /**
-           * prepares text editor
-           * @param {function} callback
-           */
-          function prepareEditor( callback ) {
+        }
 
-            /**
-             * HTML element in which the text editor is rendered
-             * @type {Element}
-             */
-            const text_elem = self.element.querySelector( '#text-entry' );
+        /** callback if an input value has changed */
+        async function onChange() {
 
-            // should not Quill be used as text editor? => abort (default is <textarea>)
-            if ( !self.editor ) return callback();
+          // hide and show input elements for which this is necessary
+          setVisibility();
 
-            // render Quill
-            self.editor.start( { root: text_elem }, instance => { editor = instance;
+          // update preview considering the changed input value
+          await updatePreview();
 
-              // given initial text? => put it into Quill
-              if ( dataset.text ) { $.setContent( editor.get().root, dataset.text ); delete dataset.text; }
+          // perform change actions
+          self.onchange && self.onchange( self );
 
-              // set 'change' event
-              $.wait( 0, () => editor.get().on( 'text-change', onChange ) );
+          // logging of 'change' event
+          self.logger && self.logger.log( 'change', { name: this.name || 'text', value: this.name ? ( this.type === 'checkbox' ? this.checked : this.value ) : editor.get().root.innerHTML } );
 
-              callback();
-            } );
+        }
 
-          }
+        /** defines which input elements are visible or hidden. */
+        function setVisibility() {
 
-          /** callback if an input value has changed */
-          async function onChange() {
+          getInputElementByName(                'manually' ).style.display = getInputElementByName( 'keywords' ).value === 'manually' ? 'block' : 'none';
+          self.element.querySelector( '#captions\\.retry'  ).style.display = getInputElementByName( 'feedback' ).value === 'retry'    ? 'block' : 'none';
+          self.element.querySelector( '#captions\\.submit' ).style.display = getInputElementByName( 'feedback' ).value !== 'none'     ? 'block' : 'none';
+          self.element.querySelector( '#captions\\.start'  ).style.display = getInputElementByName( 'start_button'     ).checked      ? 'block' : 'none';
+          self.element.querySelector( '#captions\\.finish' ).style.display = getInputElementByName( 'onfinish.restart' ).checked      ? 'block' : 'none';
+          function getInputElementByName( name ) { return self.element.querySelector( '[name="' + name + '"]' ); }
 
-            // hide and show input elements for which this is necessary
-            setVisibility();
+        }
 
-            // update preview considering the changed input value
-            await updatePreview();
+        /**
+         * (re)renders preview based on entered values
+         * @returns {Promise}
+         */
+        async function updatePreview() {
 
-            // perform change actions
-            self.onchange && self.onchange( self );
+          // no preview desired? => abort
+          if ( !self.preview ) return;
 
-            // logging of 'change' event
-            self.logger && self.logger.log( 'change', { name: this.name || 'text', value: this.name ? ( this.type === 'checkbox' ? this.checked : this.value ) : editor.get().root.innerHTML } );
+          // (re)render preview
+          const instance = await self.target.start( self.getValue() );
+          $.setContent( self.element.querySelector( '#preview' ), instance.root );
 
-          }
-
-          /** defines which input elements are visible or hidden. */
-          function setVisibility() {
-
-            getInputElementByName(                'manually' ).style.display = getInputElementByName( 'keywords' ).value === 'manually' ? 'block' : 'none';
-            self.element.querySelector( '#captions\\.retry'  ).style.display = getInputElementByName( 'feedback' ).value === 'retry'    ? 'block' : 'none';
-            self.element.querySelector( '#captions\\.submit' ).style.display = getInputElementByName( 'feedback' ).value !== 'none'     ? 'block' : 'none';
-            self.element.querySelector( '#captions\\.start'  ).style.display = getInputElementByName( 'start_button'     ).checked      ? 'block' : 'none';
-            self.element.querySelector( '#captions\\.finish' ).style.display = getInputElementByName( 'onfinish.restart' ).checked      ? 'block' : 'none';
-            function getInputElementByName( name ) { return self.element.querySelector( '[name="' + name + '"]' ); }
-
-          }
-
-          /** (re)renders preview based on entered values */
-          async function updatePreview() {
-
-            // no preview desired? => abort
-            if ( !self.preview ) return;
-
-            // (re)render preview
-            const instance = await self.target.start( self.getValue() );
-            $.setContent( self.element.querySelector( '#preview' ), instance.root );
-
-          }
-
-        } );
+        }
 
       };
 
