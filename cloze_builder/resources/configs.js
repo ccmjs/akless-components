@@ -40,7 +40,7 @@ ccm.files[ 'configs.js' ] = {
       "../cloze_builder/resources/default.css"
     ],
     "data": {
-      "store": [ "ccm.store", { "store": "cloze", "url": "http://localhost:8080" } ],
+      "store": [ "ccm.store", { "name": "cloze", "url": "http://localhost:8080" } ],
       "key": "test"
     },
     "editor.2.editor": [ "ccm.load",
@@ -60,7 +60,7 @@ ccm.files[ 'configs.js' ] = {
     "onfinish": {
       "log": true,
       "store": {
-        "settings": { "store": "cloze", "url": "http://localhost:8080" },
+        "settings": { "name": "cloze", "url": "http://localhost:8080" },
         "key": "test"
       },
       "alert": "Saved!"
@@ -69,13 +69,13 @@ ccm.files[ 'configs.js' ] = {
 
   "demo": {
     "data": {
-      "store": [ "ccm.store", { "store": "cloze", "url": "https://ccm2.inf.h-brs.de" } ],
+      "store": [ "ccm.store", { "name": "cloze", "url": "https://ccm2.inf.h-brs.de" } ],
       "key": "demo"
     },
     "submit_button": "Submit",
     "onfinish": {
       "store": {
-        "settings": { "store": "cloze", "url": "https://ccm2.inf.h-brs.de" },
+        "settings": { "name": "cloze", "url": "https://ccm2.inf.h-brs.de" },
         "key": "demo"
       },
       "alert": "Saved!"

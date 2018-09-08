@@ -211,12 +211,12 @@
                           {
                             "tag": "option",
                             "inner": "Guest Mode",
-                            "value": "['ccm.instance','https://ccmjs.github.io/akless-components/user/versions/ccm.user-8.0.0.js',['ccm.get','https://ccmjs.github.io/akless-components/user/resources/configs.js','guest']]"
+                            "value": "['ccm.instance','https://ccmjs.github.io/akless-components/user/versions/ccm.user-8.0.0.js',{'realm':'guest','title':'Guest Mode: Please enter any username'}]"
                           },
                           {
                             "tag": "option",
                             "inner": "H-BRS FB02",
-                            "value": "['ccm.instance','https://ccmjs.github.io/akless-components/user/versions/ccm.user-8.0.0.js',['ccm.get','https://ccmjs.github.io/akless-components/user/resources/configs.js','hbrsinfkaul']]"
+                            "value": "['ccm.instance','https://ccmjs.github.io/akless-components/user/versions/ccm.user-8.0.0.js',{'realm':'hbrsinfkaul'}]"
                           }
                         ]
                       }
