@@ -716,12 +716,18 @@
         // set shortcut to help functions
         $ = this.ccm.helper;
 
+        // logging of 'ready' event
+        this.logger && this.logger.log( 'ready', $.privatize( this, true ) );
+
       };
 
       this.start = async () => { const self = this;
 
         // get initial form values
         let dataset = await $.dataset( this.data );
+
+        // logging of 'start' event
+        this.logger && this.logger.log( 'start', $.clone( dataset ) );
 
         // prepare initial form values
         prepareValues();
