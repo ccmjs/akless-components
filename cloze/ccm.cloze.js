@@ -527,7 +527,7 @@
 
             } );
 
-            // has logger instance? => log 'retry' event
+            // logging of 'retry' event
             self.logger && self.logger.log( 'retry' );
 
             // change buttons
@@ -583,9 +583,9 @@
             $.removeElement(  timer_elem );
 
             // finalize result data
-            if ( self.user ) results.user = self.user.data().name;
+            if ( self.user ) results.user = self.user.data().user;
 
-            // has logger instance? => log 'finish' event
+            // logging of 'finish' event
             self.logger && self.logger.log( 'finish', $.clone( results ) );
 
             // perform 'finish' actions and provide result data
