@@ -6,9 +6,9 @@
 
 ccm.files[ 'configs.js' ] = {
   "local": {
-    "inner": "<source src=../blank/ccm.blank.js>Welcome.<ccm-blank></ccm-blank>"
+    "inner": "<source src=../blank/ccm.blank.js>Welcome.<ccm-blank></ccm-blank>Good day."
   },
   "demo": {
-    "inner": "<source src=https://ccmjs.github.io/akless-components/blank/ccm.blank.js>Welcome.<ccm-blank></ccm-blank>"
+    "inner": "<source src=https://ccmjs.github.io/akless-components/blank/ccm.blank.js>Welcome.<ccm-blank></ccm-blank> Good day."
   }
 };

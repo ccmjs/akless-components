@@ -86,11 +86,8 @@
             const component = getComponent(); if ( !component ) return;
             const config = $.generateConfig( child );
             config.parent = self;
-            config.root = document.createElement( 'div' );
+            config.root = child;
             self.dependencies.push( $.isComponent( component ) ? [ component, config ] : [ 'ccm.start', component, config ] );
-
-            // replace founded ccm Custom Element with empty container for later embedding
-            child.parentNode.replaceChild( config.root, child );
 
             /**
              * gets object, index or URL of ccm component that corresponds to founded ccm Custom Element
