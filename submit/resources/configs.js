@@ -26,23 +26,23 @@ ccm.files[ 'configs.js' ] = {
 
   "localhost": {
     "data": {
-      "store": [ "ccm.store", { "store": "submit", "url": "http://localhost:8080" } ],
+      "store": [ "ccm.store", { "name": "submit", "url": "http://localhost:8080" } ],
       "key": "test"
     },
     "content": [ "ccm.component", "../content/ccm.content.js" ],
     "cloze_builder": [ "ccm.component", "../cloze_builder/ccm.cloze_builder.js", {
-      "key": [ "ccm.get", "../cloze_builder/resources/configs.js", "localhost" ],
+      "key": [ "ccm.get", "../cloze_builder/resources/configs.js", "local" ],
       "submit_button": false
     } ],
     "teambuild_builder": [ "ccm.component", "../teambuild_builder/ccm.teambuild_builder.js", {
-      "key": [ "ccm.get", "../teambuild_builder/resources/configs.js", "localhost" ],
+      "key": [ "ccm.get", "../teambuild_builder/resources/configs.js", "local" ],
       "submit_button": false
     } ],
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
     "onfinish": {
       "log": true,
       "store": {
-        "settings": { "store": "submit", "url": "http://localhost:8080" },
+        "settings": { "name": "submit", "url": "http://localhost:8080" },
         "key": "test"
       },
       "alert": "Saved!"
@@ -51,21 +51,21 @@ ccm.files[ 'configs.js' ] = {
 
   "demo": {
     "data": {
-      "store": [ "ccm.store", { "store": "submit", "url": "https://ccm2.inf.h-brs.de" } ],
+      "store": [ "ccm.store", { "name": "submit", "url": "https://ccm2.inf.h-brs.de" } ],
       "key": "demo"
     },
     "content": [ "ccm.component", "https://ccmjs.github.io/akless-components/content/versions/ccm.content-4.0.0.js" ],
-    "cloze_builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/cloze_builder/versions/ccm.cloze_builder-2.2.0.js", {
+    "cloze_builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/cloze_builder/versions/ccm.cloze_builder-3.0.0.js", {
       "key": [ "ccm.get", "https://ccmjs.github.io/akless-components/cloze_builder/resources/configs.js", "demo" ],
       "submit_button": false
     } ],
-    "teambuild_builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/teambuild_builder/versions/ccm.teambuild_builder-3.0.0.js", {
+    "teambuild_builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/teambuild_builder/versions/ccm.teambuild_builder-4.0.0.js", {
       "key": [ "ccm.get", "https://ccmjs.github.io/akless-components/teambuild_builder/resources/configs.js", "demo" ],
       "submit_button": false
     } ],
     "onfinish": {
       "store": {
-        "settings": { "store": "submit", "url": "https://ccm2.inf.h-brs.de" },
+        "settings": { "name": "submit", "url": "https://ccm2.inf.h-brs.de" },
         "key": "demo"
       },
       "alert": "Saved!"
