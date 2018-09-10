@@ -665,7 +665,7 @@
           // render login form
           $.setContent( self.element, $.html( my.html.login_form, {
             title: settings.title,
-            login: () => callback( self.element.querySelector( 'input[name="username"]' ).value, self.element.querySelector( 'input[name="password"]' ).value ),
+            login: event => { event.preventDefault(); callback( self.element.querySelector( 'input[name="username"]' ).value, self.element.querySelector( 'input[name="password"]' ).value ); },
             abort: () => {
               if ( element_parent ) {
                 root_parent.appendChild( self.root );

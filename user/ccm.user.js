@@ -353,7 +353,7 @@
           // render login form
           $.setContent( self.element, $.html( self.html.login, {
             title: title,
-            login: () => finish( $.formData( self.element ) ),
+            login: event => { event.preventDefault(); finish( $.formData( self.element ) ); },
             abort: () => finish()
           } ) );
 
