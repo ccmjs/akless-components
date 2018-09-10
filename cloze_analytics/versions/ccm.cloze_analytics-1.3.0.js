@@ -276,6 +276,7 @@
             // render header menu
             $.setContent( elem.main.querySelector( '#menu' ), self.menu.root );
             self.menu.data = { entries: entries };
+            self.menu.selected = 1;
             if ( my.section ) self.menu.selected = Object.keys( my.sections ).indexOf( my.section ) + 1;
             self.menu.start( () => {
 
