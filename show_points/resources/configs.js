@@ -11,7 +11,7 @@ ccm.files[ 'configs.js' ] = {
     "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/show_points/resources/default.css" ],
     "store": [ "ccm.store", { "url": "https://ccm2.inf.h-brs.de", "store": "we_ss18_solutions", "method": "POST" } ],
     "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-4.0.0.js", { "realm": "hbrsinfkaul", "logged_in": true } ],
-    "target": [ "ccm.component", "https://ccmjs.github.io/tkless-components/table/ccm.table.js" ],
+    "target": [ "ccm.component", "https://ccmjs.github.io/tkless-components/table/versions/ccm.table-1.0.0.js" ],
     "mapping": {
       "le01_a1": { "points": 5, "deadline": "2018-04-19T08:00" },
       "le01_a2": { "points": 5, "deadline": "2018-04-19T08:00" },

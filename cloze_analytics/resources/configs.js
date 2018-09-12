@@ -19,7 +19,7 @@ ccm.files[ 'configs.js' ] = {
     "user": [ "ccm.instance", "../user/ccm.user.js", [ "ccm.get", "../user/resources/configs.js", "guest" ] ],
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
     "menu": [ "ccm.instance", "../menu/ccm.menu.js", [ "ccm.get", "../menu/resources/configs.js", "bootstrap" ] ],
-    "table": [ "ccm.component", "https://ccmjs.github.io/tkless-components/table/ccm.table.js" ],
+    "table": [ "ccm.component", "../../tkless-components/table/ccm.table.js" ],
     "cloze": {
       "comp": [ "ccm.component", "../cloze/ccm.cloze.js" ],
       "configs": [ "ccm.store", "../cloze/resources/configs.js" ],
