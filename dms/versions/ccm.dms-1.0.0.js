@@ -104,7 +104,7 @@
       "css": [ "ccm.load",
         "https://ccmjs.github.io/akless-components/libs/bootstrap/css/bootstrap.css",
         { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/bootstrap/css/font-face.css" },
-        "https://ccmjs.github.io/digital-maker-space/dms/resources/default.css"
+        "https://ccmjs.github.io/akless-components/dms/resources/default.css"
       ],
       "data": [],
       "listing": [ "ccm.component", "https://ccmjs.github.io/akless-components/listing/versions/ccm.listing-2.0.0.js", {
@@ -137,16 +137,16 @@
             }
           ]
         },
-        "css": [ "ccm.load", "https://ccmjs.github.io/digital-maker-space/dms/resources/listing.css" ],
+        "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/dms/resources/listing.css" ],
         "defaults": {
-          "icon": "https://ccmjs.github.io/digital-maker-space/dms/resources/component.png"
+          "icon": "https://ccmjs.github.io/akless-components/dms/resources/component.png"
         }
       } ],
       "rating": [ "ccm.component", "https://ccmjs.github.io/tkless-components/star_rating_result/versions/ccm.star_rating_result-3.0.0.js", {
         "css": [ "ccm.load",
           { "context": "head", "url": "https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" },
           "https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css",
-          "https//ccmjs.github.io/digital-maker-space/dms/resources/rating_result.css"
+          "https//ccmjs.github.io/akless-components/dms/resources/rating_result.css"
         ],
         "data": {}
       } ],
@@ -449,7 +449,7 @@
         },
         "css": [ "ccm.load",
           "https://ccmjs.github.io/akless-components/libs/bootstrap/css/bootstrap.css",
-          "https://ccmjs.github.io/digital-maker-space/dms/resources/submit.css"
+          "https://ccmjs.github.io/akless-components/dms/resources/submit.css"
         ],
       } ],
       "component_manager": [ "ccm.component", "https://ccmjs.github.io/akless-components/component_manager/versions/ccm.component_manager-1.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/component_manager/resources/configs.js", "demo" ] ],
