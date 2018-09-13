@@ -58,7 +58,7 @@ ccm.files[ 'configs.js' ] = {
   "demo": {
     "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/cloze/resources/default.css" ],
     "data": {
-      "store": [ "ccm.store", { "store": "cloze_results", "url": "https://ccm2.inf.h-brs.de", "method": "POST" } ],
+      "store": [ "ccm.store", { "name": "cloze_results", "url": "https://ccm2.inf.h-brs.de", "method": "POST" } ],
       "key": "demo"
     },
     "feedback": true,
@@ -73,7 +73,7 @@ ccm.files[ 'configs.js' ] = {
         "settings": {
           "url": "https://ccm2.inf.h-brs.de",
           "method": "POST",
-          "store": "cloze_results"
+          "name": "cloze_results"
         },
         "key": "demo"
       },
