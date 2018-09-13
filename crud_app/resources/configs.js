@@ -24,6 +24,9 @@ ccm.files[ 'configs.js' ] = {
     "url": "../cloze/ccm.cloze.js",
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ]
   },
+  "demo": {
+    "store": [ "ccm.store", { "name": "cloze", "url": "https://ccm2.inf.h-brs.de" } ]
+  },
   "cloze": {
     "store": [ "ccm.store", { "store": "cloze", "url": "https://ccm2.inf.h-brs.de" } ]
   },
