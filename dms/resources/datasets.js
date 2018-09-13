@@ -10,25 +10,21 @@ ccm.files[ 'datasets.js' ] = {
     "key": "exercise",
     "title": "Exercise",
     "abstract": "Free Text Task",
-    "versions": [
-      {
-        "version": "1.0.0",
-        "source": "https://ccmjs.github.io/tkless-components/exercise/versions/ccm.exercise-1.0.0.js"
-      }
-    ],
+    "url": "https://ccmjs.github.io/tkless-components/exercise/versions/ccm.exercise-1.0.0.js",
+    "version": "1.0.0",
     "developer": "Tea Kless",
     "license": "MIT License",
     "website": "https://github.com/tkless/ccm-components/",
-    "configs": {
+    /*
+    "ignore": {
       "demos": [
         [ "ccm.get", "https://ccmjs.github.io/tkless-components/exercise/resources/configs.js", "demo" ]
       ],
-      "factories": [
+      "builder": [
         {
           "url": "https://ccmjs.github.io/tkless-components/exercise_builder/versions/ccm.exercise_builder-1.0.0.js",
           "config": {}
-        }
-        /*
+        },
         {
           "url": "https://leoneck.github.io/ccm-factory/dist/ccm.factory-1.0.0.js",
           "config": {
@@ -38,20 +34,16 @@ ccm.files[ 'datasets.js' ] = {
             "no_bootstrap_container": true
           }
         }
-        */
       ]
     }
+    */
   },
   "difference_chart": {
     "key": "difference_chart",
     "title": "Difference Chart",
     "abstract": "To show the results of a questionaire for different groups",
-    "versions": [
-      {
-        "version": "1.0.0",
-        "source": "https://kaul.inf.h-brs.de/data/ccm/difference_chart/versions/ccm.difference_chart-1.0.0.js"
-      }
-    ],
+    "url": "https://kaul.inf.h-brs.de/data/ccm/difference_chart/versions/ccm.difference_chart-1.0.0.js",
+    "version": "1.0.0",
     "developer": "Manfred Kaul",
     "license": "MIT License",
     "website": "https://github.com/mkaul/ccm-components/",
@@ -65,29 +57,18 @@ ccm.files[ 'datasets.js' ] = {
     "key": "pdf_viewer",
     "title": "PDF Viewer",
     "abstract": "For rendering a PDF",
-    "versions": [
-      {
-        "version": "3.0.0",
-        "source": "https://ccmjs.github.io/tkless-components/pdf_viewer/versions/ccm.pdf_viewer-3.0.0.js"
-      },
-      {
-        "version": "2.1.0",
-        "source": "https://ccmjs.github.io/tkless-components/pdf_viewer/versions/ccm.pdf_viewer-2.1.0.js"
-      },
-      {
-        "version": "1.0.0",
-        "source": "https://ccmjs.github.io/tkless-components/pdf_viewer/versions/ccm.pdf_viewer-1.0.0.js"
-      }
-    ],
+    "url": "https://ccmjs.github.io/tkless-components/pdf_viewer/versions/ccm.pdf_viewer-3.0.0.js",
+    "version": "3.0.0",
     "developer": "Tea Kless",
     "license": "MIT License",
     "website": "https://github.com/tkless/ccm-components/",
-    "configs": {
+    /*
+    "ignore": {
       "demos": [
         { pdf: //[ "ccm.get", { url: "https://ccm.inf.h-brs.de", store: "file_upload" }, "1517228670954X509252249813553" ],
             "//cdn.mozilla.net/pdfjs/tracemonkey.pdf"  }
       ],
-      "factories": [
+      "builder": [
         {
           "url": "https://ccmjs.github.io/tkless-components/pdf_viewer_builder/versions/ccm.pdf_viewer_builder-1.0.0.js",
           "config": {
@@ -101,132 +82,72 @@ ccm.files[ 'datasets.js' ] = {
             "file_upload": [ "ccm.component", "https://ccmjs.github.io/tkless-components/file_upload/versions/ccm.file_upload-1.0.0.js", {
               data: { store: [ "ccm.store", { "store": "file_upload", "url": "https://ccm.inf.h-brs.de", "method": "POST" } ] }
             } ]
-            /*
-            "start_values": {
-              "pdf": [ "ccm.get", { url: "http://localhost:8080", store: "file_upload" }, "1518776028787X4201785986475841" ],
-              "css": "['ccm.load','https://ccmjs.github.io/tkless-components/pdf_viewer/resources/default.css']",
-              "user": "['ccm.instance','https://ccmjs.github.io/akless-components/user/versions/ccm.user-2.0.0.js',{'sign_on':'demo'}]"
-            }*/
+            //"start_values": {
+            //  "pdf": [ "ccm.get", { url: "http://localhost:8080", store: "file_upload" }, "1518776028787X4201785986475841" ],
+            //  "css": "['ccm.load','https://ccmjs.github.io/tkless-components/pdf_viewer/resources/default.css']",
+            //  "user": "['ccm.instance','https://ccmjs.github.io/akless-components/user/versions/ccm.user-2.0.0.js',{'sign_on':'demo'}]"
+            //}
 
             //  onchange
             //  onfinish
           }
         }
-        /*    {
-              "url": "https://leoneck.github.io/ccm-factory/dist/ccm.factory-1.0.0.js",
-              "config": {
-                "url_to_modify": "https://ccmjs.github.io/tkless-components/pdf_viewer/versions/ccm.pdf_viewer-2.0.0.js",
-                "preview": false,
-                "display_final_component_and_config": false,
-                "no_bootstrap_container": true
-              }
-            }*/
+        //{
+        //  "url": "https://leoneck.github.io/ccm-factory/dist/ccm.factory-1.0.0.js",
+        //  "config": {
+        //    "url_to_modify": "https://ccmjs.github.io/tkless-components/pdf_viewer/versions/ccm.pdf_viewer-2.0.0.js",
+        //    "preview": false,
+        //    "display_final_component_and_config": false,
+        //    "no_bootstrap_container": true
+        //  }
+        //}
       ]
     }
+    */
   },
   "content": {
     "key": "content",
     "title": "Content",
     "abstract": "For rendering a predefined content.",
-    "versions": [
-      {
-        "version": "2.0.0",
-        "source": "https://ccmjs.github.io/akless-components/content/versions/ccm.content-2.0.0.js"
-      },
-      {
-        "version": "1.0.0",
-        "source": "https://ccmjs.github.io/akless-components/content/versions/ccm.content-1.0.0.js"
-      }
-    ],
+    "url": "https://ccmjs.github.io/akless-components/content/versions/ccm.content-5.0.0.js",
+    "version": "5.0.0",
     "developer": "André Kless",
     "license": "MIT License",
     "website": "https://github.com/akless/ccm-components/",
-    "configs": {
+    "ignore": {
       "demos": [
         [ "ccm.get", "https://ccmjs.github.io/akless-components/content/resources/configs.js", "demo" ]
       ]
-      /*
-      "factories": [
-        {
-          "url": "https://leoneck.github.io/ccm-factory/dist/ccm.factory-1.0.0.js",
-          "config": {
-            "url_to_modify": "https://ccmjs.github.io/akless-components/content/versions/ccm.content-2.0.0.js",
-            "external_config": "https://ccmjs.github.io/akless-components/content/resources/configs.js",
-            "key_in_external_config": "demo",
-            "preview": false,
-            "display_final_component_and_config": false,
-            "no_bootstrap_container": true
-          }
-        }
-      ]
-      */
     }
   },
   "comment": {
     "key": "comment",
     "title": "Comment",
     "abstract": "For rendering a comment to any component.",
-    "versions": [
-      {
-        "version": "1.0.0",
-        "source": "https://ccmjs.github.io/tkless-components/comment/versions/ccm.comment-1.0.0.js"
-      }
-    ],
+    "url": "https://ccmjs.github.io/tkless-components/comment/versions/ccm.comment-1.0.0.js",
+    "version": "1.0.0",
     "developer": "Tea Kless",
     "license": "MIT License",
     "website": "https://github.com/tkless/ccm-components/",
-    "configs": {
-      "demos":[ {} ]
-      /*
-      "factories": [
-        {
-          "url": "https://leoneck.github.io/ccm-factory/dist/ccm.factory-1.0.0.js",
-          "config": {
-            "url_to_modify": "https://ccmjs.github.io/tkless-components/comment/versions/ccm.comment-1.0.0.js",
-            "preview": false,
-            "display_final_component_and_config": false,
-            "no_bootstrap_container": true
-          }
-        }
+    "ignore": {
+      "demos": [
+        //{}
       ]
-      */
     }
   },
   "eval": {
     "key": "eval",
     "title": "Eval",
     "abstract": "For interpreting a given JavaScript expression.",
-    "screenshots": [
-      "https://ccmjs.github.io/akless-components/eval/resources/screenshot_1.jpg"
-    ],
-    "versions": [
-      {
-        "version": "1.0.0",
-        "source": "https://ccmjs.github.io/akless-components/eval/versions/ccm.eval-1.0.0.js"
-      }
-    ],
+    "url": "https://ccmjs.github.io/akless-components/eval/versions/ccm.eval-1.0.0.js",
+    "version": "1.0.0",
     "developer": "André Kless",
     "license": "MIT License",
     "website": "https://github.com/akless/ccm-components/",
-    "configs": {
+    "ignore": {
       "demos": [
-        [ "ccm.get", "https://ccmjs.github.io/akless-components/eval/resources/configs.js", "demo" ]
+        //[ "ccm.get", "https://ccmjs.github.io/akless-components/eval/resources/configs.js", "demo" ]
       ]
-      /*
-      "factories": [
-        {
-          "url": "https://leoneck.github.io/ccm-factory/dist/ccm.factory-1.0.0.js",
-          "config": {
-            "url_to_modify": "https://ccmjs.github.io/akless-components/eval/versions/ccm.eval-1.0.0.js",
-            "external_config": "https://ccmjs.github.io/akless-components/eval/resources/configs.js",
-            "key_in_external_config": "demo",
-            "preview": false,
-            "display_final_component_and_config": false,
-            "no_bootstrap_container": true
-          }
-        }
-      ]
-      */
     }
   },
   "cloze": {
@@ -248,19 +169,6 @@ ccm.files[ 'datasets.js' ] = {
           "url": "https://ccmjs.github.io/akless-components/cloze_builder/versions/ccm.cloze_builder-3.0.0.js",
           "config": { "submit_button": false }
         }
-        /*
-        {
-          "url": "https://leoneck.github.io/ccm-factory/dist/ccm.factory-1.0.0.js",
-          "config": {
-            "url_to_modify": "https://ccmjs.github.io/akless-components/cloze/versions/beta/ccm.cloze-3.9.0.js",
-            "external_config": "https://ccmjs.github.io/akless-components/cloze/resources/configs.js",
-            "key_in_external_config": "demo",
-            "preview": false,
-            "display_final_component_and_config": false,
-            "no_bootstrap_container": true
-          }
-        }
-        */
       ]
     }
   },
@@ -494,33 +402,27 @@ ccm.files[ 'datasets.js' ] = {
     "key": "highlight",
     "title": "Code Highlighting",
     "abstract": "For Code Highlighting",
-    "versions": [
-      {
-        "version": "2.0.0",
-        "source": "https://ccmjs.github.io/mkaul-components/highlight/versions/ccm.highlight-2.0.0.js"
-      },
-      {
-        "version": "1.0.0",
-        "source": "https://ccmjs.github.io/mkaul-components/highlight/versions/ccm.highlight-1.0.0.js"
-      }
-    ],
+    "url": "https://ccmjs.github.io/mkaul-components/highlight/versions/ccm.highlight-2.0.0.js",
+    "version": "2.0.0",
     "developer": "Manfred Kaul",
     "license": "MIT License",
     "website": "https://ccmjs.github.io/mkaul-components",
-    "demos": [
-      [ "ccm.get", "https://ccmjs.github.io/mkaul-components/highlight/resources/configs.js", "demo" ]
-    ],
-    "factories": [
-      {
-        "url": "https://ccmjs.github.io/ccm-factory/dist/ccm.factory-1.0.0.min.js",
-        "config": {
-          "url_to_modify": "https://ccmjs.github.io/mkaul-components/highlight/ccm.highlight.js",
-          "preview": true,
-          "display_final_component_and_config": true,
-          "no_bootstrap_container": true
+    "ignore": {
+      "demos": [
+        [ "ccm.get", "https://ccmjs.github.io/mkaul-components/highlight/resources/configs.js", "demo" ]
+      ],
+      "builder": [
+        {
+          "url": "https://ccmjs.github.io/ccm-factory/dist/ccm.factory-1.0.0.min.js",
+          "config": {
+            "url_to_modify": "https://ccmjs.github.io/mkaul-components/highlight/ccm.highlight.js",
+            "preview": true,
+            "display_final_component_and_config": true,
+            "no_bootstrap_container": true
+          }
         }
-      }
-    ]
+      ]
+    }
   },
   "input": {
     "key": "input",

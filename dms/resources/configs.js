@@ -27,6 +27,8 @@ ccm.files[ 'configs.js' ] = {
       "../dms/resources/submit.css"
     ],
     "component_manager": [ "ccm.component", "../component_manager/ccm.component_manager.js", [ "ccm.get", "../component_manager/resources/configs.js", "local" ] ],
+    "resource_finder": [ "ccm.component", "../../leck-components/resource_finder/dist/ccm.resource_finder-0.1.0.js" ],
+    "resource_publish": [ "ccm.component", "../../leck-components/resource_publish/dist/ccm.resource_publish-0.3.0.js" ],
     "user": [ "ccm.instance", "../user/ccm.user.js", {
       "key": [ "ccm.get", "../user/resources/configs.js", "local" ],
       "html.logged_in.class": "",
