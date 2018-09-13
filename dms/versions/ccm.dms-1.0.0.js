@@ -452,7 +452,7 @@
           "https://ccmjs.github.io/digital-maker-space/dms/resources/submit.css"
         ],
       } ],
-//    "component_manager": [ "ccm.component", "https://ccmjs.github.io/digital-maker-space/component_manager/versions/ccm.component_manager-1.0.0.js", [ "ccm.get", "https://ccmjs.github.io/digital-maker-space/component_manager/resources/configs.js", "demo" ] ],
+      "component_manager": [ "ccm.component", "https://ccmjs.github.io/akless-components/component_manager/versions/ccm.component_manager-1.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/component_manager/resources/configs.js", "demo" ] ],
       "resource_finder": [ "ccm.component", "https://ccmjs.github.io/leck-components/resource_finder/dist/ccm.resource_finder-0.1.0.js" ],
       "resource_publish": [ "ccm.component", "https://ccmjs.github.io/leck-components/resource_publish/dist/ccm.resource_publish-0.3.0.js" ]
 //    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-8.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "guest" ] ],
@@ -487,6 +487,9 @@
       };
 
       this.start = async () => {
+
+        // logging of 'start' event
+        this.logger && this.logger.log( 'start' );
 
         $.setContent( this.element, $.html( this.html.main, {
           browse_apps: function () {
