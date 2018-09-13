@@ -17,7 +17,7 @@ ccm.files[ 'configs.js' ] = {
       "key": {}
     },
     "listing.1": "../listing/ccm.listing.js",
-    "listing.2.css.2": "../dms/resources/listing.css",
+    "listing.2.css.1": "../dms/resources/listing.css",
     "listing.2.defaults.icon": "../dms/resources/component.png",
     "rating.1": "../../tkless-components/star_rating_result/ccm.star_rating_result.js",
     "rating.2.css.3": "../dms/resources/rating_result.css",
