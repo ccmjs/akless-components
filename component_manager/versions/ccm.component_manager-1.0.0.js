@@ -69,7 +69,7 @@
       "css": [ "ccm.load",
         "https://ccmjs.github.io/akless-components/libs/bootstrap/css/bootstrap.css",
         { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/bootstrap/css/font-face.css" },
-        "https://ccmjs.github.io/digital-maker-space/dms/resources/default.css"
+        "https://ccmjs.github.io/akless-components/component_manager/resources/default.css"
       ],
       "data": {},   // TODO: proof of empty state
       "menu": [ "ccm.component", "https://ccmjs.github.io/akless-components/menu/versions/ccm.menu-2.1.0.js", {
@@ -244,7 +244,7 @@
           }
         }
       ],
-      "component_icon": "https://ccmjs.github.io/digital-maker-space/dms/resources/component.png"
+      "component_icon": "https://ccmjs.github.io/akless-components/dms/resources/component.png"
     },
 
     Instance: function () {
@@ -281,8 +281,8 @@
         } ) );
 
         if ( !this.rating && !this.rating_result ) this.entries[ 1 ].disabled = true;
-        if ( !dataset.ignore.  demos.length      ) this.entries[ 3 ].disabled = true;
-        if ( !dataset.ignore.builder.length      ) this.entries[ 4 ].disabled = true;
+        if ( !dataset.ignore || !dataset.ignore.  demos || !dataset.ignore.  demos.length ) this.entries[ 3 ].disabled = true;
+        if ( !dataset.ignore || !dataset.ignore.builder || !dataset.ignore.builder.length ) this.entries[ 4 ].disabled = true;
         await this.menu.start( {
           data: { entries: this.entries },
           selected: 1,

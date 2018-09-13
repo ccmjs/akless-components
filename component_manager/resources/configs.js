@@ -42,9 +42,15 @@ ccm.files[ 'configs.js' ] = {
 
   "demo": {
     "data": {
+      "store": [ "ccm.store", "../dms/resources/datasets.js" ],
+      "key": "cloze"
+    },
+    /*
+    "data": {
       "store": [ "ccm.store", { "name": "components", "url": "https://ccm2.inf.h-brs.de" } ],
       "key": "cloze"
     },
+    */
     "rating": "",
     "rating_result": "",
     "commentary": "",
