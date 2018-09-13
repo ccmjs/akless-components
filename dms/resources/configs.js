@@ -21,13 +21,14 @@ ccm.files[ 'configs.js' ] = {
     "listing.2.defaults.icon": "../dms/resources/component.png",
     "rating.1": "../../tkless-components/star_rating_result/ccm.star_rating_result.js",
     "rating.2.css.3": "../dms/resources/rating_result.css",
-    "form.css": [ "ccm.load",
+    "form.1": "../submit/ccm.submit.js",
+    "form.2.css": [ "ccm.load",
       "../libs/bootstrap/css/bootstrap.css",
       "../dms/resources/submit.css"
     ],
-//  "component_manager": [ "ccm.component", "../component_manager/ccm.component_manager.js", [ "ccm.get", "../component_manager/resources/configs.js", "local" ] ],
+    "component_manager": [ "ccm.component", "../component_manager/ccm.component_manager.js", [ "ccm.get", "../component_manager/resources/configs.js", "local" ] ],
     "user": [ "ccm.instance", "../user/ccm.user.js", {
-      "key": [ "ccm.get", "../user/resources/configs.js", "guest" ],
+      "key": [ "ccm.get", "../user/resources/configs.js", "local" ],
       "html.logged_in.class": "",
       "html.logged_out.class": ""
     } ],
