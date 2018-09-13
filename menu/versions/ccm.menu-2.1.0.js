@@ -2,7 +2,7 @@
  * @overview ccm component for rendering a menu
  * @author André Kless <andre.kless@web.de> 2015-2016, 2018
  * @license The MIT License (MIT)
- * @version latest (2.1.0)
+ * @version 2.1.0
  * @changes
  * version 2.1.0 (13.09.2018):
  * - a menu entry can be disabled
@@ -47,8 +47,7 @@
           "class": "entry",
           "onclick": "%click%",
           "inner": {
-            "class": "title",
-            "inner": "%title%"
+            "class": "title"
           }
         }
       },
@@ -139,9 +138,11 @@
            */
           const entry_elem = $.html( self.html.entry, {
             id: entry_data.id,
-            title: entry_data.title || '',
             click: onClick
           } );
+
+          // add menu entry title
+          $.setContent( entry_elem.querySelector( '.title' ), $.html( entry_data.title ) );
 
           // disabling of menu entry
           if ( entry_data.disabled ) { entry_elem.disabled = true; entry_elem.classList.add( 'disabled' ); entry_elem.removeEventListener( 'click', onClick ) }
