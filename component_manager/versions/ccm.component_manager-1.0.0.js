@@ -74,7 +74,7 @@
         { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/bootstrap/css/font-face.css" },
         "https://ccmjs.github.io/akless-components/component_manager/resources/default.css"
       ],
-      "data": {},   // TODO: proof of empty state
+      "data": {},
       "menu": [ "ccm.component", "https://ccmjs.github.io/akless-components/menu/versions/ccm.menu-2.1.0.js", {
         "key": [ "ccm.get", "https://ccmjs.github.io/akless-components/menu/resources/configs.js", "bootstrap" ],
         "root": "name"
