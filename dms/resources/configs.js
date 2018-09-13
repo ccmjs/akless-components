@@ -36,9 +36,15 @@ ccm.files[ 'configs.js' ] = {
 
   "demo": {
     "data": {
+      "store": [ "ccm.store", "../dms/resources/datasets.js" ],
+      "key": {}
+    },
+    /*
+    "data": {
       "store": [ "ccm.store", { "name": "components", "url": "https://ccm2.inf.h-brs.de" } ],
       "key": {}
     },
+    */
     "rating": "",  // "rating.2.data": { "store": [ "ccm.store", { "name": "component_ratings", "url": "https://ccm2.inf.h-brs.de" } ] },
 //  "component_manager": [ "ccm.component", "../component_manager/ccm.component_manager.js", [ "ccm.get", "../component_manager/resources/configs.js", "local" ] ],
     "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-8.0.0.js", {
