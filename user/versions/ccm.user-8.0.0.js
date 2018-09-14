@@ -277,7 +277,7 @@
 
       /**
        * logs in user
-       * @param {Instance} caller - reference of caller instance
+       * @param {Instance} [caller] - reference of caller instance
        * @returns {Promise}
        */
       this.login = async ( caller ) => {
@@ -390,7 +390,7 @@
 
       /**
        * logs out user
-       * @param {Instance} caller - reference of caller instance
+       * @param {Instance} [caller] - reference of caller instance
        * @returns {Promise}
        */
       this.logout = async caller => {
