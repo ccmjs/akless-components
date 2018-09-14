@@ -12,6 +12,7 @@
  * - retry for enter username and password when authentication fails
  * - an authentication mode can optionally store more user data than only user and token (all currently implemented authentication modes store only user and token and nothing more)
  * - removed experimental authentication modes for LEA and OpenOLAT
+ * - caller reference as parameter for login/logout
  * version 7.1.0 (20.08.2018) based on suggestions for changes by mkaul
  * - added realm 'hbrsinfpseudo'
  * - bugfix: input field for username and password is required
@@ -274,9 +275,10 @@
 
       /**
        * logs in user
+       * @param {Instance} caller - reference of caller instance
        * @returns {Promise}
        */
-      this.login = async () => {
+      this.login = async ( caller ) => {
 
         // user already logged in? => abort
         if ( this.isLoggedIn() ) return;
@@ -317,7 +319,7 @@
         await this.start();
 
         // perform 'onchange' callback
-        this.onchange && this.onchange( this.isLoggedIn() );
+        this.onchange && caller !== this.parent && this.onchange( this.isLoggedIn() );
 
         /**
          * renders login form
@@ -386,9 +388,10 @@
 
       /**
        * logs out user
+       * @param {Instance} caller - reference of caller instance
        * @returns {Promise}
        */
-      this.logout = async () => {
+      this.logout = async caller => {
 
         // user already logged out? => abort
         if ( !this.isLoggedIn() ) return;
@@ -416,7 +419,7 @@
         await this.start();
 
         // perform 'onchange' callback
-        this.onchange && this.onchange( this.isLoggedIn() );
+        this.onchange && caller !== this.parent && this.onchange( this.isLoggedIn() );
 
       };
 
