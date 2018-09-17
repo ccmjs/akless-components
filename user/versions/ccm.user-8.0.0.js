@@ -244,6 +244,9 @@
 
       this.init = async () => {
 
+        // set shortcut to help functions
+        $ = this.ccm.helper;
+
         // set context to highest user instance with same realm
         let instance = this;
         while ( instance = instance.parent )
@@ -258,9 +261,6 @@
       };
 
       this.ready = async () => {
-
-        // set shortcut to help functions
-        $ = this.ccm.helper;
 
         // logging of 'ready' event
         this.logger && this.logger.log( 'ready', $.privatize( this, true ) );
