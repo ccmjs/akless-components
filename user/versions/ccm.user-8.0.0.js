@@ -247,10 +247,13 @@
         // set shortcut to help functions
         $ = this.ccm.helper;
 
+        // privatize authentication relevant instance members
+        my = $.privatize( this, 'realm' );
+
         // set context to highest user instance with same realm
         let instance = this;
         while ( instance = instance.parent )
-          if ( $.isInstance( instance.user ) && instance.user.realm === this.realm )
+          if ( $.isInstance( instance.user ) && instance.user.getRealm() === this.getRealm() )
             context = instance.user;
         if ( context === this ) {
           context = null;
@@ -261,9 +264,6 @@
       };
 
       this.ready = async () => {
-
-        // privatize authentication relevant instance members
-        my = $.privatize( this, 'realm' );
 
         // immediate login? => login user
         this.logged_in && await this.login();
