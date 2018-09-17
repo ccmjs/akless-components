@@ -248,7 +248,7 @@
         // set context to highest user instance with same realm
         let instance = this;
         while ( instance = instance.parent )
-          if ( $.isInstance( instance.user ) && typeof instance.user.getRealm === 'function' && instance.user.getRealm() === this.getRealm() )
+          if ( $.isInstance( instance.user ) && instance.user.realm === this.realm )
             context = instance.user;
         if ( context === this ) {
           context = null;

@@ -2,7 +2,7 @@
  * @overview ccm component for user authentication
  * @author André Kless <andre.kless@web.de> 2017-2018
  * @license The MIT License (MIT)
- * @version 8.0.0
+ * @version latest (8.0.0)
  * @changes
  * version 8.0.0 (07.09.2018)
  * - uses ccm v18.0.0
@@ -250,7 +250,7 @@
         // set context to highest user instance with same realm
         let instance = this;
         while ( instance = instance.parent )
-          if ( $.isInstance( instance.user ) && typeof instance.user.getRealm === 'function' && instance.user.getRealm() === this.getRealm() )
+          if ( $.isInstance( instance.user ) && instance.user.realm === this.realm )
             context = instance.user;
         if ( context === this ) {
           context = null;
