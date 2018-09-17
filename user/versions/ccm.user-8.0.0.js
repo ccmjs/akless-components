@@ -239,7 +239,7 @@
 
     Instance: function () {
 
-      const self = this, observer = [];
+      const self = this;
       let $, my, data, context = this;
 
       this.init = async () => {
@@ -262,14 +262,14 @@
 
       this.ready = async () => {
 
-        // logging of 'ready' event
-        this.logger && this.logger.log( 'ready', $.privatize( this, true ) );
-
         // privatize authentication relevant instance members
         my = $.privatize( this, 'realm' );
 
         // immediate login? => login user
         this.logged_in && await this.login();
+
+        // logging of 'ready' event
+        this.logger && this.logger.log( 'ready', $.privatize( this, true ) );
 
       };
 
