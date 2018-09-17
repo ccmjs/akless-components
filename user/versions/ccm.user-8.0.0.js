@@ -7,12 +7,12 @@
  * version 8.0.0 (07.09.2018)
  * - uses ccm v18.0.0
  * - removed not yet needed HTML templates
- * - removed no more needed context mode, observer pattern and waiting list
+ * - changed context mode, observer pattern and waiting list
  * - only realm and user data is privatized
  * - retry for enter username and password when authentication fails
  * - an authentication mode can optionally store more user data than only user and token (all currently implemented authentication modes store only user and token and nothing more)
  * - removed experimental authentication modes for LEA and OpenOLAT
- * - caller reference as parameter for login/logout
+ * - intern parameter for login/logout methods
  * version 7.1.0 (20.08.2018) based on suggestions for changes by mkaul
  * - added realm 'hbrsinfpseudo'
  * - bugfix: input field for username and password is required
@@ -239,7 +239,23 @@
 
     Instance: function () {
 
-      let $, my, data;
+      const self = this, observer = [];
+      let $, my, data, context = this;
+
+      this.init = async () => {
+
+        // set context to highest user instance with same realm
+        let instance = this;
+        while ( instance = instance.parent )
+          if ( $.helper.isInstance( instance.user ) && typeof instance.user.getRealm === 'function' && instance.user.getRealm() === this.getRealm() )
+            context = instance.user;
+        if ( context === this ) {
+          context = null;
+          this.onchange = this.onchange ? [ this.onchange ] : [];
+        }
+        else if ( this.onchange ) context.onchange.push( this.onchange );
+
+      };
 
       this.ready = async () => {
 
@@ -259,6 +275,9 @@
 
       this.start = async () => {
 
+        // higher user instance with same realm exists? => redirect method call
+        if ( context ) return context.start();
+
         // logging of 'start' event
         this.logger && this.logger.log( 'start', this.isLoggedIn() );
 
@@ -277,16 +296,18 @@
 
       /**
        * logs in user
-       * @param {Instance} [caller] - reference of caller instance
        * @returns {Promise}
        */
-      this.login = async ( caller ) => {
+      this.login = async not => {
+
+        // higher user instance with same realm exists? => redirect method call
+        if ( context ) return context.login( this.onchange );
 
         // user already logged in? => abort
         if ( this.isLoggedIn() ) return;
 
         // choose authentication mode and proceed login
-        const self = this; let result;
+        let result;
         do {
           switch ( my.realm ) {
             case 'guest':
@@ -320,8 +341,8 @@
         // (re)render own content
         await this.start();
 
-        // perform 'onchange' callback
-        this.onchange && caller !== this.parent && this.onchange( this.isLoggedIn() );
+        // perform 'onchange' callbacks
+        this.onchange.forEach( onchange => onchange !== not && onchange( this.isLoggedIn() ) );
 
         /**
          * renders login form
@@ -390,10 +411,12 @@
 
       /**
        * logs out user
-       * @param {Instance} [caller] - reference of caller instance
        * @returns {Promise}
        */
-      this.logout = async caller => {
+      this.logout = async not => {
+
+        // higher user instance with same realm exists? => redirect method call
+        if ( context ) return context.logout( this.onchange );
 
         // user already logged out? => abort
         if ( !this.isLoggedIn() ) return;
@@ -420,8 +443,8 @@
         // (re)render own content
         await this.start();
 
-        // perform 'onchange' callback
-        this.onchange && caller !== this.parent && this.onchange( this.isLoggedIn() );
+        // perform 'onchange' callbacks
+        this.onchange.forEach( onchange => onchange !== not && onchange( this.isLoggedIn() ) );
 
       };
 
@@ -429,13 +452,25 @@
        * checks if user is logged in
        * @returns {boolean}
        */
-      this.isLoggedIn = () => !!data;
+      this.isLoggedIn = () => {
+
+        // higher user instance with same realm exists? => redirect method call
+        if ( context ) return context.isLoggedIn();
+
+        return !!data;
+      };
 
       /**
        * returns user data
        * @returns {Object}
        */
-      this.data = () => data;
+      this.data = () => {
+
+        // higher user instance with same realm exists? => redirect method call
+        if ( context ) return context.data();
+
+        return $.clone( data );
+      };
 
       /**
        * returns authentication mode
