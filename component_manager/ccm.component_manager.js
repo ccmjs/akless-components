@@ -72,7 +72,6 @@
         { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/bootstrap/css/font-face.css" },
         "https://ccmjs.github.io/akless-components/component_manager/resources/default.css"
       ],
-      "data": {},   // TODO: proof of empty state
       "menu": [ "ccm.component", "https://ccmjs.github.io/akless-components/menu/versions/ccm.menu-2.1.0.js", {
         "key": [ "ccm.get", "https://ccmjs.github.io/akless-components/menu/resources/configs.js", "bootstrap" ],
         "root": "name"
@@ -198,10 +197,23 @@
           { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/bootstrap/css/font-face.css" }
         ]
       } ],
-      "rating": [ "ccm.component", "https://ccmjs.github.io/tkless-components/star_rating/versions/ccm.star_rating-3.0.0.js", { "root": "name" } ],
-      "rating_result": [ "ccm.component", "https://ccmjs.github.io/tkless-components/star_rating_result/versions/ccm.star_rating_result-3.0.0.js", { "root": "name", "detailed": true } ],
-      "commentary": [ "ccm.component", "https://ccmjs.github.io/tkless-components/comment/versions/ccm.comment-4.0.0.js" ],
+      "rating": [ "ccm.component", "https://ccmjs.github.io/tkless-components/star_rating/versions/ccm.star_rating-3.0.0.js", {
+        "root": "name",
+        "data": { "store": [ "ccm.store" ] },
+        "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-8.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "guest" ] ]
+      } ],
+      "rating_result": [ "ccm.component", "https://ccmjs.github.io/tkless-components/star_rating_result/versions/ccm.star_rating_result-3.0.0.js", {
+        "root": "name",
+        "data": { "store": [ "ccm.store" ] },
+        "detailed": true
+      } ],
+      "commentary": [ "ccm.component", "https://ccmjs.github.io/tkless-components/comment/versions/ccm.comment-4.0.0.js", {
+        "root": "name",
+        "data": { "store": [ "ccm.store" ] },
+        "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-8.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "guest" ] ]
+      } ],
       "builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/crud_app/versions/ccm.crud_app-3.0.0.js", { "store": [ "ccm.store" ] } ],
+      "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-8.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "guest" ] ],
   //  "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
       "entries": [
         {
@@ -221,7 +233,6 @@
         },
         {
           "title": "Comments",
-          "disabled": true,
           "content": { "id": "commentary" }
         },
         {
@@ -282,6 +293,7 @@
         } ) );
 
         if ( !this.rating && !this.rating_result ) this.entries[ 1 ].disabled = true;
+        if ( !this.commentary                    ) this.entries[ 2 ].disabled = true;
         if ( !dataset.ignore || !dataset.ignore.  demos || !dataset.ignore.  demos.length ) this.entries[ 3 ].disabled = true;
         if ( !dataset.ignore || !dataset.ignore.builder || !dataset.ignore.builder.length ) this.entries[ 4 ].disabled = true;
         await this.menu.start( {
@@ -296,23 +308,17 @@
                 } );
                 break;
               case 2:
-                await this.rating_result.start( {
-                  root: event.content.querySelector( '#rating_result' ),
-                  data: { store: [ 'ccm.store' ] }
-                } );
-                await this.rating.start( {
-                  root: event.content.querySelector( '#rating' ),
-                  data: { store: [ 'ccm.store' ] },
-                  user: self.user
-                } );
+                await this.rating_result.start( { root: event.content.querySelector( '#rating_result' ) } );
+                await this.rating.start( { root: event.content.querySelector( '#rating' ) } );
+                break;
+              case 3:
+                await this.commentary.start( { root: event.content.querySelector( '#commentary' ) } );
                 break;
               case 4:
-                if ( dataset.ignore.demos.length === 1 ) {
-                  const instance = await this.ccm.start( dataset.url, dataset.ignore.demos[ 0 ] );
-                  $.setContent( event.content.querySelector( '#demo' ), instance.root );
-                  $.removeElement( event.content.querySelector( '#menu' ) );
-                }
-                break;
+                const demo = await this.ccm.start( dataset.url, dataset.ignore.demos[ 0 ] );
+                $.setContent( event.content.querySelector( '#demo' ), demo.root );
+                $.removeElement( event.content.querySelector( '#menu' ) );
+              break;
               case 5:
                 if ( dataset.ignore.builder.length === 1 ) {
                   await this.builder.start( {
