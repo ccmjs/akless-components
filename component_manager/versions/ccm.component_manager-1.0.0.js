@@ -311,10 +311,16 @@
                 break;
               case 2:
                 await this.rating_result.start( { root: event.content.querySelector( '#rating_result' ) } );
-                await this.rating.start( { root: event.content.querySelector( '#rating' ) } );
+                await this.rating.start( {
+                  root: event.content.querySelector( '#rating' ),
+                  'data.key': dataset.key
+                } );
                 break;
               case 3:
-                await this.commentary.start( { root: event.content.querySelector( '#commentary' ) } );
+                await this.commentary.start( {
+                  root: event.content.querySelector( '#commentary' ),
+                  'data.key': dataset.key
+                } );
                 break;
               case 4:
                 const demo = await this.ccm.start( dataset.url, dataset.ignore.demos[ 0 ] );
