@@ -19,7 +19,6 @@ ccm.files[ 'configs.js' ] = {
     "listing.1": "../listing/ccm.listing.js",
     "listing.2.css.1": "../dms/resources/listing.css",
     "listing.2.defaults.icon": "../dms/resources/component.png",
-    "rating.1": "../../tkless-components/star_rating_result/ccm.star_rating_result.js",
     "rating.2.css.3": "../dms/resources/rating_result.css",
     "form.1": "../submit/ccm.submit.js",
     "form.2.css": [ "ccm.load",
@@ -27,8 +26,6 @@ ccm.files[ 'configs.js' ] = {
       "../dms/resources/submit.css"
     ],
     "component_manager": [ "ccm.component", "../component_manager/ccm.component_manager.js", [ "ccm.get", "../component_manager/resources/configs.js", "local" ] ],
-    "resource_finder": [ "ccm.component", "../../leck-components/resource_finder/dist/ccm.resource_finder-0.1.0.js" ],
-    "resource_publish": [ "ccm.component", "../../leck-components/resource_publish/dist/ccm.resource_publish-0.3.0.js" ],
     "user": [ "ccm.instance", "../user/ccm.user.js", {
       "key": [ "ccm.get", "../user/resources/configs.js", "local" ],
       "html.logged_in.class": "",
@@ -39,17 +36,10 @@ ccm.files[ 'configs.js' ] = {
 
   "demo": {
     "data": {
-      "store": [ "ccm.store", "../dms/resources/datasets.js" ],
-      "key": {}
-    },
-    /*
-    "data": {
       "store": [ "ccm.store", { "name": "components", "url": "https://ccm2.inf.h-brs.de" } ],
       "key": {}
     },
-    */
-    "rating": "",  // "rating.2.data": { "store": [ "ccm.store", { "name": "component_ratings", "url": "https://ccm2.inf.h-brs.de" } ] },
-//  "component_manager": [ "ccm.component", "../component_manager/ccm.component_manager.js", [ "ccm.get", "../component_manager/resources/configs.js", "local" ] ],
+    "rating.2.data": { "store": [ "ccm.store", { "name": "component_ratings", "url": "https://ccm2.inf.h-brs.de" } ] },
     "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-8.0.0.js", {
       "key": [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "guest" ],
       "html.logged_in.class": "",

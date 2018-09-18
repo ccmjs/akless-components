@@ -148,8 +148,7 @@
           { "context": "head", "url": "https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" },
           "https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css",
           "https//ccmjs.github.io/akless-components/dms/resources/rating_result.css"
-        ],
-        "data": {}
+        ]
       } ],
       "form": [ "ccm.component", "https://ccmjs.github.io/akless-components/submit/versions/ccm.submit-4.0.0.js", {
         "root": "name",
