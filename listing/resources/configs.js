@@ -117,8 +117,7 @@ ccm.files[ 'configs.js' ] = {
       },
       {}
     ],
-    "defaults": { "color": "black", "title": "Color: Black", "subtitle": "This is a default subtitle" },
-    "onclick": ( event, element, data ) => alert( 'You have clicked on ' + data.title )
+    "defaults": { "color": "black", "title": "Color: Black", "subtitle": "This is a default subtitle" }
   }
 
 };
