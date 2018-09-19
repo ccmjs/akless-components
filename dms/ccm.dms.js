@@ -317,41 +317,41 @@
               ]
             },
             {
-              "id": "homepage",
+              "id": "website",
               "class": "form-group",
               "inner": [
                 {
                   "tag": "label",
-                  "id": "homepage-label",
-                  "for": "homepage-input",
+                  "id": "website-label",
+                  "for": "website-input",
                   "class": "control-label",
-                  "inner": "Homepage"
+                  "inner": "Webseite"
                 },
                 {
                   "tag": "span",
-                  "id": "homepage-help",
+                  "id": "website-help",
                   "class": "help",
                   "inner": [
                     {
                       "tag": "a",
-                      "id": "homepage-icon",
+                      "id": "website-icon",
                       "inner": {
                         "class": "glyphicon glyphicon-info-sign"
                       }
                     },
                     {
-                      "id": "homepage-info",
+                      "id": "website-info",
                       "class": "alert alert-info",
-                      "inner": "Enter the homepage URL of the component."
+                      "inner": "Enter homepage URL of component."
                     }
                   ]
                 },
                 {
                   "tag": "input",
                   "type": "url",
-                  "id": "homepage-input",
+                  "id": "website-input",
                   "class": "form-control",
-                  "name": "homepage",
+                  "name": "website",
                   "placeholder": "https://github.com/ccmjs/digital-maker-space"
                 }
               ]
