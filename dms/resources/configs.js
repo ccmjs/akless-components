@@ -63,7 +63,7 @@ ccm.files[ 'configs.js' ] = {
     "logger":  [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ]
   },
 
-  "demo": {
+  "live": {
     "data": {
       "store": [ "ccm.store", { "name": "components", "url": "https://ccm2.inf.h-brs.de" } ],
       "key": {}
