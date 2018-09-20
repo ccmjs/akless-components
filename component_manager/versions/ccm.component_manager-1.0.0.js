@@ -310,7 +310,10 @@
                 } );
                 break;
               case 2:
-                await this.rating_result.start( { root: event.content.querySelector( '#rating_result' ) } );
+                await this.rating_result.start( {
+                  'data.key': dataset.key,
+                  root: event.content.querySelector( '#rating_result' )
+                } );
                 await this.rating.start( {
                   root: event.content.querySelector( '#rating' ),
                   'data.key': dataset.key
