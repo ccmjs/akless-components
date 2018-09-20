@@ -321,9 +321,12 @@
                 } );
                 break;
               case 4:
-                const demo = await this.ccm.start( dataset.url, dataset.ignore.demos[ 0 ] );
-                $.setContent( event.content.querySelector( '#demo' ), demo.root );
-                $.removeElement( event.content.querySelector( '#menu' ) );
+                let demo = await this.ccm.component( dataset.url );
+                const result = await demo.start( dataset.ignore.demos[ 0 ], proceed ); result && proceed( result );
+                function proceed( demo ) {
+                  $.setContent( event.content.querySelector( '#demo' ), demo.root );
+                  $.removeElement( event.content.querySelector( '#menu' ) );
+                }
               break;
               case 5:
                 if ( dataset.ignore.builder.length === 1 ) {
