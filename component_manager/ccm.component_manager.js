@@ -224,16 +224,27 @@
           "title": "Rating",
           "content": {
             "inner": [
-              { "id": "rating_result" },
-              { "tag": "hr" },
-              { "tag": "h3", "inner": "Your Rating:" },
-              { "id": "rating" }
+              {
+                "class": "container-fluid",
+                "inner": [
+                  { "tag": "h3", "inner": "Your Rating:" },
+                  { "id": "rating" }
+                ]
+              },
+              {
+                "class": "container-fluid",
+                "inner": [
+                  { "tag": "h3", "inner": "Rating Results:" },
+                  { "id": "rating_result" }
+                ]
+              },
+              { "tag": "p" }
             ]
           }
         },
         {
-          "title": "Comments",
-          "content": { "id": "commentary" }
+          "title": "Discussion",
+          "content": { "id": "comment" }
         },
         {
           "title": "Demo",
@@ -319,7 +330,7 @@
                 break;
               case 3:
                 await this.commentary.start( {
-                  root: event.content.querySelector( '#commentary' ),
+                  root: event.content.querySelector( '#comment' ),
                   'data.key': dataset.key
                 } );
                 break;
