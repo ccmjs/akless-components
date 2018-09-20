@@ -54,7 +54,7 @@ ccm.files[ 'configs.js' ] = {
       "../libs/bootstrap/css/bootstrap.css",
       "../dms/resources/submit.css"
     ],
-    "component_manager": [ "ccm.component", "../component_manager/ccm.component_manager.js", [ "ccm.get", "../component_manager/resources/configs.js", "local" ] ],
+    "component_manager": [ "ccm.component", "../component_manager/ccm.component_manager.js", [ "ccm.get", "../component_manager/resources/configs.js", "developer" ] ],
     "user": [ "ccm.instance", "../user/ccm.user.js", {
       "key": [ "ccm.get", "../user/resources/configs.js", "local" ],
       "html.logged_in.class": "",
