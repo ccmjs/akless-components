@@ -372,7 +372,7 @@
                 } );
                 break;
               case 4:
-                await renderDemos.call( this );
+                await renderDemos.call( this, event.content );
                 break;
               case 5:
                 if ( dataset.ignore.builder.length === 1 ) {
@@ -391,10 +391,11 @@
 
         /**
          * renders demo section
+         * @param {Element} element - demo section
          * @this Instance
          * @returns {Promise}
          */
-        async function renderDemos() {
+        async function renderDemos( element ) {
 
           /**
            * ccm component object for creating demo apps
@@ -402,12 +403,9 @@
            */
           let demo = await this.ccm.component( dataset.url );
 
-          // only one demo? => render demo without menu
-          if ( dataset.ignore.demos.length === 1 ) return await renderDemo( dataset.ignore.demos[ 0 ].config );
-
           // render menu for demo selection
           await this.menu.component.start( $.integrate( {
-            root: event.content.querySelector( '#menu' ),
+            root: element.querySelector( '#menu' ),
             data: { entries: dataset.ignore.demos },
             selected: 1,
             onclick: async event => renderDemo( dataset.ignore.demos[ event.nr - 1 ].config )
@@ -419,7 +417,7 @@
            * @returns {Promise}
            */
           async function renderDemo( config ) {
-            const proceed = demo => $.setContent( event.content.querySelector( '#demo' ), demo.root );
+            const proceed = demo => $.setContent( element.querySelector( '#demo' ), demo.root );
             const result = await demo.start( config, proceed ); result && proceed( result );
           }
 

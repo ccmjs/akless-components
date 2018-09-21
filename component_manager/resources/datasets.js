@@ -17,7 +17,10 @@ ccm.files[ 'datasets.js' ] = {
     "website": "https://github.com/ccmjs/akless-components/",
     "ignore": {
       "demos": [
-        [ "ccm.get", "../cloze/resources/configs.js", "local" ]
+        {
+          "title": "Business English Exercise",
+          "config": [ "ccm.get", "../cloze/resources/configs.js", "local" ]
+        }
       ],
       "builder": [
         {
