@@ -16,9 +16,14 @@ ccm.files[ 'configs.js' ] = {
       "store": [ "ccm.store", "../component_manager/resources/datasets.js" ],
       "key": "cloze"
     },
-    "menu.1": "../menu/ccm.menu.js",
-    "menu.2.key.1": "../menu/resources/configs.js",
-    "menu.2.css": [ "ccm.load",
+    "menu.component.1": "../menu/ccm.menu.js",
+    "menu.ignore.sections.key.1": "../menu/resources/configs.js",
+    "menu.ignore.sections.css": [ "ccm.load",
+      "../libs/bootstrap/css/bootstrap.css",
+      { "context": "head", "url": "../libs/bootstrap/css/font-face.css" }
+    ],
+    "menu.ignore.demos.key.1": "../menu/resources/configs.js",
+    "menu.ignore.demos.css": [ "ccm.load",
       "../libs/bootstrap/css/bootstrap.css",
       { "context": "head", "url": "../libs/bootstrap/css/font-face.css" }
     ],
@@ -51,11 +56,16 @@ ccm.files[ 'configs.js' ] = {
     ],
     "data": {
       "store": [ "ccm.store", { "name": "components", "url": "https://ccm2.inf.h-brs.de" } ],
-      "key": "cloze"
+      "key": "highchart"
     },
-    "menu.1": "../menu/ccm.menu.js",
-    "menu.2.key.1": "../menu/resources/configs.js",
-    "menu.2.css": [ "ccm.load",
+    "menu.component.1": "../menu/ccm.menu.js",
+    "menu.ignore.sections.key.1": "../menu/resources/configs.js",
+    "menu.ignore.sections.css": [ "ccm.load",
+      "../libs/bootstrap/css/bootstrap.css",
+      { "context": "head", "url": "../libs/bootstrap/css/font-face.css" }
+    ],
+    "menu.ignore.demos.key.1": "../menu/resources/configs.js",
+    "menu.ignore.demos.css": [ "ccm.load",
       "../libs/bootstrap/css/bootstrap.css",
       { "context": "head", "url": "../libs/bootstrap/css/font-face.css" }
     ],

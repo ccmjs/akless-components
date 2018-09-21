@@ -14,7 +14,9 @@
 
     name: 'component_manager',
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    version: [ 2, 0, 0 ],
+
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-18.0.0.js',
 
     config: {
       "html": {
