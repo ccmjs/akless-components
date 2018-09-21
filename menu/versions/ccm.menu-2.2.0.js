@@ -2,7 +2,7 @@
  * @overview ccm component for rendering a menu
  * @author André Kless <andre.kless@web.de> 2015-2016, 2018
  * @license The MIT License (MIT)
- * @version latest (2.2.0)
+ * @version 2.2.0
  * @changes
  * version 2.2.0 (21.09.2018): menu entry data is integrated in event data
  * version 2.1.0 (13.09.2018):
@@ -29,7 +29,9 @@
 
     name: 'menu',
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    version: [ 2, 2, 0 ],
+
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-18.0.0.js',
 
     config: {
 
