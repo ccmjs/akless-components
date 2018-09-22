@@ -117,7 +117,7 @@
                     "style": "margin: 1em; display: grid; grid-template-columns: 12em auto",
                     "inner": [
                       { "id": "menu", "style": "margin-right: 1em;" },
-                      { "id": "demo", "class": "well well-sm" }
+                      { "id": "demo", "style": "border: 3px double #ccc;" }
                     ]
                   }
                 },
