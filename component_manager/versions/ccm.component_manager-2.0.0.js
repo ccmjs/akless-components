@@ -4,7 +4,9 @@
  * @license MIT License
  * @version latest (2.0.0)
  * @changes
- * version 2.0.0 (21.09.2018): multiple demos and demo titles
+ * version 2.0.0 (21.09.2018):
+ * - multiple demos and demo titles
+ * - multiple builder and builder titles
  * version 1.0.0 (13.09.2018)
  */
 
@@ -78,7 +80,7 @@
       "menu": {
         "component": [ "ccm.component", "https://ccmjs.github.io/akless-components/menu/versions/ccm.menu-2.2.0.js" ],
         "ignore": {
-          "sections": {
+          "buttons": {
             "data": {
               "entries": [
                 {
@@ -124,10 +126,10 @@
                 {
                   "title": "Create App",
                   "content": {
-                    "style": "margin: 1em;",
+                    "style": "margin: 1em; display: grid; grid-template-columns: 12em auto",
                     "inner": [
-                      { "id": "builder", "class": "well well-sm" },
-                      { "id": "menu" }
+                      { "id": "menu", "style": "margin-right: 1em;" },
+                      { "id": "builder", "style": "border: 3px double #ccc;" }
                     ]
                   }
                 }
@@ -135,7 +137,7 @@
             },
             "key": [ "ccm.get", "https://ccmjs.github.io/akless-components/menu/resources/configs.js", "bootstrap" ],
           },
-          "demos": {
+          "list_group": {
             "html": {
               "main": {
                 "id": "main",
@@ -340,10 +342,10 @@
           abstract:  dataset.abstract
         } ) );
 
-        if ( !this.rating && !this.rating_result ) this.menu.ignore.sections.data.entries[ 1 ].disabled = true;
-        if ( !this.commentary                    ) this.menu.ignore.sections.data.entries[ 2 ].disabled = true;
-        if ( !dataset.ignore || !dataset.ignore.  demos || !dataset.ignore.  demos.length ) this.menu.ignore.sections.data.entries[ 3 ].disabled = true;
-        if ( !dataset.ignore || !dataset.ignore.builder || !dataset.ignore.builder.length ) this.menu.ignore.sections.data.entries[ 4 ].disabled = true;
+        if ( !this.rating && !this.rating_result ) this.menu.ignore.buttons.data.entries[ 1 ].disabled = true;
+        if ( !this.commentary                    ) this.menu.ignore.buttons.data.entries[ 2 ].disabled = true;
+        if ( !dataset.ignore || !dataset.ignore.  demos || !dataset.ignore.  demos.length ) this.menu.ignore.buttons.data.entries[ 3 ].disabled = true;
+        if ( !dataset.ignore || !dataset.ignore.builder || !dataset.ignore.builder.length ) this.menu.ignore.buttons.data.entries[ 4 ].disabled = true;
         await this.menu.component.start( $.integrate( {
           root: 'name',
           selected: 1,
@@ -375,19 +377,11 @@
                 await renderDemos.call( this, event.content );
                 break;
               case 5:
-                if ( dataset.ignore.builder.length === 1 ) {
-                  await this.builder.start( {
-                    root: event.content.querySelector( '#builder' ),
-                    builder: [ 'ccm.component', dataset.ignore.builder[ 0 ].url, dataset.ignore.builder[ 0 ].config ],
-                    url: dataset.url,
-                    'store.1.name': dataset.key
-                  } );
-                  $.removeElement( event.content.querySelector( '#menu' ) );
-                }
+                await renderBuilder.call( this, event.content );
                 break;
             }
           }
-        }, this.menu.ignore.sections ) );
+        }, this.menu.ignore.buttons ) );
 
         /**
          * renders demo section
@@ -409,7 +403,7 @@
             data: { entries: dataset.ignore.demos },
             selected: 1,
             onclick: async event => renderDemo( dataset.ignore.demos[ event.nr - 1 ].config )
-          }, this.menu.ignore.demos ) );
+          }, this.menu.ignore.list_group ) );
 
           /**
            * renders a demo
@@ -419,6 +413,41 @@
           async function renderDemo( config ) {
             const proceed = demo => $.setContent( element.querySelector( '#demo' ), demo.root );
             const result = await demo.start( config, proceed ); result && proceed( result );
+          }
+
+        }
+
+        /**
+         * renders builder section
+         * @param {Element} element
+         * @this Instance
+         * @returns {Promise}
+         */
+        async function renderBuilder( element ) {
+
+          // render menu for demo selection
+          await this.menu.component.start( $.integrate( {
+            root: element.querySelector( '#menu' ),
+            data: { entries: dataset.ignore.builder },
+            selected: 1,
+            onclick: async event => renderBuilder.call( this, dataset.ignore.builder[ event.nr - 1 ] )
+          }, this.menu.ignore.list_group ) );
+
+          /**
+           * renders a demo
+           * @param {Object} builder - component url and instance configuration for builder
+           * @this Instance
+           * @returns {Promise}
+           */
+          async function renderBuilder( builder ) {
+
+            await this.builder.start( {
+              root: element.querySelector( '#builder' ),
+              builder: [ 'ccm.component', builder.url, builder.config ],
+              url: dataset.url,
+              'store.1.name': dataset.key
+            } );
+
           }
 
         }
