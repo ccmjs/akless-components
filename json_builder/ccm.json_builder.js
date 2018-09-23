@@ -35,7 +35,7 @@
           }
         ]
       },
-      "css": [ "ccm.load", "resources/default.css" ],
+      "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/json_builder/resources/default.css" ],
       "data": {},
       "space": 2
 
