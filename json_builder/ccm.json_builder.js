@@ -97,10 +97,11 @@
 
             // button is disabled when JSON is invalid
             const button = this.element.querySelector( '#button' );
-            if ( dataset.valid )
-              button.removeAttribute( 'disabled' );
-            else
-              button.setAttribute( 'disabled', true );
+            if ( button )
+              if ( dataset.valid )
+                button.removeAttribute( 'disabled' );
+              else
+                button.setAttribute( 'disabled', true );
 
             // logging of 'input' event
             this.logger && this.logger.log( 'input', $.clone( dataset ) );
