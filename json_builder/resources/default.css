@@ -28,8 +28,9 @@
 
 #button {
   margin-top: 0.5em;
+  cursor: pointer;
 }
 
-#button:not(:disabled) {
-  cursor: pointer;
+#button:disabled {
+  cursor: not-allowed;
 }
