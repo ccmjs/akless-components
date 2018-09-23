@@ -27,7 +27,7 @@ ccm.files[ 'configs.js' ] = {
       "store": [ "ccm.store", { "name": "json_builder", "url": "https://ccm2.inf.h-brs.de" } ],
       "key": "demo"
     },
-    "onfinish": { "store": true }
+    "onfinish": { "store": true, "alert": "Saved!" }
   }
 
 };
