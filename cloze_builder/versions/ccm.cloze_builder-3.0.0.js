@@ -815,11 +815,11 @@
 
             // hide and show help texts
             const this_a = this;
-            [ ...this.element.querySelectorAll( 'a' ) ].forEach( other_a => other_a !== this_a && other_a.classList.remove( 'active' ) );
+            [ ...self.element.querySelectorAll( 'a' ) ].forEach( other_a => other_a !== this_a && other_a.classList.remove( 'active' ) );
             this.classList.toggle( 'active' );
 
             // logging of 'help' event
-            this.logger && this.logger.log( 'help', { name: this.id.split( '-' )[ 0 ], active: this.classList.contains( 'active' ) } );
+            self.logger && self.logger.log( 'help', { name: this.id.split( '-' )[ 0 ], active: this.classList.contains( 'active' ) } );
 
           }
         } ) );
