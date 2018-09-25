@@ -53,7 +53,7 @@
 
     Instance: function () {
 
-      let $, dataset, key;
+      let $, dataset, tmp;
 
       this.ready = async () => {
 
@@ -70,8 +70,8 @@
         // get dataset that contains initial JSON
         dataset = await $.dataset( this.data );
 
-        // get dataset key to safety
-        key = dataset.key; delete dataset.key;
+        // get data management properties to safety
+        tmp = $.privatize( 'key', 'created_at', 'updated_at', '_' );
 
         // prepare dataset
         if ( this.directly ) dataset = { json: dataset };
@@ -153,11 +153,7 @@
        * returns current result data
        * @returns {Object} current result data
        */
-      this.getValue = () => {
-        const results = $.clone( this.directly ? dataset.json : dataset );
-        if ( key ) results.key = key;
-        return results;
-      }
+      this.getValue = () => $.integrate( tmp, this.directly ? dataset.json : dataset )
 
     }
 
