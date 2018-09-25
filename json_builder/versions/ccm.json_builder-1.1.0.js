@@ -71,7 +71,7 @@
         dataset = await $.dataset( this.data );
 
         // get data management properties to safety
-        tmp = $.privatize( 'key', 'created_at', 'updated_at', '_' );
+        tmp = $.privatize( dataset, 'key', 'created_at', 'updated_at', '_' );
 
         // prepare dataset
         if ( this.directly ) dataset = { json: dataset };
