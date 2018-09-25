@@ -12,13 +12,13 @@ ccm.files[ 'configs.js' ] = {
       { "context": "head", "url": "../libs/bootstrap/css/font-face.css" },
       "../app_builder/resources/default.css"
     ],
+    "data": {
+      "store": [ "ccm.store", "../content/resources/configs.js" ],
+      "key": "local"
+    },
     "builder": [ "ccm.component", "../json_builder/ccm.json_builder.js", {
       "html.inner.1": "",
-      "directly": true,
-      "data": {
-        "store": [ "ccm.store", "../content/resources/configs.js" ],
-        "key": "local"
-      }
+      "directly": true
     } ],
     "app": [ "ccm.component", "../content/ccm.content.js" ],
     "user": [ "ccm.instance", "../user/ccm.user.js", [ "ccm.get", "../user/resources/configs.js", "guest" ] ],
@@ -31,23 +31,20 @@ ccm.files[ 'configs.js' ] = {
       { "context": "head", "url": "../libs/bootstrap/css/font-face.css" },
       "../app_builder/resources/default.css"
     ],
-    "store.1": { "name": "content", "url": "http://localhost:8080" },
     "builder": [ "ccm.component", "../json_builder/ccm.json_builder.js", {
       "html.inner.1": "",
-      "directly": true,
-      "data": {
-        "store": [ "ccm.store", "../content/resources/configs.js" ],
-        "key": "local"
-      }
+      "directly": true
     } ],
     "app": [ "ccm.component", "../content/ccm.content.js" ]
   },
+
   "demo": {
     "store.1": { "name": "content", "url": "https://ccm2.inf.h-brs.de" },
-    "builder.2.data": {
-      "store": [ "ccm.store", "https://ccmjs.github.io/akless-components/content/resources/configs.js" ],
-      "key": "demo"
-    }
+    "builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-1.0.0.js", {
+      "html.inner.1": "",
+      "directly": true
+    } ],
+    "app": [ "ccm.component", "https://ccmjs.github.io/akless-components/content/versions/ccm.content-5.0.0.js" ],
   }
 
 };

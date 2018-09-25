@@ -192,19 +192,11 @@
         { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/bootstrap/css/font-face.css" },
         "https://ccmjs.github.io/akless-components/app_builder/resources/default.css"
       ],
-      "builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-1.0.0.js", {
-        "html.inner.1": "",
-        "directly": true,
-        "data": {
-          "store": [ "ccm.store", "https://ccmjs.github.io/akless-components/content/resources/configs.js" ],
-          "key": "demo"
-        }
-      } ],
-      "app": [ "ccm.component", "https://ccmjs.github.io/akless-components/content/versions/ccm.content-5.0.0.js" ],
-      "store": [ "ccm.store" ],
+      "data": { "store": [ "ccm.store" ] },
       "warning": "Are you sure you want to delete this App?"
 
-  //  "data": {},
+  //  "builder"
+  //  "app"
   //  "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-8.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "guest" ] ],
   //  "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
   //  "onchange"
@@ -216,7 +208,7 @@
       let $;
 
       /**
-       * current app builder instance
+       * current app-specific builder instance
        * @type {Object}
        */
       let builder;
@@ -235,8 +227,20 @@
 
         const self = this;
 
+        /**
+         * app configuration
+         * @type {Object}
+         */
+        let dataset = await $.dataset( this.data );
+
         // logging of 'start' event
-        this.logger && this.logger.log( 'start' );
+        this.logger && this.logger.log( 'start', $.clone( dataset ) );
+
+        /**
+         * current App-ID
+         * @type {string}
+         */
+        let app_id = dataset.key; delete dataset.key;
 
         // render main HTML structure
         $.setContent( this.element, $.html( this.html.main, {
@@ -270,26 +274,35 @@
          */
         const advance_elem = this.element.querySelector( '#advance' );
 
-        // render app builder
-        builder = await this.builder.start( {
-          root: builder_elem,
-          onchange: () => { updatePreview(); clearAdvance(); }
-        } );
-
-        // render preview
-        await updatePreview();
-
-        /**
-         * current App-ID
-         * @type {string}
-         */
-        let app_id;
-
         /**
          * app configuration is managed in a local JavaScript object
          * @type {boolean}
          */
-        const isLocalStore = !this.store.source().name;
+        const isLocalStore = !this.data.store.source().name;
+
+        // render initial app state
+        await renderApp();
+
+        /**
+         * renders loaded app and updates preview
+         * @returns {Promise}
+         */
+        async function renderApp() {
+
+          // render new app-specific builder with loaded app configuration as start values
+          builder = await self.builder.start( {
+            root: builder_elem,
+            data: $.clone( dataset ),
+            onchange: () => { updatePreview(); clearAdvance(); }
+          } );
+
+          // activate "Update" and "Delete" button
+          !isLocalStore && [ ...buttons_elem.querySelectorAll( '.disabled' ) ].map( button => button.classList.remove( 'disabled' ) );
+
+          // update preview of build app
+          await updatePreview();
+
+        }
 
         /** when "Create" button has been clicked */
         async function createApp() {
@@ -297,29 +310,23 @@
           // has user instance? => perform login
           self.user && await self.user.login();
 
-          /**
-           * current app configuration from app builder
-           * @type {Object}
-           */
-          const config = builder.getValue();
+          // get current app configuration from app-specific builder
+          dataset = builder.getValue(); delete dataset.key;
 
           // add permission settings
-          if ( self.user ) config._ = { access: 'creator' };
+          if ( self.user ) dataset._ = { access: 'creator' };
 
-          // remove existing key (than new key will be generated)
-          delete config.key;
-
-          // save app configuration in datastore and give app to user
-          const key = await self.store.set( config );
-
-          // add generated App-ID to app configuration
-          config.key = key;
+          // save app configuration
+          app_id = await self.data.store.set( dataset ); delete dataset.key;
 
           // logging of 'create' event
-          self.logger && self.logger.log( 'create', $.clone( config ) );
+          self.logger && self.logger.log( 'create', $.clone( dataset ) );
 
           // give app to user
-          handoverApp( config );
+          handoverApp();
+
+          // has 'change' callback? => perform it
+          self.onchange && self.onchange( self );
 
         }
 
@@ -347,40 +354,26 @@
               // no key entered? => show failed message
               if ( !key ) return failed();
 
-              // has user instance? => perform login
-              self.user && await self.user.login();
-
               // load app configuration
-              const config = await self.store.get( key );
+              dataset = await self.data.store.get( key );
 
               // no app configuration with entered App-ID exists? => show failed message
-              if ( !config ) return failed();
+              if ( !dataset ) return failed();
 
               // logging of 'load' event
-              self.logger && self.logger.log( 'load', $.clone( config ) );
+              self.logger && self.logger.log( 'load', $.clone( dataset ) );
 
-              // render new app builder instance with loaded app configuration as start values
-              const datastore = {}; datastore[ key ] = config;
-              const builder_inst = await self.builder.start( {
-                root: builder_elem,
-                data: {
-                  store: [ 'ccm.store', datastore ],
-                  key: key
-                },
-                onchange: () => { updatePreview(); clearAdvance(); }
-              } );
+              // remember App-ID
+              app_id = dataset.key; delete dataset.key;
 
-              // remember App-ID and app builder instance
-              app_id = key; builder = builder_inst;
-
-              // activate "Update" and "Delete" button
-              !isLocalStore && [ ...buttons_elem.querySelectorAll( '.disabled' ) ].map( button => button.classList.remove( 'disabled' ) );
+              // render loaded app
+              await renderApp();
 
               // render success message (and slowly fade it out)
               $.setContent( advance_elem, $.html( self.html.loaded ) );
               fadeOut( advance_elem.querySelector( '#success' ) );
 
-              // has onchange callback? => perform it
+              // perform 'change' callback
               self.onchange && self.onchange( self );
 
               /** shows failed message */
@@ -401,49 +394,46 @@
         /** when "Update" button has been clicked */
         async function updateApp() {
 
-          // has no existing App-ID? => abort
+          // invalid state? => abort
           if ( !app_id || isLocalStore ) return;
 
           // has user instance? => perform login
           self.user && await self.user.login();
 
-          /**
-           * current app configuration from the app builder
-           * @type {Object}
-           */
-          const config = builder.getValue();
+          // get current app configuration from app-specific builder
+          dataset = builder.getValue();
 
-          // add App-ID to the app configuration (to save the app under the same App-ID again)
-          config.key = app_id;
+          // add App-ID to app configuration (to save app under same App-ID again)
+          dataset.key = app_id;
 
           // logging of 'update' event
-          self.logger && self.logger.log( 'update', $.clone( config ) );
+          self.logger && self.logger.log( 'update', $.clone( dataset ) );
 
-          // save app configuration in datastore
-          await self.store.set( config );
+          // save app configuration
+          app_id = await self.data.store.set( dataset ); delete dataset.key;
 
           // give app to user
-          handoverApp( config )
+          handoverApp();
+
+          // has 'change' callback? => perform it
+          self.onchange && self.onchange( self );
 
         }
 
         /** when "Delete" button has been clicked */
         async function deleteApp() {
 
-          // has no existing App-ID or user is not sure about the deletion? => abort
+          // invalid state or user is not sure about deletion? => abort
           if ( !app_id || isLocalStore || !confirm( self.warning ) ) return;
 
           // has user instance? => perform login
           self.user && await self.user.login();
 
-          // has logger instance? => log 'delete' event
-          self.logger && self.logger.log( 'delete', app_id );
+          // logging of 'delete' event
+          self.logger && self.logger.log( 'delete', $.clone( app_id ) );
 
-          // delete app configuration in datastore
-          await self.store.del( app_id );
-
-          // has onchange callback? => perform it
-          self.onchange && self.onchange( self );
+          // delete app configuration
+          await self.data.store.del( app_id );
 
           // forget App-ID
           app_id = undefined;
@@ -456,43 +446,34 @@
           buttons_elem.querySelector( '#button-update' ).classList.add( 'disabled' );
           buttons_elem.querySelector( '#button-delete' ).classList.add( 'disabled' );
 
+          // has 'change' callback? => perform it
+          self.onchange && self.onchange( self );
+
         }
 
-        /**
-         * gives the app to the user
-         * @param {Object} config - app configuration
-         */
-        function handoverApp( config ) {
-
-          // remember the App-ID
-          app_id = config.key;
+        /** gives app to user */
+        function handoverApp() {
 
           // activate "Update" and "Delete" button
           !isLocalStore && [ ...buttons_elem.querySelectorAll( '.disabled' ) ].map( button => button.classList.remove( 'disabled' ) );
 
           // render app usage informations
           $.setContent( advance_elem, $.html( self.html.usage ) );
-          const store_settings = self.store.source(); if ( isLocalStore ) store_settings[ config.key ] = config;
-          advance_elem.querySelector( '#embed_code' ).innerHTML = getEmbedCode( self.app.url, $.getIndex( self.app.url ), store_settings, config.key );
-          advance_elem.querySelector( '#id'         ).innerHTML = config.key;
+          advance_elem.querySelector( '#embed_code' ).innerHTML = getEmbedCode();
+          advance_elem.querySelector( '#id'         ).innerHTML = app_id;
 
           // fade out the success message
           fadeOut( advance_elem.querySelector( '#success' ) );
 
-          // has onchange callback? => perform it
-          self.onchange && self.onchange( self );
-
           /**
-           * returns the embed code for the saved app
-           * @param {string} url - component URL
-           * @param {string} index - component index
-           * @param {Object} store_settings - settings of datastore that contains the app configuration
-           * @param {string} key - dataset key of app configuration (App-ID)
+           * returns embed code for saved app
            * @returns {string} embed code of saved app
            */
-          function getEmbedCode( url, index, store_settings, key ) {
+          function getEmbedCode() {
 
-            return $.escapeHTML( '<script src="' + self.app.url + '"></script><ccm-' + index + ' key=\'["ccm.get",' + JSON.stringify( store_settings ) + ',"' + key + '"]\'></ccm-' + index + '>' );
+            const index = $.getIndex( self.app.url );
+            let store_settings = self.data.store.source(); if ( isLocalStore ) { store_settings = {}; store_settings[ app_id ] = dataset; }
+            return $.escapeHTML( '<script src="' + self.app.url + '"></script><ccm-' + index + ' key=\'["ccm.get",' + JSON.stringify( store_settings ) + ',"' + app_id + '"]\'></ccm-' + index + '>' );
 
           }
 
