@@ -1,0 +1,24 @@
+/**
+ * @overview default layout of ccm component for building apps
+ * @author André Kless <andre.kless@web.de> 2018
+ * @license The MIT License (MIT)
+ */
+
+#element {
+  padding: 0.5em;
+}
+
+#maker {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+#preview {
+  margin-left: 0.5em;
+  border: 3px double #ccc;
+}
+
+#buttons {
+  padding: 1em 0;
+}
