@@ -39,8 +39,8 @@ ccm.files[ 'configs.js' ] = {
   },
 
   "demo": {
-    "store.1": { "name": "content", "url": "https://ccm2.inf.h-brs.de" },
-    "builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-1.0.0.js", {
+    "data.store.1": { "name": "content", "url": "https://ccm2.inf.h-brs.de" },
+    "builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-1.1.0.js", {
       "html.inner.1": "",
       "directly": true
     } ],
