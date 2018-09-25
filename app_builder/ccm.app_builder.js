@@ -363,12 +363,11 @@
               const datastore = {}; datastore[ key ] = config;
               const builder_inst = await self.builder.start( {
                 root: builder_elem,
-                target: [ 'ccm.component', self.app.url ],
                 data: {
                   store: [ 'ccm.store', datastore ],
                   key: key
                 },
-                onchange: clearAdvance
+                onchange: () => { updatePreview(); clearAdvance(); }
               } );
 
               // remember App-ID and app builder instance
@@ -518,7 +517,7 @@
         /** updates website area for app preview */
         async function updatePreview() {
 
-          $.setContent( preview_elem, ( await self.app.start( self.getValue() ) ).root );
+          preview_elem && $.setContent( preview_elem, ( await self.app.start( self.getValue() ) ).root );
 
         }
 

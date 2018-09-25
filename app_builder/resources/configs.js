@@ -31,7 +31,7 @@ ccm.files[ 'configs.js' ] = {
       { "context": "head", "url": "../libs/bootstrap/css/font-face.css" },
       "../app_builder/resources/default.css"
     ],
-    "store": [ "ccm.store", { "store": "content", "url": "http://localhost:8080" } ],
+    "store.1": { "name": "content", "url": "http://localhost:8080" },
     "builder": [ "ccm.component", "../json_builder/ccm.json_builder.js", {
       "html.inner.1": "",
       "directly": true,
@@ -43,7 +43,11 @@ ccm.files[ 'configs.js' ] = {
     "app": [ "ccm.component", "../content/ccm.content.js" ]
   },
   "demo": {
-    "store": [ "ccm.store", { "name": "cloze", "url": "https://ccm2.inf.h-brs.de" } ]
+    "store.1": { "name": "content", "url": "https://ccm2.inf.h-brs.de" },
+    "builder.2.data": {
+      "store": [ "ccm.store", "https://ccmjs.github.io/akless-components/content/resources/configs.js" ],
+      "key": "demo"
+    }
   }
 
 };

@@ -194,7 +194,7 @@
         { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/bootstrap/css/font-face.css" },
         "https://ccmjs.github.io/akless-components/app_builder/resources/default.css"
       ],
-      "builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-1.0.0.js", {
+      "builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-1.1.0.js", {
         "html.inner.1": "",
         "directly": true,
         "data": {
@@ -520,7 +520,7 @@
         /** updates website area for app preview */
         async function updatePreview() {
 
-          $.setContent( preview_elem, ( await self.app.start( self.getValue() ) ).root );
+          preview_elem && $.setContent( preview_elem, ( await self.app.start( self.getValue() ) ).root );
 
         }
 
