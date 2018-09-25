@@ -17,7 +17,8 @@
 #preview {
   margin-left: 0.5em;
   border: 3px double #ccc;
-  min-width: 8em;
+  min-width: 11em;
+  min-height: 7em;
 }
 
 #buttons {
