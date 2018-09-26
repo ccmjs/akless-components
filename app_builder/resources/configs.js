@@ -44,7 +44,7 @@ ccm.files[ 'configs.js' ] = {
       "html.inner.1": "",
       "directly": true
     } ],
-    "app": [ "ccm.component", "https://ccmjs.github.io/akless-components/content/versions/ccm.content-5.0.0.js" ],
+    "app": [ "ccm.component", "https://ccmjs.github.io/akless-components/content/versions/ccm.content-5.0.0.js" ]
   }
 
 };
