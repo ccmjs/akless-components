@@ -7,6 +7,7 @@
 ccm.files[ 'configs.js' ] = {
 
   "local": {
+    "key": "local",
     "css": [ "ccm.load",
       "../libs/bootstrap/css/bootstrap.css",
       { "context": "head", "url": "../libs/bootstrap/css/font-face.css" },
@@ -34,6 +35,7 @@ ccm.files[ 'configs.js' ] = {
   },
 
   "localhost": {
+    "key": "localhost",
     "css": [ "ccm.load",
       "../libs/bootstrap/css/bootstrap.css",
       { "context": "head", "url": "../libs/bootstrap/css/font-face.css" },
@@ -68,6 +70,7 @@ ccm.files[ 'configs.js' ] = {
   },
 
   "demo": {
+    "key": "demo",
     "data": {
       "store": [ "ccm.store", { "name": "cloze", "url": "https://ccm2.inf.h-brs.de" } ],
       "key": "demo"
@@ -83,6 +86,7 @@ ccm.files[ 'configs.js' ] = {
   },
 
   "lea": {
+    "key": "lea",
     "html.inner.1.inner.2.inner.0.inner.1.inner.1.inner.5": {
       "tag": "h5",
       "inner": "H-BRS LEA"

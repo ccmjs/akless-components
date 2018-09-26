@@ -7,6 +7,7 @@
 ccm.files[ 'configs.js' ] = {
 
   "local": {
+    "key": "local",
     "css.1": "../json_builder/resources/default.css",
     "data": {
       "json": {
@@ -23,6 +24,7 @@ ccm.files[ 'configs.js' ] = {
   },
 
   "demo": {
+    "key": "demo",
     "data": {
       "store": [ "ccm.store", { "name": "json_builder", "url": "https://ccm2.inf.h-brs.de" } ],
       "key": "demo"

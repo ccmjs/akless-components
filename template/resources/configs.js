@@ -7,6 +7,7 @@
 ccm.files[ 'configs.js' ] = {
 
   "local": {
+    "key": "local",
     "css": [ "ccm.load", "../template/resources/default.css" ],
     "data": {
       "store": [ "ccm.store", "../template/resources/datasets.js" ],
@@ -18,6 +19,7 @@ ccm.files[ 'configs.js' ] = {
   },
 
   "demo": {
+    "key": "demo",
     "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/template/resources/default.css" ],
     "data": {
       "store": [ "ccm.store", { "name": "template", "url": "https://ccm2.inf.h-brs.de" } ],

@@ -7,6 +7,7 @@
 ccm.files[ 'configs.js' ] = {
 
   "local": {
+    "key": "local",
     "css": [ "ccm.load", "../kanban_board/resources/default.css" ],
     "data": {
       "store": [ "ccm.store", "../kanban_board/resources/datasets.js" ],
@@ -24,6 +25,7 @@ ccm.files[ 'configs.js' ] = {
   },
 
   "remote": {
+    "key": "remote",
     "css": [ "ccm.load", "../kanban_board/resources/default.css" ],
     "data": {
       "store": [ "ccm.store", { "store": "kanban_board", "url": "wss://ccm2.inf.h-brs.de" } ],
@@ -44,6 +46,7 @@ ccm.files[ 'configs.js' ] = {
   },
 
   "demo": {
+    "key": "demo",
     "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/kanban_board/resources/default.css" ],
     "data": {
       "store": [ "ccm.store", { "store": "kanban_board", "url": "wss://ccm2.inf.h-brs.de" } ],
@@ -64,6 +67,7 @@ ccm.files[ 'configs.js' ] = {
   },
 
   "showcase": {
+    "key": "showcase",
     "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/kanban_board/resources/default.css" ],
     "data": {
       "store": [ "ccm.store", "https://ccmjs.github.io/akless-components/kanban_board/resources/datasets.js" ],
@@ -76,6 +80,7 @@ ccm.files[ 'configs.js' ] = {
   },
 
   "experimental": {
+    "key": "experimental",
     "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/kanban_board/resources/default.css" ],
     "data": {
       "store": [ "ccm.store", "resources/datasets.js" ],

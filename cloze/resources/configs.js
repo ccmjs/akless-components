@@ -7,6 +7,7 @@
 ccm.files[ 'configs.js' ] = {
 
   "local": {
+    "key": "local",
     "css": [ "ccm.load", "../cloze/resources/default.css" ],
     "feedback": true,
     "keywords": [ "convenience", "conducting", "objectives", "durable", "competitive", "breakdown", "reasons", "evaluate", "adding", "breakthroughs", "withdraw", "patterns", "non-durable", "deleting", "feasible", "making", "sources", "niche" ],
@@ -19,6 +20,7 @@ ccm.files[ 'configs.js' ] = {
   },
 
   "localhost": {
+    "key": "localhost",
     "css": [ "ccm.load", "../cloze/resources/default.css" ],
     "feedback": true,
     "keywords": [ "convenience", "conducting", "objectives", "durable", "competitive", "breakdown", "reasons", "evaluate", "adding", "breakthroughs", "withdraw", "patterns", "non-durable", "deleting", "feasible", "making", "sources", "niche" ],
@@ -84,6 +86,7 @@ ccm.files[ 'configs.js' ] = {
   },
 
   "lea": {
+    "key": "lea",
     "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/cloze/resources/lea.css" ],
     "data": {
       "store": [ "ccm.store", { "store": "cloze_results", "url": "https://ccm2.inf.h-brs.de", "method": "POST" } ],

@@ -7,6 +7,7 @@
 ccm.files[ 'configs.js' ] = {
 
   "local": {
+    "key": "local",
     "data": {
       "store": [ "ccm.store", "../submit/resources/datasets.js" ],
       "key": "test"
@@ -25,6 +26,7 @@ ccm.files[ 'configs.js' ] = {
   },
 
   "localhost": {
+    "key": "localhost",
     "data": {
       "store": [ "ccm.store", { "name": "submit", "url": "http://localhost:8080" } ],
       "key": "test"
@@ -50,6 +52,7 @@ ccm.files[ 'configs.js' ] = {
   },
 
   "demo": {
+    "key": "demo",
     "data": {
       "store": [ "ccm.store", { "name": "submit", "url": "https://ccm2.inf.h-brs.de" } ],
       "key": "demo"

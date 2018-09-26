@@ -7,6 +7,7 @@
 ccm.files[ 'configs.js' ] = {
 
   "localhost": {
+    "key": "localhost",
     "css": [ "ccm.load",
       "../libs/bootstrap/css/bootstrap.css",
       { "context": "head", "url": "../libs/bootstrap/css/font-face.css" },
@@ -29,6 +30,7 @@ ccm.files[ 'configs.js' ] = {
   },
 
   "demo": {
+    "key": "demo",
     "sections": {
       "results": "Show Results",
       "gaps": "Gap Analysis"
@@ -45,6 +47,7 @@ ccm.files[ 'configs.js' ] = {
   },
 
   "teacher": {
+    "key": "teacher",
     "sections": {
       "results": "Show Results",
       "gaps": "Gap Analysis"

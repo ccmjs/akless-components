@@ -7,6 +7,7 @@
 ccm.files[ 'configs.js' ] = {
 
   "homework": {
+    "key": "homework",
     "css": [ "ccm.load", "../kanban_card/resources/default.css" ],
     "data": {
       "store": [ "ccm.store", "../kanban_card/resources/datasets.js" ],
@@ -15,6 +16,7 @@ ccm.files[ 'configs.js' ] = {
   },
 
   "presentation": {
+    "key": "presentation",
     "css": [ "ccm.load", "../kanban_card/resources/demo.css" ],
     "data": {
       "store": [ "ccm.store", "../kanban_card/resources/datasets.js" ],
@@ -23,6 +25,7 @@ ccm.files[ 'configs.js' ] = {
   },
 
   "realtime": {
+    "key": "realtime",
     "font": [ "ccm.load", { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/weblysleekui/font.css" } ],
     "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/kanban_card/resources/weblysleek.css" ],
     "data": {
@@ -34,6 +37,7 @@ ccm.files[ 'configs.js' ] = {
   },
 
   "test": {
+    "key": "test",
     "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/kanban_card/resources/demo.css" ],
     "data": {
       "store": [ "ccm.store", "https://ccmjs.github.io/akless-components/kanban_card/resources/datasets.js" ],
@@ -43,6 +47,7 @@ ccm.files[ 'configs.js' ] = {
   },
 
   "w2c": {
+    "key": "w2c",
     "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/kanban_card/resources/demo.css" ],
     "data": {
       "store": [ "ccm.store", "https://ccmjs.github.io/akless-components/kanban_card/resources/datasets.js" ],
@@ -52,6 +57,7 @@ ccm.files[ 'configs.js' ] = {
   },
 
   "lea": {
+    "key": "lea",
     "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/kanban_card/resources/demo.css" ],
     "data": {
       "store": [ "ccm.store", "https://ccmjs.github.io/akless-components/kanban_card/resources/datasets.js" ],
@@ -61,6 +67,7 @@ ccm.files[ 'configs.js' ] = {
   },
 
   "more": {
+    "key": "more",
     "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/kanban_card/resources/demo.css" ],
     "data": {
       "store": [ "ccm.store", "https://ccmjs.github.io/akless-components/kanban_card/resources/datasets.js" ],

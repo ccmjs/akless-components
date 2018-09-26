@@ -5,7 +5,9 @@
  */
 
 ccm.files[ 'configs.js' ] = {
+
   "local": {
+    "key": "local",
     "css": [ "ccm.load",
       "../libs/bootstrap/css/bootstrap.css",
       { "context": "head", "url": "../libs/bootstrap/css/font-face.css" },
@@ -15,22 +17,33 @@ ccm.files[ 'configs.js' ] = {
     "title": "Guest Mode: Please enter any username",
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ]
   },
+
   "guest": {
+    "key": "guest",
     "realm": "guest",
     "title": "Guest Mode: Please enter any username"
   },
+
   "pseudo": {
+    "key": "pseudo",
     "realm": "guest",
     "guest": true
   },
+
   "cloud": {
+    "key": "cloud",
     "realm": "cloud",
     "url": "https://ccm2.inf.h-brs.de"
   },
+
   "hbrsinfkaul": {
+    "key": "hbrsinfkaul",
     "realm": "hbrsinfkaul"
   },
+
   "hbrsinfpseudo": {
+    "key": "hbrsinfpseudo",
     "realm": "hbrsinfpseudo"
   }
+
 };

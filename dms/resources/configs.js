@@ -7,6 +7,7 @@
 ccm.files[ 'configs.js' ] = {
 
   "local": {
+    "key": "local",
     "css": [ "ccm.load",
       "../libs/bootstrap/css/bootstrap.css",
       { "context": "head", "url": "../libs/bootstrap/css/font-face.css" },
@@ -35,6 +36,7 @@ ccm.files[ 'configs.js' ] = {
   },
 
   "developer": {
+    "key": "developer",
     "css": [ "ccm.load",
       "../libs/bootstrap/css/bootstrap.css",
       { "context": "head", "url": "../libs/bootstrap/css/font-face.css" },
@@ -64,6 +66,7 @@ ccm.files[ 'configs.js' ] = {
   },
 
   "live": {
+    "key": "live",
     "data": {
       "store": [ "ccm.store", { "name": "components", "url": "https://ccm2.inf.h-brs.de" } ],
       "key": {}

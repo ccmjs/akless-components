@@ -5,7 +5,9 @@
  */
 
 ccm.files[ 'configs.js' ] = {
+
   "test": {
+    "key": "test",
     "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/quiz/resources/weblysleek.css", { "context": "head", "url": "https://akless.github.io/ccm-components/libs/weblysleekui/font.css" } ],
     "feedback": true,
     "start_button": true,
@@ -215,7 +217,9 @@ ccm.files[ 'configs.js' ] = {
       }
     ]
   },
+
   "demo": {
+    "key": "demo",
     "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/quiz/resources/weblysleek.css", { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/weblysleekui/font.css" } ],
     "questions": [
       {
@@ -266,7 +270,9 @@ ccm.files[ 'configs.js' ] = {
     "placeholder.finish": "Restart",
     "onfinish": { "log": true, "restart": true }
   },
+
   "local": {
+    "key": "local",
     "css": [ "ccm.load", "../quiz/resources/weblysleek.css", { "context": "head", "url": "../libs/weblysleekui/font.css" } ],
     "user": [ "ccm.instance", "../user/ccm.user.js" ],
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
@@ -319,7 +325,9 @@ ccm.files[ 'configs.js' ] = {
     "placeholder.finish": "Restart",
     "onfinish": { "restart": true }
   },
+
   "se_ws17_testabdeckung": {
+    "key": "se_ws17_testabdeckung",
     "quiz_key": "quiz_testabdeckung",
     "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-2.0.1.js", [ "ccm.get", "https://kaul.inf.h-brs.de/data/2017/se1/json/log_configs.js", "se_ws17_quiz" ] ],
     "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/quiz/resources/weblysleek.css", {
@@ -577,7 +585,9 @@ ccm.files[ 'configs.js' ] = {
       }
     ]
   },
+
   "was-ist-html": {
+    "key": "was-ist-html",
     "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/quiz/resources/weblysleek.css", { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/weblysleekui/font.css" } ],
     "feedback": true,
     "start_button": true,
@@ -775,7 +785,9 @@ ccm.files[ 'configs.js' ] = {
       }
     ]
   },
+
   "erste-webseite": {
+    "key": "erste-webseite",
     "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/quiz/resources/weblysleek.css", { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/weblysleekui/font.css" } ],
     "feedback": true,
     "start_button": true,
@@ -872,7 +884,9 @@ ccm.files[ 'configs.js' ] = {
       }
     ]
   },
+
   "html-tag": {
+    "key": "html-tag",
     "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/quiz/resources/weblysleek.css", { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/weblysleekui/font.css" } ],
     "feedback": true,
     "start_button": true,
@@ -1079,4 +1093,5 @@ ccm.files[ 'configs.js' ] = {
       }
     ]
   }
+
 };

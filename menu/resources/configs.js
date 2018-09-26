@@ -7,6 +7,7 @@
 ccm.files[ 'configs.js' ] = {
 
   "local": {
+    "key": "local",
     "css": [ "ccm.load", "../menu/resources/tabs.css" ],
     "data": {
       "store": [ "ccm.store", "../menu/resources/datasets.js" ],
@@ -16,6 +17,7 @@ ccm.files[ 'configs.js' ] = {
   },
 
   "demo": {
+    "key": "demo",
     "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/menu/resources/tabs.css" ],
     "data": {
       "store": [ "ccm.store", "https://ccmjs.github.io/akless-components/menu/resources/datasets.js" ],
@@ -24,6 +26,7 @@ ccm.files[ 'configs.js' ] = {
   },
 
   "icon": {
+    "key": "icon",
     "css": [ "ccm.load",
       { "context": "head", "url": "https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" },
       "https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css",
@@ -36,6 +39,7 @@ ccm.files[ 'configs.js' ] = {
   },
 
   "bootstrap": {
+    "key": "bootstrap",
     "html": {
       "main": {
         "id": "main",
@@ -69,6 +73,7 @@ ccm.files[ 'configs.js' ] = {
   },
 
   "tabs": {
+    "key": "tabs",
     "html": {
       "main": {
         "id": "main",
@@ -107,6 +112,7 @@ ccm.files[ 'configs.js' ] = {
   },
 
   "list_group": {
+    "key": "list_group",
     "html": {
       "main": {
         "id": "main",

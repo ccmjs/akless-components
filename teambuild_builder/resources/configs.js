@@ -7,6 +7,7 @@
 ccm.files[ 'configs.js' ] = {
 
   "local": {
+    "key": "local",
     "css": [ "ccm.load",
       "../libs/bootstrap/css/bootstrap.css",
       { "context": "head", "url": "../libs/bootstrap/css/font-face.css" },
@@ -22,6 +23,7 @@ ccm.files[ 'configs.js' ] = {
   },
 
   "localhost": {
+    "key": "localhost",
     "css": [ "ccm.load",
       "../libs/bootstrap/css/bootstrap.css",
       { "context": "head", "url": "../libs/bootstrap/css/font-face.css" },
@@ -60,6 +62,7 @@ ccm.files[ 'configs.js' ] = {
   },
 
   "demo": {
+    "key": "demo",
     "data": {
       "store": [ "ccm.store", { "name": "teambuild", "url": "https://ccm2.inf.h-brs.de" } ],
       "key": "demo"
@@ -93,6 +96,7 @@ ccm.files[ 'configs.js' ] = {
   },
 
   "crud": {
+    "key": "crud",
     "css": [ "ccm.load",
       "https://ccmjs.github.io/akless-components/libs/bootstrap/css/bootstrap.css",
       { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/bootstrap/css/font-face.css" },

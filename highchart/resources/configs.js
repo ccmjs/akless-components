@@ -5,7 +5,9 @@
  */
 
 ccm.files[ 'configs.js' ] = {
+
   "local": {
+    "key": "local",
     "css": [ "ccm.load", "../highchart/resources/default.css" ],
     "libs": [ "ccm.load", [ "https://code.highcharts.com/highcharts.js", "https://code.highcharts.com/modules/series-label.js", "https://code.highcharts.com/modules/exporting.js" ] ],
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
@@ -38,7 +40,9 @@ ccm.files[ 'configs.js' ] = {
       }
     ]
   },
+
   "line": {
+    "key": "line",
     "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/highchart/resources/default.css" ],
     "libs": [ "ccm.load", [ "https://code.highcharts.com/highcharts.js", "https://code.highcharts.com/modules/series-label.js", "https://code.highcharts.com/modules/exporting.js" ] ],
     "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-3.1.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
@@ -71,7 +75,9 @@ ccm.files[ 'configs.js' ] = {
       }
     ]
   },
+
   "area": {
+    "key": "area",
     "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/highchart/resources/default.css" ],
     "libs": [ "ccm.load", [ "https://code.highcharts.com/highcharts.js", "https://code.highcharts.com/modules/exporting.js" ] ],
     "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-3.1.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
@@ -105,7 +111,9 @@ ccm.files[ 'configs.js' ] = {
       }
     ]
   },
+
   "bar": {
+    "key": "bar",
     "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/highchart/resources/default.css" ],
     "libs": [ "ccm.load", [ "https://code.highcharts.com/highcharts.js", "https://code.highcharts.com/modules/exporting.js" ] ],
     "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-3.1.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
@@ -131,7 +139,9 @@ ccm.files[ 'configs.js' ] = {
       }
     ]
   },
+
   "column": {
+    "key": "column",
     "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/highchart/resources/default.css" ],
     "libs": [ "ccm.load", [ "https://code.highcharts.com/highcharts.js", "https://code.highcharts.com/modules/exporting.js" ] ],
     "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-3.1.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
@@ -161,7 +171,9 @@ ccm.files[ 'configs.js' ] = {
       }
     ]
   },
+
   "pie": {
+    "key": "pie",
     "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/highchart/resources/default.css" ],
     "libs": [ "ccm.load", [ "https://code.highcharts.com/highcharts.js", "https://code.highcharts.com/modules/exporting.js" ] ],
     "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-3.1.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
@@ -198,7 +210,9 @@ ccm.files[ 'configs.js' ] = {
       }
     ]
   },
+
   "pie-semi-circle": {
+    "key": "pie-semi-circle",
     "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/highchart/resources/default.css" ],
     "libs": [ "ccm.load", [ "https://code.highcharts.com/highcharts.js", "https://code.highcharts.com/modules/exporting.js" ] ],
     "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-3.1.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
@@ -222,7 +236,9 @@ ccm.files[ 'configs.js' ] = {
       }
     ]
   },
+
   "spiderweb": {
+    "key": "spiderweb",
     "libs": [ "ccm.load", [ "https://code.jquery.com/jquery-3.1.1.js", "https://code.highcharts.com/highcharts.js", "https://code.highcharts.com/highcharts-more.js", "https://code.highcharts.com/modules/exporting.js" ] ],
     "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-3.1.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
     "settings": {

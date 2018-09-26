@@ -5,7 +5,9 @@
  */
 
 ccm.files[ 'configs.js' ] = {
+
   "local": {
+    "key": "local",
     "css": [ "ccm.load",
       "../libs/bootstrap/css/bootstrap.css",
       { "context": "head", "url": "../libs/bootstrap/css/font-face.css" }
@@ -14,7 +16,9 @@ ccm.files[ 'configs.js' ] = {
     "url": "../cloze/ccm.cloze.js",
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ]
   },
+
   "localhost": {
+    "key": "localhost",
     "css": [ "ccm.load",
       "../libs/bootstrap/css/bootstrap.css",
       { "context": "head", "url": "../libs/bootstrap/css/font-face.css" }
@@ -24,18 +28,26 @@ ccm.files[ 'configs.js' ] = {
     "url": "../cloze/ccm.cloze.js",
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ]
   },
+
   "demo": {
+    "key": "demo",
     "store": [ "ccm.store", { "name": "cloze", "url": "https://ccm2.inf.h-brs.de" } ]
   },
+
   "cloze": {
+    "key": "cloze",
     "store": [ "ccm.store", { "store": "cloze", "url": "https://ccm2.inf.h-brs.de" } ]
   },
+
   "teambuild": {
+    "key": "teambuild",
     "builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/teambuild_builder/versions/ccm.teambuild_builder-3.0.0.js", { "submit_button": false } ],
     "store": [ "ccm.store", { "store": "teambuild", "url": "https://ccm2.inf.h-brs.de" } ],
     "url": "https://ccmjs.github.io/akless-components/teambuild/versions/ccm.teambuild-2.0.0.js"
   },
+
   "pdf_viewer": {
+    "key": "pdf_viewer",
     "builder": [ "ccm.component", "https://ccmjs.github.io/tkless-components/pdf_viewer_builder/versions/ccm.pdf_viewer_builder-2.1.0.js", {
       "html.inner.1.inner.0": "",
       "preview": true
@@ -43,7 +55,9 @@ ccm.files[ 'configs.js' ] = {
     "store": [ "ccm.store", { "store": "pdf_viewer", "url": "https://ccm2.inf.h-brs.de", "method": "POST" } ],
     "url": "https://ccmjs.github.io/tkless-components/pdf_viewer/versions/ccm.pdf_viewer-3.0.0.js"
   },
+
   "lea_cloze": {
+    "key": "lea_cloze",
     "builder": [ "ccm.component", "https://ccm-comp.bib.h-brs.de/ccm-components/cloze_builder/versions/ccm.cloze_builder-2.2.0.js", {
       "html.inner.1.inner.2.inner.0.inner.1.inner.1.inner.5": {
         "tag": "h5",
@@ -64,7 +78,9 @@ ccm.files[ 'configs.js' ] = {
     } ],
     "store": [ "ccm.store", { "store": "cloze", "url": "https://ccm2.inf.h-brs.de" } ]
   },
+
   "lea_teambuild": {
+    "key": "lea_teambuild",
     "builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/teambuild_builder/versions/ccm.teambuild_builder-3.0.0.js", {
       "html.inner.1.inner.2.inner.2.inner.1.inner.1.inner.5": {
         "tag": "h5",
@@ -85,4 +101,5 @@ ccm.files[ 'configs.js' ] = {
     "store": [ "ccm.store", { "store": "teambuild", "url": "https://ccm2.inf.h-brs.de" } ],
     "url": "https://ccmjs.github.io/akless-components/teambuild/versions/ccm.teambuild-2.0.0.js"
   }
+
 };

@@ -5,7 +5,9 @@
  */
 
 ccm.files[ 'configs.js' ] = {
+
   "demo": {
+    "key": "demo",
     "form": true,
     "button": true,
     "inputs": [
@@ -198,7 +200,9 @@ ccm.files[ 'configs.js' ] = {
     },
     "onfinish": { "log": true }
   },
+
   "test": {
+    "key": "test",
     "form": true,
     "button": true,
     "inputs": [
@@ -286,4 +290,5 @@ ccm.files[ 'configs.js' ] = {
     },
     "onfinish": { "log": true }
   }
+
 };

@@ -5,7 +5,9 @@
  */
 
 ccm.files[ 'configs.js' ] = {
+
   "greedy": {
+    "key": "greedy",
     "logging": {
       "data": true,
       "browser": true,
@@ -16,7 +18,9 @@ ccm.files[ 'configs.js' ] = {
     },
     "onfinish": { "log": true }
   },
+
   "se_ws17_pdf_viewer": {
+    "key": "se_ws17_pdf_viewer",
     "only": {
       "data": [ "path_to_pdf" ]
     },
@@ -39,7 +43,9 @@ ccm.files[ 'configs.js' ] = {
       }
     }
   },
+
   "se_ws17_youtube": {
+    "key": "se_ws17_youtube",
     "only": {
       "data": [ "video" ]
     },
@@ -62,7 +68,9 @@ ccm.files[ 'configs.js' ] = {
       }
     }
   },
+
   "se_ws17_teambuild": {  // created for ccm.log-1.0.0.js, ccm.teambuild-1.0.0.js, ccm.user-2.0.0.js
+    "key": "se_ws17_teambuild",
     "events": {
       "ready": {
         "browser": true,
@@ -103,7 +111,9 @@ ccm.files[ 'configs.js' ] = {
       }
     }
   },
+
   "sks_ws17_teambuild": {  // created for ccm.log-1.0.0.js, ccm.teambuild-1.0.0.js, ccm.user-2.0.0.js
+    "key": "sks_ws17_teambuild",
     "events": {
       "ready": {
         "browser": true,
@@ -144,4 +154,5 @@ ccm.files[ 'configs.js' ] = {
       }
     }
   }
+
 };

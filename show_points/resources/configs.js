@@ -5,7 +5,9 @@
  */
 
 ccm.files[ 'configs.js' ] = {
+
   "we_ss18": {
+    "key": "ws_ss18",
     "html.inner.0.inner": "Punktekonto von %user%",
     "html.inner.2.inner": "Summe: %points% Punkte",
     "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/show_points/resources/default.css" ],
@@ -58,4 +60,5 @@ ccm.files[ 'configs.js' ] = {
       "le11_k": { "points": 1, "deadline": "2018-07-12T08:00" }
     }
   }
+
 };
