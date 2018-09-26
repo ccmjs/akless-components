@@ -51,7 +51,7 @@ ccm.files[ 'configs.js' ] = {
     ],
     "data": {
       "store": [ "ccm.store", { "name": "components", "url": "https://ccm2.inf.h-brs.de" } ],
-      "key": "highchart"
+      "key": "cloze"
     },
     "menu.component.1": "../menu/ccm.menu.js",
     "menu.ignore.sections.key.1": "../menu/resources/configs.js",

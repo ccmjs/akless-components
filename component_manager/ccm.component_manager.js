@@ -398,13 +398,20 @@
            */
           let demo = await this.ccm.component( dataset.url );
 
+          /**
+           * website area for demo menu
+           * @type {Element}
+           */
+          const menu_elem = element.querySelector( '#menu' );
+
           // render menu for demo selection
           await this.menu.component.start( $.integrate( {
-            root: element.querySelector( '#menu' ),
+            root: menu_elem,
             data: { entries: dataset.ignore.demos },
             selected: 1,
             onclick: async event => renderDemo( dataset.ignore.demos[ event.nr - 1 ].config )
           }, this.menu.ignore.list_group ) );
+          $.prepend( menu_elem, $.html( { tag: 'b', inner: 'Choose Demo:' } ) );
 
           /**
            * renders a demo
@@ -426,13 +433,20 @@
          */
         async function renderBuilder( element ) {
 
+          /**
+           * website area for builder menu
+           * @type {Element}
+           */
+          const menu_elem = element.querySelector( '#menu' );
+
           // render menu for demo selection
           await this.menu.component.start( $.integrate( {
-            root: element.querySelector( '#menu' ),
+            root: menu_elem,
             data: { entries: dataset.ignore.builder },
             selected: 1,
             onclick: async event => renderBuilder.call( this, dataset.ignore.builder[ event.nr - 1 ] )
           }, this.menu.ignore.list_group ) );
+          $.prepend( menu_elem, $.html( { tag: 'b', inner: 'Choose Builder:' } ) );
 
           /**
            * renders a demo
