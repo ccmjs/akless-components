@@ -445,6 +445,7 @@
             await this.ccm.start( builder.url, {
               root: element.querySelector( '#builder' ),
               data: { store: [ 'ccm.store', this.source ] },
+              app: [ 'ccm.component', dataset.url ],
               key: builder.config
             } );
 

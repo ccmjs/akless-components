@@ -2,7 +2,7 @@
  * @overview ccm component for component manager
  * @author André Kless <andre.kless@web.de> 2018
  * @license MIT License
- * @version latest (2.0.0)
+ * @version 2.0.0
  * @changes
  * version 2.0.0 (21.09.2018):
  * - multiple demos and demo titles
@@ -447,6 +447,7 @@
             await this.ccm.start( builder.url, {
               root: element.querySelector( '#builder' ),
               data: { store: [ 'ccm.store', this.source ] },
+              app: [ 'ccm.component', dataset.url ],
               key: builder.config
             } );
 
