@@ -1,6 +1,6 @@
 /**
  * @overview ccm component for a listing
- * @author André Kless <andre.kless@web.de>, 2018
+ * @author André Kless <andre.kless@web.de> 2018
  * @license MIT License
  * @version latest (2.0.0)
  * @changes

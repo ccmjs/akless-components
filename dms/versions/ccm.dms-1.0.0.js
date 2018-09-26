@@ -1,6 +1,6 @@
 /**
  * @overview ccm component for digital maker space
- * @author André Kless <andre.kless@web.de>, 2018
+ * @author André Kless <andre.kless@web.de> 2018
  * @license MIT License
  * @version 1.0.0
  * @changes

@@ -1,6 +1,6 @@
 /**
  * @overview ccm component for Create/Read/Update/Delete a ccm-based app
- * @author André Kless <andre.kless@web.de>, 2018
+ * @author André Kless <andre.kless@web.de> 2018
  * @license The MIT License (MIT)
  * @version 3.0.0
  * @changes
