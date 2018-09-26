@@ -14,8 +14,11 @@
   justify-content: space-evenly;
 }
 
-#preview {
+#app {
   margin-left: 0.5em;
+}
+
+#preview {
   border: 3px double #ccc;
   min-width: 11em;
   min-height: 7em;
