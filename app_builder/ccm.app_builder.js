@@ -292,7 +292,10 @@
           // render new app-specific builder with loaded app configuration as start values
           builder = await self.builder.start( {
             root: builder_elem,
-            data: $.clone( dataset ),
+            data: {
+              store: [ 'ccm.store', { app: dataset } ],
+              key: 'app'
+            },
             onchange: () => { updatePreview(); clearAdvance(); }
           } );
 
