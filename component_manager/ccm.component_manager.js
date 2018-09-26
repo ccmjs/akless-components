@@ -4,9 +4,10 @@
  * @license MIT License
  * @version latest (2.0.0)
  * @changes
- * version 2.0.0 (21.09.2018):
+ * version 2.0.0 (26.09.2018):
  * - multiple demos and demo titles
  * - multiple builder and builder titles
+ * - added 'Create Similar App' button
  * version 1.0.0 (13.09.2018)
  */
 
@@ -76,7 +77,7 @@
         "https://ccmjs.github.io/akless-components/component_manager/resources/default.css"
       ],
       "menu": {
-        "component": [ "ccm.component", "https://ccmjs.github.io/akless-components/menu/versions/ccm.menu-2.2.0.js" ],
+        "component": [ "ccm.component", "https://ccmjs.github.io/akless-components/menu/versions/ccm.menu-2.3.0.js" ],
         "ignore": {
           "buttons": {
             "data": {
@@ -114,10 +115,10 @@
                 {
                   "title": "Demo",
                   "content": {
-                    "style": "margin: 1em; display: grid; grid-template-columns: 12em auto",
+                    "style": "margin: 1em; display: grid; grid-template-columns: 13em auto",
                     "inner": [
                       { "id": "menu", "style": "margin-right: 1em;" },
-                      { "id": "demo", "style": "border: 3px double #ccc;" }
+                      { "id": "content", "style": "border: 3px double #ccc;" }
                     ]
                   }
                 },
@@ -127,7 +128,7 @@
                     "style": "margin: 1em; display: grid; grid-template-columns: 12em auto",
                     "inner": [
                       { "id": "menu", "style": "margin-right: 1em;" },
-                      { "id": "builder", "style": "border: 3px double #ccc;" }
+                      { "id": "content", "style": "border: 3px double #ccc;" }
                     ]
                   }
                 }
@@ -343,11 +344,12 @@
         // no store name for saving apps on server-side? => use component name as default
         if ( this.source.url && !this.source.name ) this.source.name = dataset.key;
 
+        let active, flag = false;
         if ( !this.rating && !this.rating_result ) this.menu.ignore.buttons.data.entries[ 1 ].disabled = true;
         if ( !this.commentary                    ) this.menu.ignore.buttons.data.entries[ 2 ].disabled = true;
         if ( !dataset.ignore || !dataset.ignore.  demos || !dataset.ignore.  demos.length ) this.menu.ignore.buttons.data.entries[ 3 ].disabled = true;
         if ( !dataset.ignore || !dataset.ignore.builder || !dataset.ignore.builder.length ) this.menu.ignore.buttons.data.entries[ 4 ].disabled = true;
-        await this.menu.component.start( $.integrate( {
+        const menu = await this.menu.component.start( $.integrate( {
           root: 'name',
           selected: 1,
           onclick: async event => {
@@ -378,6 +380,7 @@
                 await renderDemos.call( this, event.content );
                 break;
               case 5:
+                flag ? flag = false : active = undefined;
                 await renderBuilder.call( this, event.content );
                 break;
             }
@@ -412,14 +415,25 @@
             onclick: async event => renderDemo( dataset.ignore.demos[ event.nr - 1 ].config )
           }, this.menu.ignore.list_group ) );
           $.prepend( menu_elem, $.html( { tag: 'b', inner: 'Choose Demo:' } ) );
+          if ( dataset.ignore.builder && dataset.ignore.builder.length )
+            $.append( menu_elem, $.html( {
+              tag: 'button',
+              class: 'btn btn-link btn-block',
+              onclick: () => ( flag = true ) && menu.select( 5 ),
+              inner: [
+                { tag: 'span', class: 'glyphicon glyphicon-circle-arrow-right' },
+                ' Create Similar App'
+              ]
+            } ) );
 
           /**
            * renders a demo
-           * @param {Object} config - demo instance configuration
+           * @param {Object} config - demo app configuration
            * @returns {Promise}
            */
           async function renderDemo( config ) {
-            const proceed = demo => $.setContent( element.querySelector( '#demo' ), demo.root );
+            active = config;
+            const proceed = demo => $.setContent( element.querySelector( '#content' ), demo.root );
             const result = await demo.start( config, proceed ); result && proceed( result );
           }
 
@@ -449,16 +463,19 @@
           $.prepend( menu_elem, $.html( { tag: 'b', inner: 'Choose Builder:' } ) );
 
           /**
-           * renders a demo
-           * @param {Object} builder - component url and instance configuration for builder
+           * renders an app builder
+           * @param {Object} builder - component url and instance configuration for app builder
            * @this Instance
            * @returns {Promise}
            */
           async function renderBuilder( builder ) {
 
             await this.ccm.start( builder.url, {
-              root: element.querySelector( '#builder' ),
-              data: { store: [ 'ccm.store', this.source ] },
+              root: element.querySelector( '#content' ),
+              data: {
+                store: [ 'ccm.store', this.source ],
+                key: active
+              },
               app: [ 'ccm.component', dataset.url ],
               key: builder.config
             } );
