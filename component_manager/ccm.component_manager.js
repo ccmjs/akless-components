@@ -301,7 +301,7 @@
         "data": { "store": [ "ccm.store" ] },
         "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-8.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "guest" ] ]
       } ],
-      "builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/crud_app/versions/ccm.crud_app-3.0.0.js", { "store": [ "ccm.store" ] } ],
+      "source": {},
       "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-8.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "guest" ] ],
   //  "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
       "component_icon": "https://ccmjs.github.io/akless-components/dms/resources/component.png"
@@ -339,6 +339,9 @@
           developer: dataset.developer,
           abstract:  dataset.abstract
         } ) );
+
+        // no store name for saving apps on server-side? => use component name as default
+        if ( this.source.url && !this.source.name ) this.source.name = dataset.key;
 
         if ( !this.rating && !this.rating_result ) this.menu.ignore.buttons.data.entries[ 1 ].disabled = true;
         if ( !this.commentary                    ) this.menu.ignore.buttons.data.entries[ 2 ].disabled = true;
@@ -439,11 +442,10 @@
            */
           async function renderBuilder( builder ) {
 
-            await this.builder.start( {
+            await this.ccm.start( builder.url, {
               root: element.querySelector( '#builder' ),
-              builder: [ 'ccm.component', builder.url, builder.config ],
-              url: dataset.url,
-              'store.1.name': dataset.key
+              data: { store: [ 'ccm.store', this.source ] },
+              key: builder.config
             } );
 
           }

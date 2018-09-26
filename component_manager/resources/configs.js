@@ -36,12 +36,7 @@ ccm.files[ 'configs.js' ] = {
     "rating.2.user.2.1": "../user/resources/configs.js",
     "commentary.2.user.1": "../user/ccm.user.js",
     "commentary.2.user.2.1": "../user/resources/configs.js",
-    "builder.1": "../crud_app/ccm.crud_app.js",
-    "builder.2.css": [ "ccm.load",
-      "../libs/bootstrap/css/bootstrap.css",
-      { "context": "head", "url": "../libs/bootstrap/css/font-face.css" }
-    ],
-    "builder.2.store.1.url": "https://ccm2.inf.h-brs.de",
+    "source.url": "https://ccm2.inf.h-brs.de",
     "user.1": "../user/ccm.user.js",
     "user.2.1": "../user/resources/configs.js",
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
@@ -81,12 +76,7 @@ ccm.files[ 'configs.js' ] = {
     "commentary.2.data.store.1": { "name": "component_comments", "url": "https://ccm2.inf.h-brs.de" },
     "commentary.2.user.1": "../user/ccm.user.js",
     "commentary.2.user.2.1": "../user/resources/configs.js",
-    "builder.1": "../crud_app/ccm.crud_app.js",
-    "builder.2.css": [ "ccm.load",
-      "../libs/bootstrap/css/bootstrap.css",
-      { "context": "head", "url": "../libs/bootstrap/css/font-face.css" }
-    ],
-    "builder.2.store.1.url": "https://ccm2.inf.h-brs.de",
+    "source.url": "https://ccm2.inf.h-brs.de",
     "user.1": "../user/ccm.user.js",
     "user.2.1": "../user/resources/configs.js",
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
@@ -101,7 +91,7 @@ ccm.files[ 'configs.js' ] = {
     "rating.2.data.store.1": { "name": "component_ratings", "url": "https://ccm2.inf.h-brs.de" },
     "rating_result.2.data.store.1": { "name": "component_ratings", "url": "https://ccm2.inf.h-brs.de" },
     "commentary.2.data.store.1": { "name": "component_comments", "url": "https://ccm2.inf.h-brs.de" },
-    "builder.2.store.1.url": "https://ccm2.inf.h-brs.de"
+    "source.url": "https://ccm2.inf.h-brs.de"
   }
 
 };
