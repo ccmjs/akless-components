@@ -27,7 +27,13 @@
               "id": "maker",
               "inner": [
                 { "id": "builder" },
-                { "id": "preview" }
+                {
+                  "id": "app",
+                  "inner": [
+                    { "tag": "b", "inner": "Preview:" },
+                    { "id": "preview" }
+                  ]
+                }
               ]
             },
             {
