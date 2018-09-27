@@ -2,7 +2,7 @@
  * @overview ccm component for rendering a menu
  * @author André Kless <andre.kless@web.de> 2015-2016, 2018
  * @license The MIT License (MIT)
- * @version latest (2.4.0)
+ * @version 2.4.0
  * @changes
  * version 2.4.0 (27.09.2018): added 'trigger_selected' property
  * version 2.3.0 (26.09.2018): added select method for select a menu entry by HTML ID or menu entry number
@@ -31,7 +31,9 @@
 
     name: 'menu',
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    version: [ 2, 4, 0 ],
+
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-18.0.0.js',
 
     config: {
 
