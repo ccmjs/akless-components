@@ -32,7 +32,7 @@ ccm.files[ 'configs.js' ] = {
 
   "cloud": {
     "key": "cloud",
-    "realm": "ccm",
+    "realm": "cloud",
     "url": "https://ccm2.inf.h-brs.de",
     "title": "Please enter username and password",
     "hash": [ "ccm.load", { "url": "https://ccmjs.github.io/akless-components/modules/md5.js", "type": "module" } ]

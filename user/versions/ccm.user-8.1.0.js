@@ -313,7 +313,7 @@
         let result;
         do {
           switch ( my.realm ) {
-            case 'ccm':
+            case 'cloud':
               result = await renderLogin( this.title, true );
               if ( this.hash ) result.token = this.hash.md5( result.token );
               result.realm = my.realm;
@@ -433,7 +433,7 @@
 
         // choose authentication mode and proceed logout
         switch ( my.realm ) {
-          case 'ccm':
+          case 'cloud':
           case 'guest':
             break;
           case 'hbrsinfkaul':
