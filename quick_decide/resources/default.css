@@ -1,0 +1,44 @@
+/**
+ * @overview default layout of ccm component for quick decision
+ * @author André Kless <andre.kless@web.de> 2018
+ * @license The MIT License (MIT)
+ */
+
+#main {
+  text-align: center;
+  padding: 1em;
+}
+
+#question {
+  font-size: xx-large;
+}
+
+#timer {
+  font: small-caps lighter 43px/150% "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+  padding: 0.2em 0;
+}
+
+#sec:before {
+  content: ':';
+}
+
+#mil:before {
+  content: ':';
+}
+
+#answers {
+  display: flex;
+  flex-direction: column;
+}
+
+.answer {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 0.5em;
+  padding: 0.5em;
+}
