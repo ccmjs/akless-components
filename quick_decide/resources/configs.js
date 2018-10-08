@@ -8,6 +8,7 @@ ccm.files[ 'configs.js' ] = {
 
   "local": {
 
+    "key": "local",
     "css.1": "../quick_decide/resources/default.css",
     "questions": [
       {
@@ -42,6 +43,7 @@ ccm.files[ 'configs.js' ] = {
 
   "demo": {
 
+    "key": "demo",
     "questions": [
       {
         "text": "Question A",
