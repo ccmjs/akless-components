@@ -334,7 +334,7 @@
         this.logger && this.logger.log( 'start', $.clone( dataset ) );
 
         $.setContent( this.element, $.html( this.html.main, {
-          icon: this.component_icon,
+          icon: dataset.icon || this.component_icon,
           title: dataset.title,
           version: dataset.version,
           developer: dataset.developer,
