@@ -2,7 +2,7 @@
  * @overview ccm component for quick decision
  * @author André Kless <andre.kless@web.de> 2018
  * @license The MIT License (MIT)
- * @version latest (1.1.0)
+ * @version 1.1.0
  * @changes
  * version 1.1.0 (07.10.2018): define questions and answers via Light DOM; question and timer position switched
  * version 1.0.0 (07.10.2018)

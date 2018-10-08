@@ -9,13 +9,8 @@
   padding: 1em;
 }
 
-#question {
-  font-size: xx-large;
-}
-
 #timer {
   font: small-caps lighter 43px/150% "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
-  padding: 0.2em 0;
 }
 
 #sec:before {
@@ -24,6 +19,11 @@
 
 #mil:before {
   content: ':';
+}
+
+#question {
+  font-size: xx-large;
+  padding: 0.5em 0;
 }
 
 #answers {
