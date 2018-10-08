@@ -8,6 +8,7 @@
  * - multiple demos and demo titles
  * - multiple builder and builder titles
  * - added 'Create Similar App' button
+ * - individual component icon
  * version 1.0.0 (13.09.2018)
  */
 
