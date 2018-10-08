@@ -69,8 +69,7 @@ ccm.files[ 'configs.js' ] = {
         "text": "Enough?",
         "answers": [ "Finish" ]
       }
-    ],
-    "onfinish": { "clear": true }
+    ]
 
   }
 
