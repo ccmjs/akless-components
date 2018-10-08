@@ -12,6 +12,7 @@
 #entries {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 #entries.empty::before {
