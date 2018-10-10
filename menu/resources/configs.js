@@ -134,7 +134,7 @@ ccm.files[ 'configs.js' ] = {
         "tag": "a",
         "class": "entry list-group-item",
         "onclick": "%click%",
-        "style": "cursor: pointer",
+        "style": "cursor: pointer; overflow: hidden;",
         "inner": {
           "class": "title"
         }
