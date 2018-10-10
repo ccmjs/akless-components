@@ -431,7 +431,7 @@
             $.append( menu_elem, $.html( {
               tag: 'button',
               class: 'btn btn-link btn-block',
-              onclick: () => ( flag = true ) && menu.select( 5 ),
+              onclick: () => ( flag = true ) && menu.select( 6 ),
               inner: [
                 { tag: 'span', class: 'glyphicon glyphicon-circle-arrow-right' },
                 ' Create Similar App'
