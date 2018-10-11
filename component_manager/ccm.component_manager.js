@@ -4,7 +4,9 @@
  * @license MIT License
  * @version latest (2.1.0)
  * @changes
- * version 2.1.0 (10.10.2018): added description section
+ * version 2.1.0 (10.10.2018):
+ * - added description section
+ * - uses ccm v18.0.2
  * version 2.0.0 (26.09.2018):
  * - multiple demos and demo titles
  * - multiple builder and builder titles
