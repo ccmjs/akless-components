@@ -242,6 +242,46 @@
               ]
             },
             {
+              "id": "icon",
+              "class": "form-group",
+              "inner": [
+                {
+                  "tag": "label",
+                  "id": "icon-label",
+                  "for": "icon-input",
+                  "class": "control-label",
+                  "inner": "Icon"
+                },
+                {
+                  "tag": "span",
+                  "id": "icon-help",
+                  "class": "help",
+                  "inner": [
+                    {
+                      "tag": "a",
+                      "id": "icon-icon",
+                      "inner": {
+                        "class": "glyphicon glyphicon-info-sign"
+                      }
+                    },
+                    {
+                      "id": "icon-info",
+                      "class": "alert alert-info",
+                      "inner": "Enter the URL to the component icon. Ideally a 64x64 SVG file. Use a free icon that has no licence restrictions."
+                    }
+                  ]
+                },
+                {
+                  "tag": "input",
+                  "type": "icon",
+                  "id": "icon-input",
+                  "class": "form-control",
+                  "name": "icon",
+                  "placeholder": "https://ccmjs.github.io/akless-components/dms/resources/component.png"
+                }
+              ]
+            },
+            {
               "id": "abstract",
               "class": "form-group",
               "inner": [
