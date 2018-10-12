@@ -2,7 +2,7 @@
  * @overview ccm component for component manager
  * @author André Kless <andre.kless@web.de> 2018
  * @license MIT License
- * @version latest (2.2.0)
+ * @version 2.2.0
  * @changes
  * version 2.2.0 (12.10.2018): added "Published" and "Last Updated" in details section
  * version 2.1.0 (10.10.2018):
@@ -22,7 +22,9 @@
 
     name: 'component_manager',
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    version: [ 2, 2, 0 ],
+
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-18.0.2.js',
 
     config: {
       "html": {
