@@ -4,7 +4,9 @@
  * @license MIT License
  * @version 2.2.1
  * @changes
- * version 2.2.1 (12.10.2018): uses ccm v18.0.4
+ * version 2.2.1 (12.10.2018):
+ * - uses ccm v18.0.4
+ * - uses ccm.content.js v5.0.1
  * version 2.2.0 (12.10.2018): added "Published" and "Last Updated" in details section
  * version 2.1.0 (10.10.2018):
  * - added description section
@@ -178,7 +180,7 @@
           }
         }
       },
-      "details": [ "ccm.component", "https://ccmjs.github.io/akless-components/content/versions/ccm.content-5.0.0.js", {
+      "details": [ "ccm.component", "https://ccmjs.github.io/akless-components/content/versions/ccm.content-5.0.1.js", {
         "inner": {
           "inner": [
             { "tag": "br" },
