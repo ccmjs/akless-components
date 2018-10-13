@@ -8,14 +8,14 @@ ccm.files[ 'configs.js' ] = {
 
   "local": {
     "key": "local",
-    "css": [ "ccm.load", "../youtube/resources/default.css" ],
+    "css.1": "../youtube/resources/default.css",
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
-    "onfinish": { "restart": true }
+    "onfinish": { "restart": false }
   },
 
   "demo": {
     "key": "demo",
-    "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/youtube/resources/default.css" ],
+    "video": "YE7VzlLtp-4",
     "onfinish": { "restart": true }
   },
 
