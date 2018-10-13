@@ -75,7 +75,7 @@
 
     version: [ 8, 2, 0 ],
 
-    ccm: 'https://ccmjs.github.io/ccm/version/ccm-18.0.5.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-18.0.5.js',
 
     config: {
 
