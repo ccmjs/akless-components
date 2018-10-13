@@ -46,6 +46,12 @@ ccm.files[ 'configs.js' ] = {
   "hbrsinfpseudo": {
     "key": "hbrsinfpseudo",
     "realm": "hbrsinfpseudo"
+  },
+
+  "lea": {
+    "key": "lea",
+    "realm": "lea",
+    "url": "https://ccm-data.bib.h-brs.de"
   }
 
 };
