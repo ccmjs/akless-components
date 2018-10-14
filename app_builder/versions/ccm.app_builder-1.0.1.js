@@ -6,7 +6,7 @@
  * @changes
  * version 1.0.1 (14.10.2018):
  * - bug fix for permission settings
- * - uses ccm v18.0.5
+ * - uses ccm v18.0.6
  * version 1.0.0 (25.09.2018)
  */
 
@@ -18,7 +18,7 @@
 
     version: [ 1, 0, 1 ],
 
-    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-18.0.5.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-18.0.6.js',
 
     config: {
 
@@ -328,7 +328,7 @@
           dataset = builder.getValue(); delete dataset.key;
 
           // add permission settings
-          if ( self.user ) dataset._ = { creator: self.user.data().user, realm: self.user.getRealm(), access: { get: 'all', set: 'creator', del: 'creator' } };
+          if ( self.user ) dataset._ = { access: { get: 'all', set: 'creator', del: 'creator' } };
 
           // save app configuration
           app_id = await self.data.store.set( dataset ); delete dataset.key;
