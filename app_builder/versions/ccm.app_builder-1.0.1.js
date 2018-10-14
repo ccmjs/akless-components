@@ -16,7 +16,7 @@
 
     name: 'app_builder',
 
-    versions: [ 1, 0, 1 ],
+    version: [ 1, 0, 1 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-18.0.5.js',
 
