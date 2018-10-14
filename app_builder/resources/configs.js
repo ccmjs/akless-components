@@ -48,6 +48,16 @@ ccm.files[ 'configs.js' ] = {
       "directly": true
     } ],
     "app": [ "ccm.component", "https://ccmjs.github.io/akless-components/content/versions/ccm.content-5.0.0.js" ]
+  },
+
+  "lea_cloze": {
+    "key": "lea_cloze",
+    "data.store.1": { "name": "cloze", "url": "https://ccm2.inf.h-brs.de" },
+    "builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/cloze_builder/versions/ccm.cloze_builder-3.0.0.js", {
+      "submit_button": false,
+      "preview": false
+    } ],
+    "app": [ "ccm.component", "https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-5.0.0.js" ]
   }
 
 };
