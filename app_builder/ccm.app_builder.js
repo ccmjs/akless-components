@@ -326,7 +326,7 @@
           dataset = builder.getValue(); delete dataset.key;
 
           // add permission settings
-          if ( self.user ) dataset._ = { access: { get: 'all', set: 'creator', del: 'creator' } };
+          if ( self.user ) dataset._ = { creator: self.user.data().user, realm: self.user.getRealm(), access: { get: 'all', set: 'creator', del: 'creator' } };
 
           // save app configuration
           app_id = await self.data.store.set( dataset ); delete dataset.key;
