@@ -53,6 +53,7 @@ ccm.files[ 'configs.js' ] = {
   "lea_cloze": {
     "key": "lea_cloze",
     "data.store.1": { "name": "cloze", "url": "https://ccm2.inf.h-brs.de" },
+    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-8.2.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "lea" ] ],
     "builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/cloze_builder/versions/ccm.cloze_builder-3.0.0.js", {
       "submit_button": false,
       "preview": false
