@@ -2,7 +2,7 @@
  * @overview ccm component for rendering a menu
  * @author André Kless <andre.kless@web.de> 2015-2016, 2018
  * @license The MIT License (MIT)
- * @version latest (2.4.1)
+ * @version 2.4.1
  * @changes
  * version 2.4.1 (25.10.2018):
  * - bug fix for setting action data with string as function name
@@ -34,7 +34,9 @@
 
     name: 'menu',
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    version: [ 2, 4, 1 ],
+
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-18.0.6.js',
 
     config: {
 
