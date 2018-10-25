@@ -2,8 +2,9 @@
  * @overview ccm component for digital maker space
  * @author André Kless <andre.kless@web.de> 2018
  * @license MIT License
- * @version latest (1.0.0)
+ * @version 1.0.1
  * @changes
+ * version 1.0.1 (25.10.2018) Update to versions 1.0.0 of resource finder and publish
  * version 1.0.0 (13.09.2018)
  */
 
@@ -13,7 +14,9 @@
 
     name: 'dms',
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    version: [ 1, 0, 1 ],
+
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-18.0.4.js',
 
     config: {
       "html": {
@@ -492,7 +495,7 @@
           "https://ccmjs.github.io/akless-components/dms/resources/submit.css"
         ],
       } ],
-      "component_manager": [ "ccm.component", "https://ccmjs.github.io/akless-components/component_manager/versions/ccm.component_manager-2.1.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/component_manager/resources/configs.js", "demo" ] ],
+      "component_manager": [ "ccm.component", "https://ccmjs.github.io/akless-components/component_manager/versions/ccm.component_manager-2.2.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/component_manager/resources/configs.js", "demo" ] ],
       "resource_finder": [ "ccm.component", "https://ccmjs.github.io/leck-components/resource_finder/dist/ccm.resource_finder-1.0.0.js" ],
       "resource_publish": [ "ccm.component", "https://ccmjs.github.io/leck-components/resource_publish/dist/ccm.resource_publish-1.0.0.js" ]
 //    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-8.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "guest" ] ],
