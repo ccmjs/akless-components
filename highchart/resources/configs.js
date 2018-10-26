@@ -8,7 +8,7 @@ ccm.files[ 'configs.js' ] = {
 
   "local": {
     "key": "local",
-    "lib": [ "ccm.load", "../libs/highcharts/highcharts.min.js" ],
+    "lib": [ "ccm.load", "../libs/highcharts/highcharts.js" ],
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
     "settings": {
       "title": {
