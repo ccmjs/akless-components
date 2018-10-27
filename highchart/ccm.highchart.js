@@ -81,7 +81,10 @@
         const chart_elem = this.element.querySelector( '#chart' );
 
         // render chart
-        Highcharts.chart( chart_elem, $.clone( this.settings ) );
+        const chart = Highcharts.chart( chart_elem, $.clone( this.settings ) );
+
+        // resize chart
+        chart.reflow();
 
       };
 
