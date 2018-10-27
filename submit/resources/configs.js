@@ -22,6 +22,7 @@ ccm.files[ 'configs.js' ] = {
       "submit_button": false
     } ],
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
+    "onchange": function ( event ) { console.log( 'change event', this, event, event.target ) },
     "onfinish": { "log": true }
   },
 

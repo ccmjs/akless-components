@@ -2,9 +2,11 @@
  * @overview ccm component for submitting data
  * @author André Kless <andre.kless@web.de> 2018
  * @license The MIT License (MIT)
- * @version latest (4.1.0)
+ * @version 4.1.0
  * @changes
- * version 4.1.0 (27.10.2018): added change callback
+ * version 4.1.0 (27.10.2018):
+ * - added change callback
+ * - uses ccm v18.0.7
  * version 4.0.0 (09.09.2018):
  * - uses ccm v18.0.0
  * - removed privatization of instance members
@@ -40,7 +42,9 @@
 
     name: 'submit',
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    version: [ 4, 1, 0 ],
+
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-18.0.7.js',
 
     config: {
 
