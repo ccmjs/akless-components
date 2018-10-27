@@ -36,9 +36,9 @@
       "html": { "id": "chart", "style": "%%" },
       "data": {},
       "settings": {},
-      "lib": [ "ccm.load", "https://ccmjs.github.io/akless-components/libs/highcharts/highcharts.js" ]
+      "lib": [ "ccm.load", "https://ccmjs.github.io/akless-components/libs/highcharts/highcharts.js" ],
+      "style": "min-width: 400px; max-width: 800px; min-height: 400px; max-height: 800px; margin: 0 auto"
 
-  //  "style": "min-width: 400px; max-width: 800px; min-height: 400px; max-height: 800px; margin: 0 auto",
   //  "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ]
 
     },
@@ -57,7 +57,7 @@
 
       };
 
-      this.start = () => new Promise( async resolve => {
+      this.start = async () => {
 
         // determine data to be visualized
         data = await $.dataset( this.data );
@@ -86,15 +86,9 @@
         this.chart = Highcharts.chart( chart_elem, $.clone( this.settings ) );
 
         // resize chart
-        //$.wait( 1, this.chart.redraw );
+        $.wait( 1, this.chart.redraw );
 
-        // rendering finished
-        resolve();
-
-        // resize chart
-        this.chart.redraw();
-
-      } );
+      };
 
       /**
        * returns visualized data
