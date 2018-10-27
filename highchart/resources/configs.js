@@ -879,7 +879,6 @@ ccm.files[ 'configs.js' ] = {
       "https://ccmjs.github.io/akless-components/libs/highcharts/highcharts.js",
       "https://ccmjs.github.io/akless-components/libs/highcharts/highcharts-more.js"
     ] ],
-//  "style": "min-width: 400px; max-width: 600px; height: 400px; margin: 0 auto",
     "settings": {
       "chart": {
         "polar": true,
