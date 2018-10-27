@@ -55,7 +55,7 @@
 
       };
 
-      this.start = async () => {
+      this.start = () => new Promise( resolve => {
 
         // determine data to be visualized
         data = await $.dataset( this.data );
@@ -80,13 +80,24 @@
          */
         const chart_elem = this.element.querySelector( '#chart' );
 
+        // set chart load event
+        $.deepValue( this.settings, 'chart.events.load', function () {
+
+          // resize chart
+          //this.redraw();
+
+          // rendering finished
+          resolve();
+
+        } );
+
         // render chart
         const chart = Highcharts.chart( chart_elem, $.clone( this.settings ) );
 
         // resize chart
-        chart.reflow();
+        chart.redraw();
 
-      };
+      } );
 
       /**
        * returns visualized data
