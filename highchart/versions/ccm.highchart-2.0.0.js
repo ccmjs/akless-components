@@ -82,22 +82,18 @@
          */
         const chart_elem = this.element.querySelector( '#chart' );
 
-        // set chart load event
-        $.deepValue( this.settings, 'chart.events.load', function () {
-
-          // resize chart
-          $.wait( 1000, () => {
-            this.redraw();
-
-            // rendering finished
-            resolve();
-
-          } );
-
-        } );
-
         // render chart
         this.chart = Highcharts.chart( chart_elem, $.clone( this.settings ) );
+
+        // resize chart
+        $.wait( 3000, () => {
+          console.log( 'redraw!' );
+          this.chart.redraw();
+
+          // rendering finished
+          resolve();
+
+        } );
 
       } );
 
