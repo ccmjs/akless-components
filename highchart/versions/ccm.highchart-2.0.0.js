@@ -86,10 +86,13 @@
         $.deepValue( this.settings, 'chart.events.load', function () {
 
           // resize chart
-          $.wait( 1000, this.redraw );
+          $.wait( 1000, () => {
+            this.redraw();
 
-          // rendering finished
-          resolve();
+            // rendering finished
+            resolve();
+
+          } );
 
         } );
 
