@@ -55,7 +55,7 @@
 
       };
 
-      this.start = () => new Promise( resolve => {
+      this.start = () => new Promise( async resolve => {
 
         // determine data to be visualized
         data = await $.dataset( this.data );
