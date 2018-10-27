@@ -81,10 +81,10 @@
         const chart_elem = this.element.querySelector( '#chart' );
 
         // set chart load event
-        $.deepValue( this.settings, 'chart.events.redraw', function () {
+        $.deepValue( this.settings, 'chart.events.load', function () {
 
           // resize chart
-          this.redraw();
+          $.wait( 1000, this.redraw );
 
           // rendering finished
           resolve();
