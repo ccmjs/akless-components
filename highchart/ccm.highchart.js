@@ -84,7 +84,7 @@
         $.deepValue( this.settings, 'chart.events.load', function () {
 
           // resize chart
-          //this.redraw();
+          this.redraw();
 
           // rendering finished
           resolve();
@@ -92,10 +92,7 @@
         } );
 
         // render chart
-        const chart = Highcharts.chart( chart_elem, $.clone( this.settings ) );
-
-        // resize chart
-        chart.redraw();
+        this.chart = Highcharts.chart( chart_elem, $.clone( this.settings ) );
 
       } );
 
