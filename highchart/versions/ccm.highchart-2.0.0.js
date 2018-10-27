@@ -90,10 +90,10 @@
           console.log( 'redraw!' );
           this.chart.redraw();
 
-          // rendering finished
-          resolve();
-
         } );
+
+        // rendering finished
+        resolve();
 
       } );
 
