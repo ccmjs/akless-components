@@ -159,7 +159,7 @@
             this.logger && this.logger.log( 'change', { name: elem.name, value: $.deepValue( this.getValue(), elem.name ) } );
 
             // perform individual 'change' callback
-            this.onchange.call( this, event );
+            this.onchange && this.onchange.call( this, event );
 
           };
 
