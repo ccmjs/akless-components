@@ -86,13 +86,13 @@
         this.chart = Highcharts.chart( chart_elem, $.clone( this.settings ) );
 
         // resize chart
-        $.wait( 1, () => {
-          console.log( 'redraw!' );
-          this.chart.redraw();
-        } );
+        //$.wait( 1, this.chart.redraw );
 
         // rendering finished
         resolve();
+
+        // resize chart
+        this.chart.redraw();
 
       } );
 
