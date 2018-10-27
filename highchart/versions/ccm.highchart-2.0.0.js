@@ -86,10 +86,9 @@
         this.chart = Highcharts.chart( chart_elem, $.clone( this.settings ) );
 
         // resize chart
-        $.wait( 3000, () => {
+        $.wait( 1, () => {
           console.log( 'redraw!' );
           this.chart.redraw();
-
         } );
 
         // rendering finished
