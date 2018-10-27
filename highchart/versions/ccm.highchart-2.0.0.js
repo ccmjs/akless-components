@@ -38,6 +38,7 @@
       "settings": {},
       "lib": [ "ccm.load", "https://ccmjs.github.io/akless-components/libs/highcharts/highcharts.js" ]
 
+  //  "style": "min-width: 400px; max-width: 800px; min-height: 400px; max-height: 800px; margin: 0 auto",
   //  "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ]
 
     },
@@ -82,7 +83,7 @@
         const chart_elem = this.element.querySelector( '#chart' );
 
         // set chart load event
-        $.deepValue( this.settings, 'chart.events.load', function () {
+        $.deepValue( this.settings, 'chart.events.redraw', function () {
 
           // resize chart
           this.redraw();
