@@ -234,7 +234,7 @@
         $ = this.ccm.helper;
 
         // set function for JSON conversion of app configuration
-        if ( $.isObject( this.data ) ) this.data.convert = this.convert.app_to_builder;
+        if ( $.isObject( this.data ) && this.convert ) this.data.convert = this.convert.app_to_builder;
 
         // logging of 'ready' event
         this.logger && this.logger.log( 'ready', $.privatize( this, true ) );
