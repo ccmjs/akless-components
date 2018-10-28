@@ -234,9 +234,6 @@
         // logging of 'ready' event
         this.logger && this.logger.log( 'ready', $.privatize( this, true ) );
 
-        // set function for JSON conversion of app configuration
-        if ( $.isObject( this.data ) ) this.data.convert = this.convert;
-
       };
 
       this.start = async () => {
