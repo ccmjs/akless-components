@@ -520,7 +520,7 @@
         async function updatePreview() {
 
           let config = self.getValue();
-          if ( self.convert ) config = self.convert.builder_to_app( config );
+          if ( self.convert && self.convert.builder_to_app ) config = self.convert.builder_to_app( config );
           preview_elem && $.setContent( preview_elem, ( await self.app.start( config ) ).root );
 
         }
