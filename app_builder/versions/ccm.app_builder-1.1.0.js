@@ -233,6 +233,9 @@
         // set shortcut to help functions
         $ = this.ccm.helper;
 
+        // set function for JSON conversion of app configuration
+        if ( $.isObject( this.data ) ) this.data.convert = this.convert;
+
         // logging of 'ready' event
         this.logger && this.logger.log( 'ready', $.privatize( this, true ) );
 
