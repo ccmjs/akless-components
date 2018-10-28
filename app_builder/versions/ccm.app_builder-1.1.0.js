@@ -2,7 +2,7 @@
  * @overview ccm component for building apps
  * @author André Kless <andre.kless@web.de> 2018
  * @license The MIT License (MIT)
- * @version latest (1.1.0)
+ * @version 1.1.0
  * @changes
  * version 1.1.0 (28.10.2018):
  * - added config property 'convert' for conversion of JSON on preview update
@@ -19,7 +19,9 @@
 
     name: 'app_builder',
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    version: [ 1, 1, 0 ],
+
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-18.1.0.js',
 
     config: {
 
