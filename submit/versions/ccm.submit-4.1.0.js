@@ -6,7 +6,7 @@
  * @changes
  * version 4.1.0 (27.10.2018):
  * - added change callback
- * - uses ccm v18.0.7
+ * - uses ccm v18.1.0
  * version 4.0.0 (09.09.2018):
  * - uses ccm v18.0.0
  * - removed privatization of instance members
@@ -44,7 +44,7 @@
 
     version: [ 4, 1, 0 ],
 
-    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-18.0.7.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-18.1.0.js',
 
     config: {
 
