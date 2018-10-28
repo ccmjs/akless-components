@@ -4,8 +4,8 @@
  * @license The MIT License (MIT)
  * @version latest (1.1.0)
  * @changes
- * version 1.1.0 (28.10.2018):
- * - added config property 'convert' for conversion of JSON on preview update
+ * version 1.1.0 (29.10.2018):
+ * - added config property 'convert' for conversion of JSON
  * - uses ccm v18.1.0
  * version 1.0.1 (14.10.2018):
  * - bug fix for permission settings
@@ -19,7 +19,9 @@
 
     name: 'app_builder',
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    version: [ 1, 1, 0 ],
+
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-18.1.0.js',
 
     config: {
 
@@ -207,9 +209,9 @@
       "data": { "store": [ "ccm.store" ] },
       "warning": "Are you sure you want to delete this App?"
 
-  //  "convert"
-  //  "builder"
-  //  "app"
+  //  "convert": { "app_to_builder": json => json, "builder_to_app": json => json },
+  //  "builder",
+  //  "app",
   //  "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-8.2.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "guest" ] ],
   //  "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
   //  "onchange"
@@ -230,6 +232,9 @@
 
         // set shortcut to help functions
         $ = this.ccm.helper;
+
+        // set function for JSON conversion of app configuration
+        if ( $.isObject( this.data ) ) this.data.convert = this.convert.app_to_builder;
 
         // logging of 'ready' event
         this.logger && this.logger.log( 'ready', $.privatize( this, true ) );
@@ -515,7 +520,7 @@
         async function updatePreview() {
 
           let config = self.getValue();
-          if ( self.convert ) config = self.convert( config );
+          if ( self.convert ) config = self.convert.builder_to_app( config );
           preview_elem && $.setContent( preview_elem, ( await self.app.start( config ) ).root );
 
         }
