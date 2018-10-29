@@ -121,7 +121,7 @@
             this.logger && this.logger.log( 'change', $.clone( dataset ) );
 
             // perform individual 'change' callback
-            this.onchange && this.onchange( this, $.clone( dataset ) );
+            this.onchange && this.onchange( this );
 
           },
           onclick: event => {

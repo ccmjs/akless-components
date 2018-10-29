@@ -125,7 +125,7 @@
             this.logger && this.logger.log( 'change', this.getValue() );
 
             // perform individual 'change' callback
-            this.onchange && this.onchange( this, this.getValue() );
+            this.onchange && this.onchange( this );
 
           },
           onclick: event => {
