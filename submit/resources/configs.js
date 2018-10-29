@@ -75,7 +75,7 @@ ccm.files[ 'configs.js' ] = {
       "key": [ "ccm.get", "https://ccmjs.github.io/akless-components/teambuild_builder/resources/configs.js", "demo" ],
       "submit_button": false
     } ],
-    "json_builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/json_builder/ccm.json_builder.js", {
+    "json_builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-1.1.0.js", {
       "html.inner.1": "",
       "directly": true
     } ],
