@@ -2,7 +2,7 @@
  * @overview ccm component for building a fill-in-the-blank text
  * @author André Kless <andre.kless@web.de>, 2017-2018
  * @license The MIT License (MIT)
- * @version latest (3.0.1)
+ * @version 3.0.1
  * @changes
  * version 3.0.1 (29.10.2018)
  * - changed parameters for onchange callback
@@ -44,7 +44,9 @@
 
     name: 'cloze_builder',
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    version: [ 3, 0, 1 ],
+
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-18.1.0.js',
 
     config: {
 
