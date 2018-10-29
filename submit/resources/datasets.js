@@ -31,7 +31,8 @@ ccm.files[ 'datasets.js' ] = {
     "complex-data": { "A": [ "B", "C" ] },
     "deep": { "property": "A" },
     "cloze_builder": [ "ccm.get", "../cloze_builder/resources/datasets.js", "test" ],
-    "teambuild_builder": [ "ccm.get", "../teambuild_builder/resources/datasets.js", "test" ]
+    "teambuild_builder": [ "ccm.get", "../teambuild_builder/resources/datasets.js", "test" ],
+    "json_builder": { "foo": "bar" }
   }
 
 };

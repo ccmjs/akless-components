@@ -21,6 +21,10 @@ ccm.files[ 'configs.js' ] = {
       "key": [ "ccm.get", "../teambuild_builder/resources/configs.js", "local" ],
       "submit_button": false
     } ],
+    "json_builder": [ "ccm.component", "../json_builder/ccm.json_builder.js", {
+      "html.inner.1": "",
+      "directly": true
+    } ],
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
     "onchange": function ( event ) { console.log( 'change event', this, event, event.target ) },
     "onfinish": { "log": true }
@@ -40,6 +44,10 @@ ccm.files[ 'configs.js' ] = {
     "teambuild_builder": [ "ccm.component", "../teambuild_builder/ccm.teambuild_builder.js", {
       "key": [ "ccm.get", "../teambuild_builder/resources/configs.js", "local" ],
       "submit_button": false
+    } ],
+    "json_builder": [ "ccm.component", "../json_builder/ccm.json_builder.js", {
+      "html.inner.1": "",
+      "directly": true
     } ],
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
     "onfinish": {
@@ -66,6 +74,10 @@ ccm.files[ 'configs.js' ] = {
     "teambuild_builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/teambuild_builder/versions/ccm.teambuild_builder-4.0.0.js", {
       "key": [ "ccm.get", "https://ccmjs.github.io/akless-components/teambuild_builder/resources/configs.js", "demo" ],
       "submit_button": false
+    } ],
+    "json_builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/json_builder/ccm.json_builder.js", {
+      "html.inner.1": "",
+      "directly": true
     } ],
     "onfinish": {
       "store": {
