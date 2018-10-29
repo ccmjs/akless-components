@@ -2,7 +2,7 @@
  * @overview ccm component for submitting data
  * @author André Kless <andre.kless@web.de> 2018
  * @license The MIT License (MIT)
- * @version latest (4.2.0)
+ * @version 4.2.0
  * @changes
  * version 4.2.0 (29.10.2018): config property 'defaults' for default input values
  * version 4.1.0 (29.10.2018):
@@ -43,7 +43,9 @@
 
     name: 'submit',
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-18.1.0.js',
+
+    version: [ 4, 2, 0 ],
 
     config: {
 

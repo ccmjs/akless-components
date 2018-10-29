@@ -4,7 +4,9 @@
  * @license The MIT License (MIT)
  * @version 4.1.0
  * @changes
- * version 4.1.0 (29.10.2018): added change callback
+ * version 4.1.0 (29.10.2018):
+ * - added change callback
+ * - uses ccm v18.1.0
  * version 4.0.0 (09.09.2018):
  * - uses ccm v18.0.0
  * - removed privatization of instance members
