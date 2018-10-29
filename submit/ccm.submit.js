@@ -4,7 +4,7 @@
  * @license The MIT License (MIT)
  * @version latest (4.1.0)
  * @changes
- * version 4.1.0 (27.10.2018): added change callback
+ * version 4.1.0 (29.10.2018): added change callback
  * version 4.0.0 (09.09.2018):
  * - uses ccm v18.0.0
  * - removed privatization of instance members
@@ -151,11 +151,17 @@
           // set 'change' event
           elem.onchange = event => {
 
+            /**
+             * new element value
+             * @type {*}
+             */
+            const value = $.deepValue( this.getValue(), elem.name );
+
             // logging of 'change' event
-            this.logger && this.logger.log( 'change', { name: elem.name, value: $.deepValue( this.getValue(), elem.name ) } );
+            this.logger && this.logger.log( 'change', { name: elem.name, value: $.clone( value ) } );
 
             // perform individual 'change' callback
-            this.onchange && this.onchange.call( this, event );
+            this.onchange && this.onchange.call( this, { name: elem.name, value: $.clone( value ), event: event } );
 
           };
 
@@ -229,6 +235,21 @@
             data: {
               store: [ 'ccm.store', { config: dataset[ inputs[ i ].name ] } ],
               key: 'config'
+            },
+            onchange: () => {
+
+              /**
+               * current results of ccm instance
+               * @type {Object}
+               */
+              const value = this.getValue();
+
+              // logging of 'change' event
+              this.logger && this.logger.log( 'change', { name: inputs[ i ].name, value: $.clone( value ), builder: instance } );
+
+              // perform individual 'change' callback
+              this.onchange && this.onchange.call( this, { name: inputs[ i ].name, value: $.clone( value ), builder: instance } );
+
             }
           } );
 
