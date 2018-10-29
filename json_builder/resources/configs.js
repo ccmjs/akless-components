@@ -20,6 +20,7 @@ ccm.files[ 'configs.js' ] = {
       }
     },
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
+    "onchange": instance => console.log( instance.index, 'onchange', instance.getValue() ),
     "onfinish": { "log": true }
   },
 
