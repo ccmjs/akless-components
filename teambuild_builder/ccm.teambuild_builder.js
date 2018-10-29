@@ -2,10 +2,13 @@
  * @overview ccm component for building a team building
  * @author André Kless <andre.kless@web.de> 2017-2018
  * @license The MIT License (MIT)
- * @version latest (4.0.0)
+ * @version latest (4.0.1)
  * @changes
+ * version 4.0.1 (29.10.2018):
+ * - changed parameters of onchange callback
+ * - uses ccm v18.1.0
  * version 4.0.0 (08.09.2018):
- * - uses ccm v18
+ * - uses ccm v18.0.0
  * - removed privatization of instance members
  * version 3.0.0 (24.05.2018): modernisation
  * version 2.4.0 (21.03.2018): added 'Basic' and 'Advanced' section
@@ -819,7 +822,7 @@
           await updatePreview();
 
           // perform change actions
-          self.onchange && self.onchange( self );
+          self.onchange && self.onchange();
 
           // logging of 'change' event
           self.logger && self.logger.log( 'change', $.clone( { name: this.name, value: this.type === 'checkbox' ? this.checked : this.value } ) );

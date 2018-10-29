@@ -19,6 +19,7 @@ ccm.files[ 'configs.js' ] = {
     },
     "target": [ "ccm.component", "../teambuild/ccm.teambuild.js" ],
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
+    "onchange": function () { console.log( this.index, 'onchange', this.getValue() ) },
     "onfinish": { "log": true }
   },
 
