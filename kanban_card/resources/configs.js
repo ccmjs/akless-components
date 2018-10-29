@@ -1,10 +1,20 @@
 /**
- * @overview configurations of ccm component for rendering a kanban card
- * @author André Kless <andre.kless@web.de> 2017
+ * @overview configurations of ccm component for kanban card
+ * @author André Kless <andre.kless@web.de> 2017-2018
  * @license The MIT License (MIT)
  */
 
 ccm.files[ 'configs.js' ] = {
+
+  "local": {
+    "key": "local",
+    "css.1": "../kanban_card/resources/default.css",
+    "data": {
+      "store": [ "ccm.store", "../kanban_card/resources/datasets.js" ],
+      "key": "homework"
+    },
+    "onchange": () => console.log( '!' )
+  },
 
   "homework": {
     "key": "homework",

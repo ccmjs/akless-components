@@ -1,20 +1,13 @@
 /**
- * @overview ccm component for rendering a kanban card
- * @author André Kless <andre.kless@web.de> 2016-2017
+ * @overview ccm component for kanban card
+ * @author André Kless <andre.kless@web.de> 2016-2018
  * @license The MIT License (MIT)
- * @version latest (1.0.0)
- * TODO: realtime listening only for needed dataset
- * TODO: events (onchange)
- * TODO: docu comments
- * TODO: unit tests
- * TODO: version file/folder
- * TODO: factory
- * TODO: multilingualism
+ * @version latest (2.0.0)
  */
 
 ( function () {
 
-  var component = {
+  const component = {
 
     name: 'kanban_card',
 
@@ -23,83 +16,76 @@
     config: {
 
       "html": {
-        "wrapper": {
-          "id": "wrapper",
-          "inner": [
-            {
-              "tag": "header",
-              "inner": [
-                {
-                  "tag": "section",
-                  "id": "title",
-                  "inner": [
-                    { "id": "status" },
-                    {
-                      "class": "value",
-                      "inner": "%title%",
-                      "contenteditable": "%editable%",
-                      "oninput": "%input_title%"
-                    }
-                  ]
-                },
-                {
-                  "tag": "section",
-                  "id": "owner",
-                  "inner": [
-                    {
-                      "class": "value",
-                      "inner": "%owner%",
-                      "contenteditable": "%editable%",
-                      "onfocus": "%focus_owner%"
-                    },
-                    { "class": "fa fa-user" }
-                  ]
-                }
-              ]
-            },
-            {
-              "tag": "main",
+        "id": "main",
+        "inner": [
+          {
+            "tag": "header",
+            "inner": [
+              {
+                "id": "title",
+                "inner": [
+                  {
+                    "class": "value",
+                    "inner": "%title%",
+                    "contenteditable": "%editable%",
+                    "oninput": "%input_title%"
+                  },
+                  { "id": "status" }
+                ]
+              },
+              {
+                "id": "owner",
+                "inner": [
+                  {
+                    "class": "value",
+                    "inner": "%owner%",
+                    "contenteditable": "%editable%",
+                    "onfocus": "%focus_owner%"
+                  },
+                  { "class": "fa fa-user" }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "main",
+            "inner": {
+              "id": "summary",
               "inner": {
-                "tag": "section",
-                "id": "summary",
+                "class": "value",
+                "inner": "%summary%",
+                "contenteditable": "%editable%",
+                "oninput": "%input_summary%"
+              }
+            }
+          },
+          {
+            "tag": "footer",
+            "inner": [
+              {
+                "id": "priority",
                 "inner": {
                   "class": "value",
-                  "inner": "%summary%",
+                  "inner": "%priority%",
                   "contenteditable": "%editable%",
-                  "oninput": "%input_summary%"
+                  "onfocus": "%focus_priority%"
                 }
-              }
-            },
-            {
-              "tag": "footer",
-              "inner": [
-                {
-                  "tag": "section",
-                  "id": "priority",
-                  "inner": {
+              },
+              {
+                "id": "deadline",
+                "inner": [
+                  {
                     "class": "value",
-                    "inner": "%priority%",
+                    "inner": "%deadline%",
                     "contenteditable": "%editable%",
-                    "onfocus": "%focus_priority%"
-                  }
-                },
-                {
-                  "tag": "section",
-                  "id": "deadline",
-                  "inner": [
-                    {
-                      "class": "value",
-                      "inner": "%deadline%",
-                      "contenteditable": "%editable%",
-                      "onfocus": "%focus_deadline%"
-                    },
-                    { "class": "fa fa-calendar-check-o" }
-                  ]
-                }
-              ]
-            }
-          ]
-        }
+                    "onfocus": "%focus_deadline%"
+                  },
+                  { "class": "fa fa-calendar-check-o" }
+                ]
+              }
+            ]
+          }
+        ]
       },
       "css": [ "ccm.load", "../kanban_card/resources/default.css" ],
       "icons": [
@@ -116,184 +102,179 @@
           "crossorigin": "anonymous"
         }
       ],
-      "data": {
-        "store": [ "ccm.store", {} ],
-        "permission_settings": { "access": "group" }
-      },
+      "data": {},
       "editable": true,
       "members": [ "John", "Jane" ],
       "priorities": [ "A", "B", "C" ]
 
-  //  logger: [ 'ccm.instance', 'https://ccmjs.github.io/akless-components/log/versions/ccm.log-1.0.0.js', [ 'ccm.get', 'https://ccmjs.github.io/akless-components/log/resources/configs.js', 'greedy' ] ],
-  //  user: [ 'ccm.instance', 'https://ccmjs.github.io/akless-components/user/versions/ccm.user-1.0.0.js' ]
+  //  "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-8.2.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "guest" ] ],
+  //  "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ]
 
     },
 
     Instance: function () {
 
-      var self = this;
-      var my;           // contains privatized instance members
+      let $, data;
 
-      this.init = function ( callback ) {
+      this.init = async () => {
 
-        // listen to datastore change event => update own content
-        if ( self.data.store ) self.data.store.onchange = function ( dataset ) {
+        // set shortcut to help functions
+        $ = this.ccm.helper;
 
-          if ( !my || !my.dataset || dataset.key !== my.data.key ) return;
+        // listen to datastore changes => restart
+        if ( $.isObject( this.data ) && $.isDatastore( this.data.store ) ) this.data.store.onchange = this.start;
 
-          my.dataset = dataset;
-
-          Object.keys( my.dataset ).map( refresh );
-
-          function refresh( prop ) {
-
-            var elem = self.element.querySelector( '#' + prop + ' .value' );
-            if ( elem && elem.innerHTML !== my.dataset[ prop ] ) elem.innerHTML = my.dataset[ prop ];
-
-          }
-
-        };
-
-        callback();
       };
 
-      this.ready = function ( callback ) {
+      this.ready = async () => {
 
-        // privatize all possible instance members
-        my = self.ccm.helper.privatize( self );
+        // logging of 'ready' event
+        this.logger && this.logger.log( 'ready', $.privatize( this, true ) );
 
-        callback();
       };
 
-      this.start = function ( callback ) {
+      this.start = async () => {
 
-        if ( self.logger ) self.logger.log( 'start' );
+        // get kanban card data
+        data = await $.dataset( this.data );
 
-        self.ccm.helper.dataset( my.data, function ( dataset ) {
+        // logging of 'start' event
+        this.logger && this.logger.log( 'start', $.clone( data ) );
 
-          var restored;
-          my.dataset = dataset;
+        // render main HTML structure
+        $.setContent( this.element, $.html( this.html, $.integrate( {
 
-          self.ccm.helper.setContent( self.element, self.ccm.helper.html( my.html.wrapper, self.ccm.helper.integrate( {
+          title:    '',
+          owner:    '',
+          summary:  '',
+          priority: '',
+          deadline: '',
 
-            title:    '',
-            owner:    '',
-            summary:  '',
-            priority: '',
-            deadline: '',
+          editable: !!this.editable,
 
-            editable: !!my.editable,
+          input_title:    function () { empty ( this ); update( 'title', this.innerHTML ); },
+          focus_owner:    function () { select( this, true ); },
+          input_summary:  function () { empty ( this ); update( 'summary', this.innerHTML ); },
+          focus_priority: function () { select( this, false ); },
+          focus_deadline: function () { input ( this ); }
 
-            input_title:    function () { empty ( this ); update( 'title', this.innerHTML ); },
-            focus_owner:    function () { select( this, true ); },
-            input_summary:  function () { empty ( this ); update( 'summary', this.innerHTML ); },
-            focus_priority: function () { select( this, false ); },
-            focus_deadline: function () { input ( this ); }
+        }, data, true ) ) );
 
-          }, self.ccm.helper.clone( my.dataset ), true ) ) );
+        empty( this.element.querySelector( '#title .value' ) );
+        empty( this.element.querySelector( '#summary .value' ) );
 
-          empty( self.element.querySelector( '#title .value' ) );
-          empty( self.element.querySelector( '#summary .value' ) );
+        const self = this;
 
-          if ( callback ) callback();
+        /**
+         * makes sure that an empty element is really empty
+         * @param {Element} elem
+         */
+        function empty( elem ) {
 
-          function empty( elem ) {
+          if ( elem.innerHTML.trim().replace( /<br>|<div>|<\/div>/g, '' ) === '' ) elem.innerHTML = '';
 
-            if ( elem.innerHTML.trim().replace( /<br>|<div>|<\/div>/g, '' ) === '' ) elem.innerHTML = '';
+        }
 
-          }
+        /**
+         * updates value of a changed kanban card property
+         * @param {string} prop - changed kanban card property
+         * @param {string} value - changed kanban card value
+         * @returns {Promise}
+         */
+        async function update( prop, value ) {
 
-          function update( prop, value ) {
+          // has user instance? => login
+          self.user && await self.user.login();
 
-            if ( self.user ) self.user.login( proceed ); else proceed();
+          // update kanban card data
+          status( false );
+          data[ prop ] = value.trim();
+          $.isObject( self.data ) && $.isDatastore( self.data.store ) && await self.data.store.set( data );
+          status( true );
 
-            function proceed() {
+          // logging of 'change' event
+          self.logger && self.logger.log( 'change', { prop: prop, value: value } );
 
-              if ( self.logger ) self.logger.log( 'change', { prop: prop, value: value } );
-              status();
-              my.dataset[ prop ] = value.trim();
-              if ( self.user && !my.dataset._ ) my.dataset._ = self.ccm.helper.integrate( { creator: self.user.data().id, group: self.ccm.helper.transformStringArray( my.members ) }, my.data.permission_settings );
-              if ( my.data.store ) my.data.store.set( my.dataset, status ); else status( true );
+          // perform individual 'change' callback
+          self.onchange && self.onchange.call( { prop: prop, value: value } );
 
-              function status( finished ) {
+          /**
+           * adds or removes loading icon
+           * @param {boolean} finished
+           */
+          function status( finished ) {
 
-                self.ccm.helper.setContent( self.element.querySelector( '#status' ), finished ? '' : self.ccm.helper.loading( self ) );
-
-              }
-
-            }
-
-          }
-
-          function select( elem, owner_or_prio ) {
-
-            restored = false;
-
-            var entries = [ { tag: 'option' } ];
-
-            my[ owner_or_prio ? 'members' : 'priorities' ].map( function ( entry ) {
-
-              entries.push( { tag: 'option', inner: entry, selected: entry === my.dataset[ owner_or_prio ? 'owner' : 'priority' ] || '' } );
-
-            } );
-
-            elem.parentNode.replaceChild( self.ccm.helper.protect( self.ccm.helper.html( { tag: 'select', inner: entries, onchange: onChange, onblur: onBlur } ) ), elem );
-
-            self.element.querySelector( 'select' ).focus();
-
-            function onChange() {
-
-              elem.innerHTML = this.value;
-              restore( 'select', elem );
-              update( owner_or_prio ? 'owner' : 'priority', this.value );
-
-            }
-
-            function onBlur() {
-
-              restore( 'select', elem );
-
-            }
+            $.setContent( self.element.querySelector( '#status' ), finished ? '' : $.loading( self ) );
 
           }
 
-          function input( elem ) {
+        }
 
-            restored = false;
+        /**
+         * shows selector box for choosing owner or priority of kanban card
+         * @param {Element} elem - focused element for owner/priority
+         * @param {boolean} owner_or_prio - true: owner, false: priority
+         */
+        function select( elem, owner_or_prio ) {
 
-            elem.parentNode.replaceChild( self.ccm.helper.protect( self.ccm.helper.html( { tag: 'input', type: 'date', value: my.dataset.deadline || '', oninput: onInput, onblur: onBlur } ) ), elem );
+          /**
+           * initial selector box entries
+           * @type {Object[]}
+           */
+          const entries = [ { tag: 'option' } ];
 
-            self.element.querySelector( 'input' ).focus();
+          // add selector box entry for each owner/priority
+          self[ owner_or_prio ? 'members' : 'priorities' ].forEach( entry => entries.push( { tag: 'option', inner: entry, selected: entry === data[ owner_or_prio ? 'owner' : 'priority' ] || '' } ) );
 
-            function onInput() {
+          // replace element for owner/priority with selector box
+          $.replace( $.html( { tag: 'select', inner: entries, onchange: onChange } ), elem );
 
-              elem.innerHTML = this.value;
-              restore( 'input', elem );
-              update( 'deadline', this.value );
+          // focus selector box
+          self.element.querySelector( 'select' ).focus();
 
-            }
+          /** when selector box value has changed */
+          function onChange() {
 
-            function onBlur() {
+            // replace selector box with new value
+            elem.innerHTML = this.value;
 
-              restore( 'input', elem );
-
-            }
+            // update changed kanban card value
+            update( owner_or_prio ? 'owner' : 'priority', this.value );
 
           }
 
-          function restore( tag, elem ) {
+        }
 
-            if ( restored ) return;
+        /**
+         * shows input field for choosing deadline of kanban card
+         * @param {Element} elem - focused element for deadline
+         */
+        function input( elem ) {
 
-            var select = self.element.querySelector( tag );
-            var parent = select.parentNode;
+          // replace element for deadline with input field
+          $.replace( $.html( { tag: 'input', type: 'date', value: data.deadline || '', oninput: onInput } ), elem );
 
-            restored = true;
-            parent.replaceChild( elem, select );
+          // focus input field
+          self.element.querySelector( 'input' ).focus();
+
+          /** when input field value has changed */
+          function onInput() {
+
+            // replace input field with new value
+            elem.innerHTML = this.value;
+
+            // update changed kanban card value
+            update( 'deadline', this.value );
 
           }
 
-        } );
+        }
+
+        /**
+         * returns current result data
+         * @returns {Object} current kanban card data
+         */
+        this.getValue = () => data;
 
       };
 
@@ -301,5 +282,5 @@
 
   };
 
-  function p(){window.ccm[v].component(component)}var f="ccm."+component.name+(component.version?"-"+component.version.join("."):"")+".js";if(window.ccm&&null===window.ccm.files[f])window.ccm.files[f]=component;else{var n=window.ccm&&window.ccm.components[component.name];n&&n.ccm&&(component.ccm=n.ccm),"string"==typeof component.ccm&&(component.ccm={url:component.ccm});var v=component.ccm.url.split("/").pop().split("-");if(v.length>1?(v=v[1].split("."),v.pop(),"min"===v[v.length-1]&&v.pop(),v=v.join(".")):v="latest",window.ccm&&window.ccm[v])p();else{var e=document.createElement("script");document.head.appendChild(e),component.ccm.integrity&&e.setAttribute("integrity",component.ccm.integrity),component.ccm.crossorigin&&e.setAttribute("crossorigin",component.ccm.crossorigin),e.onload=function(){p(),document.head.removeChild(e)},e.src=component.ccm.url}}
-}() );
+  let b="ccm."+component.name+(component.version?"-"+component.version.join("."):"")+".js";if(window.ccm&&null===window.ccm.files[b])return window.ccm.files[b]=component;(b=window.ccm&&window.ccm.components[component.name])&&b.ccm&&(component.ccm=b.ccm);"string"===typeof component.ccm&&(component.ccm={url:component.ccm});let c=(component.ccm.url.match(/(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)/)||["latest"])[0];if(window.ccm&&window.ccm[c])window.ccm[c].component(component);else{var a=document.createElement("script");document.head.appendChild(a);component.ccm.integrity&&a.setAttribute("integrity",component.ccm.integrity);component.ccm.crossorigin&&a.setAttribute("crossorigin",component.ccm.crossorigin);a.onload=function(){window.ccm[c].component(component);document.head.removeChild(a)};a.src=component.ccm.url}
+} )();
