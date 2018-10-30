@@ -36,8 +36,7 @@ ccm.files[ 'configs.js' ] = {
 
   "demo_blue": {
     "key": "blue",
-    "font": [ "ccm.load", { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/weblysleekui/font.css" } ],
-    "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/kanban_card/resources/blue.css" ],
+    "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/kanban_card/resources/blue.css", { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/weblysleekui/font.css" } ],
     "data": {
       "store": [ "ccm.store", { "name": "kanban_card", "url": "wss://ccm2.inf.h-brs.de" } ],
       "key": "demo_blue"
