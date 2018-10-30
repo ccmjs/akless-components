@@ -13,77 +13,35 @@ ccm.files[ 'configs.js' ] = {
       "store": [ "ccm.store", "../kanban_card/resources/datasets.js" ],
       "key": "homework"
     },
-    "onchange": () => console.log( '!' )
+    "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
+    "onchange": function ( event ) { console.log( this.index, 'onchange', this.getValue(), event ) }
   },
 
-  "homework": {
-    "key": "homework",
-    "css": [ "ccm.load", "../kanban_card/resources/default.css" ],
+  "demo_white": {
+    "key": "white",
     "data": {
-      "store": [ "ccm.store", "../kanban_card/resources/datasets.js" ],
-      "key": "homework"
+      "store": [ "ccm.store", { "name": "kanban_card", "url": "wss://ccm2.inf.h-brs.de" } ],
+      "key": "demo_white"
     }
   },
 
-  "presentation": {
-    "key": "presentation",
-    "css": [ "ccm.load", "../kanban_card/resources/demo.css" ],
+  "demo_gold": {
+    "key": "gold",
+    "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/kanban_card/resources/gold.css" ],
     "data": {
-      "store": [ "ccm.store", "../kanban_card/resources/datasets.js" ],
-      "key": "presentation"
+      "store": [ "ccm.store", { "name": "kanban_card", "url": "wss://ccm2.inf.h-brs.de" } ],
+      "key": "demo_gold"
     }
   },
 
-  "realtime": {
-    "key": "realtime",
+  "demo_blue": {
+    "key": "blue",
     "font": [ "ccm.load", { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/weblysleekui/font.css" } ],
-    "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/kanban_card/resources/weblysleek.css" ],
+    "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/kanban_card/resources/gold.css" ],
     "data": {
-      "store": [ "ccm.store", { "store": "kanban_card", "url": "wss://ccm2.inf.h-brs.de" } ],
-      "key": "demo",
-      "permission_settings": { "access": "group" }
-    },
-    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-1.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ]
-  },
-
-  "test": {
-    "key": "test",
-    "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/kanban_card/resources/demo.css" ],
-    "data": {
-      "store": [ "ccm.store", "https://ccmjs.github.io/akless-components/kanban_card/resources/datasets.js" ],
-      "key": "test"
-    },
-    "members": [ "Almut", "Andre", "Manfred", "Ralph", "Regina", "Tea", "Thorsten" ]
-  },
-
-  "w2c": {
-    "key": "w2c",
-    "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/kanban_card/resources/demo.css" ],
-    "data": {
-      "store": [ "ccm.store", "https://ccmjs.github.io/akless-components/kanban_card/resources/datasets.js" ],
-      "key": "w2c"
-    },
-    "members": [ "Almut", "Andre", "Manfred", "Ralph", "Regina", "Tea", "Thorsten" ]
-  },
-
-  "lea": {
-    "key": "lea",
-    "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/kanban_card/resources/demo.css" ],
-    "data": {
-      "store": [ "ccm.store", "https://ccmjs.github.io/akless-components/kanban_card/resources/datasets.js" ],
-      "key": "lea"
-    },
-    "members": [ "Almut", "Andre", "Manfred", "Ralph", "Regina", "Tea", "Thorsten" ]
-  },
-
-  "more": {
-    "key": "more",
-    "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/kanban_card/resources/demo.css" ],
-    "data": {
-      "store": [ "ccm.store", "https://ccmjs.github.io/akless-components/kanban_card/resources/datasets.js" ],
-      "key": "more"
-    },
-    "members": [ "Almut", "Andre", "Manfred", "Ralph", "Regina", "Tea", "Thorsten" ]
+      "store": [ "ccm.store", { "name": "kanban_card", "url": "wss://ccm2.inf.h-brs.de" } ],
+      "key": "demo_blue"
+    }
   }
 
 };

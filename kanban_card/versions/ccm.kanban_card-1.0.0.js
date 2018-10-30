@@ -3,6 +3,7 @@
  * @author André Kless <andre.kless@web.de> 2016-2017
  * @license The MIT License (MIT)
  * @version 1.0.0
+ * version 1.0.0 (19.10.2017)
  */
 
 ( function () {

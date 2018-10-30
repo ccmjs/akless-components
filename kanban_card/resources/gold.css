@@ -1,17 +1,17 @@
 /**
- * @overview demo layout of ccm component for rendering a kanban card
+ * @overview demo layout of ccm component for kanban card
  * @author André Kless <andre.kless@web.de> 2017
  * @license The MIT License (MIT)
  */
 
-#wrapper {
+#main {
   width: 18em;
   margin: 0.5em;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-header,
-footer {
+#header,
+#footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -22,26 +22,26 @@ footer {
   border: 0.1em solid silver;
 }
 
-header {
+#header {
   border-bottom: 0;
   border-top-left-radius: 0.5em;
   border-top-right-radius: 0.5em;
   padding-bottom: 0.15em;
 }
 
-footer {
+#footer {
   border-top: 0;
   border-bottom-left-radius: 0.5em;
   border-bottom-right-radius: 0.5em;
   padding-top: 0.15em;
 }
 
-main {
+#body {
   border: 0.1em solid silver;
   background-color: white;
 }
 
-section {
+.entry {
   display: flex;
   flex-direction: row-reverse;
   justify-content: flex-end;
@@ -49,7 +49,7 @@ section {
   padding: 0.2em;
 }
 
-section:not(#summary) div:last-child {
+.entry:not(#summary) div:last-child {
   margin-right: 0.3em;
 }
 
