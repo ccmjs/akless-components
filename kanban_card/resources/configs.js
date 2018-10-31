@@ -41,7 +41,7 @@ ccm.files[ 'configs.js' ] = {
 
   "demo_gold": {
     "key": "gold",
-    "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/kanban_card/resources/gold.css" ],
+    "css.1": "https://ccmjs.github.io/akless-components/kanban_card/resources/gold.css",
     "data": {
       "store": [ "ccm.store", { "name": "kanban_card", "url": "wss://ccm2.inf.h-brs.de" } ],
       "key": "demo_gold"

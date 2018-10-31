@@ -120,3 +120,8 @@ select {
   max-width: 11em;
   cursor: pointer;
 }
+
+img {
+  margin-top: 0.1em;
+  height: 1em;
+}

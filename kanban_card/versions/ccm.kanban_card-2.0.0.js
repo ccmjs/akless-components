@@ -4,10 +4,11 @@
  * @license The MIT License (MIT)
  * @version 2.0.0
  * @changes
- * version 2.0.0 (05.09.2018)
+ * version 2.0.0 (31.10.2018)
  * - uses ccm v18.1.0
  * - removed privatization of instance members
  * - changes in default HTML templates
+ * - changed editing behaviour of kanban card title and summary
  * version 1.0.0 (19.10.2017)
  */
 
@@ -19,7 +20,7 @@
 
     version: [ 2, 0, 0 ],
 
-    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-18.0.1.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-18.1.0.js',
 
     config: {
 
@@ -37,7 +38,8 @@
                     "class": "value",
                     "inner": "%title%",
                     "contenteditable": "%editable%",
-                    "oninput": "%input_title%"
+                    "oninput": "%oninput_title%",
+                    "onblur": "%onblur_title%"
                   },
                   { "id": "status" }
                 ]
@@ -50,9 +52,14 @@
                     "class": "value",
                     "inner": "%owner%",
                     "contenteditable": "%editable%",
-                    "onfocus": "%focus_owner%"
+                    "onfocus": "%onfocus_owner%"
                   },
-                  { "class": "fa fa-user" }
+                  {
+                    "inner": {
+                      "tag": "img",
+                      "src": "resources/owner.svg"
+                    }
+                  }
                 ]
               }
             ]
@@ -66,7 +73,8 @@
                 "class": "value",
                 "inner": "%summary%",
                 "contenteditable": "%editable%",
-                "oninput": "%input_summary%"
+                "oninput": "%oninput_summary%",
+                "onblur": "%onblur_summary%"
               }
             }
           },
@@ -80,7 +88,7 @@
                   "class": "value",
                   "inner": "%priority%",
                   "contenteditable": "%editable%",
-                  "onfocus": "%focus_priority%"
+                  "onfocus": "%onfocus_priority%"
                 }
               },
               {
@@ -91,9 +99,14 @@
                     "class": "value",
                     "inner": "%deadline%",
                     "contenteditable": "%editable%",
-                    "onfocus": "%focus_deadline%"
+                    "onfocus": "%onfocus_deadline%"
                   },
-                  { "class": "fa fa-calendar-check-o" }
+                  {
+                    "inner": {
+                      "tag": "img",
+                      "src": "resources/deadline.svg"
+                    }
+                  }
                 ]
               }
             ]
@@ -101,20 +114,6 @@
         ]
       },
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/kanban_card/resources/default.css" ],
-      "icons": [
-        "ccm.load",
-        {
-          "context": "head",
-          "url": "https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css",
-          "integrity": "sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+",
-          "crossorigin": "anonymous"
-        },
-        {
-          "url": "https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css",
-          "integrity": "sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+",
-          "crossorigin": "anonymous"
-        }
-      ],
       "data": {},
       "editable": true,
       "members": [ "John", "Jane" ],
@@ -166,28 +165,17 @@
 
           editable: !!this.editable,
 
-          input_title:    function () { empty ( this ); update( 'title', this.innerHTML ); },
-          focus_owner:    function () { select( this, true ); },
-          input_summary:  function () { empty ( this ); update( 'summary', this.innerHTML ); },
-          focus_priority: function () { select( this, false ); },
-          focus_deadline: function () { input ( this ); }
+          oninput_title:    function () { update( 'title', this.innerText.replace( /\n/g, '' ) ); },
+          onblur_title:     function () { this.innerHTML = data.title },
+          onfocus_owner:    function () { select( this, true ); },
+          oninput_summary:  function () { update( 'summary', this.innerText.replace( /\n/g, '' ) ); },
+          onblur_summary:   function () { this.innerHTML = data.summary },
+          onfocus_priority: function () { select( this, false ); },
+          onfocus_deadline: function () { input ( this ); }
 
         }, data, true ) ) );
 
-        empty( this.element.querySelector( '#title .value' ) );
-        empty( this.element.querySelector( '#summary .value' ) );
-
         const self = this;
-
-        /**
-         * makes sure that an empty element is really empty
-         * @param {Element} elem
-         */
-        function empty( elem ) {
-
-          if ( elem.innerHTML.trim().replace( /<br>|<div>|<\/div>/g, '' ) === '' ) elem.innerHTML = '';
-
-        }
 
         /**
          * updates value of a changed kanban card property
