@@ -75,7 +75,6 @@ ccm.files[ 'configs.js' ] = {
       "store": {
         "settings": {
           "url": "https://ccm2.inf.h-brs.de",
-          "method": "POST",
           "name": "cloze_results"
         },
         "key": "demo"
