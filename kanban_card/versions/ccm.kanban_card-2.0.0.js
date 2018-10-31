@@ -9,6 +9,8 @@
  * - removed privatization of instance members
  * - changes in default HTML templates
  * - changed editing behaviour of kanban card title and summary
+ * - removed font-awesome lib from default config
+ * - svg icons for kanban card owner and deadline
  * version 1.0.0 (19.10.2017)
  */
 
@@ -57,7 +59,7 @@
                   {
                     "inner": {
                       "tag": "img",
-                      "src": "resources/owner.svg"
+                      "src": "%icon_owner%"
                     }
                   }
                 ]
@@ -104,7 +106,7 @@
                   {
                     "inner": {
                       "tag": "img",
-                      "src": "resources/deadline.svg"
+                      "src": "%icon_deadline%"
                     }
                   }
                 ]
@@ -117,7 +119,11 @@
       "data": {},
       "editable": true,
       "members": [ "John", "Jane" ],
-      "priorities": [ "A", "B", "C" ]
+      "priorities": [ "A", "B", "C" ],
+      "icon": {
+        "owner": "https://ccmjs.github.io/akless-components/kanban_card/resources/owner.svg",
+        "deadline": "https://ccmjs.github.io/akless-components/kanban_card/resources/deadline.svg"
+      }
 
   //  "onchange": function ( event ) { console.log( this.index, 'onchange', this.getValue(), event ) },
   //  "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-8.2.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "guest" ] ],
@@ -162,6 +168,9 @@
           summary:  '',
           priority: '',
           deadline: '',
+
+          icon_owner: this.icon.owner,
+          icon_deadline: this.icon.deadline,
 
           editable: !!this.editable,
 
