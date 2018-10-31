@@ -11,6 +11,7 @@
  * - changed editing behaviour of kanban card title and summary
  * - removed font-awesome lib from default config
  * - svg icons for kanban card owner and deadline
+ * - added getValue method
  * version 1.0.0 (19.10.2017)
  */
 
@@ -292,13 +293,13 @@
 
         }
 
-        /**
-         * returns current result data
-         * @returns {Object} current kanban card data
-         */
-        this.getValue = () => data;
-
       };
+
+      /**
+       * returns current result data
+       * @returns {Object} current kanban card data
+       */
+      this.getValue = () => data;
 
     }
 
