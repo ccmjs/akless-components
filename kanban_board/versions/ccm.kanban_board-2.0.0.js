@@ -181,7 +181,7 @@
           }
 
           // append button for creating a new card to first lane
-          if ( this.ignore.card && i === 0 ) lane_elem.appendChild( $.html( this.html.add, async () => {
+          if ( this.ignore && i === 0 ) lane_elem.appendChild( $.html( this.html.add, async () => {
 
             /**
              * instance configuration for new card
