@@ -1,10 +1,10 @@
 /**
- * @overview default layout of ccm component for rendering a kanban board
- * @author André Kless <andre.kless@web.de> 2016-2017
+ * @overview default layout of ccm component for kanban board
+ * @author André Kless <andre.kless@web.de> 2016-2018
  * @license The MIT License (MIT)
  */
 
-main {
+#element {
   overflow-x: auto;
   font-family: Arial, sans-serif;
 }
@@ -20,7 +20,7 @@ main {
   width: 20em;
 }
 
-.lane header {
+.lane .title {
   font-weight: bold;
   text-align: center;
   padding: 0.5em;
@@ -32,7 +32,7 @@ main {
   padding: 0.5em;
 }
 
-.lane footer {
+.lane #add {
   margin: 0 1em;
   padding: 0.5em;
   background-color: lightgray;
@@ -42,11 +42,11 @@ main {
   cursor: pointer;
 }
 
-.lane footer:hover {
+.lane #add:hover {
   background-color: gray;
 }
 
-.lane footer:before {
+.lane #add:before {
   content: '+';
 }
 

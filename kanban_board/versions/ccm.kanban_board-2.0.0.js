@@ -2,7 +2,7 @@
  * @overview ccm component for kanban board
  * @author André Kless <andre.kless@web.de> 2016-2018
  * @license The MIT License (MIT)
- * @version latest (2.0.0)
+ * @version 2.0.0
  * @changes
  * version 2.0.0 (01.11.2018)
  * - uses ccm v18.1.0
@@ -24,7 +24,9 @@
 
     name: 'kanban_board',
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    version: [ 2, 0, 0 ],
+
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-18.1.0.js',
 
     config: {
 

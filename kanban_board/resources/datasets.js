@@ -1,20 +1,26 @@
 /**
- * @overview datasets of ccm component for rendering a kanban board
- * @author André Kless <andre.kless@web.de> 2017
+ * @overview datasets of ccm component for kanban board
+ * @author André Kless <andre.kless@web.de> 2017-2018
  * @license The MIT License (MIT)
  */
 
 ccm.files[ 'datasets.js' ] = {
 
-  "local": {
+  "test": {
     "key": "local",
     "lanes": [
       {
         "cards": [
-          [ "ccm.instance", "../kanban_card/ccm.kanban_card.js", [ "ccm.get", "../kanban_card/resources/configs.js", "homework" ] ],
-          [ "ccm.instance", "../kanban_card/ccm.kanban_card.js", [ "ccm.get", "../kanban_card/resources/configs.js", "presentation" ] ]
+          [ "ccm.instance", "../kanban_card/ccm.kanban_card.js", [ "ccm.get", "../kanban_card/resources/configs.js", "local_white" ] ],
+          [ "ccm.instance", "../kanban_card/ccm.kanban_card.js", [ "ccm.get", "../kanban_card/resources/configs.js", "local_gold" ] ]
+        ],
+      },
+      {
+        "cards": [
+          [ "ccm.instance", "../kanban_card/ccm.kanban_card.js", [ "ccm.get", "../kanban_card/resources/configs.js", "local_blue" ] ]
         ]
-      }
+      },
+      { "cards": [] }
     ]
   },
 
