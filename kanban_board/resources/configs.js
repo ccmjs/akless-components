@@ -66,6 +66,9 @@ ccm.files[ 'configs.js' ] = {
       "card": {
         "component": "https://ccmjs.github.io/akless-components/kanban_card/ccm.kanban_card.js",
         "config": {
+          "data": {
+            "store": [ "ccm.store", { "name": "kanban_card", "url": "wss://ccm2.inf.h-brs.de" } ]
+          },
           "css.1": "https://ccmjs.github.io/akless-components/kanban_card/resources/gold.css"
         }
       }
@@ -82,6 +85,9 @@ ccm.files[ 'configs.js' ] = {
       "card": {
         "component": "https://ccmjs.github.io/akless-components/kanban_card/ccm.kanban_card.js",
         "config": {
+          "data": {
+            "store": [ "ccm.store", { "name": "kanban_card", "url": "wss://ccm2.inf.h-brs.de" } ]
+          },
           "css.1": "https://ccmjs.github.io/akless-components/kanban_card/resources/blue.css"
         }
       }
