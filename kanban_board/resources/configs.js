@@ -35,7 +35,7 @@ ccm.files[ 'configs.js' ] = {
     "key": "localhost",
     "css.1": "../kanban_board/resources/default.css",
     "data": {
-      "store": [ "ccm.store", { "name": "kanban_board", "url": "ws://localhost:8080" } ],
+      "store": [ "ccm.store", { "name": "kanban_board", "url": "http://localhost:8080" } ],
       "key": "demo"
     },
     "onchange": function ( event ) { console.log( this.index, 'onchange', this.getValue(), event ) },
