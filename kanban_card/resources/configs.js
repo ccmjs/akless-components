@@ -46,7 +46,7 @@ ccm.files[ 'configs.js' ] = {
   "demo_white": {
     "key": "white",
     "data": {
-      "store": [ "ccm.store", { "name": "kanban_card", "url": "wss://ccm2.inf.h-brs.de" } ],
+      "store": [ "ccm.store", { "name": "kanban_card", "url": "https://ccm2.inf.h-brs.de" } ],
       "key": "demo_white"
     }
   },
@@ -55,13 +55,22 @@ ccm.files[ 'configs.js' ] = {
     "key": "gold",
     "css.1": "https://ccmjs.github.io/akless-components/kanban_card/resources/gold.css",
     "data": {
-      "store": [ "ccm.store", { "name": "kanban_card", "url": "wss://ccm2.inf.h-brs.de" } ],
+      "store": [ "ccm.store", { "name": "kanban_card", "url": "https://ccm2.inf.h-brs.de" } ],
       "key": "demo_gold"
     }
   },
 
   "demo_blue": {
     "key": "blue",
+    "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/kanban_card/resources/blue.css", { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/weblysleekui/font.css" } ],
+    "data": {
+      "store": [ "ccm.store", { "name": "kanban_card", "url": "https://ccm2.inf.h-brs.de" } ],
+      "key": "demo_blue"
+    }
+  },
+
+  "realtime": {
+    "key": "realtime",
     "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/kanban_card/resources/blue.css", { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/weblysleekui/font.css" } ],
     "data": {
       "store": [ "ccm.store", { "name": "kanban_card", "url": "wss://ccm2.inf.h-brs.de" } ],
