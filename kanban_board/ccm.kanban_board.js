@@ -76,7 +76,7 @@
       this.start = async () => {
 
         // get kanban board data
-        if ( !data ) data = await $.dataset( this.data );
+        data = await $.dataset( this.data );
 
         // set initial lanes
         if ( !data.lanes ) { data.lanes = []; for ( let i = 0; i < this.lanes.length; i++ ) data.lanes.push( { cards: [] } ); }
