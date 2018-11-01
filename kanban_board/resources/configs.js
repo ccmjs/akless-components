@@ -13,6 +13,7 @@ ccm.files[ 'configs.js' ] = {
       "store": [ "ccm.store", "../kanban_board/resources/datasets.js" ],
       "key": "test"
     },
+    "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
     "onchange": function ( event ) { console.log( this.index, 'onchange', this.getValue(), event ) },
     "ignore": {
       "card": {
