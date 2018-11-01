@@ -5,7 +5,7 @@
  * @version latest (2.0.0)
  * @changes
  * version 2.0.0 (01.11.2018)
- * - uses ccm v18.1.0
+ * - uses ccm v18.2.0
  * - removed privatization of instance members
  * - changed config parameters
  * - changed logging behaviour
