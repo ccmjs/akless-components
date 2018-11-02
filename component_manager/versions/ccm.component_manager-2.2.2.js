@@ -2,7 +2,7 @@
  * @overview ccm component for component manager
  * @author André Kless <andre.kless@web.de> 2018
  * @license MIT License
- * @version latest (2.2.2)
+ * @version 2.2.2
  * @changes
  * version 2.2.2 (02.11.2018):
  * - bug fix for rendering a demo
@@ -28,7 +28,9 @@
 
     name: 'component_manager',
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    version: [ 2, 2, 2 ],
+
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-18.2.0.js',
 
     config: {
       "html": {
