@@ -69,7 +69,8 @@ ccm.files[ 'configs.js' ] = {
         "text": "Enough?",
         "answers": [ "Finish" ]
       }
-    ]
+    ],
+    "duration": 1
 
   }
 
