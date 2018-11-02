@@ -6,6 +6,7 @@
  * @changes
  * version 1.0.2 (02.11.2018):
  * - uses ccm.component_manager.js v2.2.2
+ * - uses ccm.listing.js v2.0.2
  * - uses ccm v18.2.0
  * version 1.0.1 (25.10.2018): Update to versions 1.0.0 of resource finder and publish
  * version 1.0.0 (13.09.2018)
@@ -112,7 +113,7 @@
         "https://ccmjs.github.io/akless-components/dms/resources/default.css"
       ],
       "data": [],
-      "listing": [ "ccm.component", "https://ccmjs.github.io/akless-components/listing/versions/ccm.listing-2.0.0.js", {
+      "listing": [ "ccm.component", "https://ccmjs.github.io/akless-components/listing/versions/ccm.listing-2.0.2.js", {
         "root": "name",
         "html.entry": {
           "class": "entry",
