@@ -176,10 +176,10 @@
           editable: !!this.editable,
 
           oninput_title:    function () { update( 'title', this.innerText.replace( /\n/g, '' ) ); },
-          onblur_title:     function () { this.innerHTML = data.title },
+          onblur_title:     function () { this.innerHTML = data.title || '' },
           onfocus_owner:    function () { select( this, true ); },
           oninput_summary:  function () { update( 'summary', this.innerText.replace( /\n/g, '' ) ); },
-          onblur_summary:   function () { this.innerHTML = data.summary },
+          onblur_summary:   function () { this.innerHTML = data.summary || '' },
           onfocus_priority: function () { select( this, false ); },
           onfocus_deadline: function () { input ( this ); }
 
