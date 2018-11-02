@@ -70,7 +70,7 @@ ccm.files[ 'configs.js' ] = {
         "answers": [ "Finish" ]
       }
     ],
-    "duration": 1
+    "interval": 1
 
   }
 
