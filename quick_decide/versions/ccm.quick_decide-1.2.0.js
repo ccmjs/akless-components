@@ -6,8 +6,7 @@
  * @changes
  * version 1.2.0 (02.11.2018):
  * - added config property 'interval'
- * - added 'duration' in results data
- * - uses ccm v18.2.0
+ * - added timestamps in results data
  * version 1.1.0 (07.10.2018): define questions and answers via Light DOM; question and timer position switched
  * version 1.0.0 (07.10.2018)
  */
@@ -142,6 +141,12 @@
            */
           const question_data = this.questions[ question_nr++ ];
 
+          /**
+           * current time (in ms)
+           * @type {number}
+           */
+          const start = new Date().getTime();
+
           // render question text
           $.setContent( this.element.querySelector( '#question' ), question_data.text );
 
@@ -154,10 +159,16 @@
             onclick: event => {
 
               /**
+               * current time (in ms)
+               * @type {number}
+               */
+              const time = new Date().getTime();
+
+              /**
                * result data for current question
                * @type {Object}
                */
-              const result = { question: question_data.text, answer: event.target.innerHTML, duration: new Date().getTime() - start.getTime() };
+              const result = { question: question_data.text, answer: event.target.innerHTML, time: time, duration: time - start };
 
               // logging of 'click' event
               this.logger && this.logger.log( 'click', $.clone( result ) );
@@ -180,7 +191,8 @@
         const onFinish = () => {
 
           // set duration
-          results.duration = new Date().getTime() - start.getTime();
+          results.end = new Date().getTime();
+          results.duration = results.end - start.getTime();
 
           // clear timer interval
           window.clearInterval( intervalID );
@@ -208,6 +220,7 @@
         const min_elem = timer.querySelector( '#min' );
         const sec_elem = timer.querySelector( '#sec' );
         const mil_elem = timer.querySelector( '#mil' );
+        results.start = start.getTime();
         let intervalID = window.setInterval( () => {
           const now = new Date( new Date().getTime() - start.getTime() );
           min_elem.innerHTML = now.getMinutes().toString().padStart( 2, '0' );
