@@ -47,7 +47,7 @@
       },
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/kanban_board/resources/default.css" ],
       "data": {},
-      "lanes": [ "ToDo", "Doing", "xxx", "Done" ],
+      "lanes": [ "ToDo", "Doing", "Done" ],
       "del": "Do you really want to delete this card?"
 
   //  "ignore": { "card": { "component": "https://ccmjs.github.io/akless-components/kanban_card/ccm.kanban_card.js", "config": {} } },
