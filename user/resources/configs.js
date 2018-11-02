@@ -52,6 +52,53 @@ ccm.files[ 'configs.js' ] = {
     "key": "lea",
     "realm": "lea",
     "url": "https://ccm-data.bib.h-brs.de"
+  },
+
+  "compact": {
+    "key": "button",
+    "realm": "guest",
+    "title": "Guest Mode: Please enter any username",
+    "html.logged_in": {
+      "id": "logged_in",
+      "class": "row",
+      "style": "float:none",
+      "inner": {
+        "id": "button",
+        "class": "btn btn-default",
+        "inner": [
+          {
+            "tag": "span",
+            "id": "user",
+            "inner": [
+              { "class": "glyphicon glyphicon-user" },
+              "%user%&#8196;"
+            ]
+          },
+          {
+            "tag": "span",
+            "class": "glyphicon glyphicon-log-out",
+          },
+          "Logout"
+        ],
+        "onclick": "%click%"
+      }
+    },
+    "html.logged_out": {
+      "id": "logged_out",
+      "style": "float:none",
+      "inner": {
+        "id": "button",
+        "class": "btn btn-default",
+        "inner": [
+          {
+            "tag": "span",
+            "class": "glyphicon glyphicon-log-in"
+          },
+          "Login"
+        ],
+        "onclick": "%click%"
+      }
+    }
   }
 
 };
