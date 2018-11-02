@@ -47,7 +47,7 @@
       },
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/kanban_board/resources/default.css" ],
       "data": {},
-      "lanes": [ "ToDo", "Doing", "Done" ],
+      "lanes": [ "ToDo", "Doing", "xxx", "Done" ],
       "del": "Do you really want to delete this card?"
 
   //  "ignore": { "card": { "component": "https://ccmjs.github.io/akless-components/kanban_card/ccm.kanban_card.js", "config": {} } },
@@ -79,7 +79,7 @@
         data = await $.dataset( this.data );
 
         // set initial lanes
-        if ( !data.lanes ) { data.lanes = []; for ( let i = 0; i < this.lanes.length; i++ ) data.lanes.push( { cards: [] } ); }
+        data.lanes = []; for ( let i = 0; i < this.lanes.length; i++ ) if ( !data.lanes[ i ] ) data.lanes[ i ] = { cards: [] };
 
         // logging of 'start' event
         this.logger && this.logger.log( 'start', $.clone( data ) );
@@ -94,7 +94,7 @@
         const lanes_elem = this.element.querySelector( '#lanes' );
 
         // create and append HTML structure for each lane
-        for ( let i = 0; i < data.lanes.length; i++ ) {
+        for ( let i = 0; i < this.lanes.length; i++ ) {
 
           /**
            * data of lane
