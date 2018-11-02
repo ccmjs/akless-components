@@ -487,7 +487,7 @@
             active = config;
             config = await $.solveDependency( config );
             config.root = element.querySelector( '#content' );
-            demo.start( config );
+            await demo.start( config );
           }
 
         }
