@@ -2,16 +2,17 @@
  * @overview ccm component for kanban card
  * @author André Kless <andre.kless@web.de> 2016-2018
  * @license The MIT License (MIT)
- * @version 2.0.0
+ * @version latest (2.0.0)
  * @changes
  * version 2.0.0 (31.10.2018)
- * - uses ccm v18.1.0
+ * - uses ccm v18.2.0
  * - removed privatization of instance members
  * - changes in default HTML templates
  * - changed editing behaviour of kanban card title and summary
  * - removed font-awesome lib from default config
  * - svg icons for kanban card owner and deadline
  * - added getValue method
+ * - removed status icon
  * version 1.0.0 (19.10.2017)
  */
 
@@ -23,7 +24,7 @@
 
     version: [ 2, 0, 0 ],
 
-    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-18.1.0.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-18.2.0.js',
 
     config: {
 
@@ -43,8 +44,7 @@
                     "contenteditable": "%editable%",
                     "oninput": "%oninput_title%",
                     "onblur": "%onblur_title%"
-                  },
-                  { "id": "status" }
+                  }
                 ]
               },
               {
@@ -199,26 +199,14 @@
           self.user && await self.user.login();
 
           // update kanban card data
-          status( false );
           data[ prop ] = value.trim();
           $.isObject( self.data ) && $.isDatastore( self.data.store ) && await self.data.store.set( data );
-          status( true );
 
           // logging of 'change' event
           self.logger && self.logger.log( 'change', { prop: prop, value: value } );
 
           // perform individual 'change' callback
           self.onchange && self.onchange.call( self, { prop: prop, value: value } );
-
-          /**
-           * adds or removes loading icon
-           * @param {boolean} finished
-           */
-          function status( finished ) {
-
-            $.setContent( self.element.querySelector( '#status' ), finished ? '' : $.loading( self ) );
-
-          }
 
         }
 
