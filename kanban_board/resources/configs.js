@@ -80,7 +80,7 @@ ccm.files[ 'configs.js' ] = {
     "key": "realtime",
     "data": {
       "store": [ "ccm.store", { "name": "kanban_board", "url": "wss://ccm2.inf.h-brs.de" } ],
-      "key": "demo"
+      "key": "realtime"
     },
     "ignore": {
       "card": {
@@ -89,7 +89,7 @@ ccm.files[ 'configs.js' ] = {
           "data": {
             "store": [ "ccm.store", { "name": "kanban_card", "url": "wss://ccm2.inf.h-brs.de" } ]
           },
-          "css.1": "https://ccmjs.github.io/akless-components/kanban_card/resources/gold.css"
+          "css.1": "https://ccmjs.github.io/akless-components/kanban_card/resources/blue.css"
         }
       }
     }
