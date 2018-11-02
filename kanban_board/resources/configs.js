@@ -57,6 +57,25 @@ ccm.files[ 'configs.js' ] = {
     }
   },
 
+  "offline": {
+    "key": "offline",
+    "data": {
+      "store": [ "ccm.store", { "name": "kanban_board" } ],
+      "key": "demo"
+    },
+    "ignore": {
+      "card": {
+        "component": "https://ccmjs.github.io/akless-components/kanban_card/ccm.kanban_card.js",
+        "config": {
+          "data": {
+            "store": [ "ccm.store", { "name": "kanban_card" } ]
+          },
+          "css.1": "https://ccmjs.github.io/akless-components/kanban_card/resources/gold.css"
+        }
+      }
+    }
+  },
+
   "demo": {
     "key": "demo",
     "data": {
