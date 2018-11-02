@@ -81,7 +81,7 @@
         data = await $.dataset( this.data );
 
         // set initial lanes
-        data.lanes = []; for ( let i = 0; i < this.lanes.length; i++ ) if ( !data.lanes[ i ] ) data.lanes[ i ] = { cards: [] };
+        if ( !data.lanes ) data.lanes = []; for ( let i = 0; i < this.lanes.length; i++ ) if ( !data.lanes[ i ] ) data.lanes[ i ] = { cards: [] };
 
         // logging of 'start' event
         this.logger && this.logger.log( 'start', $.clone( data ) );
