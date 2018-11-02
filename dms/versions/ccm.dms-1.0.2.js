@@ -15,7 +15,7 @@
 
   const component = {
 
-    name: 'dms',
+    name:  'dms',
 
     version: [ 1, 0, 2 ],
 
