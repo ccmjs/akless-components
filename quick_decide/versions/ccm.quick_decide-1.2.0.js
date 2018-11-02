@@ -2,11 +2,12 @@
  * @overview ccm component for quick decision
  * @author André Kless <andre.kless@web.de> 2018
  * @license The MIT License (MIT)
- * @version latest (1.2.0)
+ * @version 1.2.0
  * @changes
  * version 1.2.0 (02.11.2018):
  * - added config property 'interval'
  * - added 'duration' in results data
+ * - uses ccm v18.2.0
  * version 1.1.0 (07.10.2018): define questions and answers via Light DOM; question and timer position switched
  * version 1.0.0 (07.10.2018)
  */
@@ -17,7 +18,9 @@
 
     name: 'quick_decide',
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    version: [ 1, 2, 0 ],
+
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-18.2.0.js',
 
     config: {
 
