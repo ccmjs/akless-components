@@ -319,7 +319,7 @@
                   store: [ 'ccm.store', { config: dataset[ input.name ] } ],
                   key: 'config'
                 },
-                onchange: () => {
+                onchange: function () {
 
                   /**
                    * current results of ccm instance
