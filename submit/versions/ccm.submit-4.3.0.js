@@ -339,8 +339,8 @@
               // replace input element with root element of ccm instance
               $.replace( instance.root, input );
 
-              // create, start and remember ccm instance for this ccm-based input field
-              inputs.push( { name: input.name, instance: instance } );
+              // remember ccm instance for this ccm-based input field
+              inputs.push( { instance: instance, name: input.name } );
 
           }
 
