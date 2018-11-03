@@ -325,7 +325,7 @@
                    * current results of ccm instance
                    * @type {Object}
                    */
-                  const value = self.getValue(); delete value.key;
+                  const value = this.getValue(); delete value.key;
 
                   // logging of 'change' event
                   self.logger && self.logger.log( 'change', { name: input.name, value: $.clone( value ), builder: instance } );
