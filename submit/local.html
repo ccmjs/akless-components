@@ -8,7 +8,7 @@
 <script src="ccm.submit.js"></script>
 
 <ccm-submit key='["ccm.get","resources/configs.js","local"]'>
-  <source src="https://ccmjs.github.io/akless-components/blank/ccm.blank.js">
+  <source src="../blank/ccm.blank.js">
 
   <h3>Decoration</h3>
 
@@ -221,6 +221,26 @@
           <input type="text" name="texts">
         </label>
       </p>
+    </several>
+  </fieldset>
+
+  <fieldset>
+    <legend>highscore:</legend>
+    <several name="highscore">
+      <fieldset>
+        <p>
+          <label>
+            player <nr></nr>:<br>
+            <input type="text" name="player">
+          </label>
+        </p>
+        <p>
+          <label>
+            score:<br>
+            <input type="number" min="0" name="score">
+          </label>
+        </p>
+      </fieldset>
     </several>
   </fieldset>
 

@@ -2,7 +2,7 @@
  * @overview ccm component for submitting data
  * @author André Kless <andre.kless@web.de> 2018
  * @license The MIT License (MIT)
- * @version latest (4.4.0)
+ * @version 4.4.0
  * @changes
  * version 4.4.0 (03.11.2018): more than one input element inside of <several> elements
  * version 4.3.0 (03.11.2018):
@@ -48,7 +48,9 @@
 
     name: 'submit',
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    version: [ 4, 4, 0 ],
+
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-18.3.0.js',
 
     config: {
 
