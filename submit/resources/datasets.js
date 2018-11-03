@@ -30,10 +30,10 @@ ccm.files[ 'datasets.js' ] = {
     "contenteditable": "This is editable text.",
     "complex-data": { "A": [ "B", "C" ] },
     "deep": { "property": "A" },
-    "items": [ { "foo": "bar" }, { "abc": "xyz" } ],
+    "texts": [ "foo", "bar" ],
     "cloze_builder": [ "ccm.get", "../cloze_builder/resources/datasets.js", "test" ],
     "teambuild_builder": [ "ccm.get", "../teambuild_builder/resources/datasets.js", "test" ],
-    "json_builder": { "foo": "bar" }
+    "objects": [ { "foo": "bar" }, { "abc": "xyz" } ]
   }
 
 };

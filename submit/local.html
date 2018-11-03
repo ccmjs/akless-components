@@ -8,7 +8,7 @@
 <script src="ccm.submit.js"></script>
 
 <ccm-submit key='["ccm.get","resources/configs.js","local"]'>
-  <source src="../blank/ccm.blank.js">
+  <source src="https://ccmjs.github.io/akless-components/blank/ccm.blank.js">
 
   <h3>Decoration</h3>
 
@@ -213,12 +213,12 @@
   </p>
 
   <fieldset>
-    <legend>items:</legend>
+    <legend>texts:</legend>
     <several>
       <p>
         <label>
-          item <nr></nr>:<br>
-          <input type="json_builder" name="items">
+          text <nr></nr>:<br>
+          <input type="text" name="texts">
         </label>
       </p>
     </several>
@@ -237,8 +237,15 @@
   </fieldset>
 
   <fieldset>
-    <legend>json_builder:</legend>
-    <input type="json_builder" name="json_builder">
+    <legend>objects:</legend>
+    <several>
+      <p>
+        <label>
+          object <nr></nr>:<br>
+          <input type="json_builder" name="objects">
+        </label>
+      </p>
+    </several>
   </fieldset>
 
   <h3>Submit</h3>
