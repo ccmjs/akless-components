@@ -362,7 +362,7 @@
         inputs.forEach( input => {
           const result = input.instance.getValue();
           delete result.key;
-          results[ input.name ] = result;
+          $.deepValue( results, input.name, result );
         } );
 
         return $.clone( results );
