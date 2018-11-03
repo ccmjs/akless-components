@@ -51,6 +51,7 @@
 
       "data": { "store": [ "ccm.store" ] }
 
+  //  "defaults": { "name": "value" },
   //  "onchange": function ( event ) { console.log( 'change event', this, event, event.target ) },
   //  "content": [ "ccm.component", "https://ccmjs.github.io/akless-components/content/versions/ccm.content-5.0.0.js" ],
   //  "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-8.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "guest" ] ],
