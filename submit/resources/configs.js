@@ -228,6 +228,42 @@ ccm.files[ 'configs.js' ] = {
     } ]
   },
 
+  "quick_decide_builder": {
+    "inner": [ "ccm.load", "../quick_decide/resources/builder.html" ],
+    "defaults": {
+      "html": {
+        "main": {
+          "id": "main",
+          "inner": [
+            {
+              "id": "timer",
+              "inner": [
+                { "tag": "a", "id": "min", "inner": "00" },
+                { "tag": "a", "id": "sec", "inner": "00" },
+                { "tag": "a", "id": "mil", "inner": "000" }
+              ]
+            },
+            { "id": "question" },
+            { "id": "answers" }
+          ]
+        },
+        "answer": {
+          "tag": "button",
+          "class": "answer",
+          "onclick": "%onclick%",
+          "inner": "%answer%"
+        }
+      },
+      "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/quick_decide/resources/default.css" ],
+      "questions": [ { "answers": [] } ],
+      "interval": 1
+    },
+    "json_builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-1.1.0.js", {
+      "html.inner.1": "",
+      "directly": true
+    } ]
+  },
+
   "quiz_builder": {
     "inner": [ "ccm.load", "https://ccmjs.github.io/akless-components/quiz/resources/builder.html" ],
     "defaults": {
