@@ -2,7 +2,7 @@
  * @overview ccm component for submitting data
  * @author André Kless <andre.kless@web.de> 2018
  * @license The MIT License (MIT)
- * @version latest (5.0.0)
+ * @version 5.0.0
  * @changes
  * version 5.0.0 (05.11.2018):
  * - config property 'defaults' has moved inside new config property 'ignore'
@@ -51,7 +51,9 @@
 
     name: 'submit',
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    version: [ 5, 0, 0 ],
+
+    ccm: 'https://ccmjs.github.io/ccm/vesions/ccm-18.3.0.js',
 
     config: {
 

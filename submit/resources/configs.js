@@ -92,280 +92,288 @@ ccm.files[ 'configs.js' ] = {
 
   "kanban_board_builder": {
     "inner": [ "ccm.load", "../kanban_board/resources/builder.html" ],
-    "defaults": {
-      "html": {
-        "main": { "id": "lanes" },
-        "lane": {
-          "class": "lane",
-          "inner": [
-            {
-              "class": "title",
-              "inner": "%%"
-            },
-            { "class": "cards" }
-          ]
-        },
-        "add": {
-          "id": "add",
-          "onclick": "%%"
-        }
-      },
-      "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/kanban_board/resources/default.css" ],
-      "data": {},
-      "lanes": [ "ToDo", "Doing", "Done" ],
-      "del": "Do you really want to delete this card?"
-    },
     "json_builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-1.1.0.js", {
       "html.inner.1": "",
       "directly": true
-    } ]
+    } ],
+    "ignore": {
+      "defaults": {
+        "html": {
+          "main": { "id": "lanes" },
+          "lane": {
+            "class": "lane",
+            "inner": [
+              {
+                "class": "title",
+                "inner": "%%"
+              },
+              { "class": "cards" }
+            ]
+          },
+          "add": {
+            "id": "add",
+            "onclick": "%%"
+          }
+        },
+        "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/kanban_board/resources/default.css" ],
+        "data": {},
+        "lanes": [ "ToDo", "Doing", "Done" ],
+        "del": "Do you really want to delete this card?"
+      }
+    }
   },
 
   "kanban_card_builder": {
     "inner": [ "ccm.load", "../kanban_card/resources/builder.html" ],
-    "defaults": {
-      "html": {
-        "id": "main",
-        "inner": [
-          {
-            "id": "header",
-            "inner": [
-              {
-                "id": "title",
-                "class": "entry",
-                "inner": [
-                  {
-                    "class": "value",
-                    "inner": "%title%",
-                    "contenteditable": "%editable%",
-                    "oninput": "%oninput_title%",
-                    "onblur": "%onblur_title%"
-                  }
-                ]
-              },
-              {
-                "id": "owner",
-                "class": "entry",
-                "inner": [
-                  {
-                    "class": "value",
-                    "inner": "%owner%",
-                    "contenteditable": "%editable%",
-                    "onfocus": "%onfocus_owner%"
-                  },
-                  {
-                    "inner": {
-                      "tag": "img",
-                      "src": "%icon_owner%"
-                    }
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "id": "body",
-            "inner": {
-              "id": "summary",
-              "class": "entry",
-              "inner": {
-                "class": "value",
-                "inner": "%summary%",
-                "contenteditable": "%editable%",
-                "oninput": "%oninput_summary%",
-                "onblur": "%onblur_summary%"
-              }
-            }
-          },
-          {
-            "id": "footer",
-            "inner": [
-              {
-                "id": "priority",
-                "class": "entry",
-                "inner": {
-                  "class": "value",
-                  "inner": "%priority%",
-                  "contenteditable": "%editable%",
-                  "onfocus": "%onfocus_priority%"
-                }
-              },
-              {
-                "id": "deadline",
-                "class": "entry",
-                "inner": [
-                  {
-                    "class": "value",
-                    "inner": "%deadline%",
-                    "contenteditable": "%editable%",
-                    "onfocus": "%onfocus_deadline%"
-                  },
-                  {
-                    "inner": {
-                      "tag": "img",
-                      "src": "%icon_deadline%"
-                    }
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      },
-      "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/kanban_card/resources/default.css" ],
-      "data": {},
-      "editable": true,
-      "members": [ "John", "Jane" ],
-      "priorities": [ "A", "B", "C" ],
-      "icon": {
-        "owner": "https://ccmjs.github.io/akless-components/kanban_card/resources/owner.svg",
-        "deadline": "https://ccmjs.github.io/akless-components/kanban_card/resources/deadline.svg"
-      }
-    },
     "json_builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-1.1.0.js", {
       "html.inner.1": "",
       "directly": true
-    } ]
+    } ],
+    "ignore": {
+      "defaults": {
+        "html": {
+          "id": "main",
+          "inner": [
+            {
+              "id": "header",
+              "inner": [
+                {
+                  "id": "title",
+                  "class": "entry",
+                  "inner": [
+                    {
+                      "class": "value",
+                      "inner": "%title%",
+                      "contenteditable": "%editable%",
+                      "oninput": "%oninput_title%",
+                      "onblur": "%onblur_title%"
+                    }
+                  ]
+                },
+                {
+                  "id": "owner",
+                  "class": "entry",
+                  "inner": [
+                    {
+                      "class": "value",
+                      "inner": "%owner%",
+                      "contenteditable": "%editable%",
+                      "onfocus": "%onfocus_owner%"
+                    },
+                    {
+                      "inner": {
+                        "tag": "img",
+                        "src": "%icon_owner%"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "body",
+              "inner": {
+                "id": "summary",
+                "class": "entry",
+                "inner": {
+                  "class": "value",
+                  "inner": "%summary%",
+                  "contenteditable": "%editable%",
+                  "oninput": "%oninput_summary%",
+                  "onblur": "%onblur_summary%"
+                }
+              }
+            },
+            {
+              "id": "footer",
+              "inner": [
+                {
+                  "id": "priority",
+                  "class": "entry",
+                  "inner": {
+                    "class": "value",
+                    "inner": "%priority%",
+                    "contenteditable": "%editable%",
+                    "onfocus": "%onfocus_priority%"
+                  }
+                },
+                {
+                  "id": "deadline",
+                  "class": "entry",
+                  "inner": [
+                    {
+                      "class": "value",
+                      "inner": "%deadline%",
+                      "contenteditable": "%editable%",
+                      "onfocus": "%onfocus_deadline%"
+                    },
+                    {
+                      "inner": {
+                        "tag": "img",
+                        "src": "%icon_deadline%"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/kanban_card/resources/default.css" ],
+        "data": {},
+        "editable": true,
+        "members": [ "John", "Jane" ],
+        "priorities": [ "A", "B", "C" ],
+        "icon": {
+          "owner": "https://ccmjs.github.io/akless-components/kanban_card/resources/owner.svg",
+          "deadline": "https://ccmjs.github.io/akless-components/kanban_card/resources/deadline.svg"
+        }
+      }
+    }
   },
 
   "quick_decide_builder": {
     "inner": [ "ccm.load", "../quick_decide/resources/builder.html" ],
-    "defaults": {
-      "html": {
-        "main": {
-          "id": "main",
-          "inner": [
-            {
-              "id": "timer",
-              "inner": [
-                { "tag": "a", "id": "min", "inner": "00" },
-                { "tag": "a", "id": "sec", "inner": "00" },
-                { "tag": "a", "id": "mil", "inner": "000" }
-              ]
-            },
-            { "id": "question" },
-            { "id": "answers" }
-          ]
-        },
-        "answer": {
-          "tag": "button",
-          "class": "answer",
-          "onclick": "%onclick%",
-          "inner": "%answer%"
-        }
-      },
-      "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/quick_decide/resources/default.css" ],
-      "questions": [ { "answers": [] } ],
-      "interval": 1
-    },
     "json_builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-1.1.0.js", {
       "html.inner.1": "",
       "directly": true
-    } ]
+    } ],
+    "ignore": {
+      "defaults": {
+        "html": {
+          "main": {
+            "id": "main",
+            "inner": [
+              {
+                "id": "timer",
+                "inner": [
+                  { "tag": "a", "id": "min", "inner": "00" },
+                  { "tag": "a", "id": "sec", "inner": "00" },
+                  { "tag": "a", "id": "mil", "inner": "000" }
+                ]
+              },
+              { "id": "question" },
+              { "id": "answers" }
+            ]
+          },
+          "answer": {
+            "tag": "button",
+            "class": "answer",
+            "onclick": "%onclick%",
+            "inner": "%answer%"
+          }
+        },
+        "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/quick_decide/resources/default.css" ],
+        "questions": [ { "answers": [] } ],
+        "interval": 1
+      }
+    }
   },
 
   "quiz_builder": {
     "inner": [ "ccm.load", "https://ccmjs.github.io/akless-components/quiz/resources/builder.html" ],
-    "defaults": {
-      "html": {
-        "start": {
-          "id": "start",
-          "inner": {
-            "tag": "button",
-            "inner": "Start",
-            "onclick": "%%"
-          }
-        },
-        "main": {
-          "id": "main",
-          "inner": [
-            { "id": "questions" },
-            {
-              "id": "buttons",
-              "inner": [
-                { "id": "cancel" },
-                { "id": "prev" },
-                { "id": "submit" },
-                { "id": "next" },
-                { "id": "finish" },
-                { "id": "timer" }
-              ]
-            }
-          ]
-        },
-        "question": {
-          "id": "%id%",
-          "class": "question",
-          "inner": [
-            {
-              "class": "title",
-              "inner": [
-                { "inner": "Question" },
-                { "inner": "%nr%/%count%" },
-                { "inner": "%text%" }
-              ]
-            },
-            {
-              "class": "description",
-              "inner": "%description%"
-            },
-            { "class": "answers" }
-          ]
-        },
-        "answer": {
-          "id": "%id%",
-          "class": "answer %class%",
-          "inner": {
-            "class": "entry",
-            "inner": [
-              {
-                "class": "text",
-                "inner": {
-                  "tag": "label",
-                  "inner": "%text%",
-                  "for": "%id%-input"
-                }
-              },
-              { "class": "comment" }
-            ]
-          }
-        },
-        "comment": {
-          "class": "tooltip",
-          "onclick": "%click%",
-          "inner": [
-            "i",
-            {
-              "tag": "div",
-              "class": "tooltiptext",
-              "inner": {
-                "inner": {
-                  "inner": "%comment%"
-                }
-              }
-            }
-          ]
-        },
-        "timer": {
-          "tag": "span",
-          "inner": "%%"
-        }
-      },
-      "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/quiz/resources/default.css" ],
-      "questions": [],
-      "placeholder": {
-        "cancel": "Cancel",
-        "prev": "Previous",
-        "submit": "Submit",
-        "next": "Next",
-        "correct": "Correct solution: ",
-        "finish": "Finish"
-      }
-    },
     "json_builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-1.1.0.js", {
       "html.inner.1": "",
       "directly": true
-    } ]
+    } ],
+    "ignore": {
+      "defaults": {
+        "html": {
+          "start": {
+            "id": "start",
+            "inner": {
+              "tag": "button",
+              "inner": "Start",
+              "onclick": "%%"
+            }
+          },
+          "main": {
+            "id": "main",
+            "inner": [
+              { "id": "questions" },
+              {
+                "id": "buttons",
+                "inner": [
+                  { "id": "cancel" },
+                  { "id": "prev" },
+                  { "id": "submit" },
+                  { "id": "next" },
+                  { "id": "finish" },
+                  { "id": "timer" }
+                ]
+              }
+            ]
+          },
+          "question": {
+            "id": "%id%",
+            "class": "question",
+            "inner": [
+              {
+                "class": "title",
+                "inner": [
+                  { "inner": "Question" },
+                  { "inner": "%nr%/%count%" },
+                  { "inner": "%text%" }
+                ]
+              },
+              {
+                "class": "description",
+                "inner": "%description%"
+              },
+              { "class": "answers" }
+            ]
+          },
+          "answer": {
+            "id": "%id%",
+            "class": "answer %class%",
+            "inner": {
+              "class": "entry",
+              "inner": [
+                {
+                  "class": "text",
+                  "inner": {
+                    "tag": "label",
+                    "inner": "%text%",
+                    "for": "%id%-input"
+                  }
+                },
+                { "class": "comment" }
+              ]
+            }
+          },
+          "comment": {
+            "class": "tooltip",
+            "onclick": "%click%",
+            "inner": [
+              "i",
+              {
+                "tag": "div",
+                "class": "tooltiptext",
+                "inner": {
+                  "inner": {
+                    "inner": "%comment%"
+                  }
+                }
+              }
+            ]
+          },
+          "timer": {
+            "tag": "span",
+            "inner": "%%"
+          }
+        },
+        "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/quiz/resources/default.css" ],
+        "questions": [],
+        "placeholder": {
+          "cancel": "Cancel",
+          "prev": "Previous",
+          "submit": "Submit",
+          "next": "Next",
+          "correct": "Correct solution: ",
+          "finish": "Finish"
+        }
+      }
+    }
   }
 
 };
