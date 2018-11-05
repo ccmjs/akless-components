@@ -63,7 +63,7 @@ ccm.files[ 'configs.js' ] = {
 
   "demo": {
     "key": "demo",
-    "inner": [ "ccm.load", "https://ccmjs.github.io/akless-components/resources/submit/demo.html" ],
+    "inner": [ "ccm.load", "https://ccmjs.github.io/akless-components/submit/resources/demo.html" ],
     "data": {
       "store": [ "ccm.store", { "name": "submit", "url": "https://ccm2.inf.h-brs.de" } ],
       "key": "demo"
