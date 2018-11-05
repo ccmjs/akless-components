@@ -1,0 +1,232 @@
+<h3>Questions and Answers</h3>
+
+<several name="questions">
+  <fieldset>
+    <legend>Question <nr></nr></legend>
+    <p>
+      <label>
+        Question:<br>
+        <input type="text" name="text">
+      </label>
+    </p>
+    <p>
+      <label>
+        Description:<br>
+        <textarea name="description"></textarea>
+      </label>
+    </p>
+    <p>
+      <label>
+        Type:<br>
+        <select name="input">
+          <option value="radio">Single Choice</option>
+          <option value="checkbox">Multiple Choice</option>
+        </select>
+      </label>
+    </p>
+    <several name="answers">
+      <fieldset>
+        <legend>Answer <nr></nr></legend>
+        <p>
+          <label>
+            Answer:<br>
+            <input type="text" name="text">
+          </label>
+        </p>
+        <p>
+          <label>
+            Correct:<br>
+            <input type="checkbox" name="correct">
+          </label>
+        </p>
+        <p>
+          <label>
+            Comment:<br>
+            <input type="text" name="comment">
+          </label>
+        </p>
+      </fieldset>
+    </several>
+  </fieldset>
+</several>
+
+<h3>Settings</h3>
+
+<p>
+  <label>
+    Show Start Button before Quiz starts:<br>
+    <input type="checkbox" name="start_button">
+  </label>
+</p>
+
+<p>
+  <label>
+    Feedback when Question was answered:<br>
+    <input type="checkbox" name="feedback">
+  </label>
+</p>
+
+<p>
+  <label>
+    Navigation between Questions:<br>
+    <input type="checkbox" name="navigation">
+  </label>
+</p>
+
+<p>
+  <label>
+    Questions can be skipped:<br>
+    <input type="checkbox" name="skippable">
+  </label>
+</p>
+
+<p>
+  <label>
+    Quiz can be finished at any time:<br>
+    <input type="checkbox" name="anytime_finish">
+  </label>
+</p>
+
+<p>
+  <label>
+    Available Time to answer the Questions (in seconds):<br>
+    <input type="number" name="time" min="1">
+  </label>
+</p>
+
+<p>
+  <label>
+    Questions in Random Order:<br>
+    <input type="checkbox" name="shuffle">
+  </label>
+</p>
+
+<p>
+  <label>
+    Answers in Random Order:<br>
+    <input type="checkbox" name="random">
+  </label>
+</p>
+
+<p>
+  <label>
+    Escape HTML:<br>
+    <input type="checkbox" name="escape">
+  </label>
+</p>
+
+<p>
+  <label>
+    User Authentication:<br>
+    <select name="user">
+      <option value="">None</option>
+      <option value="['ccm.instance','https://ccmjs.github.io/akless-components/user/versions/ccm.user-8.2.0.js',['ccm.get','https://ccmjs.github.io/akless-components/user/resources/configs.js','cloud']]">ccm-cloud</option>
+      <option value="['ccm.instance','https://ccmjs.github.io/akless-components/user/versions/ccm.user-8.2.0.js',['ccm.get','https://ccmjs.github.io/akless-components/user/resources/configs.js','guest']]">Guest Mode</option>
+      <option value="['ccm.instance','https://ccmjs.github.io/akless-components/user/versions/ccm.user-8.2.0.js',['ccm.get','https://ccmjs.github.io/akless-components/user/resources/configs.js','hbrsinfkaul']]">H-BRS FB02</option>
+      <option value="['ccm.instance','https://ccmjs.github.io/akless-components/user/versions/ccm.user-8.2.0.js',['ccm.get','https://ccmjs.github.io/akless-components/user/resources/configs.js','hbrsinfpseudo']]">H-BRS FB02 Pseudo</option>
+      <option value="['ccm.instance','https://ccmjs.github.io/akless-components/user/versions/ccm.user-8.2.0.js',['ccm.get','https://ccmjs.github.io/akless-components/user/resources/configs.js','lea']]">LEA</option>
+      <option value="['ccm.instance','https://ccmjs.github.io/akless-components/user/versions/ccm.user-8.2.0.js',['ccm.get','https://ccmjs.github.io/akless-components/user/resources/configs.js','pseudo']]">One-time Pseudonym</option>
+    </select>
+  </label>
+</p>
+
+<h3>Captions</h3>
+
+<p>
+  <label>
+    Cancel Button:<br>
+    <input type="text" name="placeholder.cancel">
+  </label>
+</p>
+
+<p>
+  <label>
+    Previous Button:<br>
+    <input type="text" name="placeholder.prev">
+  </label>
+</p>
+
+<p>
+  <label>
+    Submit Button:<br>
+    <input type="text" name="placeholder.submit">
+  </label>
+</p>
+
+<p>
+  <label>
+    Next Button:<br>
+    <input type="text" name="placeholder.next">
+  </label>
+</p>
+
+<p>
+  <label>
+    Correct:<br>
+    <input type="text" name="placeholder.correct">
+  </label>
+</p>
+
+<p>
+  <label>
+    Finish:<br>
+    <input type="text" name="placeholder.finish">
+  </label>
+</p>
+
+<h3>CSS Layout</h3>
+
+<p>
+  <label>
+    URL to CSS File:<br>
+    <input type="url" name="css.1" size="65">
+  </label>
+</p>
+
+<h3>HTML Templates</h3>
+
+<p>
+  <label>
+    Start Button:<br>
+    <input type="json_builder" name="html.start">
+  </label>
+</p>
+
+<p>
+  <label>
+    Main Structure:<br>
+    <input type="json_builder" name="html.main">
+  </label>
+</p>
+
+<p>
+  <label>
+    Question:<br>
+    <input type="json_builder" name="html.question">
+  </label>
+</p>
+
+<p>
+  <label>
+    Answer:<br>
+    <input type="json_builder" name="html.answer">
+  </label>
+</p>
+
+<p>
+  <label>
+    Comment:<br>
+    <input type="json_builder" name="html.comment">
+  </label>
+</p>
+
+<p>
+  <label>
+    Timer:<br>
+    <input type="json_builder" name="html.timer">
+  </label>
+</p>
+
+<h3>Submit</h3>
+
+<input type="submit">
