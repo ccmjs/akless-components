@@ -146,7 +146,7 @@
         await handleSeveral();
 
         // handle special input types for support of ccm-based input elements
-        [ ...inner.querySelectorAll( 'input' ) ].forEach( handleSpecials );
+        await $.asyncForEach( [ ...inner.querySelectorAll( 'input' ) ], handleSpecials );
 
         // fill standard HTML input elements with start values
         $.fillForm( inner, dataset );
