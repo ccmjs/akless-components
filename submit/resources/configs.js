@@ -8,6 +8,7 @@ ccm.files[ 'configs.js' ] = {
 
   "local": {
     "key": "local",
+    "inner": [ "ccm.load", "../submit/resources/demo.html" ],
     "data": {
       "store": [ "ccm.store", "../submit/resources/datasets.js" ],
       "key": "test"
@@ -89,8 +90,39 @@ ccm.files[ 'configs.js' ] = {
     }
   },
 
+  "kanban_board": {
+    "inner": [ "ccm.load", "../kanban_board/resources/builder.html" ],
+    "defaults": {
+      "html": {
+        "main": { "id": "lanes" },
+        "lane": {
+          "class": "lane",
+          "inner": [
+            {
+              "class": "title",
+              "inner": "%%"
+            },
+            { "class": "cards" }
+          ]
+        },
+        "add": {
+          "id": "add",
+          "onclick": "%%"
+        }
+      },
+      "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/kanban_board/resources/default.css" ],
+      "data": {},
+      "lanes": [ "ToDo", "Doing", "Done" ],
+      "del": "Do you really want to delete this card?"
+    },
+    "json_builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-1.1.0.js", {
+      "html.inner.1": "",
+      "directly": true
+    } ]
+  },
+
   "quiz_builder": {
-    "inner": [ "ccm.load", "https://ccmjs.github.io/akless-components/quiz/resources/quiz_builder.html" ],
+    "inner": [ "ccm.load", "https://ccmjs.github.io/akless-components/quiz/resources/builder.html" ],
     "defaults": {
       "html": {
         "start": {
