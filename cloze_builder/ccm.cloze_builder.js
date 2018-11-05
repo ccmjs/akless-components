@@ -736,6 +736,9 @@
           "submit": "Submit",
           "retry": "Retry",
           "finish": "Restart"
+        },
+        "onfinish.store": {
+
         }
       },
       "editor": [ "ccm.component", "https://ccmjs.github.io/tkless-components/editor/versions/ccm.editor-3.0.0.js", {
