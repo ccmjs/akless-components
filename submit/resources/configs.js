@@ -363,7 +363,7 @@ ccm.files[ 'configs.js' ] = {
           }
         },
         "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/quiz/resources/default.css" ],
-        "questions": [],
+        "questions": [ { "test": "type question here", "answers": [ { "text": "type answer here" }, { "text": "type another answer here" } ] } ],
         "placeholder": {
           "cancel": "Cancel",
           "prev": "Previous",
