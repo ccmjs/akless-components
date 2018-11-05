@@ -264,7 +264,7 @@ ccm.files[ 'configs.js' ] = {
           }
         },
         "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/quick_decide/resources/default.css" ],
-        "questions": [ { "answers": [ {}, {} ] } ],
+        "questions": [ { "answers": [ "", "" ] } ],
         "interval": 1
       }
     }
@@ -363,7 +363,7 @@ ccm.files[ 'configs.js' ] = {
           }
         },
         "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/quiz/resources/default.css" ],
-        "questions": [ { "text": "", "answers": [ "", "" ] } ],
+        "questions": [ { "text": "", "answers": [ { "text": "" }, { "text": "" } ] } ],
         "placeholder": {
           "cancel": "Cancel",
           "prev": "Previous",
