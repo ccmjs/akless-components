@@ -91,7 +91,7 @@ ccm.files[ 'configs.js' ] = {
   },
 
   "kanban_board_builder": {
-    "inner": [ "ccm.load", "../kanban_board/resources/builder.html" ],
+    "inner": [ "ccm.load", "https://ccmjs.github.io/akless-components/kanban_board/resources/builder.html" ],
     "json_builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-1.1.0.js", {
       "html.inner.1": "",
       "directly": true
@@ -124,7 +124,7 @@ ccm.files[ 'configs.js' ] = {
   },
 
   "kanban_card_builder": {
-    "inner": [ "ccm.load", "../kanban_card/resources/builder.html" ],
+    "inner": [ "ccm.load", "https://ccmjs.github.io/akless-components/kanban_card/resources/builder.html" ],
     "json_builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-1.1.0.js", {
       "html.inner.1": "",
       "directly": true
@@ -233,7 +233,7 @@ ccm.files[ 'configs.js' ] = {
   },
 
   "quick_decide_builder": {
-    "inner": [ "ccm.load", "../quick_decide/resources/builder.html" ],
+    "inner": [ "ccm.load", "https://ccmjs.github.io/akless-components/quick_decide/resources/builder.html" ],
     "json_builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-1.1.0.js", {
       "html.inner.1": "",
       "directly": true
