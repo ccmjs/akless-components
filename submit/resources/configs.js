@@ -187,6 +187,10 @@ ccm.files[ 'configs.js' ] = {
         "finish": "Finish"
       }
     },
+    "json_builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-1.1.0.js", {
+      "html.inner.1": "",
+      "directly": true
+    } ]
   }
 
 };
