@@ -7,6 +7,7 @@
  * version 5.0.0 (05.11.2018):
  * - config property 'defaults' has moved inside new config property 'ignore'
  * - consider dot notation for initial value for ccm-based input elements
+ * - bug fix for onchange of added items
  * version 4.4.0 (03.11.2018): more than one input element inside of <several> elements
  * version 4.3.0 (03.11.2018):
  * - <several> elements for support of indefinite number of inputs
@@ -51,9 +52,7 @@
 
     name: 'submit',
 
-    version: [ 5, 0, 0 ],
-
-    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-18.3.0.js',
+    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
 
     config: {
 
@@ -265,8 +264,25 @@
               const input = item.querySelector( '[name]' );     // input element of new item
               $.append( items, item );                          // append new item
 
-              // set name attribute of new item
+              // set name attribute
               input.name = input.name + '.' + ( items.childElementCount - 1 );
+
+              // set change event
+              input.onchange = event => {
+
+                /**
+                 * new element value
+                 * @type {*}
+                 */
+                const value = $.deepValue( self.getValue(), input.name );
+
+                // logging of 'change' event
+                self.logger && self.logger.log( 'change', { name: input.name, value: $.clone( value ) } );
+
+                // perform individual 'change' callback
+                self.onchange && self.onchange.call( self, { name: input.name, value: $.clone( value ), event: event } );
+
+              };
 
               // replace all <nr> with item number
               [ ...item.querySelectorAll( 'nr' ) ].forEach( nr => $.replace( $.html( { tag: 'span', inner: items.childElementCount } ), nr ) );
