@@ -1,16 +1,24 @@
-<h3>Card Settings</h3>
-
-<input type="submit" name="ignore.card.config" inner="foo">
-
-<h3>Board Settings</h3>
+<h3>Settings</h3>
 
 <fieldset>
-  <legend>Lane Captions:</legend>
+  <legend>Members of Owner List:</legend>
   <several>
     <p>
       <label>
-        Lane <nr></nr>:<br>
-        <input type="text" name="lanes">
+        Member <nr></nr>:<br>
+        <input type="text" name="members">
+      </label>
+    </p>
+  </several>
+</fieldset>
+
+<fieldset>
+  <legend>Priority Entries:</legend>
+  <several>
+    <p>
+      <label>
+        Priority <nr></nr>:<br>
+        <input type="text" name="priorities">
       </label>
     </p>
   </several>
@@ -18,43 +26,37 @@
 
 <p>
   <label>
-    Delete Message:<br>
-    <input type="text" name="del">
+    Editable Card:<br>
+    <input type="checkbox" name="editable">
   </label>
 </p>
 
-<h3>CSS Layout</h3>
+<p>
+  <label>
+    URL of SVG file for Owner Icon:<br>
+    <input type="url" name="icon.owner" size="65">
+  </label>
+</p>
 
 <p>
   <label>
-    URL to CSS File:<br>
+    URL of SVG file for Deadline Icon:<br>
+    <input type="url" name="icon.deadline" size="65">
+  </label>
+</p>
+
+<p>
+  <label>
+    URL of CSS File for Layout:<br>
     <input type="url" name="css.1" size="65">
   </label>
 </p>
 
-<h3>HTML Templates</h3>
-
 <p>
   <label>
-    Main Structure:<br>
-    <input type="json_builder" name="html.main">
+    HTML Structure:<br>
+    <input type="json_builder" name="html">
   </label>
 </p>
-
-<p>
-  <label>
-    Lane Structure:<br>
-    <input type="json_builder" name="html.lane">
-  </label>
-</p>
-
-<p>
-  <label>
-    Add Area:<br>
-    <input type="json_builder" name="html.add">
-  </label>
-</p>
-
-<h3>Submit</h3>
 
 <input type="submit">

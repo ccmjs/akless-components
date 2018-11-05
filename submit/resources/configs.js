@@ -121,6 +121,113 @@ ccm.files[ 'configs.js' ] = {
     } ]
   },
 
+  "kanban_card_builder": {
+    "inner": [ "ccm.load", "../kanban_card/resources/builder.html" ],
+    "defaults": {
+      "html": {
+        "id": "main",
+        "inner": [
+          {
+            "id": "header",
+            "inner": [
+              {
+                "id": "title",
+                "class": "entry",
+                "inner": [
+                  {
+                    "class": "value",
+                    "inner": "%title%",
+                    "contenteditable": "%editable%",
+                    "oninput": "%oninput_title%",
+                    "onblur": "%onblur_title%"
+                  }
+                ]
+              },
+              {
+                "id": "owner",
+                "class": "entry",
+                "inner": [
+                  {
+                    "class": "value",
+                    "inner": "%owner%",
+                    "contenteditable": "%editable%",
+                    "onfocus": "%onfocus_owner%"
+                  },
+                  {
+                    "inner": {
+                      "tag": "img",
+                      "src": "%icon_owner%"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "body",
+            "inner": {
+              "id": "summary",
+              "class": "entry",
+              "inner": {
+                "class": "value",
+                "inner": "%summary%",
+                "contenteditable": "%editable%",
+                "oninput": "%oninput_summary%",
+                "onblur": "%onblur_summary%"
+              }
+            }
+          },
+          {
+            "id": "footer",
+            "inner": [
+              {
+                "id": "priority",
+                "class": "entry",
+                "inner": {
+                  "class": "value",
+                  "inner": "%priority%",
+                  "contenteditable": "%editable%",
+                  "onfocus": "%onfocus_priority%"
+                }
+              },
+              {
+                "id": "deadline",
+                "class": "entry",
+                "inner": [
+                  {
+                    "class": "value",
+                    "inner": "%deadline%",
+                    "contenteditable": "%editable%",
+                    "onfocus": "%onfocus_deadline%"
+                  },
+                  {
+                    "inner": {
+                      "tag": "img",
+                      "src": "%icon_deadline%"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/kanban_card/resources/default.css" ],
+      "data": {},
+      "editable": true,
+      "members": [ "John", "Jane" ],
+      "priorities": [ "A", "B", "C" ],
+      "icon": {
+        "owner": "https://ccmjs.github.io/akless-components/kanban_card/resources/owner.svg",
+        "deadline": "https://ccmjs.github.io/akless-components/kanban_card/resources/deadline.svg"
+      }
+    },
+    "json_builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-1.1.0.js", {
+      "html.inner.1": "",
+      "directly": true
+    } ]
+  },
+
   "quiz_builder": {
     "inner": [ "ccm.load", "https://ccmjs.github.io/akless-components/quiz/resources/builder.html" ],
     "defaults": {
