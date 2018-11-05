@@ -90,7 +90,7 @@ ccm.files[ 'configs.js' ] = {
     }
   },
 
-  "kanban_board": {
+  "kanban_board_builder": {
     "inner": [ "ccm.load", "../kanban_board/resources/builder.html" ],
     "defaults": {
       "html": {
