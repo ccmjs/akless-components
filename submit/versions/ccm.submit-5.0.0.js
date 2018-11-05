@@ -53,7 +53,7 @@
 
     version: [ 5, 0, 0 ],
 
-    ccm: 'https://ccmjs.github.io/ccm/vesions/ccm-18.3.0.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-18.3.0.js',
 
     config: {
 
