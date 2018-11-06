@@ -4,11 +4,12 @@
  * @license The MIT License (MIT)
  * @version latest (5.0.0)
  * @changes
- * version 5.0.0 (05.11.2018):
+ * version 5.0.0 (06.11.2018):
  * - config property 'defaults' has moved inside new config property 'ignore'
  * - consider dot notation for initial value for ccm-based input elements
  * - bug fix for onchange of added items
  * - submitting own config to other recursive needed submit instances
+ * - added bootstrap as default
  * version 4.4.0 (03.11.2018): more than one input element inside of <several> elements
  * version 4.3.0 (03.11.2018):
  * - <several> elements for support of indefinite number of inputs
@@ -62,17 +63,18 @@
         "inner": [
           { "class": "items" },
           {
-            "class": "buttons",
+            "class": "buttons btn-group btn-group-sm",
             "inner": [
               {
                 "tag": "a",
-                "class": "del",
+                "class": "del btn btn-danger",
+                "role": "button",
                 "inner": " - ",
                 "onclick": "%del%"
               },
               {
                 "tag": "a",
-                "class": "add",
+                "class": "add btn btn-success",
                 "inner": " + ",
                 "onclick": "%add%"
               }
@@ -80,6 +82,10 @@
           }
         ]
       },
+      "css": [ "ccm.load",
+        { "context": "head", "url": "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/font-face.css" },
+        "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/bootstrap.css"
+      ],
       "data": { "store": [ "ccm.store" ] }
 
   //  "ignore": { "defaults": { "name": "value" } },
