@@ -1,61 +1,137 @@
-<h3>Settings</h3>
+<style>
+  .info > .alert-info {
+    display: none;
+  }
+  .info > input[type=checkbox] {
+    position: absolute;
+    display: none;
+  }
+  .info >label {
+    cursor: pointer;
+  }
+  .info >input[type=checkbox]:checked ~ .alert-info {
+    display: block;
+  }
+  .alert {
+    margin-bottom: 0px !important;
+  }
+</style>
 
-<fieldset>
-  <legend>Members of Owner List:</legend>
+<div class="page-header">
+  <h2>Settings <small class="text-primary">Kanban Card</small></h2>
+</div>
+
+<br>
+
+<h4 class="text-primary">Members of Owner List</h4>
+<div class="callout callout-primary">
   <several>
-    <p>
-      <label>
-        Member <nr></nr>:<br>
-        <input type="text" name="members">
+    <div class="form-group">
+      <label>Member <nr></nr>
+        <span class="info">
+          <input type="checkbox" id="i">
+          <label for="i"><span class="glyphicon glyphicon-info-sign" style="color: #428bca"></span></label>
+          <span class="alert alert-info">
+            Info Text Info Text Info Text
+          </span>
+        </span>
       </label>
-    </p>
+      <input type="text" name="members" class="form-control" placeholder="Type here...">
+    </div>
   </several>
-</fieldset>
+</div>
 
-<fieldset>
-  <legend>Priority Entries:</legend>
+<br>
+
+<h4 class="text-primary">Priority Entries</h4>
+<div class="callout callout-primary">
   <several>
-    <p>
-      <label>
-        Priority <nr></nr>:<br>
-        <input type="text" name="priorities">
+    <div class="form-group">
+      <label>Priority <nr></nr>
+        <span class="info">
+          <input type="checkbox" id="ii">
+          <label for="ii"><span class="glyphicon glyphicon-info-sign" style="color: #428bca"></span></label>
+          <span class="alert alert-info">
+            Info Text Info Text Info Text
+          </span>
+        </span>
       </label>
-    </p>
+      <input type="text" name="priorities" class="form-control" placeholder="Type here...">
+    </div>
   </several>
-</fieldset>
+</div>
+<br>
 
-<p>
-  <label>
-    Editable Card:<br>
-    <input type="checkbox" name="editable">
+<div class="form-group">
+  <label>Editable Card
+    <span class="info">
+      <input type="checkbox" id="iii">
+      <label for="iii"><span class="glyphicon glyphicon-info-sign" style="color: #428bca"></span></label>
+      <span class="alert alert-info">
+        Info Text Info Text info Text
+      </span>
+    </span>
   </label>
-</p>
+  <input type="checkbox" name="editable" class="form-control">
+</div>
 
-<p>
-  <label>
-    URL of SVG file for Owner Icon:<br>
-    <input type="url" name="icon.owner" size="70">
-  </label>
-</p>
+<br>
 
-<p>
-  <label>
-    URL of SVG file for Deadline Icon:<br>
-    <input type="url" name="icon.deadline" size="70">
+<div class="form-group">
+  <label>URL of SVG file for Owner Icon
+    <span class="info">
+      <input type="checkbox" id="iv">
+      <label for="iv"><span class="glyphicon glyphicon-info-sign" style="color: #428bca"></span></label>
+      <span class="alert alert-info">
+        Info Text Info Text info Text
+      </span>
+    </span>
   </label>
-</p>
+  <input type="url" name="icon.owner" size="70" class="form-control">
+</div>
 
-<p>
-  <label>
-    URL of CSS File for Layout:<br>
-    <input type="hidden" name="css.0" value="ccm.load">
-    <input type="url" name="css.1" size="70">
-  </label>
-</p>
+<br>
 
-<p>
-  <label>
-    HTML Structure:<br>
-    <input type="json_builder" name="html">
+<div class="form-group">
+  <label>URL of SVG file for Deadline Icon
+    <span class="info">
+      <input type="checkbox" id="v">
+      <label for="v"><span class="glyphicon glyphicon-info-sign" style="color: #428bca"></span></label>
+      <span class="alert alert-info">
+        Info Text Info Text info Text
+      </span>
+    </span>
   </label>
-</p>
+  <input type="url" name="icon.deadline" size="70" class="form-control">
+</div>
+
+<br>
+
+<div class="form-group">
+  <label>URL of CSS File for Layout
+    <span class="info">
+      <input type="checkbox" id="vi">
+      <label for="vi"><span class="glyphicon glyphicon-info-sign" style="color: #428bca"></span></label>
+      <span class="alert alert-info">
+        Info Text Info Text info Text
+      </span>
+    </span>
+  </label>
+  <input type="hidden" name="css.0" value="ccm.load">
+  <input type="url" name="css.1" size="70" class="form-control">
+</div>
+
+<br>
+
+<div class="form-group">
+  <label>HTML Structure
+    <span class="info">
+      <input type="checkbox" id="vii">
+      <label for="vii"><span class="glyphicon glyphicon-info-sign" style="color: #428bca"></span></label>
+      <span class="alert alert-info">
+        Info Text Info Text info Text
+      </span>
+    </span>
+  </label>
+  <input type="json_builder" name="html" class="form-control">
+</div>
