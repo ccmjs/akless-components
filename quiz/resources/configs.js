@@ -218,59 +218,6 @@ ccm.files[ 'configs.js' ] = {
     ]
   },
 
-  "demo": {
-    "key": "demo",
-    "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/quiz/resources/weblysleek.css", { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/weblysleekui/font.css" } ],
-    "questions": [
-      {
-        "text": "How many of these answers are correct?",
-        "description": "Select the correct answer from the following answers.",
-        "answers": [
-          {
-            "text": "one",
-            "comment": "Because you can't choose more than one answer."
-          },
-          "two",
-          "three"
-        ],
-        "input": "radio",
-        "correct": 0
-      },
-      {
-        "text": "How many answers can be correct here?",
-        "description": "Pay attention to the input field type.",
-        "answers": [
-          "absolutely none",
-          {
-            "text": "maximum of one",
-            "comment": "Because you can choose more than one answer."
-          },
-          "more than one"
-        ],
-        "correct": [ true, false, true ]
-      },
-      {
-        "text": "What is the solution to the following arithmetical tasks?",
-        "description": "Please enter the solutions into the input fields.",
-        "answers": [
-          "=&nbsp; 1 + 1",
-          "=&nbsp; 1 - 1",
-          "=&nbsp;-1 - 1"
-        ],
-        "input": "number",
-        "attributes": {
-          "min": -2,
-          "max": 2
-        },
-        "correct": [ 2, 0, -2 ]
-      }
-    ],
-    "feedback": true,
-    "navigation": true,
-    "placeholder.finish": "Restart",
-    "onfinish": { "log": true, "restart": true }
-  },
-
   "local": {
     "key": "local",
     "css": [ "ccm.load", "../quiz/resources/weblysleek.css", { "context": "head", "url": "../libs/weblysleekui/font.css" } ],
@@ -324,6 +271,72 @@ ccm.files[ 'configs.js' ] = {
     "navigation": true,
     "placeholder.finish": "Restart",
     "onfinish": { "restart": true }
+  },
+
+  "demo": {
+    "key": "demo",
+    "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/quiz/resources/weblysleek.css", { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/weblysleekui/font.css" } ],
+    "questions": [
+      {
+        "text": "How many of these answers are correct?",
+        "description": "Select the correct answer from the following answers.",
+        "answers": [
+          {
+            "text": "one",
+            "correct": true,
+            "comment": "Because you can't choose more than one answer."
+          },
+          { "text": "two" },
+          { "text": "three" }
+        ],
+        "input": "radio"
+      },
+      {
+        "text": "How many answers can be correct here?",
+        "description": "Pay attention to the input field type.",
+        "answers": [
+          {
+            "text": "absolutely none",
+            "correct": true
+          },
+          {
+            "text": "maximum of one",
+            "comment": "Because you can choose more than one answer."
+          },
+          {
+            "text": "more than one",
+            "correct": true
+          }
+        ]
+      },
+      {
+        "text": "What is the solution to the following arithmetical tasks?",
+        "description": "Please enter the solutions into the input fields.",
+        "answers": [
+          {
+            "text": "=&nbsp; 1 + 1",
+            "correct": 2
+          },
+          {
+            "text": "=&nbsp; 1 - 1",
+            "correct": 0
+          },
+          {
+            "text": "=&nbsp;-1 - 1",
+            "correct": -2
+          }
+        ],
+        "input": "number",
+        "attributes": {
+          "min": -2,
+          "max": 2
+        }
+      }
+    ],
+    "feedback": true,
+    "navigation": true,
+    "placeholder.finish": "Restart",
+    "onfinish": { "log": true, "restart": true }
   },
 
   "se_ws17_testabdeckung": {
