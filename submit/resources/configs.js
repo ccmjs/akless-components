@@ -233,7 +233,7 @@ ccm.files[ 'configs.js' ] = {
   },
 
   "quick_decide_builder": {
-    "inner": [ "ccm.load", { "url": "../quick_decide/resources/builder.html", "type": "data", "method": "get" } ],
+    "inner": [ "ccm.load", { "url": "https://ccmjs.github.io/akless-components/quick_decide/resources/builder.html", "type": "data", "method": "get" } ],
     "json_builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-1.1.0.js", {
       "html.inner.1": "",
       "directly": true
