@@ -8,6 +8,7 @@
  * - config property 'defaults' has moved inside new config property 'ignore'
  * - consider dot notation for initial value for ccm-based input elements
  * - bug fix for onchange of added items
+ * - submitting own config to other recursive needed submit instances
  * version 4.4.0 (03.11.2018): more than one input element inside of <several> elements
  * version 4.3.0 (03.11.2018):
  * - <several> elements for support of indefinite number of inputs
@@ -116,6 +117,9 @@
 
         // add submit property with own component reference (for recursive reuse)
         this.submit = this.component;
+
+        // submitting own config to other recursive needed submit instances
+        this.submit.config = $.integrate( JSON.parse( this.config ), this.submit.config );
 
         // logging of 'ready' event
         this.logger && this.logger.log( 'ready', $.privatize( this, true ) );
