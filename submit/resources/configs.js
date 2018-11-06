@@ -264,7 +264,7 @@ ccm.files[ 'configs.js' ] = {
           }
         },
         "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/quick_decide/resources/default.css" ],
-        "questions": [ { "answers": [ "", "" ] } ],
+        "questions": [ { "text": "Question", "answers": [ "Answer A", "Answer B" ] } ],
         "interval": 1
       }
     }
