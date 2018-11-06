@@ -4,14 +4,15 @@
  * @license The MIT License (MIT)
  * @version latest (3.0.0)
  * @changes
- * version 3.0.0 (15.10.2018):
- * - uses ccm v18.0.0
+ * version 3.0.0 (06.11.2018):
+ * - uses ccm v18.4.0
  * - removed privatization of instance members
  * - updated event handling and logging
  * - added getValue method
+ * - bug fix for default correct answers
  * version 2.1.1 (04.06.2018):
  * - uses ccm v16.6.1
- * - bugfix for HTML escaping
+ * - bug fix for HTML escaping
  * version 2.1.0 (14.01.2018):
  * - tooltips work on mobile devices
  * version 2.0.0 (23.08.2017):
@@ -258,6 +259,9 @@
 
             // default input type is checkbox
             if ( !question.input ) question.input = 'checkbox';
+
+            // set default information about correct answers
+            if ( !question.correct && question.input !== 'radio' ) question.correct = [];
 
             // answer data sets could be given as single string (answer text) instead of object
             for ( i = 0; i < question.answers.length; i++ )
