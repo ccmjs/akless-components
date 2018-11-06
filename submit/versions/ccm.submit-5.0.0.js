@@ -65,7 +65,7 @@
         "inner": [
           { "class": "items" },
           {
-            "class": "buttons btn-group btn-group-sm",
+            "class": "buttons",
             "inner": [
               {
                 "tag": "a",

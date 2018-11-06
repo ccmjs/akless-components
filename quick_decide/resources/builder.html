@@ -43,6 +43,25 @@
 
 <h4 class="text-primary">Questions and Answers</h4>
 <several name="questions">
+  <style>
+    .info > .alert-info {
+      display: none;
+    }
+    .info > input[type=checkbox] {
+      position: absolute;
+      display: none;
+    }
+    .info >label {
+      cursor: pointer;
+    }
+
+    .info >input[type=checkbox]:checked ~ .alert-info {
+      display: block;
+    }
+    .alert {
+      margin-bottom: 0px !important;
+    }
+  </style>
   <div class="callout callout-primary">
     <p>
     <div class="form-group">
