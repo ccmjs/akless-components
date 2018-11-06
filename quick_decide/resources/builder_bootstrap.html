@@ -1,0 +1,57 @@
+<link rel="stylesheet" href="https://ccmjs.github.io/tkless-components/libs/bootstrap/css/bootstrap.css" xmlns="http://www.w3.org/1999/html">
+<link rel="stylesheet" href="https://ccmjs.github.io/tkless-components/libs/bootstrap/css/font-face.css">
+
+<div class="page-header">
+  <h2>Settings <small class="text-primary">Quick Decide</small></h2>
+</div>
+<br><br>
+
+<legend class="text-primary">Timer</legend>
+<div class="form-group">
+  <label>Refresh Interval of Timer (in Milliseconds) <!--<span class="glyphicon glyphicon-info-sign" style="color: #428bca"></span>--></label>
+  <input type="hidden" name="css.0" value="ccm.load">
+  <input type="number" name="interval" min="1" class="form-control">
+</div>
+
+<br><br>
+
+<h4 class="text-primary">Questions and Answers</h4>
+<div class="callout callout-primary">
+  <several name="questions">
+    <p>
+    <div class="form-group">
+      <label>Question <!--<span class="glyphicon glyphicon-info-sign" style="color: #428bca"></span>--></label>
+      <input type="text"  name="text" class="form-control" placeholder="Type here...">
+    </div>
+    </p>
+    <several>
+      <p>
+      <div class="form-group">
+        <label>Answer <nr></nr><!--<span class="glyphicon glyphicon-info-sign" style="color: #428bca"></span>--></label>
+        <input type="text" name="answers" class="form-control" placeholder="Type here...">
+      </div>
+      </p>
+    </several>
+  </several>
+</div>
+
+<br><br>
+
+<legend class="text-primary">CSS Layout</legend>
+<div class="form-group">
+  <label>URL to CSS File <!--<span class="glyphicon glyphicon-info-sign" style="color: #428bca"></span>--></label>
+  <input type="hidden" name="css.0" value="ccm.load">
+  <input type="url" name="css.1" size="70" class="form-control">
+</div>
+
+<br><br>
+
+<legend class="text-primary">HTML Templates</legend>
+<div class="form-group">
+  <label>Main Structure <!--<span class="glyphicon glyphicon-info-sign" style="color: #428bca"></span>--></label>
+  <input type="json_builder" name="html.main" class="form-control">
+</div>
+<div class="form-group">
+  <label>Answer Structure <!--<span class="glyphicon glyphicon-info-sign" style="color: #428bca"></span>--></label>
+  <input type="json_builder" name="html.answer" class="form-control">
+</div>

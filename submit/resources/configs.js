@@ -232,8 +232,46 @@ ccm.files[ 'configs.js' ] = {
     }
   },
 
-  "quick_decide_builder": {
-    "inner": [ "ccm.load", { "url": "https://ccmjs.github.io/akless-components/quick_decide/resources/builder.html", "type": "data", "method": "get" } ],
+  "quick_decide_builder_advanced": {
+    "inner": [ "ccm.load", { "url": "https://ccmjs.github.io/akless-components/quick_decide/resources/builder_advanced.html", "type": "data", "method": "get" } ],
+    "json_builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-1.1.0.js", {
+      "html.inner.1": "",
+      "directly": true
+    } ],
+    "ignore": {
+      "defaults": {
+        "html": {
+          "main": {
+            "id": "main",
+            "inner": [
+              {
+                "id": "timer",
+                "inner": [
+                  { "tag": "a", "id": "min", "inner": "00" },
+                  { "tag": "a", "id": "sec", "inner": "00" },
+                  { "tag": "a", "id": "mil", "inner": "000" }
+                ]
+              },
+              { "id": "question" },
+              { "id": "answers" }
+            ]
+          },
+          "answer": {
+            "tag": "button",
+            "class": "answer",
+            "onclick": "%onclick%",
+            "inner": "%answer%"
+          }
+        },
+        "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/quick_decide/resources/default.css" ],
+        "questions": [ { "answers": [ "", "" ] } ],
+        "interval": 1
+      }
+    }
+  },
+
+  "quick_decide_builder_bootstrap": {
+    "inner": [ "ccm.load", { "url": "https://ccmjs.github.io/akless-components/quick_decide/resources/builder_bootstrap.html", "type": "data", "method": "get" } ],
     "json_builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-1.1.0.js", {
       "html.inner.1": "",
       "directly": true
