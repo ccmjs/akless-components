@@ -69,16 +69,23 @@
             "inner": [
               {
                 "tag": "a",
-                "class": "del btn btn-danger",
+                "class": "add btn btn-default btn-sm",
                 "role": "button",
-                "inner": " - ",
-                "onclick": "%del%"
+                "inner": {
+                  "tag": "span",
+                  "class": "glyphicon glyphicon-plus"
+                },
+                "onclick": "%add%"
               },
               {
                 "tag": "a",
-                "class": "add btn btn-success",
-                "inner": " + ",
-                "onclick": "%add%"
+                "class": "del btn btn-default btn-sm",
+                "role": "button",
+                "inner": {
+                  "tag": "span",
+                  "class": "glyphicon glyphicon-minus"
+                },
+                "onclick": "%del%"
               }
             ]
           }
