@@ -62,6 +62,10 @@ ccm.files[ 'configs.js' ] = {
   },
 
   "demo": {
+    "css": [ "ccm.load",
+      { "context": "head", "url": "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/font-face.css" },
+      "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/bootstrap.css"
+    ],
     "key": "demo",
     "inner": [ "ccm.load", { "url": "https://ccmjs.github.io/akless-components/submit/resources/builder.html", "type": "data", "method": "get" } ],
     "data": {
@@ -91,6 +95,10 @@ ccm.files[ 'configs.js' ] = {
   },
 
   "kanban_board_builder": {
+    "css": [ "ccm.load",
+      { "context": "head", "url": "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/font-face.css" },
+      "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/bootstrap.css"
+    ],
     "inner": [ "ccm.load", { "url": "https://ccmjs.github.io/akless-components/kanban_board/resources/builder.html", "type": "data", "method": "get" } ],
     "json_builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-1.1.0.js", {
       "html.inner.1": "",
@@ -124,6 +132,10 @@ ccm.files[ 'configs.js' ] = {
   },
 
   "kanban_card_builder": {
+    "css": [ "ccm.load",
+      { "context": "head", "url": "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/font-face.css" },
+      "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/bootstrap.css"
+    ],
     "inner": [ "ccm.load", { "url": "https://ccmjs.github.io/akless-components/kanban_card/resources/builder.html", "type": "data", "method": "get" } ],
     "json_builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-1.1.0.js", {
       "html.inner.1": "",
@@ -275,6 +287,10 @@ ccm.files[ 'configs.js' ] = {
   },
 
   "quiz_builder": {
+    "css": [ "ccm.load",
+      { "context": "head", "url": "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/font-face.css" },
+      "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/bootstrap.css"
+    ],
     "inner": [ "ccm.load", { "url": "https://ccmjs.github.io/akless-components/quiz/resources/builder.html", "type": "data", "method": "get" } ],
     "json_builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-1.1.0.js", {
       "html.inner.1": "",
