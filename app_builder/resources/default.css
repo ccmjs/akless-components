@@ -9,13 +9,13 @@
 }
 
 #maker {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
+  display: grid;
+  grid-template-columns: auto auto;
 }
 
+#builder,
 #app {
-  margin-left: 0.5em;
+  padding: 1em;
 }
 
 #preview {
