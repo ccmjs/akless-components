@@ -4,8 +4,8 @@
  * @license The MIT License (MIT)
  * @version 3.0.0
  * @changes
- * version 3.0.0 (07.09.2018)
- * - uses ccm v18.0.0
+ * version 3.0.0 (07.11.2018)
+ * - uses ccm v18.4.0
  * - removed privatization of instance members
  * - correct logging of join event
  * version 2.0.0 (22.05.2018): code modernisation
@@ -20,16 +20,17 @@
  * - bugfix for default and initial team names
  * - uses ccm v12.12.0
  * version 1.0.0 (19.10.2017)
- * TODO: lock and unlock for team joining
  */
 
 ( function () {
 
   const component = {
 
-    name: 'teambuild', version: [ 3, 0, 0 ],
+    name: 'teambuild',
 
-    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-18.0.0.js',
+    version: [ 3, 0, 0 ],
+
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-18.4.0.js',
 
     config: {
 

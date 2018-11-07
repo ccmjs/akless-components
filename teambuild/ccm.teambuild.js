@@ -4,8 +4,8 @@
  * @license The MIT License (MIT)
  * @version latest (3.0.0)
  * @changes
- * version 3.0.0 (07.09.2018)
- * - uses ccm v18.0.0
+ * version 3.0.0 (07.11.2018)
+ * - uses ccm v18.4.0
  * - removed privatization of instance members
  * - correct logging of join event
  * version 2.0.0 (22.05.2018): code modernisation
