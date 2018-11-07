@@ -78,31 +78,6 @@
   border-right: 1px solid #e7e7e7;
 }
 
-#footer {
-  position: -webkit-sticky;
-  position: sticky;
-  bottom: 0;
-  display: grid;
-  grid-template-columns: auto;
-  background-color: #464646;
-  justify-content: center;
-  align-content: center;
-  color: #dddddd;
-  max-height: 4em;
-  border: 1px solid #e7e7e7;
-}
-
-#footer > div {
-  letter-spacing: 2px;
-  font-family: Verdana, sans-serif;
-  font-size: larger;
-  padding: 0.5em;
-}
-
-#footer a {
-  color: white;
-}
-
 #all_components {
   display: flex;
   flex-wrap: wrap;

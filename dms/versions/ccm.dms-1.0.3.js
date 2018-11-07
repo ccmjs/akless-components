@@ -2,7 +2,7 @@
  * @overview ccm component for digital maker space
  * @author André Kless <andre.kless@web.de> 2018
  * @license MIT License
- * @version latest (1.0.3)
+ * @version 1.0.3
  * @changes
  * version 1.0.3 (07.11.2018): removed footer
  * version 1.0.2 (02.11.2018):
@@ -19,7 +19,9 @@
 
     name: 'dms',
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    version: [ 1, 0, 3 ],
+
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-18.2.0.js',
 
     config: {
       "html": {
