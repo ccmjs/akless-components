@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 64 64" width="64" height="64" xmlns="http://www.w3.org/2000/svg">
+  <g id="Layer_1">
+    <g>
+      <circle cx="32" cy="32" fill="#E0E0D1" r="32"/>
+    </g>
+    <rect x="38.232" y="33.278" width="12.975" height="12.887" style="stroke-linecap: round; stroke-miterlimit: 1; paint-order: stroke; stroke-linejoin: round; stroke-width: 6px; stroke: rgba(198, 197, 198, 0.56); fill: rgba(198, 197, 198, 0.047);"/>
+    <rect x="36.98" y="34.233" width="12.975" height="12.887" style="fill: rgb(255, 255, 255); stroke-linecap: round; stroke-miterlimit: 1; stroke: rgb(255, 255, 255); paint-order: stroke; stroke-linejoin: round; stroke-width: 6px;"/>
+    <rect x="38.016" y="12.278" width="12.975" height="12.887" style="stroke-linecap: round; stroke-miterlimit: 1; paint-order: stroke; stroke-linejoin: round; stroke-width: 6px; stroke: rgba(198, 197, 198, 0.56); fill: rgba(198, 197, 198, 0.047);"/>
+    <rect x="36.875" y="13.175" width="12.975" height="12.887" style="stroke-linecap: round; stroke-miterlimit: 1; paint-order: stroke; stroke-linejoin: round; stroke-width: 6px; fill: rgb(79, 93, 115); stroke: rgb(79, 93, 115);"/>
+    <rect x="16.016" y="12.278" width="12.975" height="12.887" style="stroke-linecap: round; stroke-miterlimit: 1; paint-order: stroke; stroke-linejoin: round; stroke-width: 6px; stroke: rgba(198, 197, 198, 0.56); fill: rgba(198, 197, 198, 0.047);"/>
+    <rect x="14.789" y="13.059" width="12.975" height="12.887" style="stroke-linecap: round; stroke-miterlimit: 1; paint-order: stroke; stroke-linejoin: round; stroke-width: 6px; stroke: rgb(118, 194, 175); fill: rgb(118, 194, 175);"/>
+    <rect x="15.791" y="33.412" width="12.975" height="12.887" style="stroke-linecap: round; stroke-miterlimit: 1; paint-order: stroke; stroke-linejoin: round; stroke-width: 6px; stroke: rgba(198, 197, 198, 0.56); fill: rgba(198, 197, 198, 0.047);"/>
+    <rect x="14.186" y="34.204" width="12.975" height="12.887" style="stroke-linecap: round; stroke-miterlimit: 1; paint-order: stroke; stroke-linejoin: round; stroke-width: 6px; fill: rgb(199, 92, 92); stroke: rgb(199, 92, 92);"/>
+  </g>
+</svg>
