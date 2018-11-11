@@ -2,7 +2,7 @@
  * @overview ccm component for submitting data
  * @author André Kless <andre.kless@web.de> 2018
  * @license The MIT License (MIT)
- * @version latest (5.1.0)
+ * @version 5.1.0
  * @changes
  * version 5.1.0 (11.11.2018):
  * - supports special HTML data structure
@@ -58,7 +58,9 @@
 
     name: 'submit',
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    version: [ 5, 1, 0 ],
+
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-18.4.0.js',
 
     config: {
 

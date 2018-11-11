@@ -1,0 +1,39 @@
+/**
+ * @overview default layout of ccm component for submitting data
+ * @author André Kless <andre.kless@web.de.de> 2018
+ * @license The MIT License (MIT)
+ */
+
+legend {
+  margin: 20px 0;
+}
+
+.info > .alert-info {
+  display: none;
+}
+
+.info > input[type=checkbox] {
+  position: absolute;
+  display: none;
+}
+
+.info > label {
+  cursor: pointer;
+}
+
+.info > input[type=checkbox]:checked ~ .alert-info {
+  display: block;
+}
+
+.info-icon {
+  color: #428bca;
+  padding-left: 0.3em;
+}
+
+.alert {
+  margin-bottom: 0 !important;
+}
+
+.callout, .checkbox, .radio {
+  margin-top: 0 !important;
+}
