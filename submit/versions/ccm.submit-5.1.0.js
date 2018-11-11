@@ -479,8 +479,9 @@
             /** deletes last item */
             function delItem () {
 
-              const items = section.querySelector( '.items' );                  // contains item elements
-              items.childElementCount && items.removeChild( items.lastChild );  // remove last item
+              const items = section.querySelector( '.items' );
+              inputs = inputs.filter( input => input.instance.index !== items.lastChild.firstChild.id );
+              items.childElementCount && items.removeChild( items.lastChild );
 
             }
 
