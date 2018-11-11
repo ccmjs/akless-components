@@ -302,10 +302,7 @@ ccm.files[ 'datasets.js' ] = {
           "type": "json_builder"
         }
       },
-      {
-        "type": "submit",
-        "value": "Go!"
-      }
+      { "type": "submit" }
     ]
   }
 
