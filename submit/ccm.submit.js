@@ -478,7 +478,7 @@
             function delItem () {
 
               const items = section.querySelector( '.items' );
-              inputs = inputs.filter( input => input.instance.index !== items.lastChild.firstChild.id );
+              inputs = inputs.filter( input => !items.lastChild.querySelector( '[id]' ) || input.instance.index !== items.lastChild.querySelector( '[id]' ).id );
               items.childElementCount && items.removeChild( items.lastChild );
 
             }
