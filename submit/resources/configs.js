@@ -97,7 +97,7 @@ ccm.files[ 'configs.js' ] = {
 
   "submit_builder": {
     "key": "submit_builder",
-    "html.main": [ "ccm.get", "../submit/resources/datasets.js", "builder.data" ],
+    "html.main": [ "ccm.get", "https://ccmjs.github.io/akless-components/submit/resources/datasets.js", "builder.data" ],
     "ignore": {
       "defaults": {
         "html": {
