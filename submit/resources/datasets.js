@@ -452,8 +452,7 @@ ccm.files[ 'datasets.js' ] = {
         "name": "html.section",
         "type": "json_builder",
         "info": "Here you can customize the HTML structure of a form section. To do this, you can customize the associated <i>ccm</i> HTML data. A form section is for the input of several items. It contains the items and plus/minus button for add/remove items."
-      },
-      { "type": "submit" }
+      }
     ]
   }
 
