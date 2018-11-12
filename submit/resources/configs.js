@@ -95,6 +95,91 @@ ccm.files[ 'configs.js' ] = {
     }
   },
 
+  "submit_builder": {
+    "key": "submit_builder",
+    "html.main": [ "ccm.get", "../submit/resources/datasets.js", "builder.data" ],
+    "ignore": {
+      "defaults": {
+        "html": {
+          "main": [ { "items": [] } ],
+          "entry": {
+            "class": "form-group"
+          },
+          "label": {
+            "tag": "label",
+            "class": "item-label",
+            "inner": "%label%"
+          },
+          "info": {
+            "tag": "span",
+            "class": "info",
+            "inner": [
+              {
+                "tag": "input",
+                "type": "checkbox",
+                "id": "%id%"
+              },
+              {
+                "tag": "label",
+                "for": "%id%",
+                "inner": {
+                  "tag": "span",
+                  "class": "info-icon glyphicon glyphicon-info-sign"
+                }
+              },
+              {
+                "tag": "span",
+                "class": "alert alert-info",
+                "inner": "%info%"
+              }
+            ]
+          },
+          "section": {
+            "class": "section",
+            "inner": [
+              { "class": "items" },
+              {
+                "class": "buttons btn-group",
+                "inner": [
+                  {
+                    "tag": "a",
+                    "class": "add btn btn-default btn-sm",
+                    "role": "button",
+                    "inner": {
+                      "tag": "span",
+                      "class": "glyphicon glyphicon-plus"
+                    },
+                    "onclick": "%add%"
+                  },
+                  {
+                    "tag": "a",
+                    "class": "del btn btn-default btn-sm",
+                    "role": "button",
+                    "inner": {
+                      "tag": "span",
+                      "class": "glyphicon glyphicon-minus"
+                    },
+                    "onclick": "%del%"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "css": [ "ccm.load",
+          { "context": "head", "url": "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/font-face.css" },
+          "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/bootstrap.css",
+          "https://ccmjs.github.io/akless-components/submit/resources/default.css"
+        ],
+        "data": { "store": [ "ccm.store", { "name": "submit", "url": "https://ccm2.inf.h-brs.de" } ] }
+      }
+    },
+    "json_builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-1.1.0.js", {
+      "html.inner.1": "",
+      "directly": true
+    } ]
+  },
+
   "kanban_board_builder": {
     "inner": [ "ccm.load", { "url": "https://ccmjs.github.io/akless-components/kanban_board/resources/builder.html", "type": "data", "method": "get" } ],
     "json_builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-1.1.0.js", {

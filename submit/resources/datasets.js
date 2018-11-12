@@ -1,6 +1,6 @@
 /**
  * @overview datasets of ccm component for submitting data
- * @author André Kless <andre.kless@web.de> 2017
+ * @author André Kless <andre.kless@web.de> 2017-2018
  * @license The MIT License (MIT)
  */
 
@@ -301,6 +301,157 @@ ccm.files[ 'datasets.js' ] = {
           "name": "objects",
           "type": "json_builder"
         }
+      },
+      { "type": "submit" }
+    ]
+  },
+
+  // special HTML structure of builder for submit component
+  "builder": {
+    "data": [
+      "<div class='page-header'><h2>Settings <small class='text-primary'>Submit</small></h2></div>",
+      "<legend class='text-primary'>Input Fields</legend>",
+      {
+        "label": "Inputs",
+        "name": "html.main",
+        "type": "several",
+        "info": "Here you can set which input fields your form contains.",
+        "items": [
+          {
+            "label": "Name",
+            "name": "name",
+            "type": "text",
+            "info": "Define the value for the name attribute of the input field here."
+          },
+          {
+            "label": "Type",
+            "name": "type",
+            "type": "text",
+            "info": "Define the value for the type attribute of the input field here."
+          },
+          {
+            "label": "Label",
+            "name": "label",
+            "type": "text",
+            "info": "Define the label for the input field here."
+          },
+          {
+            "label": "Info",
+            "name": "info",
+            "type": "text",
+            "info": "Define the text behind the info icon here."
+          },
+          {
+            "label": "Items",
+            "name": "items",
+            "type": "several",
+            "info": "Some types of input fields require you to specify items that you can specify here.",
+            "items": [
+              {
+                "label": "Name",
+                "name": "name",
+                "type": "text",
+                "info": "Define the value for the name attribute of the input field here."
+              },
+              {
+                "label": "Type",
+                "name": "type",
+                "type": "text",
+                "info": "Define the value for the type attribute of the input field here."
+              },
+              {
+                "label": "Value",
+                "name": "value",
+                "type": "text",
+                "info": "Define the value for the value attribute of the input field here."
+              },
+              {
+                "label": "Label",
+                "name": "label",
+                "type": "text",
+                "info": "Define the label for the input field here."
+              },
+              {
+                "label": "Info",
+                "name": "info",
+                "type": "text",
+                "info": "Define the text behind the info icon here."
+              }
+            ]
+          }
+        ]
+      },
+      "<legend class='text-primary'>Data Storage</legend>",
+      {
+        "label": "Where should the Results be Stored?",
+        "name": "data",
+        "type": "select",
+        "info": "Please select the server on which the result data should be stored.",
+        "items": [
+          {
+            "inner": "None",
+            "value": "{'store':['ccm.store']}"
+          },
+          {
+            "inner": "Local",
+            "value": "{'store':['ccm.store',{'name':'submit'}]}"
+          },
+          {
+            "inner": "ccm2.inf.h-brs.de",
+            "value": "{'store':['ccm.store',{'name':'submit','url':'https://ccm2.inf.h-brs.de'}]}"
+          }
+        ]
+      },
+      "<legend class='text-primary'>Default Form Data</legend>",
+      {
+        "label": "Defaults",
+        "name": "ignore.defaults",
+        "type": "json_builder",
+        "info": "Here you can set the default values ​​for the input fields."
+      },
+      "<legend class='text-primary'>CSS Layout</legend>",
+      {
+        "name": "css.0",
+        "type": "hidden"
+      },
+      {
+        "name": "css.1",
+        "type": "hidden"
+      },
+      {
+        "name": "css.2",
+        "type": "hidden"
+      },
+      {
+        "label": "URL to CSS File",
+        "name": "css.3",
+        "type": "url",
+        "info": "Enter the path to a CSS file for the layout here."
+      },
+      "<legend class='text-primary'>HTML Structure</legend>",
+      {
+        "label": "Form Entry",
+        "name": "html.entry",
+        "type": "json_builder",
+        "info": "Here you can customize the main HTML structure of a form entry. To do this, you can customize the associated <i>ccm</i> HTML data."
+      },
+      {
+        "label": "Entry Label",
+        "name": "html.label",
+        "type": "json_builder",
+        "info": "Here you can customize the HTML structure of a entry label. To do this, you can customize the associated <i>ccm</i> HTML data."
+      },
+      {
+        "label": "Entry Info Icon",
+        "name": "html.info",
+        "type": "json_builder",
+        "info": "Here you can customize the HTML structure of a entry info icon. To do this, you can customize the associated <i>ccm</i> HTML data."
+      },
+      {
+        "label": "Form Section",
+        "name": "html.section",
+        "type": "json_builder",
+        "info": "Here you can customize the HTML structure of a form section. To do this, you can customize the associated <i>ccm</i> HTML data. A form section is for the input of several items. It contains the items and plus/minus button for add/remove items."
       },
       { "type": "submit" }
     ]
