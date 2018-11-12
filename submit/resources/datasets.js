@@ -309,6 +309,7 @@ ccm.files[ 'datasets.js' ] = {
   // special HTML structure of builder for submit component
   "builder": {
     "data": [
+      "<form>",
       "<div class='page-header'><h2>Settings <small class='text-primary'>Submit</small></h2></div>",
       "<legend class='text-primary'>Input Fields</legend>",
       {
