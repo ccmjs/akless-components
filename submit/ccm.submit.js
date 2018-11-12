@@ -546,10 +546,10 @@
                   const value = this.getValue(); delete value.key;
 
                   // logging of 'change' event
-                  self.logger && self.logger.log( 'change', { name: input.name, value: $.clone( value ), builder: instance } );
+                  instance && self.logger && self.logger.log( 'change', { name: input.name, value: $.clone( value ), builder: instance } );
 
                   // perform individual 'change' callback
-                  self.onchange && self.onchange.call( self, { name: input.name, value: $.clone( value ), builder: instance } );
+                  instance && self.onchange && self.onchange.call( self, { name: input.name, value: $.clone( value ), builder: instance } );
 
                 }
               } );
