@@ -361,6 +361,9 @@
         // remember element that contains Light DOM
         element = content ? content.element : this.element;
 
+        // add HTML class for Light DOM
+        element.classList.add( 'main' );
+
         /**
          * submit button
          * @type {Element}
