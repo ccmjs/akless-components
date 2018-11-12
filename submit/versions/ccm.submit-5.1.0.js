@@ -533,7 +533,7 @@
                * ccm instance of ccm-based input element
                * @type {Object}
                */
-              const instance = await self[ type ].start( {
+              let instance; instance = await self[ type ].start( {
                 inner: input.getAttribute( 'inner' ) || undefined,
                 data: {
                   store: [ 'ccm.store', { config: $.deepValue( dataset, input.name ) } ],
