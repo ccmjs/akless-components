@@ -7,7 +7,7 @@
 ccm.files[ 'configs.js' ] = {
 
   "local": {
-    "key": "local_data",
+    "key": "local",
 //  "inner": [ "ccm.load", "../submit/resources/demo.html" ],
     "html.main": [ "ccm.get", "../submit/resources/datasets.js", "html.data" ],
     "css.3": "../submit/resources/default.css",
@@ -68,7 +68,7 @@ ccm.files[ 'configs.js' ] = {
   "demo": {
     "key": "demo",
 //  "inner": [ "ccm.load", { "url": "https://ccmjs.github.io/akless-components/submit/resources/demo.html", "type": "data", "method": "get" } ],
-    "html.main": [ "ccm.get", "https://ccmjs.github.io/akless-components/submit/resources/datasets.js", "html.data" ],
+    "html.main": [ "ccm.get", "https://ccmjs.github.io/akless-components/submit/resources/datasets.js", "demo.data" ],
     "data": {
       "store": [ "ccm.store", { "name": "submit", "url": "https://ccm2.inf.h-brs.de" } ],
       "key": "demo"
