@@ -2,7 +2,7 @@
  * @overview ccm component for submitting data
  * @author André Kless <andre.kless@web.de> 2018
  * @license The MIT License (MIT)
- * @version latest (5.1.1)
+ * @version 5.1.1
  * @changes
  * version 5.1.1 (14.11.2018):
  * - bug fix for initial values with dot notations for ccm-based input elements
@@ -61,7 +61,9 @@
 
     name: 'submit',
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    version: [ 5, 1, 1 ],
+
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-18.5.0.js',
 
     config: {
 
