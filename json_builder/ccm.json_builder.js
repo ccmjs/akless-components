@@ -99,7 +99,7 @@
             let value = input_elem.value;
 
             // add evaluated JSON to result data
-            try { dataset.json = $.solveDotNotation( JSON.parse( value ) ); dataset.valid = true; } catch ( err ) { dataset.valid = false; }
+            try { dataset.json = $.parse( value ); dataset.valid = true; } catch ( err ) { dataset.valid = false; }
 
             // show feedback for valid/invalid JSON
             feedback( dataset.valid );
@@ -146,7 +146,7 @@
         } ) );
 
         // put JSON string in input element
-        this.element.querySelector( '#input' ).value = JSON.stringify( dataset.json, this.replacer, this.space );
+        this.element.querySelector( '#input' ).value = $.stringify( dataset.json, this.replacer, this.space );
 
       };
 
