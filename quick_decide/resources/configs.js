@@ -101,7 +101,7 @@ ccm.files[ 'configs.js' ] = {
     ],
     "interval": 1,
     "limit": 2000,
-    "wait": 1000
+    "wait": 500
   }
 
 };
