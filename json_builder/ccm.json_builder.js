@@ -99,7 +99,7 @@
             let value = input_elem.value;
 
             // add evaluated JSON to result data
-            try { dataset.json = JSON.parse( value ); dataset.valid = true; } catch ( err ) { dataset.valid = false; }
+            try { dataset.json = $.solveDotNotation( JSON.parse( value ) ); dataset.valid = true; } catch ( err ) { dataset.valid = false; }
 
             // show feedback for valid/invalid JSON
             feedback( dataset.valid );
@@ -154,7 +154,7 @@
        * returns current result data
        * @returns {Object} current result data
        */
-      this.getValue = () => $.integrate( tmp, $.solveDotNotation( this.directly ? dataset.json : dataset ) )
+      this.getValue = () => $.integrate( tmp, this.directly ? dataset.json : dataset );
 
     }
 
