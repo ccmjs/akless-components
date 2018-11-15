@@ -6,7 +6,7 @@
  * @changes
  * version 5.1.1 (14.11.2018):
  * - bug fix for initial values with dot notations for ccm-based input elements
- * - uses ccm v18.5.1
+ * - uses ccm v18.6.0
  * version 5.1.0 (11.11.2018):
  * - supports special HTML data structure
  * - css is passed to recursive submit instances
@@ -63,7 +63,7 @@
 
     version: [ 5, 1, 1 ],
 
-    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-18.5.1.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-18.6.0.js',
 
     config: {
 
