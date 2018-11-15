@@ -20,7 +20,8 @@ ccm.files[ 'configs.js' ] = {
       }
     },
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
-    "onchange": function () { console.log( this.index, 'onchange', this.getValue() ) },
+    "oninput": function ( event ) { console.log( 'input event', this.getValue(), event.target ) },
+    "onchange": function ( event ) { console.log( 'change event', this.getValue(), event.target ) },
     "onfinish": { "log": true }
   },
 

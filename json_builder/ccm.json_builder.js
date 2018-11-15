@@ -6,6 +6,7 @@
  * @changes
  * version 1.1.1 (15.11.2018):
  * - solved dot notation in result data
+ * - bug fix for event and logging data
  * - uses ccm v18.6.0
  * version 1.1.0 (25.09.2018): added directly mode
  * version 1.0.0 (23.09.2018)
@@ -46,8 +47,8 @@
   //  "replacer": ( key, value ) => typeof value === 'string' ? undefined : value,
   //  "directly": true,
   //  "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
-  //  "oninput": ( instance, expression ) => console.log( expression ),
-  //  "onchange": ( instance, expression ) => console.log( expression ),
+  //  "oninput": function ( event ) { console.log( 'input event', this.getValue(), event.target ) },
+  //  "onchange": function ( event ) { console.log( 'change event', this.getValue(), event.target ) },
   //  "onfinish": ( instance, results ) => console.log( results )
 
     },
@@ -84,7 +85,7 @@
 
         // prepare main HTML structure
         $.setContent( this.element, $.html( this.html, {
-          oninput: () => {
+          oninput: event => {
 
             /**
              * input element
@@ -113,22 +114,22 @@
                 button.setAttribute( 'disabled', true );
 
             // logging of 'input' event
-            this.logger && this.logger.log( 'input', $.clone( dataset ) );
+            this.logger && this.logger.log( 'input', this.getValue() );
 
             // perform individual 'input' callback
-            this.oninput && this.oninput( this, $.clone( dataset ) );
+            this.oninput && this.oninput.call( this, event );
 
             /** shows feedback for valid/invalid JSON */
             function feedback( valid ) { input_elem.classList[ valid ? 'remove' : 'add' ]( 'invalid' ) }
 
           },
-          onchange: () => {
+          onchange: event => {
 
             // logging of 'change' event
             this.logger && this.logger.log( 'change', this.getValue() );
 
             // perform individual 'change' callback
-            this.onchange && this.onchange();
+            this.onchange && this.onchange.call( this, event );
 
           },
           onclick: event => {
