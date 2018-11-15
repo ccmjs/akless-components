@@ -156,7 +156,7 @@
        * returns current result data
        * @returns {Object} current result data
        */
-      this.getValue = () => $.solveDotNotation( $.integrate( tmp, this.directly ? dataset.json : dataset ) )
+      this.getValue = () => $.integrate( tmp, $.solveDotNotation( this.directly ? dataset.json : dataset ) )
 
     }
 
