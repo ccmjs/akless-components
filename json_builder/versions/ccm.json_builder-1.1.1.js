@@ -2,7 +2,7 @@
  * @overview ccm component for JSON builder
  * @author André Kless <andre.kless@web.de> 2018
  * @license The MIT License (MIT)
- * @version latest (1.1.1)
+ * @version 1.1.1
  * @changes
  * version 1.1.1 (15.11.2018):
  * - solved dot notation in result data
@@ -17,7 +17,9 @@
 
     name: 'json_builder',
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    version: [ 1, 1, 1 ],
+
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-18.6.0.js',
 
     config: {
 
