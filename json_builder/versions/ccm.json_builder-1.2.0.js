@@ -2,7 +2,7 @@
  * @overview ccm component for JSON builder
  * @author André Kless <andre.kless@web.de> 2018
  * @license The MIT License (MIT)
- * @version latest (1.2.0)
+ * @version 1.2.0
  * @changes
  * version 1.2.0 (15.11.2018): accepts defaults for initial data
  * version 1.1.1 (15.11.2018):
