@@ -19,7 +19,9 @@
 
     name: 'json_builder',
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    version: [ 1, 2, 0 ],
+
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-18.6.0.js',
 
     config: {
 
