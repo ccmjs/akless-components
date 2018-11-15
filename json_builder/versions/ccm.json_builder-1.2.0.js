@@ -77,7 +77,7 @@
         dataset = await $.dataset( this.data );
 
         // given default values? => integrate them as defaults into initial values
-        if ( this.ignore ) dataset = $.integrate( dataset, this.ignore.defaults );
+        if ( this.ignore ) dataset = $.integrate( this.ignore.defaults, dataset, true );
 
         // get data management properties to safety
         tmp = $.privatize( dataset, 'key', 'created_at', 'updated_at', '_' );
@@ -107,7 +107,7 @@
             let value = input_elem.value;
 
             // add evaluated JSON to result data
-            try { dataset.json = $.parse( value ); dataset.valid = true; } catch ( err ) { dataset.valid = false; }
+            try { dataset.json = $.solveDotNotation( $.parse( value ) ); dataset.valid = true; } catch ( err ) { dataset.valid = false; }
 
             // show feedback for valid/invalid JSON
             feedback( dataset.valid );
