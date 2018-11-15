@@ -307,7 +307,7 @@ ccm.files[ 'datasets.js' ] = {
   },
 
   // special HTML structure for builder
-  "builder": {
+  "quiz_builder": {
     "data": [
       "<div class='page-header'><h2>Settings <small class='text-primary'>Submit</small></h2></div>",
       "<legend class='text-primary'>Input Fields</legend>",
