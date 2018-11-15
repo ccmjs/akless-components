@@ -2,7 +2,7 @@
  * @overview ccm component for quick decision
  * @author André Kless <andre.kless@web.de> 2018
  * @license The MIT License (MIT)
- * @version latest (1.3.0)
+ * @version 1.3.0
  * @changes
  * version 1.3.0 (15.11.2018):
  * - time limit support
@@ -20,7 +20,9 @@
 
     name: 'quick_decide',
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    version: [ 1, 3, 0 ],
+
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-18.6.0.js',
 
     config: {
 
