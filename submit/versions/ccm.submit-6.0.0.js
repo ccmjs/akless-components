@@ -2,7 +2,7 @@
  * @overview ccm component for submitting data
  * @author André Kless <andre.kless@web.de> 2018
  * @license The MIT License (MIT)
- * @version latest (6.0.0)
+ * @version 6.0.0
  * @changes
  * version 6.0.0 (15.11.2018): changed config key for special HTML data structure ('entries' instead of 'html.main')
  * version 5.1.1 (14.11.2018):
@@ -62,7 +62,9 @@
 
     name: 'submit',
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    version: [ 6, 0, 0 ],
+
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-18.6.0.js',
 
     config: {
 
