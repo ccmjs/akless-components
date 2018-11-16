@@ -2,7 +2,7 @@
  * @overview ccm component for quiz
  * @author André Kless <andre.kless@web.de> 2016-2018
  * @license The MIT License (MIT)
- * @version latest (3.0.1)
+ * @version 3.0.1
  * @changes
  * version 3.0.1 (16.11.2018):
  * - bug fix for single choice questions
@@ -33,7 +33,9 @@
 
     name: 'quiz',
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    version: [ 3, 0, 1 ],
+
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-18.6.0.js',
 
     config: {
 
