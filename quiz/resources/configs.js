@@ -308,29 +308,6 @@ ccm.files[ 'configs.js' ] = {
             "correct": true
           }
         ]
-      },
-      {
-        "text": "What is the solution to the following arithmetical tasks?",
-        "description": "Please enter the solutions into the input fields.",
-        "answers": [
-          {
-            "text": "=&nbsp; 1 + 1",
-            "correct": 2
-          },
-          {
-            "text": "=&nbsp; 1 - 1",
-            "correct": 0
-          },
-          {
-            "text": "=&nbsp;-1 - 1",
-            "correct": -2
-          }
-        ],
-        "input": "number",
-        "attributes": {
-          "min": -2,
-          "max": 2
-        }
       }
     ],
     "feedback": true,
