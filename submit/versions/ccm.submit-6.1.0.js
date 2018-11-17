@@ -2,8 +2,9 @@
  * @overview ccm component for submitting data
  * @author André Kless <andre.kless@web.de> 2018
  * @license The MIT License (MIT)
- * @version 6.0.0
+ * @version 6.1.0
  * @changes
+ * version 6.1.0 (17.11.2018): component dependency can also be set in deeper property
  * version 6.0.0 (15.11.2018):
  * - changed config key for special HTML data structure ('entries' instead of 'html.main')
  * - uses ccm v18.6.0
@@ -64,7 +65,7 @@
 
     name: 'submit',
 
-    version: [ 6, 0, 0 ],
+    version: [ 6, 1, 0 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-18.6.0.js',
 
@@ -534,7 +535,7 @@
             default: // manage ccm-based input elements
 
               // check whether there is a dependent subcomponent in this config for this input type
-              if ( !self[ type ] ) return;
+              if ( !$.deepValue( self, type ) ) return;
 
               // <input type=submit> without name attribute counts as standard HTML input element
               if ( type === 'submit' && !input.getAttribute( 'name' ) ) return;
@@ -543,7 +544,7 @@
                * ccm instance of ccm-based input element
                * @type {Object}
                */
-              let instance; instance = await self[ type ].start( {
+              let instance; instance = await $.deepValue( self, type ).start( {
                 inner: input.getAttribute( 'inner' ) || undefined,
                 data: {
                   store: [ 'ccm.store', { config: $.deepValue( $.solveDotNotation( dataset ), input.name ) } ],
