@@ -73,7 +73,7 @@ ccm.files[ 'configs.js' ] = {
     },
     "rating.2.data": { "store": [ "ccm.store", { "name": "component_ratings", "url": "https://ccm2.inf.h-brs.de" } ] },
     "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-8.2.0.js", {
-      "key": [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "cloud" ],
+      "key": [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "guest" ],
       "html.logged_in.class": "",
       "html.logged_out.class": ""
     } ]
