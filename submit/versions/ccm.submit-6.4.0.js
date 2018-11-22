@@ -4,7 +4,9 @@
  * @license The MIT License (MIT)
  * @version 6.4.0
  * @changes
- * version 6.4.0 (22.11.2018): added optional config property 'disabled' (then all standard HTML input elements are disabled)
+ * version 6.4.0 (22.11.2018):
+ * - added optional config property 'disabled' (then all standard HTML input elements are disabled)
+ * - uses ccm v18.6.3
  * version 6.3.0 (22.11.2018):
  * - support of input type 'object' via special data structure
  * - uses ccm v18.6.2
@@ -74,7 +76,7 @@
 
     version: [ 6, 4, 0 ],
 
-    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-18.6.2.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-18.6.3.js',
 
     config: {
 
