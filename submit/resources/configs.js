@@ -8,7 +8,7 @@ ccm.files[ 'configs.js' ] = {
 
   "local": {
     "key": "local",
-  //"inner": [ "ccm.load", { "url": "../submit/resources/demo.html", "type": "data" } ],
+//  "inner": [ "ccm.load", { "url": "../submit/resources/demo.html", "type": "data" } ],
     "entries": [ "ccm.get", "../submit/resources/datasets.js", "demo.data" ],
     "css": [ "ccm.load",
       { "context": "head", "url": "../libs/bootstrap/css/font-face.css" },
@@ -31,7 +31,7 @@ ccm.files[ 'configs.js' ] = {
 
   "localhost": {
     "key": "localhost",
-    //"inner": [ "ccm.load", { "url": "../submit/resources/demo.html", "type": "data" } ],
+//  "inner": [ "ccm.load", { "url": "../submit/resources/demo.html", "type": "data" } ],
     "entries": [ "ccm.get", "../submit/resources/datasets.js", "demo.data" ],
     "css": [ "ccm.load",
       { "context": "head", "url": "../libs/bootstrap/css/font-face.css" },
@@ -57,10 +57,10 @@ ccm.files[ 'configs.js' ] = {
 
   "demo": {
     "key": "demo",
-    //"inner": [ "ccm.load", { "url": "https://ccmjs.github.io/akless-components/submit/resources/demo.html", "type": "data" } ],
+//  "inner": [ "ccm.load", { "url": "https://ccmjs.github.io/akless-components/submit/resources/demo.html", "type": "data" } ],
     "entries": [ "ccm.get", "https://ccmjs.github.io/akless-components/submit/resources/datasets.js", "demo.data" ],
     "data": {
-      "store": [ "ccm.store", { "name": "submit", "url": "https://ccm2.inf.h-brs.de" } ],
+      "store": [ "ccm.store", { "name": "submit_data", "url": "https://ccm2.inf.h-brs.de" } ],
       "key": "demo"
     },
     "content": [ "ccm.component", "https://ccmjs.github.io/akless-components/content/versions/ccm.content-5.0.1.js" ],

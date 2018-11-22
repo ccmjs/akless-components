@@ -4,7 +4,9 @@
  * @license The MIT License (MIT)
  * @version latest (6.3.0)
  * @changes
- * version 6.3.0 (22.11.2018): support of input type 'object' via special data structure
+ * version 6.3.0 (22.11.2018):
+ * - support of input type 'object' via special data structure
+ * - uses ccm v18.6.2
  * version 6.2.0 (22.11.2018):
  * - support individual config for ccm-based input types
  * - uses ccm v18.6.1

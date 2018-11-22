@@ -8,6 +8,7 @@ ccm.files[ 'datasets.js' ] = {
 
   // initial values for input elements of local demo
   "test": {
+    "key": "test",
     "color": "#66CCFF",
     "date": "2017-11-21",
     "datetime-local": "2017-11-21T16:53",
@@ -41,6 +42,7 @@ ccm.files[ 'datasets.js' ] = {
 
   // special HTML structure for demo
   "demo": {
+    "key": "demo",
     "data": [
       "<source src='https://ccmjs.github.io/akless-components/blank/ccm.blank.js'>",
       "<legend>Decoration</legend>",
