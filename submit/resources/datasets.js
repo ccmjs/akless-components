@@ -34,8 +34,8 @@ ccm.files[ 'datasets.js' ] = {
     "deep": { "property": "A" },
     "texts": [ "foo", "bar" ],
     "highscore": [ { "player": "john", "score": 100 }, { "player": "jane", "score": 100 } ],
-    "cloze_builder": [ "ccm.get", "../cloze_builder/resources/datasets.js", "test" ],
-    "teambuild_builder": [ "ccm.get", "../teambuild_builder/resources/datasets.js", "test" ],
+    "object": { "foo": "bar", "abc": "xyz" },
+    "json_builder": { "foo": "bar" },
     "objects": [ { "foo": "bar" }, { "abc": "xyz" } ]
   },
 
@@ -279,18 +279,19 @@ ccm.files[ 'datasets.js' ] = {
           }
         ]
       },
-      "<legend><i>ccm</i>-based Input Elements</legend>",
       {
-        "label": "cloze_builder",
-        "name": "cloze_builder",
-        "type": "cloze_builder",
+        "label": "object",
+        "name": "object",
+        "type": "object",
         "info": "Text Text Text"
       },
+      "<legend><i>ccm</i>-based Input Elements</legend>",
       {
-        "label": "teambuild_builder",
-        "name": "teambuild_builder",
-        "type": "teambuild_builder",
-        "info": "Text Text Text"
+        "label": "json_builder",
+        "name": "json_builder",
+        "type": "json_builder",
+        "info": "Text Text Text",
+        "key": "[\"ccm.get\",\"https://ccmjs.github.io/akless-components/json_builder/resources/configs.js\",\"demo\"]"
       },
       {
         "label": "objects",
