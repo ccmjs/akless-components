@@ -190,7 +190,7 @@
             const config = $.clone( this.ignore.card.config );
 
             // generate dataset key for new card
-            if ( config.data.store ) config.data.key = $.generateKey();
+            if ( $.isObject( config.data ) && config.data.store ) config.data.key = $.generateKey();
 
             // create and add instance dependency for new card to kanban board data
             data.lanes[ i ].cards.push( [ 'ccm.instance', this.ignore.card.component, config ] );
