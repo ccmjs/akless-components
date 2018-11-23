@@ -7,6 +7,7 @@
  * version 6.4.0 (22.11.2018):
  * - added optional config property 'disabled' (then all standard HTML input elements are disabled)
  * - uses ccm v18.6.3
+ * - bug fix: render missing callout for inner submit-based inputs
  * version 6.3.0 (22.11.2018):
  * - support of input type 'object' via special data structure
  * - uses ccm v18.6.2
@@ -236,7 +237,6 @@
               case 'password':
               case 'range':
               case 'search':
-              case 'submit':
               case 'tel':
               case 'text':
               case 'time':
@@ -316,6 +316,12 @@
                   several_elem.appendChild( item_elem );
                   entry_elem.appendChild( several_elem );
                 }
+                break;
+              case 'submit':
+                delete entry.label;
+                entry.tag = 'input';
+                entry.class = 'form-control';
+                entry_elem.appendChild( $.html( entry.name ? { class: 'callout', inner: entry } : entry ) );
                 break;
               default:
                 delete entry.label;
