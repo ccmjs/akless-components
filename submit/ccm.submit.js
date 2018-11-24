@@ -4,7 +4,9 @@
  * @license The MIT License (MIT)
  * @version latest (6.4.1)
  * @changes
- * version 6.4.1 (24.11.2018): bug fix for nested several elements
+ * version 6.4.1 (24.11.2018):
+ * - bug fix for nested several elements
+ * - uses ccm v18.6.4
  * version 6.4.0 (22.11.2018):
  * - added optional config property 'disabled' (then all standard HTML input elements are disabled)
  * - uses ccm v18.6.3
