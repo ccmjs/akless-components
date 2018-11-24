@@ -2,7 +2,7 @@
  * @overview ccm component for submitting data
  * @author André Kless <andre.kless@web.de> 2018
  * @license The MIT License (MIT)
- * @version latest (6.4.1)
+ * @version 6.4.1
  * @changes
  * version 6.4.1 (24.11.2018): bug fix for nested several elements
  * version 6.4.0 (22.11.2018):
@@ -76,7 +76,9 @@
 
     name: 'submit',
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    version: [ 6, 4, 1 ],
+
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-18.6.3.js',
 
     config: {
 
