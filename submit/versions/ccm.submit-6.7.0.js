@@ -2,7 +2,7 @@
  * @overview ccm component for submitting data
  * @author André Kless <andre.kless@web.de> 2018
  * @license The MIT License (MIT)
- * @version latest (6.7.0)
+ * @version 6.7.0
  * @changes
  * version 6.7.0 (26.11.2018): input type hidden without value returns unique string (generated key)
  * version 6.6.0 (26.11.2018): added config property 'no_submit_button':boolean (true: submit button will removed)
@@ -81,7 +81,9 @@
 
     name: 'submit',
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    version: [ 6, 7, 0 ],
+
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-18.6.4.js',
 
     config: {
 
