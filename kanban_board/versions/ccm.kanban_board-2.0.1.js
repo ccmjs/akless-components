@@ -2,7 +2,7 @@
  * @overview ccm component for kanban board
  * @author André Kless <andre.kless@web.de> 2016-2018
  * @license The MIT License (MIT)
- * @version latest (2.0.1)
+ * @version 2.0.1
  * @changes
  * version 2.0.1 (26.11.2018):
  * - bug fix for deleting a card
@@ -27,7 +27,9 @@
 
     name: 'kanban_board',
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    version: [ 2, 0, 1 ],
+
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-18.6.4.js',
 
     config: {
 
