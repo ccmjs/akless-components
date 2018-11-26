@@ -2,7 +2,7 @@
  * @overview ccm component for submitting data
  * @author André Kless <andre.kless@web.de> 2018
  * @license The MIT License (MIT)
- * @version latest (6.6.0)
+ * @version 6.6.0
  * @changes
  * version 6.6.0 (26.11.2018): added config property 'no_submit_button':boolean (true: submit button will removed)
  * version 6.5.0 (25.11.2018): added form validation for onchange events
@@ -80,7 +80,9 @@
 
     name: 'submit',
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    version: [ 6, 6, 0 ],
+
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-18.6.4.js',
 
     config: {
 
