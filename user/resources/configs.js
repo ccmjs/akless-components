@@ -38,6 +38,16 @@ ccm.files[ 'configs.js' ] = {
     "hash": [ "ccm.load", { "url": "https://ccmjs.github.io/akless-components/modules/md5.js", "type": "module" } ]
   },
 
+  "idento": {
+    "key": "idento",
+    "realm": "idento",
+    "url": "http://dev.idento.one:9002",
+    "title": "[idento.one] Please enter your email and password:",
+    "html.login.inner.0.inner.inner.1.inner.0.inner.0.inner.1.placeholder": "email",
+    "hash": [ "ccm.load", { "url": "https://ccmjs.github.io/akless-components/modules/md5.js", "type": "module" } ],
+    "jquery": [ "ccm.load", "https://ccmjs.github.io/akless-components/libs/jquery/jquery-3.1.1.min.js" ]
+  },
+
   "hbrsinfkaul": {
     "key": "hbrsinfkaul",
     "realm": "hbrsinfkaul"

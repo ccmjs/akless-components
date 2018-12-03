@@ -2,13 +2,14 @@
  * @overview ccm component for user authentication
  * @author André Kless <andre.kless@web.de> 2017-2018
  * @license The MIT License (MIT)
- * @version latest (8.3.0)
+ * @version 8.3.0
  * @changes
  * version 8.3.0 (03.11.2018)
  * - added realm 'idento'
  * - uses ccm v18.6.4
  * version 8.2.0 (13.10.2018)
  * - added realm 'lea'
+ * - uses ccm v18.0.5
  * version 8.1.0 (05.10.2018)
  * - added realm 'cloud'
  * version 8.0.0 (07.09.2018)
@@ -75,7 +76,9 @@
 
     name: 'user',
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    version: [ 8, 3, 0 ],
+
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-18.6.4.js',
 
     config: {
 
