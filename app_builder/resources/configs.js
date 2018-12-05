@@ -42,23 +42,9 @@ ccm.files[ 'configs.js' ] = {
 
   "demo": {
     "key": "demo",
-    "data.store.1": { "name": "content", "url": "https://ccm2.inf.h-brs.de" },
-    "builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-1.1.0.js", {
-      "html.inner.1": "",
-      "directly": true
-    } ],
-    "app": [ "ccm.component", "https://ccmjs.github.io/akless-components/content/versions/ccm.content-5.0.0.js" ]
-  },
-
-  "lea_cloze": {
-    "key": "lea_cloze",
-    "data.store.1": { "name": "cloze", "url": "https://ccm2.inf.h-brs.de" },
-    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-8.2.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "lea" ] ],
-    "builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/cloze_builder/versions/ccm.cloze_builder-3.0.0.js", {
-      "submit_button": false,
-      "preview": false
-    } ],
-    "app": [ "ccm.component", "https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-5.0.0.js" ]
+    "data": { "store": [ "ccm.store", { "name": "content", "url": "https://ccm2.inf.h-brs.de" } ] },
+    "builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/submit/versions/ccm.submit-6.7.0.js", [ "ccm.get", { "name": "submit", "url": "https://ccm2.inf.h-brs.de" }, "quick_decide_builder" ] ],
+    "app": [ "ccm.component", "https://ccmjs.github.io/akless-components/quick_decide/versions/ccm.quick_decide-1.3.0.js" ]
   }
 
 };
