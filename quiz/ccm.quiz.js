@@ -293,8 +293,9 @@
 
               // information about correct answers of a question could be given via answer data
               if ( answer.correct !== undefined )
-                if ( question.input === 'radio' )
+                if ( question.input === 'radio' ) {
                   if ( answer.correct === true ) question.correct = i;
+                }
                 else
                   question.correct[ i ] = question.input === 'number' ? parseInt( answer.correct ) : answer.correct;
 
