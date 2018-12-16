@@ -4,7 +4,7 @@
  * @license The MIT License (MIT)
  * @version latest (5.0.2)
  * @changes
- * version 5.0.2 (12.10.2018):
+ * version 5.0.2 (16.12.2018):
  * - uses ccm v18.6.5
  * version 5.0.1 (12.10.2018):
  * - uses ccm v18.0.4
