@@ -493,7 +493,7 @@
 
             const index = $.getIndex( self.app.url );
             let store_settings = self.data.store.source(); if ( isLocalStore ) { store_settings = {}; store_settings[ app_id ] = dataset; }
-            return $.escapeHTML( '<script src="' + self.app.url + '"></script><ccm-' + index + ' key=\'["ccm.get",' + JSON.stringify( store_settings ) + ',"' + app_id + '"]\'></ccm-' + index + '>' );
+            return $.escapeHTML( '<script src="' + self.app.url + '"></script><ccm-' + index + ' key=\'["ccm.get",' + $.stringify( store_settings ) + ',"' + app_id + '"]\'></ccm-' + index + '>' );
 
           }
 
