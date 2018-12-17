@@ -36,6 +36,7 @@
   add( 'template', '<i>ccm</i> component template' );
   add( 'testsuite', '<i>ccm</i> component for unit testing', true );
   add( 'user', '<i>ccm</i> component for user authentication' );
+  add( 'window', '<i>ccm</i> component for flying windows' );
   add( 'youtube', '<i>ccm</i> component for rendering a YouTube Player' );
   function add( name, description, no_demo ) {
     document.body.querySelector( 'table' ).innerHTML += '<tr><td>ccm.' + name + '.js</td><td>' + description + '</td><td>' + ( no_demo ? '-' : '<a href="' + name + '">Link</a>' ) + '</td></tr>';
