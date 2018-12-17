@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="André Kless <andre.kless@web.de> 2018">
+<meta name="license" content="The MIT License (MIT)">
+<style>body { margin: 0; }</style>
+
+<body>
+<div></div>
+<script src="https://ccmjs.github.io/ccm/version/ccm-18.6.5.js"></script>
+<script>
+  ccm.start( 'versions/ccm.window-1.0.0.js', { root: document.body.querySelector( 'div' ), key: [ 'ccm.get', 'resources/configs.js', 'demo' ] } );
+</script>
+
+<!--
+<script src="ccm.window.js"></script>
+<ccm-window key='["ccm.get","resources/configs.js","demo"]'></ccm-window>
+-->
