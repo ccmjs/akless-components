@@ -42,7 +42,7 @@ ccm.files[ 'configs.js' ] = {
 
   "demo": {
     "key": "demo",
-    "data": { "store": [ "ccm.store", { "name": "content", "url": "https://ccm2.inf.h-brs.de" } ] },
+    "data": { "store": [ "ccm.store", { "name": "quick_decide", "url": "https://ccm2.inf.h-brs.de" } ] },
     "builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/submit/versions/ccm.submit-6.7.0.js", [ "ccm.get", { "name": "submit", "url": "https://ccm2.inf.h-brs.de" }, "quick_decide_builder" ] ],
     "app": [ "ccm.component", "https://ccmjs.github.io/akless-components/quick_decide/versions/ccm.quick_decide-1.3.0.js" ]
   }
