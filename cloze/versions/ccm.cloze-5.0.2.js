@@ -2,7 +2,7 @@
  * @overview ccm component for rendering a fill-in-the-blank text
  * @author André Kless <andre.kless@web.de> 2017-2018
  * @license The MIT License (MIT)
- * @version latest (5.0.2)
+ * @version 5.0.2
  * @changes
  * version 5.0.2 (20.12.2018):
  * - bug fix: strip HTML in keywords
@@ -32,7 +32,9 @@
 
     name: 'cloze',
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    version: [ 5, 0, 2 ],
+
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-18.6.6.js',
 
     config: {
 
