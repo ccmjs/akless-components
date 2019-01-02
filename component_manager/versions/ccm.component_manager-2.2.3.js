@@ -1,8 +1,8 @@
 /**
  * @overview ccm component for component manager
- * @author André Kless <andre.kless@web.de> 2018
+ * @author André Kless <andre.kless@web.de> 2018-2019
  * @license MIT License
- * @version latest (2.2.3)
+ * @version 2.2.3
  * @changes
  * version 2.2.3 (02.01.2019): uses ccm v18.6.6 and ccm.menu.js v2.4.2
  * version 2.2.2 (02.11.2018):
@@ -29,7 +29,9 @@
 
     name: 'component_manager',
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    version: [ 2, 2, 3 ],
+
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-18.6.6.js',
 
     config: {
       "html": {
