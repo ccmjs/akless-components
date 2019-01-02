@@ -1,10 +1,13 @@
 /**
  * @overview ccm component for digital maker space
- * @author André Kless <andre.kless@web.de> 2018
+ * @author André Kless <andre.kless@web.de> 2018-2019
  * @license MIT License
  * @version 1.0.4
  * @changes
- * version 1.0.4 (02.01.2019): uses ccm v18.6.6 and ccm.component_manager.js v2.2.3
+ * version 1.0.4 (02.01.2019):
+ * - uses ccm v18.6.6
+ * - uses ccm.component_manager.js v2.2.3
+ * - uses ccm.submit.js v6.7.0
  * version 1.0.3 (07.11.2018): removed footer
  * version 1.0.2 (02.11.2018):
  * - uses ccm.component_manager.js v2.2.2
@@ -153,7 +156,7 @@
           "https://ccmjs.github.io/akless-components/dms/resources/rating_result.css"
         ]
       } ],
-      "form": [ "ccm.component", "https://ccmjs.github.io/akless-components/submit/versions/ccm.submit-4.0.0.js", {
+      "form": [ "ccm.component", "https://ccmjs.github.io/akless-components/submit/versions/ccm.submit-6.7.0.js", {
         "root": "name",
         "inner": {
           "id": "main",
