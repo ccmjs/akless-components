@@ -1,0 +1,106 @@
+/**
+ * @overview default layout of ccm component for live poll
+ * @author André Kless <andre.kless@web.de.de> 2019
+ * @license The MIT License (MIT)
+ */
+
+#element {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+#main {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+#main > div {
+  padding: 0.5em 0;
+}
+
+.button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  padding: 0.5em;
+  cursor: pointer;
+}
+
+*[contenteditable] {
+  border: 1px dotted transparent;
+  min-width: 4em;
+}
+
+*[contenteditable]:hover:not(:focus) {
+  border: 1px dotted lightgray;
+}
+
+#main #question > #text {
+  padding: 0.5em;
+  font-size: x-large;
+  cursor: text;
+}
+
+#main #question > #text:empty:before {
+  content: 'Type Question here...';
+  color: lightgrey;
+}
+
+#main #answers .answer {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+#main #answers .answer.selected {
+  background-color: lightskyblue;
+}
+
+#main.active #answers .answer:not(.selected):hover {
+  background-color: lightgray;
+  cursor: pointer;
+}
+
+#main #answers .answer > div {
+  padding: 0.5em;
+}
+
+#main #answers .answer .icon {
+  font-weight: bolder;
+  font-size: larger;
+}
+
+#main #answers .answer .text:empty + .icon {
+  color: lightgray;
+}
+
+#main.active #members {
+  display: flex;
+  flex-wrap: wrap;
+  border: 2px solid black;
+  margin: 1em;
+  padding: 0.5em;
+  font-size: x-small;
+}
+
+#main.active #members .member {
+  padding: 0.1em;
+}
+
+#main.active #members .member:not(:last-child):after {
+  content: ', '
+}
+
+#main.active #members {
+  color: darkblue;
+}
+
+#main.active #members .member.done {
+  background-color: lime;
+}
