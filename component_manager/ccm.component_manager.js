@@ -1,6 +1,6 @@
 /**
  * @overview ccm component for component manager
- * @author André Kless <andre.kless@web.de> 2018
+ * @author André Kless <andre.kless@web.de> 2018-2019
  * @license MIT License
  * @version latest (2.2.3)
  * @changes
