@@ -8,11 +8,10 @@
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   height: 100%;
   display: flex;
-  justify-content: safe center;
-  align-items: safe center;
 }
 
 #main {
+  margin: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
