@@ -82,8 +82,7 @@
       "chart": [ "ccm.component", "https://ccmjs.github.io/mkaul-components/plotly/versions/ccm.plotly-1.1.1.js" ],
       "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-8.3.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "guest" ] ]
 
-  //  "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
-  //  "onchange": ( data, elem ) => console.log( data, elem )
+  //  "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ]
 
     },
 
@@ -120,15 +119,15 @@
          */
         const user = this.user.data().user;
 
-        // logging of 'start' event
-        this.logger && this.logger.log( 'start' );
-
         // get existing app state data
         dataset = await $.dataset( this.data );
 
         // correct reset of properties
         if ( dataset.active  === '' ) delete dataset.active;
         if ( dataset.members === '' ) delete dataset.members;
+
+        // logging of 'start' event
+        this.logger && this.logger.log( 'start', $.clone( dataset ) );
 
         // render main HTML structure
         $.setContent( this.element, $.html( this.html.main, {
@@ -140,6 +139,9 @@
             // update question text
             dataset.question = event.target.textContent;
             await save( true );
+
+            // logging of 'input' event
+            this.logger && this.logger.log( 'input', $.clone( dataset ) );
 
           }
         } ) );
@@ -162,6 +164,9 @@
               // update answer text
               dataset.answers[ i ] = event.target.textContent;
               await save( true );
+
+              // logging of 'input' event
+              this.logger && this.logger.log( 'input', $.clone( dataset ) );
 
             }
           } ) )
@@ -186,7 +191,9 @@
           const votes = $.clone( dataset.members );
 
           // remove not voted members
-          for ( const key in votes ) if ( !votes[ key ] ) delete votes[ key ];
+          for ( const key in votes )
+            if ( !votes[ key ] )
+              delete votes[ key ];
 
           const config = this.converter( votes );                  // convert votes to chart configuration
           config.root = this.element.querySelector( '#results' );  // set website area for chart
@@ -232,8 +239,14 @@
           dataset.members = {};
           dataset.members[ user ] = 0;
 
-          dataset.active = true;  // set poll to active
-          await save();           // update app state data (implicit app restart)
+          // set poll to active
+          dataset.active = true;
+
+          // logging of 'active' event
+          this.logger && this.logger.log( 'active', $.clone( dataset ) );
+
+          // update app state data (implicit app restart)
+          await save();
 
         }
 
@@ -243,7 +256,12 @@
          */
         async function finish() {
 
-          dataset.active = false;                         // set poll to finished
+          // set poll to finished
+          dataset.active = false;
+
+          // logging of 'finish' event
+          this.logger && this.logger.log( 'finish', $.clone( dataset ) );
+
           await save();                                   // update app state data (implicit app restart)
           await $.onFinish( self, $.clone( dataset ) );   // perform finish actions
 
@@ -257,7 +275,12 @@
 
           dataset.active = '';   // set poll to inactive (question and answers are editable)
           dataset.members = '';  // clear members data
-          await save();          // update app state data (implicit app restart)
+
+          // logging of 'reset' event
+          this.logger && this.logger.log( 'reset', $.clone( dataset ) );
+
+          // update app state data (implicit app restart)
+          await save();
 
         }
 
@@ -270,6 +293,9 @@
 
           // poll is not active? => abort
           if ( !dataset.active ) return;
+
+          // logging of 'vote' event
+          this.logger && this.logger.log( 'vote', { answer: nr, before: dataset.members[ user ] } );
 
           dataset.members[ user ] = nr;  // remember voted answer
           await save();                  // update app state data (implicit app restart)
