@@ -6,12 +6,15 @@
 
 #element {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  height: 100%;
+  display: flex;
+  justify-content: safe center;
+  align-items: safe center;
 }
 
 #main {
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
   align-items: center;
 }
 
