@@ -125,6 +125,10 @@
         // get existing app state data
         dataset = await $.dataset( this.data );
 
+        // correct reset of properties
+        if ( dataset.active  === '' ) delete dataset.active;
+        if ( dataset.members === '' ) delete dataset.members;
+
         // render main HTML structure
         $.setContent( this.element, $.html( this.html.main, {
           question: dataset.question,                                                                                // question text
