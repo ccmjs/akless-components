@@ -23,7 +23,9 @@
 
     name: 'app_builder',
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    version: [ 1, 1, 2 ],
+
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-18.6.7.js',
 
     config: {
 
