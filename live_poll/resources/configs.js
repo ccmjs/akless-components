@@ -16,7 +16,7 @@ ccm.files[ 'configs.js' ] = {
         "answers": [
           "Apple",
           "Pear",
-          "Don't Know"
+          "Neither"
         ]
       } } } ],
       "key": "test"
