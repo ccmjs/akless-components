@@ -71,7 +71,10 @@
         }
       },
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/live_poll/resources/default.css" ],
-      "data": {},
+      "data": {
+        "store": [ "ccm.store" ],
+        "key": "test"
+      },
       "placeholder": {
         "start": "START",
         "finish": "FINISH",
