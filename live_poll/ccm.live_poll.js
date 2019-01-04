@@ -141,7 +141,7 @@
             await save( true );
 
             // logging of 'input' event
-            this.logger && this.logger.log( 'input', $.clone( dataset ) );
+            self.logger && self.logger.log( 'input', $.clone( dataset ) );
 
           }
         } ) );
@@ -166,7 +166,7 @@
               await save( true );
 
               // logging of 'input' event
-              this.logger && this.logger.log( 'input', $.clone( dataset ) );
+              self.logger && self.logger.log( 'input', $.clone( dataset ) );
 
             }
           } ) )
@@ -243,7 +243,7 @@
           dataset.active = true;
 
           // logging of 'active' event
-          this.logger && this.logger.log( 'active', $.clone( dataset ) );
+          self.logger && self.logger.log( 'active', $.clone( dataset ) );
 
           // update app state data (implicit app restart)
           await save();
@@ -260,7 +260,7 @@
           dataset.active = false;
 
           // logging of 'finish' event
-          this.logger && this.logger.log( 'finish', $.clone( dataset ) );
+          self.logger && self.logger.log( 'finish', $.clone( dataset ) );
 
           await save();                                   // update app state data (implicit app restart)
           await $.onFinish( self, $.clone( dataset ) );   // perform finish actions
@@ -277,7 +277,7 @@
           dataset.members = '';  // clear members data
 
           // logging of 'reset' event
-          this.logger && this.logger.log( 'reset', $.clone( dataset ) );
+          self.logger && self.logger.log( 'reset', $.clone( dataset ) );
 
           // update app state data (implicit app restart)
           await save();
@@ -295,7 +295,7 @@
           if ( !dataset.active ) return;
 
           // logging of 'vote' event
-          this.logger && this.logger.log( 'vote', { answer: nr, before: dataset.members[ user ] } );
+          self.logger && self.logger.log( 'vote', { answer: nr, before: dataset.members[ user ] } );
 
           dataset.members[ user ] = nr;  // remember voted answer
           await save();                  // update app state data (implicit app restart)
