@@ -2,7 +2,7 @@
  * @overview ccm component for user authentication
  * @author André Kless <andre.kless@web.de> 2017-2019
  * @license The MIT License (MIT)
- * @version latest (8.3.1)
+ * @version 8.3.1
  * @changes
  * version 8.3.1 (04.01.2019)
  * - bug fix for hide/show content of parent instance
@@ -79,7 +79,9 @@
 
     name: 'user',
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    version: [ 8, 3, 1 ],
+
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-18.6.7.js',
 
     config: {
 
