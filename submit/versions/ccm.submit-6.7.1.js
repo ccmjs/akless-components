@@ -2,7 +2,7 @@
  * @overview ccm component for submitting data
  * @author André Kless <andre.kless@web.de> 2018-2019
  * @license The MIT License (MIT)
- * @version latest (6.7.1)
+ * @version 6.7.1
  * @changes
  * version 6.7.1 (05.01.2019):
  * - bug fix: change event fires also when add/del an item
@@ -84,7 +84,9 @@
 
     name: 'submit',
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    version: [ 6, 7, 1 ],
+
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-18.6.7.js',
 
     config: {
 
