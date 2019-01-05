@@ -5,7 +5,8 @@
  * @version latest (6.7.1)
  * @changes
  * version 6.7.1 (05.01.2019):
- * - bug fix: change event fires also when add/del an item
+ * - bug fix: change event fires also when add/delete an item
+ * - bug fix: no error when delete an item without any items
  * - uses ccm v18.6.7
  * version 6.7.0 (26.11.2018): input type hidden without value returns unique string (generated key)
  * version 6.6.0 (26.11.2018): added config property 'no_submit_button':boolean (true: submit button will removed)
@@ -560,6 +561,7 @@
           function delItem () {
 
             const items = section.querySelector( '.items' );
+            if ( !items.hasChildNodes() ) return;
             inputs = inputs.filter( input => !items.lastChild.querySelector( '[id]' ) || input.instance.index !== items.lastChild.querySelector( '[id]' ).id );
             items.childElementCount && items.removeChild( items.lastChild );
 
