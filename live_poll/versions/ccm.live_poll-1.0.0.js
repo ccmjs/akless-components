@@ -157,9 +157,9 @@
         dataset.answers.forEach( ( answer, i ) =>
           this.element.querySelector( '#answers' ).appendChild( $.html( this.html.answer, {
             nr: ( i + 1 ).toString(),                                                        // answer number (1,2,...)
-            icon: String.fromCharCode(65 + i ),                                       // letter of answer
+            icon: String.fromCharCode(65 + i ),                                              // letter of answer
             text: answer,                                                                    // answer text
-            onclick: () => vote( i + 1 ),                                                // click event of answer entry
+            onclick: () => vote( i + 1 ),                                                    // click event of answer entry
             onblur: () => save(),                                                            // blur event for answer text
             oninput: async function ( event ) {                                              // input event for answer text
 
