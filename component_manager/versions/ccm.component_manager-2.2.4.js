@@ -2,7 +2,7 @@
  * @overview ccm component for component manager
  * @author André Kless <andre.kless@web.de> 2018-2019
  * @license MIT License
- * @version latest (2.2.4)
+ * @version 2.2.4
  * @changes
  * version 2.2.4 (09.01.2019):
  * - bug fix for 'Create Similar App'
@@ -32,7 +32,9 @@
 
     name: 'component_manager',
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    version: [ 2, 2, 4 ],
+
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-18.6.8.js',
 
     config: {
       "html": {
