@@ -2,7 +2,7 @@
  * @overview ccm component for rendering a menu
  * @author André Kless <andre.kless@web.de> 2015-2016, 2018-2019
  * @license The MIT License (MIT)
- * @version latest (2.4.3)
+ * @version 2.4.3
  * @changes
  * version 2.4.3 (09.01.2019):
  * - added HTML class 'active' also for first child of selected entry
@@ -38,7 +38,9 @@
 
     name: 'menu',
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    version: [ 2, 4, 3 ],
+
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-18.6.8.js',
 
     config: {
 
