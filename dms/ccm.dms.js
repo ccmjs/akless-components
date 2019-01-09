@@ -4,9 +4,9 @@
  * @license MIT License
  * @version latest (1.0.4)
  * @changes
- * version 1.0.4 (02.01.2019):
- * - uses ccm v18.6.6
- * - uses ccm.component_manager.js v2.2.3
+ * version 1.0.4 (09.01.2019):
+ * - uses ccm v18.6.8
+ * - uses ccm.component_manager.js v2.2.4
  * - uses ccm.submit.js v6.7.0
  * version 1.0.3 (07.11.2018): removed footer
  * version 1.0.2 (02.11.2018):
@@ -496,7 +496,7 @@
           "https://ccmjs.github.io/akless-components/dms/resources/submit.css"
         ],
       } ],
-      "component_manager": [ "ccm.component", "https://ccmjs.github.io/akless-components/component_manager/versions/ccm.component_manager-2.2.3.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/component_manager/resources/configs.js", "demo" ] ],
+      "component_manager": [ "ccm.component", "https://ccmjs.github.io/akless-components/component_manager/versions/ccm.component_manager-2.2.4.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/component_manager/resources/configs.js", "demo" ] ],
       "resource_finder": [ "ccm.component", "https://ccmjs.github.io/leck-components/resource_finder/dist/ccm.resource_finder-1.0.0.js" ],
       "resource_publish": [ "ccm.component", "https://ccmjs.github.io/leck-components/resource_publish/dist/ccm.resource_publish-1.0.0.js" ]
 //    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-8.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "guest" ] ],
