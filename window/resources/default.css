@@ -1,6 +1,6 @@
 /**
- * @overview default layout of ccm component for fyling windows
- * @author André Kless <andre.kless@web.de> 2018
+ * @overview default layout of ccm component for flying windows
+ * @author André Kless <andre.kless@web.de> 2018-2019
  * @license The MIT License (MIT)
  */
 
@@ -10,6 +10,7 @@
 
 .flying {
   position: fixed;
+  z-index: 100;
 }
 
 .title {
