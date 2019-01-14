@@ -72,28 +72,33 @@
           {
             "id": "compact",
             "onclick": "%window%",
-            "inner": [
-              {
-                "id": "compact-icon",
-                "inner": {
-                  "tag": "img",
-                  "src": "%icon%"
+            "inner": {
+              "tag": "a",
+              "href": "%booklet%",
+              "inner": [
+                {
+                  "id": "compact-icon",
+                  "inner": {
+                    "tag": "img",
+                    "src": "%icon%"
+                  }
+                },
+                {
+                  "id": "compact-title",
+                  "inner": {
+                    "class": "title",
+                    "inner": "%title%",
+                    "title": "%title%"
+                  }
                 }
-              },
-              {
-                "id": "compact-title",
-                "inner": {
-                  "class": "title",
-                  "inner": "%title%",
-                  "title": "%title%"
-                }
-              }
-            ]
+              ]
+            }
           }
         ]
       },
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/window/resources/default.css" ],
-      "icon": "https://ccmjs.github.io/digital-maker-space/dms/resources/component.png"
+      "icon": "https://ccmjs.github.io/digital-maker-space/dms/resources/component.png",
+      "draggable": true
 
   //  "app": [ "ccm.start", "https://ccmjs.github.io/akless-components/blank/ccm.blank.js" ],
   //  "title": "My App Title",
@@ -136,7 +141,7 @@
           title: $.escapeHTML( this.title || ( this.app && this.app.component.index ) || '' ),
           icon: this.icon,
           compact: () => switchView( false ),
-          window: () => switchView( true ),
+          window: function ( e ) { e.preventDefault(); switchView( true ); },
           fullscreen: () => {
             const elem = this.element.querySelector( '#window-body' );
             if ( elem.requestFullscreen )
@@ -166,7 +171,7 @@
         this.app && $.setContent( this.element.querySelector( '#window-body' ), this.app.root );
 
         // flying mode? => setup draggable
-        if ( this.root.parentNode.parentNode === document.body ) {
+        if ( this.draggable && this.root.parentNode.parentNode === document.body ) {
           let diff_x, diff_y;
           const img = new Image();
           img.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=';
