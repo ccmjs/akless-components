@@ -1,10 +1,10 @@
 /**
  * @overview ccm component for flying windows
- * @author André Kless <andre.kless@web.de> 2018
+ * @author André Kless <andre.kless@web.de> 2019
  * @license The MIT License (MIT)
- * @version latest (1.0.0)
+ * @version 1.0.0
  * @changes
- * version 1.0.0 (17.12.2018)
+ * version 1.0.0 (14.01.2019)
  */
 
 ( function () {
@@ -15,7 +15,7 @@
 
     version: [ 1, 0, 0 ],
 
-    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-18.6.5.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-19.0.0.js',
 
     config: {
 
@@ -74,28 +74,33 @@
           {
             "id": "compact",
             "onclick": "%window%",
-            "inner": [
-              {
-                "id": "compact-icon",
-                "inner": {
-                  "tag": "img",
-                  "src": "%icon%"
+            "inner": {
+              "tag": "a",
+              "href": "%booklet%",
+              "inner": [
+                {
+                  "id": "compact-icon",
+                  "inner": {
+                    "tag": "img",
+                    "src": "%icon%"
+                  }
+                },
+                {
+                  "id": "compact-title",
+                  "inner": {
+                    "class": "title",
+                    "inner": "%title%",
+                    "title": "%title%"
+                  }
                 }
-              },
-              {
-                "id": "compact-title",
-                "inner": {
-                  "class": "title",
-                  "inner": "%title%",
-                  "title": "%title%"
-                }
-              }
-            ]
+              ]
+            }
           }
         ]
       },
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/window/resources/default.css" ],
-      "icon": "https://ccmjs.github.io/digital-maker-space/dms/resources/component.png"
+      "icon": "https://ccmjs.github.io/digital-maker-space/dms/resources/component.png",
+      "draggable": true
 
   //  "app": [ "ccm.start", "https://ccmjs.github.io/akless-components/blank/ccm.blank.js" ],
   //  "title": "My App Title",
@@ -138,7 +143,7 @@
           title: $.escapeHTML( this.title || ( this.app && this.app.component.index ) || '' ),
           icon: this.icon,
           compact: () => switchView( false ),
-          window: () => switchView( true ),
+          window: function ( e ) { e.preventDefault(); switchView( true ); },
           fullscreen: () => {
             const elem = this.element.querySelector( '#window-body' );
             if ( elem.requestFullscreen )
@@ -168,7 +173,7 @@
         this.app && $.setContent( this.element.querySelector( '#window-body' ), this.app.root );
 
         // flying mode? => setup draggable
-        if ( this.root.parentNode.parentNode === document.body ) {
+        if ( this.draggable && this.root.parentNode.parentNode === document.body ) {
           let diff_x, diff_y;
           const img = new Image();
           img.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=';
@@ -197,6 +202,17 @@
         switchView( !this.compact )
 
       };
+
+      /**
+       * returns booklet
+       * @param {Object} [config] - priority data for instance configuration
+       * @returns {string} booklet
+       */
+      this.booklet = config => $.format( 'javascript:!function(){var%20e=document.createElement(%22script%22);e.setAttribute(%22src%22,%22%url%%22),document.head.appendChild(e),e=document.createElement(%22ccm-%index%%22),e.setAttribute(%22key%22,%22%config%%22),document.body.appendChild(e)}();', {
+        url: this.component.url,
+        index: this.component.index,
+        config: encodeURI( ( config ? $.stringify( $.integrate( config, $.parse( this.config ) ) ) : this.config ).replace( /"/g, '\\"' ) )
+      } );
 
     }
 

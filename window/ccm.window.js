@@ -1,10 +1,10 @@
 /**
  * @overview ccm component for flying windows
- * @author André Kless <andre.kless@web.de> 2018
+ * @author André Kless <andre.kless@web.de> 2018-2019
  * @license The MIT License (MIT)
  * @version latest (1.0.0)
  * @changes
- * version 1.0.0 (17.12.2018)
+ * version 1.0.0 (14.01.2019)
  */
 
 ( function () {
@@ -200,6 +200,17 @@
         switchView( !this.compact )
 
       };
+
+      /**
+       * returns booklet
+       * @param {Object} [config] - priority data for instance configuration
+       * @returns {string} booklet
+       */
+      this.booklet = config => $.format( 'javascript:!function(){var%20e=document.createElement(%22script%22);e.setAttribute(%22src%22,%22%url%%22),document.head.appendChild(e),e=document.createElement(%22ccm-%index%%22),e.setAttribute(%22key%22,%22%config%%22),document.body.appendChild(e)}();', {
+        url: this.component.url,
+        index: this.component.index,
+        config: encodeURI( ( config ? $.stringify( $.integrate( config, $.parse( this.config ) ) ) : this.config ).replace( /"/g, '\\"' ) )
+      } );
 
     }
 
