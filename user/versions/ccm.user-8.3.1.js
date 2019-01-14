@@ -4,10 +4,10 @@
  * @license The MIT License (MIT)
  * @version 8.3.1
  * @changes
- * version 8.3.1 (04.01.2019)
+ * version 8.3.1 (14.01.2019)
  * - bug fix for hide/show content of parent instance
  * - bug fix for restore original position of root element
- * - uses ccm v18.6.7
+ * - uses ccm v19.0.0
  * version 8.3.0 (03.11.2018)
  * - added realm 'idento'
  * - uses ccm v18.6.4
@@ -81,7 +81,7 @@
 
     version: [ 8, 3, 1 ],
 
-    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-18.6.7.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-19.0.0.js',
 
     config: {
 
