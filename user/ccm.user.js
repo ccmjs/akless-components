@@ -4,10 +4,12 @@
  * @license The MIT License (MIT)
  * @version latest (8.3.1)
  * @changes
- * version 8.3.1 (14.01.2019)
+ * version 8.3.1 (15.01.2019)
  * - bug fix for hide/show content of parent instance
  * - bug fix for restore original position of root element
  * - uses ccm v19.0.0
+ * - idento realm: send 'NaN' for client hash
+ * - idento realm: removes md5 for password
  * version 8.3.0 (03.11.2018)
  * - added realm 'idento'
  * - uses ccm v18.6.4
@@ -243,7 +245,9 @@
   //  "store": "ccm-user",
   //  "logged_in": true,
   //  "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
-  //  "onchange": event => console.log( 'User has logged ' + ( event ? 'in' : 'out' ) + '.' )
+  //  "onchange": event => console.log( 'User has logged ' + ( event ? 'in' : 'out' ) + '.' ),
+  //  "hash": [ "ccm.load", { "url": "https://ccmjs.github.io/akless-components/modules/md5.js", "type": "module" } ],
+  //  "jquery": [ "ccm.load", "https://ccmjs.github.io/akless-components/libs/jquery/jquery-3.1.1.min.js" ]
 
     },
 
@@ -348,7 +352,7 @@
               result = {
                 email: result.user,
                 password: this.hash ? this.hash.md5( result.token ) : result.token,
-                clientHash: jQuery && await generateClientHash()
+                clientHash: ( this.jQuery && await generateClientHash() ) || 'NaN'
               };
               try {
                 result = await this.ccm.load( { url: this.url + '/login', params: result } );

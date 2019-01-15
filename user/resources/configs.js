@@ -43,9 +43,9 @@ ccm.files[ 'configs.js' ] = {
     "realm": "idento",
     "url": "https://dev.idento.one",
     "title": "[idento.one] Please enter your email and password:",
-    "html.login.inner.0.inner.inner.1.inner.0.inner.0.inner.1.placeholder": "email",
+    "html.login.inner.0.inner.inner.1.inner.0.inner.0.inner.1.placeholder": "email"
 //  "hash": [ "ccm.load", { "url": "https://ccmjs.github.io/akless-components/modules/md5.js", "type": "module" } ],
-    "jquery": [ "ccm.load", "https://ccmjs.github.io/akless-components/libs/jquery/jquery-3.1.1.min.js" ]
+//  "jquery": [ "ccm.load", "https://ccmjs.github.io/akless-components/libs/jquery/jquery-3.1.1.min.js" ]
   },
 
   "hbrsinfkaul": {
