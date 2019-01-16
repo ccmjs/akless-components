@@ -165,7 +165,7 @@
         this.hidden && this.element.querySelector( '#window' ).classList.add( 'hidden' );
 
         // remove unneeded icons
-        !this.component.url && $.removeElement( this.element.querySelector( '#window-link' ) );
+        !this.component.url && !this._url && $.removeElement( this.element.querySelector( '#window-link' ) );
 
         // render app
         this.app && $.setContent( this.element.querySelector( '#window-body' ), this.app.root );
