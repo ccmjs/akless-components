@@ -86,7 +86,9 @@
 
     name: 'submit',
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    version: [ 6, 7, 2 ],
+
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-19.0.0.js',
 
     config: {
 
