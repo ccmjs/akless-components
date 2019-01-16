@@ -75,7 +75,7 @@ a, a:visited, a:hover, a:active {
   min-height: 1em;
 }
 
-#compact {
+#compact a {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -91,7 +91,6 @@ a, a:visited, a:hover, a:active {
 
 #compact-icon {
   border-radius: 5px;
-  background-color: white;
 }
 
 #compact-icon img {

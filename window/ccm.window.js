@@ -4,7 +4,7 @@
  * @license The MIT License (MIT)
  * @version latest (1.0.0)
  * @changes
- * version 1.0.0 (14.01.2019)
+ * version 1.0.0 (16.01.2019)
  */
 
 ( function () {
@@ -153,12 +153,12 @@
             else if ( elem.msRequestFullscreen )     /* IE/Edge */
               elem.msRequestFullscreen();
           },
-          booklet: $.format( 'javascript:!function(){var%20e=document.createElement(%22script%22);e.setAttribute(%22src%22,%22%url%%22),document.head.appendChild(e),e=document.createElement(%22ccm-%index%%22),e.setAttribute(%22key%22,%22%config%%22),document.body.appendChild(e)}();', {
-            url: this.component.url,
+          booklet: $.format( 'javascript:!function(){var%20e=document.createElement(%22script%22);e.setAttribute(%22src%22,%22%url%%22),document.head.appendChild(e),e=document.createElement(%22ccm-%index%%22),e.setAttribute(%22style%22,%22position:absolute;top:0%22),e.setAttribute(%22key%22,%22%config%%22),document.head.appendChild(e)}();', {
+            url: this.component.url || this._url,
             index: this.component.index,
-            config: encodeURI( this.config.replace( /"/g, '\\"' ) )
+            config: encodeURI( $.stringify( $.integrate( { _url: this.component.url }, $.parse( this.config ) ) ).replace( /"/g, '\\"' ) )
           } ),
-          close: () => $.removeElement( this.root )
+          close: () => $.removeElement( this.root.parentNode )
         } ) );
 
         // hidden mode? => hide window elements and show only app
@@ -171,7 +171,7 @@
         this.app && $.setContent( this.element.querySelector( '#window-body' ), this.app.root );
 
         // flying mode? => setup draggable
-        if ( this.draggable && this.root.parentNode.parentNode === document.body ) {
+        if ( this.draggable && this.root.parentNode && this.root.parentNode.parentNode === document.body ) {
           let diff_x, diff_y;
           const img = new Image();
           img.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=';
