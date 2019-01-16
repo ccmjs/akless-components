@@ -105,7 +105,8 @@
   //  "app": [ "ccm.start", "https://ccmjs.github.io/akless-components/blank/ccm.blank.js" ],
   //  "title": "My App Title",
   //  "compact": true,
-  //  "hidden": true
+  //  "hidden": true,
+  //  "url": "https://ccmjs.github.io/akless-components/window/ccm.window.js"
 
     },
 
@@ -118,10 +119,17 @@
         // set shortcut to help functions
         $ = this.ccm.helper;
 
-        // remove no more needed script element
+        // has component URL?
         if ( this.component.url ) {
+
+          // remove no more needed script element
           const element = document.head.querySelector( 'script[src="' + this.component.url + '"]' );
           element && $.removeElement( element );
+
+          // make component URL part of instance configuration
+          this.url = this.component.url;
+          this.config = $.stringify( $.integrate( { url: this.url }, $.parse( this.config ) ) );
+
         }
 
       };
@@ -155,7 +163,7 @@
             else if ( elem.msRequestFullscreen )     /* IE/Edge */
               elem.msRequestFullscreen();
           },
-          booklet: this.booklet( { _url: this.component.url || this._url } ),
+          booklet: this.booklet(),
           close: () => $.removeElement( this.root.parentNode )
         } ) );
 
@@ -163,7 +171,7 @@
         this.hidden && this.element.querySelector( '#window' ).classList.add( 'hidden' );
 
         // remove unneeded icons
-        !this.component.url && !this._url && $.removeElement( this.element.querySelector( '#window-link' ) );
+        !this.url && $.removeElement( this.element.querySelector( '#window-link' ) );
 
         // render app
         this.app && $.setContent( this.element.querySelector( '#window-body' ), this.app.root );
@@ -205,7 +213,7 @@
        * @returns {string} booklet
        */
       this.booklet = config => $.format( 'javascript:!function(){var%20e=document.createElement(%22script%22);e.setAttribute(%22src%22,%22%url%%22),document.head.appendChild(e),e=document.createElement(%22ccm-%index%%22),e.setAttribute(%22style%22,%22position:absolute;top:0%22),e.setAttribute(%22key%22,%22%config%%22),document.body.appendChild(e)}();', {
-        url: this.component.url,
+        url: this.url,
         index: this.component.index,
         config: encodeURI( ( config ? $.stringify( $.integrate( config, $.parse( this.config ) ) ) : this.config ).replace( /"/g, '\\"' ) )
       } );
