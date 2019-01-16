@@ -2,7 +2,7 @@
  * @overview ccm component for building apps
  * @author André Kless <andre.kless@web.de> 2018-2019
  * @license The MIT License (MIT)
- * @version latest (1.2.0)
+ * @version 1.2.0
  * @changes
  * version 1.2.0 (16.01.2019):
  * - added provision of booklet
@@ -27,7 +27,9 @@
 
     name: 'app_builder',
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    version: [ 1, 2, 0 ],
+
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-19.0.0.js',
 
     config: {
 
