@@ -352,7 +352,7 @@
               result = {
                 email: result.user,
                 password: this.hash ? this.hash.md5( result.token ) : result.token,
-                clientHash: ( this.jQuery && await generateClientHash() ) || 'NaN'
+                clientHash: this.jQuery && await generateClientHash() || 'NaN'
               };
               try {
                 result = await this.ccm.load( { url: this.url + '/login', params: result } );
