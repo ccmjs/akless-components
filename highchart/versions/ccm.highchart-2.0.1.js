@@ -29,7 +29,7 @@
 
     name: 'highchart',
 
-    version: [ 2, 0, 0 ],
+    version: [ 2, 0, 1 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-19.0.0.js',
 
