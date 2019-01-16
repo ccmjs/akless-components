@@ -155,7 +155,7 @@
             else if ( elem.msRequestFullscreen )     /* IE/Edge */
               elem.msRequestFullscreen();
           },
-          booklet: $.format( 'javascript:!function(){var%20e=document.createElement(%22script%22);e.setAttribute(%22src%22,%22%url%%22),document.head.appendChild(e),e=document.createElement(%22ccm-%index%%22),e.setAttribute(%22style%22,%22position:absolute;top:0%22),e.setAttribute(%22key%22,%22%config%%22),document.head.appendChild(e)}();', {
+          booklet: $.format( 'javascript:!function(){var%20e=document.createElement(%22script%22);e.setAttribute(%22src%22,%22%url%%22),document.head.appendChild(e),e=document.createElement(%22ccm-%index%%22),e.setAttribute(%22style%22,%22position:absolute;top:0%22),e.setAttribute(%22key%22,%22%config%%22),document.body.appendChild(e)}();', {
             url: this.component.url || this._url,
             index: this.component.index,
             config: encodeURI( $.stringify( $.integrate( { _url: this.component.url }, $.parse( this.config ) ) ).replace( /"/g, '\\"' ) )
