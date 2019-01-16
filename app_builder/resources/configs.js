@@ -38,8 +38,7 @@ ccm.files[ 'configs.js' ] = {
 
   "demo": {
     "key": "demo",
-    "data": { "store": [ "ccm.store", { "name": "quick_decide", "url": "https://ccm2.inf.h-brs.de" } ] },
-    "window": [ "ccm.component", "https://ccmjs.github.io/akless-components/window/versions/ccm.window-1.0.0.js" ]
+    "data": { "store": [ "ccm.store", { "name": "quick_decide", "url": "https://ccm2.inf.h-brs.de" } ] }
   }
 
 };
