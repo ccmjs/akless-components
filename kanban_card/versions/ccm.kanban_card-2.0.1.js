@@ -2,7 +2,7 @@
  * @overview ccm component for kanban card
  * @author André Kless <andre.kless@web.de> 2016-2019
  * @license The MIT License (MIT)
- * @version latest (2.0.1)
+ * @version 2.0.1
  * @changes
  * version 2.0.1 (17.01.2019)
  * - uses ccm v19.0.0
@@ -24,7 +24,9 @@
 
     name: 'kanban_card',
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    version: [ 2, 0, 1 ],
+
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-19.0.0.js',
 
     config: {
 
