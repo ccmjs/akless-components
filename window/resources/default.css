@@ -101,6 +101,7 @@ a, a:visited, a:hover, a:active {
 #compact-title {
   background-color: white;
   border-radius: 5px;
+  padding: 0.1em;
 }
 
 #compact-title > div {
