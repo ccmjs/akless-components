@@ -17,7 +17,7 @@ ccm.files[ 'configs.js' ] = {
       "store": [ "ccm.store", "../quick_decide/resources/configs.js" ],
       "key": "local"
     },
-    "window": [ "ccm.component", "../window/ccm.window.js", [ "ccm.get", "../window/resources/configs.js", "local" ] ],
+    "booklet": [ "ccm.component", "../window/ccm.window.js", [ "ccm.get", "../window/resources/configs.js", "local" ] ],
     "builder": [ "ccm.component", "../submit/ccm.submit.js", [ "ccm.get", { "name": "submit", "url": "https://ccm2.inf.h-brs.de" }, "quick_decide_builder" ] ],
     "app": [ "ccm.component", "../quick_decide/ccm.quick_decide.js" ],
     "user": [ "ccm.instance", "../user/ccm.user.js", [ "ccm.get", "../user/resources/configs.js", "guest" ] ],
@@ -31,7 +31,7 @@ ccm.files[ 'configs.js' ] = {
       { "context": "head", "url": "../libs/bootstrap/css/font-face.css" },
       "../app_builder/resources/default.css"
     ],
-    "window": [ "ccm.component", "../window/ccm.window.js" ],
+    "booklet": [ "ccm.component", "../window/ccm.window.js" ],
     "builder": [ "ccm.component", "../submit/ccm.submit.js", [ "ccm.get", { "name": "submit", "url": "https://ccm2.inf.h-brs.de" }, "quick_decide_builder" ] ],
     "app": [ "ccm.component", "../content/ccm.quick_decide.js" ]
   },

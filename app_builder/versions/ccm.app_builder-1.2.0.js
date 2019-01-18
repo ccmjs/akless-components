@@ -4,7 +4,7 @@
  * @license The MIT License (MIT)
  * @version 1.2.0
  * @changes
- * version 1.2.0 (16.01.2019):
+ * version 1.2.0 (18.01.2019):
  * - added provision of booklet
  * - uses ccm v19.0.0
  * - uses ccm.submit.js v6.7.2
@@ -145,23 +145,28 @@
               ]
             },
             {
-              "tag": "legend",
-              "class": "text-primary",
-              "inner": "Booklet"
-            },
-            {
-              "tag": "p",
-              "class": "text-info",
+              "id": "booklet",
               "inner": [
-                "Add ",
                 {
-                  "tag": "a",
-                  "target": "_blank",
-                  "id": "booklet",
-                  "class": "text-danger",
-                  "inner": "this link"
+                  "tag": "legend",
+                  "class": "text-primary",
+                  "inner": "Booklet"
                 },
-                " to your bookmarks to use the app on-demand in any webpage."
+                {
+                  "tag": "p",
+                  "class": "text-info",
+                  "inner": [
+                    "Add ",
+                    {
+                      "tag": "a",
+                      "target": "_blank",
+                      "id": "booklet-link",
+                      "class": "text-danger",
+                      "inner": "this link"
+                    },
+                    " to your bookmarks to use the app on-demand in any webpage."
+                  ]
+                }
               ]
             }
           ]
@@ -238,7 +243,7 @@
       "warning": "Are you sure you want to delete this App?",
       "builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/submit/versions/ccm.submit-6.7.2.js", [ "ccm.get", { "name": "submit", "url": "https://ccm2.inf.h-brs.de" }, "quick_decide_builder" ] ],
       "app": [ "ccm.component", "https://ccmjs.github.io/akless-components/quick_decide/versions/ccm.quick_decide-1.3.0.js" ],
-      "window": [ "ccm.component", "https://ccmjs.github.io/akless-components/window/versions/ccm.window-1.0.0.js" ]
+      "booklet": [ "ccm.component", "https://ccmjs.github.io/akless-components/window/versions/ccm.window-1.0.0.js" ]
 
   //  "convert": { "app_to_builder": json => json, "builder_to_app": json => json },
   //  "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-8.3.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "guest" ] ],
@@ -507,14 +512,19 @@
           // activate "Update" and "Delete" button
           !isLocalStore && buttons_elem.querySelectorAll( '.disabled' ).forEach( button => button.classList.remove( 'disabled' ) );
 
-          // render app usage informations
+          // render app usage information
           $.setContent( advance_elem, $.html( self.html.usage ) );
           advance_elem.querySelector( '#embed_code' ).innerHTML = getEmbedCode();
           advance_elem.querySelector( '#id'         ).innerHTML = app_id;
-          advance_elem.querySelector( '#booklet' ).setAttribute( 'href', ( await self.window.instance( {
-            app: [ 'ccm.start', self.app.url, self.getValue() ],
-            icon: 'https://ccmjs.github.io/akless-components/dms/resources/component.png'
-          } ) ).booklet() );
+
+          // provision of booklet
+          if ( self.booklet )
+            advance_elem.querySelector( '#booklet-link' ).setAttribute( 'href', ( await self.booklet.instance( {
+              app: [ 'ccm.start', self.app.url, self.getValue() ],
+              icon: 'https://ccmjs.github.io/akless-components/dms/resources/component.png'
+            } ) ).booklet() );
+          else
+            $.removeElement( self.element.querySelector( '#booklet' ) );
 
           // fade out the success message
           fadeOut( advance_elem.querySelector( '#success' ) );
