@@ -6,21 +6,18 @@
 
 #element {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  height: 100%;
-  display: flex;
 }
 
-#main {
-  margin: auto;
-  padding: 0 0.5em;
+#main > * {
+  margin: 0.5em 0;
 }
 
-#main > div {
-  padding: 0.5em 0;
+#main > * > *:not(table) {
+  margin: 0 0.5em;
 }
 
-#title h2 {
-  white-space: nowrap;
+#store:not(.active) {
+  display: none;
 }
 
 #title small {
@@ -44,17 +41,20 @@
 }
 
 #back {
-  margin-left: -0.75em;
   color: #6c757d;
+  padding-left: 0;
 }
 
 #editor {
-  margin: 0 -0.5em;
+  margin: -0.5em 0 !important;
 }
 
-#store:not(.active),
-#dataset:not(.active) {
-  display: none;
+* {
+  white-space: nowrap;
+}
+
+table {
+  margin-bottom: 0 !important;
 }
 
 button {

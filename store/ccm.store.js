@@ -45,6 +45,7 @@
                       },
                       {
                         "tag": "button",
+                        "id": "clear",
                         "class": "btn btn-sm btn-secondary",
                         "inner": "Clear All",
                         "onclick": "%onclear%"
@@ -57,14 +58,15 @@
                   "class": "table table-striped table-hover",
                   "inner": [
                     {
-                      "tag": "caption",
-                      "inner": "List of all accessible data sets of the data store."
-                    },
-                    {
                       "tag": "tbody",
                       "id": "entries"
                     }
                   ]
+                },
+                {
+                  "tag": "caption",
+                  "id": "caption",
+                  "inner": "List of all accessible data sets of the data store."
                 }
               ]
             },
@@ -99,6 +101,7 @@
           ]
         },
         "dataset": {
+          "id": "dataset",
           "inner": [
             {
               "id": "back",
@@ -127,6 +130,7 @@
                   },
                   {
                     "tag": "button",
+                    "id": "del",
                     "class": "btn btn-sm btn-danger",
                     "inner": "Delete",
                     "onclick": "%ondel%"
@@ -143,6 +147,7 @@
         "store": [ "ccm.store" ],
         "key": {}
       },
+      "empty": "There are currently no accessible data sets in this data store.",
       "builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-1.2.0.js", { "html.inner.1": "", "directly": true } ]
 
   //  "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-8.3.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "guest" ] ],
@@ -178,9 +183,43 @@
         // render main HTML structure
         $.setContent( this.element, $.html( this.html.main, {
           store: this.data.store.source().name,
-          oncreate: () => console.log( 'new!' ),
-          onclear: () => console.log( 'clear!' )
+          oncreate: async () => {
+            this.element.querySelector( '.active' ).classList.remove( 'active' );
+            const dataset = { key: $.generateKey() };
+            $.replace( this.element.querySelector( '#dataset' ), $.html( this.html.dataset, {
+              key: dataset.key,
+              onback: this.start,
+              onsave: async event => {
+                if ( event.target.classList.contains( 'disabled' ) ) return;
+                await this.data.store.set( editor.getValue() );
+                alert( 'Saved!' );
+                await this.start();
+              }
+            } ) );
+            const dataset_elem = this.element.querySelector( '#dataset' );
+            $.removeElement( dataset_elem.querySelector( '#del' ) );
+            const editor = await this.builder.start( {
+              root: this.element.querySelector( '#editor' ),
+              data: dataset,
+              oninput: function () { dataset_elem.querySelector( '#save' ).classList[ this.isValid() ? 'remove' : 'add' ]( 'disabled' ) }
+            } );
+            dataset_elem.classList.add( 'active' );
+          },
+          onclear: async event => {
+            if ( !confirm( 'Are you sure?' ) ) return;
+            await $.asyncForEach( datasets, dataset => this.data.store.del( dataset.key ) );
+            alert( 'Cleared!' );
+            await this.start();
+          }
         } ) );
+
+        if ( this.user && this.element.querySelector( '#user' ) )
+          $.setContent( this.element.querySelector( '#user' ), this.user.root );
+
+        if ( !datasets.length ) {
+          $.removeElement( this.element.querySelector( '#clear' ) );
+          $.setContent( this.element.querySelector( '#caption' ), this.empty );
+        }
 
         datasets.forEach( dataset => {
           const del = async () => {
@@ -192,9 +231,8 @@
           $.append( this.element.querySelector( '#entries' ), $.html( this.html.entry, {
             key: dataset.key,
             onedit: async () => {
-              const dataset_elem = this.element.querySelector( '#dataset' );
               this.element.querySelector( '.active' ).classList.remove( 'active' );
-              $.setContent( this.element.querySelector( '#dataset' ), $.html( this.html.dataset, {
+              $.replace( this.element.querySelector( '#dataset' ), $.html( this.html.dataset, {
                 key: dataset.key,
                 onback: this.start,
                 onsave: async event => {
@@ -204,11 +242,12 @@
                 },
                 ondel: del
               } ) );
+              const dataset_elem = this.element.querySelector( '#dataset' );
               const editor = await this.builder.start( {
+                root: this.element.querySelector( '#editor' ),
                 data: dataset,
                 oninput: function () { dataset_elem.querySelector( '#save' ).classList[ this.isValid() ? 'remove' : 'add' ]( 'disabled' ) }
               } );
-              $.setContent( this.element.querySelector( '#editor' ), editor.root );
               dataset_elem.classList.add( 'active' );
             },
             ondel: del
