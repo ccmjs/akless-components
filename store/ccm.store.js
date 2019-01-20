@@ -220,7 +220,7 @@
             const editor = await this.builder.start( {
               root: this.element.querySelector( '#editor' ),
               data: dataset,
-              oninput: function () { self.element.querySelector( '#save' ).classList[ this.isValid() ? 'remove' : 'add' ]( 'disabled' ); }
+              oninput: function () { self.element.querySelector( '#save' ).classList[ this.isValid() && $.stringify( this.getValue() ) !== $.stringify( dataset ) ? 'remove' : 'add' ]( 'disabled' ); }
             } );
 
           },
@@ -340,11 +340,14 @@
                 ondel: del
               } ) );
 
+              // disable 'Save' button (because nothing has changed yet)
+              this.element.querySelector( '#save' ).classList.add( 'disabled' );
+
               // render editor
               const editor = await this.builder.start( {
                 root: this.element.querySelector( '#editor' ),
                 data: dataset,
-                oninput: function () { self.element.querySelector( '#save' ).classList[ this.isValid() ? 'remove' : 'add' ]( 'disabled' ); }
+                oninput: function () { self.element.querySelector( '#save' ).classList[ this.isValid() && $.stringify( this.getValue() ) !== $.stringify( dataset ) ? 'remove' : 'add' ]( 'disabled' ); }
               } );
 
             },
