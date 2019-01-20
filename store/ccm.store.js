@@ -119,7 +119,9 @@
                   {
                     "tag": "small",
                     "class": "text-primary",
-                    "inner": "%key%"
+                    "inner": "%key%",
+                    "contenteditable": true,
+                    "onblur": "%onrename%"
                   },
                   {
                     "tag": "button",
@@ -235,6 +237,19 @@
               $.replace( this.element.querySelector( '#dataset' ), $.html( this.html.dataset, {
                 key: dataset.key,
                 onback: this.start,
+                onrename: async event => {
+                  const new_key = event.target.innerHTML = event.target.innerText.trim();
+                  const old_key = dataset.key;
+                  if ( new_key === dataset.key ) return;
+                  if ( !$.regex( 'key' ).test( new_key ) ) { alert( 'Invalid Key' ); event.target.innerHTML = old_key; return; }
+                  if ( !confirm( 'Are you sure?' ) ) return event.target.innerHTML = old_key;
+                  if ( await this.data.store.get( new_key ) )
+                    if ( !confirm( 'Already exists. Overwrite?' ) ) return event.target.innerHTML = old_key;
+                  dataset.key = new_key;
+                  await this.data.store.set( dataset );
+                  await this.data.store.del( old_key );
+                  alert( 'Saved!' );
+                },
                 onsave: async event => {
                   if ( event.target.classList.contains( 'disabled' ) ) return;
                   await this.data.store.set( editor.getValue() );
