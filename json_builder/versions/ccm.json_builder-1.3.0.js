@@ -2,7 +2,7 @@
  * @overview ccm component for JSON builder
  * @author André Kless <andre.kless@web.de> 2018-2019
  * @license The MIT License (MIT)
- * @version latest (1.3.0)
+ * @version 1.3.0
  * @changes
  * version 1.3.0 (20.01.2019):
  * - added instance method 'isValid():boolean'
@@ -22,7 +22,9 @@
 
     name: 'json_builder',
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    version: [ 1, 3, 0 ],
+
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-19.0.0.js',
 
     config: {
 
