@@ -1,0 +1,66 @@
+/**
+ * @overview default layout of ccm component for managing a data store
+ * @author André Kless <andre.kless@web.de.de> 2019
+ * @license The MIT License (MIT)
+ */
+
+#element {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  height: 100%;
+  display: flex;
+}
+
+#main {
+  margin: auto;
+  padding: 0 0.5em;
+}
+
+#main > div {
+  padding: 0.5em 0;
+}
+
+#title h2 {
+  white-space: nowrap;
+}
+
+#title small {
+  margin: 0 0.5em;
+}
+
+#title button {
+  margin-bottom: 0.5em !important;
+}
+
+#entries td {
+  vertical-align: middle !important;
+}
+
+#entries td:first-child {
+  font-size: 120%;
+}
+
+#entries td:last-child {
+  text-align: right;
+}
+
+#back {
+  margin-left: -0.75em;
+  color: #6c757d;
+}
+
+#editor {
+  margin: 0 -0.5em;
+}
+
+#store:not(.active),
+#dataset:not(.active) {
+  display: none;
+}
+
+button {
+  margin-left: 0.5em !important;
+}
+
+button.disabled {
+  cursor: not-allowed;
+}
