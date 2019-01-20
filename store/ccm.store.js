@@ -147,6 +147,7 @@
       },
       "empty": "There are currently no accessible data sets in this data store.",
       "wrong": "Something went wrong.",
+      "overwrite": "Already exists. Overwrite?",
       "builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-1.2.0.js", { "html.inner.1": "", "directly": true } ]
 
   //  "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-8.3.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "guest" ] ],
@@ -156,7 +157,7 @@
 
     Instance: function () {
 
-      let $;
+      let $; const self = this;
 
       this.ready = async () => {
 
@@ -219,7 +220,7 @@
             const editor = await this.builder.start( {
               root: this.element.querySelector( '#editor' ),
               data: dataset,
-              oninput: () => this.element.querySelector( '#save' ).classList[ editor.isValid() ? 'remove' : 'add' ]( 'disabled' )
+              oninput: function () { self.element.querySelector( '#save' ).classList[ this.isValid() ? 'remove' : 'add' ]( 'disabled' ); }
             } );
 
           },
@@ -278,17 +279,48 @@
                 editable: true,
                 onback: this.start,
                 onrename: async event => {
+
+                  /**
+                   * new dataset key
+                   * @type {string}
+                   */
                   const new_key = event.target.innerHTML = event.target.innerText.trim();
+
+                  /**
+                   * old dataset key
+                   * @type {string}
+                   */
                   const old_key = dataset.key;
-                  if ( new_key === dataset.key ) return;
+
+                  // key has not changed? => abort
+                  if ( new_key === old_key ) return;
+
+                  // invalid key? => abort (inform user and restore original key)
                   if ( !$.regex( 'key' ).test( new_key ) ) { alert( 'Invalid Key' ); event.target.innerHTML = old_key; return; }
+
+                  // make sure user knows what he is doing (abort => restore original key)
                   if ( !confirm( 'Are you sure?' ) ) return event.target.innerHTML = old_key;
+
+                  // new dataset key already exists? => let user decide (abort => restore original key)
                   if ( await this.data.store.get( new_key ) )
-                    if ( !confirm( 'Already exists. Overwrite?' ) ) return event.target.innerHTML = old_key;
+                    if ( !confirm( this.overwrite ) ) return event.target.innerHTML = old_key;
+
+                  // set dataset with new key in data store
                   dataset.key = new_key;
-                  await this.data.store.set( dataset );
-                  await this.data.store.del( old_key );
-                  alert( 'Saved!' );
+                  let result = await this.data.store.set( dataset );
+
+                  // result is no dataset key? => something went wrong
+                  if ( !$.isKey( result ) ) return alert( this.wrong );
+
+                  // delete dataset with old key in datastore
+                  result = await this.data.store.del( old_key );
+
+                  // result is not 'true'? => something went wrong
+                  if ( result !== true ) return alert( this.wrong );
+
+                  alert( 'Saved!' );  // success message
+                  this.start();       // restart app
+
                 },
                 onsave: async event => {
 
@@ -312,7 +344,7 @@
               const editor = await this.builder.start( {
                 root: this.element.querySelector( '#editor' ),
                 data: dataset,
-                oninput: () => this.element.querySelector( '#save' ).classList[ editor.isValid() ? 'remove' : 'add' ]( 'disabled' )
+                oninput: function () { self.element.querySelector( '#save' ).classList[ this.isValid() ? 'remove' : 'add' ]( 'disabled' ); }
               } );
 
             },
