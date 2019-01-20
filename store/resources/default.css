@@ -16,12 +16,13 @@
   margin: 0 0.5em;
 }
 
-#store:not(.active) {
-  display: none;
-}
-
 #title small {
   margin: 0 0.5em;
+}
+
+#title small:empty:before {
+  font-style: italic;
+  content: 'Local Cache'
 }
 
 #title button {

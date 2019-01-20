@@ -2,9 +2,9 @@
  * @overview ccm component for managing a data store
  * @author André Kless <andre.kless@web.de> 2019
  * @license The MIT License (MIT)
- * @version latest (1.0.0)
+ * @version 1.0.0
  * @changes
- * version 1.0.0 (20.01.2019)
+ * version 1.0.0 (21.01.2019)
  */
 
 ( function () {
@@ -20,58 +20,54 @@
       "html": {
         "main": {
           "id": "main",
-          "inner": [
-            {
-              "id": "store",
-              "class": "active",
-              "inner": [
-                {
-                  "id": "title",
-                  "class": "page-header",
-                  "inner": {
-                    "tag": "h2",
-                    "inner": [
-                      "Data Store",
-                      {
-                        "tag": "small",
-                        "class": "text-primary",
-                        "inner": "%store%"
-                      },
-                      {
-                        "tag": "button",
-                        "class": "btn btn-sm btn-success",
-                        "inner": "Create Dataset",
-                        "onclick": "%oncreate%"
-                      },
-                      {
-                        "tag": "button",
-                        "id": "clear",
-                        "class": "btn btn-sm btn-secondary",
-                        "inner": "Clear All",
-                        "onclick": "%onclear%"
-                      }
-                    ]
-                  }
-                },
-                {
-                  "tag": "table",
-                  "class": "table table-striped table-hover",
+          "inner": {
+            "id": "store",
+            "inner": [
+              {
+                "id": "title",
+                "class": "page-header",
+                "inner": {
+                  "tag": "h2",
                   "inner": [
+                    "Data Store",
                     {
-                      "tag": "tbody",
-                      "id": "entries"
+                      "tag": "small",
+                      "class": "text-primary",
+                      "inner": "%store%"
+                    },
+                    {
+                      "tag": "button",
+                      "class": "btn btn-sm btn-success",
+                      "inner": "Create Dataset",
+                      "onclick": "%oncreate%"
+                    },
+                    {
+                      "tag": "button",
+                      "id": "clear",
+                      "class": "btn btn-sm btn-secondary",
+                      "inner": "Clear All",
+                      "onclick": "%onclear%"
                     }
                   ]
-                },
-                {
-                  "tag": "caption",
-                  "id": "caption",
-                  "inner": "List of all accessible data sets of the data store."
                 }
-              ]
-            },
-            { "id": "dataset" }
-          ]
+              },
+              {
+                "tag": "table",
+                "class": "table table-striped table-hover",
+                "inner": [
+                  {
+                    "tag": "tbody",
+                    "id": "entries"
+                  }
+                ]
+              },
+              {
+                "tag": "caption",
+                "id": "caption",
+                "inner": "List of all accessible data sets of the data store."
+              }
+            ]
+          }
         },
         "entry": {
           "tag": "tr",
@@ -120,7 +116,7 @@
                     "tag": "small",
                     "class": "text-primary",
                     "inner": "%key%",
-                    "contenteditable": true,
+                    "contenteditable": "%editable%",
                     "onblur": "%onrename%"
                   },
                   {
@@ -150,6 +146,7 @@
         "key": {}
       },
       "empty": "There are currently no accessible data sets in this data store.",
+      "wrong": "Something went wrong.",
       "builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-1.2.0.js", { "html.inner.1": "", "directly": true } ]
 
   //  "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-8.3.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "guest" ] ],
@@ -186,56 +183,99 @@
         $.setContent( this.element, $.html( this.html.main, {
           store: this.data.store.source().name,
           oncreate: async () => {
-            this.element.querySelector( '.active' ).classList.remove( 'active' );
+
+            /**
+             * new dataset with generated unique key
+             * @type {ccm.types.dataset}
+             */
             const dataset = { key: $.generateKey() };
-            $.replace( this.element.querySelector( '#dataset' ), $.html( this.html.dataset, {
+
+            // render dataset view
+            $.setContent( this.element.querySelector( '#main' ), $.html( this.html.dataset, {
               key: dataset.key,
+              editable: false,
               onback: this.start,
               onsave: async event => {
+
+                // button is disabled? => abort
                 if ( event.target.classList.contains( 'disabled' ) ) return;
-                await this.data.store.set( editor.getValue() );
-                alert( 'Saved!' );
-                await this.start();
+
+                // create dataset in datastore
+                const result = await this.data.store.set( editor.getValue() );
+
+                // result is no dataset key? => something went wrong
+                if ( !$.isKey( result ) ) return alert( this.wrong );
+
+                alert( 'Saved!' );    // success message
+                await this.start();   // restart app
+
               }
             } ) );
-            const dataset_elem = this.element.querySelector( '#dataset' );
-            $.removeElement( dataset_elem.querySelector( '#del' ) );
+
+            // remove no needed 'Delete' button
+            $.removeElement( this.element.querySelector( '#del' ) );
+
+            // render editor
             const editor = await this.builder.start( {
               root: this.element.querySelector( '#editor' ),
               data: dataset,
-              oninput: function () { dataset_elem.querySelector( '#save' ).classList[ this.isValid() ? 'remove' : 'add' ]( 'disabled' ) }
+              oninput: () => this.element.querySelector( '#save' ).classList[ editor.isValid() ? 'remove' : 'add' ]( 'disabled' )
             } );
-            dataset_elem.classList.add( 'active' );
+
           },
           onclear: async event => {
+
+            // make sure user knows what he is doing
             if ( !confirm( 'Are you sure?' ) ) return;
+
+            // delete all accessible datasets
             await $.asyncForEach( datasets, dataset => this.data.store.del( dataset.key ) );
-            alert( 'Cleared!' );
-            await this.start();
+
+            alert( 'Cleared!' );  // success message
+            await this.start();   // restart app
+
           }
         } ) );
 
-        if ( this.user && this.element.querySelector( '#user' ) )
-          $.setContent( this.element.querySelector( '#user' ), this.user.root );
-
+        // empty datastore? => remove no needed clear button and change table caption
         if ( !datasets.length ) {
           $.removeElement( this.element.querySelector( '#clear' ) );
           $.setContent( this.element.querySelector( '#caption' ), this.empty );
         }
 
+        // render table dataset entries
         datasets.forEach( dataset => {
+
+          /**
+           * deletes dataset in datastore
+           * @type {function}
+           * @returns {Promise<void>}
+           */
           const del = async () => {
+
+            // make sure user knows what he is doing
             if ( !confirm( 'Are you sure?' ) ) return;
-            await this.data.store.del( dataset.key );
-            alert( 'Deleted!' );
-            await this.start();
+
+            // delete dataset in datastore
+            const result = await this.data.store.del( dataset.key );
+
+            // result is not 'true'? => something went wrong
+            if ( result !== true ) return alert( this.wrong );
+
+            alert( 'Deleted!' );  // success message
+            await this.start();   // restart app
+
           };
+
+          // add dataset entry in table
           $.append( this.element.querySelector( '#entries' ), $.html( this.html.entry, {
             key: dataset.key,
             onedit: async () => {
-              this.element.querySelector( '.active' ).classList.remove( 'active' );
-              $.replace( this.element.querySelector( '#dataset' ), $.html( this.html.dataset, {
+
+              // render dataset view
+              $.setContent( this.element.querySelector( '#main' ), $.html( this.html.dataset, {
                 key: dataset.key,
+                editable: true,
                 onback: this.start,
                 onrename: async event => {
                   const new_key = event.target.innerHTML = event.target.innerText.trim();
@@ -251,22 +291,34 @@
                   alert( 'Saved!' );
                 },
                 onsave: async event => {
+
+                  // button is disables? => abort
                   if ( event.target.classList.contains( 'disabled' ) ) return;
-                  await this.data.store.set( editor.getValue() );
-                  alert( 'Saved!' );
+
+                  // update dataset in datastore
+                  const result = await this.data.store.set( editor.getValue() );
+
+                  // result is no dataset key? => something went wrong
+                  if ( !$.isKey( result ) ) return alert( this.wrong );
+
+                  alert( 'Saved!' );  // success message
+                  this.start();       // restart app
+
                 },
                 ondel: del
               } ) );
-              const dataset_elem = this.element.querySelector( '#dataset' );
+
+              // render editor
               const editor = await this.builder.start( {
                 root: this.element.querySelector( '#editor' ),
                 data: dataset,
-                oninput: function () { dataset_elem.querySelector( '#save' ).classList[ this.isValid() ? 'remove' : 'add' ]( 'disabled' ) }
+                oninput: () => this.element.querySelector( '#save' ).classList[ editor.isValid() ? 'remove' : 'add' ]( 'disabled' )
               } );
-              dataset_elem.classList.add( 'active' );
+
             },
             ondel: del
           } ) );
+
         } );
 
       };
