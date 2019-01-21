@@ -198,35 +198,17 @@
               key: dataset.key,
               editable: false,
               onback: this.start,
-              onsave: async event => {
-
-                // button is disabled? => abort
-                if ( event.target.classList.contains( 'disabled' ) ) return;
-
-                // create dataset in datastore
-                const result = await this.data.store.set( editor.getValue() );
-
-                // result is no dataset key? => something went wrong
-                if ( !$.isKey( result ) ) return alert( this.wrong );
-
-                alert( 'Saved!' );    // success message
-                await this.start();   // restart app
-
-              }
+              onsave: event => save( event.target, editor )
             } ) );
 
             // remove no needed 'Delete' button
             $.removeElement( this.element.querySelector( '#del' ) );
 
             // render editor
-            const editor = await this.builder.start( {
-              root: this.element.querySelector( '#editor' ),
-              data: dataset,
-              oninput: function () { self.element.querySelector( '#save' ).classList[ this.isValid() && $.stringify( this.getValue() ) !== $.stringify( dataset ) ? 'remove' : 'add' ]( 'disabled' ); }
-            } );
+            const editor = await renderEditor( dataset );
 
           },
-          onclear: async event => {
+          onclear: async () => {
 
             // make sure user knows what he is doing
             if ( !confirm( 'Are you sure?' ) ) return;
@@ -324,21 +306,7 @@
                   this.start();       // restart app
 
                 },
-                onsave: async event => {
-
-                  // button is disables? => abort
-                  if ( event.target.classList.contains( 'disabled' ) ) return;
-
-                  // update dataset in datastore
-                  const result = await this.data.store.set( editor.getValue() );
-
-                  // result is no dataset key? => something went wrong
-                  if ( !$.isKey( result ) ) return alert( this.wrong );
-
-                  alert( 'Saved!' );  // success message
-                  this.start();       // restart app
-
-                },
+                onsave: event => save( event.target, editor ),
                 ondel: del
               } ) );
 
@@ -346,17 +314,55 @@
               this.element.querySelector( '#save' ).classList.add( 'disabled' );
 
               // render editor
-              const editor = await this.builder.start( {
-                root: this.element.querySelector( '#editor' ),
-                data: dataset,
-                oninput: function () { self.element.querySelector( '#save' ).classList[ this.isValid() && $.stringify( this.getValue() ) !== $.stringify( dataset ) ? 'remove' : 'add' ]( 'disabled' ); }
-              } );
+              const editor = await renderEditor( dataset );
 
             },
             ondel: del
           } ) );
 
         } );
+
+        /**
+         * creates/updates dataset in datastore
+         * @param {Element} button - clicked save button
+         * @param {ccm.types.instance} editor - dataset editor
+         * @returns {Promise<void>}
+         */
+        async function save( button, editor ) {
+
+          // button is disabled? => abort
+          if ( button.classList.contains( 'disabled' ) ) return;
+
+          // create/update dataset in datastore
+          const result = await self.data.store.set( editor.getValue() );
+
+          // result is no dataset key? => something went wrong
+          if ( !$.isKey( result ) ) return alert( this.wrong );
+
+          alert( 'Saved!' );    // success message
+          await self.start();   // restart app
+
+        }
+
+        /**
+         * renders dataset editor
+         * @param {ccm.types.dataset} dataset
+         * @returns {Promise<ccm.types.instance>}
+         */
+        async function renderEditor( dataset ) {
+
+          const local = {}; local[ dataset.key ] = dataset;
+
+          return self.builder.start( {
+            root: self.element.querySelector( '#editor' ),
+            data: {
+              store: [ 'ccm.store', { local: local } ],
+              key: dataset.key
+            },
+            oninput: function () { self.element.querySelector( '#save' ).classList[ this.isValid() && $.stringify( this.getValue() ) !== $.stringify( dataset ) ? 'remove' : 'add' ]( 'disabled' ); }
+          } );
+
+        }
 
       };
 
