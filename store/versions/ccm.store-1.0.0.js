@@ -66,7 +66,7 @@
               {
                 "tag": "caption",
                 "id": "caption",
-                "inner": "List of all accessible data sets of the data store."
+                "inner": "List of all accessible data sets of this data store."
               }
             ]
           }
