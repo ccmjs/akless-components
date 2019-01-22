@@ -196,7 +196,7 @@
               key: dataset.key,
               editable: false,
               onback: this.start,
-              onsave: event => save( event.target, editor )
+              onsave: event => save( event.target, editor.getValue() )
             } ) );
 
             // remove no needed 'Delete' button
@@ -304,7 +304,7 @@
                   this.start();       // restart app
 
                 },
-                onsave: event => save( event.target, editor ),
+                onsave: event => save( event.target, editor.getValue() ),
                 ondel: del
               } ) );
 
@@ -321,18 +321,24 @@
         } );
 
         /**
-         * creates/updates dataset in datastore
+         * saves dataset in datastore
          * @param {Element} button - clicked save button
-         * @param {ccm.types.instance} editor - dataset editor
+         * @param {ccm.types.dataset} dataset
          * @returns {Promise<void>}
          */
-        async function save( button, editor ) {
+        async function save( button, dataset ) {
 
           // button is disabled? => abort
           if ( button.classList.contains( 'disabled' ) ) return;
 
-          // create/update dataset in datastore
-          const result = await self.data.store.set( editor.getValue() );
+          // delete old version of dataset in datastore
+          let result = await self.data.store.del( dataset.key );
+
+          // result is not 'true'? => something went wrong
+          if ( result !== true ) return alert( this.wrong );
+
+          // set dataset with new key in data store
+          result = await self.data.store.set( dataset );
 
           // result is no dataset key? => something went wrong
           if ( !$.isKey( result ) ) return alert( this.wrong );
