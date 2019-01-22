@@ -1,6 +1,6 @@
 /**
  * @overview configurations of ccm component for rendering a "Highchart.js" chart
- * @author André Kless <andre.kless@web.de> 2017-2018
+ * @author André Kless <andre.kless@web.de> 2017-2019
  * @license The MIT License (MIT)
  */
 
@@ -8,7 +8,6 @@ ccm.files[ 'configs.js' ] = {
 
   "local": {
     "key": "local",
-    "lib": [ "ccm.load", "../libs/highcharts/highcharts.js" ],
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
     "settings": {
       "title": {
@@ -419,8 +418,8 @@ ccm.files[ 'configs.js' ] = {
     }
   },
 
-  "semi-circle-donut": {
-    "key": "semi-circle-donut",
+  "semi_circle_donut": {
+    "key": "semi_circle_donut",
     "settings": {
       "chart": {
         "plotBackgroundColor": null,
@@ -658,10 +657,7 @@ ccm.files[ 'configs.js' ] = {
 
   "bubble": {
     "key": "bubble",
-    "lib": [ "ccm.load", [
-      "https://ccmjs.github.io/akless-components/libs/highcharts/highcharts.js",
-      "https://ccmjs.github.io/akless-components/libs/highcharts/highcharts-more.js"
-    ] ],
+    "lib": [ "ccm.load", "https://ccmjs.github.io/akless-components/libs/highcharts/highcharts-more.js" ],
     "settings": {
       "chart": {
         "type": "bubble",
@@ -772,10 +768,7 @@ ccm.files[ 'configs.js' ] = {
 
   "heatmap": {
     "key": "heatmap",
-    "lib": [ "ccm.load", [
-      "https://ccmjs.github.io/akless-components/libs/highcharts/highcharts.js",
-      "https://ccmjs.github.io/akless-components/libs/highcharts/heatmap.js"
-    ] ],
+    "lib": [ "ccm.load", "https://ccmjs.github.io/akless-components/libs/highcharts/heatmap.js" ],
     "settings": {
       "chart": {
         "type": "heatmap",
@@ -874,11 +867,7 @@ ccm.files[ 'configs.js' ] = {
 
   "spiderweb": {
     "key": "spiderweb",
-    "lib": [ "ccm.load", [
-      "https://ccmjs.github.io/akless-components/libs/jquery/jquery-3.1.1.min.js",
-      "https://ccmjs.github.io/akless-components/libs/highcharts/highcharts.js",
-      "https://ccmjs.github.io/akless-components/libs/highcharts/highcharts-more.js"
-    ] ],
+    "lib": [ "ccm.load", "https://ccmjs.github.io/akless-components/libs/highcharts/highcharts-more.js" ],
     "settings": {
       "chart": {
         "polar": true,
@@ -928,10 +917,7 @@ ccm.files[ 'configs.js' ] = {
 
   "boxplot": {
     "key": "boxplot",
-    "lib": [ "ccm.load", [
-      "https://ccmjs.github.io/akless-components/libs/highcharts/highcharts.js",
-      "https://ccmjs.github.io/akless-components/libs/highcharts/highcharts-more.js"
-    ] ],
+    "lib": [ "ccm.load", "https://ccmjs.github.io/akless-components/libs/highcharts/highcharts-more.js" ],
     "settings": {
       "chart": {
         "type": "boxplot"
@@ -1006,10 +992,7 @@ ccm.files[ 'configs.js' ] = {
 
   "histogram": {
     "key": "histogram",
-    "lib": [ "ccm.load", [
-      "https://ccmjs.github.io/akless-components/libs/highcharts/highcharts.js",
-      "https://ccmjs.github.io/akless-components/libs/highcharts/histogram-bellcurve.js"
-    ] ],
+    "lib": [ "ccm.load", "https://ccmjs.github.io/akless-components/libs/highcharts/histogram-bellcurve.js" ],
     "settings": {
       "title": {
         "text": "Highcharts Histogram"
@@ -1058,10 +1041,7 @@ ccm.files[ 'configs.js' ] = {
 
   "pyramid": {
     "key": "pyramid",
-    "lib": [ "ccm.load", [
-      "https://ccmjs.github.io/akless-components/libs/highcharts/highcharts.js",
-      "https://ccmjs.github.io/akless-components/libs/highcharts/funnel.js"
-    ] ],
+    "lib": [ "ccm.load", "https://ccmjs.github.io/akless-components/libs/highcharts/funnel.js" ],
     "settings": {
       "chart": {
         "type": "pyramid"
@@ -1102,10 +1082,7 @@ ccm.files[ 'configs.js' ] = {
 
   "xrange": {
     "key": "xrange",
-    "lib": [ "ccm.load", [
-      "https://ccmjs.github.io/akless-components/libs/highcharts/highcharts.js",
-      "https://ccmjs.github.io/akless-components/libs/highcharts/xrange.js"
-    ] ],
+    "lib": [ "ccm.load", "https://ccmjs.github.io/akless-components/libs/highcharts/xrange.js" ],
     "settings": {
       "chart": {
         "type": "xrange"
