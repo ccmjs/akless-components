@@ -4,8 +4,9 @@
  * @license The MIT License (MIT)
  * @version latest (1.2.0)
  * @changes
- * version 1.2.0 (18.01.2019):
+ * version 1.2.0 (23.01.2019):
  * - added provision of booklet
+ * - disabled Update and Delete button when starting with new app configuration
  * - uses ccm v19.0.0
  * - uses ccm.submit.js v6.7.2
  * version 1.1.2 (04.01.2019):
@@ -328,7 +329,13 @@
          * app configuration is managed in a local JavaScript object
          * @type {boolean}
          */
-        const isLocalStore = !this.data.store.source().name;
+        const is_local = !this.data.store.source().name;
+
+        /**
+         * starting with new app configuration
+         * @type {boolean}
+         */
+        let is_new = !Object.keys( dataset ).length;
 
         // render initial app state
         await renderApp();
@@ -350,7 +357,7 @@
           } );
 
           // activate "Update" and "Delete" button
-          !isLocalStore && [ ...buttons_elem.querySelectorAll( '.disabled' ) ].map( button => button.classList.remove( 'disabled' ) );
+          !is_local && !is_new && buttons_elem.querySelectorAll( '.disabled' ).forEach( button => button.classList.remove( 'disabled' ) );
 
           // update preview of build app
           await updatePreview();
@@ -419,6 +426,9 @@
               // remember App-ID
               app_id = dataset.key; delete dataset.key;
 
+              // starts not from new app configuration
+              is_new = false;
+
               // render loaded app
               await renderApp();
 
@@ -448,7 +458,7 @@
         async function updateApp() {
 
           // invalid state? => abort
-          if ( !app_id || isLocalStore ) return;
+          if ( !app_id || is_new || is_local ) return;
 
           // has user instance? => perform login
           self.user && await self.user.login();
@@ -477,7 +487,7 @@
         async function deleteApp() {
 
           // invalid state or user is not sure about deletion? => abort
-          if ( !app_id || isLocalStore || !confirm( self.warning ) ) return;
+          if ( !app_id || is_new || is_local || !confirm( self.warning ) ) return;
 
           // has user instance? => perform login
           self.user && await self.user.login();
@@ -508,7 +518,7 @@
         async function handoverApp() {
 
           // activate "Update" and "Delete" button
-          !isLocalStore && buttons_elem.querySelectorAll( '.disabled' ).forEach( button => button.classList.remove( 'disabled' ) );
+          !is_local && buttons_elem.querySelectorAll( '.disabled' ).forEach( button => button.classList.remove( 'disabled' ) );
 
           // render app usage information
           $.setContent( advance_elem, $.html( self.html.usage ) );
@@ -534,7 +544,7 @@
           function getEmbedCode() {
 
             const index = $.getIndex( self.app.url );
-            let store_settings = self.data.store.source(); if ( isLocalStore ) { store_settings = {}; store_settings[ app_id ] = dataset; }
+            let store_settings = self.data.store.source(); if ( is_local ) { store_settings = {}; store_settings[ app_id ] = dataset; }
             return $.escapeHTML( '<script src="' + self.app.url + '"></script><ccm-' + index + ' key=\'["ccm.get",' + $.stringify( store_settings ) + ',"' + app_id + '"]\'></ccm-' + index + '>' );
 
           }
