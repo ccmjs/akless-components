@@ -121,6 +121,7 @@
       }
 
   //  "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/cloze/resources/default.css" ],
+  //  "data": { "store": [ "ccm.store" ] }
   //  "start_button": true,
   //  "keywords": [ "keyword1", "keyword2", "..." ],
   //  "blank": true,
