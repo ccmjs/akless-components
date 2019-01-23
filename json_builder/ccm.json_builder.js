@@ -4,9 +4,9 @@
  * @license The MIT License (MIT)
  * @version latest (1.3.0)
  * @changes
- * version 1.3.0 (20.01.2019):
+ * version 1.3.0 (23.01.2019):
  * - added instance method 'isValid():boolean'
- * - uses ccm v19.0.0
+ * - uses ccm v20.0.0
  * version 1.2.0 (15.11.2018): accepts defaults for initial data
  * version 1.1.1 (15.11.2018):
  * - solved dot notation in result data
