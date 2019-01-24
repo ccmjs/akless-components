@@ -103,9 +103,8 @@
         "status": "https://dev-car.idento.one/car/status",
         "insert": "https://dev-car.idento.one/car/insert",
         "command": "https://dev-car.idento.one/car/command"
-      }
-
-  //  "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-8.3.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "idento" ] ],
+      },
+      "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-8.3.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "idento" ] ]
   //  "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ]
 
     },
@@ -150,7 +149,7 @@
             }
           } );
 
-          // set status led
+          // show status
           this.element.querySelector( '#status' ).style = 'background-color:' + ( result.body === 'ON' ? 'limegreen': 'darkred' );
 
         };
