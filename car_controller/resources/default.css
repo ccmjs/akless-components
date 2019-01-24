@@ -21,17 +21,16 @@
   background-color: #212E45;
   border: 3px double #C2D0E9;
   border-radius: 3em;
-
   display: grid;
   grid-template-areas:
-    '. . . . . . . . g'
-    '. . c c c c c . .'
+    '. . . a a a . . .'
+    '. . . c c c . x .'
     '. . . . . . . . .'
     '. . . . u . . . .'
     '. s . l . r . t .'
     '. . . . d . . . .'
     '. . . . . . . . .'
-    '. . o o o o o . .'
+    '. o o o o o o o .'
     '. . . . . . . . .';
   grid-template-columns: 2em auto 3em auto auto auto 3em auto 2em;
   grid-template-rows:    1em auto 1em auto auto auto 1em auto 1em;
@@ -41,40 +40,44 @@
   align-items: center;
 }
 
-#status { grid-area: g; }
+#label  { grid-area: a; }
 #car    { grid-area: c; }
+#status { grid-area: x; }
 #start  { grid-area: s; }
-#stop   { grid-area: t; }
 #left   { grid-area: l; }
 #right  { grid-area: r; }
 #up     { grid-area: u; }
 #down   { grid-area: d; }
+#stop   { grid-area: t; }
 #log    { grid-area: o; }
 
-/*
-#status {
-  width: 50px;
-  height: 50px;
-  background-color: lime;
+#label {
+  font-size: xx-small;
+  color: #546078;
 }
-*/
 
-select {
+#status {
+  width: 2em;
+  height: 2em;
+  border: 1px groove #C2D0E9;
+  border-radius: 100%;
+  background-color: black;
+}
+
+select, .button {
   background-color: #53C9DF;
-  border: 0;
+  border: 1px groove #C2D0E9;
   cursor: pointer;
   font-size: 100%;
+  color: #212E45;
 }
 
 .button {
-  background-color: #53C9DF;
-  color: #212E45;
   width: 2em;
   height: 2em;
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
 }
 
 .button:hover, select:hover {
@@ -90,20 +93,25 @@ select {
   border-radius: 100%;
 }
 
+#start .button { padding-left: 0.1em; }
+#stop  .button { padding-top:  0.1em; }
+
 #log {
-  width: 100%;
-  height: 1.2em;
+  place-self: stretch;
+  font-size: xx-small;
   border-radius: 0.5em;
   padding: 0.2em 0.5em;
-  background-color: snow;
-  color: #546078;
+  color: snow;
   display: flex;
   justify-content: center;
   align-items: center;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
-#log > div {
-  white-space: nowrap;
+#command:not(:empty):before {
+  content: '|';
+  padding: 0 0.2em;
 }
 
 #output {

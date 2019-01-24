@@ -24,8 +24,8 @@
             "id": "grid",
             "inner": [
               {
-                "id": "status",
-                "inner": {}
+                "id": "label",
+                "inner": [ "Blockchain Test Cockpit" ]
               },
               {
                 "id": "car",
@@ -35,10 +35,14 @@
                 },
               },
               {
+                "id": "status",
+                "inner": {}
+              },
+              {
                 "id": "start",
                 "inner": {
                   "class": "button",
-                  "inner": "&#9673;",
+                  "inner": "&#9658;",
                   "onclick": "%onstart%"
                 }
               },
@@ -78,29 +82,23 @@
                 "id": "stop",
                 "inner": {
                   "class": "button",
-                  "inner": "&#9673;",
+                  "inner": "&#9724;",
                   "onclick": "%onstop%"
                 }
               },
               {
                 "id": "log",
-                "inner": { "inner": "..." }
+                "inner": [
+                  { "id": "tx" },
+                  { "id": "command" }
+                ]
               }
-            ]
-          },
-          {
-            "id": "output",
-            "inner": [
-              { "id": "tx" },
-              { "id": "tx2" },
-              { "id": "command" },
-              { "id": "led" }
             ]
           }
         ]
       },
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/car_controller/resources/default.css" ],
-      "cars": 2,
+      "cars": 3,
       "api": {
         "status": "https://dev-car.idento.one/car/status",
         "insert": "https://dev-car.idento.one/car/insert",
@@ -143,13 +141,17 @@
            */
           const car = this.element.querySelector( 'select' ).value;
 
+          // request car status
           const result = await this.ccm.load( {
             url: this.api.status,
-            params: { port: car }
+            params: {
+              port: car,
+              token: this.user ? this.user.data().token : ''
+            }
           } );
 
-          console.log( result );
-          $.setContent( this.element.querySelector( 'led' ), result === 'ON' ? 'ON': 'OFF' );
+          // set status led
+          this.element.querySelector( '#status' ).style = 'background-color:' + ( result.body === 'ON' ? 'limegreen': 'darkred' );
 
         };
 
@@ -166,10 +168,11 @@
 
         // add car entries
         for ( let i = 1; i <= this.cars; i++ )
-          $.append( this.element.querySelector( 'select' ), $.html( { tag: 'option', inner: 'CAR-' + ( '000' + i ).slice( -3 ) } ) );
+          $.append( this.element.querySelector( 'select' ), $.html( { tag: 'option', inner: 'CAR-' + ( '000' + i ).slice( -3 ), value: 11001 + i * 1000 } ) );
 
         // start interval for checking car status
-        setInterval( status, 6000 );
+        await checkStatus();
+        setInterval( checkStatus, 6000 );
 
       };
 
@@ -191,28 +194,31 @@
          */
         const car = this.element.querySelector( 'select' ).value;
 
+        // send blockchain request
         result = await this.ccm.load( {
           url: this.api.insert,
           params: {
             Name: car,
-            Command: command
+            Command: command,
+            token: this.user ? this.user.data().token : ''
           }
         } );
 
-        console.log( result );
+        // show transaction ID
         $.setContent( this.element.querySelector( '#tx' ), result.Tx );
 
+        // send car request
         result = await this.ccm.load( {
           url: this.api.command,
           params: {
             tx: result.Tx,
             car: car
-          }
+          },
+          token: this.user ? this.user.data().token : ''
         } );
 
-        console.log( result );
-        $.setContent( this.element.querySelector( '#tx2'     ), result.Tx );
-        $.setContent( this.element.querySelector( '#command' ), command   );
+        // show succeeded command
+        $.setContent( this.element.querySelector( '#command' ), command );
 
       };
 
