@@ -20,49 +20,91 @@
       "html": {
         "id": "main",
         "inner": [
-          { "tag": "select" },
           {
-            "tag": "button",
-            "inner": "Left",
-            "onclick": "%onleft%"
+            "id": "grid",
+            "inner": [
+              {
+                "id": "status",
+                "inner": {}
+              },
+              {
+                "id": "car",
+                "inner": {
+                  "tag": "select",
+                  "onchange": "%onchange%"
+                },
+              },
+              {
+                "id": "start",
+                "inner": {
+                  "class": "button",
+                  "inner": "&#9673;",
+                  "onclick": "%onstart%"
+                }
+              },
+              {
+                "id": "up",
+                "inner": {
+                  "class": "button",
+                  "inner": { "inner": "&#9650;" },
+                  "onclick": "%onforward%"
+                }
+              },
+              {
+                "id": "left",
+                "inner": {
+                  "class": "button",
+                  "inner": { "inner": "&#9664;" },
+                  "onclick": "%onleft%"
+                }
+              },
+              {
+                "id": "right",
+                "inner": {
+                  "class": "button",
+                  "inner": { "inner": "&#9654;" },
+                  "onclick": "%onright%"
+                }
+              },
+              {
+                "id": "down",
+                "inner": {
+                  "class": "button",
+                  "inner": { "inner": "&#9660;" },
+                  "onclick": "%onbackward%"
+                }
+              },
+              {
+                "id": "stop",
+                "inner": {
+                  "class": "button",
+                  "inner": "&#9673;",
+                  "onclick": "%onstop%"
+                }
+              },
+              {
+                "id": "log",
+                "inner": { "inner": "..." }
+              }
+            ]
           },
           {
-            "tag": "button",
-            "inner": "Right",
-            "onclick": "%onright%"
-          },
-          {
-            "tag": "button",
-            "inner": "Forward",
-            "onclick": "%onforward%"
-          },
-          {
-            "tag": "button",
-            "inner": "Backward",
-            "onclick": "%onbackward%"
-          },
-          {
-            "tag": "button",
-            "inner": "Stop",
-            "onclick": "%onstop%"
-          },
-          {
-            "tag": "button",
-            "inner": "Start",
-            "onclick": "%onstart%"
-          },
-          { "id": "tx" },
-          { "id": "tx2" },
-          { "id": "command" },
-          { "id": "led" }
+            "id": "output",
+            "inner": [
+              { "id": "tx" },
+              { "id": "tx2" },
+              { "id": "command" },
+              { "id": "led" }
+            ]
+          }
         ]
       },
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/car_controller/resources/default.css" ],
       "cars": 2,
       "api": {
-        "status": "/car/status",
-        "insert": "/car/insert",
-        "command": "/car/command"
+        "status": "https://dev-car.idento.one/car/status",
+        "insert": "https://dev-car.idento.one/car/insert",
+        "command": "https://dev-car.idento.one/car/command"
       }
 
   //  "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-8.3.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "idento" ] ],
@@ -89,22 +131,11 @@
         // login user, if not logged in
         this.user && await this.user.login();
 
-        // render main HTML structure
-        $.setContent( this.element, $.html( this.html, {
-          onleft:     () => this.send( 'LEFT'     ),
-          onright:    () => this.send( 'RIGHT'    ),
-          onforward:  () => this.send( 'FORWARD'  ),
-          onbackward: () => this.send( 'BACKWARD' ),
-          onstop:     () => this.send( 'LOCK'     ),
-          onstart:    () => this.send( 'UNLOCK'   )
-        } ) );
-
-        // add car entries
-        for ( let i = 1; i <= this.cars; i++ )
-          $.append( this.element.querySelector( 'select' ), $.html( { tag: 'option', inner: 'CAR-' + ( '000' + i ).slice( -3 ) } ) );
-
-        // start interval for checking car status
-        setInterval( async () => {
+        /**
+         * checks car status
+         * @returns {Promise<void>}
+         */
+        const checkStatus = async () => {
 
           /**
            * selected car
@@ -120,7 +151,25 @@
           console.log( result );
           $.setContent( this.element.querySelector( 'led' ), result === 'ON' ? 'ON': 'OFF' );
 
-        }, 6000 );
+        };
+
+        // render main HTML structure
+        $.setContent( this.element, $.html( this.html, {
+          onchange:   checkStatus,
+          onleft:     () => this.send( 'LEFT'     ),
+          onright:    () => this.send( 'RIGHT'    ),
+          onforward:  () => this.send( 'FORWARD'  ),
+          onbackward: () => this.send( 'BACKWARD' ),
+          onstop:     () => this.send( 'LOCK'     ),
+          onstart:    () => this.send( 'UNLOCK'   )
+        } ) );
+
+        // add car entries
+        for ( let i = 1; i <= this.cars; i++ )
+          $.append( this.element.querySelector( 'select' ), $.html( { tag: 'option', inner: 'CAR-' + ( '000' + i ).slice( -3 ) } ) );
+
+        // start interval for checking car status
+        setInterval( status, 6000 );
 
       };
 
