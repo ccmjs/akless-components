@@ -111,7 +111,7 @@
 
     Instance: function () {
 
-      let $;
+      let $, online;
 
       this.ready = async () => {
 
@@ -149,8 +149,11 @@
             }
           } );
 
+          // set online status
+          online = result.body === 'ON';
+
           // show status
-          this.element.querySelector( '#status' ).style = 'background-color:' + ( result.body === 'ON' ? 'limegreen': 'darkred' );
+          this.element.querySelector( '#status' ).style = 'background-color:' + ( online ? 'limegreen': 'darkred' );
 
         };
 
@@ -181,6 +184,9 @@
        * @returns {Promise<void>}
        */
       this.send = async command => {
+
+        // car not online? => abort
+        if ( !online ) return;
 
         // login user, if not logged in
         this.user && await this.user.login();
