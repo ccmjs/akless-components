@@ -178,8 +178,8 @@
           $.append( this.element.querySelector( 'select' ), $.html( { tag: 'option', inner: 'CAR-' + ( '000' + i ).slice( -3 ), value: 11001 + i * 1000 } ) );
 
         // start interval for checking car status
-        await checkStatus();
         const interval = setInterval( checkStatus, 6000 );
+        await checkStatus();
 
       };
 
