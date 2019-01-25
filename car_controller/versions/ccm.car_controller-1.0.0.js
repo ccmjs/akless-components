@@ -137,7 +137,7 @@
         const checkStatus = async () => {
 
           // app has no DOM contact? => abort interval
-          if ( !document.contains( this.root ) ) return clearInterval( interval );
+          if ( !$.hasDomContact( this ) ) return clearInterval( interval );
 
           /**
            * selected car
