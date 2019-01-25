@@ -4,7 +4,7 @@
  * @license The MIT License (MIT)
  * @version latest (1.0.0)
  * @changes
- * version 1.0.0 (24.01.2019)
+ * version 1.0.0 (25.01.2019)
  */
 
 ( function () {
@@ -136,6 +136,9 @@
          */
         const checkStatus = async () => {
 
+          // app has no DOM contact? => abort interval
+          if ( !document.contains( this.root ) ) return clearInterval( interval );
+
           /**
            * selected car
            * @type {string}
@@ -176,7 +179,7 @@
 
         // start interval for checking car status
         await checkStatus();
-        setInterval( checkStatus, 6000 );
+        const interval = setInterval( checkStatus, 6000 );
 
       };
 
