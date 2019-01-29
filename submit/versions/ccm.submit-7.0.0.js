@@ -2,7 +2,7 @@
  * @overview ccm component for submitting data
  * @author André Kless <andre.kless@web.de> 2018-2019
  * @license The MIT License (MIT)
- * @version latest (7.0.0)
+ * @version 7.0.0
  * @changes
  * version 7.0.0 (29.01.2019):
  * - input type 'hidden' without value has no more an unique generated key as value, use new input type 'key' for this instead
@@ -17,7 +17,9 @@
 
     name: 'submit',
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    version: [ 7, 0, 0 ],
+
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-20.0.0.js',
 
     config: {
 
