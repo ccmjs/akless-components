@@ -74,8 +74,7 @@ ccm.files[ 'datasets.js' ] = {
       },
       {
         "name": "hidden",
-        "type": "hidden",
-        "info": "Text Text Text"
+        "type": "hidden"
       },
       {
         "label": "month",
@@ -238,6 +237,10 @@ ccm.files[ 'datasets.js' ] = {
         "info": "Text Text Text"
       },
       "<legend>Special</legend>",
+      {
+        "name": "generated_key",
+        "type": "key"
+      },
       {
         "label": "contenteditable",
         "name": "contenteditable",
