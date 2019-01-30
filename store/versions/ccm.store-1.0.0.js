@@ -4,7 +4,7 @@
  * @license The MIT License (MIT)
  * @version 1.0.0
  * @changes
- * version 1.0.0 (23.01.2019)
+ * version 1.0.0 (30.01.2019)
  */
 
 ( function () {
@@ -195,7 +195,7 @@
 
             // render dataset view
             $.setContent( this.element.querySelector( '#main' ), $.html( this.html.dataset, {
-              key: dataset.key,
+              key: dataset.key.toString(),
               editable: false,
               onback: this.start,
               onsave: event => save( event.target, editor.getValue() )
@@ -254,12 +254,12 @@
 
           // add dataset entry in table
           $.append( this.element.querySelector( '#entries' ), $.html( this.html.entry, {
-            key: dataset.key,
+            key: dataset.key.toString(),
             onedit: async () => {
 
               // render dataset view
               $.setContent( this.element.querySelector( '#main' ), $.html( this.html.dataset, {
-                key: dataset.key,
+                key: dataset.key.toString(),
                 editable: true,
                 onback: this.start,
                 onrename: async event => {
