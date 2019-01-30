@@ -4,7 +4,7 @@
  * @license The MIT License (MIT)
  */
 
-#element, #main, #box {
+#element, #main {
   height: 100%;
 }
 
@@ -107,6 +107,10 @@ button {
 
 #buttons > div {
   padding: 0.25em;
+}
+
+#conclusion {
+  padding: 0 0.5em;
 }
 
 #conclusion > div {
