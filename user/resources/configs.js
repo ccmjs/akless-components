@@ -60,8 +60,7 @@ ccm.files[ 'configs.js' ] = {
 
   "lea": {
     "key": "lea",
-    "realm": "lea",
-    "url": "https://ccm-data.bib.h-brs.de"
+    "realm": "lea"
   },
 
   "compact": {
