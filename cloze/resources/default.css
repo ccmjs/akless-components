@@ -73,7 +73,9 @@ button {
   border-radius: 0.25em;
   border: 1px solid #a0a0a0;
   white-space: nowrap;
+  letter-spacing: 1px;
 }
+
 .gap input:focus {
   outline: none;
   box-shadow: 0 0 0.5em 0 #7fb8ff;
