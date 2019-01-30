@@ -6,7 +6,7 @@
  * @changes
  * version 7.0.0 (29.01.2019):
  * - input type 'hidden' without value has no more an unique generated key as value, use new input type 'key' for this instead
- * - new input type 'key' for hidden input fields with generated unique key as gefault value
+ * - new input type 'key' for hidden input fields with generated unique key as default value
  * - uses ccm v20.0.0
  * (for older version changes see ccm.submit-6.7.2.js)
  */
