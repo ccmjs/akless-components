@@ -1,8 +1,12 @@
 /**
  * @overview default layout of ccm component for rendering a fill-in-the-blank text
- * @author André Kless <andre.kless@web.de> 2017
+ * @author André Kless <andre.kless@web.de> 2017, 2019
  * @license The MIT License (MIT)
  */
+
+#element, #main, #box {
+  height: 100%;
+}
 
 #main {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -53,6 +57,7 @@ button {
 }
 
 #text {
+  padding: 0.5em;
   line-height: 1.6em;
 }
 
@@ -94,7 +99,7 @@ button {
 }
 
 #buttons {
-  padding-top: 0.25em;
+  padding: 0.25em;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
