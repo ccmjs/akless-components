@@ -4,9 +4,10 @@
  * @license The MIT License (MIT)
  * @version latest (7.0.0)
  * @changes
- * version 7.0.0 (29.01.2019):
+ * version 7.0.0 (30.01.2019):
  * - input type 'hidden' without value has no more an unique generated key as value, use new input type 'key' for this instead
  * - new input type 'key' for hidden input fields with generated unique key as default value
+ * - hidden elements in special HTML structure do not consume space in frontend
  * - uses ccm v20.0.0
  * (for older version changes see ccm.submit-6.7.2.js)
  */
@@ -91,7 +92,7 @@
         "https://ccmjs.github.io/akless-components/libs/bootstrap/css/bootstrap.css",
         "https://ccmjs.github.io/akless-components/submit/resources/default.css"
       ],
-      "data": { "store": [ "ccm.store" ] },
+      "data": { "store": [ "ccm.store" ] }
 
   //  "disabled": true,
   //  "no_submit_button": true,
@@ -172,7 +173,6 @@
               case 'datetime-local':
               case 'email':
               case 'file':
-              case 'hidden':
               case 'month':
               case 'number':
               case 'password':
@@ -187,6 +187,11 @@
                 entry.tag = 'input';
                 entry.class = 'form-control';
                 entry_elem.appendChild( $.html( entry ) );
+                break;
+              case 'key':
+              case 'hidden':
+                entry.tag = 'input';
+                entry_elem = $.html( entry );
                 break;
               case 'checkbox':
                 delete entry.label;
