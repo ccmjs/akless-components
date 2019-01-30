@@ -2,7 +2,7 @@
  * @overview ccm component for building a team building
  * @author André Kless <andre.kless@web.de> 2017-2019
  * @license The MIT License (MIT)
- * @version latest (4.0.2)
+ * @version 4.0.2
  * @changes
  * version 4.0.2 (30.01.2019):
  * - updated default template
@@ -36,7 +36,9 @@
 
     name: 'teambuild_builder',
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    version: [ 4, 0, 2 ],
+
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-20.0.0.js',
 
     config: {
 
