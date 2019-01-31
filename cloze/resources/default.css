@@ -4,13 +4,13 @@
  * @license The MIT License (MIT)
  */
 
-#element, #main {
+#element {
   height: 100%;
-}
-
-#main {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 button {
