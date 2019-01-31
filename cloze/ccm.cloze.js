@@ -4,8 +4,8 @@
  * @license The MIT License (MIT)
  * @version latest (5.0.3)
  * @changes
- * version 5.0.3 (30.12.2019):
- * - default values for 'css' and 'data'
+ * version 5.0.3 (31.01.2019):
+ * - changed default instance configuration
  * - uses ccm v20.0.0
  * version 5.0.2 (20.12.2018):
  * - bug fix: strip HTML in keywords
@@ -113,10 +113,13 @@
           ]
         }
       },
-      "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/cloze/resources/default.css" ],
+      "css": [ "ccm.load", "resources/default.css" ],
       "data": { "store": [ "ccm.store" ] },
       "mark": "*",
-      "text": "Hello, *(W)o(rl)d*!",
+      "text": "Hello, *(W)o(rl)d*! *Welcome*. This is an *Ex(amp)le*.",
+      "keywords": true,
+      "feedback": true,
+      "retry": true,
       "captions": {
         "start": "Start",
         "cancel": "Cancel",
@@ -126,11 +129,8 @@
       }
 
   //  "start_button": true,
-  //  "keywords": [ "keyword1", "keyword2", "..." ],
   //  "blank": true,
   //  "time": 60,
-  //  "feedback": true,
-  //  "retry": true
   //  "solutions": true,
   //  "cancel_button": true,
   //  "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-8.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "guest" ] ],
