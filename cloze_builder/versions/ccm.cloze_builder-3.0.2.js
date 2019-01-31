@@ -2,10 +2,10 @@
  * @overview ccm component for building a fill-in-the-blank text
  * @author André Kless <andre.kless@web.de>, 2017-2019
  * @license The MIT License (MIT)
- * @version 3.0.2
+ * @version latest (3.0.2)
  * @changes
  * version 3.0.2 (30.01.2019)
- * - updated default template
+ * - updated default instance configuration
  * - uses ccm v20.0.0
  * version 3.0.1 (29.10.2018)
  * - changed parameters for onchange callback
@@ -47,9 +47,7 @@
 
     name: 'cloze_builder',
 
-    version: [ 3, 0, 2 ],
-
-    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-20.0.0.js',
+    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
 
     config: {
 
@@ -742,7 +740,7 @@
         "https://ccmjs.github.io/akless-components/cloze_builder/resources/default.css"
       ],
       "defaults": {
-        "text": 'Hello, *W(or)l(d)*!',
+        "text": 'Hello, *(W)o(rl)d*! *Welcome*. This is an *Ex(amp)le*.',
         "feedback": true,
         "retry": true,
         "captions": {
@@ -750,9 +748,6 @@
           "submit": "Submit",
           "retry": "Retry",
           "finish": "Restart"
-        },
-        "onfinish.store": {
-
         }
       },
       "editor": [ "ccm.component", "https://ccmjs.github.io/tkless-components/editor/versions/ccm.editor-3.0.0.js", {
