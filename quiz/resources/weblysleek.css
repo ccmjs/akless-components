@@ -1,14 +1,21 @@
 /**
  * @overview WeblySleek layout of ccm component for rendering a quiz
- * @author André Kless <andre.kless@web.de> 2016-2017
+ * @author André Kless <andre.kless@web.de> 2016-2017, 2019
  * @license The MIT License (MIT)
  */
 
 #element {
-  font-family: WeblySleekUI, sans-serif;
-  font-size: 19px;
+  height: 100%;
+  padding: 0.5em;
+  font-family: WeblySleekUI, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: larger;
   overflow-x: auto;
-  padding: 1em;
+}
+
+#main {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .title {
@@ -40,7 +47,7 @@
 }
 
 .answer {
-  padding: 0.25em;
+  padding: 0.25em 0;
 }
 
 .right {
@@ -66,7 +73,7 @@
 
 input {
   font-family: inherit;
-  font-size: 80%;
+  font-size: small;
   padding: 0.2em 0.5em;
 }
 
@@ -81,14 +88,14 @@ input[type=checkbox]:enabled, input[type=radio]:enabled, button:enabled {
   border-radius: 1em;
   padding: 0 0.3em;
   font-family: monospace;
-  font-size: 80%;
+  font-size: small;
   font-weight: bold;
   color: #00709B;
   cursor: help;
 }
 
 .tooltiptext {
-  font-family: WeblySleekUI, sans-serif;
+  font-family: WeblySleekUI, 'Helvetica Neue', Helvetica, Arial, sans-serif;
   visibility: hidden;
   width: 160px;
   height: 150px;
@@ -140,14 +147,14 @@ input[type=checkbox]:enabled, input[type=radio]:enabled, button:enabled {
 }
 
 #buttons {
-  padding-top: 0.25em;
+  padding-top: 0.8em;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
 }
 
-#buttons > div {
-  padding: 0.25em;
+#buttons > div:not(:last-child) {
+  padding-right: 0.5em;
 }
 
 button {
@@ -156,7 +163,7 @@ button {
   padding: 0.5em 1em 0.6em 1em;
   border: none;
   font-family: inherit;
-  font-size: 80%;
+  font-size: small;
   border-radius: 0.5em;
   transition: background-color 0.4s;
   letter-spacing: 0.1em;

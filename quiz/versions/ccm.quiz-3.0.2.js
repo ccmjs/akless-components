@@ -2,7 +2,7 @@
  * @overview ccm component for quiz
  * @author André Kless <andre.kless@web.de> 2016-2019
  * @license The MIT License (MIT)
- * @version latest (3.0.2)
+ * @version 3.0.2
  * @changes
  * version 3.0.2 (01.02.2019):
  * - changed default instance configuration
@@ -36,7 +36,9 @@
 
     name: 'quiz',
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    version: [ 3, 0, 2 ],
+
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-20.0.0.js',
 
     config: {
 

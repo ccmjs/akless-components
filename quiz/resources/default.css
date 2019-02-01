@@ -1,12 +1,20 @@
 /**
  * @overview default layout of ccm component for rendering a quiz
- * @author André Kless <andre.kless@web.de.de> 2016-2017
+ * @author André Kless <andre.kless@web.de.de> 2016-2017, 2019
  * @license The MIT License (MIT)
  */
 
-#main {
+#element {
+  height: 100%;
+  padding: 0.5em;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   overflow-x: auto;
+}
+
+#main {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .title > div {
@@ -27,7 +35,7 @@
 
 .description {
   padding-top: 0.8em;
-  font-size: 80%;
+  font-size: small;
 }
 
 .answers {
@@ -35,7 +43,7 @@
 }
 
 .answer {
-  padding: 0.25em;
+  padding: 0.25em 0;
 }
 
 .right {
@@ -65,7 +73,7 @@ label {
 
 input {
   font-family: inherit;
-  font-size: 80%;
+  font-size: small;
   padding: 0.2em 0.5em;
 }
 
@@ -133,12 +141,12 @@ input[type=checkbox]:enabled, input[type=radio]:enabled, button:enabled {
 }
 
 #buttons {
-  padding-top: 0.25em;
+  padding-top: 0.5em;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
 }
 
-#buttons > div {
-  padding: 0.25em;
+#buttons > div:not(:last-child) {
+  padding-right: 0.5em;
 }
