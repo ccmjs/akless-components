@@ -4,10 +4,18 @@
  * @license The MIT License (MIT)
  */
 
+#element {
+  height: 100%;
+}
+
 #main {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-align: center;
   padding: 1em;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 #timer {
@@ -43,6 +51,10 @@
   margin: 0.5em;
   padding: 0.5em;
   cursor: pointer;
+}
+
+.answer:empty {
+  padding: 1em 0;
 }
 
 .answer.disabled {
