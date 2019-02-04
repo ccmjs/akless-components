@@ -47,7 +47,9 @@
 
     name: 'cloze_builder',
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    version: [ 3, 0, 2 ],
+
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-20.0.0.js',
 
     config: {
 
