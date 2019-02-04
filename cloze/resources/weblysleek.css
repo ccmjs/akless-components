@@ -18,7 +18,7 @@
   font-family: inherit;
   font-size: inherit;
   padding-left: 0.2em;
-  letter-spacing: 0.1em;
+  letter-spacing: 1px;
 }
 
 .gap.correct input {
