@@ -742,7 +742,7 @@
         "https://ccmjs.github.io/akless-components/cloze_builder/resources/default.css"
       ],
       "defaults": {
-        "text": 'Hello, *(W)o(rl)d*! *Welcome*. This is an *Ex(amp)le*.',
+        "text": "Hello, *(W)o(rl)d*! *Welcome*. This is an *Ex(amp)le*.",
         "feedback": true,
         "retry": true,
         "captions": {
