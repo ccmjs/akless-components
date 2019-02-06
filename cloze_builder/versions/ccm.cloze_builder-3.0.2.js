@@ -2,10 +2,11 @@
  * @overview ccm component for building a fill-in-the-blank text
  * @author André Kless <andre.kless@web.de>, 2017-2019
  * @license The MIT License (MIT)
- * @version latest (3.0.2)
+ * @version 3.0.2
  * @changes
- * version 3.0.2 (30.01.2019)
+ * version 3.0.2 (06.02.2019)
  * - updated default instance configuration
+ * - keeps initial onfinish settings
  * - uses ccm v20.0.0
  * version 3.0.1 (29.10.2018)
  * - changed parameters for onchange callback
@@ -653,6 +654,11 @@
                             }
                           },
                           {
+                            "tag": "input",
+                            "type": "hidden",
+                            "name": "onfinish"
+                          },
+                          {
                             "id": "onfinish.restart-entry",
                             "class": "checkbox",
                             "inner": {
@@ -861,6 +867,9 @@
 
         /** prepares initial form values */
         function prepareValues() {
+
+          // set default value for dataset key of app-specific data
+          if ( !$.deepValue( my.defaults, 'onfinish.store.key' ) ) $.deepValue( my.defaults, 'onfinish.store.key', $.generateKey() );
 
           // given default values? => integrate them as defaults into initial values
           dataset = $.integrate( self.defaults, dataset, true );
