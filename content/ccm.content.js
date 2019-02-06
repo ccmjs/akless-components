@@ -4,9 +4,9 @@
  * @license The MIT License (MIT)
  * @version latest (5.2.0)
  * @changes
- * version 5.2.0 (17.01.2019):
+ * version 5.2.0 (06.02.2019):
  * - added after start callback
- * - uses ccm v19.0.0
+ * - uses ccm v20.0.0
  * version 5.1.0 (19.12.2018):
  * - collect dependencies only if not already given
  * - look also in this.components for a component dependency
