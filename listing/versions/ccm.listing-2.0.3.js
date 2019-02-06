@@ -2,7 +2,7 @@
  * @overview ccm component for a listing
  * @author André Kless <andre.kless@web.de> 2018-2019
  * @license MIT License
- * @version latest (2.0.3)
+ * @version 2.0.3
  * @changes
  * version 2.0.3 (06.02.2019): uses ccm v20.0.0
  * version 2.0.2 (02.11.2018): uses ccm v18.2.0
@@ -17,7 +17,9 @@
 
     name: 'listing',
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    version: [ 2, 0, 3 ],
+
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-20.0.0.js',
 
     config: {
 
