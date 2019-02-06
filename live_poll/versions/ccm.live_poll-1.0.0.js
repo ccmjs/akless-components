@@ -4,7 +4,7 @@
  * @license The MIT License (MIT)
  * @version 1.0.0
  * @changes
- * version 1.0.0 (04.01.2019)
+ * version 1.0.0 (06.02.2019)
  */
 
 ( function () {
@@ -15,7 +15,7 @@
 
     version: [ 1, 0, 0 ],
 
-    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-18.6.7.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-20.0.0.js',
 
     config: {
 
