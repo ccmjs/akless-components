@@ -867,7 +867,7 @@
         function prepareValues() {
 
           // set default value for dataset key of app-specific data
-          if ( !$.deepValue( my.defaults, 'onfinish.store.key' ) ) $.deepValue( my.defaults, 'onfinish.store.key', $.generateKey() );
+          if ( !$.deepValue( self.defaults, 'onfinish.store.key' ) ) $.deepValue( self.defaults, 'onfinish.store.key', $.generateKey() );
 
           // given default values? => integrate them as defaults into initial values
           dataset = $.integrate( self.defaults, dataset, true );
