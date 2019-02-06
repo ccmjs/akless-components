@@ -2,7 +2,7 @@
  * @overview ccm component for component manager
  * @author André Kless <andre.kless@web.de> 2018-2019
  * @license MIT License
- * @version latest (2.2.5)
+ * @version 2.2.5
  * @changes
  * version 2.2.5 (06.02.2019):
  * - uses ccm v20.0.0
@@ -40,7 +40,9 @@
 
     name: 'component_manager',
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    version: [ 2, 2, 5 ],
+
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-20.0.0.js',
 
     config: {
       "html": {
