@@ -2,7 +2,7 @@
  * @overview ccm component for digital maker space
  * @author André Kless <andre.kless@web.de> 2018-2019
  * @license MIT License
- * @version latest (1.0.6)
+ * @version 1.0.6
  * @changes
  * version 1.0.6 (06.02.2019):
  * - navigation bug fix
@@ -32,7 +32,9 @@
 
     name: 'dms',
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    version: [ 1, 0, 6 ],
+
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-20.0.0.js',
 
     config: {
       "html": {
