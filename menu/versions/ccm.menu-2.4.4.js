@@ -2,7 +2,7 @@
  * @overview ccm component for rendering a menu
  * @author André Kless <andre.kless@web.de> 2015-2016, 2018-2019
  * @license The MIT License (MIT)
- * @version latest (2.4.4)
+ * @version 2.4.4
  * @changes
  * version 2.4.4 (06.02.2019):
  * - uses ccm v20.0.0
@@ -40,7 +40,9 @@
 
     name: 'menu',
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    version: [ 2, 4, 4 ],
+
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-20.0.0.js',
 
     config: {
 
