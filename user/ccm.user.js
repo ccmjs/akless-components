@@ -7,6 +7,7 @@
  * version 8.3.1 (06.02.2019)
  * - bug fix for hide/show content of parent instance
  * - bug fix for restore original position of root element
+ * - bug fix for render login/logout button
  * - uses ccm v20.0.0
  * - idento realm: send 'NaN' for client hash
  * - idento realm: removes md5 for password
@@ -244,6 +245,7 @@
   //  "url": "ccm2.inf.h-brs.de",
   //  "store": "ccm-user",
   //  "logged_in": true,
+  //  "norender": true,
   //  "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
   //  "onchange": event => console.log( 'User has logged ' + ( event ? 'in' : 'out' ) + '.' ),
   //  "hash": [ "ccm.load", { "url": "https://ccmjs.github.io/akless-components/modules/md5.js", "type": "module" } ],
@@ -294,6 +296,9 @@
 
         // logging of 'start' event
         this.logger && this.logger.log( 'start', this.isLoggedIn() );
+
+        // no login/logout button? => clear website area and abort
+        if ( this.norender ) return $.setContent( this.element, '' );
 
         // render logged in or logged out view
         if ( this.isLoggedIn() )
