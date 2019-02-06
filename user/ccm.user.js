@@ -4,10 +4,10 @@
  * @license The MIT License (MIT)
  * @version latest (8.3.1)
  * @changes
- * version 8.3.1 (15.01.2019)
+ * version 8.3.1 (06.02.2019)
  * - bug fix for hide/show content of parent instance
  * - bug fix for restore original position of root element
- * - uses ccm v19.0.0
+ * - uses ccm v20.0.0
  * - idento realm: send 'NaN' for client hash
  * - idento realm: removes md5 for password
  * version 8.3.0 (03.11.2018)
