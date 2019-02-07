@@ -283,7 +283,7 @@
       this.ready = async () => {
 
         // immediate login? => login user
-        this.logged_in && await this.login( this.onchange );
+        this.logged_in && await this.login( true );
 
         // logging of 'ready' event
         this.logger && this.logger.log( 'ready', $.privatize( this, true ) );
@@ -316,6 +316,7 @@
 
       /**
        * logs in user
+       * @param {boolean|function} not - prevent all or a specific onchange callback from being triggered
        * @returns {Promise}
        */
       this.login = async not => {
@@ -388,7 +389,7 @@
         await this.start();
 
         // perform 'onchange' callbacks
-        this.onchange.forEach( onchange => onchange !== not && onchange( this.isLoggedIn() ) );
+        not !== true && this.onchange.forEach( onchange => onchange !== not && onchange( this.isLoggedIn() ) );
 
         /**
          * renders login form
@@ -518,6 +519,7 @@
 
       /**
        * logs out user
+       * @param {boolean|function} not - prevent all or a specific onchange callback from being triggered
        * @returns {Promise}
        */
       this.logout = async not => {
@@ -559,7 +561,7 @@
         await this.start();
 
         // perform 'onchange' callbacks
-        this.onchange.forEach( onchange => onchange !== not && onchange( this.isLoggedIn() ) );
+        not !== true && this.onchange.forEach( onchange => onchange !== not && onchange( this.isLoggedIn() ) );
 
       };
 
