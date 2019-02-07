@@ -4,10 +4,11 @@
  * @license The MIT License (MIT)
  * @version 8.3.1
  * @changes
- * version 8.3.1 (06.02.2019)
+ * version 8.3.1 (07.02.2019)
  * - bug fix for hide/show content of parent instance
  * - bug fix for restore original position of root element
  * - bug fix for render login/logout button
+ * - bug fix for combination of onchange and directly logged in
  * - uses ccm v20.0.0
  * - idento realm: send 'NaN' for client hash
  * - idento realm: removes md5 for password
@@ -284,7 +285,7 @@
       this.ready = async () => {
 
         // immediate login? => login user
-        this.logged_in && await this.login();
+        this.logged_in && await this.login( this.onchange );
 
         // logging of 'ready' event
         this.logger && this.logger.log( 'ready', $.privatize( this, true ) );
