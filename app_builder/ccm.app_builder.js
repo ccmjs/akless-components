@@ -4,7 +4,10 @@
  * @license The MIT License (MIT)
  * @version latest (1.4.0)
  * @changes
- * version 1.4.0 (11.02.2019): blockchain support
+ * version 1.4.0 (11.02.2019):
+ * - blockchain support
+ * - uses Bootstrap 4
+ * - changes in default HTML structure
  * version 1.3.0 (05.02.2019):
  * - added parameter for kind of event (create, read, update or delete) in onchange callback
  * version 1.2.1 (31.01.2019):
@@ -41,7 +44,7 @@
 
       "html": {
         "main": {
-          "id": "main",
+          "id": "element",
           "inner": [
             {
               "id": "maker",
@@ -240,11 +243,7 @@
           }
         }
       },
-      "css": [ "ccm.load",
-        "https://ccmjs.github.io/akless-components/libs/bootstrap/css/bootstrap.css",
-        { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/bootstrap/css/font-face.css" },
-        "https://ccmjs.github.io/akless-components/app_builder/resources/default.css"
-      ],
+      "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/app_builder/resources/default.css", "https://ccmjs.github.io/akless-components/libs/bootstrap-4/css/bootstrap.min.css" ],
       "data": { "store": [ "ccm.store" ] },
       "warning": "Are you sure you want to delete this App?",
       "builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/submit/versions/ccm.submit-7.0.0.js", [ "ccm.get", { "name": "submit", "url": "https://ccm2.inf.h-brs.de" }, "cloze_builder" ] ],
@@ -254,7 +253,7 @@
   //  "convert": { "app_to_builder": json => json, "builder_to_app": json => json },
   //  "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-8.3.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "guest" ] ],
   //  "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
-  //  "blockchain": [ "ccm.start", "https://ccmjs.github.io/rmueller-components/certificate_request/versions/ccm.certificate_request-1.0.0.js" ],
+  //  "blockchain": [ "ccm.start", "https://ccmjs.github.io/rmueller-components/certificate_request/versions/ccm.certificate_request-1.0.0.js", [ "ccm.get", "https://ccmjs.github.io/rmueller-components/certificate_request/resources/config.js", "all" ] ]
   //  "onchange"
 
     },
@@ -302,7 +301,7 @@
         let app_id = dataset.key; delete dataset.key;
 
         // render main HTML structure
-        $.setContent( this.element, $.html( this.html.main, {
+        $.replace( this.element, this.element = $.html( this.html.main, {
           onCreate: createApp,
           onRead:   readApp,
           onUpdate: updateApp,
@@ -379,7 +378,7 @@
           self.user && await self.user.login();
 
           // get current app configuration from app-specific builder
-          dataset = builder.getValue(); delete dataset.key;
+          dataset = self.getValue(); delete dataset.key;
 
           // add permission settings
           if ( self.user ) dataset._ = { access: { get: 'all', set: 'creator', del: 'creator' } };
@@ -391,7 +390,7 @@
           self.logger && self.logger.log( 'create', $.clone( dataset ) );
 
           // register certificate callback for onchange events
-          this.blockchain && this.blockchain.callback( self, 'create' );
+          this.blockchain && this.blockchain.request( app_id );
 
           // give app to user
           await handoverApp();
@@ -600,7 +599,7 @@
        * returns resulting instance configuration for target component
        * @returns {Object} instance configuration for target component
        */
-      this.getValue = () => builder && builder.getValue && builder.getValue() || null;
+      this.getValue = () => builder && builder.getValue && $.clone( builder.getValue() ) || null;
 
     }
 
