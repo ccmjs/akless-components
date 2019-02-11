@@ -14,12 +14,12 @@ ccm.files[ 'configs.js' ] = {
       "../app_builder/resources/default.css"
     ],
     "data": {
-      "store": [ "ccm.store", "../quick_decide/resources/configs.js" ],
+      "store": [ "ccm.store", "../cloze/resources/configs.js" ],
       "key": "local"
     },
     "booklet": [ "ccm.component", "../window/ccm.window.js", [ "ccm.get", "../window/resources/configs.js", "local" ] ],
-    "builder": [ "ccm.component", "../submit/ccm.submit.js", [ "ccm.get", { "name": "submit", "url": "https://ccm2.inf.h-brs.de" }, "quick_decide_builder" ] ],
-    "app": [ "ccm.component", "../quick_decide/ccm.quick_decide.js" ],
+    "builder": [ "ccm.component", "../submit/ccm.submit.js", [ "ccm.get", { "name": "submit", "url": "https://ccm2.inf.h-brs.de" }, "cloze_builder" ] ],
+    "app": [ "ccm.component", "../cloze/ccm.cloze.js" ],
     "user": [ "ccm.instance", "../user/ccm.user.js", [ "ccm.get", "../user/resources/configs.js", "guest" ] ],
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ]
   },
@@ -32,13 +32,13 @@ ccm.files[ 'configs.js' ] = {
       "../app_builder/resources/default.css"
     ],
     "booklet": [ "ccm.component", "../window/ccm.window.js" ],
-    "builder": [ "ccm.component", "../submit/ccm.submit.js", [ "ccm.get", { "name": "submit", "url": "https://ccm2.inf.h-brs.de" }, "quick_decide_builder" ] ],
-    "app": [ "ccm.component", "../content/ccm.quick_decide.js" ]
+    "builder": [ "ccm.component", "../submit/ccm.submit.js", [ "ccm.get", { "name": "submit", "url": "http://localhost:8080" }, "cloze_builder" ] ],
+    "app": [ "ccm.component", "../cloze/ccm.cloze.js" ]
   },
 
   "demo": {
     "key": "demo",
-    "data": { "store": [ "ccm.store", { "name": "quick_decide", "url": "https://ccm2.inf.h-brs.de" } ] }
+    "data": { "store": [ "ccm.store", { "name": "cloze", "url": "https://ccm2.inf.h-brs.de" } ] }
   }
 
 };
