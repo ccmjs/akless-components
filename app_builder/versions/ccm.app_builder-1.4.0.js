@@ -2,7 +2,7 @@
  * @overview ccm component for building apps
  * @author André Kless <andre.kless@web.de> 2018-2019
  * @license The MIT License (MIT)
- * @version latest (1.4.0)
+ * @version 1.4.0
  * @changes
  * version 1.4.0 (11.02.2019): blockchain support
  * version 1.3.0 (05.02.2019):
@@ -35,7 +35,9 @@
 
     name: 'app_builder',
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    version: [ 1, 4, 0 ],
+
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-20.0.0.js',
 
     config: {
 
