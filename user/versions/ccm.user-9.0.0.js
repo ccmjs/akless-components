@@ -2,7 +2,7 @@
  * @overview ccm component for user authentication
  * @author André Kless <andre.kless@web.de> 2017-2019
  * @license The MIT License (MIT)
- * @version latest (9.0.0)
+ * @version 9.0.0
  * @changes
  * version 9.0.0 (11.02.2019)
  * - removed realm 'idento'
@@ -13,7 +13,7 @@
 
   const component = {
 
-    name: 'user',
+    name: 'user', version: [ 9, 0, 0 ],
 
     ccm: 'https://ccmjs.github.io/ccm/ccm.js',
 
