@@ -1,0 +1,73 @@
+<html>
+<head>
+<title>__TITLE__</title>
+<style type="text/css">
+<!--
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: auto;
+  font-family: arial, sans-serif;
+}
+-->
+</style>
+
+<script type="text/javascript" src="SCORM_API_wrapper.js"></script>
+<script type="text/javascript">
+
+//creating shortcut for less verbose code
+var scorm = pipwerks.SCORM;
+
+function init() {
+//scorm.version = "1.2"; // auto if not specified
+	scorm.init();
+}
+
+function set( param, value ) {
+	scorm.set( param, value );
+}
+
+function get( param ) {
+	scorm.get( param );
+}
+
+function end() {
+	scorm.quit();
+}
+
+window.onload = function () {
+	init();
+};
+
+window.onunload = function () {
+	end();
+};
+
+var onmessage = function ( e ) {
+  var a = e.data.split( '|');
+  if ( a[ 0 ] == 'AppSolved' ) {
+    scorm.status( 'set', 'completed' );
+    scorm.set( 'cmi.core.score.raw', a[ 2 ] );
+    scorm.set( 'cmi.core.score.min', '0' );
+    scorm.set( 'cmi.core.score.max', '100' );
+    scorm.set( 'cmi.core.score.scaled', a[ 2 ] / 100 );
+  }
+};
+
+if ( typeof window.addEventListener != 'undefined' ) {
+  window.addEventListener( 'message', onmessage, false );
+}
+else if ( typeof window.attachEvent != 'undefined' ) {
+  window.attachEvent( 'onmessage', onmessage );
+}
+
+</script>
+
+</head>
+<body>
+<div style="width: 100%; height: 100%; overflow: hidden">
+__EMBED__
+</div>
+</body>
+</html>
