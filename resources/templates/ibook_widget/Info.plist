@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>AllowNetworkAccess</key>
+  <true/>
+  <key>Width</key>
+  <integer>1024</integer>
+  <key>Height</key>
+  <integer>768</integer>
+  <key>MainHTML</key>
+  <string>index.html</string>
+  <key>CFBundleDevelopmentRegion</key>
+  <string>English</string>
+  <key>CFBundleIdentifier</key>
+  <string>eu.ccmjs.widget</string>
+  <key>CFBundleName</key>
+  <string>ccm iBooks Widget</string>
+</dict>
+</plist>
