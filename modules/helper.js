@@ -92,8 +92,8 @@ export async function iBookWidget( embed_code, filename = 'app', title = 'App', 
   image_file = await fetch( image_file ).then( response => response.blob() );             // load content of image file
 
   // generate ZIP file
-  !JSZip  && await loadScript( 'https://ccmjs.github.io/akless-components/libs/jszip/jszip.min.js' );
-  !saveAs && await loadScript( 'https://ccmjs.github.io/akless-components/libs/FileSaver/FileSaver.js' );
+  !window.JSZip  && await loadScript( 'https://ccmjs.github.io/akless-components/libs/jszip/jszip.min.js' );
+  !window.saveAs && await loadScript( 'https://ccmjs.github.io/akless-components/libs/FileSaver/FileSaver.js' );
   let widgetZip = new JSZip();
   widgetZip.folder( `${folder}.wdgt` ).file( 'index.html', template );
   widgetZip.folder( `${folder}.wdgt` ).file( 'Info.plist', info_file );
@@ -149,8 +149,8 @@ export async function scorm( embed_code, filename = 'app', title = 'App', identi
   api_file = await fetch( api_file ).then( response => response.blob() );                           // load content of SCORM API file
 
   // generate ZIP file
-  !JSZip  && await loadScript( 'https://ccmjs.github.io/akless-components/libs/jszip/jszip.min.js' );
-  !saveAs && await loadScript( 'https://ccmjs.github.io/akless-components/libs/FileSaver/FileSaver.js' );
+  !window.JSZip  && await loadScript( 'https://ccmjs.github.io/akless-components/libs/jszip/jszip.min.js' );
+  !window.saveAs && await loadScript( 'https://ccmjs.github.io/akless-components/libs/FileSaver/FileSaver.js' );
   let widgetZip = new JSZip();
   widgetZip.file( 'index.html', html_template );
   widgetZip.file( 'imsmanifest.xml', manifest_template );
