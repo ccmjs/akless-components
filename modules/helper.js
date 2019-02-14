@@ -87,14 +87,14 @@ export async function embedCode( url, store, app_id, template = 'https://ccmjs.g
 }
 
 /**
- *
- * @param embed_code
- * @param filename
- * @param title
- * @param folder
- * @param template
- * @param info_file
- * @param image_file
+ * provides a download of a ccm-based app as iBook Widget (ZIP file)
+ * @param {string} embed_code - embed code of the ccm-based app
+ * @param {string} [filename='app'] - file name without file extension
+ * @param {string} [title='App'] - website title for the index.html
+ * @param {string} [folder='app'] - name of the folder inside the iBook Widget
+ * @param {string} template - URL of the HTML template
+ * @param {string} info_file - URL of the info file
+ * @param {string} image_file - URL of the image file
  * @returns {Promise<void>}
  */
 export async function iBookWidget( embed_code, filename = 'app', title = 'App', folder='app',
