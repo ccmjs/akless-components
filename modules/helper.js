@@ -5,6 +5,23 @@
  */
 
 /**
+ * returns the URL of a ccm-based app
+ * @param {string} component - URL of the ccm component
+ * @param {Object} store - settings for the ccm data store that contains the ccm instance configuration
+ * @param {string|string[]} app_id - key of the data set that hold the ccm instance configuration
+ * @param {string} website - URL of the website which renders the ccm-based app
+ * @returns {string}
+ */
+export function appURL( component, store, app_id, website='https://ccmjs.github.io/digital-maker-space/app.html' ) {
+
+  if ( store && app_id )
+    return `${website}#component=${component}&name=${store.name}&url=${store.url}&key=${app_id}`;
+  else
+    return `${website}#component=${component}`;   // render with default instance configuration
+
+}
+
+/**
  * provides a download of an on-the-fly created file
  * @param {string} filename - file name including file extension
  * @param {string} content - content of the file
