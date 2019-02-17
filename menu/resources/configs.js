@@ -118,7 +118,6 @@ ccm.files[ 'configs.js' ] = {
         "id": "main",
         "inner": [
           {
-            "class": "col-md-2",
             "inner": {
               "class": "list-group",
               "id": "entries"
