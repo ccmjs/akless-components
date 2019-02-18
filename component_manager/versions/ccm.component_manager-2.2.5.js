@@ -182,7 +182,7 @@
                 "tag": "a",
                 "class": "entry list-group-item",
                 "onclick": "%click%",
-                "style": "cursor: pointer",
+                "style": "cursor: pointer; z-index: unset",
                 "inner": {
                   "class": "title"
                 }
