@@ -2,7 +2,7 @@
  * @overview ccm component for building apps
  * @author André Kless <andre.kless@web.de> 2018-2019
  * @license The MIT License (MIT)
- * @version latest (2.0.0)
+ * @version 2.0.0
  * @changes
  * version 2.0.0 (18.02.2019):
  * - changed default instance configuration
@@ -18,9 +18,9 @@
 
   const component = {
 
-    name: 'app_builder',
+    name: 'app_builder', version: [ 2, 0, 0 ],
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-20.0.0.js',
 
     config: {
 

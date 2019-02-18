@@ -22,6 +22,63 @@ export function appURL( component, store, app_id, website='https://ccmjs.github.
 }
 
 /**
+ * decomposes a given app URL into component URL, component index, component name, component version, store settings and app ID
+ * @param {string} app_url - URL of a ccm-based app
+ * @param {Object} [ccm=window.ccm] - ccm framework object
+ * @returns {Object}
+ */
+export function decomposeAppURL( app_url, ccm = window.ccm ) {
+
+  if ( !app_url ) return;
+
+  const result = { store: {} };
+
+  app_url.split( '#' )[ 1 ].split( '&' ).forEach( part => {
+    if ( part.startsWith( 'component=' ) ) result.component  = part.split( '=' )[ 1 ];
+    if ( part.startsWith( 'name='      ) ) result.store.name = part.split( '=' )[ 1 ];
+    if ( part.startsWith( 'url='       ) ) result.store.url  = part.split( '=' )[ 1 ];
+    if ( part.startsWith( 'key='       ) ) result.key        = part.split( '=' )[ 1 ];
+  } );
+
+  result.index = ccm.helper.getIndex( result.component );
+  result.version = result.index.split( '-' );
+  result.name = result.version[ 0 ];
+  result.version.shift();
+  result.version = result.version.length ? result.version : 'latest';
+
+  if ( result.store.name === 'undefined' ) delete result.store.name;
+  if ( result.store.url  === 'undefined' ) delete result.store.url;
+
+  return result;
+}
+
+/**
+ * decomposes a given embed code into component URL, component index, component name, component version, store settings and app ID
+ * @param {string} embed_code - embed code of a ccm-based app
+ * @param {Object} [ccm=window.ccm] - ccm framework object
+ * @returns {Object}
+ */
+export function decomposeEmbedCode( embed_code, ccm = window.ccm ) {
+
+  if ( !embed_code ) return;
+  embed_code = ccm.helper.html( embed_code );
+  const dependency = ccm.helper.parse( embed_code.lastChild.getAttribute( 'key' ) );
+  const index = embed_code.lastChild.tagName.substr( 'ccm-'.length ).toLowerCase();
+  let version = index.split( '-' );
+  const name = version[ 0 ];
+  version.shift();
+  return {
+    component: embed_code.firstChild.getAttribute( 'src' ),
+    index: index,
+    name: name,
+    version: version.length ? version : 'latest',
+    store: dependency[ 1 ],
+    key: dependency[ 2 ]
+  };
+
+}
+
+/**
  * provides a download of an on-the-fly created file
  * @param {string} filename - file name including file extension
  * @param {string} content - content of the file
