@@ -70,8 +70,7 @@
                   "inner": "Delete"
                 }
               ]
-            },
-            { "id": "modal_dialog" }
+            }
           ]
         },
         "handover": {
@@ -538,12 +537,10 @@
 
           // render modal dialog
           const dialog = await self.modal_dialog.start( {
-            root: self.element.querySelector( '#modal_dialog' ),
             "modal_title": "Loading an existing App",
             "modal_content": content,
             "footer": null
           } );
-          dialog.open();
 
           /**
            * loads a ccm-based app
@@ -658,12 +655,11 @@
           const content = $.html( self.html.handover );
 
           // render modal dialog
-          ( await self.modal_dialog.start( {
-            root: self.element.querySelector( '#modal_dialog' ),
+          await self.modal_dialog.start( {
             "modal_title": "Handover of the App",
             "modal_content": content,
             "footer": null
-          } ) ).open();
+          } );
 
           // prepare data store settings (needed for embed code)
           let store_settings = self.data.store.source(); if ( is_local ) { store_settings = {}; store_settings[ app_id ] = dataset; }
