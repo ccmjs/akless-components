@@ -539,6 +539,7 @@
 
             await this.ccm.start( builder.url, {
               root: element.querySelector( '#content' ),
+              parent: this,
               data: {
                 store: [ 'ccm.store', this.source ],
                 key: active
