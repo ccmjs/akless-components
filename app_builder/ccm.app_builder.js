@@ -331,24 +331,6 @@
               ]
             }
           ]
-        },
-        "loaded": {
-          "id": "loaded",
-          "inner": {
-            "tag": "p",
-            "id": "success",
-            "class": "lead text-success",
-            "inner": "App was loaded successfully."
-          }
-        },
-        "deleted": {
-          "id": "deleted",
-          "inner": {
-            "tag": "p",
-            "id": "success",
-            "class": "lead text-danger",
-            "inner": "App was deleted successfully."
-          }
         }
       },
       "css": [ "ccm.load",
