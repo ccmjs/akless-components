@@ -56,6 +56,7 @@ ccm.files[ 'configs.js' ] = {
       },
       "entry": {
         "class": "entry btn btn-default",
+        "style": "z-index: unset",
         "onclick": "%click%",
         "inner": {
           "class": "title"
@@ -93,7 +94,7 @@ ccm.files[ 'configs.js' ] = {
         "tag": "li",
         "class": "entry",
         "onclick": "%click%",
-        "style": "cursor: pointer",
+        "style": "cursor: pointer; z-index: unset",
         "inner": {
           "tag": "a",
           "class": "title"
@@ -133,7 +134,7 @@ ccm.files[ 'configs.js' ] = {
         "tag": "a",
         "class": "entry list-group-item",
         "onclick": "%click%",
-        "style": "cursor: pointer; overflow: hidden;",
+        "style": "cursor: pointer; overflow: hidden; z-index: unset",
         "inner": {
           "class": "title"
         }
