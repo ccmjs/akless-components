@@ -70,8 +70,7 @@
                   "inner": "Delete"
                 }
               ]
-            },
-            { "id": "modal_dialog" }
+            }
           ]
         },
         "handover": {
@@ -343,7 +342,7 @@
       "builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/submit/versions/ccm.submit-7.0.0.js", [ "ccm.get", { "name": "submit", "url": "https://ccm2.inf.h-brs.de" }, "cloze_builder" ] ],
       "app": [ "ccm.component", "https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-5.0.3.js" ],
       "helper": [ "ccm.load", { "url": "https://ccmjs.github.io/akless-components/modules/helper.js", "type": "module" } ],
-      "modal_dialog": [ "ccm.component", "https://ccmjs.github.io/tkless-components/modal/versions/ccm.modal-1.0.0.js", {
+      "modal_dialog": [ "ccm.component", "https://ccmjs.github.io/tkless-components/modal/versions/ccm.modal-2.0.0.js", {
         "css": [ "ccm.load",
           "https://use.fontawesome.com/releases/v5.6.3/css/all.css",
           { "context": "head", "url": "https://use.fontawesome.com/releases/v5.6.3/css/all.css" }
@@ -538,12 +537,10 @@
 
           // render modal dialog
           const dialog = await self.modal_dialog.start( {
-            root: self.element.querySelector( '#modal_dialog' ),
             "modal_title": "Loading an existing App",
             "modal_content": content,
             "footer": null
           } );
-          dialog.open();
 
           /**
            * loads a ccm-based app
@@ -658,12 +655,11 @@
           const content = $.html( self.html.handover );
 
           // render modal dialog
-          ( await self.modal_dialog.start( {
-            root: self.element.querySelector( '#modal_dialog' ),
+          await self.modal_dialog.start( {
             "modal_title": "Handover of the App",
             "modal_content": content,
             "footer": null
-          } ) ).open();
+          } );
 
           // prepare data store settings (needed for embed code)
           let store_settings = self.data.store.source(); if ( is_local ) { store_settings = {}; store_settings[ app_id ] = dataset; }
