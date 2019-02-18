@@ -114,14 +114,14 @@ export async function downloadApp( embed_code, filename = 'app', title = 'App', 
 
 /**
  * generates the HTML embed code of a ccm-based app
- * @param {string} url - URL of ccm component
+ * @param {string} component - URL of ccm component
  * @param {Object} store - settings of ccm data store which contains the ccm instance configuration data set
  * @param {string} app_id - dataset key of ccm instance configuration
  * @param {string} [template='https://ccmjs.github.io/akless-components/resources/templates/embed.html'] - URL of the HTML template file
  * @param {Object} [ccm=window.ccm] - ccm framework object
  * @returns {Promise<string>} generated embed code
  */
-export async function embedCode( url, store, app_id, template = 'https://ccmjs.github.io/akless-components/resources/templates/embed.html', ccm = window.ccm ) {
+export async function embedCode( component, store, app_id, template = 'https://ccmjs.github.io/akless-components/resources/templates/embed.html', ccm = window.ccm ) {
 
   // load content of HTML template file
   template = await fetch( template ).then( response => response.text() );
@@ -130,11 +130,11 @@ export async function embedCode( url, store, app_id, template = 'https://ccmjs.g
    * index of the ccm component
    * @type {string}
    */
-  const index = ccm.helper.getIndex( url );
+  const index = ccm.helper.getIndex( component );
 
   // replace placeholders in template
   template = template
-    .replace( '__URL__', url )
+    .replace( '__URL__', component )
     .replace( '__INDEX__', index )
     .replace( '__STORE__', ccm.helper.stringify( store ) )
     .replace( '__KEY__', app_id )
