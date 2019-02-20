@@ -485,7 +485,7 @@
           self.logger && self.logger.log( 'create', $.clone( dataset ) );
 
           // perform certificate request
-          this.blockchain && this.blockchain.request( app_id );
+          self.blockchain && self.blockchain.request( app_id );
 
           // give app to user
           await handoverApp();
