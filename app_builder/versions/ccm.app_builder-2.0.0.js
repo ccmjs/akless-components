@@ -2,7 +2,7 @@
  * @overview ccm component for building apps
  * @author André Kless <andre.kless@web.de> 2018-2019
  * @license The MIT License (MIT)
- * @version 2.0.0
+ * @version latest (2.0.0)
  * @changes
  * version 2.0.0 (18.02.2019):
  * - changed default instance configuration
@@ -349,13 +349,11 @@
         ]
       } ],
       "booklet": [ "ccm.component", "https://ccmjs.github.io/akless-components/window/versions/ccm.window-1.0.0.js" ],
-  //  "js": [ 'ccm.load', 'https://ccmjs.github.io/akless-components/libs/jszip/jszip.min.js', 'https://ccmjs.github.io/akless-components/libs/FileSaver/FileSaver.js' ],
+      "blockchain": [ "ccm.start", "https://ccmjs.github.io/rmueller-components/certificate_request/versions/ccm.certificate_request-1.0.0.js", [ "ccm.get", "https://ccmjs.github.io/rmueller-components/certificate_request/resources/config.js", "all" ] ],
       "icon": "https://ccmjs.github.io/akless-components/dms/resources/component.png"
-
   //  "convert": { "app_to_builder": json => json, "builder_to_app": json => json },
   //  "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-8.3.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "guest" ] ],
   //  "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
-  //  "blockchain": [ "ccm.start", "https://ccmjs.github.io/rmueller-components/certificate_request/versions/ccm.certificate_request-1.0.0.js", [ "ccm.get", "https://ccmjs.github.io/rmueller-components/certificate_request/resources/config.js", "all" ] ]
   //  "onchange"
 
     },
