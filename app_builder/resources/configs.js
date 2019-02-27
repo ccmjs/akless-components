@@ -21,6 +21,7 @@ ccm.files[ 'configs.js' ] = {
     "booklet": [ "ccm.component", "../window/ccm.window.js", [ "ccm.get", "../window/resources/configs.js", "local" ] ],
     "builder.1": "../submit/ccm.submit.js",
     "app": [ "ccm.component", "../cloze/ccm.cloze.js" ],
+    "qr_code": [ "ccm.load", "../libs/qrcode-generator/qrcode.min.js" ],
     "user": [ "ccm.instance", "../user/ccm.user.js", [ "ccm.get", "../user/resources/configs.js", "guest" ] ],
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ]
   },

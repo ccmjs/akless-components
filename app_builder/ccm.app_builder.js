@@ -6,7 +6,7 @@
  * @changes
  * version 2.0.0 (18.02.2019):
  * - changed default instance configuration
- * - more ways for handover app (Embed Code, App ID, URL, Download, iBook Widget and SCORM)
+ * - more ways for handover app (Embed Code, App ID, URL, QR Code, Download, iBook Widget and SCORM)
  * - more ways for loading existing app (Embed Code, App ID and URL)
  * - use of modal dialogs
  * - outsourcing of help functions to ES6 module
@@ -77,97 +77,107 @@
           "id": "handover",
           "inner": [
             {
-              "id": "embed",
-              "class": "input-group mb-3",
+              "class": "d-flex",
               "inner": [
                 {
-                  "class": "input-group-prepend",
-                  "inner": {
-                    "tag": "span",
-                    "class": "input-group-text",
-                    "inner": "Embed"
-                  }
+                  "inner": [
+                    {
+                      "id": "embed",
+                      "class": "input-group mb-3",
+                      "inner": [
+                        {
+                          "class": "input-group-prepend",
+                          "inner": {
+                            "tag": "span",
+                            "class": "input-group-text",
+                            "inner": "Embed"
+                          }
+                        },
+                        {
+                          "tag": "input",
+                          "readonly": true,
+                          "type": "text",
+                          "id": "embed_code",
+                          "class": "form-control bg-white",
+                          "aria-label": "Embed Code"
+                        },
+                        {
+                          "class": "input-group-append",
+                          "inner": {
+                            "tag": "button",
+                            "id": "embed_copy",
+                            "class": "btn btn-success",
+                            "type": "button",
+                            "inner": "Copy"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "class": "input-group mb-3",
+                      "inner": [
+                        {
+                          "class": "input-group-prepend",
+                          "inner": {
+                            "tag": "span",
+                            "class": "input-group-text",
+                            "inner": "App ID"
+                          }
+                        },
+                        {
+                          "tag": "input",
+                          "readonly": true,
+                          "type": "text",
+                          "id": "app_id",
+                          "class": "form-control bg-white",
+                          "aria-label": "App ID"
+                        },
+                        {
+                          "class": "input-group-append",
+                          "inner": {
+                            "tag": "button",
+                            "id": "id_copy",
+                            "class": "btn btn-success",
+                            "type": "button",
+                            "inner": "Copy"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "class": "input-group mb-3",
+                      "inner": [
+                        {
+                          "class": "input-group-prepend",
+                          "inner": {
+                            "tag": "span",
+                            "class": "input-group-text",
+                            "inner": "URL"
+                          }
+                        },
+                        {
+                          "tag": "input",
+                          "readonly": true,
+                          "type": "text",
+                          "id": "app_url",
+                          "class": "form-control bg-white",
+                          "aria-label": "URL"
+                        },
+                        {
+                          "class": "input-group-append",
+                          "inner": {
+                            "tag": "button",
+                            "id": "url_copy",
+                            "class": "btn btn-success",
+                            "type": "button",
+                            "inner": "Copy"
+                          }
+                        }
+                      ]
+                    }
+                  ]
                 },
-                {
-                  "tag": "input",
-                  "readonly": true,
-                  "type": "text",
-                  "id": "embed_code",
-                  "class": "form-control bg-white",
-                  "aria-label": "Embed Code"
-                },
-                {
-                  "class": "input-group-append",
-                  "inner": {
-                    "tag": "button",
-                    "id": "embed_copy",
-                    "class": "btn btn-success",
-                    "type": "button",
-                    "inner": "Copy"
-                  }
-                }
-              ]
-            },
-            {
-              "class": "input-group mb-3",
-              "inner": [
-                {
-                  "class": "input-group-prepend",
-                  "inner": {
-                    "tag": "span",
-                    "class": "input-group-text",
-                    "inner": "App ID"
-                  }
-                },
-                {
-                  "tag": "input",
-                  "readonly": true,
-                  "type": "text",
-                  "id": "app_id",
-                  "class": "form-control bg-white",
-                  "aria-label": "App ID"
-                },
-                {
-                  "class": "input-group-append",
-                  "inner": {
-                    "tag": "button",
-                    "id": "id_copy",
-                    "class": "btn btn-success",
-                    "type": "button",
-                    "inner": "Copy"
-                  }
-                }
-              ]
-            },
-            {
-              "class": "input-group mb-3",
-              "inner": [
-                {
-                  "class": "input-group-prepend",
-                  "inner": {
-                    "tag": "span",
-                    "class": "input-group-text",
-                    "inner": "URL"
-                  }
-                },
-                {
-                  "tag": "input",
-                  "readonly": true,
-                  "type": "text",
-                  "id": "app_url",
-                  "class": "form-control bg-white",
-                  "aria-label": "URL"
-                },
-                {
-                  "class": "input-group-append",
-                  "inner": {
-                    "tag": "button",
-                    "id": "url_copy",
-                    "class": "btn btn-success",
-                    "type": "button",
-                    "inner": "Copy"
-                  }
-                }
+                { "id": "qr_code", "class": "pl-2" }
               ]
             },
             {
@@ -183,7 +193,7 @@
                       "tag": "span",
                       "class": "fas fa-file-download"
                     },
-                    " Download"
+                    " File"
                   ]
                 },
                 {
@@ -208,7 +218,7 @@
                       "tag": "span",
                       "class": "fas fa-book"
                     },
-                    " iBooks Author"
+                    " iBook Widget"
                   ]
                 },
                 {
@@ -349,6 +359,7 @@
         ]
       } ],
       "booklet": [ "ccm.component", "https://ccmjs.github.io/akless-components/window/versions/ccm.window-1.0.0.js" ],
+      "qr_code": [ "ccm.load", "https://ccmjs.github.io/akless-components/libs/qrcode-generator/qrcode.min.js" ],
       "blockchain": [ "ccm.start", "https://ccmjs.github.io/rmueller-components/certificate_request/versions/ccm.certificate_request-1.0.0.js", [ "ccm.get", "https://ccmjs.github.io/rmueller-components/certificate_request/resources/config.js", "all" ] ],
       "icon": "https://ccmjs.github.io/akless-components/dms/resources/component.png"
   //  "convert": { "app_to_builder": json => json, "builder_to_app": json => json },
@@ -680,8 +691,20 @@
           content.querySelector( '#id_copy' ).addEventListener( 'click', () => copyToClipboard( content.querySelector( '#app_id' ) ) );
 
           // provide App via URL
-          content.querySelector( '#app_url'  ).value = self.helper.appURL( self.app.url, store_settings, app_id );
+          const app_url = self.helper.appURL( self.app.url, store_settings, app_id );
+          content.querySelector( '#app_url'  ).value = app_url;
           content.querySelector( '#url_copy' ).addEventListener( 'click', () => copyToClipboard( content.querySelector( '#app_url' ) ) );
+
+          // provide App via QR Code
+          if ( self.qr_code && qrcode ) {
+            let demoQRCode = qrcode( 0, 'M' );
+            demoQRCode.addData( app_url );
+            demoQRCode.make();
+            let qrCodeSVGTag = document.createElement( 'div' );
+            qrCodeSVGTag.innerHTML = demoQRCode.createImgTag();
+            $.setContent( content.querySelector( '#qr_code' ), qrCodeSVGTag.firstChild );
+          }
+          else $.removeElement( content.querySelector( '#qr_code' ) );
 
           // provide App via Download as HTML File
           if ( embed_code && self.helper.downloadApp )
