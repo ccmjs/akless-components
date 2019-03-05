@@ -5,22 +5,21 @@
 <meta name="license" content="The MIT License (MIT)">
 
 <style>* { height: 100%; } body { margin: 0; }</style>
-<script src="../../ccm/ccm.js"></script>
 <script src="ccm.quick_decide.js"></script>
-<ccm-quick_decide></ccm-quick_decide>
+<ccm-quick_decide key='["ccm.get","resources/configs.js","local"]'></ccm-quick_decide>
 
 <!--
-<ccm-quick_decide>
-  <ccm-list-onfinish log="true", clear="true"></ccm-list-onfinish>
+<ccm-quick_decide key='["ccm.get","resources/configs.js","local"]' feedback="true" wait="1000" limit="3000">
+  <ccm-list-onfinish log="true" clear="true"></ccm-list-onfinish>
   <question text="Choose a colour!">
     <answer text="Red"></answer>
     <answer text="Blue"></answer>
-    <answer text="Green"></answer>
+    <answer text="Green" correct="true"></answer>
     <answer text="Yellow"></answer>
   </question>
   <question text="Shower">
     <answer text="Warm"></answer>
-    <answer text="Cold"></answer>
+    <answer text="Cold" correct="true"></answer>
   </question>
 </ccm-quick_decide>
 -->

@@ -1,6 +1,6 @@
 /**
  * @overview default layout of ccm component for quick decision
- * @author André Kless <andre.kless@web.de> 2018
+ * @author André Kless <andre.kless@web.de> 2018-2019
  * @license The MIT License (MIT)
  */
 
@@ -58,6 +58,18 @@
 }
 
 .answer.disabled {
-  opacity: 0.5;
   cursor: not-allowed;
+}
+
+.answer.disabled:not(.right):not(.wrong):not(.correct) {
+  opacity: 0.5;
+}
+
+.answer.right,
+.answer.correct {
+  background-color: limegreen;
+}
+
+.answer.wrong {
+  background-color: red;
 }

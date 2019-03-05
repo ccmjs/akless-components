@@ -2,7 +2,7 @@
  * @overview ccm component for quick decision
  * @author André Kless <andre.kless@web.de> 2018-2019
  * @license The MIT License (MIT)
- * @version latest (1.4.0)
+ * @version 1.4.0
  * @changes
  * version 1.4.0 (05.03.2019):
  * - answers can be marked as correct
@@ -25,9 +25,9 @@
 
   const component = {
 
-    name: 'quick_decide',
+    name: 'quick_decide', version: [ 1, 4, 0 ],
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-20.0.0.js',
 
     config: {
 
