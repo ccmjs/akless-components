@@ -58,10 +58,11 @@
 }
 
 .answer.disabled {
+  background-color: black;
   cursor: not-allowed;
 }
 
-.answer.disabled:not(.right):not(.wrong):not(.correct) {
+.answer.disabled:not(.right):not(.wrong) {
   opacity: 0.5;
 }
 
