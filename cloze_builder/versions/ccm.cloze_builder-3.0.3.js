@@ -2,7 +2,7 @@
  * @overview ccm component for building a fill-in-the-blank text
  * @author André Kless <andre.kless@web.de>, 2017-2019
  * @license The MIT License (MIT)
- * @version latest (3.0.3)
+ * @version 3.0.3
  * @changes
  * version 3.0.3 (06.03.2019)
  * - updated default instance configuration
@@ -49,9 +49,9 @@
 
   const component = {
 
-    name: 'cloze_builder',
+    name: 'cloze_builder', version: [ 3, 0, 3 ],
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-20.0.0.js',
 
     config: {
 
