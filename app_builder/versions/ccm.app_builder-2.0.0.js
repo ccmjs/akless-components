@@ -466,8 +466,13 @@
             onchange: updatePreview
           } );
 
-          // activate "Update" and "Delete" button
-          app_id && !is_local && !is_new && buttons_elem.querySelectorAll( '.disabled' ).forEach( button => button.classList.remove( 'disabled' ) );
+          // activate/disable "Update" and "Delete" button
+          if ( app_id && !is_new )
+            !is_local && buttons_elem.querySelectorAll( '.disabled' ).forEach( button => button.classList.remove( 'disabled' ) );
+          else {
+            buttons_elem.querySelector( '#button-update' ).classList.add( 'disabled' );
+            buttons_elem.querySelector( '#button-delete' ).classList.add( 'disabled' );
+          }
 
           // update preview of build app
           await updatePreview();
