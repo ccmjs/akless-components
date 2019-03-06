@@ -80,12 +80,7 @@
               {
                 "tag": "input",
                 "type": "hidden",
-                "name": "data.store"
-              },
-              {
-                "tag": "input",
-                "type": "hidden",
-                "name": "data.key"
+                "name": "data"
               },
               {
                 "tag": "input",
@@ -760,7 +755,6 @@
       ],
       "defaults": {
         "text": "Hello, *(W)o(rl)d*! *Welcome*. This is an *Ex(amp)le*.",
-        "data.store": "['ccm.store']",
         "feedback": true,
         "retry": true,
         "captions": {
@@ -770,7 +764,7 @@
           "finish": "Restart"
         }
       },
-      "editor": [ "ccm.component", "https://ccmjs.github.io/tkless-components/editor/versions/ccm.editor-3.0.0.js", {
+      "editor": [ "ccm.component", "https://ccmjs.github.io/tkless-components/editor/versions/ccm.editor-3.1.0.js", {
         "editor": [ "ccm.load",
           [
             [
@@ -792,7 +786,7 @@
           [ "image" ]
         ], "settings.placeholder": "Type here..."
       } ],
-      "target": [ "ccm.component", "https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-5.0.0.js" ],
+      "target": [ "ccm.component", "https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-5.0.3.js" ],
       "submit_button": true,
       "preview": true
 
@@ -1040,9 +1034,6 @@
         result.retry     = result.feedback === 'retry';
         result.solutions = result.feedback === 'solutions';
         result.feedback  = result.feedback !== 'none';
-
-        // finalize 'onfinish' property
-        if ( !result.onfinish || !result.onfinish.restart ) result.onfinish = '';
 
         // convert dot notation properties to deeper objects
         result = $.solveDotNotation( result );
