@@ -640,6 +640,9 @@
           // forget App-ID
           app_id = undefined;
 
+          // up to now a new app configuration
+          is_new = true;
+
           // continue with new empty app configuration
           dataset = { key: $.generateKey() };
 
