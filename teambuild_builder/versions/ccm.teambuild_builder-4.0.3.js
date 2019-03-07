@@ -2,7 +2,7 @@
  * @overview ccm component for building a team building
  * @author André Kless <andre.kless@web.de> 2017-2019
  * @license The MIT License (MIT)
- * @version latest (4.0.3)
+ * @version 4.0.3
  * @changes
  * version 4.0.3 (07.03.2019):
  * - use ccm.user.js v9.0.0 and teambuild v3.1.0 as default
@@ -36,9 +36,9 @@
 
   const component = {
 
-    name: 'teambuild_builder',
+    name: 'teambuild_builder', version: [ 4, 0 , 3 ],
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-20.0.0.js',
 
     config: {
 
