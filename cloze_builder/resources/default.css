@@ -42,6 +42,10 @@ a {
   vertical-align: bottom !important;
 }
 
+#navigation {
+  padding-bottom: 1em;
+}
+
 #grid {
   display: grid;
   grid-template-columns: auto auto auto;
