@@ -84,37 +84,6 @@ ccm.files[ 'configs.js' ] = {
       },
       "alert": "Saved!"
     }
-  },
-
-  "lea": {
-    "key": "lea",
-    "html.inner.1.inner.2.inner.0.inner.1.inner.1.inner.5": {
-      "tag": "h5",
-      "inner": "H-BRS LEA"
-    },
-    "html.inner.1.inner.2.inner.0.inner.1.inner.1.inner.6": {
-      "tag": "p",
-      "inner": "Authentication with a valid account from the LEA platform at Hochschule Bonn-Rhein-Sieg University of Applied Sciences."
-    },
-    "html.inner.1.inner.2.inner.0.inner.2.inner.3": {
-      "tag": "option",
-      "inner": "H-BRS LEA",
-      "value": "['ccm.instance','https://ccmjs.github.io/akless-components/user/versions/ccm.user-7.0.0.js',{'realm':'LEA'}]"
-    },
-    "data": {
-      "store": [ "ccm.store", { "store": "cloze", "url": "https://ccm2.inf.h-brs.de" } ],
-      "key": "demo"
-    },
-    "defaults.user": "['ccm.instance','https://ccmjs.github.io/akless-components/user/versions/ccm.user-7.0.0.js',{'realm':'LEA'}]",
-    "defaults.css": "['ccm.load','https://ccmjs.github.io/akless-components/cloze/resources/lea.css']",
-    "submit_button": "Submit",
-    "onfinish": {
-      "store": {
-        "settings": { "store": "cloze", "url": "https://ccm2.inf.h-brs.de" },
-        "key": "demo"
-      },
-      "alert": "Saved!"
-    }
   }
 
 };

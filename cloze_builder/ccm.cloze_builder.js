@@ -641,7 +641,7 @@
                           {
                             "id": "start_button-info",
                             "class": "alert alert-info",
-                            "inner": "If you select this option, the fill-in-the-blank exercise is only displayed after clicking the start button."
+                            "inner": "If you select this option, the fill-in-the-blank exercise is only displayed after clicking the start button.<br>If this option is selected, the caption of the start button can be adjusted via the lower input field."
                           }
                         ]
                       },
@@ -678,7 +678,7 @@
                           {
                             "id": "onfinish.restart-info",
                             "class": "alert alert-info",
-                            "inner": "Select this option to add a finish button to the fill-in-the-blank exercise that allows you to restart the exercise."
+                            "inner": "Select this option to add a finish button to the fill-in-the-blank exercise that allows you to restart the exercise.<br>The label of the finish button can be adjusted via the lower input field."
                           }
                         ]
                       },
@@ -753,17 +753,6 @@
         { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/bootstrap/css/font-face.css" },
         "https://ccmjs.github.io/akless-components/cloze_builder/resources/default.css"
       ],
-      "defaults": {
-        "text": "Hello, *(W)o(rl)d*! *Welcome*. This is an *Ex(amp)le*.",
-        "feedback": true,
-        "retry": true,
-        "captions": {
-          "start": "Start",
-          "submit": "Submit",
-          "retry": "Retry",
-          "finish": "Restart"
-        }
-      },
       "editor": [ "ccm.component", "https://ccmjs.github.io/tkless-components/editor/versions/ccm.editor-3.1.0.js", {
         "editor": [ "ccm.load",
           [
@@ -788,7 +777,20 @@
       } ],
       "target": [ "ccm.component", "https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-5.0.3.js" ],
       "submit_button": true,
-      "preview": true
+      "preview": true,
+      "ignore": {
+        "defaults": {
+          "text": "Hello, *(W)o(rl)d*! *Welcome*. This is an *Ex(amp)le*.",
+          "feedback": true,
+          "retry": true,
+          "captions": {
+            "start": "Start",
+            "submit": "Submit",
+            "retry": "Retry",
+            "finish": "Restart"
+          }
+        }
+      }
 
   //  "data": { "store": [ "ccm.store", { "test": { ... } } ], "key": "test" },
   //  "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
