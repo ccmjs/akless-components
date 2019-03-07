@@ -970,7 +970,7 @@
           self.element.querySelector( '#captions\\.retry'  ).style.display = getInputElementByName( 'feedback' ).value === 'retry'    ? 'block' : 'none';
           self.element.querySelector( '#captions\\.submit' ).style.display = getInputElementByName( 'feedback' ).value !== 'none'     ? 'block' : 'none';
           self.element.querySelector( '#captions\\.start'  ).style.display = getInputElementByName( 'start_button'     ).checked      ? 'block' : 'none';
-          self.element.querySelector( '#captions\\.finish' ).style.display = getInputElementByName( 'onfinish.restart' ).checked      ? 'block' : 'none';
+      //  self.element.querySelector( '#captions\\.finish' ).style.display = getInputElementByName( 'onfinish.restart' ).checked      ? 'block' : 'none';
           function getInputElementByName( name ) { return self.element.querySelector( '[name="' + name + '"]' ); }
 
         }
