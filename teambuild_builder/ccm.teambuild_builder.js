@@ -6,6 +6,7 @@
  * @changes
  * version 4.0.3 (07.03.2019):
  * - use ccm.user.js v9.0.0 and teambuild v3.1.0 as default
+ * - updated default info texts
  * version 4.0.2 (30.01.2019):
  * - updated default template
  * - uses ccm v20.0.0
@@ -120,7 +121,7 @@
                           {
                             "id": "max_teams-info",
                             "class": "alert alert-info",
-                            "inner": "Here you can specify the maximum number of teams. Leave this field empty if the number of teams is to be unlimited."
+                            "inner": "Specify the maximum number of teams. Leave this field empty for creating an unlimited amount of teams."
                           }
                         ]
                       },
@@ -162,7 +163,7 @@
                           {
                             "id": "max_members-info",
                             "class": "alert alert-info",
-                            "inner": "Here you can specify the maximum number of team members. If a team has reached the maximum number of team members, no other user can join the team. Leave this field empty if the number of team members is to be unlimited."
+                            "inner": "Specify the maximum number of team members. If a team reaches the maximum number of team members, no other user can join. Leave this field empty if the number of team members should be unlimited."
                           }
                         ]
                       },
@@ -210,7 +211,7 @@
                           {
                             "id": "text.team-info",
                             "class": "alert alert-info",
-                            "inner": "Here you can specify the default name of a team. As long as a team does not have an individual name, the name given here will be displayed for the team and automatically extended by a unique team number."
+                            "inner": "Specify the default name of a team. If the team name is not specified, the teams are automatically numbered."
                           }
                         ]
                       },
@@ -233,7 +234,7 @@
                         "id": "text.free-label",
                         "for": "text.free-input",
                         "class": "control-label",
-                        "inner": "Free Team Member Slot Label"
+                        "inner": "Caption for Free Spaces in a Team"
                       },
                       {
                         "tag": "span",
@@ -251,7 +252,7 @@
                           {
                             "id": "text.free-info",
                             "class": "alert alert-info",
-                            "inner": "Here you can specify which label to use for a free member slot in a team with a limited number of members."
+                            "inner": "Specify which caption to use for a free space in a team."
                           }
                         ]
                       },
@@ -274,7 +275,7 @@
                         "id": "user-label",
                         "for": "user-input",
                         "class": "control-label",
-                        "inner": "Sign-on"
+                        "inner": "Sign On"
                       },
                       {
                         "tag": "span",
@@ -293,14 +294,14 @@
                             "id": "user-info",
                             "class": "alert alert-info",
                             "inner": [
-                              "If you select a sign-on mode here, authentication will be requested after the completion of the fill-in-the-blank text and the results will only be submitted if the authentication was successful. The various sign-on modes are described below.",
+                              "If you select a sign-on mode, authentication is requested after the completion of the process and the results are only submitted if the login was successful. If you do not select a sign-on mode the result are not submitted.<br>The various sign-on modes are described below.",
                               {
                                 "tag": "h5",
                                 "inner": "Guest Mode"
                               },
                               {
                                 "tag": "p",
-                                "inner": "The user can authenticate with any username and without password. This mode is mostly used for test and demo scenarios."
+                                "inner": "The user can log in with any username and without a password. This mode is mostly used for demo scenarios."
                               },
                               {
                                 "tag": "h5",
@@ -308,7 +309,7 @@
                               },
                               {
                                 "tag": "p",
-                                "inner": "In this mode the user has to authenticate access with a valid account from the Department of Computer Sciences at Hochschule Bonn-Rhein-Sieg University of Applied Sciences."
+                                "inner": "In this mode the user has to log in with a valid account from the Department of Computer Sciences at Hochschule Bonn-Rhein-Sieg, University of Applied Sciences."
                               }
                             ]
                           }
@@ -367,7 +368,7 @@
                           {
                             "id": "css-info",
                             "class": "alert alert-info",
-                            "inner": "Here you can choose between different layouts, in which the team building is then displayed."
+                            "inner": "Choose between a layout format for your team building app."
                           }
                         ]
                       },
@@ -414,7 +415,7 @@
                           {
                             "id": "names-info",
                             "class": "alert alert-info",
-                            "inner": "Here you can set initial individual team names separated by commas."
+                            "inner": "Set individual team names. Separate the names with commas."
                           }
                         ]
                       },
@@ -449,7 +450,7 @@
                                 "id": "editable.join-label",
                                 "for": "editable.join-input",
                                 "class": "control-label",
-                                "inner": "Joined"
+                                "inner": "Join"
                               },
                               {
                                 "tag": "a",
@@ -473,7 +474,7 @@
                               {
                                 "id": "editable.join-info",
                                 "class": "alert alert-info",
-                                "inner": "Here you can choose whether authenticated users can join a team."
+                                "inner": "Choose whether logged in users can join a team."
                               }
                             ]
                           },
@@ -486,7 +487,7 @@
                                 "id": "editable.leave-label",
                                 "for": "editable.leave-input",
                                 "class": "control-label",
-                                "inner": "Leaved"
+                                "inner": "Leave"
                               },
                               {
                                 "tag": "a",
@@ -510,7 +511,7 @@
                               {
                                 "id": "editable.leave-info",
                                 "class": "alert alert-info",
-                                "inner": "Here you can choose whether authenticated users can leave a team."
+                                "inner": "Choose whether logged in users can leave a team."
                               }
                             ]
                           },
@@ -523,7 +524,7 @@
                                 "id": "editable.rename-label",
                                 "for": "editable.rename-input",
                                 "class": "control-label",
-                                "inner": "Renamed"
+                                "inner": "Rename"
                               },
                               {
                                 "tag": "a",
@@ -547,7 +548,7 @@
                               {
                                 "id": "editable.rename-info",
                                 "class": "alert alert-info",
-                                "inner": "Here you can choose whether authenticated users can rename a team they belong to by clicking on the team name."
+                                "inner": "Choose whether logged in users can rename their team."
                               }
                             ]
                           },
@@ -579,7 +580,7 @@
                                     {
                                       "id": "text.join-info",
                                       "class": "alert alert-info",
-                                      "inner": "Here you can set the caption of the button for joining a team."
+                                      "inner": "<i>Join</i> is offered as a default button but can be renamed."
                                     }
                                   ]
                                 },
@@ -622,7 +623,7 @@
                                     {
                                       "id": "text.leave-info",
                                       "class": "alert alert-info",
-                                      "inner": "Here you can set the caption of the button for leaving a team."
+                                      "inner": "<i>Leave</i> is offered as a default button but can be renamed."
                                     }
                                   ]
                                 },
