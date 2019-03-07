@@ -881,9 +881,9 @@
           dataset = $.integrate( self.ignore.defaults, dataset, true );
 
           // stringify complex initial values
-          $.encodeDependencies( dataset );
           dataset.data = $.stringify( dataset.data );
           dataset.onfinish = $.stringify( dataset.onfinish );
+          $.encodeDependencies( dataset );
 
           // prepare 'keywords' and 'manually' entry
           if ( Array.isArray( dataset.keywords ) )
