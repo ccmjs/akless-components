@@ -758,17 +758,6 @@
         { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/bootstrap/css/font-face.css" },
         "https://ccmjs.github.io/akless-components/cloze_builder/resources/default.css"
       ],
-      "defaults": {
-        "text": "Hello, *(W)o(rl)d*! *Welcome*. This is an *Ex(amp)le*.",
-        "feedback": true,
-        "retry": true,
-        "captions": {
-          "start": "Start",
-          "submit": "Submit",
-          "retry": "Retry",
-          "finish": "Restart"
-        }
-      },
       "editor": [ "ccm.component", "https://ccmjs.github.io/tkless-components/editor/versions/ccm.editor-3.1.0.js", {
         "editor": [ "ccm.load",
           [
@@ -793,7 +782,20 @@
       } ],
       "target": [ "ccm.component", "https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-5.0.3.js" ],
       "submit_button": true,
-      "preview": true
+      "preview": true,
+      "ignore": {
+        "defaults": {
+          "text": "Hello, *(W)o(rl)d*! *Welcome*. This is an *Ex(amp)le*.",
+          "feedback": true,
+          "retry": true,
+          "captions": {
+            "start": "Start",
+            "submit": "Submit",
+            "retry": "Retry",
+            "finish": "Restart"
+          }
+        }
+      }
 
   //  "data": { "store": [ "ccm.store", { "test": { ... } } ], "key": "test" },
   //  "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
@@ -880,10 +882,10 @@
         function prepareValues() {
 
           // set default value for dataset key of app-specific data
-          if ( !$.deepValue( dataset, 'data.key' ) ) $.deepValue( self.defaults, 'data.key', $.generateKey() );
+          if ( !$.deepValue( dataset, 'data.key' ) ) $.deepValue( self.ignore.defaults, 'data.key', $.generateKey() );
 
           // given default values? => integrate them as defaults into initial values
-          dataset = $.integrate( self.defaults, dataset, true );
+          dataset = $.integrate( self.ignore.defaults, dataset, true );
 
           // encode dependencies
           $.encodeDependencies( dataset );

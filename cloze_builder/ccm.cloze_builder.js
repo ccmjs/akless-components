@@ -880,10 +880,10 @@
         function prepareValues() {
 
           // set default value for dataset key of app-specific data
-          if ( !$.deepValue( dataset, 'data.key' ) ) $.deepValue( self.defaults, 'data.key', $.generateKey() );
+          if ( !$.deepValue( dataset, 'data.key' ) ) $.deepValue( self.ignore.defaults, 'data.key', $.generateKey() );
 
           // given default values? => integrate them as defaults into initial values
-          dataset = $.integrate( self.defaults, dataset, true );
+          dataset = $.integrate( self.ignore.defaults, dataset, true );
 
           // encode dependencies
           $.encodeDependencies( dataset );
