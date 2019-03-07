@@ -85,11 +85,6 @@
               {
                 "tag": "input",
                 "type": "hidden",
-                "name": "data.key"
-              },
-              {
-                "tag": "input",
-                "type": "hidden",
                 "name": "onfinish"
               },
               {
@@ -885,8 +880,10 @@
           // given default values? => integrate them as defaults into initial values
           dataset = $.integrate( self.ignore.defaults, dataset, true );
 
-          // encode dependencies
+          // stringify complex initial values
           $.encodeDependencies( dataset );
+          dataset.data = $.stringify( dataset.data );
+          dataset.onfinish = $.stringify( dataset.onfinish );
 
           // prepare 'keywords' and 'manually' entry
           if ( Array.isArray( dataset.keywords ) )

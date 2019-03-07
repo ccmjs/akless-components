@@ -85,11 +85,6 @@
               {
                 "tag": "input",
                 "type": "hidden",
-                "name": "data.key"
-              },
-              {
-                "tag": "input",
-                "type": "hidden",
                 "name": "onfinish"
               },
               {
@@ -758,6 +753,17 @@
         { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/bootstrap/css/font-face.css" },
         "https://ccmjs.github.io/akless-components/cloze_builder/resources/default.css"
       ],
+      "defaults": {
+        "text": "Hello, *(W)o(rl)d*! *Welcome*. This is an *Ex(amp)le*.",
+        "feedback": true,
+        "retry": true,
+        "captions": {
+          "start": "Start",
+          "submit": "Submit",
+          "retry": "Retry",
+          "finish": "Restart"
+        }
+      },
       "editor": [ "ccm.component", "https://ccmjs.github.io/tkless-components/editor/versions/ccm.editor-3.1.0.js", {
         "editor": [ "ccm.load",
           [
@@ -782,20 +788,7 @@
       } ],
       "target": [ "ccm.component", "https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-5.0.3.js" ],
       "submit_button": true,
-      "preview": true,
-      "ignore": {
-        "defaults": {
-          "text": "Hello, *(W)o(rl)d*! *Welcome*. This is an *Ex(amp)le*.",
-          "feedback": true,
-          "retry": true,
-          "captions": {
-            "start": "Start",
-            "submit": "Submit",
-            "retry": "Retry",
-            "finish": "Restart"
-          }
-        }
-      }
+      "preview": true
 
   //  "data": { "store": [ "ccm.store", { "test": { ... } } ], "key": "test" },
   //  "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
@@ -887,8 +880,10 @@
           // given default values? => integrate them as defaults into initial values
           dataset = $.integrate( self.ignore.defaults, dataset, true );
 
-          // encode dependencies
+          // stringify complex initial values
           $.encodeDependencies( dataset );
+          dataset.data = $.stringify( dataset.data );
+          dataset.onfinish = $.stringify( dataset.onfinish );
 
           // prepare 'keywords' and 'manually' entry
           if ( Array.isArray( dataset.keywords ) )
