@@ -330,7 +330,7 @@
                   // adjust app configuration
                   Object.assign( config, {
                     data: results[ i ],     // set app result data is initial data
-                    show_result: true,      // show app in result mode
+                    show_results: true,     // show app in result mode
                     onfinish: () => {
                       $.removeElement( app.root );        // remove detailed app result
                       elem.main.style.display = 'block';  // show main HTML structure
@@ -642,6 +642,7 @@
             }
 
           }
+
         ];
 
         // update content of section area
