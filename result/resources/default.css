@@ -1,0 +1,62 @@
+/**
+ * @overview default layout of ccm component for visualisation of result data
+ * @author André Kless <andre.kless@web.de> 2019
+ * @license The MIT License (MIT)
+ */
+
+#main {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  padding: 1em;
+  white-space: nowrap;
+}
+
+#user {
+  float: right;
+}
+
+#content {
+  padding: 1em 0;
+}
+
+#filter {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 1em 0;
+}
+
+.entry {
+  display: flex;
+  align-items: center;
+  padding: 0 0.5em;
+}
+
+.entry > * {
+  padding: 0 0.5em;
+}
+
+.entry label:after {
+  content: ':'
+}
+
+label {
+  margin: 0 !important;
+}
+
+select {
+  cursor: pointer;
+}
+
+#details {
+  padding: 0.5em;
+}
+
+/*
+#details .btn {
+  margin: 1em 0;
+}
+
+#details .btn span {
+  padding-right: 0.3em;
+}
+*/
