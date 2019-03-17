@@ -386,9 +386,9 @@
 
               // prepare data for chart rendering
               const data = [], total = results[ 0 ].total;
-              for ( let i = 0; i < total; i++ )
-                data[ i ] = { name: ( i + 1 ) + ' of ' + total, y: 0 };
-              results.forEach( result => data[ result.correct - 1 ].y++ );
+              for ( let i = 0; i <= total; i++ )
+                data[ i ] = { name: i + ' of ' + total, y: 0 };
+              results.forEach( result => data[ result.correct ].y++ );
               data.forEach( entry => { entry.x = ( entry.y / total ) * 100 } );
 
               // render chart

@@ -70,7 +70,7 @@
         "https://ccmjs.github.io/akless-components/libs/bootstrap-4/css/bootstrap.min.css"
       ],
       "app": {
-        "comp": [ "ccm.component", "https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-5.0.3.js" ],
+        "comp": [ "ccm.component", "https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-5.1.0.js" ],
         "configs": [ "ccm.store" ],
         "results": [ "ccm.store" ]
       },
@@ -386,9 +386,9 @@
 
               // prepare data for chart rendering
               const data = [], total = results[ 0 ].total;
-              for ( let i = 0; i < total; i++ )
-                data[ i ] = { name: ( i + 1 ) + ' of ' + total, y: 0 };
-              results.forEach( result => data[ result.correct - 1 ].y++ );
+              for ( let i = 0; i <= total; i++ )
+                data[ i ] = { name: i + ' of ' + total, y: 0 };
+              results.forEach( result => data[ result.correct ].y++ );
               data.forEach( entry => { entry.x = ( entry.y / total ) * 100 } );
 
               // render chart
