@@ -180,7 +180,6 @@
           self.start_button = false;
           self.time = 0;
           self.cancel_button = false;
-          self.onfinish = { clear: true };
         }
 
       };
