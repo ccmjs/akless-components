@@ -2,7 +2,7 @@
  * @overview ccm component for rendering a fill-in-the-blank text
  * @author André Kless <andre.kless@web.de> 2017-2019
  * @license The MIT License (MIT)
- * @version latest (5.1.0)
+ * @version 5.1.0
  * @changes
  * version 5.1.0 (17.03.2019):
  * - added result mode
