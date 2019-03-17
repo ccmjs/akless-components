@@ -38,9 +38,9 @@
 
   const component = {
 
-    name: 'cloze',
+    name: 'cloze', version: [ 5, 1, 0 ],
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-20.0.0.js',
 
     config: {
 
