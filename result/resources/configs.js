@@ -27,7 +27,7 @@ ccm.files[ 'configs.js' ] = {
   "demo": {
     "key": "demo",
     "app": {
-      "comp": [ "ccm.component", "https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-5.0.3.js" ],
+      "comp": [ "ccm.component", "https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-5.1.0.js" ],
       "configs": [ "ccm.store", "https://ccmjs.github.io/akless-components/cloze/resources/configs.js" ],
       "results": [ "ccm.store", { "name": "cloze_results", "url": "wss://ccm2.inf.h-brs.de" } ]
     }
