@@ -478,7 +478,7 @@
                 },
                 {
                   type: 'line',
-                  name: 'updated',
+                  name: 'last updated',
                   data: []
                 }
               ];
@@ -536,7 +536,7 @@
                   },
                   yAxis: {
                     title: {
-                      text: 'People'
+                      text: 'App Results'
                     },
                     tickInterval: 1
                   },

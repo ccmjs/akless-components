@@ -14,7 +14,7 @@ ccm.files[ 'configs.js' ] = {
     ],
     "app": {
       "comp": [ "ccm.component", "../cloze/ccm.cloze.js" ],
-      "configs": [ "ccm.store", { "name": "cloze", "url": "https://ccm2.inf.h-brs.de" } ],
+      "configs": [ "ccm.store", "../cloze/resources/configs.js" ],
       "results": [ "ccm.store", { "name": "cloze_results", "url": "wss://ccm2.inf.h-brs.de" } ]
     },
     "menu": [ "ccm.component", "../menu/ccm.menu.js", [ "ccm.get", "../menu/resources/configs.js", "bootstrap" ] ],
@@ -28,7 +28,7 @@ ccm.files[ 'configs.js' ] = {
     "key": "demo",
     "app": {
       "comp": [ "ccm.component", "https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-5.0.3.js" ],
-      "configs": [ "ccm.store", { "name": "cloze", "url": "https://ccm2.inf.h-brs.de" } ],
+      "configs": [ "ccm.store", "https://ccmjs.github.io/akless-components/cloze/resources/configs.js" ],
       "results": [ "ccm.store", { "name": "cloze_results", "url": "wss://ccm2.inf.h-brs.de" } ]
     }
   },
