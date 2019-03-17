@@ -61,27 +61,14 @@ ccm.files[ 'configs.js' ] = {
     "key": "demo",
     "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/cloze/resources/default.css" ],
     "data": {
-      "store": [ "ccm.store", { "name": "cloze_results", "url": "https://ccm2.inf.h-brs.de", "method": "POST" } ],
+      "store": [ "ccm.store", { "name": "cloze_results", "url": "https://ccm2.inf.h-brs.de" } ],
       "key": "demo"
     },
     "feedback": true,
-    "time": 300,
     "keywords": [ "convenience", "conducting", "objectives", "durable", "competitive", "breakdown", "reasons", "evaluate", "adding", "breakthroughs", "withdraw", "patterns", "non-durable", "deleting", "feasible", "making", "sources", "niche" ],
     "text": "<ol><li>To stay competitive companies must *evaluate* their existing product line and make decisions about *deleting* or *adding* new products.</li><li>Innovation can have different *sources* e.g. “Discontinuous” innovation, which can change existing consumption *patterns*.</li><li>Innovations are of extreme importance for organizations; some innovations are caused by technical *breakthroughs*.</li><li>In order to be successful companies may need to look for a market *niche*.</li><li> It is assumed that *durable* goods last more than one year. *Non-durable*  goods are tangible but provide benefits only for a short period of time. *convenience* products are goods that consumers buy frequently like soft drinks, newspapers etc.</li><li>A business model identifies such things as *competitive* advantage, and how to become profitable. Some business models may not be *feasible* any longer.</li><li>One way to evaluate a product is by *conducting* a discrimination test.</li><li>When a product fails i.e. it does not meet the *objectives* that were set by the organization, the company may be forced to *withdraw* it from the market, as was the case with Walmart in Germany.</li></ol>",
     "blank": true,
-    "retry": true,
-    "captions.finish": "Save and Restart",
-    "onfinish": {
-      "store": {
-        "settings": {
-          "url": "https://ccm2.inf.h-brs.de",
-          "name": "cloze_results"
-        },
-        "key": "demo"
-      },
-      "alert": "Saved!",
-      "restart": true
-    }
+    "retry": true
   },
 
   "demo_old": {
@@ -159,35 +146,29 @@ ccm.files[ 'configs.js' ] = {
     "key": "demo1",
     "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/cloze/resources/default.css" ],
     "data": {
-      "store": [ "ccm.store", { "store": "cloze_results", "url": "https://ccm2.inf.h-brs.de", "method": "POST" } ],
+      "store": [ "ccm.store", { "name": "cloze_results", "url": "https://ccm2.inf.h-brs.de" } ],
       "key": "demo1",
-      "user": true
+      "login": true,
+      "user": true,
+      "permissions": {
+        "creator": "teacher",
+        "realm": "guest",
+        "group": [ "%user%" ],
+        "access": {
+          "get": "group",
+          "set": "group",
+          "del": "creator"
+        }
+      }
     },
     "keywords": true,
     "feedback": true,
     "blank": true,
     "captions.finish": "Save and Restart",
-    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-8.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "guest" ] ],
+    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "guest" ] ],
+    "retry": true,
     "onfinish": {
-      "store": {
-        "settings": {
-          "url": "https://ccm2.inf.h-brs.de",
-          "method": "POST",
-          "store": "cloze_results"
-        },
-        "key": "demo1",
-        "user": true,
-        "permissions": {
-          "creator": "teacher",
-          "realm": "guest",
-          "group": [ "%user%" ],
-          "access": {
-            "get": "group",
-            "set": "group",
-            "del": "creator"
-          }
-        }
-      },
+      "store": true,
       "alert": "Saved!",
       "restart": true
     },
@@ -197,32 +178,31 @@ ccm.files[ 'configs.js' ] = {
   "demo2": {
     "key": "demo2",
     "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/cloze/resources/default.css" ],
+    "data": {
+      "store": [ "ccm.store", { "name": "cloze_results", "url": "https://ccm2.inf.h-brs.de" } ],
+      "key": "demo2",
+      "login": true,
+      "user": true,
+      "unique": true,
+      "permissions": {
+        "creator": "teacher",
+        "realm": "guest",
+        "group": [ "%user%" ],
+        "access": {
+          "get": "group",
+          "set": "group",
+          "del": "creator"
+        }
+      }
+    },
     "keywords": true,
     "feedback": true,
+    "retry": false,
     "blank": true,
     "captions.finish": "Save and Restart",
-    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-8.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "guest" ] ],
+    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "guest" ] ],
     "onfinish": {
-      "store": {
-        "settings": {
-          "url": "https://ccm2.inf.h-brs.de",
-          "method": "POST",
-          "store": "cloze_results"
-        },
-        "key": "demo2",
-        "user": true,
-        "unique": true,
-        "permissions": {
-          "creator": "teacher",
-          "realm": "guest",
-          "group": [ "%user%" ],
-          "access": {
-            "get": "group",
-            "set": "creator",
-            "del": "creator"
-          }
-        }
-      },
+      "store": true,
       "alert": "Saved!",
       "restart": true
     },
@@ -232,35 +212,35 @@ ccm.files[ 'configs.js' ] = {
   "demo3": {
     "key": "demo3",
     "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/cloze/resources/default.css" ],
+    "data": {
+      "store": [ "ccm.store", { "name": "cloze_results", "url": "https://ccm2.inf.h-brs.de" } ],
+      "key": "demo3",
+      "login": true,
+      "user": true,
+      "permissions": {
+        "creator": "teacher",
+        "realm": "guest",
+        "group": [ "%user%" ],
+        "access": {
+          "get": "group",
+          "set": "group",
+          "del": "creator"
+        }
+      }
+    },
     "keywords": true,
     "feedback": true,
+    "retry": false,
+    "solutions": true,
     "blank": true,
-    "captions.finish": "Save",
-    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-8.0.0.js", { "key": [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "guest" ], "guest": true } ],
+    "captions.finish": "Save and Restart",
+    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "pseudo" ] ],
     "onfinish": {
-      "store": {
-        "settings": {
-          "url": "https://ccm2.inf.h-brs.de",
-          "method": "POST",
-          "store": "cloze_results"
-        },
-        "key": "demo3",
-        "user": true,
-        "permissions": {
-          "creator": "teacher",
-          "realm": "guest",
-          "group": [ "%user%" ],
-          "access": {
-            "get": "group",
-            "set": "creator",
-            "del": "creator"
-          }
-        }
-      },
-      "alert": "Saved!"
+      "store": true,
+      "alert": "Saved!",
+      "restart": true
     },
-    "text": "<h2><strong style=\"color: rgb(0, 0, 0); background-color: transparent;\">Editing skills: Read the following paragraph divided into different lines. Fill in the correct prepositions.</strong></h2><p><strong style=\"color: rgb(0, 0, 0); background-color: transparent;\">\ufeff\ufeff\ufeffRecycling and Reuse</strong></p><ol><li><span style=\"color: rgb(0, 0, 0); background-color: transparent;\">Recycling refers *to* recovery of useful materials such as</span></li><li><span style=\"color: rgb(0, 0, 0); background-color: transparent;\">glass, paper, plastics, wood *and* metals from the</span></li><li><span style=\"color: rgb(0, 0, 0); background-color: transparent;\">waste stream so they may be incorporated *into* the fabrication of new products.</span></li><li><span style=\"color: rgb(0, 0, 0); background-color: transparent;\">with greater incorporation *of* recycled materials, the required use of raw materials</span></li><li><span style=\"color: rgb(0, 0, 0); background-color: transparent;\">*for* identical applications is reduced</span></li></ol>",
-    "solutions": true
+    "text": "<h2><strong style=\"color: rgb(0, 0, 0); background-color: transparent;\">Editing skills: Read the following paragraph divided into different lines. Fill in the correct prepositions.</strong></h2><p><strong style=\"color: rgb(0, 0, 0); background-color: transparent;\">\ufeff\ufeff\ufeffRecycling and Reuse</strong></p><ol><li><span style=\"color: rgb(0, 0, 0); background-color: transparent;\">Recycling refers *to* recovery of useful materials such as</span></li><li><span style=\"color: rgb(0, 0, 0); background-color: transparent;\">glass, paper, plastics, wood *and* metals from the</span></li><li><span style=\"color: rgb(0, 0, 0); background-color: transparent;\">waste stream so they may be incorporated *into* the fabrication of new products.</span></li><li><span style=\"color: rgb(0, 0, 0); background-color: transparent;\">with greater incorporation *of* recycled materials, the required use of raw materials</span></li><li><span style=\"color: rgb(0, 0, 0); background-color: transparent;\">*for* identical applications is reduced</span></li></ol>"
   }
 
 };
