@@ -79,13 +79,14 @@
       "chart": [ "ccm.component", "https://ccmjs.github.io/akless-components/highchart/versions/ccm.highchart-3.0.0.js" ],
       "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "guest" ] ],
   //  "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.2.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ]
-      "sections": [ "Show Results", "Correctness", "Timing", "Details" ],
+      "sections": [ "Show Results", "Ranking", "Correctness", "Timing", "Details" ],
       "placeholder": {
         "user": "User",
         "app": "App",
         "show_all": "Show All",
         "details": "Details",
         "captions": [ "User", "App", "Correct", "Result", "Created", "Last Update", "&nbsp;" ],
+        "rankings": [ "Rank", "User", "Correct", "Result", "Time Stamp" ],
         "message": "Nothing to display.",
         "choose": "Please Choose"
       }
@@ -343,6 +344,99 @@
 
                 } );
 
+              } );
+
+            }
+
+          },
+
+          // Rankings (Table)
+          () => {
+
+            // add selector boxes for filtering
+            addSelectorBox( 'app', 'show_all', onChange );
+
+            // remember selector boxes
+            elem.app = elem.filter.querySelector( '#app-input' );
+
+            // fill selector boxes with relevant entries
+            fillSelectorBoxes();
+
+            // (re)render section content
+            onChange();
+
+            /** when value of a selector box changed */
+            async function onChange() {
+
+              // remember selected values
+              self.choosed_app = elem.app.value;
+
+              // prepare database query for getting relevant app result data sets
+              let query;
+              if ( self.choosed_app && !self.choosed_user ) query = { "_id": { $regex: '^' + self.choosed_app + '(,|$)' } };
+              else                                          query = {};
+
+              // get relevant app result data sets
+              const results = await self.app.results.get( query );
+
+              // no relevant results? => nothings to display
+              if ( !results.length ) return $.setContent( elem.content, self.placeholder.message );
+
+              /**
+               * contains captions for table rows
+               * @type {string[]}
+               */
+              const captions = $.clone( self.placeholder.rankings );
+
+              /**
+               * contains values of all table rows
+               * @type {Array[]}
+               */
+              const values = [];
+
+              const ranking = {};
+
+              // iterate over each app result data set
+              results.forEach( result => {
+
+                const user = result.key[ 1 ];
+                if ( !ranking[ user ] ) {
+                  ranking[ user ] = [ user, result.correct, result.total, result.updated_at ];
+                  values.push( ranking[ user ] );
+                }
+                else {
+                  ranking[ user ][ 1 ] += result.correct;
+                  ranking[ user ][ 2 ] += result.total;
+                  if ( new Date( result.updated_at ).getTime() > new Date( ranking[ user ][ 3 ] ).getTime() )
+                    ranking[ user ][ 3 ] = result.updated_at;
+                }
+
+              } );
+
+              values.sort( ( a, b ) => {
+                if ( b[ 1 ] !== a[ 1 ] )
+                  return b[ 1 ] - a[ 1 ];
+                else
+                  return new Date( a[ 3 ] ).getTime() - new Date( b[ 3 ] ).getTime();
+              } );
+
+              values.forEach( ( row, i ) => {
+                const result = Math.round( row[ 1 ] * 100 / row[ 2 ] ) + '%';
+                row[ 1 ] = row[ 1 ] + '/' + row[ 2 ];
+                row[ 2 ] = result;
+                row.unshift( i + 1 );
+              } );
+
+              // remove unwanted column headers
+              for ( let i = self.placeholder.captions.length - 1; i > 0; i-- )
+                if ( self.placeholder.captions[ i ] === '' )
+                  captions.splice( i, 1 );
+
+              // render table
+              await self.table.start( {
+                root: elem.content,
+                table_head: captions,
+                data: { values: values }
               } );
 
             }
