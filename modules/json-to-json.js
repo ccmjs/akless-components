@@ -50,11 +50,12 @@ export function poll_to_highchart( poll ) {
     else
       data[ value - 1 ]++;
   } );
-  data = data.map( value => value || 0 );
 
   const categories = [];
-  for ( let i = 0; i < data.length; i++ )
+  for ( let i = 0; i < data.length; i++ ) {
+    if ( !data[ i ] ) data[ i ] = 0;
     categories[ i ] = String.fromCharCode( 65 + i );
+  }
 
   return {
     settings: {
