@@ -78,8 +78,8 @@
         "finish": "FINISH",
         "reset": "RESET"
       },
-      "converter": [ "ccm.load", { "url": "https://ccmjs.github.io/akless-components/modules/json-to-json.js", "type": "module", "import": "poll_to_plotly" } ],
-      "chart": [ "ccm.component", "https://ccmjs.github.io/mkaul-components/plotly/versions/ccm.plotly-1.1.1.js" ],
+      "converter": [ "ccm.load", { "url": "https://ccmjs.github.io/akless-components/modules/json-to-json.js", "type": "module", "import": "poll_to_highchart" } ],
+      "chart": [ "ccm.component", "https://ccmjs.github.io/akless-components/highchart/versions/ccm.highchart-3.0.0.js" ],
       "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-8.3.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "guest" ] ]
 
   //  "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ]
