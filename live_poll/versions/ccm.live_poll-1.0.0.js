@@ -197,9 +197,9 @@
             if ( !votes[ key ] )
               delete votes[ key ];
 
-          const config = this.converter( votes );                  // convert votes to chart configuration
-          config.root = this.element.querySelector( '#results' );  // set website area for chart
-          this.chart.start( config );                              // render chart
+          const config = this.converter( votes, $.clone( dataset.answers ) ); // convert votes to chart configuration
+          config.root = this.element.querySelector( '#results' );             // set website area for chart
+          this.chart.start( config );                                         // render chart
 
         }
 
