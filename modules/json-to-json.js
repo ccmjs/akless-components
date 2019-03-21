@@ -39,23 +39,17 @@ export function poll_to_plotly( poll ) {
 /**
  * converts member votes of a live poll to a Highchart.js bar chart configuration
  * @param {Object} poll - member votings of a live poll
+ * @param {String[]} poll - available answers
  * @returns {Object} Highchart.js bar chart configuration
  */
-export function poll_to_highchart( poll ) {
+export function poll_to_highchart( poll, answers ) {
 
-  let data = [];
-  Object.values( poll ).forEach( value => {
-    if ( isNaN( data[ value ] ) )
-      data[ value - 1 ] = 1;
-    else
-      data[ value - 1 ]++;
-  } );
+  const data = Array( answers.length ).fill( 0 );
+  Object.values( poll ).forEach( value => data[ value - 1 ]++ );
 
   const categories = [];
-  for ( let i = 0; i < data.length; i++ ) {
-    if ( !data[ i ] ) data[ i ] = 0;
+  for ( let i = 0; i < answers.length; i++ )
     categories[ i ] = String.fromCharCode( 65 + i );
-  }
 
   return {
     settings: {
