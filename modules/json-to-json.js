@@ -43,13 +43,14 @@ export function poll_to_plotly( poll ) {
  */
 export function poll_to_highchart( poll ) {
 
-  const data = [];
+  let data = [];
   Object.values( poll ).forEach( value => {
     if ( isNaN( data[ value ] ) )
       data[ value - 1 ] = 1;
     else
       data[ value - 1 ]++;
   } );
+  data = data.map( value => value || 0 );
 
   const categories = [];
   for ( let i = 0; i < data.length; i++ )
