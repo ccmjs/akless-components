@@ -56,32 +56,34 @@ export function poll_to_highchart( poll ) {
     categories[ i ] = String.fromCharCode( 65 + i );
 
   return {
-    chart: {
-      type: 'column'
-    },
-    title: {
-      text: ''
-    },
-    xAxis: {
-      categories: categories,
-      crosshair: true
-    },
-    yAxis: {
-      min: 0,
-      title: {
-        text: 'Votes'
+    settings: {
+      chart: {
+        type: 'column'
       },
-      tickInterval: 1
-    },
-    plotOptions: {
-      column: {
-        pointPadding: 0.2,
-        borderWidth: 0
-      }
-    },
-    legend: false,
-    tooltip: false,
-    series: [ { data: data } ]
+      title: {
+        text: ''
+      },
+      xAxis: {
+        categories: categories,
+        crosshair: true
+      },
+      yAxis: {
+        min: 0,
+        title: {
+          text: 'Votes'
+        },
+        tickInterval: 1
+      },
+      plotOptions: {
+        column: {
+          pointPadding: 0.2,
+          borderWidth: 0
+        }
+      },
+      legend: false,
+      tooltip: false,
+      series: [ { data: data } ]
+    }
   };
 
 }
