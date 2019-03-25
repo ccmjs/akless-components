@@ -1,6 +1,6 @@
 /**
  * @overview configurations of ccm component for team building
- * @author André Kless <andre.kless@web.de> 2017-2018
+ * @author André Kless <andre.kless@web.de> 2017-2019
  * @license The MIT License (MIT)
  */
 
@@ -11,7 +11,16 @@ ccm.files[ 'configs.js' ] = {
     "css": [ "ccm.load", "../teambuild/resources/default.css" ],
     "data": {
       "store": [ "ccm.store", { "name": "teambuild_data", "url": "ws://localhost:8080" } ],
-      "key": "test"
+      "key": "test",
+      "permissions": {
+        "creator": "akless",
+        "realm": "guest",
+        "access": {
+          "get": "all",
+          "set": "all",
+          "del": "creator"
+        }
+      }
     },
     "user": [ "ccm.instance", "../user/ccm.user.js", [ "ccm.get", "../user/resources/configs.js", "local" ] ],
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ]
@@ -22,9 +31,18 @@ ccm.files[ 'configs.js' ] = {
     "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/teambuild/resources/default.css" ],
     "data": {
       "store": [ "ccm.store", { "name": "teambuild_data", "url": "wss://ccm2.inf.h-brs.de" } ],
-      "key": "demo"
+      "key": "demo",
+      "permissions": {
+        "creator": "akless",
+        "realm": "guest",
+        "access": {
+          "get": "all",
+          "set": "all",
+          "del": "creator"
+        }
+      }
     },
-    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-8.2.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "guest" ] ]
+    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "guest" ] ]
   },
 
   "clicker": {
