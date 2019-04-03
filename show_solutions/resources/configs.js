@@ -18,7 +18,7 @@ ccm.files[ 'configs.js' ] = {
   "we_ss18": {
     "key": "ws_ss18",
     "data": {
-      "store": [ "ccm.store", { "url": "https://ccm2.inf.h-brs.de", "store": "we_ss18_solutions", "method": "POST" } ],
+      "store": [ "ccm.store", { "url": "https://ccm2.inf.h-brs.de", "name": "we_ss18_solutions" } ],
       "key": { "_id": { "$regex": ",le02_a1$" } }
     },
     "target": [ "ccm.component", "https://ccmjs.github.io/tkless-components/table/versions/ccm.table-1.0.0.js" ]

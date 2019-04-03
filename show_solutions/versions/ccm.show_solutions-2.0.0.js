@@ -2,7 +2,7 @@
  * @overview ccm component for rendering a list of all submitted solutions
  * @author André Kless <andre.kless@web.de> 2018-2019
  * @license The MIT License (MIT)
- * @version latest (2.0.0)
+ * @version 2.0.0
  * @changes
  * version 2.0.0 (03.04.2019)
  * - uses ccm v20
