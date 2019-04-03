@@ -11,9 +11,9 @@ ccm.files[ 'configs.js' ] = {
     "html.inner.0.inner": "Punktekonto von %user%",
     "html.inner.2.inner": "Summe: %points% Punkte",
     "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/show_points/resources/default.css" ],
-    "store": [ "ccm.store", { "url": "https://ccm2.inf.h-brs.de", "store": "we_ss18_solutions", "method": "POST" } ],
-    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-4.0.0.js", { "realm": "hbrsinfkaul", "logged_in": true } ],
-    "target": [ "ccm.component", "https://ccmjs.github.io/tkless-components/table/versions/ccm.table-1.0.0.js" ],
+    "store": [ "ccm.store", { "url": "https://ccm2.inf.h-brs.de", "name": "we_ss18_solutions" } ],
+    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.0.1.js", { "realm": "hbrsinfkaul", "logged_in": true } ],
+    "target": [ "ccm.component", "https://ccmjs.github.io/tkless-components/table/versions/ccm.table-2.1.0.js" ],
     "mapping": {
       "le01_a1": { "points": 5, "deadline": "2018-04-19T08:00" },
       "le01_a2": { "points": 5, "deadline": "2018-04-19T08:00" },
