@@ -2,7 +2,7 @@
  * @overview ccm component for user authentication
  * @author André Kless <andre.kless@web.de> 2017-2019
  * @license The MIT License (MIT)
- * @version latest (9.0.1)
+ * @version 9.0.1
  * @changes
  * version 9.0.1 (03.04.2019)
  * - bug fix for realm 'hbrsinfpseudo'
@@ -15,9 +15,9 @@
 
   const component = {
 
-    name: 'user',
+    name: 'user', version: [ 9, 0, 1 ],
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-20.0.0.js',
 
     config: {
 
