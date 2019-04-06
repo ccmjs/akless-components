@@ -2,7 +2,7 @@
  * @overview ccm component for rendering a [YouTube Player]{@link https://developers.google.com/youtube/iframe_api_reference}
  * @author André Kless <andre.kless@web.de> 2016, 2018-2019
  * @license The MIT License (MIT)
- * @version latest (2.0.1)
+ * @version 2.0.1
  * @changes
  * version 2.0.1 (06.04.2019):
  * - uses ccm v20.0.0
@@ -16,9 +16,9 @@
 
   const component = {
 
-    name: 'youtube',
+    name: 'youtube', version: [ 2, 0, 1 ],
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-20.0.0.js',
 
     config: {
 
