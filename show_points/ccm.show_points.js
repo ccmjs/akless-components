@@ -52,7 +52,7 @@
         const user = this.user && this.user.isLoggedIn() ? this.user.data().user : this.user;
 
         // get submitted solutions
-        const solutions = this.store.get( { _id: { $regex: '^' + user + ',' } } );
+        const solutions = await this.store.get( { _id: { $regex: ',' + user + '$' } } );
 
         // no given solutions? => render message that there is nothing to display
         if ( !Array.isArray( solutions ) || solutions.length === 0 ) return $.setContent( this.element, this.message );
