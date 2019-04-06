@@ -28,7 +28,7 @@
         ]
       },
       "store": [ "ccm.store" ],
-      "moment": [ "ccm.load", "../libs/moment/moment.js" ],
+      "moment": [ "ccm.load", "https://ccmjs.github.io/akless-components/libs/moment/moment.js" ],
       "mapping": {},
       "message": "Nothing to display."
     },
