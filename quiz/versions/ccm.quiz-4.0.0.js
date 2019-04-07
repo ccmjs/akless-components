@@ -466,7 +466,7 @@
                 };
 
                 // set initial input field value
-                if ( self.dataset.sections ) {
+                if ( self.dataset && self.dataset.sections ) {
                   if ( question.input === 'radio' ) {
                     if ( dataset.sections[ question.nr - 1 ].input === answer.nr - 1 )
                       input.checked = true;
