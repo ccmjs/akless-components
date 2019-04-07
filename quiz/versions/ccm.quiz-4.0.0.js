@@ -2,7 +2,7 @@
  * @overview ccm component for quiz
  * @author André Kless <andre.kless@web.de> 2016-2019
  * @license The MIT License (MIT)
- * @version latest (4.0.0)
+ * @version 4.0.0
  * @changes
  * version 4.0.0 (07.04.2019):
  * - load quiz with initial values from result data
@@ -19,9 +19,9 @@
 
   const component = {
 
-    name: 'quiz',
+    name: 'quiz', version: [ 4, 0, 0 ],
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-20.0.0.js',
 
     config: {
 

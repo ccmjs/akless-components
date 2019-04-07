@@ -43,7 +43,7 @@ ccm.files[ 'configs.js' ] = {
           "eine Instruktion",
           "eine Variable"
         ],
-        "correct": 0
+        "solution": 0
       },
       {
         "text": "Wofür nutzt man einen HTML-Tag?",
@@ -84,7 +84,7 @@ ccm.files[ 'configs.js' ] = {
           },
           "Zur Strukturierung von Webseiteninhalten"
         ],
-        "correct": [ 3, 8 ]
+        "solution": [ 3, 8 ]
       },
       */
       {
@@ -121,7 +121,7 @@ ccm.files[ 'configs.js' ] = {
             "comment": "Bei <br>-Tags wird nur ein öffnender HTML-Tag benötigt."
           }
         ],
-        "correct": [ 1, 5, 6 ]
+        "solution": [ 1, 5, 6 ]
       },
       {
         "text": "Welche HTML-Tags dienen zur Markierung von Überschriften?",
@@ -139,7 +139,7 @@ ccm.files[ 'configs.js' ] = {
           "<h6>",
           "<p>"
         ],
-        "correct": [ 2, 3, 4, 5, 6, 7 ]
+        "solution": [ 2, 3, 4, 5, 6, 7 ]
       },
       {
         "text": "Welcher HTML-Tag dient zur Markierung von Paragraphen?",
@@ -156,7 +156,7 @@ ccm.files[ 'configs.js' ] = {
           "<h6>",
           "<p>"
         ],
-        "correct": 8
+        "solution": 8
       },
       {
         "text": "Welcher HTML-Tag dient zur Markierung von Zeilenumbrüchen?",
@@ -173,7 +173,7 @@ ccm.files[ 'configs.js' ] = {
           "<h6>",
           "<p>"
         ],
-        "correct": 0
+        "solution": 0
       },
       {
         "text": "Wie schreibt man einen Kommentar in HTML?",
@@ -213,15 +213,21 @@ ccm.files[ 'configs.js' ] = {
             "comment": "So schreibt man einen Blockkommentar in Programmiersprachen wie <a target=\"_blank\" href=\"https://de.wikipedia.org/wiki/Pascal_(Programmiersprache)\">Pascal</a>."
           }
         ],
-        "correct": 7
+        "solution": 7
       }
     ]
   },
 
   "local": {
     "key": "local",
+    "show_results": false,
+    "start_button": false,
     "css": [ "ccm.load", "../quiz/resources/weblysleek.css", { "context": "head", "url": "../libs/weblysleekui/font.css" } ],
-    "user": [ "ccm.instance", "../user/ccm.user.js" ],
+    "data": {
+      "store": [ "ccm.store", { "name": "quiz_results", "url": "https://ccm2.inf.h-brs.de" } ],
+      "key": "demo"
+    },
+    "user": [ "ccm.instance", "../user/ccm.user.js", [ "ccm.get", "../user/resources/configs.js", "guest" ] ],
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
     "questions": [
       {
@@ -236,7 +242,7 @@ ccm.files[ 'configs.js' ] = {
           "three"
         ],
         "input": "radio",
-        "correct": 0
+        "solution": 0
       },
       {
         "text": "How many answers can be correct here?",
@@ -249,7 +255,7 @@ ccm.files[ 'configs.js' ] = {
           },
           "more than one"
         ],
-        "correct": [ true, false, true ]
+        "solution": [ true, false, true ]
       },
       {
         "text": "What is the solution to the following arithmetical tasks?",
@@ -264,13 +270,13 @@ ccm.files[ 'configs.js' ] = {
           "min": -2,
           "max": 2
         },
-        "correct": [ 2, 0, -2 ]
+        "solution": [ 2, 0, -2 ]
       }
     ],
     "feedback": true,
     "navigation": true,
     "placeholder.finish": "Restart",
-    "onfinish": { "restart": true }
+    "onfinish": { "restart": true, "store": true }
   },
 
   "demo": {
