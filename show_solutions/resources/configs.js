@@ -22,6 +22,15 @@ ccm.files[ 'configs.js' ] = {
       "key": { "_id": { "$regex": ",le02_a1$" } }
     },
     "target": [ "ccm.component", "https://ccmjs.github.io/tkless-components/table/versions/ccm.table-2.1.0.js" ]
+  },
+
+  "se_ss19": {
+    "key": "se_ss19",
+    "data": {
+      "store": [ "ccm.store", { "url": "https://ccm2.inf.h-brs.de", "name": "se_ss19_solutions" } ],
+      "key": { "_id": { "$regex": "^le01_a1," } }
+    },
+    "target": [ "ccm.component", "https://ccmjs.github.io/tkless-components/table/versions/ccm.table-2.1.0.js" ]
   }
 
 };
