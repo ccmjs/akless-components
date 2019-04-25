@@ -2,7 +2,7 @@
  * @overview ccm component for quiz
  * @author André Kless <andre.kless@web.de> 2016-2019
  * @license The MIT License (MIT)
- * @version 4.0.0
+ * @version latest (4.0.0)
  * @changes
  * version 4.0.0 (07.04.2019):
  * - load quiz with initial values from result data
@@ -466,7 +466,7 @@
                 };
 
                 // set initial input field value
-                if ( self.dataset && self.dataset.sections ) {
+                if ( dataset && dataset.sections ) {
                   if ( question.input === 'radio' ) {
                     if ( dataset.sections[ question.nr - 1 ].input === answer.nr - 1 )
                       input.checked = true;
