@@ -35,7 +35,7 @@
 
     name: 'dms', version: [ 1, 0, 7 ],
 
-    ccm: 'https://ccmjs.github.io/ccm/vesions/ccm-20.0.0.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-20.0.0.js',
 
     config: {
       "html": {
