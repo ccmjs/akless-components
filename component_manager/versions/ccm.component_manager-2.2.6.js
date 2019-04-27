@@ -2,7 +2,7 @@
  * @overview ccm component for component manager
  * @author André Kless <andre.kless@web.de> 2018-2019
  * @license MIT License
- * @version latest (2.2.6)
+ * @version 2.2.6
  * @changes
  * version 2.2.6 (27.04.2019):
  * - uses ccm.star_rating.js v4.0.0
@@ -41,9 +41,9 @@
 
   const component = {
 
-    name: 'component_manager',
+    name: 'component_manager', version: [ 2, 2, 6 ],
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-20.0.0.js',
 
     config: {
       "html": {
