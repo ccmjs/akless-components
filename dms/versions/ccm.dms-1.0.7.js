@@ -2,7 +2,7 @@
  * @overview ccm component for digital maker space
  * @author André Kless <andre.kless@web.de> 2018-2019
  * @license MIT License
- * @version latest (1.0.7)
+ * @version 1.0.7
  * @changes
  * version 1.0.7 (27.04.2019):
  * - uses ccm.star_rating_result.js v4.0.0
@@ -32,9 +32,9 @@
 
   const component = {
 
-    name: 'dms',
+    name: 'dms', version: [ 1, 0, 7 ],
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    ccm: 'https://ccmjs.github.io/ccm/vesions/ccm-20.0.0.js',
 
     config: {
       "html": {
