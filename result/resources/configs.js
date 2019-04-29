@@ -70,7 +70,7 @@ ccm.files[ 'configs.js' ] = {
       },
       {
         "name": "Star Rating",
-        "component": [ "ccm.component", "https://ccmjs.github.io/tkless-components/star_rating/versions/ccm.star_rating-3.0.0.js" ],
+        "component": [ "ccm.component", "https://ccmjs.github.io/tkless-components/star_rating/versions/ccm.star_rating-4.0.0.js" ],
         "configs": [ "ccm.store", [ "ccm.get", { "name": "ws_star_rating", "url": "https://ccm2.inf.h-brs.de" }, {} ] ]
       }
     ],

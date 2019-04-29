@@ -277,7 +277,7 @@
                  * @type {string[]}
                  */
                 let row = [
-                  Array.isArray( result.key ) && result.key[ 1 ],                                      // 0: User
+                  ( Array.isArray( result.key ) && result.key[ 1 ] ) || '',                            // 0: User
                   result._name || '',                                                                  // 1: Component
                   result._app || ( Array.isArray( result.key ) ? result.key[ 0 ] : result.key[ 1 ] ),  // 2: App
                   result.correct,                                                                      // 3: Correct
