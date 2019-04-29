@@ -378,7 +378,7 @@
                * filtered results
                * @type {Object[]}
                */
-              const results = await filterResults();
+              const results = await filterResults( 'correct', 'total', 'updated_at' );
 
               // no relevant results? => nothings to display
               if ( !results.length ) return $.setContent( elem.content, self.placeholder.message );
@@ -504,7 +504,7 @@
                * filtered results
                * @type {Object[]}
                */
-              const results = await filterResults();
+              const results = await filterResults( 'correct', 'total' );
 
               // no relevant results? => nothings to display
               if ( !results.length ) return $.setContent( elem.content, self.placeholder.message );
@@ -571,7 +571,7 @@
                * filtered results
                * @type {Object[]}
                */
-              const results = await filterResults();
+              const results = await filterResults( 'created_at', 'updated_at' );
 
               // no relevant results? => nothings to display
               if ( !results.length ) return $.setContent( elem.content, self.placeholder.message );
@@ -658,7 +658,7 @@
                * filtered results
                * @type {Object[]}
                */
-              const results = await filterResults();
+              const results = await filterResults( 'sections' );
 
               // no relevant results? => nothings to display
               if ( !results.length ) return $.setContent( elem.content, self.placeholder.message );
@@ -789,11 +789,19 @@
 
         /**
          * filters results
+         * @param {...string} [required_properties] - required result dataset properties for visualisation
          * @returns {Object[]} filtered results
          */
-        function filterResults() {
+        function filterResults( required_properties ) {
+
+          required_properties = [ ...arguments ];
 
           return results.filter( result => {
+
+            if ( required_properties )
+              for ( let i = 0; i < required_properties.length; i++ )
+                if ( result[ required_properties[ i ] ] === undefined )
+                  return false;
 
             const app = Array.isArray( result.key ) ? result.key[ 0 ] : result.key;
             const user = Array.isArray( result.key ) && result.key[ 1 ];
