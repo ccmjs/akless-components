@@ -216,7 +216,7 @@
           if ( $.isObject( data ) )
             await searchApp( data );
           for ( let i = results.length - 1; i >= 0; i-- )
-            if ( results[ i ].key === key ) {
+            if ( results[ i ].key.toString() === key.toString() ) {
               if ( deleted )
                 results.splice( i, 1 );
               else
