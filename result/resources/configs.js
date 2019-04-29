@@ -49,6 +49,11 @@ ccm.files[ 'configs.js' ] = {
     "key": "ws",
     "app": [
       {
+        "name": "Exercise",
+        "component": [ "ccm.component", "https://ccmjs.github.io/tkless-components/exercise/versions/ccm.exercise-4.0.0.js" ],
+        "configs": [ "ccm.store", [ "ccm.get", { "name": "ws_exercise", "url": "https://ccm2.inf.h-brs.de" }, {} ] ]
+      },
+      {
         "name": "Fill in the Blanks",
         "component": [ "ccm.component", "https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.0.js" ],
         "configs": [ "ccm.store", [ "ccm.get", { "name": "ws_cloze", "url": "https://ccm2.inf.h-brs.de" }, {} ] ]
