@@ -25,17 +25,17 @@
   padding: 1em 0;
 }
 
-.entry {
+.filter {
   display: flex;
   align-items: center;
   padding: 0 0.5em;
 }
 
-.entry > * {
+.filter > * {
   padding: 0 0.5em;
 }
 
-.entry label:after {
+.filter label:after {
   content: ':'
 }
 
@@ -51,12 +51,6 @@ select {
   padding: 0.5em;
 }
 
-/*
-#details .btn {
-  margin: 1em 0;
+#back {
+  padding-top: 1em;
 }
-
-#details .btn span {
-  padding-right: 0.3em;
-}
-*/

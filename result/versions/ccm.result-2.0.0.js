@@ -2,12 +2,13 @@
  * @overview ccm component for visualisation of result data
  * @author André Kless <andre.kless@web.de> 2019
  * @license The MIT License (MIT)
- * @version latest (2.0.0)
+ * @version 2.0.0
  * @changes
  * version 2.0.0 (29.04.2019):
  * - support of different types of apps
  * - support of newest result data conventions
  * - improve of each section
+ * - uses ccm v20.1.0
  * version 1.0.0 (17.03.2019)
  */
 
@@ -15,9 +16,9 @@
 
   const component = {
 
-    name: 'result',
+    name: 'result', version: [ 2, 0, 0 ],
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-20.1.0.js',
 
     config: {
 
