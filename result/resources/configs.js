@@ -47,6 +47,7 @@ ccm.files[ 'configs.js' ] = {
 
   "ws": {
     "key": "ws",
+    "user": null,
     "app": [
       {
         "name": "Exercise",
