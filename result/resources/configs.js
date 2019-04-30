@@ -60,7 +60,7 @@ ccm.files[ 'configs.js' ] = {
       },
       {
         "name": "Mark Words",
-        "component": [ "ccm.component", "https://ccmjs.github.io/tkless-components/mark_words/versions/ccm.mark_words-3.3.0.js" ],
+        "component": [ "ccm.component", "https://ccmjs.github.io/tkless-components/mark_words/versions/ccm.mark_words-4.0.0.js" ],
         "configs": [ "ccm.store", [ "ccm.get", { "name": "ws_mark_words", "url": "https://ccm2.inf.h-brs.de" }, {} ] ]
       },
       {

@@ -87,12 +87,9 @@
         }
       },
       "css": [ "ccm.load",
-        "https://ccmjs.github.io/akless-components/result/resources/default.css",
-        "https://ccmjs.github.io/akless-components/libs/bootstrap-4/css/bootstrap.min.css",
-        {
-          "context": "head",
-          "url": "https://ccmjs.github.io/akless-components/libs/bootstrap-4/css/bootstrap.min.css"
-        }
+        "ccm.load", "https://ccmjs.github.io/akless-components/libs/bootstrap/css/bootstrap.css",
+        { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/bootstrap/css/font-face.css" },
+        "https://ccmjs.github.io/akless-components/result/resources/default.css"
       ],
       "store": [ "ccm.store" ],
       "menu": [ "ccm.component", "https://ccmjs.github.io/akless-components/menu/versions/ccm.menu-2.4.4.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/menu/resources/configs.js", "bootstrap" ] ],
