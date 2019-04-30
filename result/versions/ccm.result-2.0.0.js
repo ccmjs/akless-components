@@ -283,7 +283,7 @@
                   result._name || '',                                                                  // 1: Component
                   result._app || ( Array.isArray( result.key ) ? result.key[ 0 ] : result.key[ 1 ] ),  // 2: App
                   result.correct,                                                                      // 3: Correct
-                  result.value,                                                                        // 4: Result
+                  result.result,                                                                       // 4: Result
                   result.created_at,                                                                   // 5: Created
                   result.updated_at,                                                                   // 6: Last Update
                   ''                                                                                   // 7: Details Button
