@@ -87,13 +87,13 @@
         }
       },
       "css": [ "ccm.load",
-        "ccm.load", "https://ccmjs.github.io/akless-components/libs/bootstrap/css/bootstrap.css",
+        "https://ccmjs.github.io/akless-components/libs/bootstrap/css/bootstrap.css",
         { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/bootstrap/css/font-face.css" },
         "https://ccmjs.github.io/akless-components/result/resources/default.css"
       ],
       "store": [ "ccm.store" ],
       "menu": [ "ccm.component", "https://ccmjs.github.io/akless-components/menu/versions/ccm.menu-2.4.4.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/menu/resources/configs.js", "bootstrap" ] ],
-      "table": [ "ccm.component", "https://ccmjs.github.io/tkless-components/table/versions/ccm.table-2.1.0.js" ],
+      "table": [ "ccm.component", "https://ccmjs.github.io/tkless-components/table/versions/ccm.table-3.0.0.js" ],
       "chart": [ "ccm.component", "https://ccmjs.github.io/akless-components/highchart/versions/ccm.highchart-3.0.0.js" ],
       "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.0.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "guest" ] ],
   //  "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.2.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ]
