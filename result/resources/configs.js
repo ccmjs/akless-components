@@ -66,7 +66,7 @@ ccm.files[ 'configs.js' ] = {
       },
       {
         "name": "Quick Decision",
-        "component": [ "ccm.component", "https://ccmjs.github.io/akless-components/quick_decide/versions/ccm.quick_decide-1.4.0.js" ],
+        "component": [ "ccm.component", "https://ccmjs.github.io/akless-components/quick_decide/versions/ccm.quick_decide-2.0.0.js" ],
         "configs": [ "ccm.store", [ "ccm.get", { "name": "ws_quick_decide", "url": "https://ccm2.inf.h-brs.de" }, {} ] ]
       },
       {
