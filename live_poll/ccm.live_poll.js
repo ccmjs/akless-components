@@ -142,7 +142,7 @@
           dataset.active = true;
 
           // set question text as result value
-          dataset.value = dataset.question;
+          dataset.result = dataset.question;
 
           // logging of 'active' event
           this.logger && this.logger.log( 'active', $.clone( dataset ) );
