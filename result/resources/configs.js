@@ -60,6 +60,11 @@ ccm.files[ 'configs.js' ] = {
         "configs": [ "ccm.store", [ "ccm.get", { "name": "ws_cloze", "url": "https://ccm2.inf.h-brs.de" }, {} ] ]
       },
       {
+        "name": "Live Poll",
+        "component": [ "ccm.component", "https://ccmjs.github.io/tkless-components/live_poll/versions/ccm.live_poll-2.0.0.js" ],
+        "configs": [ "ccm.store", [ "ccm.get", { "name": "ws_live_poll", "url": "https://ccm2.inf.h-brs.de" }, {} ] ]
+      },
+      {
         "name": "Mark Words",
         "component": [ "ccm.component", "https://ccmjs.github.io/tkless-components/mark_words/versions/ccm.mark_words-4.0.0.js" ],
         "configs": [ "ccm.store", [ "ccm.get", { "name": "ws_mark_words", "url": "https://ccm2.inf.h-brs.de" }, {} ] ]
