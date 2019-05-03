@@ -21,7 +21,7 @@ ccm.files[ 'configs.js' ] = {
           "url": "https://ccm2.inf.h-brs.de"
         },
         "unique": true,
-        "permission_settings": {
+        "permissions": {
           "access": {
             "get": "all",
             "set": "creator",
@@ -50,7 +50,7 @@ ccm.files[ 'configs.js' ] = {
           "url": "https://ccm2.inf.h-brs.de"
         },
         "unique": true,
-        "permission_settings": {
+        "permissions": {
           "access": {
             "get": "all",
             "set": "creator",
