@@ -29,9 +29,9 @@ ccm.files[ 'configs.js' ] = {
           }
         }
       },
-      "alert": "Saved!"
+      "alert": "Saved!",
+      "restart": true
     },
-    "show_results": false,
     "converter": [ "ccm.load", { "url": "../modules/json-to-json.js", "type": "module", "import": "poll_to_highchart" } ],
     "user": [ "ccm.instance", "../user/ccm.user.js", [ "ccm.get", "../user/resources/configs.js", "local" ] ],
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ]

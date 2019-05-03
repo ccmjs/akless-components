@@ -165,7 +165,7 @@
           // logging of 'finish' event
           this.logger && this.logger.log( 'finish', $.clone( dataset ) );
 
-          await save();                                   // update app state data (implicit app restart)
+          await save( true );                             // update app state data
           await $.onFinish( this, $.clone( dataset ) );   // perform finish actions
 
         };
