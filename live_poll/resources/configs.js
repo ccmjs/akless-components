@@ -10,32 +10,17 @@ ccm.files[ 'configs.js' ] = {
     "key": "local",
     "css": [ "ccm.load", "../live_poll/resources/default.css" ],
     "data": {
-      "store": [ "ccm.store", { "local": { "test": {
-        "key": "test",
-        "question": "Apple or Pear?",
-        "answers": [
-          "Apple",
-          "Pear",
-          "Neither"
-        ]
-      } } } ],
-      "key": "test"
+      "store": [ "ccm.store", { "name": "live_poll_data", "url": "wss://ccm2.inf.h-brs.de" } ],
+      "key": "test",
+      "unique": true
     },
-    "onfinish": { "log": true },
+    "onfinish": {
+      "log": true,
+      "store": true,
+      "alert": "Saved!"
+    },
+    "show_results": false,
     "converter": [ "ccm.load", { "url": "../modules/json-to-json.js", "type": "module", "import": "poll_to_highchart" } ],
-    "user": [ "ccm.instance", "../user/ccm.user.js", [ "ccm.get", "../user/resources/configs.js", "local" ] ],
-    "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ]
-  },
-
-  "localhost": {
-    "key": "localhost",
-    "css": [ "ccm.load", "../live_poll/resources/default.css" ],
-    "data": {
-      "store": [ "ccm.store", { "name": "live_poll_data", "url": "ws://localhost:8080" } ],
-      "key": "test"
-    },
-    "onfinish": { "log": true },
-    "converter": [ "ccm.load", { "url": "../modules/json-to-json.js", "type": "module", "import": "poll_to_plotly" } ],
     "user": [ "ccm.instance", "../user/ccm.user.js", [ "ccm.get", "../user/resources/configs.js", "local" ] ],
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ]
   },
@@ -44,7 +29,14 @@ ccm.files[ 'configs.js' ] = {
     "key": "demo",
     "data": {
       "store": [ "ccm.store", { "name": "live_poll_data", "url": "wss://ccm2.inf.h-brs.de" } ],
-      "key": "demo"
+      "key": "demo",
+      "user": true,
+      "unique": true
+    },
+    "onfinish": {
+      "log": true,
+      "store": true,
+      "alert": "Saved!"
     }
   }
 

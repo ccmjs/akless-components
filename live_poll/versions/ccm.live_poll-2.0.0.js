@@ -2,7 +2,7 @@
  * @overview ccm component for live poll
  * @author André Kless <andre.kless@web.de> 2019
  * @license The MIT License (MIT)
- * @version latest (2.0.0)
+ * @version 2.0.0
  * @changes
  * version 2.0.0 (03.05.2019):
  * - added lock and unlock of editing mechanism
@@ -15,9 +15,9 @@
 
   const component = {
 
-    name: 'live_poll',
+    name: 'live_poll', version: [ 2, 0, 0 ],
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-20.1.0.js',
 
     config: {
 

@@ -39,8 +39,13 @@
   min-width: 4em;
 }
 
-*[contenteditable]:hover:not(:focus) {
+*[contenteditable=true]:hover:not(:focus) {
   border: 1px dotted lightgray;
+}
+
+#main #question {
+  display: flex;
+  align-items: center;
 }
 
 #main #question > #text {
@@ -52,6 +57,16 @@
 #main #question > #text:empty:before {
   content: 'Type Question here...';
   color: lightgrey;
+}
+
+#main #question #lock {
+  width: 30px;
+  text-align: center;
+  cursor: pointer;
+}
+
+#main #question #lock:hover {
+  font-size: xx-large;
 }
 
 #main #answers .answer {
