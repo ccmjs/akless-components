@@ -59,7 +59,8 @@ ccm.files[ 'configs.js' ] = {
           }
         }
       },
-      "alert": "Saved!"
+      "alert": "Saved!",
+      "restart": true
     }
   }
 
