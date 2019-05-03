@@ -11,12 +11,24 @@ ccm.files[ 'configs.js' ] = {
     "css": [ "ccm.load", "../live_poll/resources/default.css" ],
     "data": {
       "store": [ "ccm.store", { "name": "live_poll_data", "url": "wss://ccm2.inf.h-brs.de" } ],
-      "key": "test",
-      "unique": true
+      "key": "test"
     },
     "onfinish": {
       "log": true,
-      "store": true,
+      "store": {
+        "settings": {
+          "name": "result_data",
+          "url": "https://ccm2.inf.h-brs.de"
+        },
+        "unique": true,
+        "permission_settings": {
+          "access": {
+            "get": "all",
+            "set": "creator",
+            "del": "creator"
+          }
+        }
+      },
       "alert": "Saved!"
     },
     "show_results": false,
@@ -29,13 +41,24 @@ ccm.files[ 'configs.js' ] = {
     "key": "demo",
     "data": {
       "store": [ "ccm.store", { "name": "live_poll_data", "url": "wss://ccm2.inf.h-brs.de" } ],
-      "key": "demo",
-      "user": true,
-      "unique": true
+      "key": "demo"
     },
     "onfinish": {
       "log": true,
-      "store": true,
+      "store": {
+        "settings": {
+          "name": "result_data",
+          "url": "https://ccm2.inf.h-brs.de"
+        },
+        "unique": true,
+        "permission_settings": {
+          "access": {
+            "get": "all",
+            "set": "creator",
+            "del": "creator"
+          }
+        }
+      },
       "alert": "Saved!"
     }
   }
