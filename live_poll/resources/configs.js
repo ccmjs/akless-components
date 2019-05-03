@@ -44,7 +44,6 @@ ccm.files[ 'configs.js' ] = {
       "key": "demo"
     },
     "onfinish": {
-      "log": true,
       "store": {
         "settings": {
           "name": "result_data",
