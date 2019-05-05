@@ -61,7 +61,7 @@ ccm.files[ 'configs.js' ] = {
       },
       {
         "name": "Live Poll",
-        "component": [ "ccm.component", "https://ccmjs.github.io/akless-components/live_poll/versions/ccm.live_poll-2.0.0.js" ],
+        "component": [ "ccm.component", "https://ccmjs.github.io/akless-components/live_poll/versions/ccm.live_poll-2.0.1.js" ],
         "configs": [ "ccm.store", [ "ccm.get", { "name": "ws_live_poll", "url": "https://ccm2.inf.h-brs.de" }, {} ] ]
       },
       {
