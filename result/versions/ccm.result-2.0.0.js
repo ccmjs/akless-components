@@ -623,6 +623,9 @@
                   title: {
                     text: 'When were results first time created and last time updated?'
                   },
+                  time: {
+                    timezoneOffset: new Date().getTimezoneOffset()
+                  },
                   xAxis: { type: 'datetime' },
                   yAxis: {
                     title: { text: 'Results' },
