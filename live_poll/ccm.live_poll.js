@@ -5,6 +5,7 @@
  * @version latest (2.0.1)
  * @changes
  * version 2.0.1 (05.05.2019):
+ * - show answers in result mode
  * - uses ccm v20.3.0
  * version 2.0.0 (03.05.2019):
  * - added lock and unlock of editing mechanism
