@@ -345,9 +345,6 @@
           this.element.querySelectorAll( '*[contenteditable]' ).forEach( div => div.removeAttribute( 'contenteditable' ) );
         }
 
-        // result mode? => remove answers
-        this.show_results && $.removeElement( this.element.querySelector( '#answers' ) );
-
         // has given chart component and poll is finished? => render result chart
         if ( this.chart && dataset.members && dataset.active === false ) {
 

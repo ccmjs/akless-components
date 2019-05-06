@@ -173,7 +173,7 @@
         };
 
         /**
-         * reset poll
+         * resets poll
          * @function
          * @returns {Promise<void>}
          */
@@ -212,7 +212,7 @@
         /**
          * updates app state data and restarts app
          * @function
-         * @param {boolean} [no_restart] - prevent implicit app restart
+         * @param {boolean} [no_restart] - prevent app restart
          * @returns {Promise<void>}
          */
         const save = async no_restart => {
@@ -344,9 +344,6 @@
           dataset.active && this.element.querySelector( '#main' ).classList.add( 'active' );
           this.element.querySelectorAll( '*[contenteditable]' ).forEach( div => div.removeAttribute( 'contenteditable' ) );
         }
-
-        // result mode? => remove answers
-        this.show_results && $.removeElement( this.element.querySelector( '#answers' ) );
 
         // has given chart component and poll is finished? => render result chart
         if ( this.chart && dataset.members && dataset.active === false ) {
