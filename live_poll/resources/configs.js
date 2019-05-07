@@ -20,6 +20,8 @@ ccm.files[ 'configs.js' ] = {
           "name": "result_data",
           "url": "https://ccm2.inf.h-brs.de"
         },
+        "user": true,
+        "unique": true,
         "permissions": {
           "access": {
             "get": "all",
@@ -48,6 +50,8 @@ ccm.files[ 'configs.js' ] = {
           "name": "result_data",
           "url": "https://ccm2.inf.h-brs.de"
         },
+        "user": true,
+        "unique": true,
         "permissions": {
           "access": {
             "get": "all",

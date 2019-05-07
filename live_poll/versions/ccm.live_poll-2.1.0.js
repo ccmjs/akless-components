@@ -2,7 +2,7 @@
  * @overview ccm component for live poll
  * @author André Kless <andre.kless@web.de> 2019
  * @license The MIT License (MIT)
- * @version latest (2.1.0)
+ * @version 2.1.0
  * @changes
  * version 2.1.0 (07.05.2019):
  * - fast creating of answers via TAB (no loss of input field focus)
@@ -20,9 +20,9 @@
 
   const component = {
 
-    name: 'live_poll',
+    name: 'live_poll', version: [ 2, 1, 0 ],
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-20.3.0.js',
 
     config: {
 
