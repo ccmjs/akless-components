@@ -6,6 +6,8 @@
  * @changes
  * version 2.1.0 (07.05.2019):
  * - fast creating of answers via TAB (no loss of input field focus)
+ * - HTML escape for question and answers
+ * - ccm.helper.protect for questions and answers
  * version 2.0.1 (05.05.2019):
  * - show answers in result mode
  * - uses ccm v20.3.0
@@ -305,7 +307,7 @@
                   }
 
               // update answer text
-              dataset.answers[ i ] = event.target.textContent;
+              dataset.answers[ i ] = $.escapeHTML( $.protect( event.target.textContent.trim() ) );
 
               // update app state data (no app restart)
               await save( true );
@@ -359,7 +361,7 @@
           oninput: async event => {
 
             // update question text
-            dataset.question = event.target.textContent;
+            dataset.question = $.escapeHTML( $.protect( event.target.textContent.trim() ) );
             await save( true );
 
             // logging of 'input' event
