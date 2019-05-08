@@ -2,7 +2,7 @@
  * @overview ccm component for rendering a [YouTube Player]{@link https://developers.google.com/youtube/iframe_api_reference}
  * @author André Kless <andre.kless@web.de> 2016, 2018-2019
  * @license The MIT License (MIT)
- * @version latest (2.1.0)
+ * @version 2.1.0
  * @changes
  * version 2.1.0 (08.05.2019):
  * - added support for lazy loading
@@ -22,9 +22,9 @@
 
   const component = {
 
-    name: 'youtube',
+    name: 'youtube', version: [ 2, 1, 0 ],
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-20.3.0.js',
 
     config: {
 
