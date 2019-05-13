@@ -4,9 +4,17 @@
  * @license The MIT License (MIT)
  */
 
+#element {
+  --color1: #00BFFF;
+  --color2: #00376B;
+  --color3: #914D00;
+  --color4: #E6F4F1;
+}
+
 #entries {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   font-family: sans-serif;
   white-space: nowrap;
 }
@@ -21,10 +29,10 @@
 }
 
 .entry.selected {
-  color: #00376B;
+  color: var(--color2);
   font-size: x-large;
 }
 
 .entry:hover:not(.selected) {
-  color: #914D00;
+  color: var(--color1);
 }
