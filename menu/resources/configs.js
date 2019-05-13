@@ -25,6 +25,17 @@ ccm.files[ 'configs.js' ] = {
     }
   },
 
+  "text": {
+    "key": "text",
+    "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/menu/resources/text.css" ],
+    "data": {
+      "store": [ "ccm.store", "https://ccmjs.github.io/akless-components/menu/resources/datasets.js" ],
+      "key": "demo"
+    },
+    "selected": 1,
+    "trigger_selected": true
+  },
+
   "icon": {
     "key": "icon",
     "css": [ "ccm.load",
