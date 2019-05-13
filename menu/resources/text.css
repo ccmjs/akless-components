@@ -1,0 +1,30 @@
+/**
+ * @overview text layout of ccm component for a menu
+ * @author André Kless <andre.kless@web.de> 2019
+ * @license The MIT License (MIT)
+ */
+
+#entries {
+  display: flex;
+  align-items: center;
+  font-family: sans-serif;
+  white-space: nowrap;
+}
+
+.entry {
+  padding: 0 .5em;
+  cursor: pointer;
+}
+
+.entry:not(.selected) {
+  padding: 0 1em;
+}
+
+.entry.selected {
+  color: #00376B;
+  font-size: x-large;
+}
+
+.entry:hover:not(.selected) {
+  color: #914D00;
+}
