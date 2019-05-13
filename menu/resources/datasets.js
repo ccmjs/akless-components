@@ -11,18 +11,15 @@ ccm.files[ 'datasets.js' ] = {
     "entries": [
       {
         "title": "Menu Item A",
-        "content": "Content of menu entry A",
-        "actions": [ [ "console.log", "Performed action of menu entry A." ] ]
+        "content": "Content of menu entry A"
       },
       {
         "title": "Menu Item B",
-        "content": "Content of menu entry B",
-        "actions": [ [ "console.log", "Performed action of menu entry B." ] ]
+        "content": "Content of menu entry B"
       },
       {
         "title": "Menu Item C",
-        "content": "Content of menu entry C",
-        "actions": [ [ "console.log", "Performed action of menu entry C." ] ]
+        "content": "Content of menu entry C"
       }
     ]
   },
@@ -43,6 +40,24 @@ ccm.files[ 'datasets.js' ] = {
       {
         "title": "<div><div class=\"fa fa-dashboard fa-fw fa-3x\"></div><div>Menu Item C</div></div>",
         "content": "Content of menu entry C",
+        "actions": [ [ "console.log", "Performed action of menu entry C." ] ]
+      }
+    ]
+  },
+
+  "actions": {
+    "key": "actions",
+    "entries": [
+      {
+        "title": "Menu Item A",
+        "actions": [ [ "console.log", "Performed action of menu entry A." ] ]
+      },
+      {
+        "title": "Menu Item B",
+        "actions": [ [ "console.log", "Performed action of menu entry B." ] ]
+      },
+      {
+        "title": "Menu Item C",
         "actions": [ [ "console.log", "Performed action of menu entry C." ] ]
       }
     ]

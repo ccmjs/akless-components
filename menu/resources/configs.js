@@ -30,7 +30,7 @@ ccm.files[ 'configs.js' ] = {
     "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/menu/resources/text.css" ],
     "data": {
       "store": [ "ccm.store", "https://ccmjs.github.io/akless-components/menu/resources/datasets.js" ],
-      "key": "demo"
+      "key": "actions"
     },
     "selected": 1,
     "trigger_selected": true
