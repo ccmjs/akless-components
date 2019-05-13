@@ -20,12 +20,12 @@
 }
 
 .entry {
-  padding: 0 .5em;
+  padding: .5em;
   cursor: pointer;
 }
 
 .entry:not(.selected) {
-  padding: 0 1em;
+  padding: .5em 1em;
 }
 
 .entry.selected {
