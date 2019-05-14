@@ -51,7 +51,7 @@ ccm.files[ 'configs.js' ] = {
     "app": [
       {
         "name": "Exercise",
-        "component": [ "ccm.component", "https://ccmjs.github.io/tkless-components/exercise/versions/ccm.exercise-4.0.0.js" ],
+        "component": [ "ccm.component", "https://ccmjs.github.io/tkless-components/exercise/versions/ccm.exercise-5.0.0.js" ],
         "configs": [ "ccm.store", [ "ccm.get", { "name": "ws_exercise", "url": "https://ccm2.inf.h-brs.de" }, {} ] ]
       },
       {
