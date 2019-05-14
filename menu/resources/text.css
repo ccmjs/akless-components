@@ -33,6 +33,6 @@
   font-size: x-large;
 }
 
-.entry:hover:not(.selected) {
+.entry:hover {
   color: var(--color1);
 }
