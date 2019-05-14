@@ -24,6 +24,7 @@
       "html": {
         "main": {
           "id": "main",
+          "class": "container-fluid",
           "inner": [
             { "id": "user" },
             { "id": "menu" },
