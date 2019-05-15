@@ -6,6 +6,7 @@
  * @changes
  * version 9.1.0 (15.05.2019):
  * - login function returns user data
+ * - uses ccm v20.4.0
  * version 9.0.1 (03.04.2019):
  * - bug fix for realm 'hbrsinfpseudo'
  * version 9.0.0 (11.02.2019):
