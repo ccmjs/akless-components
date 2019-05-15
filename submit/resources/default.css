@@ -1,6 +1,6 @@
 /**
  * @overview default layout of ccm component for submitting data
- * @author André Kless <andre.kless@web.de.de> 2018
+ * @author André Kless <andre.kless@web.de.de> 2018-2019
  * @license The MIT License (MIT)
  */
 
@@ -40,4 +40,14 @@ legend {
 
 .callout, .checkbox, .radio {
   margin-top: 0 !important;
+}
+
+/*
+.unchanged {
+  background-color: rgba( 0, 255, 0, 0.1 );
+}
+*/
+
+.changed {
+  background-color: rgba( 255, 255, 0, 0.1 );
 }
