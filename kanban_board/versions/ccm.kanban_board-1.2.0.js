@@ -319,7 +319,7 @@
                        * original card position
                        * @type {Array}
                        */
-                      const from = event.dataTransfer.getData( 'text' ).split( ',' ).map( value => parseInt( value ) );
+                      const from = event.dataTransfer.getData( 'text' ).split( ',' ).map(value => parseInt( value ) );
 
                       /**
                        * target card position

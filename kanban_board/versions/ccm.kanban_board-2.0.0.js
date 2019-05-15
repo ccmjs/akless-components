@@ -272,7 +272,7 @@
              * original position of dropped card
              * @type {number[]}
              */
-            const from = event.dataTransfer.getData( 'text' ).split( ',' ).map( value => parseInt( value ) );
+            const from = event.dataTransfer.getData( 'text' ).split( ',' ).map(value => parseInt( value ) );
 
             /**
              * target card position
