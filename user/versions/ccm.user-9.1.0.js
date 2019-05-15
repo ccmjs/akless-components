@@ -2,7 +2,7 @@
  * @overview ccm component for user authentication
  * @author André Kless <andre.kless@web.de> 2017-2019
  * @license The MIT License (MIT)
- * @version latest (9.1.0)
+ * @version 9.1.0
  * @changes
  * version 9.1.0 (15.05.2019):
  * - login function returns user data
@@ -17,9 +17,9 @@
 
   const component = {
 
-    name: 'user',
+    name: 'user', version: [ 9, 1, 0 ],
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-20.4.0.js',
 
     config: {
 
