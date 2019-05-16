@@ -6,6 +6,7 @@
  * @changes
  * version 7.1.0 (15.06.2019):
  * - user feedback for changed/unchained values
+ * - uses ccm v20.4.1
  * version 7.0.1 (15.06.2019):
  * - no report of invalid data to user at change events
  * - uses ccm v20.4.0
@@ -23,7 +24,7 @@
 
     name: 'submit', version: [ 7, 1, 0 ],
 
-    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-20.4.0.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-20.4.1.js',
 
     config: {
 
