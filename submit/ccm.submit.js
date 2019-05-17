@@ -633,8 +633,6 @@
          */
         let results = $.formData( element );  // fetch values from HTML input elements
 
-        console.log( results );
-
         // fetch values from ccm-based input elements (convention: ccm instance must have a 'getValue()' method)
         inputs.forEach( input => {
           const result = input.instance.getValue();
