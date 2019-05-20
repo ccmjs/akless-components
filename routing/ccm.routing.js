@@ -42,12 +42,14 @@
       /**
        * defines routes
        * @param {Object.<string,function>} routes
+       * @example routing.define( { home: async () => {}, show_items: async () => {} } );
+       *
        */
       this.define = routes => Object.assign( _routes, routes );
 
       /**
-       * returns current app route of location hash (route name and parameters)
-       * @returns {string} route
+       * returns current app route of location hash
+       * @returns {string} route name and parameters
        * @example home
        * @example show_items-item_a-item_b
        */
@@ -67,8 +69,9 @@
 
       /**
        * changes current app route in location hash
-       * @param {string} route
-       * @returns {string}
+       * @param {string} route - route name
+       * @example routing.set( "home" );
+       * @example routing.set( "show_items" );
        */
       this.set = route => {
 
