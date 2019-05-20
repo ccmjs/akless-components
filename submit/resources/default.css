@@ -36,6 +36,7 @@ legend {
 
 .alert {
   margin-bottom: 0 !important;
+  font-weight: normal;
 }
 
 .callout, .checkbox, .radio {
