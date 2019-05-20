@@ -65,14 +65,14 @@
         }
       },
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/menu/resources/default.css" ],
-      "data": { "store": [ "ccm.store" ] },
-      "routing": [ "ccm.instance", "https://ccmjs.github.io/akless-components/routing/versions/ccm.routing-1.2.0.js", { "app": true } ]
+      "data": { "store": [ "ccm.store" ] }
 
   //  "deselectable": true,
   //  "trigger_selected": true,
   //  "selected": 2,
   //  "onclick": ( event_data, instance ) => console.log( event_data, instance ),
-  //  "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ]
+  //  "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
+  //  "routing": [ "ccm.instance", "https://ccmjs.github.io/akless-components/routing/versions/ccm.routing-1.2.0.js", { "app": true } ]
 
     },
 
