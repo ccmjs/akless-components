@@ -13,7 +13,8 @@ ccm.files[ 'configs.js' ] = {
       "store": [ "ccm.store", "../menu/resources/datasets.js" ],
       "key": "demo"
     },
-    "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ]
+    "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
+    "routing.1": "../routing/ccm.routing.js"
   },
 
   "demo": {
