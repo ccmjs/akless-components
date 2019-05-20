@@ -16,6 +16,27 @@ ccm.files[ 'configs.js' ] = {
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ]
   },
 
+  "proxy": {
+    "key": "proxy",
+    "css": [ "ccm.load", "../menu/resources/tabs.css" ],
+    "data": {
+      "entries": [
+        {
+          "title": "Menu Item A",
+          "content": [ "ccm.proxy", "https://ccmjs.github.io/akless-components/blank/ccm.blank.js" ]
+        },
+        {
+          "title": "Menu Item B",
+          "content": [ "ccm.proxy", "https://ccmjs.github.io/akless-components/blank_blank/ccm.blank_blank.js" ]
+        },
+        {
+          "title": "Menu Item C",
+          "content": [ "ccm.proxy", "https://ccmjs.github.io/akless-components/multi_blank/ccm.multi_blank.js" ]
+        }
+      ]
+    }
+  },
+
   "demo": {
     "key": "demo",
     "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/menu/resources/tabs.css" ],
