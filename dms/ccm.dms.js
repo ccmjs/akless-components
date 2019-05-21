@@ -82,7 +82,7 @@
           "entries": [ "Home", "Apps", "Components", "Publish" ]
         },
         "selected": 3,
-        "routing": [ "ccm.instance", "https://ccmjs.github.io/akless-components/routing/versions/ccm.routing-1.2.0.js", { "app": true } ]
+        "routing": [ "ccm.instance", "https://ccmjs.github.io/akless-components/routing/versions/ccm.routing-1.2.0.js", { "app": "dms_ak1_menu" } ]
       } ],
       "listing": [ "ccm.proxy", "https://ccmjs.github.io/akless-components/listing/versions/ccm.listing-2.0.3.js", {
         "html.entry": {
