@@ -322,11 +322,11 @@
         // define and check routes
         if ( this.routing ) {
           this.routing.define( {
-            home: () => this.menu.select( 1 ),
-            apps: () => this.menu.select( 2 ),
+            home:       () => this.menu.select( 1 ),
+            apps:       () => this.menu.select( 2 ),
             components: () => this.menu.select( 3 ),
-            publish: () => this.menu.select( 4 ),
-            component: ( name, major, minor, patch ) => showComponent( `${name}-${major}-${minor}-${patch}` )
+            publish:    () => this.menu.select( 4 ),
+            component:  ( name, major, minor, patch ) => showComponent( `${name}-${major}-${minor}-${patch}` )
           } );
           this.routing && this.routing.refresh();
         }
