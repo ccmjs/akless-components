@@ -2,8 +2,10 @@
  * @overview ccm component for digital maker space
  * @author André Kless <andre.kless@web.de> 2018-2019
  * @license MIT License
- * @version latest (1.0.7)
+ * @version latest (2.0.0)
  * @changes
+ * version 2.0.0 (20.05.2019):
+ * - ...
  * version 1.0.7 (27.04.2019):
  * - uses ccm.star_rating_result.js v4.0.0
  * - uses ccm.component_manager.js v2.2.6
@@ -46,86 +48,43 @@
               "id": "header",
               "inner": [
                 {
-                  "id": "title",
-                  "inner": {
-                    "tag": "span",
-                    "onclick": "%all_components%",
-                    "inner": "Digital Maker Space"
-                  }
-                },
-                {
-                  "id": "menu",
+                  "id": "brand",
                   "inner": [
                     {
-                      "id": "button-browse_apps",
-                      "class": "button",
-                      "inner": "Browse Apps",
-                      "onclick": "%browse_apps%"
+                      "id": "logo",
+                      "inner": {
+                        "tag": "img",
+                        "src": "%logo%"
+                      }
                     },
                     {
-                      "id": "button-publish_app",
-                      "class": "button",
-                      "inner": "Publish App",
-                      "onclick": "%publish_app%"
-                    },
-                    {
-                      "id": "button-all_components",
-                      "class": "button",
-                      "inner": "All Components",
-                      "onclick": "%all_components%"
-                    },
-                    {
-                      "id": "button-publish",
-                      "class": "button",
-                      "inner": "Publish Component",
-                      "onclick": "%publish%"
-                    },
-                    { "id": "user" }
+                      "id": "title",
+                      "inner": {
+                        "tag": "span",
+                        "inner": "%title%"
+                      }
+                    }
                   ]
-                }
+                },
+                { "id": "menu" },
+                { "id": "user" }
               ]
             },
             { "id": "content" }
           ]
-        },
-        "entry": {
-          "class": "entry",
-          "onclick": "%click%",
-          "inner": [
-            {
-              "class": "left",
-              "inner": {
-                "tag": "img",
-                "src": "%icon%"
-              }
-            },
-            {
-              "class": "right",
-              "inner": [
-                {
-                  "class": "title",
-                  "inner": "%title%"
-                },
-                {
-                  "class": "developer",
-                  "inner": "%developer%"
-                },
-                {
-                  "class": "rating"
-                }
-              ]
-            }
-          ]
         }
       },
-      "css": [ "ccm.load",
-        "https://ccmjs.github.io/akless-components/libs/bootstrap/css/bootstrap.css",
-        { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/bootstrap/css/font-face.css" },
-        "https://ccmjs.github.io/akless-components/dms/resources/default.css"
-      ],
+      "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/dms/resources/default.css" ],
       "data": [],
-      "listing": [ "ccm.component", "https://ccmjs.github.io/akless-components/listing/versions/ccm.listing-2.0.3.js", {
-        "root": "name",
+      "menu": [ "ccm.proxy", "https://ccmjs.github.io/akless-components/menu/versions/ccm.menu-2.5.1.js", {
+        "key": [ "ccm.get", "https://ccmjs.github.io/akless-components/menu/resources/configs.js", "text" ],
+        "data": {
+          "entries": [ "Home", "Apps", "Components", "Publish" ]
+        },
+        "selected": 3,
+        "routing": [ "ccm.instance", "https://ccmjs.github.io/akless-components/routing/versions/ccm.routing-1.2.0.js", { "app": true } ]
+      } ],
+      "listing": [ "ccm.proxy", "https://ccmjs.github.io/akless-components/listing/versions/ccm.listing-2.0.3.js", {
         "html.entry": {
           "class": "entry",
           "inner": [
@@ -145,9 +104,9 @@
                   "title": "%title%"
                 },
                 {
-                  "class": "developer",
-                  "inner": "%developer%",
-                  "title": "%developer%"
+                  "class": "creator",
+                  "inner": "%creator%",
+                  "title": "%creator%"
                 },
                 { "class": "rating" }
               ]
@@ -160,377 +119,30 @@
         }
       } ],
       "rating": [ "ccm.component", "https://ccmjs.github.io/tkless-components/star_rating_result/versions/ccm.star_rating_result-4.0.0.js", {
-        "css": [ "ccm.load",
-          { "context": "head", "url": "https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" },
-          "https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css",
-          "https://ccmjs.github.io/akless-components/dms/resources/rating_result.css"
-        ]
+        "ccm": "https://ccmjs.github.io/ccm/versions/ccm-20.5.2.js",
+        "css.3": "https://ccmjs.github.io/akless-components/dms/resources/rating_result.css"
       } ],
-      "form": [ "ccm.component", "https://ccmjs.github.io/akless-components/submit/versions/ccm.submit-7.0.0.js", {
-        "root": "name",
-        "inner": {
-          "id": "main",
-          "class": "container-fluid",
-          "inner": [
-            {
-              "id": "title",
-              "class": "form-group",
-              "inner": [
-                {
-                  "tag": "label",
-                  "id": "title-label",
-                  "for": "title-input",
-                  "class": "control-label required",
-                  "inner": "Title"
-                },
-                {
-                  "tag": "span",
-                  "id": "title-help",
-                  "class": "help",
-                  "inner": [
-                    {
-                      "tag": "a",
-                      "id": "title-icon",
-                      "inner": {
-                        "class": "glyphicon glyphicon-info-sign"
-                      }
-                    },
-                    {
-                      "id": "title-info",
-                      "class": "alert alert-info",
-                      "inner": "Specify the title of your component."
-                    }
-                  ]
-                },
-                {
-                  "tag": "input",
-                  "type": "text",
-                  "id": "title-input",
-                  "class": "form-control",
-                  "name": "title",
-                  "required": true
-                }
-              ]
-            },
-            {
-              "id": "url",
-              "class": "form-group",
-              "inner": [
-                {
-                  "tag": "label",
-                  "id": "url-label",
-                  "for": "url-input",
-                  "class": "control-label required",
-                  "inner": "URL"
-                },
-                {
-                  "tag": "span",
-                  "id": "url-help",
-                  "class": "help",
-                  "inner": [
-                    {
-                      "tag": "a",
-                      "id": "url-icon",
-                      "inner": {
-                        "class": "glyphicon glyphicon-info-sign"
-                      }
-                    },
-                    {
-                      "id": "url-info",
-                      "class": "alert alert-info",
-                      "inner": "Enter the URL to the component version file."
-                    }
-                  ]
-                },
-                {
-                  "tag": "input",
-                  "type": "url",
-                  "id": "url-input",
-                  "class": "form-control",
-                  "name": "url",
-                  "pattern": ".*/ccm\\.([a-z][a-z0-9_]*)(-(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*))(\\.js)$",
-                  "placeholder": "https://ccmjs.github.io/digital-maker-space/versions/ccm.dms-1.0.0.js",
-                  "title": "The filename of the component must start with 'ccm.' followed by the unique component name and then a '-' followed by the component version number and a '.js' in the end. Example: ccm.dms-1.0.0.js",
-                  "required": true
-                }
-              ]
-            },
-            {
-              "id": "icon",
-              "class": "form-group",
-              "inner": [
-                {
-                  "tag": "label",
-                  "id": "icon-label",
-                  "for": "icon-input",
-                  "class": "control-label",
-                  "inner": "Icon"
-                },
-                {
-                  "tag": "span",
-                  "id": "icon-help",
-                  "class": "help",
-                  "inner": [
-                    {
-                      "tag": "a",
-                      "id": "icon-icon",
-                      "inner": {
-                        "class": "glyphicon glyphicon-info-sign"
-                      }
-                    },
-                    {
-                      "id": "icon-info",
-                      "class": "alert alert-info",
-                      "inner": "Enter the URL to the component icon. Ideally a 64x64 SVG file. Use a free icon that has no licence restrictions."
-                    }
-                  ]
-                },
-                {
-                  "tag": "input",
-                  "type": "icon",
-                  "id": "icon-input",
-                  "class": "form-control",
-                  "name": "icon",
-                  "placeholder": "https://ccmjs.github.io/akless-components/dms/resources/component.png"
-                }
-              ]
-            },
-            {
-              "id": "abstract",
-              "class": "form-group",
-              "inner": [
-                {
-                  "tag": "label",
-                  "id": "abstract-label",
-                  "for": "abstract-input",
-                  "class": "control-label",
-                  "inner": "Abstract"
-                },
-                {
-                  "tag": "span",
-                  "id": "abstract-help",
-                  "class": "help",
-                  "inner": [
-                    {
-                      "tag": "a",
-                      "id": "abstract-icon",
-                      "inner": {
-                        "class": "glyphicon glyphicon-info-sign"
-                      }
-                    },
-                    {
-                      "id": "abstract-info",
-                      "class": "alert alert-info",
-                      "inner": "Enter a short component description."
-                    }
-                  ]
-                },
-                {
-                  "tag": "input",
-                  "type": "text",
-                  "id": "abstract-input",
-                  "class": "form-control",
-                  "name": "abstract"
-                }
-              ]
-            },
-            {
-              "id": "description",
-              "class": "form-group",
-              "inner": [
-                {
-                  "tag": "label",
-                  "id": "description-label",
-                  "for": "description-input",
-                  "class": "control-label",
-                  "inner": "Description"
-                },
-                {
-                  "tag": "span",
-                  "id": "description-help",
-                  "class": "help",
-                  "inner": [
-                    {
-                      "tag": "a",
-                      "id": "description-icon",
-                      "inner": {
-                        "class": "glyphicon glyphicon-info-sign"
-                      }
-                    },
-                    {
-                      "id": "description-info",
-                      "class": "alert alert-info",
-                      "inner": "Enter a long description of component."
-                    }
-                  ]
-                },
-                {
-                  "tag": "textarea",
-                  "id": "description-input",
-                  "class": "form-control",
-                  "name": "description"
-                }
-              ]
-            },
-            {
-              "id": "website",
-              "class": "form-group",
-              "inner": [
-                {
-                  "tag": "label",
-                  "id": "website-label",
-                  "for": "website-input",
-                  "class": "control-label",
-                  "inner": "Webseite"
-                },
-                {
-                  "tag": "span",
-                  "id": "website-help",
-                  "class": "help",
-                  "inner": [
-                    {
-                      "tag": "a",
-                      "id": "website-icon",
-                      "inner": {
-                        "class": "glyphicon glyphicon-info-sign"
-                      }
-                    },
-                    {
-                      "id": "website-info",
-                      "class": "alert alert-info",
-                      "inner": "Enter homepage URL of component."
-                    }
-                  ]
-                },
-                {
-                  "tag": "input",
-                  "type": "url",
-                  "id": "website-input",
-                  "class": "form-control",
-                  "name": "website",
-                  "placeholder": "https://github.com/ccmjs/digital-maker-space"
-                }
-              ]
-            },
-            {
-              "id": "developer",
-              "class": "form-group",
-              "inner": [
-                {
-                  "tag": "label",
-                  "id": "developer-label",
-                  "for": "developer-input",
-                  "class": "control-label",
-                  "inner": "Developer"
-                },
-                {
-                  "tag": "span",
-                  "id": "developer-help",
-                  "class": "help",
-                  "inner": [
-                    {
-                      "tag": "a",
-                      "id": "developer-icon",
-                      "inner": {
-                        "class": "glyphicon glyphicon-info-sign"
-                      }
-                    },
-                    {
-                      "id": "developer-info",
-                      "class": "alert alert-info",
-                      "inner": "Enter the name of the developer who developed the component."
-                    }
-                  ]
-                },
-                {
-                  "tag": "input",
-                  "type": "text",
-                  "id": "developer-input",
-                  "class": "form-control",
-                  "name": "developer"
-                }
-              ]
-            },
-            {
-              "id": "license",
-              "class": "form-group",
-              "inner": [
-                {
-                  "tag": "label",
-                  "id": "license-label",
-                  "for": "license-input",
-                  "class": "control-label required",
-                  "inner": "License"
-                },
-                {
-                  "tag": "span",
-                  "id": "license-help",
-                  "class": "help",
-                  "inner": [
-                    {
-                      "tag": "a",
-                      "id": "license-icon",
-                      "inner": {
-                        "class": "glyphicon glyphicon-info-sign"
-                      }
-                    },
-                    {
-                      "id": "license-info",
-                      "class": "alert alert-info",
-                      "inner": "Components can only be published as free software under MIT license."
-                    }
-                  ]
-                },
-                {
-                  "tag": "input",
-                  "type": "text",
-                  "id": "license-input",
-                  "class": "form-control",
-                  "name": "license",
-                  "value": "MIT License",
-                  "pattern": "MIT License",
-                  "disabled": true,
-                  "required": true
-                }
-              ]
-            },
-            {
-              "tag": "input",
-              "type": "submit",
-              "id": "button-submit",
-              "class": "btn btn-success btn-lg",
-              "value": "Publish Component"
-            }
-          ]
-        },
-        "css": [ "ccm.load",
-          "https://ccmjs.github.io/akless-components/libs/bootstrap/css/bootstrap.css",
-          "https://ccmjs.github.io/akless-components/dms/resources/submit.css"
-        ],
+      "form": [ "ccm.component", "https://ccmjs.github.io/akless-components/submit/versions/ccm.submit-7.1.0.js", {
+        "entries": [ "ccm.get", "https://ccmjs.github.io/akless-components/dms/resources/publish_form.js", "entries" ],
+        "data": [],
+        "editor": [ "ccm.component", "https://ccmjs.github.io/tkless-components/editor/versions/ccm.editor-3.1.0.js" ]
       } ],
       "component_manager": [ "ccm.component", "https://ccmjs.github.io/akless-components/component_manager/versions/ccm.component_manager-2.2.6.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/component_manager/resources/configs.js", "demo" ] ],
-      "resource_finder": [ "ccm.component", "https://ccmjs.github.io/leck-components/resource_finder/dist/ccm.resource_finder-1.0.0.js" ],
-      "resource_publish": [ "ccm.component", "https://ccmjs.github.io/leck-components/resource_publish/dist/ccm.resource_publish-1.0.0.js" ]
-//    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-8.3.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "guest" ] ],
-//    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.2.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ]
+      "user": [ "ccm.start", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.1.0.js", {
+        "realm": "cloud",
+        "url": "http://localhost:8080",
+        "store": "dms-user",
+        "title": "Please enter username and password",
+        "hash": [ "ccm.load", { "url": "https://ccmjs.github.io/akless-components/modules/md5.js", "type": "module" } ]
+      } ],
+//    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.2.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
+      "logo": "https://ccmjs.github.io/akless-components/dms/resources/component.png",
+      "title": "Digital Maker Space"
     },
 
     Instance: function () {
 
-      const self = this;
-      let $;
-
-      /**
-       * Ensures that the resource finder is only started once
-       * @type {boolean}
-       */
-      let resource_finder_started = false;
-
-      /**
-       * Ensures that the resource publish is only started once
-       * @type {boolean}
-       */
-      let resource_publish_started = false;
+      let $, user;
 
       this.ready = async () => {
 
@@ -547,249 +159,137 @@
         // logging of 'start' event
         this.logger && this.logger.log( 'start' );
 
-        $.setContent( this.element, $.html( this.html.main, {
-          browse_apps: function () {
-            changeSelectedMenuEntry( this );
-            window.location.hash = `dms-navigation=browseapps`;
-          },
-          publish_app: function () {
-            changeSelectedMenuEntry( this );
-            window.location.hash = `dms-navigation=publishapp`;
-          },
-          all_components: function () {
-            changeSelectedMenuEntry( this );
-            window.location.hash = `dms-navigation=allcomponents`;
-          },
-          publish: function () {
-            changeSelectedMenuEntry( this );
-            window.location.hash = `dms-navigation=publishcomponent`;
-          }
-        } ) );
+        // render main HTML structure
+        $.setContent( this.element, $.html( this.html.main, { logo: this.logo, title: this.title } ) );
 
         /**
          * content area
          * @type {Element}
          */
-        const content_elem = this.element.querySelector( '#content' );
-
-        if ( this.user ) { await this.user.start(); $.setContent( this.element.querySelector( '#user' ), this.user.root ); }
-
-        window.addEventListener('hashchange', function() {
-          const urlHash = window.location.hash.substr(1);
-          const hashParameters = urlHash.split('&');
-          hashParameters.forEach(parameter => {
-            const key = parameter.split('=')[0];
-            const value = parameter.split('=')[1];
-            switch (key) {
-              case 'dms-navigation':
-                navigateTo(value);
-                break;
-              default:
-              //console.log(`Unknown URL parameter: ${key}`);
-            }
-          });
-        });
-
-        let urlHash = window.location.hash.substr(1);
-        if (urlHash !== '') {
-          const hashParameters = urlHash.split('&');
-          hashParameters.forEach(parameter => {
-            const key = parameter.split('=')[0];
-            const value = parameter.split('=')[1];
-            switch (key) {
-              case 'dms-navigation':
-                navigateTo(value);
-                break;
-              default:
-              //console.log(`Unknown URL parameter: ${key}`);
-            }
-          });
-        } else {
-          window.location.hash = `dms-navigation=allcomponents`;
-        }
-
-        function navigateTo(target) {
-          window.location.hash = `dms-navigation=${target}`;
-          switch (target) {
-            case 'browseapps':
-              changeSelectedMenuEntry( self.element.querySelector('#button-browse_apps') );
-              renderBrowseApps();
-              break;
-            case 'publishapp':
-              changeSelectedMenuEntry( self.element.querySelector('#button-publish_app') );
-              renderPublishApp();
-              break;
-            case 'allcomponents':
-              changeSelectedMenuEntry( self.element.querySelector('#button-all_components') );
-              renderAllComponents();
-              break;
-            case 'publishcomponent':
-              changeSelectedMenuEntry( self.element.querySelector('#button-publish') );
-              renderPublishComponent();
-              break;
-            default:
-              console.log(`Unknown navigation target: ${target}`);
-          }
-        }
-
-        /** renders browse apps */
-        function renderBrowseApps() {
-          // view browse apps already active? => abort
-          if ( content_elem.querySelector( '#browse_apps' ) ) return;
-
-          // clear content area
-          $.setContent( content_elem, $.html( { id: 'browse_apps' } ) );
-
-          const browse_apps_elem = content_elem.querySelector( '#browse_apps' );
-          if (!resource_finder_started) {
-            self.resource_finder.start({})
-              .then(instance => {
-                self.resource_finder = instance;
-                resource_finder_started = true;
-                $.setContent( browse_apps_elem, self.resource_finder.root );
-              });
-          }
-          else
-            $.setContent( browse_apps_elem, self.resource_finder.root );
-
-        }
-
-        /** renders publish app */
-        function renderPublishApp() {
-          // view browse apps already active? => abort
-          if ( content_elem.querySelector( '#publish_app' ) ) return;
-
-          // clear content area
-          $.setContent( content_elem, $.html( { id: 'publish_app' } ) );
-
-          const publish_app_elem = content_elem.querySelector( '#publish_app' );
-          if (!resource_publish_started) {
-            self.resource_publish.start({})
-              .then(instance => {
-                self.resource_publish = instance;
-                resource_publish_started = true;
-                $.setContent( publish_app_elem, self.resource_publish.root );
-              });
-          }
-          else
-            $.setContent( publish_app_elem, self.resource_publish.root );
-
-        }
-
-        /** renders all components view */
-        function renderAllComponents() {
-
-          // render all components view already active? => abort
-          if ( content_elem.querySelector( '#listing' ) ) return;
-
-          // clear content area
-          $.setContent( content_elem, $.html( { id: 'listing' } ) );
-
-          // render listing of all components
-          self.listing.start( {
-            data: self.data,
-            sort: ( a, b ) => {
-              const title_x = a.title.toLowerCase();
-              const title_y = b.title.toLowerCase();
-              const developer_x = ( a.developer || '' ).toLowerCase();
-              const developer_y = ( b.developer || '' ).toLowerCase();
-              if ( title_x < title_y ) return -1;
-              if ( title_x > title_y ) return 1;
-              if ( developer_x < developer_y ) return -1;
-              if ( developer_x > developer_y ) return 1;
-              return 0;
-            },
-            onrender: ( element, data ) => {
-              if ( !self.rating ) return;
-              self.rating.start( {
-                root: element.querySelector( '.rating' ),
-                'data.key': data.key
-              } );
-            },
-            onclick: async ( event, element, data ) => {
-              changeSelectedMenuEntry();
-              window.location.hash = '';
-              const instance = await self.component_manager.start( {
-                data: {
-                  store: self.data.store,
-                  key: data.key
-                }
-              } );
-              $.setContent( content_elem, instance.root )
-            }
-          } );
-
-        }
-
-        /** renders publish component view */
-        async function renderPublishComponent() {
-
-          // publish form view already active? => abort
-          if ( content_elem.querySelector( '#submit' ) ) return;
-
-          // clear content area
-          $.setContent( content_elem, $.html( { id: 'submit' } ) );
-
-          // start ccm instance for publish form
-          const instance = await self.form.start( {
-            onfinish: async ( instance, dataset ) => {
-
-              /**
-               * component version number
-               * @type {string[]}
-               */
-              let version = $.getIndex( dataset.url ).split( '-' );
-
-              /**
-               * unique component name
-               * @type {string}
-               */
-              const name = version.shift();
-
-              version = version.join( '.' );
-
-              // add component name and version number
-              dataset.key     = name;
-              dataset.version = version;
-              dataset.license = 'MIT License';  // components can only be published as free software
-              dataset.ignore = { demos: [], builder: [] };
-
-              // check if component name already exists
-              const existing = await self.data.store.get( name );
-
-              if ( existing ) return alert( 'Component with unique name "' + name + '" already exists.' );
-
-              // make sure that the developer really wants to publish
-              if ( !window.confirm( 'Are you sure, you want to publish the Component?' ) ) return;
-
-              // publish component
-              await self.data.store.set( dataset ); alert( 'Saved!' ); navigateTo( 'allcomponents' );
-
-            }
-          } );
-
-          // set click events for help icons
-          [ ...instance.element.querySelectorAll( '.help' ) ].map( help => help.addEventListener( 'click', function () {
-
-            // show help text and hide other help texts
-            [ ...instance.element.querySelectorAll( '.help' ) ].map( help => help !== this && help.classList.remove( 'active' ) );
-            this.classList.toggle( 'active' );
-
-            // logging of 'help' event
-            self.logger && self.logger.log( 'help', { form: 'publish_component', name: this.id.split( '-' )[ 0 ], active: this.classList.contains( 'active' ) } );
-
-          } ) );
-
-        }
+        const content = this.element.querySelector( '#content' );
 
         /**
-         * changes the selected header menu entry
-         * @param {Element} [item] - clicked header button
+         * render functions for each frontend view
+         * @type {Function[]}
          */
-        function changeSelectedMenuEntry( item ) {
-          [ ...self.element.querySelectorAll( '#header .button' ) ].map( div => { div.classList.remove( 'active' ); } );
-          item && item.classList.add( 'active' );
-        }
+        const view = [
+
+          // Home
+          () => {
+
+            // clear content area
+            $.setContent( content, '' );
+
+          },
+
+          // Apps
+          () => {
+
+            // clear content area
+            $.setContent( content, '' );
+
+          },
+
+          // Components
+          async () =>  {
+
+            // render listing with all components
+            await this.listing.start( {
+              data: this.data,
+              sort: ( a, b ) => {
+                const title_x = a.title.toLowerCase();
+                const title_y = b.title.toLowerCase();
+                const developer_x = ( a.developer || '' ).toLowerCase();
+                const developer_y = ( b.developer || '' ).toLowerCase();
+                if ( title_x < title_y ) return -1;
+                if ( title_x > title_y ) return 1;
+                if ( developer_x < developer_y ) return -1;
+                if ( developer_x > developer_y ) return 1;
+                return 0;
+              },
+              onrender: ( element, data ) => this.rating && this.rating.start( {
+                root: element.querySelector( '.rating' ),
+                'data.key': data.key
+              } ),
+              onclick: ( event, element, data ) => false && this.component_manager.start( {
+                root: content,
+                data: {
+                  store: this.data.store,
+                  key: data.key
+                }
+              } )
+            } );
+            $.setContent( content, this.listing.root );
+
+          },
+
+          // Publish
+          () => {
+
+            // render publish component form
+            this.user && this.data.store && this.form.start( {
+              root: content,
+              onfinish: async form => {
+
+                // log in user, if not already logged in
+                user = await this.user.login();
+
+                /**
+                 * component metadata
+                 * @type {Object}
+                 */
+                const meta = form.getValue();
+
+                // prepare metadata
+                meta.metaFormat = 'ccm-meta';
+                meta.metaVersion = '2.0.0';
+                meta.version = $.getIndex( meta.path ).split( '-' );
+                meta.identifier = meta.version.shift();
+                meta.version = meta.version.join( '.' );
+                meta.creator = user.name || user.user;
+                meta.date = new Date().toISOString().split( 'T' )[ 0 ];
+                meta.format = 'application/javascript';
+                meta.licence = 'MIT';
+                meta.category = meta.category.filter( category => category );
+                meta.tags = meta.tags.filter( tag => tag );
+
+                // set dataset key and permission settings
+                meta.key = meta.identifier + '-' + meta.version.split( '.' ).join( '-' );
+                meta._ = { access: { get: 'all', set: 'creator', del: 'creator' } };
+
+                // save meta data (component is published)
+                await this.data.store.set( meta );
+
+                await this.start();
+                return;
+
+                // show published component
+                await this.component_manager.start( {
+                  root: content,
+                  data: {
+                    store: this.data.store,
+                    key: meta.key
+                  }
+                } );
+
+              }
+            } );
+
+          }
+
+        ];
+
+        // no user or no data store? => remove the menu entry for publishing a component
+        !this.user && !this.data.store && this.menu.config.data.entries.pop();
+
+        // render header menu
+        await this.menu.start( {
+          root: this.element.querySelector( '#menu' ),
+          onclick: event => view[ event.nr - 1 ]()
+        } );
+
+        // render login/logout area
+        $.setContent( this.element.querySelector( '#user' ), this.user.root );
 
       };
     }
