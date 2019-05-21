@@ -14,7 +14,6 @@ ccm.files[ 'configs.js' ] = {
       "key": {}
     },
     "menu.1": "../menu/ccm.menu.js",
-    "menu.2.routing.1": "../routing/ccm.routing.js",
     "listing.1": "../listing/ccm.listing.js",
     "listing.2.css.1": "../dms/resources/listing.css",
     "listing.2.defaults.icon": "../dms/resources/component.png",
@@ -51,8 +50,7 @@ ccm.files[ 'configs.js' ] = {
     "rating.2.data": { "store": [ "ccm.store", [ "ccm.get", { "name": "dms-component_ratings", "url": "https://ccm2.inf.h-brs.de" }, {} ] ] },
     "form.2.data": {
       "store": [ "ccm.store", { "name": "dms-components", "url": "https://ccm2.inf.h-brs.de" } ]
-    },
-    "routing.2.app": "live"
+    }
   }
 
 };

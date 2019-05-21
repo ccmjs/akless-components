@@ -76,13 +76,12 @@
       },
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/dms/resources/default.css" ],
       "data": [],
-      "menu": [ "ccm.proxy", "https://ccmjs.github.io/akless-components/menu/versions/ccm.menu-2.5.1.js", {
+      "menu": [ "ccm.proxy", "https://ccmjs.github.io/akless-components/menu/versions/ccm.menu-2.6.0.js", {
         "key": [ "ccm.get", "https://ccmjs.github.io/akless-components/menu/resources/configs.js", "text" ],
         "data": {
           "entries": [ "Home", "Apps", "Components", "Publish" ]
         },
-        "selected": 3,
-        "routing": [ "ccm.instance", "https://ccmjs.github.io/akless-components/routing/versions/ccm.routing-1.2.0.js", { "app": "dms_ak1_menu" } ]
+        "selected": 3
       } ],
       "listing": [ "ccm.proxy", "https://ccmjs.github.io/akless-components/listing/versions/ccm.listing-2.0.3.js", {
         "html.entry": {
@@ -136,6 +135,7 @@
         "hash": [ "ccm.load", { "url": "https://ccmjs.github.io/akless-components/modules/md5.js", "type": "module" } ]
       } ],
 //    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.2.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
+      "routing": [ "ccm.instance", "https://ccmjs.github.io/akless-components/routing/versions/ccm.routing-1.2.0.js" ],
       "logo": "https://ccmjs.github.io/akless-components/dms/resources/component.png",
       "title": "Digital Maker Space"
     },
@@ -159,6 +159,12 @@
         // logging of 'start' event
         this.logger && this.logger.log( 'start' );
 
+        /**
+         * component datasets
+         * @type {Object[]}
+         */
+        const components = await $.dataset( this.data );
+
         // render main HTML structure
         $.setContent( this.element, $.html( this.html.main, { logo: this.logo, title: this.title } ) );
 
@@ -177,6 +183,9 @@
           // Home
           () => {
 
+            // update route
+            this.routing && this.routing.set( 'home' );
+
             // clear content area
             $.setContent( content, '' );
 
@@ -184,6 +193,9 @@
 
           // Apps
           () => {
+
+            // update route
+            this.routing && this.routing.set( 'apps' );
 
             // clear content area
             $.setContent( content, '' );
@@ -193,9 +205,12 @@
           // Components
           async () =>  {
 
+            // update route
+            this.routing && this.routing.set( 'components' );
+
             // render listing with all components
             await this.listing.start( {
-              data: this.data,
+              data: components,
               sort: ( a, b ) => {
                 const title_x = a.title.toLowerCase();
                 const title_y = b.title.toLowerCase();
@@ -211,13 +226,7 @@
                 root: element.querySelector( '.rating' ),
                 'data.key': data.key
               } ),
-              onclick: ( event, element, data ) => false && this.component_manager.start( {
-                root: content,
-                data: {
-                  store: this.data.store,
-                  key: data.key
-                }
-              } )
+              onclick: ( event, element, data ) => showComponent( data.key )
             } );
             $.setContent( content, this.listing.root );
 
@@ -225,6 +234,9 @@
 
           // Publish
           () => {
+
+            // update route
+            this.routing && this.routing.set( 'publish' );
 
             // render publish component form
             this.user && this.data.store && this.form.start( {
@@ -260,17 +272,8 @@
                 // save meta data (component is published)
                 await this.data.store.set( meta );
 
-                await this.start();
-                return;
-
                 // show published component
-                await this.component_manager.start( {
-                  root: content,
-                  data: {
-                    store: this.data.store,
-                    key: meta.key
-                  }
-                } );
+                await showComponent( meta.key );
 
               }
             } );
@@ -279,19 +282,57 @@
 
         ];
 
+        /**
+         * shows a component
+         * @param {string} index
+         * @returns {Promise<void>}
+         */
+        const showComponent = async index => {
+
+          // deselect selected menu entry and update route
+          this.menu.select();
+          this.routing && this.routing.set( `component-${index}` );
+
+          $.setContent( content, '' );
+          console.log( index );
+
+          false && await this.component_manager.start( {
+            root: content,
+            data: {
+              store: this.data.store,
+              key: index
+            }
+          } );
+
+        };
+
         // no user or no data store? => remove the menu entry for publishing a component
         !this.user && !this.data.store && this.menu.config.data.entries.pop();
 
         // render header menu
         await this.menu.start( {
           root: this.element.querySelector( '#menu' ),
-          onclick: event => view[ event.nr - 1 ]()
+          onclick: event => view[ event.nr - 1 ](),
+          selected: this.routing && this.routing.get() ? null : undefined
         } );
 
         // render login/logout area
         $.setContent( this.element.querySelector( '#user' ), this.user.root );
 
+        // define and check routes
+        if ( this.routing ) {
+          this.routing.define( {
+            home: () => this.menu.select( 1 ),
+            apps: () => this.menu.select( 2 ),
+            components: () => this.menu.select( 3 ),
+            publish: () => this.menu.select( 4 ),
+            component: ( name, major, minor, patch ) => showComponent( `${name}-${major}-${minor}-${patch}` )
+          } );
+          this.routing && this.routing.refresh();
+        }
+
       };
+
     }
 
   };
