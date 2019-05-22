@@ -10,58 +10,30 @@
   --color2: #00376B;
   --color3: #914D00;
   --color4: #E6F4F1;
-  font-family: sans-serif;
-  line-height: 1.42857143;
   display: flex;
   justify-content: center;
 }
 
 #entries {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  max-width: 110em;
-  padding: 2em;
+  padding: 1em;
 }
 
-#entries.empty::before {
+.entry {
+  overflow: hidden;
+  cursor: pointer;
+  width: 20em;
+  margin: 1em;
+}
+
+.empty::before {
   content: 'No published Components to display.';
 }
 
-#entries .entry {
-  width: 16em;
-  height: 4.5em;
-  padding: 1em;
-  overflow: hidden;
-  display: flex;
-  cursor: pointer;
+img {
+  width: 64px !important;
+  height: 64px !important;
 }
 
-#entries .entry:hover {
-  border-radius: 0.5em;
-  background-color: var(--color4);
-}
-
-#entries .entry .left {
-  padding-right: 0.5em;
-}
-
-#entries .entry img {
-  width: 64px;
-  height: 64px;
-}
-
-#entries .entry .title {
-  font-size: 16px;
-  white-space: normal;
-  line-height: 1.2em;
-  padding-left: 2px;
-}
-
-#entries .entry .creator {
-  font-family: Verdana, sans-serif;
-  font-size: 12px;
-  color: #999999;
-  white-space: nowrap;
-  padding-left: 2px;
+.card-title {
+  margin-bottom: 0 !important;
 }

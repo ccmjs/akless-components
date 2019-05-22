@@ -84,35 +84,91 @@
         "selected": 3
       } ],
       "listing": [ "ccm.proxy", "https://ccmjs.github.io/akless-components/listing/versions/ccm.listing-2.0.3.js", {
-        "html.entry": {
-          "class": "entry",
-          "inner": [
-            {
-              "class": "left",
-              "inner": {
-                "tag": "img",
-                "src": "%icon%"
+        "html": {
+          "main": {
+            "id": "entries",
+            "class": "card-deck"
+          },
+          "entry": {
+            "class": "card entry",
+            "inner": [
+              {
+                "class": "card-header text-center",
+                "inner": [
+                  {
+                    "tag": "img",
+                    "class": "card-img-top",
+                    "src": "%icon%"
+                  }
+                ]
+              },
+              {
+                "class": "card-body",
+                "inner": [
+                  {
+                    "tag": "h5",
+                    "class": "card-title",
+                    "inner": [
+                      {
+                        "tag": "span",
+                        "class": "title",
+                        "inner": "%title%"
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "p",
+                    "class": "creator",
+                    "inner": {
+                      "tag": "small",
+                      "class": "text-muted",
+                      "inner": "%creator%"
+                    }
+                  },
+                  {
+                    "tag": "p",
+                    "class": "card-text",
+                    "inner": "%subject%"
+                  },
+                  { "class": "rating" }
+                ]
+              },
+              {
+                "class": "card-footer",
+                "inner": [
+                  {
+                    "class": "text-center",
+                    "inner": [
+                      {
+                        "tag": "button",
+                        "type": "button",
+                        "class": "btn btn-info btn-sm m-1 text-white",
+                        "inner": "Details"
+                      },
+                      {
+                        "tag": "button",
+                        "type": "button",
+                        "class": "btn btn-secondary btn-sm m-1 text-white",
+                        "inner": "Reviews"
+                      },
+                      {
+                        "tag": "button",
+                        "type": "button",
+                        "class": "btn btn-primary btn-sm m-1 text-white",
+                        "inner": "Create App"
+                      }
+                    ]
+                  }
+                ]
               }
-            },
-            {
-              "class": "right",
-              "inner": [
-                {
-                  "class": "title",
-                  "inner": "%title%",
-                  "title": "%title%"
-                },
-                {
-                  "class": "creator",
-                  "inner": "%creator%",
-                  "title": "%creator%"
-                },
-                { "class": "rating" }
-              ]
-            }
-          ]
+            ]
+          }
         },
-        "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/dms/resources/listing.css" ],
+        "css": [ "ccm.load",
+          "https://ccmjs.github.io/akless-components/dms/resources/listing.css",
+          "https://ccmjs.github.io/akless-components/libs/bootstrap-4/css/bootstrap.min.css",
+          { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/bootstrap-4/css/bootstrap.min.css" }
+        ],
         "defaults": {
           "icon": "https://ccmjs.github.io/akless-components/dms/resources/component.png"
         }
