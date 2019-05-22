@@ -67,6 +67,11 @@ ccm.files[ 'configs-1.0.0.js' ] = {
 
   "live": {
     "key": "live",
+    "css": [ "ccm.load",
+      "https://ccmjs.github.io/akless-components/libs/bootstrap/css/bootstrap.css",
+      { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/bootstrap/css/font-face.css" },
+      "https://ccmjs.github.io/akless-components/dms/resources/versions/default-1.0.0.css"
+    ],
     "data": {
       "store": [ "ccm.store", { "name": "components", "url": "https://ccm2.inf.h-brs.de" } ],
       "key": {}
