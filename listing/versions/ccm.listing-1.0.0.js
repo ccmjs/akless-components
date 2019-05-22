@@ -101,13 +101,13 @@
          */
         const entries_elem = this.element.querySelector( '#entries' );
 
-        // get published component datasets
+        // get listing entries data
         $.dataset( this.data, datasets => {
 
           // has logger instance? => log 'start' event
           this.logger && this.logger.log( 'start', datasets );
 
-          // no published components? => abort and mark listing area as empty
+          // no listing entries? => abort and mark listing area as empty
           if ( datasets.length === 0 ) { entries_elem.classList.add( 'empty' ); callback && callback(); return; }
 
           // sort entries

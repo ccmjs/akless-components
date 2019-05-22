@@ -75,7 +75,7 @@
         // logging of 'start' event
         this.logger && this.logger.log( 'start', $.clone( datasets ) );
 
-        // no published components? => abort and mark listing area as empty
+        // no listing entries? => abort and mark listing area as empty
         if ( !datasets.length ) { entries_elem.classList.add( 'empty' ); return; }
 
         // sort entries
