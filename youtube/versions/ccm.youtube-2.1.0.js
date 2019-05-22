@@ -33,7 +33,11 @@
         "inner": { "id": "iframe" }
       },
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/youtube/resources/default.css" ],
-      "video": "bHQqvYy5KYo"
+      "video": "bHQqvYy5KYo",
+      "vars": {
+        "enablejsapi": 1,
+        "origin": window.origin
+      }
 
   //  "loading",                    {string} loading - lazy loading: 'lazy', 'eager' or 'auto' (see https://addyosmani.com/blog/lazy-loading/)
   //  "height",                     {number} height - player height (default: 390)
