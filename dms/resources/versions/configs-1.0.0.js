@@ -11,14 +11,14 @@ ccm.files[ 'configs-1.0.0.js' ] = {
     "css": [ "ccm.load",
       "../libs/bootstrap/css/bootstrap.css",
       { "context": "head", "url": "../libs/bootstrap/css/font-face.css" },
-      "../dms/resources/default.css"
+      "../dms/resources/versions/default-1.0.0.css"
     ],
     "data": {
       "store": [ "ccm.store", "../dms/resources/datasets.js" ],
       "key": {}
     },
     "listing.1": "../listing/ccm.listing.js",
-    "listing.2.css.1": "../dms/resources/listing.css",
+    "listing.2.css.1": "../dms/resources/versions/listing-1.0.0.css",
     "listing.2.defaults.icon": "../dms/resources/component.png",
     "rating.2.css.3": "../dms/resources/rating_result.css",
     "form.1": "../submit/ccm.submit.js",
@@ -40,14 +40,14 @@ ccm.files[ 'configs-1.0.0.js' ] = {
     "css": [ "ccm.load",
       "../libs/bootstrap/css/bootstrap.css",
       { "context": "head", "url": "../libs/bootstrap/css/font-face.css" },
-      "../dms/resources/default.css"
+      "../dms/resources/versions/default-1.0.0.css"
     ],
     "data": {
       "store": [ "ccm.store", { "name": "components", "url": "https://ccm2.inf.h-brs.de" } ],
       "key": {}
     },
     "listing.1": "../listing/ccm.listing.js",
-    "listing.2.css.1": "../dms/resources/listing.css",
+    "listing.2.css.1": "../dms/resources/versions/listing-1.0.0.css",
     "listing.2.defaults.icon": "../dms/resources/component.png",
     "rating.2.css.3": "../dms/resources/rating_result.css",
     "rating.2.data": { "store": [ "ccm.store", [ "ccm.get", { "name": "component_ratings", "url": "https://ccm2.inf.h-brs.de" }, {} ] ] },
@@ -76,6 +76,7 @@ ccm.files[ 'configs-1.0.0.js' ] = {
       "store": [ "ccm.store", { "name": "components", "url": "https://ccm2.inf.h-brs.de" } ],
       "key": {}
     },
+    "listing.2.css.1": "https://ccmjs.github.io/akless-components/dms/resources/versions/listing-1.0.0.css",
     "rating.2.data": { "store": [ "ccm.store", [ "ccm.get", { "name": "component_ratings", "url": "https://ccm2.inf.h-brs.de" }, {} ] ] },
     "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-8.3.1.js", {
       "key": [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "guest" ],
