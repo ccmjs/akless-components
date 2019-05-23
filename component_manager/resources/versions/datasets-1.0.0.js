@@ -4,7 +4,7 @@
  * @license MIT License
  */
 
-ccm.files[ 'datasets.js' ] = {
+ccm.files[ 'datasets-1.0.0.js' ] = {
   "cloze": {
     "key": "cloze",
     "title": "Fill-in-the-Blank Text",

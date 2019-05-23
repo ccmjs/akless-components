@@ -1,20 +1,20 @@
 /**
- * @overview configurations of ccm component for component manager
+ * @overview configurations of ccm component for component manager (last used with ccm.component_manager-2.2.6.js)
  * @author André Kless <andre.kless@web.de> 2018
  * @license The MIT License (MIT)
  */
 
-ccm.files[ 'configs.js' ] = {
+ccm.files[ 'configs-1.0.0.js' ] = {
 
   "local": {
     "key": "local",
     "css": [ "ccm.load",
       "../libs/bootstrap/css/bootstrap.css",
       { "context": "head", "url": "../libs/bootstrap/css/font-face.css" },
-      "../component_manager/resources/default.css"
+      "../component_manager/resources/versions/default-1.0.0.css"
     ],
     "data": {
-      "store": [ "ccm.store", "../component_manager/resources/datasets.js" ],
+      "store": [ "ccm.store", "../component_manager/resources/versions/datasets-1.0.0.js" ],
       "key": "cloze"
     },
     "menu.component.1": "../menu/ccm.menu.js",
@@ -49,7 +49,7 @@ ccm.files[ 'configs.js' ] = {
     "css": [ "ccm.load",
       "../libs/bootstrap/css/bootstrap.css",
       { "context": "head", "url": "../libs/bootstrap/css/font-face.css" },
-      "../component_manager/resources/default.css"
+      "../component_manager/resources/versions/default-1.0.0.css"
     ],
     "data": {
       "store": [ "ccm.store", { "name": "components", "url": "https://ccm2.inf.h-brs.de" } ],
@@ -87,6 +87,11 @@ ccm.files[ 'configs.js' ] = {
 
   "demo": {
     "key": "demo",
+    "css": [ "ccm.load",
+      "https://ccmjs.github.io/akless-components/libs/bootstrap/css/bootstrap.css",
+      { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/bootstrap/css/font-face.css" },
+      "https://ccmjs.github.io/akless-components/component_manager/resources/versions/default-1.0.0.css"
+    ],
     "data": {
       "store": [ "ccm.store", { "name": "components", "url": "https://ccm2.inf.h-brs.de" } ],
       "key": "cloze"
