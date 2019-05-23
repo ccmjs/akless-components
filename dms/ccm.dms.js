@@ -31,7 +31,7 @@
  * version 1.0.0 (13.09.2018)
  */
 
-( function () {
+( () => {
 
   const component = {
 
@@ -48,9 +48,9 @@
         "store": [ "ccm.store" ],
         "key": {}
       },
-      "menu": [ "ccm.proxy", "https://ccmjs.github.io/akless-components/menu/versions/ccm.menu-2.6.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/dms/resources/resources.js", "menu" ] ]
+      "menu": [ "ccm.component", "https://ccmjs.github.io/akless-components/menu/versions/ccm.menu-2.6.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/dms/resources/resources.js", "menu" ] ]
 //    "form": [ "ccm.component", "https://ccmjs.github.io/akless-components/submit/versions/ccm.submit-7.1.0.js" ],
-//    "listing": [ "ccm.proxy", "https://ccmjs.github.io/akless-components/listing/versions/ccm.listing-2.0.3.js" ],
+//    "listing": [ "ccm.component", "https://ccmjs.github.io/akless-components/listing/versions/ccm.listing-2.0.3.js" ],
 //    "rating": [ "ccm.component", "https://ccmjs.github.io/tkless-components/star_rating_result/versions/ccm.star_rating_result-4.0.0.js" ],
 //    "component_manager": [ "ccm.component", "https://ccmjs.github.io/akless-components/component_manager/versions/ccm.component_manager-2.2.6.js" ],
 //    "user": [ "ccm.start", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.1.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "guest" ] ],
@@ -60,7 +60,7 @@
 
     Instance: function () {
 
-      let $, user;
+      let $, user, content;
 
       this.ready = async () => {
 
@@ -86,11 +86,8 @@
         // render main HTML structure
         $.setContent( this.element, $.html( this.html.main, { logo: this.logo, title: this.title } ) );
 
-        /**
-         * content area
-         * @type {Element}
-         */
-        const content = this.element.querySelector( '#content' );
+        // select content area
+        content = this.element.querySelector( '#content' );
 
         /**
          * render functions for each frontend view
@@ -131,6 +128,7 @@
 
             // render listing with all components
             await this.listing.start( {
+              root: content,
               data: components,
               sort: ( a, b ) => {
                 const title_x = a.title.toLowerCase();
@@ -149,7 +147,6 @@
               } ),
               onclick: ( event, element, data ) => showComponent( data.key )
             } );
-            $.setContent( content, this.listing.root );
 
           },
 
@@ -214,7 +211,7 @@
         const showComponent = async index => {
 
           // deselect selected menu entry and update route
-          this.menu.select();
+          menu.select();
           this.routing && this.routing.set( `component-${index}` );
 
           // clear content
@@ -231,7 +228,7 @@
         };
 
         // render header menu
-        await this.menu.start( {
+        const menu = await this.menu.start( {
           root: this.element.querySelector( '#menu' ),
           onclick: event => view[ event.nr - 1 ](),
           selected: this.routing && this.routing.get() ? null : undefined
@@ -243,10 +240,10 @@
         // define and check routes
         if ( this.routing ) {
           this.routing.define( {
-            home:       () => this.menu.select( 1 ),
-            apps:       () => this.menu.select( 2 ),
-            components: () => this.menu.select( 3 ),
-            publish:    () => this.menu.select( 4 ),
+            home:       () => menu.select( 1 ),
+            apps:       () => menu.select( 2 ),
+            components: () => menu.select( 3 ),
+            publish:    () => menu.select( 4 ),
             component:  ( name, major, minor, patch ) => showComponent( `${name}-${major}-${minor}-${patch}` )
           } );
           this.routing && this.routing.refresh();
