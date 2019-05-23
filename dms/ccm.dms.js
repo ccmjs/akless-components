@@ -133,12 +133,12 @@
               sort: ( a, b ) => {
                 const title_x = a.title.toLowerCase();
                 const title_y = b.title.toLowerCase();
-                const developer_x = ( a.developer || '' ).toLowerCase();
-                const developer_y = ( b.developer || '' ).toLowerCase();
+                const creator_x = ( a.creator || '' ).toLowerCase();
+                const creator_y = ( b.creator || '' ).toLowerCase();
                 if ( title_x < title_y ) return -1;
                 if ( title_x > title_y ) return 1;
-                if ( developer_x < developer_y ) return -1;
-                if ( developer_x > developer_y ) return 1;
+                if ( creator_x < creator_y ) return -1;
+                if ( creator_x > creator_y ) return 1;
                 return 0;
               },
               onrender: ( element, data ) => this.rating && this.rating.start( {
