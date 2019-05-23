@@ -8,7 +8,7 @@
 #element {
   display: flex;
   justify-content: center;
-  font-size: small;
+  font-size: x-small;
 }
 
 #reviewed_stars {
@@ -102,7 +102,7 @@
 #total-count {
   font-size: small;
   font-family: Verdana, sans-serif;
-  padding: 3px 3px 0;
+  padding: 0 3px;
   color: #999999;
 }
 
