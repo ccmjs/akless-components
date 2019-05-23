@@ -7,6 +7,7 @@
 ccm.files[ 'resources.js' ] = {
 
   "local": {
+    "logo": "../dms/resources/component.png",
     "html": [ "ccm.get", "../dms/resources/resources.js", "html" ],
     "css": [ "ccm.load", "../dms/resources/default.css" ],
     "data": {
@@ -20,11 +21,11 @@ ccm.files[ 'resources.js' ] = {
 //  "component_manager": [ "ccm.component", "../component_manager/ccm.component_manager.js", [ "ccm.get", "../component_manager/resources/configs.js", "local" ] ],
     "user": [ "ccm.start", "../user/ccm.user.js", [ "ccm.get", "../dms/resources/resources.js", "user_local" ] ],
     "logger":  [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
-    "routing": [ "ccm.instance", "../routing/ccm.routing.js" ],
-    "logo": "../dms/resources/component.png"
+    "routing": [ "ccm.instance", "../routing/ccm.routing.js" ]
   },
 
   "live": {
+    "logo": "https://ccmjs.github.io/akless-components/dms/resources/component.png",
     "data": {
       "store": [ "ccm.store", { "name": "dms-components", "url": "https://ccm2.inf.h-brs.de" } ],
       "key": {}

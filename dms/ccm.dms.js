@@ -41,7 +41,7 @@
 
     config: {
       "title": "Digital Maker Space",
-      "logo": "https://ccmjs.github.io/akless-components/dms/resources/component.png",
+//    "logo": "https://ccmjs.github.io/akless-components/dms/resources/component.png",
       "html": [ "ccm.get", "https://ccmjs.github.io/akless-components/dms/resources/resources.js", "html" ],
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/dms/resources/default.css" ],
       "data": {
