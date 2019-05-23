@@ -40,160 +40,22 @@
     ccm: 'https://ccmjs.github.io/ccm/ccm.js',
 
     config: {
-      "html": {
-        "main": {
-          "id": "main",
-          "inner": [
-            {
-              "id": "header",
-              "inner": [
-                {
-                  "id": "brand",
-                  "inner": [
-                    {
-                      "id": "logo",
-                      "inner": {
-                        "tag": "img",
-                        "src": "%logo%"
-                      }
-                    },
-                    {
-                      "id": "title",
-                      "inner": {
-                        "tag": "span",
-                        "inner": "%title%"
-                      }
-                    }
-                  ]
-                },
-                { "id": "menu" },
-                { "id": "user" }
-              ]
-            },
-            { "id": "content" }
-          ]
-        }
-      },
-      "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/dms/resources/default.css" ],
-      "data": [],
-      "menu": [ "ccm.proxy", "https://ccmjs.github.io/akless-components/menu/versions/ccm.menu-2.6.0.js", {
-        "key": [ "ccm.get", "https://ccmjs.github.io/akless-components/menu/resources/configs.js", "text" ],
-        "data": {
-          "entries": [ "Home", "Apps", "Components", "Publish" ]
-        },
-        "selected": 3
-      } ],
-      "listing": [ "ccm.proxy", "https://ccmjs.github.io/akless-components/listing/versions/ccm.listing-2.0.3.js", {
-        "html": {
-          "main": {
-            "id": "entries",
-            "class": "card-deck"
-          },
-          "entry": {
-            "class": "card entry",
-            "inner": [
-              {
-                "class": "card-header text-center",
-                "inner": [
-                  {
-                    "tag": "img",
-                    "class": "card-img-top",
-                    "src": "%icon%"
-                  }
-                ]
-              },
-              {
-                "class": "card-body",
-                "inner": [
-                  {
-                    "tag": "h5",
-                    "class": "card-title",
-                    "inner": [
-                      {
-                        "tag": "span",
-                        "class": "title",
-                        "inner": "%title%"
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "p",
-                    "class": "creator",
-                    "inner": {
-                      "tag": "small",
-                      "class": "text-muted",
-                      "inner": "%creator%"
-                    }
-                  },
-                  {
-                    "tag": "p",
-                    "class": "card-text",
-                    "inner": "%subject%"
-                  },
-                  { "class": "rating" }
-                ]
-              },
-              {
-                "class": "card-footer",
-                "inner": [
-                  {
-                    "class": "text-center",
-                    "inner": [
-                      {
-                        "tag": "button",
-                        "type": "button",
-                        "class": "btn btn-info btn-sm m-1 text-white",
-                        "inner": "Details"
-                      },
-                      {
-                        "tag": "button",
-                        "type": "button",
-                        "class": "btn btn-secondary btn-sm m-1 text-white",
-                        "inner": "Reviews"
-                      },
-                      {
-                        "tag": "button",
-                        "type": "button",
-                        "class": "btn btn-primary btn-sm m-1 text-white",
-                        "inner": "Create App"
-                      }
-                    ]
-                  }
-                ]
-              }
-            ]
-          }
-        },
-        "css": [ "ccm.load",
-          "https://ccmjs.github.io/akless-components/dms/resources/listing.css",
-          "https://ccmjs.github.io/akless-components/libs/bootstrap-4/css/bootstrap.min.css",
-          { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/bootstrap-4/css/bootstrap.min.css" }
-        ],
-        "defaults": {
-          "icon": "https://ccmjs.github.io/akless-components/dms/resources/component.png"
-        }
-      } ],
-      "rating": [ "ccm.component", "https://ccmjs.github.io/tkless-components/star_rating_result/versions/ccm.star_rating_result-4.0.0.js", {
-        "ccm": "https://ccmjs.github.io/ccm/versions/ccm-20.5.2.js",
-        "css.3": "https://ccmjs.github.io/akless-components/dms/resources/rating_result.css"
-      } ],
-      "form": [ "ccm.component", "https://ccmjs.github.io/akless-components/submit/versions/ccm.submit-7.1.0.js", {
-        "entries": [ "ccm.get", "https://ccmjs.github.io/akless-components/dms/resources/publish_form.js", "entries" ],
-        "data": [],
-        "editor": [ "ccm.component", "https://ccmjs.github.io/tkless-components/editor/versions/ccm.editor-3.1.0.js" ]
-      } ],
-      "component_manager": [ "ccm.component", "https://ccmjs.github.io/akless-components/component_manager/versions/ccm.component_manager-2.2.6.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/component_manager/resources/configs.js", "demo" ] ],
-      "user": [ "ccm.start", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.1.0.js", {
-        "realm": "cloud",
-        "url": "http://localhost:8080",
-        "store": "dms-user",
-        "title": "Please enter username and password",
-        "hash": [ "ccm.load", { "url": "https://ccmjs.github.io/akless-components/modules/md5.js", "type": "module" } ]
-      } ],
-//    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.2.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
-      "routing": [ "ccm.instance", "https://ccmjs.github.io/akless-components/routing/versions/ccm.routing-1.2.0.js" ],
+      "title": "Digital Maker Space",
       "logo": "https://ccmjs.github.io/akless-components/dms/resources/component.png",
-      "title": "Digital Maker Space"
+      "html": [ "ccm.get", "https://ccmjs.github.io/akless-components/dms/resources/resources.js", "html" ],
+      "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/dms/resources/default.css" ],
+      "data": {
+        "store": [ "ccm.store" ],
+        "key": {}
+      },
+      "menu": [ "ccm.proxy", "https://ccmjs.github.io/akless-components/menu/versions/ccm.menu-2.6.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/dms/resources/resources.js", "menu" ] ]
+//    "form": [ "ccm.component", "https://ccmjs.github.io/akless-components/submit/versions/ccm.submit-7.1.0.js" ],
+//    "listing": [ "ccm.proxy", "https://ccmjs.github.io/akless-components/listing/versions/ccm.listing-2.0.3.js" ],
+//    "rating": [ "ccm.component", "https://ccmjs.github.io/tkless-components/star_rating_result/versions/ccm.star_rating_result-4.0.0.js" ],
+//    "component_manager": [ "ccm.component", "https://ccmjs.github.io/akless-components/component_manager/versions/ccm.component_manager-2.2.6.js" ],
+//    "user": [ "ccm.start", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.1.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "guest" ] ],
+//    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.2.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
+//    "routing": [ "ccm.instance", "https://ccmjs.github.io/akless-components/routing/versions/ccm.routing-1.2.0.js" ]
     },
 
     Instance: function () {
@@ -264,6 +126,9 @@
             // update route
             this.routing && this.routing.set( 'components' );
 
+            // no listing? => abort
+            if ( !this.listing ) return $.setContent( content, '' );
+
             // render listing with all components
             await this.listing.start( {
               data: components,
@@ -294,8 +159,11 @@
             // update route
             this.routing && this.routing.set( 'publish' );
 
+            // no user or no data store or no form? => abort
+            if ( !this.user || !this.data.store || !this.form ) return $.setContent( content, '' );
+
             // render publish component form
-            this.user && this.data.store && this.form.start( {
+            this.form.start( {
               root: content,
               onfinish: async form => {
 
@@ -349,10 +217,10 @@
           this.menu.select();
           this.routing && this.routing.set( `component-${index}` );
 
+          // clear content
           $.setContent( content, '' );
-          console.log( index );
 
-          false && await this.component_manager.start( {
+          this.component_manager && await this.component_manager.start( {
             root: content,
             data: {
               store: this.data.store,
@@ -362,9 +230,6 @@
 
         };
 
-        // no user or no data store? => remove the menu entry for publishing a component
-        !this.user && !this.data.store && this.menu.config.data.entries.pop();
-
         // render header menu
         await this.menu.start( {
           root: this.element.querySelector( '#menu' ),
@@ -373,7 +238,7 @@
         } );
 
         // render login/logout area
-        $.setContent( this.element.querySelector( '#user' ), this.user.root );
+        this.user && $.setContent( this.element.querySelector( '#user' ), this.user.root );
 
         // define and check routes
         if ( this.routing ) {

@@ -7,25 +7,20 @@
 ccm.files[ 'resources.js' ] = {
 
   "local": {
-    "html.1": "../dms/resources/resources.js",
-    "css.1": "../dms/resources/default.css",
+    "html": [ "ccm.get", "../dms/resources/resources.js", "html" ],
+    "css": [ "ccm.load", "../dms/resources/default.css" ],
     "data": {
       "store": [ "ccm.store", { "name": "dms-components", "url": "http://localhost:8080" } ],
       "key": {}
     },
     "menu": [ "ccm.proxy", "../menu/ccm.menu.js", [ "ccm.get", "../dms/resources/resources.js", "menu_local" ] ],
+    "form": [ "ccm.component", "../submit/ccm.submit.js", [ "ccm.get", "../dms/resources/resources.js", "form_local" ] ],
     "listing": [ "ccm.proxy", "../listing/ccm.listing.js", [ "ccm.get", "../dms/resources/resources.js", "listing_local" ] ],
     "rating": [ "ccm.component", "https://ccmjs.github.io/tkless-components/star_rating_result/versions/ccm.star_rating_result-4.0.0.js", [ "ccm.get", "../dms/resources/resources.js", "rating_local" ] ],
-    "form": [ "ccm.component", "../submit/ccm.submit.js", [ "ccm.get", "../dms/resources/resources.js", "form_local" ] ],
-    "component_manager": [ "ccm.component", "../component_manager/ccm.component_manager.js", [ "ccm.get", "../component_manager/resources/configs.js", "local" ] ],
-    "user.1": "../user/ccm.user.js",
-    "user.2.css": [ "ccm.load",
-      "../libs/bootstrap/css/bootstrap.css",
-      { "context": "head", "url": "../libs/bootstrap/css/font-face.css" },
-      "../user/resources/default.css"
-    ],
+//  "component_manager": [ "ccm.component", "../component_manager/ccm.component_manager.js", [ "ccm.get", "../component_manager/resources/configs.js", "local" ] ],
+    "user": [ "ccm.start", "../user/ccm.user.js", [ "ccm.get", "../dms/resources/resources.js", "user_local" ] ],
     "logger":  [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
-    "routing.1": "../routing/ccm.routing.js",
+    "routing": [ "ccm.instance", "../routing/ccm.routing.js" ],
     "logo": "../dms/resources/component.png"
   },
 
@@ -34,16 +29,10 @@ ccm.files[ 'resources.js' ] = {
       "store": [ "ccm.store", { "name": "dms-components", "url": "https://ccm2.inf.h-brs.de" } ],
       "key": {}
     },
-    "rating": [ "ccm.component", "https://ccmjs.github.io/tkless-components/star_rating_result/versions/ccm.star_rating_result-4.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/dms/resources/resources.js", "rating" ] ],
     "form": [ "ccm.component", "https://ccmjs.github.io/akless-components/submit/versions/ccm.submit-7.1.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/dms/resources/resources.js", "form" ] ],
-    "component_manager": [ "ccm.component", "https://ccmjs.github.io/akless-components/component_manager/versions/ccm.component_manager-2.2.6.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/component_manager/resources/configs.js", "demo" ] ],
-    "user": [ "ccm.start", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.1.0.js", {
-      "realm": "cloud",
-      "url": "http://localhost:8080",
-      "store": "dms-user",
-      "title": "Please enter username and password",
-      "hash": [ "ccm.load", { "url": "https://ccmjs.github.io/akless-components/modules/md5.js", "type": "module" } ]
-    } ]
+    "rating": [ "ccm.component", "https://ccmjs.github.io/tkless-components/star_rating_result/versions/ccm.star_rating_result-4.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/dms/resources/resources.js", "rating" ] ],
+//  "component_manager": [ "ccm.component", "https://ccmjs.github.io/akless-components/component_manager/versions/ccm.component_manager-2.2.6.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/component_manager/resources/configs.js", "demo" ] ],
+    "user": [ "ccm.start", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.1.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/dms/resources/resources.js", "user" ] ]
   },
 
   "html": {
@@ -331,6 +320,32 @@ ccm.files[ 'resources.js' ] = {
     "required": true
   },
   { "type": "submit" }
-]
+],
+
+  "user": {
+    "realm": "cloud",
+    "url": "http://localhost:8080",
+    "store": "dms-user",
+    "title": "Please enter username and password",
+    "hash": [ "ccm.load", { "url": "https://ccmjs.github.io/akless-components/modules/md5.js", "type": "module" } ],
+    "css": [ "ccm.load",
+      "https://ccmjs.github.io/akless-components/libs/bootstrap/css/bootstrap.css",
+      { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/bootstrap/css/font-face.css" },
+      "https://ccmjs.github.io/akless-components/user/resources/default.css"
+    ]
+  },
+
+  "user_local": {
+    "realm": "cloud",
+    "url": "http://localhost:8080",
+    "store": "dms-user",
+    "title": "Please enter username and password",
+    "hash": [ "ccm.load", { "url": "../modules/md5.js", "type": "module" } ],
+    "css": [ "ccm.load",
+      "../libs/bootstrap/css/bootstrap.css",
+      { "context": "head", "url": "../libs/bootstrap/css/font-face.css" },
+      "../user/resources/default.css"
+    ]
+  }
 
 };
