@@ -19,19 +19,42 @@
 }
 
 .entry {
-  overflow: hidden;
-  cursor: pointer;
-  width: 20em;
   margin: 1em;
+  width: 15em;
+  border-width: medium !important;
+  cursor: pointer;
+  overflow: hidden;
 }
 
-.empty::before {
+.empty:before {
   content: 'No published Components to display.';
 }
 
-img {
+.entry:hover {
+  border-color: var(--color1);
+}
+
+.card-header {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-header span {
+  opacity: 0;
+  font-size: xx-large;
+}
+
+.card:hover .card-header span {
+  opacity: 0.5;
+  font-size: xx-large;
+}
+
+.card-header img {
+  margin: 0 1.5em;
   width: 64px !important;
   height: 64px !important;
+  border-radius: 100%;
 }
 
 .card-title {

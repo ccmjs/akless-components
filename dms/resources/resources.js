@@ -122,12 +122,20 @@ ccm.files[ 'resources.js' ] = {
       "class": "card entry",
       "inner": [
         {
-          "class": "card-header text-center",
+          "class": "card-header",
           "inner": [
+            {
+              "tag": "span",
+              "inner": "&#9874;"
+            },
             {
               "tag": "img",
               "class": "card-img-top",
               "src": "%icon%"
+            },
+            {
+              "tag": "span",
+              "inner": "&#9874;"
             }
           ]
         },
@@ -160,34 +168,6 @@ ccm.files[ 'resources.js' ] = {
               "inner": "%subject%"
             },
             { "class": "rating" }
-          ]
-        },
-        {
-          "class": "card-footer",
-          "inner": [
-            {
-              "class": "text-center",
-              "inner": [
-                {
-                  "tag": "button",
-                  "type": "button",
-                  "class": "btn btn-info btn-sm m-1 text-white",
-                  "inner": "Details"
-                },
-                {
-                  "tag": "button",
-                  "type": "button",
-                  "class": "btn btn-secondary btn-sm m-1 text-white",
-                  "inner": "Reviews"
-                },
-                {
-                  "tag": "button",
-                  "type": "button",
-                  "class": "btn btn-primary btn-sm m-1 text-white",
-                  "inner": "Create App"
-                }
-              ]
-            }
           ]
         }
       ]

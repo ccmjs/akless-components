@@ -5,7 +5,9 @@
  * @license MIT License
  */
 
-#main {
+#element {
+  display: flex;
+  justify-content: center;
   font-size: 10px;
 }
 
@@ -110,4 +112,8 @@
 
 #total-count:after {
   content: ')';
+}
+
+#bars {
+  margin: 0;
 }
