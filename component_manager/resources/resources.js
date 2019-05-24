@@ -16,7 +16,8 @@ ccm.files[ 'resources.js' ] = {
     "data": {
       "store": [ "ccm.store", { "name": "dms-components", "url": "http://localhost:8080" } ],
       "key": "cloze-6-0-0"
-    }
+    },
+    "menu": [ "ccm.component", "../menu/ccm.menu.js", [ "ccm.get", "../component_manager/resources/resources.js", "menu_local" ] ]
   },
 
   "demo": {
@@ -62,6 +63,49 @@ ccm.files[ 'resources.js' ] = {
         },
         { "id": "menu" }
       ]
+    }
+  },
+
+  "menu": {
+    "css": [
+      "ccm.load", "https://ccmjs.github.io/akless-components/menu/resources/nav_tabs.css",
+      "https://ccmjs.github.io/akless-components/libs/bootstrap-4/css/bootstrap.min.css"
+    ],
+    "data": {
+      "entries": [ "Overview", "Ratings & Reviews", "Create App" ]
+    }
+  },
+
+  "menu_local": {
+    "html": {
+      "main": {
+        "id": "main",
+        "inner": [
+          {
+            "tag": "ul",
+            "id": "entries",
+            "class": "nav nav-tabs"
+          },
+          {
+            "id": "content"
+          }
+        ]
+      },
+      "entry": {
+        "tag": "li",
+        "class": "entry nav-item",
+        "onclick": "%click%",
+        "inner": {
+          "class": "title"
+        }
+      }
+    },
+    "css": [
+      "ccm.load", "../menu/resources/nav_tabs.css",
+      "../libs/bootstrap-4/css/bootstrap.min.css"
+    ],
+    "data": {
+      "entries": [ "Overview", "Ratings & Reviews", "Create App" ]
     }
   }
 

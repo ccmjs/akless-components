@@ -54,7 +54,8 @@
         "https://ccmjs.github.io/akless-components/libs/bootstrap-4/css/bootstrap.min.css",
         { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/bootstrap-4/css/bootstrap.min.css" }
       ],
-      "data": {}
+      "data": {},
+      "menu": [ "ccm.component", "https://ccmjs.github.io/akless-components/menu/versions/ccm.menu-2.6.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/component_manager/resources/resources.js", "menu" ] ]
 /*
       "menu": {
         "component": [ "ccm.component", "https://ccmjs.github.io/akless-components/menu/versions/ccm.menu-2.4.4.js" ],
@@ -349,13 +350,14 @@
         dataset.updated_at = dataset.updated_at ? new Date( dataset.updated_at ).toLocaleString() : '';
 
         // render main HTML structure
-        $.setContent( this.element, $.html( this.html.main, {
-          icon: dataset.icon || this.component_icon,
-          title: dataset.title,
-          version: dataset.version,
-          developer: dataset.creator,
-          abstract: dataset.subject
-        } ) );
+        $.setContent( this.element, $.html( this.html.main, dataset ) );
+
+        // render header menu
+        const menu = await this.menu.start( {
+          root: this.element.querySelector( '#menu' ),
+          onclick: event => {},//view[ event.nr - 1 ](),
+          selected: this.routing && this.routing.get() ? null : undefined
+        } );
 
         return;
 
@@ -369,7 +371,7 @@
         if ( !this.commentary                    ) this.menu.ignore.buttons.data.entries[ 3 ].disabled = true;
         if ( !dataset.ignore || !dataset.ignore.  demos || !dataset.ignore.  demos.length ) this.menu.ignore.buttons.data.entries[ 4 ].disabled = true;
         if ( !dataset.ignore || !dataset.ignore.builder || !dataset.ignore.builder.length ) this.menu.ignore.buttons.data.entries[ 5 ].disabled = true;
-        const menu = await this.menu.component.start( $.integrate( {
+        const _menu = await this.menu.component.start( $.integrate( {
           root: 'name',
           selected: 1,
           onclick: async event => {
