@@ -42,7 +42,6 @@ ccm.files[ 'resources.js' ] = {
               }
             },
             {
-              "id": "text",
               "inner": [
                 {
                   "id": "title",
@@ -67,13 +66,14 @@ ccm.files[ 'resources.js' ] = {
   },
 
   "menu": {
-    "css": [
-      "ccm.load", "https://ccmjs.github.io/akless-components/menu/resources/nav_tabs.css",
+    "css": [ "ccm.load",
+      "component_manager/resources/menu.css",
       "https://ccmjs.github.io/akless-components/libs/bootstrap-4/css/bootstrap.min.css"
     ],
     "data": {
-      "entries": [ "Overview", "Ratings & Reviews", "Create App" ]
-    }
+      "entries": [ "Overview", "Reviews", "Create App" ]
+    },
+    "selected": 1
   },
 
   "menu_local": {
@@ -96,17 +96,19 @@ ccm.files[ 'resources.js' ] = {
         "class": "entry nav-item",
         "onclick": "%click%",
         "inner": {
-          "class": "title"
+          "tag": "a",
+          "class": "title nav-link"
         }
       }
     },
     "css": [
-      "ccm.load", "../menu/resources/nav_tabs.css",
+      "ccm.load", "../component_manager/resources/menu.css",
       "../libs/bootstrap-4/css/bootstrap.min.css"
     ],
     "data": {
-      "entries": [ "Overview", "Ratings & Reviews", "Create App" ]
-    }
+      "entries": [ "Overview", "Reviews", "Create App" ]
+    },
+    "selected": 1
   }
 
 };
