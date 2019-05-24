@@ -1,0 +1,41 @@
+/**
+ * @overview default layout of ccm component for managing a component
+ * @author André Kless <andre.kless@web.de.de> 2019
+ * @license MIT License
+ */
+
+#element {
+  --color1: #00BFFF;
+  --color2: #00376B;
+  --color3: #914D00;
+  --color4: #E6F4F1;
+}
+
+#header {
+  padding: 2em 1em;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+#icon img {
+  width: 64px;
+  height: 64px;
+  border-radius: 100%;
+}
+
+#text {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+}
+
+#title, #version {
+  padding-left: 1em;
+}
+
+#title h2 {
+  color: var(--color1);
+  font-weight: bold;
+  margin: 0;
+}

@@ -1,9 +1,11 @@
 /**
- * @overview ccm component for component manager
+ * @overview ccm component for managing a component
  * @author André Kless <andre.kless@web.de> 2018-2019
  * @license MIT License
- * @version latest (2.2.6)
+ * @version latest (3.0.0)
  * @changes
+ * version 3.0.0 (24.05.2019):
+ * ...
  * version 2.2.6 (27.04.2019):
  * - uses ccm.star_rating.js v4.0.0
  * - uses ccm.star_rating_result.js v4.0.0
@@ -37,7 +39,7 @@
  * version 1.0.0 (13.09.2018)
  */
 
-( function () {
+( () => {
 
   const component = {
 
@@ -46,62 +48,14 @@
     ccm: 'https://ccmjs.github.io/ccm/ccm.js',
 
     config: {
-      "html": {
-        "main": {
-          "id": "main",
-          "inner": [
-            {
-              "id": "header",
-              "inner": [
-                {
-                  "id": "header-left",
-                  "inner": {
-                    "tag": "img",
-                    "src": "%icon%"
-                  }
-                },
-                {
-                  "id": "header-right",
-                  "inner": [
-                    {
-                      "id": "header-top",
-                      "inner": [
-                        {
-                          "tag": "span",
-                          "id": "header-title",
-                          "inner": "%title%"
-                        },
-                        {
-                          "tag": "span",
-                          "id": "header-version",
-                          "inner": "%version%"
-                        }
-                      ]
-                    },
-                    {
-                      "id": "header-developer",
-                      "inner": "%developer%"
-                    },
-                    {
-                      "id": "header-rating"
-                    },
-                    {
-                      "id": "header-abstract",
-                      "inner": "%abstract%"
-                    }
-                  ]
-                }
-              ]
-            },
-            { "id": "menu" }
-          ]
-        }
-      },
+      "html": [ "ccm.get", "https://ccmjs.github.io/akless-components/component_manager/resources/resources.js", "html" ],
       "css": [ "ccm.load",
-        "https://ccmjs.github.io/akless-components/libs/bootstrap/css/bootstrap.css",
-        { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/bootstrap/css/font-face.css" },
-        "https://ccmjs.github.io/akless-components/component_manager/resources/default.css"
+        "https://ccmjs.github.io/akless-components/component_manager/resources/default.css",
+        "https://ccmjs.github.io/akless-components/libs/bootstrap-4/css/bootstrap.min.css",
+        { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/bootstrap-4/css/bootstrap.min.css" }
       ],
+      "data": {}
+/*
       "menu": {
         "component": [ "ccm.component", "https://ccmjs.github.io/akless-components/menu/versions/ccm.menu-2.4.4.js" ],
         "ignore": {
@@ -362,6 +316,7 @@
       "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-8.3.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "guest" ] ],
   //  "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.2.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
       "component_icon": "https://ccmjs.github.io/akless-components/dms/resources/component.png"
+*/
     },
 
     Instance: function () {
@@ -398,9 +353,11 @@
           icon: dataset.icon || this.component_icon,
           title: dataset.title,
           version: dataset.version,
-          developer: dataset.developer,
-          abstract:  dataset.abstract
+          developer: dataset.creator,
+          abstract: dataset.subject
         } ) );
+
+        return;
 
         // no store name for saving apps on server-side? => use component name as default
         if ( this.source.url && !this.source.name ) this.source.name = dataset.key;
