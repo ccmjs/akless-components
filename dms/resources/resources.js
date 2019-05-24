@@ -18,7 +18,7 @@ ccm.files[ 'resources.js' ] = {
     "form": [ "ccm.component", "../submit/ccm.submit.js", [ "ccm.get", "../dms/resources/resources.js", "form_local" ] ],
     "listing": [ "ccm.component", "../listing/ccm.listing.js", [ "ccm.get", "../dms/resources/resources.js", "listing_local" ] ],
     "rating": [ "ccm.component", "https://ccmjs.github.io/tkless-components/star_rating_result/versions/ccm.star_rating_result-4.0.0.js", [ "ccm.get", "../dms/resources/resources.js", "rating_local" ] ],
-//  "component_manager": [ "ccm.component", "../component_manager/ccm.component_manager.js", [ "ccm.get", "../dms/resources/resources.js", "component_manager_local" ] ],
+    "component_manager": [ "ccm.component", "../component_manager/ccm.component_manager.js", [ "ccm.get", "../component_manager/resources/resources.js", "local" ] ],
     "user": [ "ccm.start", "../user/ccm.user.js", [ "ccm.get", "../dms/resources/resources.js", "user_local" ] ],
     "logger":  [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
     "routing": [ "ccm.instance", "../routing/ccm.routing.js" ]
@@ -236,7 +236,7 @@ ccm.files[ 'resources.js' ] = {
     "name": "path",
     "type": "url",
     "info": "Your component file must be accessible via a public URL on the web. Most developers use <a href='https://pages.github.com/' target='_blank'>GitHub Pages</a> for this. For the transparency please do not publish minimized code. Never publish the latest version of your component, but always a concrete version whose code does not change anymore.",
-    "placeholder": "https://ccmjs.github.io/digital-maker-space/versions/ccm.dms-1.0.0.js",
+    "placeholder": "https://ccmjs.github.io/akless-components/dms/versions/ccm.dms-2.0.0.js",
     "required": true,
     "pattern": ".+/ccm\\.([a-z][a-z0-9_]*)(-(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*))(\\.js)$",
     "title": "The filename of the component must start with 'ccm.' followed by the unique component name and then a '-' followed by the component version number and a '.js' in the end. Example: ccm.dms-1.0.0.js"
