@@ -11,6 +11,11 @@
   --color4: #E6F4F1;
 }
 
+#main {
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
 #header {
   padding: 2em 1em;
   display: flex;
@@ -24,12 +29,6 @@
   border-radius: 100%;
 }
 
-#text {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-}
-
 #title, #version {
   padding-left: 1em;
 }
@@ -38,4 +37,8 @@
   color: var(--color1);
   font-weight: bold;
   margin: 0;
+}
+
+#element, #main, #menu, #menu > * {
+  height: 100%;
 }
