@@ -12,6 +12,11 @@
   --color4: #E6F4F1;
 }
 
+#main {
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
 #header {
   position: sticky;
   position: -webkit-sticky;
@@ -61,4 +66,8 @@
 
 #user {
   margin-left: auto;
+}
+
+#element, #main, #content, #content > * {
+  height: 100%;
 }
