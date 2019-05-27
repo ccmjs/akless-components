@@ -2,7 +2,7 @@
  * @overview ccm component for routing
  * @author André Kless <andre.kless@web.de> 2019
  * @license MIT License
- * @version latest (1.2.1)
+ * @version 1.2.1
  * @changes
  * version 1.2.1 (27.05.2019):
  * - prevent trigger of hash change event when setting a route
@@ -17,9 +17,9 @@
 
   const component = {
 
-    name: 'routing',
+    name: 'routing', version: [ 1, 2, 1 ],
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-20.6.2.js',
 
     config: {
 //    "app": "1558132111384X2108359471753687",
