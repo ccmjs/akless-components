@@ -266,12 +266,13 @@ ccm.files[ 'resources.js' ] = {
   {
     "label": "Category",
     "name": "category",
-    "type": "multi-checkbox",
-    "info": "What kind of component is it? In the case of an <code>App</code> component, the component is provided as a digital tool for creating apps.<br>The component can be used as an <code>App Builder</code> if an app created from the component can be used to create an app configuration.<br>A <code>Utility</code> component is not for creating apps, but provides useful functionality that can be optionally used by other apps.",
+    "type": "radio",
+    "info": "What kind of component is it? Choose the category that best fits the type of your component.<br>In the case of an <code>App</code> component, the component is provided as a digital tool for creating apps.<br>The component can be used as an <code>App Builder</code> if an app created from the component can be used to create an app configuration.<br>A <code>Utility</code> component is not for creating apps, but provides useful functionality that can be optionally used by other apps.",
     "items": [
       {
         "label": "App",
-        "value": "App"
+        "value": "App",
+        "checked": true
       },
       {
         "label": "App Builder",

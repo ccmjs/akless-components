@@ -55,7 +55,7 @@
 //    "component_manager": [ "ccm.component", "https://ccmjs.github.io/akless-components/component_manager/versions/ccm.component_manager-2.2.6.js" ],
 //    "user": [ "ccm.start", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.1.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "guest" ] ],
 //    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.2.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
-//    "routing": [ "ccm.instance", "https://ccmjs.github.io/akless-components/routing/versions/ccm.routing-1.2.0.js" ]
+//    "routing": [ "ccm.instance", "https://ccmjs.github.io/akless-components/routing/versions/ccm.routing-1.2.2.js" ]
     },
 
     Instance: function () {
@@ -182,8 +182,7 @@
                 meta.creator = user.name || user.user;
                 meta.date = new Date().toISOString().split( 'T' )[ 0 ];
                 meta.format = 'application/javascript';
-                meta.licence = 'MIT';
-                meta.category = meta.category.filter( category => category );
+                meta.license = 'MIT';
                 meta.tags = meta.tags.filter( tag => tag );
 
                 // set dataset key and permission settings
