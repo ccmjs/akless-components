@@ -21,7 +21,7 @@ ccm.files[ 'resources.js' ] = {
     "component_manager": [ "ccm.component", "../component_manager/ccm.component_manager.js", [ "ccm.get", "../component_manager/resources/resources.js", "local" ] ],
     "user": [ "ccm.start", "../user/ccm.user.js", [ "ccm.get", "../dms/resources/resources.js", "user_local" ] ],
     "logger":  [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
-    "routing": [ "ccm.instance", "../routing/ccm.routing.js" ]
+    "routing": [ "ccm.instance", "../routing/ccm.routing.js", { "app": "1558991174991X7210065203607523" } ]
   },
 
   "live": {
