@@ -2,7 +2,7 @@
  * @overview ccm component for submitting data
  * @author André Kless <andre.kless@web.de> 2018-2019
  * @license The MIT License (MIT)
- * @version latest (7.1.1)
+ * @version 7.1.1
  * @changes
  * version 7.1.1 (29.05.2019):
  * - bug fix for default array value of <several>
