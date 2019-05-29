@@ -62,10 +62,17 @@
 
       let $, user, content;
 
-      this.ready = async () => {
+      this.init = async () => {
 
         // set shortcut to help functions
         $ = this.ccm.helper;
+
+        // has user instance? => restart on login/logout event
+        if ( this.user ) this.user.onchange = this.start;
+
+      };
+
+      this.ready = async () => {
 
         // logging of 'ready' event
         this.logger && this.logger.log( 'ready', $.privatize( this, true ) );
@@ -236,16 +243,13 @@
         this.user && $.setContent( this.element.querySelector( '#user' ), this.user.root );
 
         // define and check routes
-        if ( this.routing ) {
-          this.routing.define( {
-            home:       () => menu.select( 1 ),
-            apps:       () => menu.select( 2 ),
-            components: () => menu.select( 3 ),
-            publish:    () => menu.select( 4 ),
-            component:  ( name, major, minor, patch ) => showComponent( `${name}-${major}-${minor}-${patch}` )
-          } );
-          this.routing && this.routing.refresh();
-        }
+        this.routing && this.routing.define( {
+          home:       () => menu.select( 1 ),
+          apps:       () => menu.select( 2 ),
+          components: () => menu.select( 3 ),
+          publish:    () => menu.select( 4 ),
+          component:  ( name, major, minor, patch ) => showComponent( `${name}-${major}-${minor}-${patch}` )
+        } );
 
       };
 

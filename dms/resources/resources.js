@@ -275,8 +275,8 @@ ccm.files[ 'resources.js' ] = {
           "checked": true
         },
         {
-          "label": "App Builder",
-          "value": "Builder"
+          "label": "Configuration Builder",
+          "value": "Configuration Builder"
         },
         {
           "label": "Utility",
