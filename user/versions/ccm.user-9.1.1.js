@@ -2,7 +2,7 @@
  * @overview ccm component for user authentication
  * @author André Kless <andre.kless@web.de> 2017-2019
  * @license The MIT License (MIT)
- * @version latest (9.1.1)
+ * @version 9.1.1
  * @changes
  * version 9.1.1 (29.05.2019):
  * - clears website area before redirect call
@@ -21,9 +21,9 @@
 
   const component = {
 
-    name: 'user',
+    name: 'user', version: [ 9, 1, 1 ],
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-20.7.1.js',
 
     config: {
 
