@@ -88,7 +88,20 @@
          * component datasets
          * @type {Object[]}
          */
-        const components = await $.dataset( this.data );
+        let components = await $.dataset( this.data );
+
+        // filter highest version of each component
+        const store = await this.ccm.store( components );
+        await $.asyncForEach( components, async component => {
+          let highest = component;
+          const results = await store.get( { identifier: component.identifier } );
+          results.forEach( result => {
+            const compare = $.compareVersions( result.version, highest.version );
+            compare > 0 && store.del( highest.key );
+            compare < 0 && store.del( result.key );
+          } );
+        } );
+        const filtered_components = await store.get( {} );
 
         // render main HTML structure
         $.setContent( this.element, $.html( this.html.main, { logo: this.logo, title: this.title } ) );
@@ -136,7 +149,7 @@
             // render listing with all components
             await this.listing.start( {
               root: content,
-              data: components,
+              data: filtered_components,
               sort: ( a, b ) => {
                 const title_x = a.title.toLowerCase();
                 const title_y = b.title.toLowerCase();
@@ -216,19 +229,33 @@
          */
         const showComponent = async index => {
 
-          // deselect selected menu entry and update route
+          // update route
           this.routing && this.routing.set( `component-${index}` );
 
           // clear content
           $.setContent( content, '' );
 
-          this.component_manager && await this.component_manager.start( {
+          // no component manager? => abort
+          if ( !this.component_manager ) return;
+
+          // render component manager
+          const component_manager = await this.component_manager.start( {
             root: content,
             data: {
               store: this.data.store,
               key: index
             }
           } );
+
+          // replace version number with selector box
+          const version_number = component_manager.element.querySelector( '#version_number' );
+          if ( !version_number ) return;
+          const options = [];
+          let version = index.split( '-' );
+          const identifier = version.shift();
+          version = version.join( '.' );
+          ( await this.ccm.get( components, { identifier: identifier } ) ).map( component => component.version ).sort( $.compareVersions ).reverse().forEach( value => options.push( { tag: 'option', inner: value, selected: value === version } ) );
+          options.length > 1 && $.replace( version_number, $.html( { tag: 'select', class: 'text-muted', inner: options, onchange: event => showComponent( `${identifier}-${event.target.value.split('.').join('-')}` ) } ) );
 
         };
 

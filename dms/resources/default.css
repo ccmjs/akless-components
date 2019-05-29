@@ -68,6 +68,6 @@
   margin-left: auto;
 }
 
-#element, #main, #content, #content > * {
-  height: 100%;
+#element, #content, #content > * {
+  display: grid;
 }

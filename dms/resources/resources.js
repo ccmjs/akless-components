@@ -202,8 +202,7 @@ ccm.files[ 'resources.js' ] = {
     "entries": [ "ccm.get", "https://ccmjs.github.io/akless-components/dms/resources/resources.js", "form_entries" ],
     "data": {
       "store": [ "ccm.store", { "name": "dms-components", "url": "https://ccm2.inf.h-brs.de" } ]
-    },
-    "editor": [ "ccm.component", "https://ccmjs.github.io/tkless-components/editor/versions/ccm.editor-3.1.0.js" ]
+    }
   },
 
   "form_local": {
@@ -216,7 +215,6 @@ ccm.files[ 'resources.js' ] = {
     "data": {
       "store": [ "ccm.store", { "name": "dms-components", "url": "http://localhost:8080" } ]
     },
-    "editor": [ "ccm.component", "https://ccmjs.github.io/tkless-components/editor/versions/ccm.editor-3.1.0.js" ],
   },
 
   "form_entries": [
