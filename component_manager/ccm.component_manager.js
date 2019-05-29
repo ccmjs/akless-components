@@ -45,7 +45,7 @@
 
     name: 'component_manager',
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    ccm: '../../ccm/ccm.js',
 
     config: {
       "html": [ "ccm.get", "https://ccmjs.github.io/akless-components/component_manager/resources/resources.js", "html" ],
@@ -56,278 +56,27 @@
       ],
       "data": {},
       "menu": [ "ccm.component", "https://ccmjs.github.io/akless-components/menu/versions/ccm.menu-2.6.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/component_manager/resources/resources.js", "menu" ] ]
-/*
-      "menu": {
-        "component": [ "ccm.component", "https://ccmjs.github.io/akless-components/menu/versions/ccm.menu-2.4.4.js" ],
-        "ignore": {
-          "buttons": {
-            "data": {
-              "entries": [
-                {
-                  "title": "Details",
-                  "content": { "id": "details" }
-                },
-                {
-                  "title": "Description",
-                  "content": { "id": "description", "style": "padding: 1em" }
-                },
-                {
-                  "title": "Rating",
-                  "content": {
-                    "inner": [
-                      {
-                        "class": "container-fluid",
-                        "inner": [
-                          { "tag": "h3", "inner": "Your Rating:" },
-                          { "id": "rating" }
-                        ]
-                      },
-                      {
-                        "class": "container-fluid",
-                        "inner": [
-                          { "tag": "h3", "inner": "Rating Results:" },
-                          { "id": "rating_result" }
-                        ]
-                      },
-                      { "tag": "p" }
-                    ]
-                  }
-                },
-                {
-                  "title": "Discussion",
-                  "content": { "id": "comment" }
-                },
-                {
-                  "title": "Demo",
-                  "content": {
-                    "style": "margin: 1em; display: grid; grid-template-columns: 13em auto",
-                    "inner": [
-                      { "id": "menu", "style": "margin-right: 1em;" },
-                      { "id": "content", "style": "border: 3px double #ccc;" }
-                    ]
-                  }
-                },
-                {
-                  "title": "Create App",
-                  "content": {
-                    "style": "margin: 1em; display: grid; grid-template-columns: 12em auto",
-                    "inner": [
-                      { "id": "menu", "style": "margin-right: 1em;" },
-                      { "id": "content", "style": "border: 3px double #ccc;" }
-                    ]
-                  }
-                }
-              ]
-            },
-            "key": [ "ccm.get", "https://ccmjs.github.io/akless-components/menu/resources/configs.js", "bootstrap" ],
-          },
-          "list_group": {
-            "html": {
-              "main": {
-                "id": "main",
-                "inner": [
-                  {
-                    "inner": {
-                      "class": "list-group",
-                      "id": "entries"
-                    }
-                  }
-                ]
-              },
-              "entry": {
-                "tag": "a",
-                "class": "entry list-group-item",
-                "onclick": "%click%",
-                "style": "cursor: pointer; z-index: unset",
-                "inner": {
-                  "class": "title"
-                }
-              }
-            },
-            "css": [ "ccm.load",
-              "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/bootstrap.css",
-              { "context": "head", "url": "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/font-face.css" }
-            ]
-          }
-        }
-      },
-      "details": [ "ccm.component", "https://ccmjs.github.io/akless-components/content/versions/ccm.content-5.2.0.js", {
-        "inner": {
-          "inner": [
-            { "tag": "br" },
-            {
-              "tag": "table",
-              "class": "table table-striped",
-              "inner": {
-                "tag": "tbody",
-                "inner": [
-                  {
-                    "tag": "tr",
-                    "inner": [
-                      {
-                        "tag": "th",
-                        "inner": "Title"
-                      },
-                      {
-                        "tag": "td",
-                        "inner": "%title%"
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "tr",
-                    "inner": [
-                      {
-                        "tag": "th",
-                        "inner": "Name"
-                      },
-                      {
-                        "tag": "td",
-                        "inner": "%key%"
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "tr",
-                    "inner": [
-                      {
-                        "tag": "th",
-                        "inner": "Version"
-                      },
-                      {
-                        "tag": "td",
-                        "inner": "%version%"
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "tr",
-                    "inner": [
-                      {
-                        "tag": "th",
-                        "inner": "URL"
-                      },
-                      {
-                        "tag": "td",
-                        "inner": {
-                          "tag": "a",
-                          "target": "_blank",
-                          "href": "%url%",
-                          "inner": "%url%"
-                        }
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "tr",
-                    "inner": [
-                      {
-                        "tag": "th",
-                        "inner": "Developer"
-                      },
-                      {
-                        "tag": "td",
-                        "inner": "%developer%"
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "tr",
-                    "inner": [
-                      {
-                        "tag": "th",
-                        "inner": "Website"
-                      },
-                      {
-                        "tag": "td",
-                        "inner": {
-                          "tag": "a",
-                          "target": "_blank",
-                          "href": "%website%",
-                          "inner": "%website%"
-                        }
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "tr",
-                    "inner": [
-                      {
-                        "tag": "th",
-                        "inner": "License"
-                      },
-                      {
-                        "tag": "td",
-                        "inner": "%license%"
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "tr",
-                    "inner": [
-                      {
-                        "tag": "th",
-                        "inner": "Published"
-                      },
-                      {
-                        "tag": "td",
-                        "inner": "%created_at%"
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "tr",
-                    "inner": [
-                      {
-                        "tag": "th",
-                        "inner": "Last Updated"
-                      },
-                      {
-                        "tag": "td",
-                        "inner": "%updated_at%"
-                      }
-                    ]
-                  }
-                ]
-              }
-            }
-          ]
-        },
-        "css": [ "ccm.load",
-          "https://ccmjs.github.io/akless-components/libs/bootstrap/css/bootstrap.css",
-          { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/bootstrap/css/font-face.css" }
-        ]
-      } ],
-      "rating": [ "ccm.component", "https://ccmjs.github.io/tkless-components/star_rating/versions/ccm.star_rating-4.0.0.js", {
-        "root": "name",
-        "data": { "store": [ "ccm.store" ] },
-        "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-8.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "guest" ] ]
-      } ],
-      "rating_result": [ "ccm.component", "https://ccmjs.github.io/tkless-components/star_rating_result/versions/ccm.star_rating_result-4.0.0.js", {
-        "root": "name",
-        "data": { "store": [ "ccm.store" ] },
-        "detailed": true
-      } ],
-      "commentary": [ "ccm.component", "https://ccmjs.github.io/tkless-components/comment/versions/ccm.comment-4.1.0.js", {
-        "root": "name",
-        "data": { "store": [ "ccm.store" ] },
-        "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-8.3.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "guest" ] ]
-      } ],
-      "source": {},
-      "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-8.3.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "guest" ] ],
-  //  "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.2.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
-      "component_icon": "https://ccmjs.github.io/akless-components/dms/resources/component.png"
-*/
+//    "form": [ "ccm.component", "https://ccmjs.github.io/akless-components/submit/versions/ccm.submit-7.1.0.js" ],
+//    "user": [ "ccm.start", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.1.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "guest" ] ],
+//    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.2.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
+//    "routing": [ "ccm.instance", "https://ccmjs.github.io/akless-components/routing/versions/ccm.routing-1.2.2.js" ]
     },
 
     Instance: function () {
 
       let $;
 
-      this.ready = async () => {
+      this.init = async () => {
 
         // set shortcut to help functions
         $ = this.ccm.helper;
+
+        // has user instance? => restart on login/logout event
+        if ( this.user ) this.user.onchange = this.start;
+
+      };
+
+      this.ready = async () => {
 
         // logging of 'ready' event
         this.logger && this.logger.log( 'ready', $.privatize( this, true ) );
@@ -349,168 +98,150 @@
         dataset.created_at = dataset.created_at ? new Date( dataset.created_at ).toLocaleString() : '';
         dataset.updated_at = dataset.updated_at ? new Date( dataset.updated_at ).toLocaleString() : '';
 
+        /**
+         * renders setup component view
+         * @type {Function}
+         */
+        const setupComponent = async () => {
+
+          // no user or no data store or no form? => abort
+          if ( !this.user || !this.data.store || !this.form ) return $.setContent( content, '' );
+
+          // hide menu and setup button
+          this.element.querySelector( '#menu'  ).style.display = 'none';
+          this.element.querySelector( '#setup' ).style.display = 'none';
+
+          // render publish component form in content area
+          await this.form.start( {
+            root: content,
+            'data.key': dataset.key,
+            onfinish: async form => {
+
+              // log in user, if not already logged in
+              await this.user.login();
+
+              /**
+               * component metadata
+               * @type {Object}
+               */
+              const meta = form.getValue();
+
+              // prepare metadata
+              let version = $.getIndex( meta.path ).split( '-' );
+              const identifier = version.shift();
+              version = version.join( '.' );
+              meta.key = identifier + '-' + version.split( '.' ).join( '-' );
+              meta.tags = meta.tags.filter( tag => tag );
+              meta.demos = meta.demos.filter( demo => $.regex( 'key' ).test( demo ) );
+
+              // component name or version has changes? => abort
+              if ( meta.key !== dataset.key ) return;
+
+              // update meta data (changes are published)
+              await this.data.store.set( meta );
+
+              // update route
+              this.routing && this.routing.set( 'overview' );
+
+              // back to component overview
+              await menu.start();
+              menu.select( 1 );
+              this.element.querySelector( '#menu'  ).style.display = 'block';
+              this.element.querySelector( '#setup' ).style.display = 'block';
+
+            }
+          } );
+
+        };
+
         // render main HTML structure
-        $.setContent( this.element, $.html( this.html.main, dataset ) );
+        $.setContent( this.element, $.html( this.html.main, $.integrate( {
+          setup: setupComponent
+        }, dataset ) ) );
+
+        /**
+         * content area
+         * @type {Element}
+         */
+        const content = this.element.querySelector( '#content' );
+
+        /**
+         * render functions for each frontend view
+         * @type {Function[]}
+         */
+        const view = [
+
+          // Overview
+          async () => {
+
+            // update route
+            this.routing && this.routing.set( 'overview' );
+
+            // render info and demo section
+            $.setContent( content, $.html( this.html.overview, $.integrate( dataset, {
+              subject: '',
+              description: '',
+              category: '-',
+              tags: '-',
+              license: 'MIT'
+            } ) ) );
+            $.setContent( content.querySelector( '#tags' ), dataset.tags.join( ', ' ) || '-' );
+
+            // no demos? => remove demo section and abort
+            if ( !dataset.demos || !dataset.demos.length ) return $.removeElement( content.querySelector( '#demo' ) );
+
+            // render demo menu
+            await this.menu.start( {
+              root: this.element.querySelector( '#demo-menu' ),
+              onclick: event => console.log( event ),
+              selected: this.routing && this.routing.get() ? null : undefined
+            } );
+
+          },
+
+          // Reviews
+          () => {
+
+            // update route
+            this.routing && this.routing.set( 'reviews' );
+
+            // clear content area
+            $.setContent( content, '' );
+
+          },
+
+          // Create App
+          () => {
+
+            // update route
+            this.routing && this.routing.set( 'create_app' );
+
+            // clear content area
+            $.setContent( content, '' );
+
+          }
+
+        ];
 
         // render header menu
         const menu = await this.menu.start( {
           root: this.element.querySelector( '#menu' ),
-          onclick: event => {},//view[ event.nr - 1 ](),
+          onclick: event => view[ event.nr - 1 ](),
           selected: this.routing && this.routing.get() ? null : undefined
         } );
 
-        return;
+        // render login/logout area
+        this.user && $.setContent( this.element.querySelector( '#user' ), this.user.root );
 
-        // no store name for saving apps on server-side? => use component name as default
-        if ( this.source.url && !this.source.name ) this.source.name = dataset.key;
+        // no logged in user? => remove setup button
+        if ( !this.user || !this.user.isLoggedIn() || this.user.data().key !== dataset._.creator ) $.removeElement( this.element.querySelector( '#setup' ) );
 
-        // render menu
-        let active, flag = false;
-        if ( !dataset.description                ) this.menu.ignore.buttons.data.entries[ 1 ].disabled = true;
-        if ( !this.rating && !this.rating_result ) this.menu.ignore.buttons.data.entries[ 2 ].disabled = true;
-        if ( !this.commentary                    ) this.menu.ignore.buttons.data.entries[ 3 ].disabled = true;
-        if ( !dataset.ignore || !dataset.ignore.  demos || !dataset.ignore.  demos.length ) this.menu.ignore.buttons.data.entries[ 4 ].disabled = true;
-        if ( !dataset.ignore || !dataset.ignore.builder || !dataset.ignore.builder.length ) this.menu.ignore.buttons.data.entries[ 5 ].disabled = true;
-        const _menu = await this.menu.component.start( $.integrate( {
-          root: 'name',
-          selected: 1,
-          onclick: async event => {
-            switch ( event.nr ) {
-              case 1:
-                await this.details.start( {
-                  root: event.content.querySelector( '#details' ),
-                  placeholder: dataset
-                } );
-                break;
-              case 2:
-                $.setContent( event.content.querySelector( '#description' ), $.html( dataset.description ) );
-                break;
-              case 3:
-                await this.rating_result.start( {
-                  'data.key': dataset.key,
-                  root: event.content.querySelector( '#rating_result' )
-                } );
-                await this.rating.start( {
-                  root: event.content.querySelector( '#rating' ),
-                  'data.key': dataset.key
-                } );
-                break;
-              case 4:
-                await this.commentary.start( {
-                  root: event.content.querySelector( '#comment' ),
-                  'data.key': dataset.key
-                } );
-                break;
-              case 5:
-                await renderDemos.call( this, event.content );
-                break;
-                break;
-              case 6:
-                flag ? flag = false : active = undefined;
-                await renderBuilder.call( this, event.content );
-                break;
-            }
-          }
-        }, this.menu.ignore.buttons ) );
-
-        /**
-         * renders demo section
-         * @param {Element} element - demo section
-         * @this Instance
-         * @returns {Promise}
-         */
-        async function renderDemos( element ) {
-
-          /**
-           * ccm component object for creating demo apps
-           * @type {Object}
-           */
-          let demo = await this.ccm.component( dataset.url );
-
-          /**
-           * website area for demo menu
-           * @type {Element}
-           */
-          const menu_elem = element.querySelector( '#menu' );
-
-          // render menu for demo selection
-          await this.menu.component.start( $.integrate( {
-            root: menu_elem,
-            data: { entries: dataset.ignore.demos },
-            selected: 1,
-            onclick: async event => renderDemo( dataset.ignore.demos[ event.nr - 1 ].config )
-          }, this.menu.ignore.list_group ) );
-          $.prepend( menu_elem, $.html( { tag: 'b', inner: 'Choose Demo:' } ) );
-          if ( dataset.ignore.builder && dataset.ignore.builder.length )
-            $.append( menu_elem, $.html( {
-              tag: 'button',
-              class: 'btn btn-link btn-block',
-              onclick: () => ( flag = true ) && menu.select( 6 ),
-              inner: [
-                { tag: 'span', class: 'glyphicon glyphicon-circle-arrow-right' },
-                ' Create Similar App'
-              ]
-            } ) );
-
-          /**
-           * renders a demo
-           * @param {Object} config - demo app configuration
-           * @returns {Promise}
-           */
-          async function renderDemo( config ) {
-            active = $.clone( config );
-            config = await $.solveDependency( config );
-            config.root = element.querySelector( '#content' );
-            await demo.start( config );
-          }
-
-        }
-
-        /**
-         * renders builder section
-         * @param {Element} element
-         * @this Instance
-         * @returns {Promise}
-         */
-        async function renderBuilder( element ) {
-
-          /**
-           * website area for builder menu
-           * @type {Element}
-           */
-          const menu_elem = element.querySelector( '#menu' );
-
-          // render menu for demo selection
-          await this.menu.component.start( $.integrate( {
-            root: menu_elem,
-            data: { entries: dataset.ignore.builder },
-            selected: 1,
-            onclick: async event => renderBuilder.call( this, dataset.ignore.builder[ event.nr - 1 ] )
-          }, this.menu.ignore.list_group ) );
-          $.prepend( menu_elem, $.html( { tag: 'b', inner: 'Choose Builder:' } ) );
-
-          /**
-           * renders an app builder
-           * @param {Object} builder - component url and instance configuration for app builder
-           * @this Instance
-           * @returns {Promise}
-           */
-          async function renderBuilder( builder ) {
-
-            await this.ccm.start( builder.url, {
-              root: element.querySelector( '#content' ),
-              parent: this,
-              data: {
-                store: [ 'ccm.store', this.source ],
-                key: active
-              },
-              app: [ 'ccm.component', dataset.url ],
-              key: builder.config
-            } );
-
-          }
-
-        }
+        // define and check routes
+        this.routing && this.routing.define( {
+          overview:   () => menu.select( 1 ),
+          reviews:    () => menu.select( 2 ),
+          create_app: () => menu.select( 3 )
+        } );
 
       };
     }
