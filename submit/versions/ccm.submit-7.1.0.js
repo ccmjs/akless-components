@@ -4,10 +4,10 @@
  * @license The MIT License (MIT)
  * @version 7.1.0
  * @changes
- * version 7.1.0 (16.06.2019):
+ * version 7.1.0 (16.05.2019):
  * - user feedback for changed/unchained values
  * - uses ccm v20.4.1
- * version 7.0.1 (15.06.2019):
+ * version 7.0.1 (15.05.2019):
  * - no report of invalid data to user at change events
  * - uses ccm v20.4.0
  * version 7.0.0 (30.01.2019):
