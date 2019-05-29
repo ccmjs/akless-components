@@ -6,7 +6,7 @@
  * @changes
  * version 7.1.1 (29.05.2019):
  * - bug fix for default array value of <several>
- * - uses ccm v20.7.1
+ * - uses ccm v20.7.2
  * version 7.1.0 (16.05.2019):
  * - user feedback for changed/unchained values
  * - uses ccm v20.4.1
@@ -25,9 +25,9 @@
 
   const component = {
 
-    name: 'submit',
+    name: 'submit', version: [ 7, 1, 1 ],
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-20.7.2.js',
 
     config: {
 
