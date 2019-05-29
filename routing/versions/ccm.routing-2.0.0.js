@@ -2,7 +2,7 @@
  * @overview ccm component for routing
  * @author André Kless <andre.kless@web.de> 2019
  * @license MIT License
- * @version latest (2.0.0)
+ * @version 2.0.0
  * @changes
  * version 2.0.0 (29.05.2019):
  * - define routes includes reset of last route and a refresh
@@ -14,9 +14,9 @@
 
   const component = {
 
-    name: 'routing',
+    name: 'routing', version: [ 2, 0, 0 ],
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-20.7.1.js',
 
     config: {
 //    "app": "1558132111384X2108359471753687",
