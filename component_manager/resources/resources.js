@@ -17,7 +17,8 @@ ccm.files[ 'resources.js' ] = {
       "store": [ "ccm.store", { "name": "dms-components", "url": "http://localhost:8080" } ],
       "key": "cloze-6-0-0"
     },
-    "menu": [ "ccm.component", "../menu/ccm.menu.js", [ "ccm.get", "../component_manager/resources/resources.js", "menu_local" ] ],
+    "menu_horizontal": [ "ccm.component", "../menu/ccm.menu.js", [ "ccm.get", "../component_manager/resources/resources.js", "menu_horizontal_local" ] ],
+    "menu_vertical": [ "ccm.component", "../menu/ccm.menu.js", [ "ccm.get", "../component_manager/resources/resources.js", "menu_vertical_local" ] ],
     "form": [ "ccm.component", "../submit/ccm.submit.js", [ "ccm.get", "../component_manager/resources/resources.js", "form_local" ] ],
     "user": [ "ccm.start", "../user/ccm.user.js", [ "ccm.get", "../component_manager/resources/resources.js", "user_local" ] ],
     "logger":  [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
