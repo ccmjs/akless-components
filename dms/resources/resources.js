@@ -175,7 +175,7 @@ ccm.files[ 'resources.js' ] = {
   },
 
   "rating": {
-    "ccm": "https://ccmjs.github.io/ccm/versions/ccm-20.7.1.js",
+    "ccm": "https://ccmjs.github.io/ccm/versions/ccm-20.7.2.js",
     "css": [ "ccm.load",
       { "context": "head", "url": "https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" },
       "https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css",
@@ -187,7 +187,7 @@ ccm.files[ 'resources.js' ] = {
   },
 
   "rating_local": {
-    "ccm": "https://ccmjs.github.io/ccm/versions/ccm-20.7.1.js",
+    "ccm": "https://ccmjs.github.io/ccm/versions/ccm-20.7.2.js",
     "css": [ "ccm.load",
       { "context": "head", "url": "https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" },
       "https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css",
