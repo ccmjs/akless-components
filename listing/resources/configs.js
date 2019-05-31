@@ -62,7 +62,7 @@ ccm.files[ 'configs.js' ] = {
     ],
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
     "defaults": { "color": "black", "title": "Color: Black", "subtitle": "This is a default subtitle" },
-    "onclick": ( event, element, data ) => alert( 'You have clicked on ' + data.title )
+    "onclick": event => alert( 'You have clicked on ' + event.data.title )
   },
 
   "demo": {
@@ -120,7 +120,7 @@ ccm.files[ 'configs.js' ] = {
       {}
     ],
     "defaults": { "color": "black", "title": "Color: Black", "subtitle": "This is a default subtitle" },
-    "onclick": ( event, element, data ) => alert( 'You have clicked on ' + data.title )
+    "onclick": event => alert( 'You have clicked on ' + event.data.title )
   }
 
 };

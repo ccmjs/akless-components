@@ -2,7 +2,7 @@
  * @overview ccm component for a listing
  * @author André Kless <andre.kless@web.de> 2018-2019
  * @license MIT License
- * @version latest (3.0.0)
+ * @version 3.0.0
  * @changes
  * version 3.0.0 (31.05.2019): uses ccm v20.7.2; changed onclick and onrender parameters
  * version 2.0.3 (06.02.2019): uses ccm v20.0.0
@@ -16,9 +16,9 @@
 
   const component = {
 
-    name: 'listing',
+    name: 'listing', version: [ 3, 0, 0 ],
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-20.7.2.js',
 
     config: {
 
@@ -35,7 +35,7 @@
   //  "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
   //  "sort": ( a, b ) => a < b ? -1 : ( a > b ? 1 : 0 ),
   //  "defaults": {},
-    "onclick": event => console.log( event ),
+  //  "onclick": event => console.log( event ),
   //  "onrender": event => console.log( event )
 
     },
