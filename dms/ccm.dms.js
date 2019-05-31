@@ -50,7 +50,7 @@
       },
       "menu": [ "ccm.component", "https://ccmjs.github.io/akless-components/menu/versions/ccm.menu-2.6.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/dms/resources/resources.js", "menu" ] ]
 //    "form": [ "ccm.component", "https://ccmjs.github.io/akless-components/submit/versions/ccm.submit-7.1.0.js" ],
-//    "listing": [ "ccm.component", "https://ccmjs.github.io/akless-components/listing/versions/ccm.listing-2.0.3.js" ],
+//    "listing": [ "ccm.component", "https://ccmjs.github.io/akless-components/listing/versions/ccm.listing-3.0.0.js" ],
 //    "rating": [ "ccm.component", "https://ccmjs.github.io/tkless-components/star_rating_result/versions/ccm.star_rating_result-4.0.0.js" ],
 //    "component_manager": [ "ccm.component", "https://ccmjs.github.io/akless-components/component_manager/versions/ccm.component_manager-2.2.6.js" ],
 //    "user": [ "ccm.start", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.1.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "guest" ] ],
@@ -161,11 +161,11 @@
                 if ( creator_x > creator_y ) return 1;
                 return 0;
               },
-              onrender: ( element, data ) => this.rating && this.rating.start( {
-                root: element.querySelector( '.rating' ),
-                'data.key': data.key
+              onrender: event => this.rating && this.rating.start( {
+                root: event.entry.querySelector( '.rating' ),
+                'data.key': event.data.key
               } ),
-              onclick: ( event, element, data ) => showComponent( data.key )
+              onclick: event => showComponent( event.data.key )
             } );
 
           },
