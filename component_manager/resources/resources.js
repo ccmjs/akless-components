@@ -17,8 +17,8 @@ ccm.files[ 'resources.js' ] = {
       "store": [ "ccm.store", { "name": "dms-components", "url": "http://localhost:8080" } ],
       "key": "cloze-6-0-0"
     },
-    "menu_horizontal": [ "ccm.component", "../menu/ccm.menu.js", [ "ccm.get", "../component_manager/resources/resources.js", "menu_horizontal_local" ] ],
-    "menu_vertical": [ "ccm.component", "../menu/ccm.menu.js", [ "ccm.get", "../component_manager/resources/resources.js", "menu_vertical_local" ] ],
+    "menu_top": [ "ccm.component", "../menu/ccm.menu.js", [ "ccm.get", "../component_manager/resources/resources.js", "menu_top_local" ] ],
+    "menu_app": [ "ccm.component", "../menu/ccm.menu.js", [ "ccm.get", "../component_manager/resources/resources.js", "menu_app_local" ] ],
     "form": [ "ccm.component", "../submit/ccm.submit.js", [ "ccm.get", "../component_manager/resources/resources.js", "form_local" ] ],
     "user": [ "ccm.start", "../user/ccm.user.js", [ "ccm.get", "../component_manager/resources/resources.js", "user_local" ] ],
     "logger":  [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
@@ -94,7 +94,7 @@ ccm.files[ 'resources.js' ] = {
             { "id": "user" }
           ]
         },
-        { "id": "menu" },
+        { "id": "menu-top" },
         { "id": "content" }
       ]
     },
@@ -112,7 +112,7 @@ ccm.files[ 'resources.js' ] = {
             {
               "class": "blockquote-footer",
               "inner": [
-                "Developed by",
+                "Published by",
                 {
                   "tag": "span",
                   "id": "creator",
@@ -232,24 +232,20 @@ ccm.files[ 'resources.js' ] = {
               "id": "demo-main",
               "inner": [
                 {
-                  "id": "demo-menu",
+                  "id": "aside",
                   "inner": [
                     {
-                      "id": "demo-caption",
+                      "id": "menu-caption",
                       "inner": "Choose Demo"
                     },
-                    { "id": "demo-menu" },
+                    { "id": "menu-app" },
                     {
                       "id": "create_similar",
                       "inner": {
                         "tag": "button",
-                        "class": "btn btn-link btn-block",
+                        "class": "btn btn-link btn-block btn-sm",
                         "inner": [
-                          {
-                            "tag": "span",
-                            "class": "glyphicon glyphicon-circle-arrow-right"
-                          },
-                          "Create Similar App"
+                          "&#9850; Create Similar App"
                         ]
                       }
                     }
@@ -261,33 +257,52 @@ ccm.files[ 'resources.js' ] = {
           ]
         }
       ]
+    },
+    "collection": {
+      "id": "collection",
+      "inner": [
+        {
+          "id": "aside",
+          "inner": [
+            {
+              "id": "menu-caption",
+              "inner": "Choose Builder"
+            },
+            { "id": "menu-app" },
+            {
+              "id": "menu-below",
+              "inner": {
+                "tag": "button",
+                "class": "btn btn-link btn-block btn-sm",
+                "inner": "+ Add Builder"
+              }
+            }
+          ]
+        },
+        { "id": "builder" }
+      ]
     }
   },
 
-  "menu": {
+  "menu_top": {
+    "html": [ "ccm.get", "https://ccmjs.github.io/akless-components/component_manager/resources/resources.js", "menu_top_html" ],
     "css": [ "ccm.load",
-      "component_manager/resources/menu.css",
+      "https://ccmjs.github.io/akless-components/component_manager/resources/menu_top.css",
       "https://ccmjs.github.io/akless-components/libs/bootstrap-4/css/bootstrap.min.css"
     ],
-    "data": {
-      "entries": [ "Overview", "Reviews", "App Creation" ]
-    },
     "selected": 1
   },
 
-  "menu_local": {
-    "html": [ "ccm.get", "../component_manager/resources/resources.js", "header_menu_html" ],
-    "css": [
-      "ccm.load", "../component_manager/resources/menu.css",
+  "menu_top_local": {
+    "html": [ "ccm.get", "../component_manager/resources/resources.js", "menu_top_html" ],
+    "css": [ "ccm.load",
+      "../component_manager/resources/menu_top.css",
       "../libs/bootstrap-4/css/bootstrap.min.css"
     ],
-    "data": {
-      "entries": [ "Overview", "Reviews", "App Creation" ]
-    },
     "selected": 1
   },
 
-  "header_menu_html": {
+  "menu_top_html": {
     "main": {
       "id": "main",
       "inner": [
@@ -312,27 +327,38 @@ ccm.files[ 'resources.js' ] = {
     }
   },
 
-  "demo_menu_html": {
+  "menu_app": {
+    "html": [ "ccm.get", "https://ccmjs.github.io/akless-components/component_manager/resources/resources.js", "menu_app_html" ],
+    "css": [ "ccm.load",
+      "https://ccmjs.github.io/akless-components/component_manager/resources/menu_app.css",
+      "https://ccmjs.github.io/akless-components/libs/bootstrap-4/css/bootstrap.min.css"
+    ],
+    "selected": 1
+  },
+
+  "menu_app_local": {
+    "html": [ "ccm.get", "../component_manager/resources/resources.js", "menu_app_html" ],
+    "css": [ "ccm.load",
+      "../component_manager/resources/menu_app.css",
+      "../libs/bootstrap-4/css/bootstrap.min.css"
+    ],
+    "selected": 1
+  },
+
+  "menu_app_html": {
     "main": {
       "id": "main",
-      "inner": [
-        {
-          "tag": "ul",
-          "id": "entries",
-          "class": "nav nav-tabs"
-        },
-        {
-          "id": "content"
-        }
-      ]
+      "inner": {
+        "id": "entries",
+        "class": "list-group"
+      }
     },
     "entry": {
-      "tag": "li",
-      "class": "entry nav-item",
+      "tag": "a",
+      "class": "entry list-group-item list-group-item-action",
       "onclick": "%click%",
       "inner": {
-        "tag": "a",
-        "class": "title nav-link"
+        "class": "title"
       }
     }
   },
@@ -466,7 +492,6 @@ ccm.files[ 'resources.js' ] = {
     "<div class='well'><p>I agree that the icon (if changed) will be released as public domain under the <a href='https://creativecommons.org/share-your-work/public-domain/cc0/' target='_blank'>CC0 license</a>.</p>I confirm that this does not violate the copyright of third parties.</div>",
     {
       "label": "<span style='color:red'>*</span>I Agree",
-      "name": "licence",
       "type": "checkbox",
       "info": "Everything in a Digital Maker Space is free software and all content is public domain. So you can only publish anything if this requirement is fulfilled.",
       "required": true

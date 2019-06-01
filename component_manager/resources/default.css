@@ -100,24 +100,25 @@
   border-bottom: 1px solid #dee2e6;
 }
 
-#overview #demo-caption {
-  padding-left: 0.5em;
+#collection {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  padding: 1em 0;
+}
+
+#aside {
+  padding: 1em 2em 1em 0;
+}
+
+#menu-caption {
+  padding: 0 1em 0 0.5em;
   font-weight: bold;
 }
 
-#overview #demo-caption:after {
+#menu-caption:after {
   content: ':';
 }
 
-#overview #demo-main {
-  display: grid;
-  grid-template-columns: auto 1fr;
-}
-
-#overview #demo-menu {
-  padding-right: 1em;
-}
-
-#overview #demo-menu {
-  overflow: auto;
+#menu-below {
+  padding: 0.5em;
 }

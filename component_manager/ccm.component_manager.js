@@ -55,8 +55,9 @@
         { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/bootstrap-4/css/bootstrap.min.css" }
       ],
       "data": {},
-      "menu": [ "ccm.component", "https://ccmjs.github.io/akless-components/menu/versions/ccm.menu-2.6.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/component_manager/resources/resources.js", "menu" ] ]
-//    "form": [ "ccm.component", "https://ccmjs.github.io/akless-components/submit/versions/ccm.submit-7.1.0.js" ],
+      "menu_top": [ "ccm.component", "https://ccmjs.github.io/akless-components/menu/versions/ccm.menu-2.6.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/component_manager/resources/resources.js", "menu_top" ] ],
+      "menu_app": [ "ccm.component", "https://ccmjs.github.io/akless-components/menu/versions/ccm.menu-2.6.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/component_manager/resources/resources.js", "menu_app"   ] ]
+//    "form": [ "ccm.component", "https://ccmjs.github.io/akless-components/submit/versions/ccm.submit-7.1.2.js" ],
 //    "user": [ "ccm.start", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.1.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "guest" ] ],
 //    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.2.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
 //    "routing": [ "ccm.instance", "https://ccmjs.github.io/akless-components/routing/versions/ccm.routing-1.2.2.js" ]
@@ -89,7 +90,7 @@
          * component dataset
          * @type {Object}
          */
-        const dataset = await $.dataset( this.data );
+        let dataset = await $.dataset( this.data );
 
         // logging of 'start' event
         this.logger && this.logger.log( 'start', $.clone( dataset ) );
@@ -108,7 +109,7 @@
           if ( !this.user || !this.data.store || !this.form ) return $.setContent( content, '' );
 
           // hide menu and setup button
-          this.element.querySelector( '#menu'  ).style.display = 'none';
+          this.element.querySelector( '#menu-top' ).style.display = 'none';
           this.element.querySelector( '#setup' ).style.display = 'none';
 
           // render publish component form in content area
@@ -139,6 +140,7 @@
 
               // update meta data (changes are published)
               await this.data.store.set( meta );
+              dataset = await $.dataset( this.data );
 
               // update route
               this.routing && this.routing.set( 'overview' );
@@ -146,7 +148,7 @@
               // back to component overview
               await menu.start();
               menu.select( 1 );
-              this.element.querySelector( '#menu'  ).style.display = 'block';
+              this.element.querySelector( '#menu-top' ).style.display = 'block';
               this.element.querySelector( '#setup' ).style.display = 'block';
 
             }
@@ -191,8 +193,8 @@
             if ( !dataset.demos || !dataset.demos.length ) return $.removeElement( content.querySelector( '#demo' ) );
 
             // render demo menu
-            await this.menu.start( {
-              root: this.element.querySelector( '#demo-menu' ),
+            await this.menu_app.start( {
+              root: this.element.querySelector( '#menu-demo' ),
               onclick: event => console.log( event ),
               selected: this.routing && this.routing.get() ? null : undefined
             } );
@@ -210,22 +212,33 @@
 
           },
 
-          // Create App
-          () => {
+          // App Creation
+          async () => {
 
             // update route
-            this.routing && this.routing.set( 'create_app' );
+            this.routing && this.routing.set( 'creation' );
 
-            // clear content area
-            $.setContent( content, '' );
+            // no builders? => clear content and abort
+            if ( !dataset.builders || !dataset.builders.length ) return $.setContent( content, '' );
+
+            // render app creation section
+            $.setContent( content, $.html( this.html.collection ) );
+
+            // render builder menu
+            await this.menu_app.start( {
+              root: content.querySelector( '#menu-app' ),
+              data: { entries: [ "foo", "bar" ] },
+              onclick: event => console.log( event )
+            } );
 
           }
 
         ];
 
         // render header menu
-        const menu = await this.menu.start( {
-          root: this.element.querySelector( '#menu' ),
+        const menu = await this.menu_top.start( {
+          root: this.element.querySelector( '#menu-top' ),
+          data: { entries: [ 'Overview', 'Reviews', 'App Creation' ] },
           onclick: event => view[ event.nr - 1 ](),
           selected: this.routing && this.routing.get() ? null : undefined
         } );
@@ -238,9 +251,9 @@
 
         // define and check routes
         this.routing && this.routing.define( {
-          overview:   () => menu.select( 1 ),
-          reviews:    () => menu.select( 2 ),
-          create_app: () => menu.select( 3 )
+          overview: () => menu.select( 1 ),
+          reviews:  () => menu.select( 2 ),
+          creation: () => menu.select( 3 )
         } );
 
       };
