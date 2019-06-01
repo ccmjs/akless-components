@@ -15,12 +15,14 @@
 }
 
 #entries {
+  justify-content: center;
   padding: 1em;
 }
 
 .entry {
   margin: 1em;
-  width: 15em;
+  min-width: 15em !important;
+  max-width: 15em;
   border-width: medium !important;
   cursor: pointer;
   overflow: hidden;
