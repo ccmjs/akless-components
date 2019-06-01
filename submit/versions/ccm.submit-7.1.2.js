@@ -28,9 +28,9 @@
 
   const component = {
 
-    name: 'submit',
+    name: 'submit', version: [ 7, 1, 2 ],
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-20.7.2.js',
 
     config: {
 
