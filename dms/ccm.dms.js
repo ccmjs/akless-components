@@ -55,7 +55,7 @@
 //    "component_manager": [ "ccm.component", "https://ccmjs.github.io/akless-components/component_manager/versions/ccm.component_manager-2.2.6.js" ],
 //    "user": [ "ccm.start", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.1.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "guest" ] ],
 //    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.2.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
-//    "routing": [ "ccm.instance", "https://ccmjs.github.io/akless-components/routing/versions/ccm.routing-1.2.2.js" ],
+//    "routing": [ "ccm.instance", "https://ccmjs.github.io/akless-components/routing/versions/ccm.routing-2.0.1.js" ],
       "default_icon": "https://ccmjs.github.io/akless-components/dms/resources/default.png"
     },
 
@@ -274,7 +274,7 @@
         this.user && $.setContent( this.element.querySelector( '#user' ), this.user.root );
 
         // define and check routes
-        this.routing && this.routing.define( {
+        this.routing && await this.routing.define( {
           home:       () => menu.select( 1 ),
           apps:       () => menu.select( 2 ),
           components: () => menu.select( 3 ),
