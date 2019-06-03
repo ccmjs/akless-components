@@ -2,7 +2,7 @@
  * @overview ccm component for a listing
  * @author André Kless <andre.kless@web.de> 2018-2019
  * @license MIT License
- * @version latest (3.1.1)
+ * @version 3.1.1
  * @changes
  * version 3.1.1 (03.06.2019): bug fix for support of multilingualism
  * version 3.1.0 (03.06.2019): support of multilingualism
@@ -18,9 +18,9 @@
 
   const component = {
 
-    name: 'listing',
+    name: 'listing', version: [ 3, 1, 1 ],
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-20.7.2.js',
 
     config: {
 
