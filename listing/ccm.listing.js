@@ -26,7 +26,11 @@
 
       "html": {
         "main": {
-          "id": "entries"
+          "id": "main",
+          "inner": [
+            { "id": "lang" },
+            { "id": "entries" }
+          ]
         },
         "entry": {
           "class": "entry"
