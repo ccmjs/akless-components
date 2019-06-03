@@ -1,6 +1,6 @@
 /**
  * @overview configurations of ccm component for a listing
- * @author André Kless <andre.kless@web.de> 2018
+ * @author André Kless <andre.kless@web.de> 2018-2019
  * @license The MIT License (MIT)
  */
 
@@ -11,8 +11,10 @@ ccm.files[ 'configs.js' ] = {
     "html": {
       "main": {
         "inner": [
+          { "id": "lang" },
           {
             "tag": "h3",
+            "data-lang": "topic",
             "inner": "Demo Listing"
           },
           { "id": "entries" }
@@ -57,9 +59,21 @@ ccm.files[ 'configs.js' ] = {
         "color": "blue",
         "title": "Color: Blue",
         "subtitle": "Third RGB part"
-      },
-      {}
+      }
     ],
+    "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/ccm.lang.js", {
+      "active": "de",
+      "translations": {
+        "de": {
+          "flag": "https://ccmjs.github.io/tkless-components/lang/resources/de.svg",
+          "topic": "Demo-Auflistung"
+        },
+        "en": {
+          "flag": "https://ccmjs.github.io/tkless-components/lang/resources/en.svg",
+          "topic": "Demo Listing"
+        }
+      }
+    } ],
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
     "defaults": { "color": "black", "title": "Color: Black", "subtitle": "This is a default subtitle" },
     "onclick": event => alert( 'You have clicked on ' + event.data.title )
