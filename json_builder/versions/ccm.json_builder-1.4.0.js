@@ -2,7 +2,7 @@
  * @overview ccm component for JSON builder
  * @author André Kless <andre.kless@web.de> 2018-2019
  * @license The MIT License (MIT)
- * @version latest (1.4.0)
+ * @version 1.4.0
  * @changes
  * version 1.4.0 (03.06.2019):
  * - added config property 'nosubmit'
@@ -23,9 +23,9 @@
 
   const component = {
 
-    name: 'json_builder',
+    name: 'json_builder', version: [ 1, 4, 0 ],
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-20.7.2.js',
 
     config: {
 
