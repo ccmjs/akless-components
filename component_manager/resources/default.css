@@ -107,7 +107,7 @@
 }
 
 #aside {
-  padding: 1em 2em 1em 0;
+  padding: 1em 1em 1em 0;
 }
 
 #menu-caption {
@@ -122,3 +122,9 @@
 #menu-below {
   padding: 0.5em;
 }
+
+#app {
+  margin: 0 1em;
+  border: 3px double #ccc;
+}
+
