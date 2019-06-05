@@ -245,7 +245,7 @@
           }
         }
       },
-      "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/app_builder/resources/default.css", "https://ccmjs.github.io/akless-components/libs/bootstrap-4/css/bootstrap.min.css" ],
+      "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/app_builder/resources/versions/default-1.0.0.css", "https://ccmjs.github.io/akless-components/libs/bootstrap-4/css/bootstrap.min.css" ],
       "data": { "store": [ "ccm.store" ] },
       "warning": "Are you sure you want to delete this App?",
       "builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/submit/versions/ccm.submit-7.0.0.js", [ "ccm.get", { "name": "submit", "url": "https://ccm2.inf.h-brs.de" }, "cloze_builder" ] ],
