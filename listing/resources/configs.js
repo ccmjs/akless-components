@@ -61,7 +61,7 @@ ccm.files[ 'configs.js' ] = {
         "subtitle": "Third RGB part"
       }
     ],
-    "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/ccm.lang.js", {
+    "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js", {
       "active": "de",
       "translations": {
         "de": {
