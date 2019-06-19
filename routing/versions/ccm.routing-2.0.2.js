@@ -2,7 +2,7 @@
  * @overview ccm component for routing
  * @author André Kless <andre.kless@web.de> 2019
  * @license MIT License
- * @version latest (2.0.2)
+ * @version 2.0.2
  * @changes
  * version 2.0.2 (19.06.2019):
  * - bug fix for change of current app route
@@ -20,9 +20,9 @@
 
   const component = {
 
-    name: 'routing',
+    name: 'routing', version: [ 2, 0, 2 ],
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-21.0.1.js',
 
     config: {
 //    "app": "1558132111384X2108359471753687",
