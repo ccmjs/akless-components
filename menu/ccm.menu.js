@@ -182,7 +182,7 @@
           // add menu entry title
           const title_elem = entry_elem.querySelector( '.title' );
           if ( self.lang )
-            entry_elem.querySelector( '.title' ).setAttribute( 'data-' + self.lang.component.name, entry_data.title.substr( 5 ) );
+            entry_elem.querySelector( '.title' ).setAttribute( 'data-' + self.lang.component.name, entry_data.title );
           else
             $.setContent( title_elem, $.html( entry_data.title ) );
 
