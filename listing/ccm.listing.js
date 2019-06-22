@@ -123,7 +123,7 @@
         const lang_elem = this.element.querySelector( '#lang' );
         if ( this.lang ) {
           await this.lang.start();
-          $.setContent( lang_elem, this.lang.root );
+          lang_elem && $.setContent( lang_elem, this.lang.root );
           this.lang.translate();
         }
         else $.removeElement( lang_elem );
