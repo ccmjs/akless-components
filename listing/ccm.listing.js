@@ -121,10 +121,10 @@
 
         // translate content
         const lang_elem = this.element.querySelector( '#lang' );
-        if ( self.lang ) {
-          await self.lang.start();
-          $.setContent( lang_elem, self.lang.root );
-          self.lang.translate();
+        if ( this.lang ) {
+          await this.lang.start();
+          $.setContent( lang_elem, this.lang.root );
+          this.lang.translate();
         }
         else $.removeElement( lang_elem );
 
