@@ -6,6 +6,7 @@
  * @changes
  * version 2.2.0 (24.06.2019):
  * - support of live poll without realtime
+ * - optional members section
  * - uses ccm v21.1.0
  * version 2.1.0 (07.05.2019):
  * - fast creating of answers via TAB (no loss of input field focus)
@@ -110,9 +111,9 @@
       "converter": [ "ccm.load", { "url": "https://ccmjs.github.io/akless-components/modules/json-to-json.js", "type": "module", "import": "poll_to_highchart" } ],
       "chart": [ "ccm.component", "https://ccmjs.github.io/akless-components/highchart/versions/ccm.highchart-3.0.0.js" ],
       "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-8.3.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "guest" ] ]
-
-  //  "show_results": true,
-  //  "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ]
+//    "no_members_section": true,
+//    "show_results": true,
+//    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ]
 
     },
 
@@ -484,7 +485,7 @@
         const members_section = this.element.querySelector( '#members' );
 
         // active poll with members section?
-        if ( dataset.active && members_section ) {
+        if ( dataset.active && !this.no_members_section && members_section ) {
 
           /**
            * number of answer that logged in member has been voted
