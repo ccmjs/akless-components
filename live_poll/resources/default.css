@@ -43,6 +43,19 @@
   border: 1px dotted lightgray;
 }
 
+#main #reload {
+  margin: 0 0.5em;
+  font-size: x-large;
+  align-self: flex-end;
+  cursor: pointer;
+  padding-bottom: 0;
+  color: gray;
+}
+
+#main #reload:hover {
+  color: black;
+}
+
 #main #question {
   display: flex;
   align-items: center;

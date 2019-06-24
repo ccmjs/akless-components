@@ -2,7 +2,7 @@
  * @overview ccm component for live poll
  * @author André Kless <andre.kless@web.de> 2019
  * @license The MIT License (MIT)
- * @version latest (2.2.0)
+ * @version 2.2.0
  * @changes
  * version 2.2.0 (24.06.2019):
  * - support of live poll without realtime
@@ -25,9 +25,9 @@
 
   const component = {
 
-    name: 'live_poll',
+    name: 'live_poll', version: [ 2, 2, 0 ],
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-21.1.0.js',
 
     config: {
 
