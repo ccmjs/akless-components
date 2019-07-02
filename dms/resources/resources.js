@@ -16,10 +16,8 @@ ccm.files[ 'resources.js' ] = {
       "key": {}
     },
     "form": [ "ccm.component", "../submit/ccm.submit.js", [ "ccm.get", "../dms/resources/resources.js", "form" ] ],
-    "ignore": {
-      "apps": [ "ccm.store", { "url": "http://localhost:8080", "name": "dms-apps" } ],
-      "configs": [ "ccm.store", { "url": "http://localhost:8080", "name": "dms-configs" } ]
-    },
+    "ignore.apps": [ "ccm.store", { "url": "http://localhost:8080", "name": "dms-apps" } ],
+    "ignore.configs": [ "ccm.store", { "url": "http://localhost:8080", "name": "dms-configs" } ],
     "listing": [ "ccm.component", "../listing/ccm.listing.js", [ "ccm.get", "../dms/resources/resources.js", "listing" ] ],
     "logger":  [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
     "logo": "../dms/resources/component.png",

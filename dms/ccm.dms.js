@@ -46,17 +46,16 @@
         "store": [ "ccm.store" ],
         "key": {}
       },
-      "default_builder": {
-        "title": "JSON Builder",
-        "component": "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-1.4.0.js",
-        "config": { "directly": true, "nosubmit": true }
-      },
       "default_icon": "https://ccmjs.github.io/akless-components/dms/resources/default.png",
 //    "form": [ "ccm.component", "../submit/ccm.submit.js" ],
       "html": [ "ccm.get", "../dms/resources/resources.js", "html" ],
       "ignore": {
         "apps": [ 'ccm.store' ],
-        "configs": [ 'ccm.store' ]
+        "configs": [ 'ccm.store' ],
+        "builder": {
+          "title": "JSON Builder",
+          "app": [ "ccm.component", "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-1.4.0.js", { "directly": true, "nosubmit": true } ]
+        }
       },
 //    "listing": [ "ccm.component", "../listing/ccm.listing.js" ],
 //    "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
@@ -208,7 +207,7 @@
                 meta.format = 'application/javascript';
                 meta.license = 'MIT';
                 meta.tags = meta.tags.filter( tag => tag );
-                meta.ignore = { demos: [], builders: [] };
+                meta.ignore = { demos: [], builders: [ this.ignore.builder ] };
 
                 // set data set key and permission settings
                 meta.key = meta.identifier + '-' + meta.version.split( '.' ).join( '-' );
