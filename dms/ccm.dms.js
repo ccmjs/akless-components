@@ -37,7 +37,7 @@
 
     name: 'dms',
 
-    ccm: '../../ccm/ccm.js',
+    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
 
     config: {
       "css": [ "ccm.load", "../dms/resources/default.css" ],
