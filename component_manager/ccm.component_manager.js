@@ -48,32 +48,39 @@
     ccm: 'https://ccmjs.github.io/ccm/ccm.js',
 
     config: {
-      "html": [ "ccm.get", "https://ccmjs.github.io/akless-components/component_manager/resources/resources.js", "html" ],
+//    "builder": [ "ccm.component", "../app_builder/ccm.app_builder.js" ],
       "css": [ "ccm.load",
-        "https://ccmjs.github.io/akless-components/component_manager/resources/default.css",
-        "https://ccmjs.github.io/akless-components/libs/bootstrap-4/css/bootstrap.min.css",
-        { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/bootstrap-4/css/bootstrap.min.css" }
+        "../component_manager/resources/default.css",
+        "../libs/bootstrap-4/css/bootstrap.min.css",
+        { "context": "head", "url": "../libs/bootstrap-4/css/bootstrap.min.css" }
       ],
       "data": {},
-      "menu_top": [ "ccm.component", "https://ccmjs.github.io/akless-components/menu/versions/ccm.menu-2.6.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/component_manager/resources/resources.js", "menu_top" ] ],
-      "menu_app": [ "ccm.component", "https://ccmjs.github.io/akless-components/menu/versions/ccm.menu-2.6.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/component_manager/resources/resources.js", "menu_app"   ] ]
-//    "form": [ "ccm.component", "https://ccmjs.github.io/akless-components/submit/versions/ccm.submit-7.1.2.js" ],
-//    "user": [ "ccm.start", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.1.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "guest" ] ],
-//    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.2.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
-//    "routing": [ "ccm.instance", "https://ccmjs.github.io/akless-components/routing/versions/ccm.routing-2.0.1.js" ]
+//    "form": [ "ccm.component", "../submit/ccm.submit.js" ],
+      "html": [ "ccm.get", "../component_manager/resources/resources.js", "html" ],
+      "ignore": {
+        "apps": [ "ccm.store" ],
+        "configs": [ "ccm.store" ]
+      },
+//    "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
+      "menu_app": [ "ccm.component", "../menu/ccm.menu.js", [ "ccm.get", "../component_manager/resources/resources.js", "menu_app" ] ],
+      "menu_top": [ "ccm.component", "../menu/ccm.menu.js", [ "ccm.get", "../component_manager/resources/resources.js", "menu_top" ] ]
+//    "routing": [ "ccm.instance", "../routing/ccm.routing..js" ],
+//    "user": [ "ccm.start", "../user/ccm.user.js", [ "ccm.get", "../user/resources/configs.js", "guest" ] ]
     },
 
     Instance: function () {
 
-      let $;
+      let $, dataset, config = { key: 'app' };
 
       this.init = async () => {
 
         // set shortcut to help functions
         $ = this.ccm.helper;
 
-        // has user instance? => restart on login/logout event
-        if ( this.user ) this.user.onchange = this.start;
+        // has user instance? => show/hide setup button on login/logout event
+        if ( this.user )
+          this.user.onchange = login =>
+            this.element.querySelector( '#setup' ).style.visibility = login && this.user.data().key === dataset._.creator ? 'visible' : 'hidden';
 
       };
 
@@ -86,11 +93,8 @@
 
       this.start = async () => {
 
-        /**
-         * component dataset
-         * @type {Object}
-         */
-        let dataset = await $.dataset( this.data );
+        // get component dataset
+        dataset = await $.dataset( this.data );
 
         // logging of 'start' event
         this.logger && this.logger.log( 'start', $.clone( dataset ) );
@@ -99,67 +103,8 @@
         dataset.created_at = dataset.created_at ? new Date( dataset.created_at ).toLocaleString() : '';
         dataset.updated_at = dataset.updated_at ? new Date( dataset.updated_at ).toLocaleString() : '';
 
-        /**
-         * renders setup component view
-         * @type {Function}
-         */
-        const setupComponent = async () => {
-
-          // no user or no data store or no form? => abort
-          if ( !this.user || !this.data.store || !this.form ) return $.setContent( content, '' );
-
-          // hide menu and setup button
-          this.element.querySelector( '#menu-top' ).style.display = 'none';
-          this.element.querySelector( '#setup' ).style.display = 'none';
-
-          // render publish component form in content area
-          await this.form.start( {
-            root: content,
-            'data.key': dataset.key,
-            onfinish: async form => {
-
-              // log in user, if not already logged in
-              await this.user.login();
-
-              /**
-               * component metadata
-               * @type {Object}
-               */
-              const meta = form.getValue();
-
-              // prepare metadata
-              let version = $.getIndex( meta.path ).split( '-' );
-              const identifier = version.shift();
-              version = version.join( '.' );
-              meta.key = identifier + '-' + version.split( '.' ).join( '-' );
-              meta.tags = meta.tags.filter( tag => tag );
-              meta.demos = meta.demos.filter( demo => $.regex( 'key' ).test( demo ) );
-
-              // component name or version has changes? => abort
-              if ( meta.key !== dataset.key ) return;
-
-              // update meta data (changes are published)
-              await this.data.store.set( meta );
-              dataset = await $.dataset( this.data );
-
-              // update route
-              this.routing && this.routing.set( 'overview' );
-
-              // back to component overview
-              await menu.start();
-              menu.select( 1 );
-              this.element.querySelector( '#menu-top' ).style.display = 'block';
-              this.element.querySelector( '#setup' ).style.display = 'block';
-
-            }
-          } );
-
-        };
-
         // render main HTML structure
-        $.setContent( this.element, $.html( this.html.main, $.integrate( {
-          setup: setupComponent
-        }, dataset ) ) );
+        $.setContent( this.element, $.html( this.html.main, $.integrate( { setup: () => setupComponent.call( this ) }, dataset ) ) );
 
         /**
          * content area
@@ -181,6 +126,7 @@
 
             // render info and demo section
             $.setContent( content, $.html( this.html.overview, $.integrate( dataset, {
+              index: dataset.identifier + '-' + dataset.version,
               subject: '',
               description: '',
               category: '-',
@@ -190,7 +136,7 @@
             $.setContent( content.querySelector( '#tags' ), dataset.tags.join( ', ' ) || '-' );
 
             // no demos? => remove demo section and abort
-            if ( !dataset.demos || !dataset.demos.length ) return $.removeElement( content.querySelector( '#demo' ) );
+            if ( !this.apps || !dataset.ignore.demos || !dataset.ignore.demos.length ) return $.removeElement( content.querySelector( '#demo' ) );
 
             // render demo menu
             await this.menu_app.start( {
@@ -219,7 +165,7 @@
             this.routing && this.routing.set( 'creation' );
 
             // no builders? => clear content and abort
-            if ( !dataset.builders || !dataset.builders.length ) return $.setContent( content, '' );
+            if ( !dataset.ignore.builders || !dataset.ignore.builders.length ) return $.setContent( content, '' );
 
             // render app creation section
             $.setContent( content, $.html( this.html.collection ) );
@@ -227,9 +173,14 @@
             // render builder menu
             await this.menu_app.start( {
               root: content.querySelector( '#menu-app' ),
-              data: { entries: [ "foo", "bar" ] },
-              onclick: event => console.log( event )
+              data: { entries: dataset.ignore.builders.map( builder => builder.title ) },
+              onclick: event => {
+                renderBuilder.call( this, dataset.ignore.builders[ event.nr - 1 ].app );
+              }
             } );
+
+            // remove area under menu
+            $.removeElement( content.querySelector( '#menu-below' ) );
 
           }
 
@@ -238,7 +189,6 @@
         // render header menu
         const menu = await this.menu_top.start( {
           root: this.element.querySelector( '#menu-top' ),
-          data: { entries: [ 'Overview', 'Reviews', 'App Creation' ] },
           onclick: event => view[ event.nr - 1 ](),
           selected: this.routing && this.routing.get() ? null : undefined
         } );
@@ -247,7 +197,8 @@
         this.user && $.setContent( this.element.querySelector( '#user' ), this.user.root );
 
         // no logged in user? => remove setup button
-        if ( !this.user || !this.user.isLoggedIn() || this.user.data().key !== dataset._.creator ) $.removeElement( this.element.querySelector( '#setup' ) );
+        if ( !this.user || !this.user.isLoggedIn() || this.user.data().key !== dataset._.creator )
+          this.element.querySelector( '#setup' ).style.visibility = 'hidden';
 
         // define and check routes
         this.routing && this.routing.define( {
@@ -256,7 +207,109 @@
           creation: () => menu.select( 3 )
         } );
 
+        /** renders setup component view */
+        async function setupComponent() {
+
+          // no user or no data store or no form? => abort
+          if ( !this.user || !this.data.store || !this.form ) return $.setContent( content, '' );
+
+          // hide menu and setup button
+          this.element.querySelector( '#menu-top' ).style.display = 'none';
+          this.element.querySelector( '#setup' ).style.display = 'none';
+
+          // render publish component form in content area
+          await this.form.start( {
+            root: content,
+            'data.key': dataset.key,
+            'data.convert': dataset => {
+              dataset.demos = [];
+              dataset.ignore.demos.forEach( demo => {
+                dataset.demos.push( {
+                  title: demo.title,
+                  app_id: demo.app[ 2 ][ 2 ]
+                } );
+              } );
+              dataset.builders = [];
+              dataset.ignore.builders.forEach( builder => {
+                dataset.builders.push( {
+                  title: builder.title,
+                  url: builder.app[ 1 ],
+                  config: builder.app[ 2 ]
+                } );
+              } );
+              delete dataset.ignore;
+              return dataset;
+            },
+            onfinish: async form => {
+
+              // log in user, if not already logged in
+              await this.user.login();
+
+              /**
+               * component metadata
+               * @type {Object}
+               */
+              const meta = form.getValue();
+
+              // prepare metadata
+              let version = $.getIndex( meta.path ).split( '-' );
+              const identifier = version.shift();
+              version = version.join( '.' );
+              meta.key = identifier + '-' + version.split( '.' ).join( '-' );
+              meta.tags = meta.tags.filter( tag => tag );
+              meta.ignore = { demos: [], builders: [] };
+
+              // prepare demos
+              this.apps && await $.asyncForEach( meta.demos, async demo => {
+                demo.title && demo.app_id && meta.ignore.demos.push( {
+                  title: demo.title,
+                  app: [ 'ccm.instance', meta.path, [ 'ccm.get', this.apps.source(), demo.app_id ] ]
+                } );
+              } );
+              delete meta.demos;
+
+              // prepare builders
+              form.builder && await $.asyncForEach( meta.builders, async builder => {
+                builder.title && builder.url && meta.ignore.builders.push( {
+                  title: builder.title,
+                  app: [ 'ccm.component', builder.url, builder.config ]
+                } );
+              } );
+              delete meta.builders;
+
+              // component name or version has changes? => abort
+              if ( meta.key !== dataset.key ) return;
+
+              // update meta data (changes are published)
+              await this.data.store.set( meta );
+              dataset = await $.dataset( this.data );
+
+              // restart
+              await this.start();
+
+            }
+          } );
+
+        }
+
+        /** renders app builder */
+        async function renderBuilder( builder ) {
+
+          this.builder.start( {
+            root: content.querySelector( '#app' ),
+            data: { store: this.ignore.configs, key: config },
+            meta_store: this.ignore.apps,
+            app: [ 'ccm.component', dataset.path, config ],
+            builder: builder
+          } );
+
+        }
+
       };
+
+      /** @returns {Object} instance configuration currently being worked on */
+      this.getValue = () => this.builder && this.builder.getValue && $.clone( this.builder.getValue() ) || null;
+
     }
 
   };

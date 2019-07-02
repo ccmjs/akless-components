@@ -113,6 +113,7 @@
 #menu-caption {
   padding: 0 1em 0 0.5em;
   font-weight: bold;
+  white-space: nowrap;
 }
 
 #menu-caption:after {

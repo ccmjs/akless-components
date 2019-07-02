@@ -6,34 +6,177 @@
 
 ccm.files[ 'resources.js' ] = {
 
-  "local": {
-    "html": [ "ccm.get", "../component_manager/resources/resources.js", "html" ],
-    "css": [ "ccm.load",
-      "../component_manager/resources/default.css",
-      "../libs/bootstrap-4/css/bootstrap.min.css",
-      { "context": "head", "url": "../libs/bootstrap-4/css/bootstrap.min.css" }
-    ],
+  "config": {
+    "builder": [ "ccm.component", "../app_builder/ccm.app_builder.js", [ "ccm.get", "../app_builder/resources/resources.js", "local" ] ],
     "data": {
       "store": [ "ccm.store", { "name": "dms-components", "url": "http://localhost:8080" } ],
-      "key": "cloze-6-0-0"
+      "key": "json_builder-1-4-0"
     },
-    "menu_top": [ "ccm.component", "../menu/ccm.menu.js", [ "ccm.get", "../component_manager/resources/resources.js", "menu_top_local" ] ],
-    "menu_app": [ "ccm.component", "../menu/ccm.menu.js", [ "ccm.get", "../component_manager/resources/resources.js", "menu_app_local" ] ],
-    "form": [ "ccm.component", "../submit/ccm.submit.js", [ "ccm.get", "../component_manager/resources/resources.js", "form_local" ] ],
-    "user": [ "ccm.start", "../user/ccm.user.js", [ "ccm.get", "../component_manager/resources/resources.js", "user_local" ] ],
+    "form": [ "ccm.component", "../submit/ccm.submit.js", [ "ccm.get", "../component_manager/resources/resources.js", "form" ] ],
+    "ignore": {
+      "apps": [ "ccm.store", { "url": "http://localhost:8080", "name": "dms-apps" } ],
+      "configs": [ "ccm.store", { "url": "http://localhost:8080", "name": "dms-configs" } ]
+    },
     "logger":  [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
-    "routing": [ "ccm.instance", "../routing/ccm.routing.js", { "app": "1558991104746X06788207882716102" } ]
+    "routing": [ "ccm.instance", "../routing/ccm.routing.js", { "app": "1558991104746X06788207882716102" } ],
+    "user": [ "ccm.start", "../user/ccm.user.js", [ "ccm.get", "../component_manager/resources/resources.js", "user" ] ]
   },
 
-  "demo": {
+  "form": {
+    "css": [ "ccm.load",
+      { "context": "head", "url": "../libs/bootstrap/css/font-face.css" },
+      "../libs/bootstrap/css/bootstrap.css",
+      "../submit/resources/default.css"
+    ],
+    "entries": [ "ccm.get", "../component_manager/resources/resources.js", "form_entries" ],
     "data": {
-      "store": [ "ccm.store", { "name": "dms-components", "url": "https://ccm2.inf.h-brs.de" } ],
-      "key": "cloze-6-0-0"
-    }
+      "store": [ "ccm.store", { "name": "dms-components", "url": "http://localhost:8080" } ]
+    },
+    "builder": [ "ccm.component", "../json_builder/ccm.json_builder.js", { "directly": true, "nosubmit": true } ]
   },
+
+  "form_entries": [
+    "<div class='well'>Here you can make adjustments to your published component and also set demos and app builders.</div>",
+    {
+      "label": "<span style='color:red'>*</span>Title",
+      "name": "title",
+      "type": "text",
+      "info": "Title of the component. As understandable and short as possible.",
+      "placeholder": "Digital Maker Space",
+      "required": true,
+      "maxlength": 35
+    },
+    {
+      "label": "<span style='color:red'>*</span>URL",
+      "name": "path",
+      "type": "url",
+      "info": "Your component file must be accessible via a public URL on the web. Most developers use <a href='https://pages.github.com/' target='_blank'>GitHub Pages</a> for this. For the transparency please do not publish minimized code. The component name and the version number can not be changed in the URL, only the path of the component can be adjusted.",
+      "placeholder": "https://ccmjs.github.io/akless-components/dms/versions/ccm.dms-2.0.0.js",
+      "required": true,
+      "pattern": ".+/ccm\\.([a-z][a-z0-9_]*)(-(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*))(\\.js)$",
+      "title": "The filename of the component must start with 'ccm.' followed by the unique component name and then a '-' followed by the component version number and a '.js' in the end. Example: ccm.dms-2.0.0.js"
+    },
+    {
+      "label": "Icon",
+      "name": "icon",
+      "type": "url",
+      "info": "The icon file must be accessible via a public URL on the web and is ideally a 64x64 SVG file. The icon will be published under the <a href='https://creativecommons.org/share-your-work/public-domain/cc0/' target='_blank'>CC0 license</a>. Make sure the icon is compatible with this license.",
+      "placeholder": "https://ccmjs.github.io/akless-components/dms/resources/component.png"
+    },
+    {
+      "label": "Abstract",
+      "name": "subject",
+      "type": "text",
+      "info": "A short description of your component. Ideally in title case",
+      "placeholder": "Provides Components for Creating Apps.",
+      "maxlength": 70
+    },
+    {
+      "label": "Description",
+      "name": "description",
+      "type": "textarea",
+      "info": "A detailed description of your component. Try to make as understandable as possible what kind of apps you can create with the help of your component.",
+      "placeholder": "Enables you to create your own Digital Maker Space, where component developers can publish, find, try, and rate components, and app creators can create their own apps from components without programming skills. With the built-in App Store, the created apps can be found, tried, rated, reused and shared by others. Everything in a Digital Maker Space is free software and all content is public domain."
+    },
+    {
+      "label": "Category",
+      "name": "category",
+      "type": "radio",
+      "info": "What kind of component is it? Choose the category that best fits the type of your component.<br>In the case of <code>App Creation</code>, the component is provided as a digital tool for creating apps.<br>The component can be used as an <code>Configuration Builder</code> if an app created from the component can be used to create an app configuration.<br>A <code>Utility</code> component is not for creating apps, but provides useful functionality that can be optionally used by other apps.",
+      "items": [
+        {
+          "label": "App Creation",
+          "value": "App Creation"
+        },
+        {
+          "label": "Configuration Builder",
+          "value": "Configuration Builder"
+        },
+        {
+          "label": "Utility",
+          "value": "Utility"
+        }
+      ]
+    },
+    {
+      "label": "Tags",
+      "type": "several",
+      "info": "Here you can define any tags through which your component can be found. Only one tag per input field. Via +/- you can add/remove additional input fields.",
+      "item": {
+        "name": "tags",
+        "type": "text"
+      }
+    },
+    {
+      "label": "Demos",
+      "name": "demos",
+      "type": "several",
+      "info": "Enter the titles and app IDs of created apps to be listed as demos. Only one value per input field. Via +/- you can add/remove additional input fields.",
+      "items": [
+        {
+          "label": "Title",
+          "name": "title",
+          "type": "text",
+          "info": "Title of the demo in the demo menu.",
+          "required": true
+        },
+        {
+          "label": "App ID",
+          "name": "app_id",
+          "type": "text",
+          "info": "App ID of the app created from this component to be used as a demo.",
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "An App ID can only contain letters, numbers, and no special characters except \"-\" and \"_\".",
+          "required": true
+        }
+      ]
+    },
+    {
+      "label": "Builders",
+      "name": "builders",
+      "type": "several",
+      "info": "Enter the titles, components and app IDs of created apps to be listed as builders. Only one value per input field. Via +/- you can add/remove additional input fields.",
+      "items": [
+        {
+          "label": "Title",
+          "name": "title",
+          "type": "text",
+          "info": "Title of the builder in the builder menu.",
+          "required": true
+        },
+        {
+          "label": "Component URL",
+          "name": "url",
+          "type": "url",
+          "info": "URL of the component from which the builder app is created.",
+          "placeholder": "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-1.4.0.js",
+          "required": true,
+          "pattern": ".+/ccm\\.([a-z][a-z0-9_]*)(-(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*))(\\.js)$",
+          "title": "The filename of the component must start with 'ccm.' followed by the unique component name and then a '-' followed by the component version number and a '.js' in the end. Example: ccm.json_builder-1.4.0.js"
+        },
+        {
+          "label": "Configuration",
+          "name": "config",
+          "type": "builder",
+          "info": "Configuration to be used to create the builder app out of the component.",
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "An App ID can only contain letters, numbers, and no special characters except \"-\" and \"_\"."
+        }
+      ]
+    },
+    "<div class='well'><p>I agree that the icon (if changed) will be released as public domain under the <a href='https://creativecommons.org/share-your-work/public-domain/cc0/' target='_blank'>CC0 license</a>.</p>I confirm that this does not violate the copyright of third parties.</div>",
+    {
+      "label": "<span style='color:red'>*</span>I Agree",
+      "type": "checkbox",
+      "info": "Everything in a Digital Maker Space is free software and all content is public domain. So you can only publish anything if this requirement is fulfilled.",
+      "required": true
+    },
+    { "type": "submit" }
+  ],
 
   "html": {
     "main": {
+      "tag": "div",
       "id": "main",
       "inner": [
         {
@@ -137,6 +280,19 @@ ccm.files[ 'resources.js' ] = {
                 "tag": "table",
                 "class": "table table-sm small",
                 "inner": [
+                  {
+                    "tag": "tr",
+                    "inner": [
+                      {
+                        "tag": "td",
+                        "inner": "Index"
+                      },
+                      {
+                        "tag": "td",
+                        "inner": "%index%"
+                      }
+                    ]
+                  },
                   {
                     "tag": "tr",
                     "inner": [
@@ -274,31 +430,50 @@ ccm.files[ 'resources.js' ] = {
               "inner": {
                 "tag": "button",
                 "class": "btn btn-link btn-block btn-sm",
-                "inner": "+ Add Builder"
+                "inner": "+ Add Demo"
               }
             }
           ]
         },
-        { "id": "builder" }
+        { "id": "app" }
       ]
     }
   },
 
-  "menu_top": {
-    "html": [ "ccm.get", "https://ccmjs.github.io/akless-components/component_manager/resources/resources.js", "menu_top_html" ],
+  "menu_app": {
+    "html": [ "ccm.get", "../component_manager/resources/resources.js", "menu_app_html" ],
     "css": [ "ccm.load",
-      "https://ccmjs.github.io/akless-components/component_manager/resources/menu_top.css",
-      "https://ccmjs.github.io/akless-components/libs/bootstrap-4/css/bootstrap.min.css"
+      "../component_manager/resources/menu_app.css",
+      "../libs/bootstrap-4/css/bootstrap.min.css"
     ],
     "selected": 1
   },
 
-  "menu_top_local": {
-    "html": [ "ccm.get", "../component_manager/resources/resources.js", "menu_top_html" ],
+  "menu_app_html": {
+    "main": {
+      "id": "main",
+      "inner": {
+        "id": "entries",
+        "class": "list-group"
+      }
+    },
+    "entry": {
+      "tag": "a",
+      "class": "entry list-group-item list-group-item-action",
+      "onclick": "%click%",
+      "inner": {
+        "class": "title"
+      }
+    }
+  },
+
+  "menu_top": {
     "css": [ "ccm.load",
       "../component_manager/resources/menu_top.css",
       "../libs/bootstrap-4/css/bootstrap.min.css"
     ],
+    "html": [ "ccm.get", "../component_manager/resources/resources.js", "menu_top_html" ],
+    "data": { "entries": [ "Overview", "Reviews", "App Creation" ] },
     "selected": 1
   },
 
@@ -327,56 +502,7 @@ ccm.files[ 'resources.js' ] = {
     }
   },
 
-  "menu_app": {
-    "html": [ "ccm.get", "https://ccmjs.github.io/akless-components/component_manager/resources/resources.js", "menu_app_html" ],
-    "css": [ "ccm.load",
-      "https://ccmjs.github.io/akless-components/component_manager/resources/menu_app.css",
-      "https://ccmjs.github.io/akless-components/libs/bootstrap-4/css/bootstrap.min.css"
-    ],
-    "selected": 1
-  },
-
-  "menu_app_local": {
-    "html": [ "ccm.get", "../component_manager/resources/resources.js", "menu_app_html" ],
-    "css": [ "ccm.load",
-      "../component_manager/resources/menu_app.css",
-      "../libs/bootstrap-4/css/bootstrap.min.css"
-    ],
-    "selected": 1
-  },
-
-  "menu_app_html": {
-    "main": {
-      "id": "main",
-      "inner": {
-        "id": "entries",
-        "class": "list-group"
-      }
-    },
-    "entry": {
-      "tag": "a",
-      "class": "entry list-group-item list-group-item-action",
-      "onclick": "%click%",
-      "inner": {
-        "class": "title"
-      }
-    }
-  },
-
   "user": {
-    "realm": "cloud",
-    "url": "http://localhost:8080",
-    "store": "dms-user",
-    "title": "Please enter username and password",
-    "hash": [ "ccm.load", { "url": "https://ccmjs.github.io/akless-components/modules/md5.js", "type": "module" } ],
-    "css": [ "ccm.load",
-      "https://ccmjs.github.io/akless-components/libs/bootstrap/css/bootstrap.css",
-      { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/bootstrap/css/font-face.css" },
-      "https://ccmjs.github.io/akless-components/user/resources/default.css"
-    ]
-  },
-
-  "user_local": {
     "realm": "cloud",
     "url": "http://localhost:8080",
     "store": "dms-user",
@@ -387,116 +513,6 @@ ccm.files[ 'resources.js' ] = {
       { "context": "head", "url": "../libs/bootstrap/css/font-face.css" },
       "../user/resources/default.css"
     ]
-  },
-
-  "form": {
-    "entries": [ "ccm.get", "https://ccmjs.github.io/akless-components/component_manager/resources/resources.js", "form_entries" ],
-    "data": {
-      "store": [ "ccm.store", { "name": "dms-components", "url": "https://ccm2.inf.h-brs.de" } ]
-    }
-  },
-
-  "form_local": {
-    "css": [ "ccm.load",
-      { "context": "head", "url": "../libs/bootstrap/css/font-face.css" },
-      "../libs/bootstrap/css/bootstrap.css",
-      "../submit/resources/default.css"
-    ],
-    "entries": [ "ccm.get", "../component_manager/resources/resources.js", "form_entries" ],
-    "data": {
-      "store": [ "ccm.store", { "name": "dms-components", "url": "http://localhost:8080" } ]
-    }
-  },
-
-  "form_entries": [
-    "<div class='well'>Here you can make adjustments to your published component and also set demos.</div>",
-    {
-      "label": "<span style='color:red'>*</span>Title",
-      "name": "title",
-      "type": "text",
-      "info": "Title of the component. As understandable and short as possible.",
-      "placeholder": "Digital Maker Space",
-      "required": true,
-      "maxlength": 35
-    },
-    {
-      "label": "<span style='color:red'>*</span>URL",
-      "name": "path",
-      "type": "url",
-      "info": "Your component file must be accessible via a public URL on the web. Most developers use <a href='https://pages.github.com/' target='_blank'>GitHub Pages</a> for this. For the transparency please do not publish minimized code. The component name and the version number can not be changed in the URL, only the path of the component can be adjusted.",
-      "placeholder": "https://ccmjs.github.io/akless-components/dms/versions/ccm.dms-2.0.0.js",
-      "required": true,
-      "pattern": ".+/ccm\\.([a-z][a-z0-9_]*)(-(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*))(\\.js)$",
-      "title": "The filename of the component must start with 'ccm.' followed by the unique component name and then a '-' followed by the component version number and a '.js' in the end. Example: ccm.dms-1.0.0.js"
-    },
-    {
-      "label": "Icon",
-      "name": "icon",
-      "type": "url",
-      "info": "The icon file must be accessible via a public URL on the web and is ideally a 64x64 SVG file. The icon will be published under the <a href='https://creativecommons.org/share-your-work/public-domain/cc0/' target='_blank'>CC0 license</a>. Make sure the icon is compatible with this license.",
-      "placeholder": "https://ccmjs.github.io/akless-components/dms/resources/component.png"
-    },
-    {
-      "label": "Abstract",
-      "name": "subject",
-      "type": "text",
-      "info": "A short description of your component. Ideally in title case",
-      "placeholder": "Provides Components for Creating Apps.",
-      "maxlength": 70
-    },
-    {
-      "label": "Description",
-      "name": "description",
-      "type": "textarea",
-      "info": "A detailed description of your component. Try to make as understandable as possible what kind of apps you can create with the help of your component.",
-      "placeholder": "Enables you to create your own Digital Maker Space, where component developers can publish, find, try, and rate components, and app creators can create their own apps from components without programming skills. With the built-in App Store, the created apps can be found, tried, rated, reused and shared by others. Everything in a Digital Maker Space is free software and all content is public domain."
-    },
-    {
-      "label": "Category",
-      "name": "category",
-      "type": "radio",
-      "info": "What kind of component is it? Choose the category that best fits the type of your component.<br>In the case of <code>App Creation</code>, the component is provided as a digital tool for creating apps.<br>The component can be used as an <code>Configuration Builder</code> if an app created from the component can be used to create an app configuration.<br>A <code>Utility</code> component is not for creating apps, but provides useful functionality that can be optionally used by other apps.",
-      "items": [
-        {
-          "label": "App Creation",
-          "value": "App Creation"
-        },
-        {
-          "label": "Configuration Builder",
-          "value": "Configuration Builder"
-        },
-        {
-          "label": "Utility",
-          "value": "Utility"
-        }
-      ]
-    },
-    {
-      "label": "Tags",
-      "type": "several",
-      "info": "Here you can define any tags through which your components can be found. Only one tag per input field. Via +/- you can add/remove additional input fields.",
-      "item": {
-        "name": "tags",
-        "type": "text"
-      }
-    },
-    {
-      "label": "Demos",
-      "type": "several",
-      "info": "Enter the app IDs of created apps to be listed as demos. Only one tag per input field. Via +/- you can add/remove additional input fields.",
-      "item": {
-        "name": "demos",
-        "type": "text"
-      }
-    },
-    "<div class='well'><p>I agree that the icon (if changed) will be released as public domain under the <a href='https://creativecommons.org/share-your-work/public-domain/cc0/' target='_blank'>CC0 license</a>.</p>I confirm that this does not violate the copyright of third parties.</div>",
-    {
-      "label": "<span style='color:red'>*</span>I Agree",
-      "type": "checkbox",
-      "info": "Everything in a Digital Maker Space is free software and all content is public domain. So you can only publish anything if this requirement is fulfilled.",
-      "required": true
-    },
-    { "type": "submit" }
-  ]
+  }
 
 };
