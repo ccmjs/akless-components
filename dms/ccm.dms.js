@@ -4,7 +4,7 @@
  * @license MIT License
  * @version latest (2.0.0)
  * @changes
- * version 2.0.0 (20.05.2019):
+ * version 2.0.0 (02.07.2019):
  * - ...
  * version 1.0.7 (27.04.2019):
  * - uses ccm.star_rating_result.js v4.0.0
