@@ -10,7 +10,7 @@
 ccm.files[ 'resources.js' ] = {
 
   "config": {
-    "component_manager": [ "ccm.component", "../component_manager/ccm.component_manager.js", [ "ccm.get", "../component_manager/resources/resources.js", "local" ] ],
+    "component_manager": [ "ccm.component", "../component_manager/ccm.component_manager.js", [ "ccm.get", "../component_manager/resources/resources.js", "config" ] ],
     "data": {
       "store": [ "ccm.store", { "name": "dms-components", "url": "http://localhost:8080" } ],
       "key": {}
