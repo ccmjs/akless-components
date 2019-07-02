@@ -24,7 +24,7 @@ ccm.files[ 'configs-1.0.0.js' ] = {
     "form.1": "../submit/ccm.submit.js",
     "form.2.css": [ "ccm.load",
       "../libs/bootstrap/css/bootstrap.css",
-      "../dms/resources/submit.css"
+      "../dms/resources/versions/submit-1.0.0.css"
     ],
     "component_manager": [ "ccm.component", "../component_manager/ccm.component_manager.js", [ "ccm.get", "../component_manager/resources/configs.js", "local" ] ],
     "user": [ "ccm.instance", "../user/ccm.user.js", {
@@ -51,10 +51,10 @@ ccm.files[ 'configs-1.0.0.js' ] = {
     "listing.2.defaults.icon": "../dms/resources/component.png",
     "rating.2.css.3": "../dms/resources/rating_result.css",
     "rating.2.data": { "store": [ "ccm.store", [ "ccm.get", { "name": "component_ratings", "url": "https://ccm2.inf.h-brs.de" }, {} ] ] },
-    "form.1": "../submit/ccm.submit.js",
+    "form.1": "..submit.js",
     "form.2.css": [ "ccm.load",
       "../libs/bootstrap/css/bootstrap.css",
-      "../dms/resources/submit.css"
+      "../dms/resources/versions/submit-1.0.0.css"
     ],
     "component_manager": [ "ccm.component", "../component_manager/ccm.component_manager.js", [ "ccm.get", "../component_manager/resources/configs.js", "developer" ] ],
     "user": [ "ccm.instance", "../user/ccm.user.js", {
