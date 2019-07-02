@@ -37,43 +37,45 @@
 
     name: 'dms',
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    ccm: '../../ccm/ccm.js',
 
     config: {
-      "title": "Digital Maker Space",
-//    "logo": "https://ccmjs.github.io/akless-components/dms/resources/component.png",
-      "html": [ "ccm.get", "https://ccmjs.github.io/akless-components/dms/resources/resources.js", "html" ],
-      "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/dms/resources/default.css" ],
+      "css": [ "ccm.load", "../dms/resources/default.css" ],
+//    "component_manager": [ "ccm.component", "../component_manager/ccm.component_manager.js" ],
       "data": {
         "store": [ "ccm.store" ],
         "key": {}
       },
-      "menu": [ "ccm.component", "https://ccmjs.github.io/akless-components/menu/versions/ccm.menu-2.6.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/dms/resources/resources.js", "menu" ] ],
-//    "form": [ "ccm.component", "https://ccmjs.github.io/akless-components/submit/versions/ccm.submit-7.1.2.js" ],
-//    "listing": [ "ccm.component", "https://ccmjs.github.io/akless-components/listing/versions/ccm.listing-3.0.0.js" ],
+      "default_builder": {
+        "title": "JSON Builder",
+        "component": "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-1.4.0.js",
+        "config": { "directly": true, "nosubmit": true }
+      },
+      "default_icon": "https://ccmjs.github.io/akless-components/dms/resources/default.png",
+//    "form": [ "ccm.component", "../submit/ccm.submit.js" ],
+      "html": [ "ccm.get", "../dms/resources/resources.js", "html" ],
+      "ignore": {
+        "apps": [ 'ccm.store' ],
+        "configs": [ 'ccm.store' ]
+      },
+//    "listing": [ "ccm.component", "../listing/ccm.listing.js" ],
+//    "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
+//    "logo": "../dms/resources/component.png",
+      "menu": [ "ccm.component", "../menu/ccm.menu.js", [ "ccm.get", "../dms/resources/resources.js", "menu" ] ],
 //    "rating": [ "ccm.component", "https://ccmjs.github.io/tkless-components/star_rating_result/versions/ccm.star_rating_result-4.0.0.js" ],
-//    "component_manager": [ "ccm.component", "https://ccmjs.github.io/akless-components/component_manager/versions/ccm.component_manager-2.2.6.js" ],
-//    "user": [ "ccm.start", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.1.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "guest" ] ],
-//    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.2.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
-//    "routing": [ "ccm.instance", "https://ccmjs.github.io/akless-components/routing/versions/ccm.routing-2.0.1.js" ],
-      "default_icon": "https://ccmjs.github.io/akless-components/dms/resources/default.png"
+//    "routing": [ "ccm.instance", "../routing/ccm.routing.js" ],
+      "title": "Digital Maker Space"
+//    "user": [ "ccm.start", "../user/ccm.user.js", [ "ccm.get", "../user/resources/configs.js", "guest" ] ]
     },
 
     Instance: function () {
 
       let $, user, content;
 
-      this.init = async () => {
+      this.ready = async () => {
 
         // set shortcut to help functions
         $ = this.ccm.helper;
-
-        // has user instance? => restart on login/logout event
-        if ( this.user ) this.user.onchange = this.start;
-
-      };
-
-      this.ready = async () => {
 
         // logging of 'ready' event
         this.logger && this.logger.log( 'ready', $.privatize( this, true ) );
@@ -208,7 +210,7 @@
                 meta.tags = meta.tags.filter( tag => tag );
                 meta.ignore = { demos: [], builders: [] };
 
-                // set dataset key and permission settings
+                // set data set key and permission settings
                 meta.key = meta.identifier + '-' + meta.version.split( '.' ).join( '-' );
                 meta._ = { access: { get: 'all', set: 'creator', del: 'creator' } };
 
@@ -228,7 +230,7 @@
 
         /**
          * shows a component
-         * @param {string} index
+         * @param {string} index - component index
          * @returns {Promise<void>}
          */
         const showComponent = async index => {
@@ -236,11 +238,8 @@
           // update route
           this.routing && this.routing.set( `component-${index}` );
 
-          // clear content
-          $.setContent( content, '' );
-
           // no component manager? => abort
-          if ( !this.component_manager ) return;
+          if ( !this.component_manager ) return $.setContent( content, '' );
 
           // render component manager
           const component_manager = await this.component_manager.start( {
@@ -248,7 +247,9 @@
             data: {
               store: this.data.store,
               key: index
-            }
+            },
+            'ignore.apps': this.ignore.apps,
+            'ignore.configs': this.ignore.configs
           } );
 
           // replace version number with selector box
