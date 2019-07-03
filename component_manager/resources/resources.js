@@ -2,12 +2,15 @@
  * @overview data-based resources of ccm component for managing a component
  * @author André Kless <andre.kless@web.de> 2019
  * @license The MIT License (MIT)
+ * @version latest (1.0.0)
+ * @changes
+ * version 1.0.0 (03.07.2019)
  */
 
 ccm.files[ 'resources.js' ] = {
 
   "config": {
-    "builder": [ "ccm.component", "../app_builder/ccm.app_builder.js", [ "ccm.get", "../app_builder/resources/resources.js", "local" ] ],
+    "builder": [ "ccm.component", "../app_builder/ccm.app_builder.js", [ "ccm.get", "../app_builder/resources/resources.js", "config" ] ],
     "data": {
       "store": [ "ccm.store", { "name": "dms-components", "url": "http://localhost:8080" } ],
       "key": "json_builder-1-4-0"
