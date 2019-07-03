@@ -12,7 +12,7 @@
  * @param {string} website - URL of the website which renders the ccm-based app
  * @returns {string}
  */
-export function appURL( component, store, app_id, website='https://ccmjs.github.io/digital-maker-space/app.html' ) {
+export function appURL( component, store, app_id, website = 'https://ccmjs.github.io/digital-maker-space/app.html' ) {
 
   if ( store && app_id )
     return `${website}#component=${component}&name=${store.name}&url=${store.url}&key=${app_id}`;
