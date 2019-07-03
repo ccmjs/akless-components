@@ -96,6 +96,9 @@
         // get component dataset
         dataset = await $.dataset( this.data );
 
+        // dataset not exists? => abort
+        if ( !dataset || Object.keys( dataset ).length <= 1 ) return $.setContent( this.element, '' );
+
         // logging of 'start' event
         this.logger && this.logger.log( 'start', $.clone( dataset ) );
 
@@ -168,7 +171,7 @@
             if ( !dataset.ignore.builders || !dataset.ignore.builders.length ) return $.setContent( content, '' );
 
             // render app creation section
-            $.setContent( content, $.html( this.html.collection ) );
+            $.setContent( content, $.html( this.html.collection, { caption: 'Choose Builder' } ) );
 
             // render builder menu
             await this.menu_app.start( {
@@ -233,8 +236,8 @@
               dataset.ignore.builders.forEach( builder => {
                 dataset.builders.push( {
                   title: builder.title,
-                  url: builder.app[ 1 ],
-                  config: builder.app[ 2 ]
+                  component: builder.app[ 1 ],
+                  config: builder.app[ 2 ][ 2 ]
                 } );
               } );
               delete dataset.ignore;
@@ -270,9 +273,11 @@
 
               // prepare builders
               form.builder && await $.asyncForEach( meta.builders, async builder => {
-                builder.title && builder.url && meta.ignore.builders.push( {
+                if ( !builder.title || !builder.component || !builder.app ) return;
+                const app = await this.ccm.get( this.ignore.apps[ 1 ], builder.app );
+                meta.ignore.builders.push( {
                   title: builder.title,
-                  app: [ 'ccm.component', builder.url, builder.config ]
+                  app: [ 'ccm.component', app.path, [ 'ccm.get', this.ignore.configs[ 1 ], builder.app ] ]
                 } );
               } );
               delete meta.builders;
@@ -289,6 +294,13 @@
 
             }
           } );
+
+          // support deletion of a published component
+          $.append( content, $.html( { tag: 'button', inner: 'DELETE Component', onclick: async () => {
+            if ( !confirm( 'Are you sure?' ) ) return;
+            await this.data.store.del( dataset.key );
+            await this.start();
+          } } ) );
 
         }
 

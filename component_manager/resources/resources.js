@@ -53,7 +53,7 @@ ccm.files[ 'resources.js' ] = {
       "info": "Your component file must be accessible via a public URL on the web. Most developers use <a href='https://pages.github.com/' target='_blank'>GitHub Pages</a> for this. For the transparency please do not publish minimized code. The component name and the version number can not be changed in the URL, only the path of the component can be adjusted.",
       "placeholder": "https://ccmjs.github.io/akless-components/dms/versions/ccm.dms-2.0.0.js",
       "required": true,
-      "pattern": ".+/ccm\\.([a-z][a-z0-9_]*)(-(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*))(\\.js)$",
+      "pattern": ".+/ccm\\.([a-z][a-z0-9_]*)(-(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*))(\\.js)",
       "title": "The filename of the component must start with 'ccm.' followed by the unique component name and then a '-' followed by the component version number and a '.js' in the end. Example: ccm.dms-2.0.0.js"
     },
     {
@@ -125,7 +125,7 @@ ccm.files[ 'resources.js' ] = {
           "name": "app_id",
           "type": "text",
           "info": "App ID of the app created from this component to be used as a demo.",
-          "pattern": "^[a-zA-Z0-9_-]+$",
+          "pattern": "[a-zA-Z0-9_-]+",
           "title": "An App ID can only contain letters, numbers, and no special characters except \"-\" and \"_\".",
           "required": true
         }
@@ -135,35 +135,70 @@ ccm.files[ 'resources.js' ] = {
       "label": "Builders",
       "name": "builders",
       "type": "several",
-      "info": "Enter the titles, components and app IDs of created apps to be listed as builders. Only one value per input field. Via +/- you can add/remove additional input fields.",
+      "info": "Enter the title, component index, and app ID for each builder app to be listed in the app creation section of the builder menu. Only one value per input field. Via +/- you can add/remove additional input fields.",
       "items": [
         {
           "label": "Title",
           "name": "title",
           "type": "text",
-          "info": "Title of the builder in the builder menu.",
+          "info": "Title of the builder app in the builder menu of the app creation section.",
+          "required": true
+        },
+        {
+          "label": "Component Index",
+          "name": "component",
+          "type": "text",
+          "info": "Index of the component from which the builder app is created. How to know the index? The index can be found in the overview section of the component.",
+          "placeholder": "json_builder-1.4.0",
+          "required": true,
+          "pattern": "([a-z][a-z0-9_]*)(-(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*))",
+          "title": "The index of a component starts with the unique component name and then a '-' followed by the component version number. Example: json_builder-1.4.0"
+        },
+        {
+          "label": "App ID",
+          "name": "app",
+          "type": "text",
+          "info": "App ID of the builder app to be used for app creation.",
+          "placeholder": "1559859507011X17772030423968155",
+          "pattern": "[a-zA-Z0-9_-]+",
+          "title": "An App ID can only contain letters, numbers, and no special characters except \"-\" and \"_\".",
+          "required": true
+        }
+      ]
+    },
+    /*
+    {
+      "label": "Builders",
+      "name": "builders",
+      "type": "several",
+      "info": "Enter the titles, component URLs and app configurations to define builder apps that will to be listed as builders in the builder menu of the app creation section. Only one value per input field. Via +/- you can add/remove additional input fields.",
+      "items": [
+        {
+          "label": "Title",
+          "name": "title",
+          "type": "text",
+          "info": "Title of the builder app in the builder menu of the app creation section.",
           "required": true
         },
         {
           "label": "Component URL",
-          "name": "url",
+          "name": "component",
           "type": "url",
           "info": "URL of the component from which the builder app is created.",
           "placeholder": "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-1.4.0.js",
           "required": true,
-          "pattern": ".+/ccm\\.([a-z][a-z0-9_]*)(-(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*))(\\.js)$",
+          "pattern": ".+/ccm\\.([a-z][a-z0-9_]*)(-(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*))(\\.js)",
           "title": "The filename of the component must start with 'ccm.' followed by the unique component name and then a '-' followed by the component version number and a '.js' in the end. Example: ccm.json_builder-1.4.0.js"
         },
         {
           "label": "Configuration",
-          "name": "config",
+          "name": "app",
           "type": "builder",
-          "info": "Configuration to be used to create the builder app out of the component.",
-          "pattern": "^[a-zA-Z0-9_-]+$",
-          "title": "An App ID can only contain letters, numbers, and no special characters except \"-\" and \"_\"."
+          "info": "Configuration to be used to create the builder app out of the component."
         }
       ]
     },
+    */
     "<div class='well'><p>I agree that the icon (if changed) will be released as public domain under the <a href='https://creativecommons.org/share-your-work/public-domain/cc0/' target='_blank'>CC0 license</a>.</p>I confirm that this does not violate the copyright of third parties.</div>",
     {
       "label": "<span style='color:red'>*</span>I Agree",
@@ -422,7 +457,7 @@ ccm.files[ 'resources.js' ] = {
           "inner": [
             {
               "id": "menu-caption",
-              "inner": "Choose Builder"
+              "inner": "%caption%"
             },
             { "id": "menu-app" },
             {
@@ -430,7 +465,7 @@ ccm.files[ 'resources.js' ] = {
               "inner": {
                 "tag": "button",
                 "class": "btn btn-link btn-block btn-sm",
-                "inner": "+ Add Demo"
+                "inner": "%button%"
               }
             }
           ]

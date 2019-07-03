@@ -11,10 +11,23 @@
   --color4: #E6F4F1;
 }
 
+#element:empty, #content:empty {
+  margin: 1em;
+  text-align: center;
+}
+
+#element:empty:before {
+  content: 'No component found that could be managed.';
+}
+
+#content:empty:before {
+  content: 'Nothing to display.';
+}
+
 #element,
 #main,
 #content,
-#content > * {
+#content > div {
   height: 100%;
 }
 
