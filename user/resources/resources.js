@@ -12,7 +12,7 @@ ccm.files[ 'resources.js' ] = {
       { "context": "head", "url": "../libs/bootstrap/css/font-face.css" },
       "../user/resources/default.css"
     ],
-    "html": [ "ccm.get", "../user/resources/resources.js" ],
+    "html": [ "ccm.get", "../user/resources/resources.js", "html" ],
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
     "realm": "guest",
     "title": "Guest Mode: Please enter any username"
