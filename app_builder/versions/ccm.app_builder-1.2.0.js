@@ -5,7 +5,7 @@
  * @version 1.2.0
  * @changes
  * version 1.2.0 (23.01.2019):
- * - added provision of booklet
+ * - added provision of bookmarklet
  * - disabled Update and Delete button when starting with new app configuration
  * - uses ccm v19.0.0
  * - uses ccm.submit.js v6.7.2
@@ -146,12 +146,12 @@
               ]
             },
             {
-              "id": "booklet",
+              "id": "bookmarklet",
               "inner": [
                 {
                   "tag": "legend",
                   "class": "text-primary",
-                  "inner": "Booklet"
+                  "inner": "Bookmarklet"
                 },
                 {
                   "tag": "p",
@@ -161,7 +161,7 @@
                     {
                       "tag": "a",
                       "target": "_blank",
-                      "id": "booklet-link",
+                      "id": "bookmarklet-link",
                       "class": "text-danger",
                       "inner": "this link"
                     },
@@ -244,7 +244,7 @@
       "warning": "Are you sure you want to delete this App?",
       "builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/submit/versions/ccm.submit-6.7.2.js", [ "ccm.get", { "name": "submit", "url": "https://ccm2.inf.h-brs.de" }, "quick_decide_builder" ] ],
       "app": [ "ccm.component", "https://ccmjs.github.io/akless-components/quick_decide/versions/ccm.quick_decide-1.3.0.js" ],
-      "booklet": [ "ccm.component", "https://ccmjs.github.io/akless-components/window/versions/ccm.window-1.0.0.js" ]
+      "bookmarklet": [ "ccm.component", "https://ccmjs.github.io/akless-components/window/versions/ccm.window-1.0.0.js" ]
 
   //  "convert": { "app_to_builder": json => json, "builder_to_app": json => json },
   //  "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-8.3.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "guest" ] ],
@@ -527,14 +527,14 @@
           advance_elem.querySelector( '#embed_code' ).innerHTML = getEmbedCode();
           advance_elem.querySelector( '#id'         ).innerHTML = app_id;
 
-          // provision of booklet
-          if ( self.booklet )
-            advance_elem.querySelector( '#booklet-link' ).setAttribute( 'href', ( await self.booklet.instance( {
+          // provision of bookmarklet
+          if ( self.bookmarklet )
+            advance_elem.querySelector( '#bookmarklet-link' ).setAttribute( 'href', ( await self.bookmarklet.instance( {
               app: [ 'ccm.start', self.app.url, self.getValue() ],
               icon: 'https://ccmjs.github.io/akless-components/dms/resources/component.png'
-            } ) ).booklet() );
+            } ) ).bookmarklet() );
           else
-            $.removeElement( self.element.querySelector( '#booklet' ) );
+            $.removeElement( self.element.querySelector( '#bookmarklet' ) );
 
           // fade out the success message
           fadeOut( advance_elem.querySelector( '#success' ) );

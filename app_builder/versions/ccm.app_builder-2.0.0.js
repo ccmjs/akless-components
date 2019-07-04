@@ -198,14 +198,14 @@
                 },
                 {
                   "tag": "a",
-                  "id": "booklet",
+                  "id": "bookmarklet",
                   "class": "btn btn-secondary mr-2",
                   "inner": [
                     {
                       "tag": "span",
                       "class": "fas fa-bookmark"
                     },
-                    " Booklet"
+                    " Bookmarklet"
                   ]
                 },
                 {
@@ -358,7 +358,7 @@
           { "context": "head", "url": "https://use.fontawesome.com/releases/v5.6.3/css/all.css" }
         ]
       } ],
-      "booklet": [ "ccm.component", "https://ccmjs.github.io/akless-components/window/versions/ccm.window-1.0.0.js" ],
+      "bookmarklet": [ "ccm.component", "https://ccmjs.github.io/akless-components/window/versions/ccm.window-1.0.0.js" ],
       "qr_code": [ "ccm.load", "https://ccmjs.github.io/akless-components/libs/qrcode-generator/qrcode.min.js" ],
   //  "blockchain": [ "ccm.start", "https://ccmjs.github.io/rmueller-components/certificate_request/versions/ccm.certificate_request-1.0.0.js", [ "ccm.get", "https://ccmjs.github.io/rmueller-components/certificate_request/resources/config.js", "all" ] ],
       "icon": "https://ccmjs.github.io/akless-components/dms/resources/component.png"
@@ -720,14 +720,14 @@
           else
             $.removeElement( content.querySelector( '#download' ) );
 
-          // provide App via Booklet
-          if ( self.booklet )
-            content.querySelector( '#booklet' ).setAttribute( 'href', ( await self.booklet.instance( {
+          // provide App via Bookmarklet
+          if ( self.bookmarklet )
+            content.querySelector( '#bookmarklet' ).setAttribute( 'href', ( await self.bookmarklet.instance( {
               app: [ 'ccm.start', self.app.url, self.getValue() ],
               icon: self.icon
-            } ) ).booklet() );
+            } ) ).bookmarklet() );
           else
-            $.removeElement( content.querySelector( '#booklet' ) );
+            $.removeElement( content.querySelector( '#bookmarklet' ) );
 
           // provide App via iBook Widget
           if ( embed_code && self.helper.iBookWidget )
