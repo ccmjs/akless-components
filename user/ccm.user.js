@@ -37,14 +37,14 @@
         "https://ccmjs.github.io/akless-components/user/resources/default.css"
       ],
 //    "guest": "guest",
-      "html": [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/resources.js", "html" ]
+      "html": [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/resources.js", "html" ],
 //    "logged_in": true,
 //    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/ccm.log.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
 //    "norender": true,
 //    "onchange": event => console.log( 'User has logged ' + ( event ? 'in' : 'out' ) + '.' ),
-//    "realm": "guest",
+      "realm": "guest",
 //    "store": "ccm-user",
-//    "title": "Please enter username and password",
+      "title": "Please enter username and password"
 //    "url": "ccm2.inf.h-brs.de",
 //    "hash": [ "ccm.load", { "url": "https://ccmjs.github.io/akless-components/modules/md5.js", "type": "module" } ]
 

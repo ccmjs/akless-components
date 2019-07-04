@@ -13,13 +13,10 @@ ccm.files[ 'resources.js' ] = {
       "../user/resources/default.css"
     ],
     "html": [ "ccm.get", "../user/resources/resources.js", "html" ],
-    "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
-    "realm": "guest",
-    "title": "Guest Mode: Please enter any username"
+    "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ]
   },
 
   "cfg_guest": {
-    "realm": "guest",
     "title": "Guest Mode: Please enter any username"
   },
 
@@ -48,7 +45,6 @@ ccm.files[ 'resources.js' ] = {
   },
 
   "cfg_compact": {
-    "realm": "guest",
     "title": "Guest Mode: Please enter any username",
     "html.logged_in": {
       "id": "logged_in",
