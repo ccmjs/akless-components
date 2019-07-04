@@ -7,31 +7,28 @@
 ccm.files[ 'resources.js' ] = {
 
   "cfg_local": {
-    "key": "local",
     "css": [ "ccm.load",
       "../libs/bootstrap/css/bootstrap.css",
       { "context": "head", "url": "../libs/bootstrap/css/font-face.css" },
       "../user/resources/default.css"
     ],
+    "html": [ "ccm.get", "../user/resources/resources.js" ],
+    "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
     "realm": "guest",
-    "title": "Guest Mode: Please enter any username",
-    "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ]
+    "title": "Guest Mode: Please enter any username"
   },
 
   "cfg_guest": {
-    "key": "guest",
     "realm": "guest",
     "title": "Guest Mode: Please enter any username"
   },
 
   "cfg_pseudo": {
-    "key": "pseudo",
     "realm": "guest",
     "guest": true
   },
 
   "cfg_cloud": {
-    "key": "cloud",
     "realm": "cloud",
     "url": "https://ccm2.inf.h-brs.de",
     "title": "Please enter username and password",
@@ -39,22 +36,18 @@ ccm.files[ 'resources.js' ] = {
   },
 
   "cfg_hbrsinfkaul": {
-    "key": "hbrsinfkaul",
     "realm": "hbrsinfkaul"
   },
 
   "cfg_hbrsinfpseudo": {
-    "key": "hbrsinfpseudo",
     "realm": "hbrsinfpseudo"
   },
 
   "cfg_lea": {
-    "key": "lea",
     "realm": "lea"
   },
 
   "cfg_compact": {
-    "key": "button",
     "realm": "guest",
     "title": "Guest Mode: Please enter any username",
     "html.logged_in": {
