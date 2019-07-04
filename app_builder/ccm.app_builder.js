@@ -1,20 +1,16 @@
 /**
- * @overview ccm component for building apps
+ * @overview ccm component for app creation
  * @author André Kless <andre.kless@web.de> 2018-2019
  * @license The MIT License (MIT)
- * @version latest (2.0.0)
+ * @version latest (3.0.0)
  * @changes
- * version 2.0.0 (18.02.2019):
- * - changed default instance configuration
- * - more ways for handover app (Embed Code, App ID, URL, QR Code, Download, iBook Widget and SCORM)
- * - more ways for loading existing app (Embed Code, App ID and URL)
- * - use of modal dialogs
- * - outsourcing of help functions to ES6 module
- * - uses Bootstrap v4 instead of v3
- * (for older version changes see ccm.app_builder-1.4.0.js)
+ * version 3.0.0 (04.07.2019):
+ * - ...
+ * - uses ccm v21.1.1
+ * (for older version changes see ccm.app_builder-2.0.0.js)
  */
 
-( function () {
+( () => {
 
   const component = {
 
@@ -23,350 +19,31 @@
     ccm: 'https://ccmjs.github.io/ccm/ccm.js',
 
     config: {
-
-      "html": {
-        "main": {
-          "id": "element",
-          "inner": [
-            {
-              "id": "maker",
-              "inner": [
-                { "id": "builder" },
-                {
-                  "id": "app",
-                  "inner": [
-                    { "tag": "b", "inner": "Preview:" },
-                    { "id": "preview" }
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "buttons",
-              "class": "d-flex justify-content-around flex-wrap bg-dark",
-              "inner": [
-                {
-                  "id": "button-update",
-                  "class": "btn btn-success disabled",
-                  "onclick": "%onUpdate%",
-                  "inner": "Save Changes"
-                },
-                {
-                  "id": "button-read",
-                  "class": "btn btn-primary",
-                  "onclick": "%onRead%",
-                  "inner": "Load App"
-                },
-                {
-                  "id": "button-create",
-                  "class": "btn btn-warning",
-                  "onclick": "%onCreate%",
-                  "inner": "Create As New"
-                },
-                {
-                  "id": "button-delete",
-                  "class": "btn btn-danger disabled",
-                  "onclick": "%onDelete%",
-                  "inner": "Delete"
-                }
-              ]
-            }
-          ]
-        },
-        "handover": {
-          "id": "handover",
-          "inner": [
-            {
-              "class": "d-flex",
-              "inner": [
-                {
-                  "inner": [
-                    {
-                      "id": "embed",
-                      "class": "input-group mb-3",
-                      "inner": [
-                        {
-                          "class": "input-group-prepend",
-                          "inner": {
-                            "tag": "span",
-                            "class": "input-group-text",
-                            "inner": "Embed"
-                          }
-                        },
-                        {
-                          "tag": "input",
-                          "readonly": true,
-                          "type": "text",
-                          "id": "embed_code",
-                          "class": "form-control bg-white",
-                          "aria-label": "Embed Code"
-                        },
-                        {
-                          "class": "input-group-append",
-                          "inner": {
-                            "tag": "button",
-                            "id": "embed_copy",
-                            "class": "btn btn-success",
-                            "type": "button",
-                            "inner": "Copy"
-                          }
-                        }
-                      ]
-                    },
-                    {
-                      "class": "input-group mb-3",
-                      "inner": [
-                        {
-                          "class": "input-group-prepend",
-                          "inner": {
-                            "tag": "span",
-                            "class": "input-group-text",
-                            "inner": "App ID"
-                          }
-                        },
-                        {
-                          "tag": "input",
-                          "readonly": true,
-                          "type": "text",
-                          "id": "app_id",
-                          "class": "form-control bg-white",
-                          "aria-label": "App ID"
-                        },
-                        {
-                          "class": "input-group-append",
-                          "inner": {
-                            "tag": "button",
-                            "id": "id_copy",
-                            "class": "btn btn-success",
-                            "type": "button",
-                            "inner": "Copy"
-                          }
-                        }
-                      ]
-                    },
-                    {
-                      "class": "input-group mb-3",
-                      "inner": [
-                        {
-                          "class": "input-group-prepend",
-                          "inner": {
-                            "tag": "span",
-                            "class": "input-group-text",
-                            "inner": "URL"
-                          }
-                        },
-                        {
-                          "tag": "input",
-                          "readonly": true,
-                          "type": "text",
-                          "id": "app_url",
-                          "class": "form-control bg-white",
-                          "aria-label": "URL"
-                        },
-                        {
-                          "class": "input-group-append",
-                          "inner": {
-                            "tag": "button",
-                            "id": "url_copy",
-                            "class": "btn btn-success",
-                            "type": "button",
-                            "inner": "Copy"
-                          }
-                        }
-                      ]
-                    }
-                  ]
-                },
-                { "id": "qr_code", "class": "pl-2" }
-              ]
-            },
-            {
-              "class": "text-center",
-              "inner": [
-                {
-                  "tag": "button",
-                  "type": "button",
-                  "id": "download",
-                  "class": "btn btn-primary mr-2",
-                  "inner": [
-                    {
-                      "tag": "span",
-                      "class": "fas fa-file-download"
-                    },
-                    " File"
-                  ]
-                },
-                {
-                  "tag": "a",
-                  "id": "booklet",
-                  "class": "btn btn-secondary mr-2",
-                  "inner": [
-                    {
-                      "tag": "span",
-                      "class": "fas fa-bookmark"
-                    },
-                    " Booklet"
-                  ]
-                },
-                {
-                  "tag": "button",
-                  "type": "button",
-                  "id": "ibook",
-                  "class": "btn btn-info mr-2",
-                  "inner": [
-                    {
-                      "tag": "span",
-                      "class": "fas fa-book"
-                    },
-                    " iBook Widget"
-                  ]
-                },
-                {
-                  "tag": "button",
-                  "type": "button",
-                  "id": "scorm",
-                  "class": "btn btn-danger",
-                  "inner": [
-                    {
-                      "tag": "span",
-                      "class": "fas fa-archive"
-                    },
-                    " SCORM"
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        "read": {
-          "id": "read",
-          "inner": [
-            {
-              "tag": "p",
-              "inner": "Use one of the following ways to load an app:"
-            },
-            {
-              "id": "embed",
-              "class": "input-group mb-3",
-              "inner": [
-                {
-                  "class": "input-group-prepend",
-                  "inner": {
-                    "tag": "span",
-                    "class": "input-group-text",
-                    "inner": "Embed"
-                  }
-                },
-                {
-                  "tag": "input",
-                  "type": "text",
-                  "id": "embed_code",
-                  "class": "form-control",
-                  "aria-label": "Embed Code"
-                },
-                {
-                  "class": "input-group-append",
-                  "inner": {
-                    "tag": "button",
-                    "id": "embed_load",
-                    "class": "btn btn-primary",
-                    "type": "button",
-                    "inner": "Load",
-                    "onclick": "%embed%"
-                  }
-                }
-              ]
-            },
-            {
-              "class": "input-group mb-3",
-              "inner": [
-                {
-                  "class": "input-group-prepend",
-                  "inner": {
-                    "tag": "span",
-                    "class": "input-group-text",
-                    "inner": "App ID"
-                  }
-                },
-                {
-                  "tag": "input",
-                  "type": "text",
-                  "id": "app_id",
-                  "class": "form-control",
-                  "aria-label": "App ID"
-                },
-                {
-                  "class": "input-group-append",
-                  "inner": {
-                    "tag": "button",
-                    "id": "id_copy",
-                    "class": "btn btn-primary",
-                    "type": "button",
-                    "inner": "Load",
-                    "onclick": "%app_id%"
-                  }
-                }
-              ]
-            },
-            {
-              "class": "input-group mb-3",
-              "inner": [
-                {
-                  "class": "input-group-prepend",
-                  "inner": {
-                    "tag": "span",
-                    "class": "input-group-text",
-                    "inner": "URL"
-                  }
-                },
-                {
-                  "tag": "input",
-                  "type": "text",
-                  "id": "app_url",
-                  "class": "form-control",
-                  "aria-label": "URL"
-                },
-                {
-                  "class": "input-group-append",
-                  "inner": {
-                    "tag": "button",
-                    "id": "url_copy",
-                    "class": "btn btn-primary",
-                    "type": "button",
-                    "inner": "Load",
-                    "onclick": "%url%"
-                  }
-                }
-              ]
-            }
-          ]
-        }
-      },
+      "app": [ "ccm.component", "../json_builder/ccm.json_builder.js" ],
+//    "bookmarklet": [ "ccm.component", "../window/ccm.window.js" ],
+      "builder": [ "ccm.component", "../json_builder/ccm.json_builder.js", { "directly": true, "nosubmit": true } ],
+//    "convert": { "app_to_builder": json => json, "builder_to_app": json => json },
       "css": [ "ccm.load",
-        "https://ccmjs.github.io/akless-components/app_builder/resources/default.css",
-        "https://ccmjs.github.io/akless-components/libs/bootstrap-4/css/bootstrap.min.css",
-        { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/bootstrap-4/css/bootstrap.min.css" }
+        "../app_builder/resources/default.css",
+        "../libs/bootstrap-4/css/bootstrap.min.css",
+        { "context": "head", "url": "../libs/bootstrap-4/css/bootstrap.min.css" }
       ],
       "data": { "store": [ "ccm.store" ] },
-      "warning": "Are you sure you want to delete this App?",
-      "builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/submit/versions/ccm.submit-7.0.0.js", [ "ccm.get", { "name": "submit", "url": "https://ccm2.inf.h-brs.de" }, "cloze_builder" ] ],
-      "app": [ "ccm.component", "https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-5.0.3.js" ],
-      "helper": [ "ccm.load", { "url": "https://ccmjs.github.io/akless-components/modules/helper.js", "type": "module" } ],
+//    "form": [ "ccm.component", "../submit/ccm.submit.js", [ "ccm.get", "../app_builder/resources/resources.js", "form" ] ],
+      "helper": [ "ccm.load", { "url": "../modules/helper.js", "type": "module" } ],
+      "html": [ "ccm.get", "../app_builder/resources/resources.js", "html" ],
+//    "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
+//    "meta_store": [ "ccm.store" ],
       "modal_dialog": [ "ccm.component", "https://ccmjs.github.io/tkless-components/modal/versions/ccm.modal-2.0.0.js", {
         "css": [ "ccm.load",
           "https://use.fontawesome.com/releases/v5.6.3/css/all.css",
           { "context": "head", "url": "https://use.fontawesome.com/releases/v5.6.3/css/all.css" }
         ]
       } ],
-      "booklet": [ "ccm.component", "https://ccmjs.github.io/akless-components/window/versions/ccm.window-1.0.0.js" ],
-      "qr_code": [ "ccm.load", "https://ccmjs.github.io/akless-components/libs/qrcode-generator/qrcode.min.js" ],
-  //  "blockchain": [ "ccm.start", "https://ccmjs.github.io/rmueller-components/certificate_request/versions/ccm.certificate_request-1.0.0.js", [ "ccm.get", "https://ccmjs.github.io/rmueller-components/certificate_request/resources/config.js", "all" ] ],
-      "icon": "https://ccmjs.github.io/akless-components/dms/resources/component.png"
-  //  "convert": { "app_to_builder": json => json, "builder_to_app": json => json },
-  //  "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-8.3.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "guest" ] ],
-  //  "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
-  //  "onchange"
-
+//    "onchange",
+//    "qr_code": [ "ccm.load", "../libs/qrcode-generator/qrcode.min.js" ],
+//    "user": [ "ccm.start", "../user/ccm.user.js", [ "ccm.get", "../user/resources/configs.js", "guest" ] ],
+      "warning": "Are you sure you want to delete this App?"
     },
 
     Instance: function () {
@@ -374,7 +51,7 @@
       let $; const self = this;
 
       /**
-       * current app-specific builder instance
+       * currently used builder instance
        * @type {Object}
        */
       let builder;
@@ -404,36 +81,10 @@
         this.logger && this.logger.log( 'start', $.clone( dataset ) );
 
         /**
-         * current App-ID
+         * dataset key of app configuration
          * @type {string}
          */
         let app_id = dataset.key; delete dataset.key;
-
-        // render main HTML structure
-        $.replace( this.element, this.element = $.html( this.html.main, {
-          onCreate: createApp,
-          onRead:   readApp,
-          onUpdate: updateApp,
-          onDelete: deleteApp
-        } ) );
-
-        /**
-         * website area for app building
-         * @type {Element}
-         */
-        const builder_elem = this.element.querySelector( '#builder' );
-
-        /**
-         * website area for app preview
-         * @type {Element}
-         */
-        const preview_elem = this.element.querySelector( '#preview' );
-
-        /**
-         * website area for CRUD buttons
-         * @type {Element}
-         */
-        const buttons_elem = this.element.querySelector( '#buttons' );
 
         /**
          * app configuration is managed in a local JavaScript object
@@ -446,6 +97,23 @@
          * @type {boolean}
          */
         let is_new = !Object.keys( dataset ).length;
+
+        // render main HTML structure
+        $.setContent( this.element, $.html( this.html.main, {
+          onCreate: createApp,
+          onRead:   readApp,
+          onUpdate: updateApp,
+          onDelete: deleteApp
+        } ) );
+
+        // select relevant web page areas
+        const builder_elem = this.element.querySelector( '#builder' );
+        const app_elem = this.element.querySelector( '#app' );
+        const buttons_elem = this.element.querySelector( '#buttons' );
+
+        // render login/logout and multilingualism area
+        this.lang && $.setContent( this.element.querySelector( '#lang' ), this.lang.root );
+        this.user && $.setContent( this.element.querySelector( '#user' ), this.user.root );
 
         // render initial app state
         await renderApp();
@@ -482,32 +150,97 @@
         /** when "Create" button has been clicked */
         async function createApp() {
 
-          // has user instance? => perform login
-          self.user && await self.user.login();
+          // user has to be logged in
+          try { self.user && await self.user.login(); } catch ( e ) { return; }
+
+          // get metadata from user
+          const metadata = await getMetadata();
 
           // get current app configuration from app-specific builder
           dataset = self.getValue(); delete dataset.key;
 
-          // add permission settings
+          // add permission settings and dataset key of metadata
           if ( self.user ) dataset._ = { access: { get: 'all', set: 'creator', del: 'creator' } };
+          dataset.meta = [ self.meta_store.source(), metadata.key ];
 
           // save app configuration
           app_id = await self.data.store.set( dataset ); delete dataset.key;
 
+          // has metadata?
+          if ( metadata ) {
+
+            // add app ID to source information
+            metadata.source = [ metadata.source, app_id ];
+
+            // save metadata
+            await self.meta_store.set( metadata );
+
+          }
+
+          // logging of 'create' event
+          self.logger && self.logger.log( 'create', { config: $.clone( dataset ), metadata: $.clone( metadata ) } );
+
           // no more a new app configuration
           is_new = false;
 
-          // logging of 'create' event
-          self.logger && self.logger.log( 'create', $.clone( dataset ) );
-
-          // perform certificate request
-          self.blockchain && self.blockchain.request( app_id );
+          // perform 'onchange' callback
+          self.onchange && self.onchange( self, 'create' );
 
           // give app to user
           await handoverApp();
 
-          // has 'change' callback? => perform it
-          self.onchange && self.onchange( self, 'create' );
+          /**
+           * renders publish form for app metadata and returns resulting app metadata
+           * @returns {Promise<Object>} app metadata
+           */
+          function getMetadata() { return new Promise( resolve => {
+
+            // no datastore for metadata or no form component or app configuration is managed locally? => no metadata
+            if ( !self.meta_store || !self.form || is_local ) return resolve( null );
+
+            // hide main area
+            self.element.querySelector( '#main' ).style.display = 'none';
+            $.append( self.element, $.html( { id: 'form' } ) );
+
+            // render publish form
+            self.form.start( {
+              root: self.element.querySelector( '#form' ),
+              onfinish: async form => {
+
+                // user has to be logged in
+                try { self.user && await self.user.login(); } catch ( e ) { return; }
+
+                // show main area
+                $.removeElement( self.element.querySelector( '#form' ) );
+                self.element.querySelector( '#main' ).style.display = 'block';
+
+                /**
+                 * app metadata
+                 * @type {Object}
+                 */
+                const meta = form.getValue();
+
+                // prepare metadata
+                meta.metaFormat = 'ccm-meta';
+                meta.metaVersion = '2.0.0';
+                meta.version = 1;
+                meta.creator = self.user.data().name || self.user.data().user;
+                meta.date = new Date().toISOString().split( 'T' )[ 0 ];
+                meta.format = 'application/json';
+                meta.path = self.app.url || self.app.index;
+                meta.source = self.data.store.source();
+                meta.license = 'CC0';
+                meta.tags = meta.tags.filter( tag => tag );
+                meta.key = $.generateKey();
+
+                // set permission settings
+                meta._ = { access: { get: 'all', set: 'creator', del: 'creator' } };
+
+                resolve( meta );
+              }
+            } );
+
+          } ); }
 
         }
 
@@ -551,21 +284,21 @@
 
           // render modal dialog
           const dialog = await self.modal_dialog.start( {
-            "modal_title": "Loading an existing App",
-            "modal_content": content,
-            "footer": null
+            modal_title: 'Loading an existing App',
+            modal_content: content,
+            footer: null
           } );
 
           /**
            * loads a ccm-based app
            * @param {string|string[]} key - app ID
-           * @param {Object} store - settings for the ccm data store that contains the ccm-based app instance configuration
+           * @param {Object} [store=self.data.store] - settings for the ccm data store that contains the ccm-based app instance configuration
            * @returns {Promise<void>}
            */
-          async function load( key, store=self.data.store ) {
+          async function load( key, store = self.data.store ) {
 
-            // has user instance? => perform login
-            self.user && await self.user.login();
+            // user has to be logged in
+            try { self.user && await self.user.login(); } catch ( e ) { return; }
 
             // no app ID? => abort
             if ( !key ) return;
@@ -583,7 +316,7 @@
             self.logger && self.logger.log( 'load', $.clone( dataset ) );
 
             // remember App ID
-            app_id = dataset.key; delete dataset.key;
+            app_id = dataset.key; delete dataset.key; delete dataset.meta;
 
             // starts not from new app configuration
             is_new = false;
@@ -591,7 +324,7 @@
             // render loaded app
             await renderApp();
 
-            // perform 'change' callback
+            // perform 'onchange' callback
             self.onchange && self.onchange( self, 'read' );
 
           }
@@ -604,8 +337,8 @@
           // invalid state? => abort
           if ( !app_id || is_new || is_local ) return;
 
-          // has user instance? => perform login
-          self.user && await self.user.login();
+          // user has to be logged in
+          try { self.user && await self.user.login(); } catch ( e ) { return; }
 
           // get current app configuration from app-specific builder
           dataset = builder.getValue();
@@ -639,13 +372,19 @@
           // logging of 'delete' event
           self.logger && self.logger.log( 'delete', $.clone( app_id ) );
 
+          // delete app metadata
+          if ( dataset.meta && self.meta_store && !is_local ) {
+            dataset = await self.data.store.get( app_id );
+            await self.meta_store.del( dataset.meta[ 1 ] );
+          }
+
           // delete app configuration
           await self.data.store.del( app_id );
 
           // forget App-ID
           app_id = undefined;
 
-          // up to now a new app configuration
+          // up to now: creation of a new app configuration
           is_new = true;
 
           // continue with new empty app configuration
@@ -673,9 +412,9 @@
 
           // render modal dialog
           await self.modal_dialog.start( {
-            "modal_title": "Handover of the App",
-            "modal_content": content,
-            "footer": null
+            modal_title: 'Handover of the App',
+            modal_content: content,
+            footer: null
           } );
 
           // prepare data store settings (needed for embed code)
@@ -720,14 +459,13 @@
           else
             $.removeElement( content.querySelector( '#download' ) );
 
-          // provide App via Booklet
-          if ( self.booklet )
-            content.querySelector( '#booklet' ).setAttribute( 'href', ( await self.booklet.instance( {
-              app: [ 'ccm.start', self.app.url, self.getValue() ],
-              icon: self.icon
-            } ) ).booklet() );
+          // provide App via Bookmarklet
+          if ( self.bookmarklet )
+            content.querySelector( '#bookmarklet' ).setAttribute( 'href', ( await self.bookmarklet.instance( {
+              app: [ 'ccm.start', self.app.url, self.getValue() ]
+            } ) ).bookmarklet() );
           else
-            $.removeElement( content.querySelector( '#booklet' ) );
+            $.removeElement( content.querySelector( '#bookmarklet' ) );
 
           // provide App via iBook Widget
           if ( embed_code && self.helper.iBookWidget )
@@ -743,16 +481,11 @@
 
           /**
            * copies text inside a HTML element to clipboard
-           * @param element
+           * @param {Element} element
            */
           function copyToClipboard( element ) {
 
-            const range = document.createRange();
-            range.selectNode( element );
-            const selection = window.getSelection();
-            selection.removeAllRanges();
-            if ( !selection.containsNode( element ) )
-              selection.addRange( range );
+            element.select();
             document.execCommand( 'copy' );
 
           }
@@ -763,24 +496,21 @@
         async function updatePreview() {
 
           // no preview element? => abort
-          if ( !preview_elem ) return;
+          if ( !app_elem ) return;
 
           // prepare app configuration
           let config = self.getValue();
           if ( self.convert && self.convert.builder_to_app ) config = self.convert.builder_to_app( config );
-          config.root = preview_elem;
+          config.root = app_elem;
 
-          // render app in preview element
+          // render app in preview section
           await self.app.start( config );
 
         }
 
       };
 
-      /**
-       * returns resulting instance configuration for target component
-       * @returns {Object} instance configuration for target component
-       */
+      /** @returns {Object} instance configuration for target component */
       this.getValue = () => builder && builder.getValue && $.clone( builder.getValue() ) || null;
 
     }

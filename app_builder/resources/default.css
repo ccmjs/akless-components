@@ -4,11 +4,22 @@
  * @license The MIT License (MIT)
  */
 
-#element {
+#element, #main, #form {
+  height: 100%;
+}
+
+#main {
   height: 100%;
   display: grid;
-  grid-template-rows: 1fr auto;
+  grid-template-rows: min-content 1fr auto;
   background-color: white;
+}
+
+#header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 #maker {
@@ -17,11 +28,11 @@
 }
 
 #builder,
-#app {
+#preview {
   padding: 1em;
 }
 
-#preview {
+#app {
   border: 3px double #ccc;
   min-width: 11em;
   min-height: 7em;

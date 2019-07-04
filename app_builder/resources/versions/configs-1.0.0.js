@@ -18,8 +18,8 @@ ccm.files[ 'configs.js' ] = {
       "key": "demo"
     },
     "helper.1.url": "../modules/helper.js",
-    "booklet": [ "ccm.component", "../window/ccm.window.js", [ "ccm.get", "../window/resources/configs.js", "local" ] ],
-    "builder.1": "../submit/ccm.submit.js",
+    "bookmarklet": [ "ccm.component", "../window/ccm.window.js", [ "ccm.get", "../window/resources/configs.js", "local" ] ],
+    "builder.1": "..submit.js",
     "app": [ "ccm.component", "../cloze/ccm.cloze.js" ],
     "qr_code": [ "ccm.load", "../libs/qrcode-generator/qrcode.min.js" ],
     "user": [ "ccm.instance", "../user/ccm.user.js", [ "ccm.get", "../user/resources/configs.js", "guest" ] ],
@@ -38,8 +38,8 @@ ccm.files[ 'configs.js' ] = {
       "key": "test"
     },
     "helper.1.url": "../modules/helper.js",
-    "booklet": [ "ccm.component", "../window/ccm.window.js", [ "ccm.get", "../window/resources/configs.js", "local" ] ],
-    "builder.1": "../submit/ccm.submit.js",
+    "bookmarklet": [ "ccm.component", "../window/ccm.window.js", [ "ccm.get", "../window/resources/configs.js", "local" ] ],
+    "builder.1": "..submit.js",
     "app": [ "ccm.component", "../cloze/ccm.cloze.js" ],
     "user": [ "ccm.instance", "../user/ccm.user.js", [ "ccm.get", "../user/resources/configs.js", "guest" ] ],
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ]
@@ -57,8 +57,8 @@ ccm.files[ 'configs.js' ] = {
       "key": "test"
     },
     "helper.1.url": "../modules/helper.js",
-    "booklet": [ "ccm.component", "../window/ccm.window.js", [ "ccm.get", "../window/resources/configs.js", "local" ] ],
-    "builder.1": "../submit/ccm.submit.js",
+    "bookmarklet": [ "ccm.component", "../window/ccm.window.js", [ "ccm.get", "../window/resources/configs.js", "local" ] ],
+    "builder.1": "..submit.js",
     "app": [ "ccm.component", "../cloze/ccm.cloze.js" ],
     "user": [ "ccm.instance", "../user/ccm.user.js", [ "ccm.get", "../user/resources/configs.js", "guest" ] ],
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ]
