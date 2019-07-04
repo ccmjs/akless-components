@@ -37,7 +37,7 @@
         "https://ccmjs.github.io/akless-components/user/resources/default.css"
       ],
 //    "guest": "guest",
-      "html": [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/resources.js" ]
+      "html": [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/resources.js", "html" ]
 //    "logged_in": true,
 //    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/ccm.log.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
 //    "norender": true,
