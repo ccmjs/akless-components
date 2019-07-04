@@ -79,7 +79,7 @@
       this.ready = async () => {
 
         // immediate login? => login user
-        this.logged_in && await this.login( true );
+        if ( this.logged_in || sessionStorage.getItem( 'ccm-user-' + my.realm ) ) await this.login( true );
 
         // logging of 'ready' event
         this.logger && this.logger.log( 'ready', $.privatize( this, true ) );
