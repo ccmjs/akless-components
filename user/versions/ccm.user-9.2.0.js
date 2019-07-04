@@ -2,7 +2,7 @@
  * @overview ccm component for user authentication
  * @author André Kless <andre.kless@web.de> 2017-2019
  * @license The MIT License (MIT)
- * @version latest (9.2.0)
+ * @version 9.2.0
  * @changes
  * version 9.2.0 (04.07.2019):
  * - uses Session Storage to remember user data
