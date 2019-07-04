@@ -25,7 +25,7 @@
 
   const component = {
 
-    name: 'user',
+    name: 'user', version: [ 9, 2, 0 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-21.1.1.js',
 
