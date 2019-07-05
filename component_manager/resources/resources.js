@@ -13,7 +13,7 @@ ccm.files[ 'resources.js' ] = {
     "builder": [ "ccm.component", "../app_builder/ccm.app_builder.js", [ "ccm.get", "../app_builder/resources/resources.js", "config" ] ],
     "data": {
       "store": [ "ccm.store", { "name": "dms-components", "url": "http://localhost:8080" } ],
-      "key": "json_builder-1-4-0"
+      "key": "json_builder-1-4-1"
     },
     "form": [ "ccm.component", "../submit/ccm.submit.js", [ "ccm.get", "../component_manager/resources/resources.js", "form" ] ],
     "ignore": {
