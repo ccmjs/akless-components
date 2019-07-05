@@ -4,7 +4,7 @@
  * @license The MIT License (MIT)
  * @version 9.2.0
  * @changes
- * version 9.2.0 (04.07.2019):
+ * version 9.2.0 (05.07.2019):
  * - uses Session Storage to remember user data
  * - throws error if you click on Abort in login area
  * - uses ccm v21.1.2
