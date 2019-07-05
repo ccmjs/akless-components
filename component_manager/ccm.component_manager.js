@@ -217,7 +217,13 @@
                 data: { store: this.ignore.configs, key: config },
                 meta_store: this.ignore.apps,
                 app: [ 'ccm.component', dataset.path, config ],
-                builder: builder
+                builder: builder,
+                onchange: ( instance, event ) => {
+                  if ( event !== 'change' ) return;
+                  const value = instance.getValue();
+                  value.key = config.key;
+                  config = value;
+                }
               } );
 
             }

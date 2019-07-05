@@ -131,7 +131,10 @@
               store: [ 'ccm.store', { app: dataset } ],
               key: 'app'
             },
-            onchange: updatePreview
+            onchange: async () => {
+              self.onchange && self.onchange( self, 'change' );   // perform 'onchange' callback
+              await updatePreview();                              // update preview section
+            }
           } );
 
           // activate/disable "Update" and "Delete" button
