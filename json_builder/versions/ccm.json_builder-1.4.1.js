@@ -2,7 +2,7 @@
  * @overview ccm component for JSON builder
  * @author André Kless <andre.kless@web.de> 2018-2019
  * @license The MIT License (MIT)
- * @version latest (1.4.1)
+ * @version 1.4.1
  * @changes
  * version 1.4.1 (05.07.2019):
  * - meta property is not editable
@@ -26,9 +26,9 @@
 
   const component = {
 
-    name: 'json_builder',
+    name: 'json_builder', version: [ 1, 4, 1 ],
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-21.1.1.js',
 
     config: {
 
