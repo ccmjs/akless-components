@@ -54,7 +54,7 @@
         "configs": [ 'ccm.store' ],
         "builder": {
           "title": "JSON Builder",
-          "app": [ "ccm.component", "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-1.4.0.js", { "directly": true, "nosubmit": true } ]
+          "app": [ "ccm.component", "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-1.4.1.js", { "directly": true, "nosubmit": true } ]
         }
       },
 //    "listing": [ "ccm.component", "../listing/ccm.listing.js" ],

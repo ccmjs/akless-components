@@ -125,7 +125,7 @@ ccm.files[ 'resources.js' ] = {
         },
         {
           "label": "App ID",
-          "name": "app_id",
+          "name": "app",
           "type": "text",
           "info": "App ID of the app created from this component to be used as a demo.",
           "pattern": "[a-zA-Z0-9_-]+",
@@ -152,10 +152,10 @@ ccm.files[ 'resources.js' ] = {
           "name": "component",
           "type": "text",
           "info": "Index of the component from which the builder app is created. How to know the index? The index can be found in the overview section of the component.",
-          "placeholder": "json_builder-1.4.0",
+          "placeholder": "json_builder-1-4-1",
           "required": true,
           "pattern": "([a-z][a-z0-9_]*)(-(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*))",
-          "title": "The index of a component starts with the unique component name and then a '-' followed by the component version number. Example: json_builder-1.4.0"
+          "title": "The index of a component starts with the unique component name and then a '-' followed by the component version number. Example: json_builder-1.4.1"
         },
         {
           "label": "App ID",
@@ -188,7 +188,7 @@ ccm.files[ 'resources.js' ] = {
           "name": "component",
           "type": "url",
           "info": "URL of the component from which the builder app is created.",
-          "placeholder": "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-1.4.0.js",
+          "placeholder": "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-1.4.1.js",
           "required": true,
           "pattern": ".+/ccm\\.([a-z][a-z0-9_]*)(-(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*))(\\.js)",
           "title": "The filename of the component must start with 'ccm.' followed by the unique component name and then a '-' followed by the component version number and a '.js' in the end. Example: ccm.json_builder-1.4.0.js"
@@ -419,35 +419,10 @@ ccm.files[ 'resources.js' ] = {
               "inner": {
                 "tag": "legend",
                 "class": "text-muted",
-                "inner": "DEMO"
+                "inner": "DEMOS"
               }
             },
-            {
-              "id": "demo-main",
-              "inner": [
-                {
-                  "id": "aside",
-                  "inner": [
-                    {
-                      "id": "menu-caption",
-                      "inner": "Choose Demo"
-                    },
-                    { "id": "menu-app" },
-                    {
-                      "id": "create_similar",
-                      "inner": {
-                        "tag": "button",
-                        "class": "btn btn-link btn-block btn-sm",
-                        "inner": [
-                          "&#9850; Create Similar App"
-                        ]
-                      }
-                    }
-                  ]
-                },
-                { "id": "demo-app" }
-              ]
-            }
+            { "id": "demo-main" }
           ]
         }
       ]
@@ -468,6 +443,7 @@ ccm.files[ 'resources.js' ] = {
               "inner": {
                 "tag": "button",
                 "class": "btn btn-link btn-block btn-sm",
+                "onclick": "%onclick%",
                 "inner": "%button%"
               }
             }

@@ -316,7 +316,7 @@
             self.logger && self.logger.log( 'load', $.clone( dataset ) );
 
             // remember App ID
-            app_id = dataset.key; delete dataset.key; delete dataset.meta;
+            app_id = dataset.key; delete dataset.key;
 
             // starts not from new app configuration
             is_new = false;

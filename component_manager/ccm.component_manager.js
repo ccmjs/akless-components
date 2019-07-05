@@ -54,6 +54,7 @@
         "../libs/bootstrap-4/css/bootstrap.min.css",
         { "context": "head", "url": "../libs/bootstrap-4/css/bootstrap.min.css" }
       ],
+//    "create_similar_app": { "key": "app" },
       "data": {},
 //    "form": [ "ccm.component", "../submit/ccm.submit.js" ],
       "html": [ "ccm.get", "../component_manager/resources/resources.js", "html" ],
@@ -70,7 +71,7 @@
 
     Instance: function () {
 
-      let $, dataset, config = { key: 'app' };
+      let $, dataset;
 
       this.init = async () => {
 
@@ -129,7 +130,7 @@
 
             // render info and demo section
             $.setContent( content, $.html( this.html.overview, $.integrate( dataset, {
-              index: dataset.identifier + '-' + dataset.version,
+              index: dataset.key,
               subject: '',
               description: '',
               category: '-',
@@ -139,13 +140,32 @@
             $.setContent( content.querySelector( '#tags' ), dataset.tags.join( ', ' ) || '-' );
 
             // no demos? => remove demo section and abort
-            if ( !this.apps || !dataset.ignore.demos || !dataset.ignore.demos.length ) return $.removeElement( content.querySelector( '#demo' ) );
+            if ( !dataset.ignore.demos || !dataset.ignore.demos.length || !this.ignore.configs ) return $.removeElement( content.querySelector( '#demo' ) );
+
+            /**
+             * app configuration of selected demo
+             * @type {Object}
+             */
+            let config;
+
+            // render app creation section
+            $.setContent( content.querySelector( '#demo-main' ), $.html( this.html.collection, {
+              caption: 'Choose Demo',
+              button: '♺ Create Similar App',
+              onclick: async () => {
+                this.create_similar_app = config;
+                await menu.select( 3 );
+              }
+            } ) );
 
             // render demo menu
             await this.menu_app.start( {
-              root: this.element.querySelector( '#menu-demo' ),
-              onclick: event => console.log( event ),
-              selected: this.routing && this.routing.get() ? null : undefined
+              root: content.querySelector( '#menu-app' ),
+              data: { entries: dataset.ignore.demos.map( demo => demo.title ) },
+              onclick: async event => {
+                config = await $.solveDependency( await dataset.ignore.demos[ event.nr - 1 ].app[ 2 ] );
+                $.setContent( content.querySelector( '#app' ), ( await $.solveDependency( dataset.ignore.demos[ event.nr - 1 ].app ) ).root );
+              }
             } );
 
           },
@@ -170,6 +190,12 @@
             // no builders? => clear content and abort
             if ( !dataset.ignore.builders || !dataset.ignore.builders.length ) return $.setContent( content, '' );
 
+            /**
+             * current state of app configuration
+             * @type {Object}
+             */
+            let config = this.create_similar_app; delete this.create_similar_app;
+
             // render app creation section
             $.setContent( content, $.html( this.html.collection, { caption: 'Choose Builder' } ) );
 
@@ -177,13 +203,24 @@
             await this.menu_app.start( {
               root: content.querySelector( '#menu-app' ),
               data: { entries: dataset.ignore.builders.map( builder => builder.title ) },
-              onclick: event => {
-                renderBuilder.call( this, dataset.ignore.builders[ event.nr - 1 ].app );
-              }
+              onclick: event => renderBuilder.call( this, dataset.ignore.builders[ event.nr - 1 ].app )
             } );
 
             // remove area under menu
             $.removeElement( content.querySelector( '#menu-below' ) );
+
+            /** renders app builder */
+            async function renderBuilder( builder ) {
+
+              this.builder.start( {
+                root: content.querySelector( '#app' ),
+                data: { store: this.ignore.configs, key: config },
+                meta_store: this.ignore.apps,
+                app: [ 'ccm.component', dataset.path, config ],
+                builder: builder
+              } );
+
+            }
 
           }
 
@@ -229,15 +266,15 @@
               dataset.ignore.demos.forEach( demo => {
                 dataset.demos.push( {
                   title: demo.title,
-                  app_id: demo.app[ 2 ][ 2 ]
+                  app: demo.app[ 2 ][ 2 ]
                 } );
               } );
               dataset.builders = [];
               dataset.ignore.builders.forEach( builder => {
                 dataset.builders.push( {
                   title: builder.title,
-                  component: builder.app[ 1 ],
-                  config: builder.app[ 2 ][ 2 ]
+                  component: $.getIndex( builder.app[ 1 ] ).replace( /\./g, '-' ),
+                  app: builder.app[ 2 ][ 2 ]
                 } );
               } );
               delete dataset.ignore;
@@ -263,10 +300,10 @@
               meta.ignore = { demos: [], builders: [] };
 
               // prepare demos
-              this.apps && await $.asyncForEach( meta.demos, async demo => {
-                demo.title && demo.app_id && meta.ignore.demos.push( {
+              this.ignore.configs && await $.asyncForEach( meta.demos, async demo => {
+                demo.title && demo.app && meta.ignore.demos.push( {
                   title: demo.title,
-                  app: [ 'ccm.instance', meta.path, [ 'ccm.get', this.apps.source(), demo.app_id ] ]
+                  app: [ 'ccm.start', meta.path, [ 'ccm.get', this.ignore.configs[ 1 ], demo.app ] ]
                 } );
               } );
               delete meta.demos;
@@ -274,10 +311,9 @@
               // prepare builders
               form.builder && await $.asyncForEach( meta.builders, async builder => {
                 if ( !builder.title || !builder.component || !builder.app ) return;
-                const app = await this.ccm.get( this.ignore.apps[ 1 ], builder.app );
                 meta.ignore.builders.push( {
                   title: builder.title,
-                  app: [ 'ccm.component', app.path, [ 'ccm.get', this.ignore.configs[ 1 ], builder.app ] ]
+                  app: [ 'ccm.component', ( await this.data.store.get( builder.component ) ).path, [ 'ccm.get', this.ignore.configs[ 1 ], builder.app ] ]
                 } );
               } );
               delete meta.builders;
@@ -301,19 +337,6 @@
             await this.data.store.del( dataset.key );
             await this.start();
           } } ) );
-
-        }
-
-        /** renders app builder */
-        async function renderBuilder( builder ) {
-
-          this.builder.start( {
-            root: content.querySelector( '#app' ),
-            data: { store: this.ignore.configs, key: config },
-            meta_store: this.ignore.apps,
-            app: [ 'ccm.component', dataset.path, config ],
-            builder: builder
-          } );
 
         }
 
