@@ -7,7 +7,7 @@
  * version 9.2.0 (04.07.2019):
  * - uses Session Storage to remember user data
  * - throws error if you click on Abort in login area
- * - uses ccm v21.1.1
+ * - uses ccm v21.1.2
  * version 9.1.1 (29.05.2019):
  * - clears website area before redirect call
  * - uses ccm v20.7.1
@@ -27,7 +27,7 @@
 
     name: 'user',
 
-    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-21.1.1.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-21.1.2.js',
 
     config: {
 
