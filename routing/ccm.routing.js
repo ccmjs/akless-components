@@ -88,8 +88,8 @@
        */
       this.set = route => {
 
-        // route not changed? => abort
-        if ( route === last_route ) return;
+        // abort if route hasn't changed
+        if ( route === last_route ) return; else last_route = route;
 
         /**
          * route already exists in location hash
