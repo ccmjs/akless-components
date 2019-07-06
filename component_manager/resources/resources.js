@@ -35,7 +35,7 @@ ccm.files[ 'resources.js' ] = {
     "ignore": {
       "apps": [ "ccm.store", { "url": "http://localhost:8080", "name": "test-apps" } ],
       "configs": [ "ccm.store", { "url": "http://localhost:8080", "name": "test-configs" } ],
-      "builder": [ "ccm.component", "../json_builder/ccm.json_builder.js", { "directly": true, "nosubmit": true } ]
+      "builder": [ "ccm.start", "../json_builder/ccm.json_builder.js", { "directly": true, "nosubmit": true } ]
     },
     "logger":  [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
     "menu_app": [ "ccm.component", "../menu/ccm.menu.js", {
@@ -85,7 +85,7 @@ ccm.files[ 'resources.js' ] = {
     "ignore": {
       "apps": [ "ccm.store", { "url": "https://ccm2.inf.h-brs.de", "name": "test-apps" } ],
       "configs": [ "ccm.store", { "url": "https://ccm2.inf.h-brs.de", "name": "test-configs" } ],
-      "builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-1.4.1.js", { "directly": true, "nosubmit": true } ]
+      "builder": [ "ccm.start", "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-1.4.1.js", { "directly": true, "nosubmit": true } ]
     },
     "routing": [ "ccm.instance", "https://ccmjs.github.io/akless-components/routing/versions/ccm.routing-2.0.3.js" ],
     "user": [ "ccm.start", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.2.0.js", {
