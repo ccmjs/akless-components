@@ -7,7 +7,7 @@
  * version 1.0.0 (03.07.2019)
  */
 
-ccm.files[ 'resources-v2.js' ] = {
+ccm.files[ 'resources.js' ] = {
 
   "local": {
     "builder": [ "ccm.component", "../app_builder/ccm.app_builder.js", [ "ccm.get", "../app_builder/resources/resources.js", "local" ] ],
