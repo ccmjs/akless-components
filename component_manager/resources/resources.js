@@ -7,12 +7,12 @@
  * version 1.0.0 (03.07.2019)
  */
 
-ccm.files[ 'resources.js' ] = {
+ccm.files[ 'resources-v2.js' ] = {
 
   "local": {
     "builder": [ "ccm.component", "../app_builder/ccm.app_builder.js", [ "ccm.get", "../app_builder/resources/resources.js", "local" ] ],
     "css": [ "ccm.load",
-      "../component_manager/resources/default.css",
+      "../component_manager/resources/default-v2.css",
       "../libs/bootstrap-4/css/bootstrap.min.css",
       { "context": "head", "url": "../libs/bootstrap-4/css/bootstrap.min.css" }
     ],

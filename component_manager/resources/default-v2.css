@@ -1,0 +1,143 @@
+/**
+ * @overview default layout of ccm component for managing a component
+ * @author André Kless <andre.kless@web.de.de> 2019
+ * @license MIT License
+ */
+
+#element {
+  --color1: #00BFFF;
+  --color2: #00376B;
+  --color3: #914D00;
+  --color4: #E6F4F1;
+}
+
+#element:empty, #content:empty {
+  margin: 1em;
+  text-align: center;
+}
+
+#element:empty:before {
+  content: 'No component found that could be managed.';
+}
+
+#content:empty:before {
+  content: 'Nothing to display.';
+}
+
+#element,
+#main,
+#content,
+#content > div {
+  height: 100%;
+}
+
+#main {
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+}
+
+#header {
+  padding: 2em 1em;
+  display: flex;
+}
+
+#header #icon img {
+  width: 64px;
+  height: 64px;
+  border-radius: 100%;
+}
+
+#header #title {
+  display: inline-flex;
+}
+
+#header #title h2 {
+  color: var(--color1);
+  font-weight: bold;
+  margin: 0;
+}
+
+#header #title #setup {
+  margin-left: 1em;
+  display: inline-flex;
+}
+
+#header #title #setup span:last-child {
+  margin-bottom: 0.1em;
+  margin-left: 0.2em;
+}
+
+#header #title,
+#header #version {
+  padding-left: 1em;
+}
+
+#header #version select {
+  border: 0;
+}
+
+#header #user {
+  align-self: flex-start;
+  margin-left: auto;
+  padding-left: 1em;
+}
+
+#overview {
+  padding: 1em 0;
+}
+
+#overview #info,
+#overview #demo-legend {
+  padding: 1em 2em;
+}
+
+#overview legend {
+  letter-spacing: 0.1em;
+  font-weight: bold;
+}
+
+#overview #creator {
+  font-size: 110%;
+  margin-left: 0.3em;
+}
+
+#overview #description {
+  padding-top: 1em;
+}
+
+#overview #details {
+  padding-top: 1em;
+}
+
+#overview #details tr:last-child td {
+  border-bottom: 1px solid #dee2e6;
+}
+
+#collection {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  padding: 1em 0;
+}
+
+#aside {
+  padding: 1em 1em 1em 0;
+}
+
+#menu-caption {
+  padding: 0 1em 0 0.5em;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+#menu-caption:after {
+  content: ':';
+}
+
+#menu-below {
+  padding: 0.5em;
+}
+
+#app {
+  margin: 0 1em;
+  border: 3px double #ccc;
+}

@@ -26,7 +26,7 @@
     config: {
 //    "builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/app_builder/versions/ccm.app_builder-3.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/app_builder/resources/resources.js", "demo" ] ],
       "css": [ "ccm.load",
-        "https://ccmjs.github.io/akless-components/component_manager/resources/default.css",
+        "https://ccmjs.github.io/akless-components/component_manager/resources/default-v2.css",
         "https://ccmjs.github.io/akless-components/libs/bootstrap-4/css/bootstrap.min.css",
         { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/bootstrap-4/css/bootstrap.min.css" }
       ],
