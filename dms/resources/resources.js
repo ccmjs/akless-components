@@ -120,32 +120,46 @@ ccm.files[ 'resources.js' ] = {
       "realm": "cloud",
       "url": "https://ccm2.inf.h-brs.de",
       "store": "test-user",
-      "hash": [ "ccm.load", { "url": "https://ccmjs.github.io/akless-components/modules/md5.js", "type": "module" } ],
-      "css": [ "ccm.load",
-        "https://ccmjs.github.io/akless-components/libs/bootstrap/css/bootstrap.css",
-        { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/bootstrap/css/font-face.css" },
-        "https://ccmjs.github.io/akless-components/user/resources/default.css"
-      ]
+      "hash": [ "ccm.load", { "url": "https://ccmjs.github.io/akless-components/modules/md5.js", "type": "module" } ]
     } ]
   },
 
   "live": {
     "component_manager": [ "ccm.component", "https://ccmjs.github.io/akless-components/component_manager/versions/ccm.component_manager-3.0.0.js", {
-      "key": [ "ccm.get", "https://ccmjs.github.io/akless-components/component_manager/resources/resources.js", "demo" ],
-      "routing": [ "ccm.instance", "https://ccmjs.github.io/akless-components/routing/versions/ccm.routing-2.0.3.js", { "app": "section" } ],
+      "builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/app_builder/versions/ccm.app_builder-3.0.0.js", {
+        "bookmarklet": [ "ccm.component", "https://ccmjs.github.io/akless-components/window/versions/ccm.window-1.0.0.js" ],
+        "data": { "store": [ "ccm.store", { "url": "https://ccm2.inf.h-brs.de", "name": "dms-configs" } ] },
+        "form": [ "ccm.component", "https://ccmjs.github.io/akless-components/submit/versions/ccm.submit-7.1.3.js", {
+          "entries": [ "ccm.get", "https://ccmjs.github.io/akless-components/app_builder/resources/resources.js", "form_entries" ],
+          "data": {
+            "store": [ "ccm.store", { "name": "dms-apps", "url": "https://ccm2.inf.h-brs.de" } ]
+          }
+        } ],
+        "meta_store": [ "ccm.store", { "url": "https://ccm2.inf.h-brs.de", "name": "dms-apps" } ],
+        "qr_code": [ "ccm.load", "https://ccmjs.github.io/akless-components/libs/qrcode-generator/qrcode.min.js" ],
+        "user": [ "ccm.start", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.2.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/dms/resources/resources.js", "dms_user" ] ]
+      } ],
+      "form": [ "ccm.component", "https://ccmjs.github.io/akless-components/submit/versions/ccm.submit-7.1.3.js", {
+        "entries": [ "ccm.get", "https://ccmjs.github.io/akless-components/component_manager/resources/resources.js", "form_entries" ],
+        "data": {
+          "store": [ "ccm.store", { "name": "dms-components", "url": "https://ccm2.inf.h-brs.de" } ]
+        }
+      } ],
+      "routing": [ "ccm.instance", "https://ccmjs.github.io/akless-components/routing/versions/ccm.routing-2.0.3.js", { "app": "1562447234930X8048387686340843" } ],
+      "user": [ "ccm.start", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.2.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/dms/resources/resources.js", "dms_user" ] ]
     } ],
     "data": {
-      "store": [ "ccm.store", { "url": "https://ccm2.inf.h-brs.de", "name": "test-components" } ],
+      "store": [ "ccm.store", { "url": "https://ccm2.inf.h-brs.de", "name": "dms-components" } ],
       "key": {}
     },
     "form": [ "ccm.component", "https://ccmjs.github.io/akless-components/submit/versions/ccm.submit-7.1.3.js", {
       "entries": [ "ccm.get", "https://ccmjs.github.io/akless-components/dms/resources/resources.js", "form_entries" ],
       "data": {
-        "store": [ "ccm.store", { "name": "test-components", "url": "https://ccm2.inf.h-brs.de" } ]
+        "store": [ "ccm.store", { "name": "dms-components", "url": "https://ccm2.inf.h-brs.de" } ]
       }
     } ],
-    "ignore.apps": [ "ccm.store", { "url": "https://ccm2.inf.h-brs.de", "name": "test-apps" } ],
-    "ignore.configs": [ "ccm.store", { "url": "https://ccm2.inf.h-brs.de", "name": "test-configs" } ],
+    "ignore.apps": [ "ccm.store", { "url": "https://ccm2.inf.h-brs.de", "name": "dms-apps" } ],
+    "ignore.configs": [ "ccm.store", { "url": "https://ccm2.inf.h-brs.de", "name": "dms-configs" } ],
     "listing": [ "ccm.component", "https://ccmjs.github.io/akless-components/listing/versions/ccm.listing-3.1.3.js", {
       "html": [ "ccm.get", "https://ccmjs.github.io/akless-components/dms/resources/resources.js", "listing_html" ],
       "css": [ "ccm.load",
@@ -171,18 +185,15 @@ ccm.files[ 'resources.js' ] = {
       }
     } ],
     "routing": [ "ccm.instance", "https://ccmjs.github.io/akless-components/routing/versions/ccm.routing-2.0.3.js", { "app": "1562446314531X9878992170446217" } ],
-    "user": [ "ccm.start", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.2.0.js", {
-      "realm": "cloud",
-      "url": "https://ccm2.inf.h-brs.de",
-      "store": "dms-user",
-      "hash": [ "ccm.load", { "url": "https://ccmjs.github.io/akless-components/modules/md5.js", "type": "module" } ],
-      "css": [ "ccm.load",
-        "https://ccmjs.github.io/akless-components/libs/bootstrap/css/bootstrap.css",
-        { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/bootstrap/css/font-face.css" },
-        "https://ccmjs.github.io/akless-components/user/resources/default.css"
-      ]
-    } ]
+    "user": [ "ccm.start", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.2.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/dms/resources/resources.js", "dms_user" ] ]
   },
+
+  "dms_user": [ "ccm.start", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.2.0.js", {
+    "hash": [ "ccm.load", { "url": "https://ccmjs.github.io/akless-components/modules/md5.js", "type": "module" } ],
+    "realm": "cloud",
+    "store": "dms-user",
+    "url": "https://ccm2.inf.h-brs.de"
+  } ],
 
   "form_entries": [
     "<div class='page-header'><h3>Publish Component</h3></div>",
