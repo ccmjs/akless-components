@@ -1,25 +1,11 @@
 /**
  * @overview default layout of ccm component for building apps
- * @author André Kless <andre.kless@web.de> 2018-2019
+ * @author André Kless <andre.kless@web.de> 2018
  * @license The MIT License (MIT)
  */
 
-#element, #main, #form {
-  height: 100%;
-}
-
-#main {
-  height: 100%;
-  display: grid;
-  grid-template-rows: min-content 1fr auto;
-  background-color: white;
-}
-
-#header {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  align-items: center;
+#element {
+  padding: 0.5em;
 }
 
 #maker {
@@ -28,27 +14,16 @@
 }
 
 #builder,
-#preview {
+#app {
   padding: 1em;
 }
 
-#app {
+#preview {
   border: 3px double #ccc;
   min-width: 11em;
   min-height: 7em;
 }
 
 #buttons {
-  position: sticky;
-  bottom: 0;
-  padding: 0.5em;
-}
-
-.btn {
-  margin: 0.5em;
-  cursor: pointer;
-}
-
-.btn.disabled {
-  cursor: not-allowed;
+  padding: 1em 0;
 }

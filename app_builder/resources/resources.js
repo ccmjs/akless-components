@@ -435,7 +435,7 @@ ccm.files[ 'resources.js' ] = {
 
   "local": {
     "app": [ "ccm.component", "../json_builder/ccm.json_builder.js", {
-      "css": [ "ccm.load", "../json_builder/resources/default.css" ]
+      "css": [ "ccm.load", "../json_builder/resources/default-v2.css" ]
     } ],
     "bookmarklet": [ "ccm.component", "../window/ccm.window.js" ],
     "builder": [ "ccm.component", "../json_builder/ccm.json_builder.js", {
