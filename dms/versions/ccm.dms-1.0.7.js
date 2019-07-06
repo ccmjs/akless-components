@@ -508,7 +508,7 @@
           "https://ccmjs.github.io/akless-components/dms/resources/submit.css"
         ],
       } ],
-      "component_manager": [ "ccm.component", "https://ccmjs.github.io/akless-components/component_manager/versions/ccm.component_manager-2.2.6.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/component_manager/resources/versions/configs-1.0.0.js", "demo" ] ],
+      "component_manager": [ "ccm.component", "https://ccmjs.github.io/akless-components/component_manager/versions/ccm.component_manager-2.2.6.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/component_manager/resources/resources.js", "demo" ] ],
       "resource_finder": [ "ccm.component", "https://ccmjs.github.io/leck-components/resource_finder/dist/ccm.resource_finder-1.0.0.js" ],
       "resource_publish": [ "ccm.component", "https://ccmjs.github.io/leck-components/resource_publish/dist/ccm.resource_publish-1.0.0.js" ]
 //    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-8.3.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "guest" ] ],
