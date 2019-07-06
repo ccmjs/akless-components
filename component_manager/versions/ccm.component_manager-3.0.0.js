@@ -166,7 +166,7 @@
             this.routing && this.routing.set( 'creation' );
 
             // no builders? => clear content and abort
-            if ( !dataset.ignore.builders || !dataset.ignore.builders.length ) return $.setContent( content, '' );
+            if ( ( !dataset.ignore.builders || !dataset.ignore.builders.length ) && !this.ignore.builder ) return $.setContent( content, '' );
 
             /**
              * current state of app configuration
