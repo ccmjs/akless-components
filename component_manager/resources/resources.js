@@ -9,33 +9,91 @@
 
 ccm.files[ 'resources.js' ] = {
 
-  "config": {
-    "builder": [ "ccm.component", "../app_builder/ccm.app_builder.js", [ "ccm.get", "../app_builder/resources/resources.js", "config" ] ],
+  "local": {
+    "builder": [ "ccm.component", "../app_builder/ccm.app_builder.js", [ "ccm.get", "../app_builder/resources/resources.js", "local" ] ],
+    "css": [ "ccm.load",
+      "../component_manager/resources/default.css",
+      "../libs/bootstrap-4/css/bootstrap.min.css",
+      { "context": "head", "url": "../libs/bootstrap-4/css/bootstrap.min.css" }
+    ],
     "data": {
-      "store": [ "ccm.store", { "name": "dms-components", "url": "http://localhost:8080" } ],
+      "store": [ "ccm.store", { "name": "test-components", "url": "http://localhost:8080" } ],
       "key": "json_builder-1-4-1"
     },
-    "form": [ "ccm.component", "../submit/ccm.submit.js", [ "ccm.get", "../component_manager/resources/resources.js", "form" ] ],
+    "form": [ "ccm.component", "../submit/ccm.submit.js", {
+      "css": [ "ccm.load",
+        { "context": "head", "url": "../libs/bootstrap/css/font-face.css" },
+        "../libs/bootstrap/css/bootstrap.css",
+        "../submit/resources/default.css"
+      ],
+      "entries": [ "ccm.get", "../component_manager/resources/resources.js", "form_entries" ],
+      "data": {
+        "store": [ "ccm.store", { "name": "test-components", "url": "http://localhost:8080" } ]
+      }
+    } ],
+    "html": [ "ccm.get", "../component_manager/resources/resources.js", "html" ],
     "ignore": {
-      "apps": [ "ccm.store", { "url": "http://localhost:8080", "name": "dms-apps" } ],
-      "configs": [ "ccm.store", { "url": "http://localhost:8080", "name": "dms-configs" } ]
+      "apps": [ "ccm.store", { "url": "http://localhost:8080", "name": "test-apps" } ],
+      "configs": [ "ccm.store", { "url": "http://localhost:8080", "name": "test-configs" } ],
+      "builder": [ "ccm.component", "../json_builder/ccm.json_builder.js", { "directly": true, "nosubmit": true } ]
     },
     "logger":  [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
-    "routing": [ "ccm.instance", "../routing/ccm.routing.js", { "app": "1558991104746X06788207882716102" } ],
-    "user": [ "ccm.start", "../user/ccm.user.js", [ "ccm.get", "../component_manager/resources/resources.js", "user" ] ]
+    "menu_app": [ "ccm.component", "../menu/ccm.menu.js", {
+      "css": [ "ccm.load",
+        "../component_manager/resources/menu_app.css",
+        "../libs/bootstrap-4/css/bootstrap.min.css"
+      ],
+      "html": [ "ccm.get", "../component_manager/resources/resources.js", "menu_app_html" ],
+      "selected": 1
+    } ],
+    "menu_top": [ "ccm.component", "../menu/ccm.menu.js", {
+      "css": [ "ccm.load",
+        "../component_manager/resources/menu_top.css",
+        "../libs/bootstrap-4/css/bootstrap.min.css"
+      ],
+      "html": [ "ccm.get", "../component_manager/resources/resources.js", "menu_top_html" ],
+      "data": { "entries": [ "Overview", "Reviews", "App Creation" ] },
+      "selected": 1
+    } ],
+    "routing": [ "ccm.instance", "../routing/ccm.routing.js" ],
+    "user": [ "ccm.start", "../user/ccm.user.js", {
+      "realm": "cloud",
+      "url": "http://localhost:8080",
+      "store": "test-user",
+      "hash": [ "ccm.load", { "url": "../modules/md5.js", "type": "module" } ],
+      "css": [ "ccm.load",
+        "../libs/bootstrap/css/bootstrap.css",
+        { "context": "head", "url": "../libs/bootstrap/css/font-face.css" },
+        "../user/resources/default.css"
+      ],
+      "html": [ "ccm.get", "../user/resources/resources.js", "html" ]
+    } ]
   },
 
-  "form": {
-    "css": [ "ccm.load",
-      { "context": "head", "url": "../libs/bootstrap/css/font-face.css" },
-      "../libs/bootstrap/css/bootstrap.css",
-      "../submit/resources/default.css"
-    ],
-    "entries": [ "ccm.get", "../component_manager/resources/resources.js", "form_entries" ],
+  "demo": {
+    "builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/app_builder/versions/ccm.app_builder-3.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/app_builder/resources/resources.js", "demo" ] ],
     "data": {
-      "store": [ "ccm.store", { "name": "dms-components", "url": "http://localhost:8080" } ]
+      "store": [ "ccm.store", { "name": "test-components", "url": "https://ccm2.inf.h-brs.de" } ],
+      "key": "json_builder-1-4-1"
     },
-    "builder": [ "ccm.component", "../json_builder/ccm.json_builder.js", { "directly": true, "nosubmit": true } ]
+    "form": [ "ccm.component", "https://ccmjs.github.io/akless-components/submit/versions/ccm.submit-7.1.3.js", {
+      "entries": [ "ccm.get", "https://ccmjs.github.io/akless-components/component_manager/resources/resources.js", "form_entries" ],
+      "data": {
+        "store": [ "ccm.store", { "name": "test-components", "url": "https://ccm2.inf.h-brs.de" } ]
+      }
+    } ],
+    "ignore": {
+      "apps": [ "ccm.store", { "url": "https://ccm2.inf.h-brs.de", "name": "test-apps" } ],
+      "configs": [ "ccm.store", { "url": "https://ccm2.inf.h-brs.de", "name": "test-configs" } ],
+      "builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-1.4.1.js", { "directly": true, "nosubmit": true } ]
+    },
+    "routing": [ "ccm.instance", "https://ccmjs.github.io/akless-components/routing/versions/ccm.routing-2.0.3.js" ],
+    "user": [ "ccm.start", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.2.0.js", {
+      "hash": [ "ccm.load", { "url": "https://ccmjs.github.io/akless-components/modules/md5.js", "type": "module" } ],
+      "realm": "cloud",
+      "store": "test-user",
+      "url": "https://ccm2.inf.h-brs.de"
+    } ]
   },
 
   "form_entries": [
@@ -455,11 +513,21 @@ ccm.files[ 'resources.js' ] = {
   },
 
   "menu_app": {
-    "html": [ "ccm.get", "../component_manager/resources/resources.js", "menu_app_html" ],
     "css": [ "ccm.load",
-      "../component_manager/resources/menu_app.css",
-      "../libs/bootstrap-4/css/bootstrap.min.css"
+      "https://ccmjs.github.io/akless-components/component_manager/resources/menu_app.css",
+      "https://ccmjs.github.io/akless-components/libs/bootstrap-4/css/bootstrap.min.css"
     ],
+    "html": [ "ccm.get", "https://ccmjs.github.io/akless-components/component_manager/resources/resources.js", "menu_app_html" ],
+    "selected": 1
+  },
+
+  "menu_top": {
+    "css": [ "ccm.load",
+      "https://ccmjs.github.io/akless-components/component_manager/resources/menu_top.css",
+      "https://ccmjs.github.io/akless-components/libs/bootstrap-4/css/bootstrap.min.css"
+    ],
+    "data": { "entries": [ "Overview", "Reviews", "App Creation" ] },
+    "html": [ "ccm.get", "https://ccmjs.github.io/akless-components/component_manager/resources/resources.js", "menu_top_html" ],
     "selected": 1
   },
 
@@ -479,16 +547,6 @@ ccm.files[ 'resources.js' ] = {
         "class": "title"
       }
     }
-  },
-
-  "menu_top": {
-    "css": [ "ccm.load",
-      "../component_manager/resources/menu_top.css",
-      "../libs/bootstrap-4/css/bootstrap.min.css"
-    ],
-    "html": [ "ccm.get", "../component_manager/resources/resources.js", "menu_top_html" ],
-    "data": { "entries": [ "Overview", "Reviews", "App Creation" ] },
-    "selected": 1
   },
 
   "menu_top_html": {
@@ -514,19 +572,6 @@ ccm.files[ 'resources.js' ] = {
         "class": "title nav-link"
       }
     }
-  },
-
-  "user": {
-    "realm": "cloud",
-    "url": "http://localhost:8080",
-    "store": "dms-user",
-    "title": "Please enter username and password",
-    "hash": [ "ccm.load", { "url": "../modules/md5.js", "type": "module" } ],
-    "css": [ "ccm.load",
-      "../libs/bootstrap/css/bootstrap.css",
-      { "context": "head", "url": "../libs/bootstrap/css/font-face.css" },
-      "../user/resources/default.css"
-    ]
   }
 
 };
