@@ -205,7 +205,7 @@
       "css": [ "ccm.load",
         "https://ccmjs.github.io/akless-components/libs/bootstrap/css/bootstrap.css",
         { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/bootstrap/css/font-face.css" },
-        "https://ccmjs.github.io/akless-components/app_builder/resources/versions/default-1.0.0.css"
+        "https://ccmjs.github.io/akless-components/app_builder/resources/default.css"
       ],
       "data": { "store": [ "ccm.store" ] },
       "warning": "Are you sure you want to delete this App?"

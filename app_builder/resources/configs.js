@@ -1,3 +1,5 @@
+/* ################################################### DEPRECATED ################################################### */
+
 /**
  * @overview configurations of ccm component for building apps
  * @author André Kless <andre.kless@web.de> 2018-2019
@@ -9,7 +11,7 @@ ccm.files[ 'configs.js' ] = {
   "local": {
     "key": "local",
     "css": [ "ccm.load",
-      "../app_builder/resources/versions/default-2.0.0.css",
+      "../app_builder/resources/default.css",
       "../libs/bootstrap-4/css/bootstrap.min.css",
       { "context": "head", "url": "../libs/bootstrap-4/css/bootstrap.min.css" }
     ],
@@ -29,7 +31,7 @@ ccm.files[ 'configs.js' ] = {
   "offline": {
     "key": "offline",
     "css": [ "ccm.load",
-      "../app_builder/resources/versions/default-2.0.0.css",
+      "../app_builder/resources/default.css",
       "../libs/bootstrap-4/css/bootstrap.min.css",
       { "context": "head", "url": "../libs/bootstrap-4/css/bootstrap.min.css" }
     ],
@@ -48,7 +50,7 @@ ccm.files[ 'configs.js' ] = {
   "localhost": {
     "key": "localhost",
     "css": [ "ccm.load",
-      "../app_builder/resources/versions/default-2.0.0.css",
+      "../app_builder/resources/default.css",
       "../libs/bootstrap-4/css/bootstrap.min.css",
       { "context": "head", "url": "../libs/bootstrap-4/css/bootstrap.min.css" }
     ],
