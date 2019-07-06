@@ -204,7 +204,7 @@
                 onchange: ( instance, event ) => {
                   if ( event !== 'change' ) return;
                   const value = instance.getValue();
-                  value.key = config.key;
+                  if ( config ) value.key = config.key;
                   config = value;
                 }
               } );
