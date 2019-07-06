@@ -2,7 +2,7 @@
  * @overview ccm component for digital maker space
  * @author André Kless <andre.kless@web.de> 2018-2019
  * @license MIT License
- * @version latest (2.0.0)
+ * @version 2.0.0
  * @changes
  * version 2.0.0 (06.07.2019):
  * - uses ccm v21.1.2
@@ -21,30 +21,30 @@
 
   const component = {
 
-    name: 'dms',
+    name: 'dms', version: [ 2, 0, 0 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-21.1.2.js',
 
     config: {
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/dms/resources/default-v2.css" ],
-//    "component_manager": [ "ccm.component", "https://ccmjs.github.io/akless-components/component_manager/ccm.component_manager-3.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/component_manager/resources/resources.js", "demo" ] ],
+//    "component_manager": [ "ccm.component", "https://ccmjs.github.io/akless-components/component_manager/versions/ccm.component_manager-3.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/component_manager/resources/resources.js", "demo" ] ],
       "data": {
         "store": [ "ccm.store" ],
         "key": {}
       },
       "default_icon": "https://ccmjs.github.io/akless-components/dms/resources/default.png",
-//    "form": [ "ccm.component", "https://ccmjs.github.io/akless-components/submit/versions/ccm.submit-7.1.3.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/dms/resources/resources.js", "form" ] ],
+//    "form": [ "ccm.component", "https://ccmjs.github.io/akless-components/submit/versions/ccm.submit-7.1.3.js" ],
       "html": [ "ccm.get", "https://ccmjs.github.io/akless-components/dms/resources/resources.js", "html" ],
       "ignore": {
         "apps": [ 'ccm.store' ],
         "configs": [ 'ccm.store' ],
         "builder": [ "ccm.start", "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-1.4.1.js", { "directly": true, "nosubmit": true } ]
       },
-//    "listing": [ "ccm.component", "https://ccmjs.github.io/akless-components/listing/versions/ccm.listing-3.1.3.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/dms/resources/resources.js", "listing" ] ],
+//    "listing": [ "ccm.component", "https://ccmjs.github.io/akless-components/listing/versions/ccm.listing-3.1.3.js" ],
 //    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.2.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
 //    "logo": "https://ccmjs.github.io/akless-components/dms/resources/component.png",
       "menu": [ "ccm.component", "https://ccmjs.github.io/akless-components/menu/versions/ccm.menu-2.7.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/dms/resources/resources.js", "menu" ] ],
-//    "rating": [ "ccm.component", "https://ccmjs.github.io/tkless-components/star_rating_result/versions/ccm.star_rating_result-4.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/dms/resources/resources.js", "rating" ] ],
+//    "rating": [ "ccm.component", "https://ccmjs.github.io/tkless-components/star_rating_result/versions/ccm.star_rating_result-4.0.0.js" ],
 //    "routing": [ "ccm.instance", "https://ccmjs.github.io/akless-components/routing/versions/ccm.routing-2.0.3.js" ],
       "title": "Digital Maker Space"
 //    "user": [ "ccm.start", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.2.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "guest" ] ]
@@ -200,8 +200,8 @@
                 await this.data.store.set( meta );
 
                 // show published component
-                this.routing && this.routing.set( 'component-' + meta.key );
                 await this.start();
+                await showComponent( meta.key );
 
               }
             } );

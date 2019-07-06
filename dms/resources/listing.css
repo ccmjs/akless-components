@@ -1,64 +1,62 @@
 /**
- * @overview layout for listing of all components
- * @author André Kless <andre.kless@web.de.de> 2018-2019
- * @version latest (2.0.0)
+ * @overview layout for listing of all components (last used with ccm.dms-1.0.7.js)
+ * @author André Kless <andre.kless@web.de.de> 2018
  * @license MIT License
  */
 
 #element {
-  --color1: #00BFFF;
-  --color2: #00376B;
-  --color3: #914D00;
-  --color4: #E6F4F1;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.42857143;
   display: flex;
   justify-content: center;
 }
 
 #entries {
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  padding: 1em;
+  max-width: 100em;
+  padding: 2em;
 }
 
-.entry {
-  margin: 1em;
-  min-width: 15em !important;
-  max-width: 15em;
-  border-width: medium !important;
-  cursor: pointer;
-  overflow: hidden;
-}
-
-.empty:before {
+#entries.empty::before {
   content: 'No published Components to display.';
 }
 
-.entry:hover {
-  border-color: var(--color1);
+#entries .entry {
+  width: 16em;
+  height: 4.5em;
+  padding: 1em;
+  overflow: hidden;
+  display: flex;
+  cursor: pointer;
 }
 
-.card-header {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
+#entries .entry:hover {
+  border-radius: 0.5em;
+  background-color: rgba(153, 153, 153, 0.06);
 }
 
-.card-header span {
-  opacity: 0;
-  font-size: xx-large;
+#entries .entry .left {
+  padding-right: 0.5em;
 }
 
-.card:hover .card-header span {
-  opacity: 0.5;
-  font-size: xx-large;
+#entries .entry img {
+  width: 64px;
+  height: 64px;
 }
 
-.card-header img {
-  margin: 0 1.5em;
-  width: 64px !important;
-  height: 64px !important;
-  border-radius: 100%;
+#entries .entry .title {
+  font-size: 16px;
+  white-space: normal;
+  line-height: 1.2em;
+  padding-left: 2px;
 }
 
-.card-title {
-  margin-bottom: 0 !important;
+#entries .entry .developer {
+  font-family: Verdana, sans-serif;
+  font-size: 12px;
+  color: #999999;
+  white-space: nowrap;
+  padding-left: 2px;
 }

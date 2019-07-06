@@ -1,0 +1,72 @@
+/**
+ * @overview default layout of ccm component for digital maker space
+ * @author André Kless <andre.kless@web.de.de> 2018-2019
+ * @license MIT License
+ */
+
+#element {
+  --color1: #00BFFF;
+  --color2: #00376B;
+  --color3: #914D00;
+  --color4: #E6F4F1;
+}
+
+#main {
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+#header {
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+  z-index: 99;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--color2);
+  background-color: var(--color4);
+  color: var(--color2);
+  padding: .5em 0;
+  white-space: nowrap;
+}
+
+#header > div {
+  padding: 0 .5em;
+}
+
+#brand {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+#brand:hover {
+  text-decoration: underline;
+}
+
+#logo img {
+  height: 3em;
+  padding-top: .2em;
+  padding-right: .6em;
+}
+
+#title {
+  display: inline-flex;
+  height: 2em;
+  align-items: center;
+  border-right: 1px solid var(--color2);
+  padding-right: 1em;
+  font-family: sans-serif;
+  letter-spacing: .1em;
+  font-size: large;
+}
+
+#user {
+  margin-left: auto;
+}
+
+#element, #content, #content > * {
+  display: grid;
+}
