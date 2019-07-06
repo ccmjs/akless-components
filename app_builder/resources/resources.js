@@ -435,7 +435,7 @@ ccm.files[ 'resources.js' ] = {
 
   "local": {
     "app": [ "ccm.component", "../json_builder/ccm.json_builder.js", {
-      "css": [ "ccm.load", "../json_builder/resources/default-v2.css" ]
+      "css": [ "ccm.load", "../json_builder/resources/default.css" ]
     } ],
     "bookmarklet": [ "ccm.component", "../window/ccm.window.js" ],
     "builder": [ "ccm.component", "../json_builder/ccm.json_builder.js", {
@@ -444,7 +444,7 @@ ccm.files[ 'resources.js' ] = {
       "nosubmit": true
     } ],
     "css": [ "ccm.load",
-      "../app_builder/resources/default.css",
+      "../app_builder/resources/default-v2.css",
       "../libs/bootstrap-4/css/bootstrap.min.css",
       { "context": "head", "url": "../libs/bootstrap-4/css/bootstrap.min.css" }
     ],
