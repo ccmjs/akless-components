@@ -1,5 +1,3 @@
-/* ################################################### DEPRECATED ################################################### */
-
 /**
  * @overview ccm component for managing a component
  * @author André Kless <andre.kless@web.de> 2018-2019

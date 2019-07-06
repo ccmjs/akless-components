@@ -1,3 +1,5 @@
+/* ################################################### DEPRECATED ################################################### */
+
 /**
  * @overview configurations of ccm component for component manager (last used with ccm.component_manager-2.2.6.js)
  * @author André Kless <andre.kless@web.de> 2018
