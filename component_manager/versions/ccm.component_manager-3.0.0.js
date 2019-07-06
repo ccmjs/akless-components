@@ -14,7 +14,7 @@
  * - current state of app configuration is taken over when changing app builder
  * - supports deletion of component metadata
  * - empty reviews section
- * (for older version changes see ccm.app_builder-2.2.6.js)
+ * (for older version changes see ccm.component_manager-2.2.6.js)
  */
 
 ( () => {
