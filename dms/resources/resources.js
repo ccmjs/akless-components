@@ -32,7 +32,7 @@ ccm.files[ 'resources.js' ] = {
     "ignore": {
       "apps": [ "ccm.store", { "url": "http://localhost:8080", "name": "test-apps" } ],
       "configs": [ "ccm.store", { "url": "http://localhost:8080", "name": "dms-configs" } ],
-      "builder": [ "ccm.start", "../json_builder/ccm.json_builder.js", { "directly": true, "nosubmit": true } ]
+      "builder": [ "ccm.component", "../json_builder/ccm.json_builder.js", { "directly": true, "nosubmit": true } ]
     },
     "listing": [ "ccm.component", "../listing/ccm.listing.js", {
       "html": [ "ccm.get", "../dms/resources/resources.js", "listing_html" ],

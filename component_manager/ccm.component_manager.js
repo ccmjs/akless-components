@@ -12,6 +12,7 @@
  * - current state of app configuration is taken over when changing app builder
  * - supports deletion of component metadata
  * - empty reviews section
+ * - optional default builder
  * (for older version changes see ccm.component_manager-2.2.6.js)
  */
 
@@ -37,6 +38,7 @@
       "ignore": {
         "apps": [ "ccm.store" ],
         "configs": [ "ccm.store" ]
+//      "builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-1.4.1.js", { "directly": true, "nosubmit": true } ]
       },
 //    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.2.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
       "menu_app": [ "ccm.component", "https://ccmjs.github.io/akless-components/menu/versions/ccm.menu-2.7.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/component_manager/resources/resources.js", "menu_app" ] ],
@@ -176,10 +178,15 @@
             $.setContent( content, $.html( this.html.collection, { caption: 'Choose Builder' } ) );
 
             // render builder menu
+            const entries = dataset.ignore.builders.map( builder => builder.title );
+            this.ignore.builder && entries.push( 'Default Builder' );
             await this.menu_app.start( {
               root: content.querySelector( '#menu-app' ),
-              data: { entries: dataset.ignore.builders.map( builder => builder.title ) },
-              onclick: event => renderBuilder.call( this, dataset.ignore.builders[ event.nr - 1 ].app )
+              data: { entries: entries },
+              onclick: event => {
+                const builder = dataset.ignore.builders[ event.nr - 1 ];
+                renderBuilder.call( this, builder ? builder.app : this.ignore.builder );
+              }
             } );
 
             // remove area under menu
