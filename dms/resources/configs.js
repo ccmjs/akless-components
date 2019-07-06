@@ -6,7 +6,7 @@
  * @license The MIT License (MIT)
  */
 
-ccm.files[ 'configs-1.0.0.js' ] = {
+ccm.files[ 'configs.js' ] = {
 
   "local": {
     "key": "local",
