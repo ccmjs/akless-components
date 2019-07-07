@@ -14,7 +14,6 @@
 #entries {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
   font-family: sans-serif;
   white-space: nowrap;
 }
