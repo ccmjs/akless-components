@@ -23,10 +23,6 @@
   cursor: pointer;
 }
 
-.entry:not(.selected) {
-  padding: .5em 1em;
-}
-
 .entry.selected {
   color: var(--color2);
   font-size: x-large;
