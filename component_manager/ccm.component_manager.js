@@ -184,7 +184,7 @@
             await this.menu_app.start( {
               root: content.querySelector( '#menu-app' ),
               data: { entries: entries },
-              'routing.2': this.routing && this.routing.app && { app: this.routing.app + '_builder' },
+              'routing.2': this.routing && this.menu_app.config.routing && this.routing.app && { app: this.routing.app + '_builder' },
               onclick: event => {
                 const builder = dataset.ignore.builders[ event.nr - 1 ];
                 renderBuilder.call( this, builder ? builder.app : this.ignore.builder );
