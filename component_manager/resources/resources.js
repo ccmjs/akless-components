@@ -56,7 +56,7 @@ ccm.files[ 'resources.js' ] = {
       "data": { "entries": [ "Overview", "Reviews", "App Creation" ] },
       "selected": 1
     } ],
-    "routing": [ "ccm.instance", "../routing/ccm.routing.js" ],
+    "routing": [ "ccm.instance", "../routing/ccm.routing.js", { "app": "component_manager" } ],
     "user": [ "ccm.start", "../user/ccm.user.js", {
       "realm": "cloud",
       "url": "http://localhost:8080",
@@ -88,7 +88,7 @@ ccm.files[ 'resources.js' ] = {
       "configs": [ "ccm.store", { "url": "https://ccm2.inf.h-brs.de", "name": "test-configs" } ],
       "builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-1.4.1.js", { "directly": true, "nosubmit": true } ]
     },
-    "routing": [ "ccm.instance", "https://ccmjs.github.io/akless-components/routing/versions/ccm.routing-2.0.3.js" ],
+    "routing": [ "ccm.instance", "https://ccmjs.github.io/akless-components/routing/versions/ccm.routing-2.0.3.js", { "app": "component_manager" } ],
     "user": [ "ccm.start", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.2.0.js", {
       "hash": [ "ccm.load", { "url": "https://ccmjs.github.io/akless-components/modules/md5.js", "type": "module" } ],
       "realm": "cloud",
