@@ -17,7 +17,7 @@ ccm.files[ 'resources.js' ] = {
       "key": {}
     },
     "default_icon": "../dms/resources/default.png",
-    "form": [ "ccm.component", "..submit.js", {
+    "form": [ "ccm.component", "../submit/ccm.submit.js", {
       "css": [ "ccm.load",
         { "context": "head", "url": "../libs/bootstrap/css/font-face.css" },
         "../libs/bootstrap/css/bootstrap.css",
