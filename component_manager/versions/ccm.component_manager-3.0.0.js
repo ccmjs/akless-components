@@ -197,7 +197,7 @@
 
               this.builder.start( {
                 root: content.querySelector( '#app' ),
-                data: { store: this.ignore.configs, key: config },
+                data: { store: this.ignore.configs, key: [ 'ccm.get', { local: { app: config } }, 'app' ] },
                 meta_store: this.ignore.apps,
                 app: [ 'ccm.component', dataset.path, config ],
                 builder: builder,
