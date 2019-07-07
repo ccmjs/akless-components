@@ -140,6 +140,7 @@
             await this.menu_app.start( {
               root: content.querySelector( '#menu-app' ),
               data: { entries: dataset.ignore.demos.map( demo => demo.title ) },
+              'routing.2': this.routing && this.routing.app && { app: this.routing.app + '_demo' },
               onclick: async event => {
                 config = await $.solveDependency( await dataset.ignore.demos[ event.nr - 1 ].app[ 2 ] );
                 $.setContent( content.querySelector( '#app' ), ( await $.solveDependency( dataset.ignore.demos[ event.nr - 1 ].app ) ).root );
@@ -183,6 +184,7 @@
             await this.menu_app.start( {
               root: content.querySelector( '#menu-app' ),
               data: { entries: entries },
+              'routing.2': this.routing && this.routing.app && { app: this.routing.app + '_builder' },
               onclick: event => {
                 const builder = dataset.ignore.builders[ event.nr - 1 ];
                 renderBuilder.call( this, builder ? builder.app : this.ignore.builder );

@@ -44,6 +44,7 @@ ccm.files[ 'resources.js' ] = {
         "../libs/bootstrap-4/css/bootstrap.min.css"
       ],
       "html": [ "ccm.get", "../component_manager/resources/resources.js", "menu_app_html" ],
+      "routing": [ "ccm.instance", "../routing/ccm.routing.js" ],
       "selected": 1
     } ],
     "menu_top": [ "ccm.component", "../menu/ccm.menu.js", {
