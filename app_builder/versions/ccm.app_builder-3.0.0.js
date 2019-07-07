@@ -467,11 +467,10 @@
             $.removeElement( content.querySelector( '#download' ) );
 
           // provide App via Bookmarklet
-          if ( self.bookmarklet )
-            if ( self.window ) {
-              const window = await self.window.instance( { app: [ 'ccm.start', self.app.url, self.getValue() ] } );
-              content.querySelector( '#bookmarklet' ).setAttribute( 'href', window.bookmarklet() );
-            }
+          if ( self.window ) {
+            const window = await self.window.instance( { app: [ 'ccm.start', self.app.url, self.getValue() ] } );
+            content.querySelector( '#bookmarklet' ).setAttribute( 'href', window.bookmarklet() );
+          }
           else
             $.removeElement( content.querySelector( '#bookmarklet' ) );
 
