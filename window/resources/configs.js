@@ -9,8 +9,8 @@ ccm.files[ 'configs.js' ] = {
   "local": {
     "key": "local",
     "css": [ "ccm.load", "../window/resources/default.css" ],
-    "app": [ "ccm.start", "../../akless-components/blank/ccm.blank.js" ],
-    "icon": "../../akless-components/dms/resources/component.png"
+    "app": [ "ccm.start", "../blank/ccm.blank.js" ],
+    "icon": "../dms/resources/component.png"
   },
 
   "demo": {
