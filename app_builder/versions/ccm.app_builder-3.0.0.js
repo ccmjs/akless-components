@@ -24,7 +24,7 @@
 
     config: {
       "app": [ "ccm.component", "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-1.4.1.js" ],
-//    "bookmarklet": [ "ccm.component", "https://ccmjs.github.io/akless-components/window/versions/ccm.window-1.0.0.js" ],
+//    "window": [ "ccm.component", "https://ccmjs.github.io/akless-components/window/versions/ccm.window-1.0.0.js" ],
       "builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-1.4.1.js", { "directly": true, "nosubmit": true } ],
 //    "convert": { "app_to_builder": json => json, "builder_to_app": json => json },
       "css": [ "ccm.load",
@@ -468,9 +468,10 @@
 
           // provide App via Bookmarklet
           if ( self.bookmarklet )
-            content.querySelector( '#bookmarklet' ).setAttribute( 'href', ( await self.bookmarklet.instance( {
-              app: [ 'ccm.start', self.app.url, self.getValue() ]
-            } ) ).bookmarklet() );
+            if ( self.window ) {
+              const window = await self.window.instance( { app: [ 'ccm.start', self.app.url, self.getValue() ] } );
+              content.querySelector( '#bookmarklet' ).setAttribute( 'href', window.bookmarklet() );
+            }
           else
             $.removeElement( content.querySelector( '#bookmarklet' ) );
 

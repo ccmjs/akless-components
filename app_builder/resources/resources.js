@@ -10,7 +10,7 @@ ccm.files[ 'resources.js' ] = {
     "app": [ "ccm.component", "../json_builder/ccm.json_builder.js", {
       "css": [ "ccm.load", "../json_builder/resources/default.css" ]
     } ],
-    "bookmarklet": [ "ccm.component", "../window/ccm.window.js" ],
+    "window": [ "ccm.component", "../window/ccm.window.js" ],
     "builder": [ "ccm.component", "../json_builder/ccm.json_builder.js", {
       "css": [ "ccm.load", "../json_builder/resources/default.css" ],
       "directly": true,
@@ -55,7 +55,7 @@ ccm.files[ 'resources.js' ] = {
   },
 
   "demo": {
-    "bookmarklet": [ "ccm.component", "https://ccmjs.github.io/akless-components/window/versions/ccm.window-1.0.0.js" ],
+    "window": [ "ccm.component", "https://ccmjs.github.io/akless-components/window/versions/ccm.window-1.0.0.js" ],
     "data": { "store": [ "ccm.store", { "url": "https://ccm2.inf.h-brs.de", "name": "test-configs" } ] },
     "form": [ "ccm.component", "https://ccmjs.github.io/akless-components/submit/versions/ccm.submit-7.1.3.js", {
       "entries": [ "ccm.get", "https://ccmjs.github.io/akless-components/app_builder/resources/resources.js", "form_entries" ],
