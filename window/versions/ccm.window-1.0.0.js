@@ -56,7 +56,7 @@
                         "class": "icon",
                         "inner": "&#43;",
                         "tag": "a",
-                        "href": "%booklet%"
+                        "href": "%bookmarklet%"
                       },
                       {
                         "id": "window-close",
@@ -76,7 +76,7 @@
             "onclick": "%window%",
             "inner": {
               "tag": "a",
-              "href": "%booklet%",
+              "href": "%bookmarklet%",
               "inner": [
                 {
                   "id": "compact-icon",
@@ -163,7 +163,7 @@
             else if ( elem.msRequestFullscreen )     /* IE/Edge */
               elem.msRequestFullscreen();
           },
-          booklet: this.booklet(),
+          bookmarklet: this.bookmarklet(),
           close: () => $.removeElement( this.root.parentNode )
         } ) );
 
@@ -208,11 +208,11 @@
       };
 
       /**
-       * returns booklet
+       * returns bookmarklet
        * @param {Object} [config] - priority data for instance configuration
-       * @returns {string} booklet
+       * @returns {string} bookmarklet
        */
-      this.booklet = config => $.format( 'javascript:!function(){var%20e=document.createElement(%22script%22);e.setAttribute(%22src%22,%22%url%%22),document.head.appendChild(e),e=document.createElement(%22ccm-%index%%22),e.setAttribute(%22style%22,%22position:absolute;top:0%22),e.setAttribute(%22key%22,%22%config%%22),document.body.appendChild(e)}();', {
+      this.bookmarklet = config => $.format( 'javascript:!function(){var%20e=document.createElement(%22script%22);e.setAttribute(%22src%22,%22%url%%22),document.head.appendChild(e),e=document.createElement(%22ccm-%index%%22),e.setAttribute(%22style%22,%22position:absolute;top:0%22),e.setAttribute(%22key%22,%22%config%%22),document.body.appendChild(e)}();', {
         url: this.url,
         index: this.component.index,
         config: encodeURI( ( config ? $.stringify( $.integrate( config, $.parse( this.config ) ) ) : this.config ).replace( /"/g, '\\"' ) )
