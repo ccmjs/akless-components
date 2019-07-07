@@ -407,7 +407,7 @@ ccm.files[ 'resources.js' ] = {
       "name": "title",
       "type": "text",
       "info": "Title of the app. As understandable and short as possible.",
-      "placeholder": "Digital Maker Space",
+      "placeholder": "Digital Makerspace",
       "required": true,
       "maxlength": 35
     },
@@ -431,7 +431,7 @@ ccm.files[ 'resources.js' ] = {
       "name": "description",
       "type": "textarea",
       "info": "A detailed description of your app. Try to make as understandable as possible what you can do with the help of your app.",
-      "placeholder": "Component developers can publish, find, try, and rate components, and app creators can create their own apps from components without programming skills. With the built-in App Store, the created apps can be found, tried, rated, reused and shared by others. Everything in this Digital Maker Space is free software and all content is public domain."
+      "placeholder": "Component developers can publish, find, try, and rate components, and app creators can create their own apps from components without programming skills. With the built-in App Store, the created apps can be found, tried, rated, reused and shared by others. Everything in this Digital Makerspace is free software and all content is public domain."
     },
     {
       "label": "Category",
@@ -471,7 +471,7 @@ ccm.files[ 'resources.js' ] = {
     {
       "label": "<span style='color:red'>*</span>I Agree",
       "type": "checkbox",
-      "info": "Everything in a Digital Maker Space is free software and all content is public domain. So you can only publish anything if this requirement is fulfilled.",
+      "info": "Everything in a Digital Makerspace is free software and all content is public domain. So you can only publish anything if this requirement is fulfilled.",
       "required": true
     },
     { "type": "submit" }

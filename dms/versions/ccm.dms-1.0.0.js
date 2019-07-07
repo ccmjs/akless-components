@@ -1,5 +1,5 @@
 /**
- * @overview ccm component for digital maker space
+ * @overview ccm component for digital makerspace
  * @author André Kless <andre.kless@web.de> 2018
  * @license MIT License
  * @version 1.0.0
@@ -30,7 +30,7 @@
                   "inner": {
                     "tag": "span",
                     "onclick": "%all_components%",
-                    "inner": "Digital Maker Space"
+                    "inner": "Digital Makerspace"
                   }
                 },
                 {

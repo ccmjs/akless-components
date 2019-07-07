@@ -1,5 +1,5 @@
 /**
- * @overview ccm component for digital maker space
+ * @overview ccm component for digital makerspace
  * @author André Kless <andre.kless@web.de> 2018-2019
  * @license MIT License
  * @version latest (2.0.0)
@@ -46,7 +46,7 @@
       "menu": [ "ccm.component", "https://ccmjs.github.io/akless-components/menu/versions/ccm.menu-2.7.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/dms/resources/resources.js", "menu" ] ],
 //    "rating": [ "ccm.component", "https://ccmjs.github.io/tkless-components/star_rating_result/versions/ccm.star_rating_result-4.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/dms/resources/resources.js", "rating" ] ],
 //    "routing": [ "ccm.instance", "https://ccmjs.github.io/akless-components/routing/versions/ccm.routing-2.0.3.js" ],
-      "title": "Digital Maker Space"
+      "title": "Digital Makerspace"
 //    "user": [ "ccm.start", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.2.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "guest" ] ]
     },
 

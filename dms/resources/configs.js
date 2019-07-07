@@ -1,7 +1,7 @@
 /* ################################################### DEPRECATED ################################################### */
 
 /**
- * @overview configurations of ccm component for digital maker space (last used with ccm.dms-1.0.7.js)
+ * @overview configurations of ccm component for digital makerspace
  * @author André Kless <andre.kless@web.de> 2018
  * @license The MIT License (MIT)
  */
