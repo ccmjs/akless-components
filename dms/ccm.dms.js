@@ -4,7 +4,7 @@
  * @license MIT License
  * @version latest (2.0.0)
  * @changes
- * version 2.0.0 (06.07.2019):
+ * version 2.0.0 (08.07.2019):
  * - uses ccm v21.1.3
  * - improved routing support
  * - handling multiple versions of a published component
@@ -44,7 +44,7 @@
 //    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.2.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
 //    "logo": "https://ccmjs.github.io/akless-components/dms/resources/component.png",
       "menu": [ "ccm.component", "https://ccmjs.github.io/akless-components/menu/versions/ccm.menu-2.7.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/dms/resources/resources.js", "menu" ] ],
-//    "rating": [ "ccm.component", "https://ccmjs.github.io/tkless-components/star_rating_result/versions/ccm.star_rating_result-4.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/dms/resources/resources.js", "rating" ] ],
+//    "rating": { "apps": [ "ccm.component", ... ], "components": [ "ccm.component", ... ] },
 //    "routing": [ "ccm.instance", "https://ccmjs.github.io/akless-components/routing/versions/ccm.routing-2.0.3.js" ],
       "title": "Digital Makerspace"
 //    "user": [ "ccm.start", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.2.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "guest" ] ]
@@ -52,7 +52,7 @@
 
     Instance: function () {
 
-      let $;
+      let $, apps;
 
       this.ready = async () => {
 
@@ -112,13 +112,64 @@
           },
 
           // Apps
-          () => {
+          async () => {
 
             // update route
             this.routing && this.routing.set( 'apps' );
 
             // clear content area
-            $.setContent( content, '' );
+            if ( !this.listing || !this.ignore.apps ) return $.setContent( content, '' );
+
+            // load all published apps
+            if ( !apps ) apps = await this.ccm.get( this.ignore.apps[ 1 ], {} );
+
+            // render listing with all apps
+            this.listing.apps.start( {
+              root: content,
+              data: apps,
+              sort: ( a, b ) => {
+                const title_x = a.title.toLowerCase();
+                const title_y = b.title.toLowerCase();
+                const creator_x = ( a.creator || '' ).toLowerCase();
+                const creator_y = ( b.creator || '' ).toLowerCase();
+                if ( title_x < title_y ) return -1;
+                if ( title_x > title_y ) return 1;
+                if ( creator_x < creator_y ) return -1;
+                if ( creator_x > creator_y ) return 1;
+                return 0;
+              },
+              onrender: async event => {
+
+                // app has no own icon => use component icon or default icon
+                const icon = event.entry.querySelector( '.icon' );
+                if ( !icon.getAttribute( 'src' ) ) {
+                  const component = await this.data.store.get( $.getIndex( event.data.path ).replace( /\./g, '-' ) );
+                  icon.setAttribute( 'src', component && component.icon || this.default_icon );
+                }
+                if ( !icon.getAttribute( 'src' ) ) $.removeElement( icon );
+
+                // render rating
+                if ( !this.rating ) return;
+                this.rating && this.rating.apps && this.rating.apps.start( {
+                  root: event.entry.querySelector( '.rating' ),
+                  'data.key': event.data.key
+                } );
+
+              },
+              onclick: async ( event, element, data ) => {
+                /*
+                changeSelectedMenuEntry();
+                window.location.hash = '';
+                const instance = await self.component_manager.start( {
+                  data: {
+                    store: self.data.store,
+                    key: data.key
+                  }
+                } );
+                $.setContent( content_elem, instance.root )
+                */
+              }
+            } );
 
           },
 
@@ -132,7 +183,7 @@
             if ( !this.listing ) return $.setContent( content, '' );
 
             // render listing with all components
-            await this.listing.start( {
+            await this.listing.components.start( {
               root: content,
               data: filtered_components,
               sort: ( a, b ) => {
@@ -146,7 +197,7 @@
                 if ( creator_x > creator_y ) return 1;
                 return 0;
               },
-              onrender: event => this.rating && this.rating.start( {
+              onrender: event => this.rating && this.rating.components && this.rating.components.start( {
                 root: event.entry.querySelector( '.rating' ),
                 'data.key': event.data.key
               } ),
