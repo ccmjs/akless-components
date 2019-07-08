@@ -14,7 +14,7 @@
 #entries {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
   max-width: 100em;
   padding: 2em;
 }
