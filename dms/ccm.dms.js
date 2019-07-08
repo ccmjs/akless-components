@@ -11,7 +11,9 @@
  * - changed header menu
  * - changed listing of components
  * - changed publish component section
- * - empty home and apps section
+ * - listing of all published apps
+ * - app view with create similar app button
+ * - empty home section
  * - uses ccm.component_manager.js v3.0.0
  * - passes default app builder to component manager
  * (for older version changes see ccm.dms-1.0.7.js)
