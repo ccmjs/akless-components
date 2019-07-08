@@ -5,7 +5,7 @@
  * @version latest (3.0.0)
  * @changes
  * version 3.0.0 (06.07.2019):
- * - uses ccm v21.1.2
+ * - uses ccm v21.1.3
  * - editing of component metadata via setup button (only visible for creator)
  * - added routing support
  * - demos and builder could be added/changes/removed by creator via setup button
@@ -22,7 +22,7 @@
 
     name: 'component_manager',
 
-    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-21.1.2.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-21.1.3.js',
 
     config: {
 //    "builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/app_builder/versions/ccm.app_builder-3.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/app_builder/resources/resources.js", "demo" ] ],

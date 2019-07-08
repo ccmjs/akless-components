@@ -10,7 +10,7 @@
  * - change event is triggered also when app configuration has changed
  * - abort if login process was canceled by user
  * - bug fix for copy to clipboard
- * - uses ccm v21.1.2
+ * - uses ccm v21.1.3
  * (for older version changes see ccm.app_builder-2.0.0.js)
  */
 
@@ -20,7 +20,7 @@
 
     name: 'app_builder',
 
-    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-21.1.2.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-21.1.3.js',
 
     config: {
       "app": [ "ccm.component", "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-1.4.1.js" ],

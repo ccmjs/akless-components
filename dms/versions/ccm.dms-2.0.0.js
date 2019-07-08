@@ -5,7 +5,7 @@
  * @version 2.0.0
  * @changes
  * version 2.0.0 (06.07.2019):
- * - uses ccm v21.1.2
+ * - uses ccm v21.1.3
  * - improved routing support
  * - handling multiple versions of a published component
  * - changed header menu
@@ -23,7 +23,7 @@
 
     name: 'dms', version: [ 2, 0, 0 ],
 
-    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-21.1.2.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-21.1.3.js',
 
     config: {
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/dms/resources/default-v2.css" ],
