@@ -4,7 +4,7 @@
  * @license MIT License
  * @version 3.0.0
  * @changes
- * version 3.0.0 (06.07.2019):
+ * version 3.0.0 (08.07.2019):
  * - uses ccm v21.1.3
  * - editing of component metadata via setup button (only visible for creator)
  * - added routing support
@@ -31,14 +31,14 @@
         "https://ccmjs.github.io/akless-components/libs/bootstrap-4/css/bootstrap.min.css",
         { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/bootstrap-4/css/bootstrap.min.css" }
       ],
-//    "create_similar_app": { "key": "app" },
       "data": {},
 //    "form": [ "ccm.component", "https://ccmjs.github.io/akless-components/submit/versions/ccm.submit-7.1.3.js" ],
       "html": [ "ccm.get", "https://ccmjs.github.io/akless-components/component_manager/resources/resources.js", "html" ],
       "ignore": {
         "apps": [ "ccm.store" ],
         "configs": [ "ccm.store" ]
-//      "builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-1.4.1.js", { "directly": true, "nosubmit": true } ]
+//      "builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-1.4.1.js", { "directly": true, "nosubmit": true } ],
+//      "create_similar_app": {},
       },
 //    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.2.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
       "menu_app": [ "ccm.component", "https://ccmjs.github.io/akless-components/menu/versions/ccm.menu-2.7.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/component_manager/resources/resources.js", "menu_app" ] ],
@@ -131,7 +131,7 @@
               caption: 'Choose Demo',
               button: '♺ Create Similar App',
               onclick: async () => {
-                this.create_similar_app = config;
+                this.ignore.create_similar_app = config;
                 await menu.select( 3 );
               }
             } ) );
@@ -173,7 +173,7 @@
              * current state of app configuration
              * @type {Object}
              */
-            let config = this.create_similar_app; delete this.create_similar_app;
+            let config = this.ignore.create_similar_app; delete this.ignore.create_similar_app;
 
             // render app creation section
             $.setContent( content, $.html( this.html.collection, { caption: 'Choose Builder' } ) );

@@ -156,18 +156,36 @@
                 } );
 
               },
-              onclick: async ( event, element, data ) => {
-                /*
-                changeSelectedMenuEntry();
-                window.location.hash = '';
-                const instance = await self.component_manager.start( {
-                  data: {
-                    store: self.data.store,
-                    key: data.key
-                  }
-                } );
-                $.setContent( content_elem, instance.root )
-                */
+              onclick: async ( event ) => {
+
+                const config = [ 'ccm.get', event.data.source[ 0 ], event.data.source[ 1 ] ];
+                const app = await this.ccm.instance( event.data.path, config );
+                $.setContent( content, $.html( {
+                  "style": "padding: 0.5em",
+                  "inner": [
+                    {
+                      "style": "font-size: large; padding: 1em 0;",
+                      "inner": "App: <b>%title%</b> (<i>%app_id%</i>)"
+                    },
+                    {
+                      "style": "margin: 1em 0;",
+                      "id": "app"
+                    },
+                    {
+                      "tag": "button",
+                      "style": "font-size: large; padding: 0.5em 0; margin: 0.5em 0;",
+                      "inner": "Create Similar App",
+                      "onclick": "%create_similar_app%"
+                    }
+                  ]
+                }, {
+                  title: event.data.title,
+                  app_id: event.data.key,
+                  create_similar_app: async () => showComponent( $.getIndex( event.data.path ).replace( /\./g, '-' ), await $.solveDependency( config ) )
+                } ) );
+                $.setContent( content.querySelector( '#app' ), app.root );
+                await app.start();
+
               }
             } );
 
@@ -264,9 +282,10 @@
         /**
          * shows a component
          * @param {string} index - component index
+         * @param {Object} config - initial app configuration for app creation
          * @returns {Promise<void>}
          */
-        const showComponent = async index => {
+        const showComponent = async ( index, config ) => {
 
           // update route
           this.routing && this.routing.set( `component-${index}` );
@@ -283,7 +302,8 @@
             },
             'ignore.apps': this.ignore.apps,
             'ignore.configs': this.ignore.configs,
-            'ignore.builder': this.ignore.builder
+            'ignore.builder': this.ignore.builder,
+            'ignore.create_similar_app': config
           } );
 
           // replace version number with selector box
