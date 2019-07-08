@@ -143,7 +143,9 @@
               'routing.2': this.routing && this.routing.app && { app: this.routing.app + '_demo' },
               onclick: async event => {
                 config = await $.solveDependency( await dataset.ignore.demos[ event.nr - 1 ].app[ 2 ] );
-                $.setContent( content.querySelector( '#app' ), ( await $.solveDependency( dataset.ignore.demos[ event.nr - 1 ].app ) ).root );
+                const app = await $.solveDependency( dataset.ignore.demos[ event.nr - 1 ].app );
+                $.setContent( content.querySelector( '#app' ), app.root );
+                await app.start();
               }
             } );
 
@@ -221,7 +223,7 @@
         const menu = await this.menu_top.start( {
           root: this.element.querySelector( '#menu-top' ),
           onclick: event => view[ event.nr - 1 ](),
-          selected: this.routing && this.routing.get() ? null : undefined
+          selected: this.routing && this.routing.get() ? ( this.ignore && this.ignore.create_similar_app ? 3 : null ) : undefined
         } );
 
         // render login/logout area
