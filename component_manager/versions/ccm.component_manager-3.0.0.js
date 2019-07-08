@@ -296,7 +296,7 @@
               this.ignore.configs && await $.asyncForEach( meta.demos, async demo => {
                 demo.title && demo.app && meta.ignore.demos.push( {
                   title: demo.title,
-                  app: [ 'ccm.start', meta.path, [ 'ccm.get', this.ignore.configs[ 1 ], demo.app ] ]
+                  app: [ 'ccm.instance', meta.path, [ 'ccm.get', this.ignore.configs[ 1 ], demo.app ] ]
                 } );
               } );
               delete meta.demos;
