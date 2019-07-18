@@ -7,12 +7,11 @@
 ccm.files[ 'configs.js' ] = {
 
   "local": {
-    "key": "local",
-    "css": [ "ccm.load", "../live_poll/resources/default.css" ],
-    "data": {
-      "store": [ "ccm.store", { "name": "live_poll_data", "url": "wss://ccm2.inf.h-brs.de" } ],
-      "key": "test"
-    },
+    "converter.1.url": "../modules/json-to-json.js",
+    "css.1": "../live_poll/resources/default.css",
+    "data.store.1": { "name": "live_poll_data", "url": "wss://ccm2.inf.h-brs.de" },
+    "html.1": "../live_poll/resources/templates.html",
+    "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
     "onfinish": {
       "log": true,
       "store": {
@@ -33,9 +32,7 @@ ccm.files[ 'configs.js' ] = {
       "alert": "Saved!",
       "restart": true
     },
-    "converter": [ "ccm.load", { "url": "../modules/json-to-json.js", "type": "module", "import": "poll_to_highchart" } ],
-    "user": [ "ccm.instance", "../user/ccm.user.js", [ "ccm.get", "../user/resources/configs.js", "local" ] ],
-    "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ]
+    "user": [ "ccm.instance", "../user/ccm.user.js", [ "ccm.get", "../user/resources/configs.js", "local" ] ]
   },
 
   "demo": {

@@ -2,7 +2,7 @@
  * @overview ccm component for live poll
  * @author André Kless <andre.kless@web.de> 2019
  * @license The MIT License (MIT)
- * @version latest (2.3.0)
+ * @version 2.3.0
  * @changes
  * version 2.3.0 (18.07.2019):
  * - improved clarification of marked answer
@@ -30,7 +30,7 @@
 
   const component = {
 
-    name: 'live_poll',
+    name: 'live_poll', version: [ 2, 3, 0 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-22.1.1.js',
 
