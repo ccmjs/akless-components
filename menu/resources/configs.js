@@ -203,24 +203,86 @@ ccm.files[ 'configs.js' ] = {
     "data": {
       "entries": [
         {
-          "title": "Section A",
+          "title": "section1",
           "content": "<img src='https://www.w3schools.com/howto/img_nature_wide.jpg'>"
         },
         {
-          "title": "Section B",
+          "title": "section2",
           "content": "<img src='https://www.w3schools.com/howto/img_snow_wide.jpg'>"
         },
         {
-          "title": "Section C",
+          "title": "section3",
           "content": "<img src='https://www.w3schools.com/howto/img_lights_wide.jpg'>"
         },
         {
-          "title": "Section D",
+          "title": "section4",
           "content": "<img src='https://www.w3schools.com/howto/img_mountains_wide.jpg'>"
         }
       ]
     },
     "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/menu/resources/slide.html" ],
+    "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js", {
+      "translations": {
+        "de": {
+          "flag": "https://ccmjs.github.io/tkless-components/lang/resources/de.svg",
+          "section1": "Sektion A",
+          "section2": "Sektion B",
+          "section3": "Sektion C",
+          "section4": "Sektion D"
+        },
+        "en": {
+          "flag": "https://ccmjs.github.io/tkless-components/lang/resources/en.svg",
+          "section1": "Section A",
+          "section2": "Section B",
+          "section3": "Section C",
+          "section4": "Section D"
+        }
+      }
+    } ],
+    "selected": 1
+  },
+
+  "local_slide": {
+    "css.1": "../menu/resources/slide.css",
+    "data": {
+      "entries": [
+        {
+          "title": "section1",
+          "content": "<img src='https://www.w3schools.com/howto/img_nature_wide.jpg'>"
+        },
+        {
+          "title": "section2",
+          "content": "<img src='https://www.w3schools.com/howto/img_snow_wide.jpg'>"
+        },
+        {
+          "title": "section3",
+          "content": "<img src='https://www.w3schools.com/howto/img_lights_wide.jpg'>"
+        },
+        {
+          "title": "section4",
+          "content": "<img src='https://www.w3schools.com/howto/img_mountains_wide.jpg'>"
+        }
+      ]
+    },
+    "html.1": "../menu/resources/slide.html",
+    "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js", {
+      "translations": {
+        "de": {
+          "flag": "https://ccmjs.github.io/tkless-components/lang/resources/de.svg",
+          "section1": "Sektion A",
+          "section2": "Sektion B",
+          "section3": "Sektion C",
+          "section4": "Sektion D"
+        },
+        "en": {
+          "flag": "https://ccmjs.github.io/tkless-components/lang/resources/en.svg",
+          "section1": "Section A",
+          "section2": "Section B",
+          "section3": "Section C",
+          "section4": "Section D"
+        }
+      }
+    } ],
     "selected": 1
   }
 
