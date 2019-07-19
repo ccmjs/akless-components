@@ -18,7 +18,7 @@
 .entry {
   height: 15px;
   width: 15px;
-  margin: 0 5px;
+  margin: 2px 5px;
   background-color: #bbb;
   border-radius: 50%;
   transition: background-color 0.6s ease;
@@ -53,6 +53,11 @@
 
 #content {
   margin: 1em;
+}
+
+#content > img {
+  max-width: 100%;
+  height: auto;
 }
 
 .fade {
