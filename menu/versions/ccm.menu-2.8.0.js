@@ -227,6 +227,11 @@
               else
                 $.setContent( title_elem, $.html( entry_data.title ) );
 
+            // restart fade effect for menu entry title
+            title_elem.classList.remove( 'fade' );
+            void title_elem.offsetWidth;
+            title_elem.classList.add( 'fade' );
+
             // render menu entry content
             await renderContent();
 
@@ -261,7 +266,7 @@
               // render given content
               else $.setContent( content_elem, $.html( entry_data.content ) );
 
-              // restart fade effect
+              // restart fade effect for content
               content_elem.classList.remove( 'fade' );
               void content_elem.offsetWidth;
               content_elem.classList.add( 'fade' );
