@@ -233,6 +233,9 @@
             // perform menu entry actions
             performActions();
 
+            // translate content
+            self.lang && self.lang.translate();
+
             /**
              * renders menu entry content
              * @returns {Promise}
