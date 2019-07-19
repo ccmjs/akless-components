@@ -46,7 +46,7 @@
 //    "store": "ccm-user",
       "title": "Please enter username and password"
 //    "url": "ccm2.inf.h-brs.de",
-//    "hash": [ "ccm.load", { "url": "https://ccmjs.github.io/akless-components/modules/md5.js", "type": "module" } ]
+//    "hash": [ "ccm.load", { "url": "https://ccmjs.github.io/akless-components/modules/md5.mjs", "type": "module" } ]
 
     },
 

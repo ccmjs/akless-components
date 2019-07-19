@@ -351,7 +351,7 @@
       "warning": "Are you sure you want to delete this App?",
       "builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/submit/versions/ccm.submit-7.0.0.js", [ "ccm.get", { "name": "submit", "url": "https://ccm2.inf.h-brs.de" }, "cloze_builder" ] ],
       "app": [ "ccm.component", "https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-5.0.3.js" ],
-      "helper": [ "ccm.load", { "url": "https://ccmjs.github.io/akless-components/modules/helper.js", "type": "module" } ],
+      "helper": [ "ccm.load", { "url": "https://ccmjs.github.io/akless-components/modules/helper.mjs", "type": "module" } ],
       "modal_dialog": [ "ccm.component", "https://ccmjs.github.io/tkless-components/modal/versions/ccm.modal-2.0.0.js", {
         "css": [ "ccm.load",
           "https://use.fontawesome.com/releases/v5.6.3/css/all.css",

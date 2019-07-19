@@ -47,7 +47,7 @@
   //  logging.user:    {boolean|string[]} log user informations
   //  logging.website: {boolean|string[]} log website informations
   //  only: {Object.<string,string[]|object>} settings for logging only specific subsets
-  //  hash: [ 'ccm.module', 'https://ccmjs.github.io/akless-components/modules/md5.js' ]
+  //  hash: [ 'ccm.module', 'https://ccmjs.github.io/akless-components/modules/md5.mjs' ]
   //  onfinish: function ( instance, results ) { console.log( results ); }
 
     },

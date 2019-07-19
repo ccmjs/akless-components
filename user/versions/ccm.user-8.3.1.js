@@ -251,7 +251,7 @@
   //  "norender": true,
   //  "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
   //  "onchange": event => console.log( 'User has logged ' + ( event ? 'in' : 'out' ) + '.' ),
-  //  "hash": [ "ccm.load", { "url": "https://ccmjs.github.io/akless-components/modules/md5.js", "type": "module" } ],
+  //  "hash": [ "ccm.load", { "url": "https://ccmjs.github.io/akless-components/modules/md5.mjs", "type": "module" } ],
   //  "jquery": [ "ccm.load", "https://ccmjs.github.io/akless-components/libs/jquery/jquery-3.1.1.min.js" ]
 
     },

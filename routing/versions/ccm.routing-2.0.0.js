@@ -33,7 +33,7 @@
         $ = this.ccm.helper;
 
         // app ID is given as function? => determine app ID by function
-        if ( this.app === true && this.parent ) this.app = ( await ccm.load( { "url": "https://ccmjs.github.io/akless-components/modules/md5.js", "type": "module", "import": "md5" } ) )( this.parent.config );
+        if ( this.app === true && this.parent ) this.app = ( await ccm.load( { "url": "https://ccmjs.github.io/akless-components/modules/md5.mjs", "type": "module", "import": "md5" } ) )( this.parent.config );
 
         // logging of 'ready' event
         this.logger && this.logger.log( 'ready', $.privatize( this, true ) );

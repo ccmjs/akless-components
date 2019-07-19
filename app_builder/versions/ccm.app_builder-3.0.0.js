@@ -34,7 +34,7 @@
       ],
       "data": { "store": [ "ccm.store" ] },
 //    "form": [ "ccm.component", "https://ccmjs.github.io/akless-components/submit/versions/ccm.submit-7.1.3.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/app_builder/resources/resources.js", "form" ] ],
-      "helper": [ "ccm.load", { "url": "https://ccmjs.github.io/akless-components/modules/helper.js", "type": "module" } ],
+      "helper": [ "ccm.load", { "url": "https://ccmjs.github.io/akless-components/modules/helper.mjs", "type": "module" } ],
       "html": [ "ccm.get", "https://ccmjs.github.io/akless-components/app_builder/resources/resources.js", "html" ],
 //    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.2.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
 //    "meta_store": [ "ccm.store" ],

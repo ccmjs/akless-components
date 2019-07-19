@@ -33,7 +33,7 @@ ccm.files[ 'resources.js' ] = {
         "store": [ "ccm.store", { "name": "test-apps", "url": "http://localhost:8080" } ]
       }
     } ],
-    "helper": [ "ccm.load", { "url": "../modules/helper.js", "type": "module" } ],
+    "helper": [ "ccm.load", { "url": "../modules/helper.mjs", "type": "module" } ],
     "html": [ "ccm.get", "../app_builder/resources/resources.js", "html" ],
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
     "meta_store": [ "ccm.store", { "url": "http://localhost:8080", "name": "test-apps" } ],
@@ -43,7 +43,7 @@ ccm.files[ 'resources.js' ] = {
       "realm": "cloud",
       "url": "http://localhost:8080",
       "store": "test-user",
-      "hash": [ "ccm.load", { "url": "../modules/md5.js", "type": "module" } ],
+      "hash": [ "ccm.load", { "url": "../modules/md5.mjs", "type": "module" } ],
       "css": [ "ccm.load",
         "../libs/bootstrap/css/bootstrap.css",
         { "context": "head", "url": "../libs/bootstrap/css/font-face.css" },
@@ -66,7 +66,7 @@ ccm.files[ 'resources.js' ] = {
     "meta_store": [ "ccm.store", { "url": "https://ccm2.inf.h-brs.de", "name": "test-apps" } ],
     "qr_code": [ "ccm.load", "https://ccmjs.github.io/akless-components/libs/qrcode-generator/qrcode.min.js" ],
     "user": [ "ccm.start", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.2.0.js", {
-      "hash": [ "ccm.load", { "url": "https://ccmjs.github.io/akless-components/modules/md5.js", "type": "module" } ],
+      "hash": [ "ccm.load", { "url": "https://ccmjs.github.io/akless-components/modules/md5.mjs", "type": "module" } ],
       "realm": "cloud",
       "store": "test-user",
       "url": "https://ccm2.inf.h-brs.de"

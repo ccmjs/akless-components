@@ -61,7 +61,7 @@ ccm.files[ 'resources.js' ] = {
       "realm": "cloud",
       "url": "http://localhost:8080",
       "store": "test-user",
-      "hash": [ "ccm.load", { "url": "../modules/md5.js", "type": "module" } ],
+      "hash": [ "ccm.load", { "url": "../modules/md5.mjs", "type": "module" } ],
       "css": [ "ccm.load",
         "../libs/bootstrap/css/bootstrap.css",
         { "context": "head", "url": "../libs/bootstrap/css/font-face.css" },
@@ -90,7 +90,7 @@ ccm.files[ 'resources.js' ] = {
     },
     "routing": [ "ccm.instance", "https://ccmjs.github.io/akless-components/routing/versions/ccm.routing-2.0.3.js", { "app": "component_manager" } ],
     "user": [ "ccm.start", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.2.0.js", {
-      "hash": [ "ccm.load", { "url": "https://ccmjs.github.io/akless-components/modules/md5.js", "type": "module" } ],
+      "hash": [ "ccm.load", { "url": "https://ccmjs.github.io/akless-components/modules/md5.mjs", "type": "module" } ],
       "realm": "cloud",
       "store": "test-user",
       "url": "https://ccm2.inf.h-brs.de"

@@ -7,7 +7,7 @@
 ccm.files[ 'configs.js' ] = {
 
   "local": {
-    "converter.1.url": "../modules/json-to-json.js",
+    "converter.1.url": "../modules/json2json.mjs",
     "css.1": "../live_poll/resources/default.css",
     "data.store.1": { "name": "live_poll_data", "url": "wss://ccm2.inf.h-brs.de" },
     "html.1": "../live_poll/resources/templates.html",
