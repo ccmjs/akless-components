@@ -222,7 +222,6 @@ ccm.files[ 'configs.js' ] = {
     },
     "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/menu/resources/slide.html" ],
     "selected": 2
-
   }
 
 };
