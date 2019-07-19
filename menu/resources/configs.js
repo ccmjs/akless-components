@@ -1,14 +1,14 @@
 /**
  * @overview configurations of ccm component for rendering a menu
- * @author André Kless <andre.kless@web.de> 2018
+ * @author André Kless <andre.kless@web.de> 2018-2019
  * @license The MIT License (MIT)
  */
 
 ccm.files[ 'configs.js' ] = {
 
   "local": {
-    "key": "local",
-    "css": [ "ccm.load", "../menu/resources/tabs.css" ],
+    "css.1": "../menu/resources/default.css",
+    "html.1": "../menu/resources/templates.html",
     "data": {
       "store": [ "ccm.store", "../menu/resources/datasets.js" ],
       "key": "demo"
@@ -17,8 +17,8 @@ ccm.files[ 'configs.js' ] = {
   },
 
   "proxy": {
-    "key": "proxy",
-    "css": [ "ccm.load", "../menu/resources/tabs.css" ],
+    "css.1": "../menu/resources/tabs.css",
+    "html.1": "../menu/resources/templates.html",
     "data": {
       "entries": [
         {
@@ -196,6 +196,33 @@ ccm.files[ 'configs.js' ] = {
       ]
     },
     "selected": 1
+  },
+
+  "slide": {
+    "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/menu/resources/slide.css" ],
+    "data": {
+      "entries": [
+        {
+          "title": "Section A",
+          "content": "<img src='https://www.w3schools.com/howto/img_nature_wide.jpg'>"
+        },
+        {
+          "title": "Section B",
+          "content": "<img src='https://www.w3schools.com/howto/img_snow_wide.jpg'>"
+        },
+        {
+          "title": "Section C",
+          "content": "<img src='https://www.w3schools.com/howto/img_lights_wide.jpg'>"
+        },
+        {
+          "title": "Section D",
+          "content": "<img src='https://www.w3schools.com/howto/img_mountains_wide.jpg'>"
+        }
+      ]
+    },
+    "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/menu/resources/slide.html" ],
+    "selected": 2
+
   }
 
 };
