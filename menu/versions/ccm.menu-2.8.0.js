@@ -221,16 +221,18 @@
 
             // render menu entry title
             const title_elem = self.element.querySelector( '#title' );
-            if ( title_elem )
+            if ( title_elem ) {
               if ( self.lang )
                 title_elem.setAttribute( 'data-' + self.lang.component.name, entry_data.title );
               else
                 $.setContent( title_elem, $.html( entry_data.title ) );
 
-            // restart fade effect for menu entry title
-            title_elem.classList.remove( 'fade' );
-            void title_elem.offsetWidth;
-            title_elem.classList.add( 'fade' );
+              // restart fade effect for menu entry title
+              title_elem.classList.remove( 'fade' );
+              void title_elem.offsetWidth;
+              title_elem.classList.add( 'fade' );
+
+            }
 
             // render menu entry content
             await renderContent();
