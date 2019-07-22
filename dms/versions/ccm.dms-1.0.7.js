@@ -121,7 +121,7 @@
       "css": [ "ccm.load",
         "https://ccmjs.github.io/akless-components/libs/bootstrap/css/bootstrap.css",
         { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/bootstrap/css/font-face.css" },
-        "https://ccmjs.github.io/akless-components/dms/resources/default.css"
+        "https://ccmjs.github.io/akless-components/dms/v1.0.7/default.css"
       ],
       "data": [],
       "listing": [ "ccm.component", "https://ccmjs.github.io/akless-components/listing/versions/ccm.listing-2.0.3.js", {
@@ -163,7 +163,7 @@
         "css": [ "ccm.load",
           { "context": "head", "url": "https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" },
           "https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css",
-          "https://ccmjs.github.io/akless-components/dms/resources/rating_result.css"
+          "https://ccmjs.github.io/akless-components/dms/v1.0.7/rating.css"
         ]
       } ],
       "form": [ "ccm.component", "https://ccmjs.github.io/akless-components/submit/versions/ccm.submit-7.0.0.js", {

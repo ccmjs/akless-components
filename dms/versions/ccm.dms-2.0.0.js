@@ -28,7 +28,7 @@
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-21.1.3.js',
 
     config: {
-      "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/dms/resources/default-v2.css" ],
+      "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/dms/resources/styles.css" ],
 //    "component_manager": [ "ccm.component", "https://ccmjs.github.io/akless-components/component_manager/ccm.component_manager-3.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/component_manager/resources/resources.js", "demo" ] ],
       "data": {
         "store": [ "ccm.store" ],

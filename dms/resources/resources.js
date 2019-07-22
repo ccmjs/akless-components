@@ -7,7 +7,7 @@
 ccm.files[ 'resources.js' ] = {
 
   "local": {
-    "css": [ "ccm.load", "../dms/resources/default-v2.css" ],
+    "css": [ "ccm.load", "../dms/resources/styles.css" ],
     "component_manager": [ "ccm.component", "../component_manager/ccm.component_manager.js", {
       "key": [ "ccm.get", "../component_manager/resources/resources.js", "local" ],
       "routing": [ "ccm.instance", "../routing/ccm.routing.js", { "app": "section" } ],
