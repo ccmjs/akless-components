@@ -152,8 +152,9 @@
 
                 // render rating
                 if ( !this.rating ) return;
-                this.rating && this.rating.apps && this.rating.apps.start( {
+                this.rating && this.rating.apps && this.rating.apps.component.start( {
                   root: event.entry.querySelector( '.rating' ),
+                  'data.store': this.ratings.apps.store,
                   'data.key': event.data.key
                 } );
 
@@ -217,8 +218,9 @@
                 if ( creator_x > creator_y ) return 1;
                 return 0;
               },
-              onrender: event => this.rating && this.rating.components && this.rating.components.start( {
+              onrender: event => this.rating && this.rating.components && this.rating.components.component.start( {
                 root: event.entry.querySelector( '.rating' ),
+                'data.store': this.ratings.components.store,
                 'data.key': event.data.key
               } ),
               onclick: event => showComponent( event.data.key )
