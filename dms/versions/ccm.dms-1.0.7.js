@@ -156,7 +156,7 @@
         },
         "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/dms/resources/listing.css" ],
         "defaults": {
-          "icon": "https://ccmjs.github.io/akless-components/dms/resources/component.png"
+          "icon": "https://ccmjs.github.io/akless-components/dms/v1.0.7/component.png"
         }
       } ],
       "rating": [ "ccm.component", "https://ccmjs.github.io/tkless-components/star_rating_result/versions/ccm.star_rating_result-4.0.0.js", {
@@ -291,7 +291,7 @@
                   "id": "icon-input",
                   "class": "form-control",
                   "name": "icon",
-                  "placeholder": "https://ccmjs.github.io/akless-components/dms/resources/component.png"
+                  "placeholder": "https://ccmjs.github.io/akless-components/dms/v1.0.7/component.png"
                 }
               ]
             },

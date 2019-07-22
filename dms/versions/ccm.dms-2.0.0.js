@@ -28,13 +28,13 @@
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-21.1.3.js',
 
     config: {
-      "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/dms/resources/styles.css" ],
+      "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/dms/resources/css/dms.css" ],
 //    "component_manager": [ "ccm.component", "https://ccmjs.github.io/akless-components/component_manager/ccm.component_manager-3.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/component_manager/resources/resources.js", "demo" ] ],
       "data": {
         "store": [ "ccm.store" ],
         "key": {}
       },
-      "default_icon": "https://ccmjs.github.io/akless-components/dms/resources/default.png",
+      "default_icon": "https://ccmjs.github.io/akless-components/dms/resources/img/default.png",
 //    "form": [ "ccm.component", "https://ccmjs.github.io/akless-components/submit/versions/ccm.submit-7.1.3.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/dms/resources/resources.js", "form" ] ],
       "html": [ "ccm.get", "https://ccmjs.github.io/akless-components/dms/resources/resources.js", "html" ],
       "ignore": {
@@ -44,7 +44,7 @@
       },
 //    "listing": [ "ccm.component", "https://ccmjs.github.io/akless-components/listing/versions/ccm.listing-3.1.3.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/dms/resources/resources.js", "listing" ] ],
 //    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.2.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
-//    "logo": "https://ccmjs.github.io/akless-components/dms/resources/component.png",
+//    "logo": "https://ccmjs.github.io/akless-components/dms/resources/img/component.png",
       "menu": [ "ccm.component", "https://ccmjs.github.io/akless-components/menu/versions/ccm.menu-2.7.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/dms/resources/resources.js", "menu" ] ],
 //    "rating": { "apps": { "component": [ "ccm.component", ... ], "store": [ "ccm.store", ... ] }, { "components": { "component": [ "ccm.component", ... ], "store": [ "ccm.store", ... ] } },
 //    "routing": [ "ccm.instance", "https://ccmjs.github.io/akless-components/routing/versions/ccm.routing-2.0.3.js" ],
