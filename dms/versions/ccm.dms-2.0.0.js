@@ -154,7 +154,7 @@
                 if ( !this.rating ) return;
                 this.rating && this.rating.apps && this.rating.apps.component.start( {
                   root: event.entry.querySelector( '.rating' ),
-                  'data.store': this.ratings.apps.store,
+                  'data.store': this.rating.apps.store,
                   'data.key': event.data.key
                 } );
 
@@ -220,7 +220,7 @@
               },
               onrender: event => this.rating && this.rating.components && this.rating.components.component.start( {
                 root: event.entry.querySelector( '.rating' ),
-                'data.store': this.ratings.components.store,
+                'data.store': this.rating.components.store,
                 'data.key': event.data.key
               } ),
               onclick: event => showComponent( event.data.key )
