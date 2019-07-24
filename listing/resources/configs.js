@@ -7,7 +7,6 @@
 ccm.files[ 'configs.js' ] = {
 
   "local": {
-    "key": "local",
     "html": {
       "main": {
         "inner": [
