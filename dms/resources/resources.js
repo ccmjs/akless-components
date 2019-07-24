@@ -7,10 +7,10 @@
 ccm.files[ 'resources.js' ] = {
 
   "local": {
-    "css": [ "ccm.load", "../dms/resources/css/dms.css" ],
+    "css.1": "../dms/resources/css/dms.css",
     "component_manager": [ "ccm.component", "../component_manager/ccm.component_manager.js", {
       "key": [ "ccm.get", "../component_manager/resources/resources.js", "local" ],
-      "routing": [ "ccm.instance", "../routing/ccm.routing.js", { "app": "section" } ],
+      "routing": [ "ccm.instance", "../routing/ccm.routing.js", { "app": "section" } ]
     } ],
     "data": {
       "store": [ "ccm.store", { "name": "test-components", "url": "http://localhost:8080" } ],
@@ -28,7 +28,7 @@ ccm.files[ 'resources.js' ] = {
         "store": [ "ccm.store", { "name": "test-components", "url": "http://localhost:8080" } ]
       }
     } ],
-    "html": [ "ccm.get", "../dms/resources/resources.js", "html" ],
+    "html.1": "../dms/resources/html/dms.html",
     "ignore": {
       "apps": [ "ccm.store", { "url": "http://localhost:8080", "name": "test-apps" } ],
       "configs": [ "ccm.store", { "url": "http://localhost:8080", "name": "dms-configs" } ],
@@ -36,7 +36,7 @@ ccm.files[ 'resources.js' ] = {
     },
     "listing": {
       "apps": [ "ccm.component", "../listing/ccm.listing.js", {
-        "html": [ "ccm.get", "../dms/resources/resources.js", "html_apps" ],
+        "html": [ "ccm.load", "../dms/resources/html/listing_apps.html" ],
         "css": [ "ccm.load",
           "../dms/resources/css/listing_apps.css",
           "../libs/bootstrap-4/css/bootstrap.min.css",
@@ -44,7 +44,7 @@ ccm.files[ 'resources.js' ] = {
         ]
       } ],
       "components": [ "ccm.component", "../listing/ccm.listing.js", {
-        "html": [ "ccm.get", "../dms/resources/resources.js", "html_components" ],
+        "html": [ "ccm.load", "../dms/resources/html/listing_components.html" ],
         "css": [ "ccm.load",
           "../dms/resources/css/listing_components.css",
           "../libs/bootstrap-4/css/bootstrap.min.css",
@@ -115,16 +115,16 @@ ccm.files[ 'resources.js' ] = {
     "ignore.apps": [ "ccm.store", { "url": "https://ccm2.inf.h-brs.de", "name": "test-apps" } ],
     "ignore.configs": [ "ccm.store", { "url": "https://ccm2.inf.h-brs.de", "name": "test-configs" } ],
     "listing": {
-      "apps": [ "ccm.component", "https://ccmjs.github.io/akless-components/listing/versions/ccm.listing-3.1.3.js", {
-        "html": [ "ccm.get", "https://ccmjs.github.io/akless-components/dms/resources/resources.js", "html_apps" ],
+      "apps": [ "ccm.component", "https://ccmjs.github.io/akless-components/listing/versions/ccm.listing-3.2.0.js", {
+        "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/dms/resources/html/listing_apps.html" ],
         "css": [ "ccm.load",
           "https://ccmjs.github.io/akless-components/dms/resources/css/listing_apps.css",
           "https://ccmjs.github.io/akless-components/libs/bootstrap-4/css/bootstrap.min.css",
           { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/bootstrap-4/css/bootstrap.min.css" }
         ]
       } ],
-      "components": [ "ccm.component", "https://ccmjs.github.io/akless-components/listing/versions/ccm.listing-3.1.3.js", {
-        "html": [ "ccm.get", "https://ccmjs.github.io/akless-components/dms/resources/resources.js", "html_components" ],
+      "components": [ "ccm.component", "https://ccmjs.github.io/akless-components/listing/versions/ccm.listing-3.2.0.js", {
+        "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/dms/resources/html/listing_components.html" ],
         "css": [ "ccm.load",
           "https://ccmjs.github.io/akless-components/dms/resources/css/listing_components.css",
           "https://ccmjs.github.io/akless-components/libs/bootstrap-4/css/bootstrap.min.css",
@@ -217,16 +217,16 @@ ccm.files[ 'resources.js' ] = {
     "ignore.apps": [ "ccm.store", { "url": "https://ccm2.inf.h-brs.de", "name": "dms-apps" } ],
     "ignore.configs": [ "ccm.store", { "url": "https://ccm2.inf.h-brs.de", "name": "dms-configs" } ],
     "listing": {
-      "apps": [ "ccm.component", "https://ccmjs.github.io/akless-components/listing/versions/ccm.listing-3.1.3.js", {
-        "html": [ "ccm.get", "https://ccmjs.github.io/akless-components/dms/resources/resources.js", "html_apps" ],
+      "apps": [ "ccm.component", "https://ccmjs.github.io/akless-components/listing/versions/ccm.listing-3.2.0.js", {
+        "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/dms/resources/html/listing_apps.html" ],
         "css": [ "ccm.load",
           "https://ccmjs.github.io/akless-components/dms/resources/css/listing_apps.css",
           "https://ccmjs.github.io/akless-components/libs/bootstrap-4/css/bootstrap.min.css",
           { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/bootstrap-4/css/bootstrap.min.css" }
         ]
       } ],
-      "components": [ "ccm.component", "https://ccmjs.github.io/akless-components/listing/versions/ccm.listing-3.1.3.js", {
-        "html": [ "ccm.get", "https://ccmjs.github.io/akless-components/dms/resources/resources.js", "html_components" ],
+      "components": [ "ccm.component", "https://ccmjs.github.io/akless-components/listing/versions/ccm.listing-3.2.0.js", {
+        "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/dms/resources/html/listing_components.html" ],
         "css": [ "ccm.load",
           "https://ccmjs.github.io/akless-components/dms/resources/css/listing_components.css",
           "https://ccmjs.github.io/akless-components/libs/bootstrap-4/css/bootstrap.min.css",
@@ -365,141 +365,6 @@ ccm.files[ 'resources.js' ] = {
     },
     { "type": "submit" }
   ],
-
-  "html": {
-    "main": {
-      "id": "main",
-      "inner": [
-        {
-          "id": "header",
-          "inner": [
-            {
-              "id": "brand",
-              "inner": [
-                {
-                  "id": "logo",
-                  "inner": {
-                    "tag": "img",
-                    "src": "%logo%"
-                  }
-                },
-                {
-                  "id": "title",
-                  "inner": {
-                    "tag": "span",
-                    "inner": "%title%"
-                  }
-                }
-              ]
-            },
-            { "id": "menu" },
-            { "id": "user" }
-          ]
-        },
-        { "id": "content" }
-      ]
-    }
-  },
-
-  "html_apps": {
-    "main": {
-      "id": "main",
-      "inner": [
-        { "id": "lang" },
-        { "id": "entries" }
-      ]
-    },
-    "entry": {
-      "class": "entry",
-      "inner": [
-        {
-          "class": "left",
-          "inner": {
-            "class": "icon",
-            "tag": "img",
-            "src": "%icon%"
-          }
-        },
-        {
-          "class": "right",
-          "inner": [
-            {
-              "class": "title",
-              "inner": "%title%",
-              "title": "%title%"
-            },
-            {
-              "class": "developer",
-              "inner": "%creator%",
-              "title": "%creator%"
-            },
-            { "class": "rating" }
-          ]
-        }
-      ]
-    }
-  },
-
-  "html_components": {
-    "main": {
-      "id": "entries",
-      "class": "card-deck"
-    },
-    "entry": {
-      "class": "card entry",
-      "inner": [
-        {
-          "class": "card-header",
-          "inner": [
-            {
-              "tag": "span",
-              "inner": "&#9874;"
-            },
-            {
-              "tag": "img",
-              "class": "card-img-top",
-              "src": "%icon%"
-            },
-            {
-              "tag": "span",
-              "inner": "&#9874;"
-            }
-          ]
-        },
-        {
-          "class": "card-body",
-          "inner": [
-            {
-              "tag": "h5",
-              "class": "card-title",
-              "inner": [
-                {
-                  "tag": "span",
-                  "class": "title",
-                  "inner": "%title%"
-                }
-              ]
-            },
-            {
-              "tag": "p",
-              "class": "creator",
-              "inner": {
-                "tag": "small",
-                "class": "text-muted",
-                "inner": "%creator%"
-              }
-            },
-            {
-              "tag": "p",
-              "class": "card-text",
-              "inner": "%subject%"
-            },
-            { "class": "rating" }
-          ]
-        }
-      ]
-    }
-  },
 
   "menu": {
     "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/menu/resources/text.css" ],

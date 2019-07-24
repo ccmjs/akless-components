@@ -2,7 +2,7 @@
  * @overview ccm component for digital makerspace
  * @author André Kless <andre.kless@web.de> 2018-2019
  * @license MIT License
- * @version latest (2.1.0)
+ * @version 2.1.0
  * @changes
  * version 2.1.0 (24.07.2019):
  * - HTML template via HTML file
@@ -26,7 +26,7 @@
 
   const component = {
 
-    name: 'dms',
+    name: 'dms', version: [ 2, 1, 0 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-22.2.1.js',
 
@@ -45,7 +45,7 @@
         "configs": [ 'ccm.store' ],
         "builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-1.4.1.js", { "directly": true, "nosubmit": true } ]
       },
-//    "listing": [ "ccm.component", "https://ccmjs.github.io/akless-components/listing/versions/ccm.listing-3.2.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/dms/resources/resources.js", "listing" ] ],
+//    "listing": [ "ccm.component", "https://ccmjs.github.io/akless-components/listing/versions/ccm.listing-3.1.3.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/dms/resources/resources.js", "listing" ] ],
 //    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.2.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
 //    "logo": "https://ccmjs.github.io/akless-components/dms/resources/img/component.png",
       "menu": [ "ccm.component", "https://ccmjs.github.io/akless-components/menu/versions/ccm.menu-2.7.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/dms/resources/resources.js", "menu" ] ],
