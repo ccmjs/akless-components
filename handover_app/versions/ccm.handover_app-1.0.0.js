@@ -17,7 +17,7 @@
 
     config: {
 
-      "app_url": "https://ccmjs.github.io/digital-maker-space/app.html",
+//    "app_url": "https://ccmjs.github.io/digital-maker-space/app.html",
 //    "component_url": "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-1.4.1.js",
       "css": [ "ccm.load",
         "https://ccmjs.github.io/akless-components/handover_app/resources/styles.css",
