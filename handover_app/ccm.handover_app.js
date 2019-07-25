@@ -17,25 +17,36 @@
 
     config: {
 
+      "app_url": "https://ccmjs.github.io/digital-maker-space/app.html",
+//    "component_url": "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-1.4.1.js",
       "css": [ "ccm.load",
         "https://ccmjs.github.io/akless-components/handover_app/resources/styles.css",
         "https://ccmjs.github.io/akless-components/libs/bootstrap-4/css/bootstrap.min.css",
         { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/bootstrap-4/css/bootstrap.min.css" }
       ],
       "data": { "store": [ "ccm.store" ] },
+      "enabled": {
+        "embed_code": true,
+        "app_id": true,
+        "app_url": true,
+        "qr_code": true,
+        "download_app": true,
+        "bookmarklet": true,
+        "ibook_widget": true,
+        "scorm": true
+      },
+//    "embed_template": "https://ccmjs.github.io/akless-components/resources/templates/embed.html",
       "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/helper.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/handover_app/resources/template.html" ],
 //    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.2.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
 //    "qr_code": [ "ccm.load", "https://ccmjs.github.io/akless-components/libs/qrcode-generator/qrcode.min.js" ],
-      "title": "Handover of the App",
-//    "url": "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-1.4.1.js",
 //    "window": [ "ccm.component", "https://ccmjs.github.io/akless-components/window/versions/ccm.window-1.0.0.js" ]
 
     },
 
     Instance: function () {
 
-      let $, dataset;
+      let $;
 
       this.ready = async () => {
 
@@ -49,8 +60,11 @@
 
       this.start = async () => {
 
-        // get app dataset
-        dataset = await $.dataset( this.data );
+        /**
+         * app configuration
+         * @type {Object}
+         */
+        const dataset = await $.dataset( this.data );
 
         // logging of 'start' event
         this.logger && this.logger.log( 'start', $.clone( dataset ) );
@@ -65,7 +79,7 @@
         const is_local = !this.data.store.source().name;
 
         /**
-         * dataset key of app configuration
+         * dataset key of the app configuration
          * @type {string}
          */
         let app_id = dataset.key;
@@ -74,29 +88,40 @@
         let store_settings = this.data.store.source(); if ( is_local ) { store_settings = {}; store_settings[ app_id ] = dataset; }
 
         /**
-         * embed code for saved app
+         * embed code of the app
          * @type {string}
          */
-        const embed_code = this.helper.embedCode ? await this.helper.embedCode( this.url, store_settings, app_id, undefined, this.ccm ) : undefined;
+        const embed_code = this.helper.embedCode ? await this.helper.embedCode( this.component_url, store_settings, app_id, this.embed_template, this.ccm ) : undefined;
+
+        /**
+         * URL of the app
+         * @type {string}
+         */
+        const app_url = this.app_url && this.helper.appURL( this.app_url, store_settings, app_id );
 
         // provide App via Embed Code
-        if ( embed_code ) {
-          this.element.querySelector( '#embed_code' ).value = embed_code;
-          this.element.querySelector( '#embed_copy' ).addEventListener( 'click', () => this.helper.copyToClipboard( this.element.querySelector( '#embed_code' ) ) );
+        if ( this.enabled.embed_code && embed_code ) {
+          this.element.querySelector( '#embed_code-input' ).value = embed_code;
+          this.element.querySelector( '#embed_copy' ).addEventListener( 'click', () => this.helper.copyToClipboard( this.element.querySelector( '#embed_code-input' ) ) );
         }
-        else $.removeElement( this.element.querySelector( '#embed' ) );
+        else $.removeElement( this.element.querySelector( '#embed_code' ) );
 
         // provide App ID
-        this.element.querySelector( '#app_id'  ).value = app_id;
-        this.element.querySelector( '#id_copy' ).addEventListener( 'click', () => this.helper.copyToClipboard( this.element.querySelector( '#app_id' ) ) );
+        if ( this.enabled.app_id ) {
+          this.element.querySelector( '#app_id-input'  ).value = app_id;
+          this.element.querySelector( '#id_copy' ).addEventListener( 'click', () => this.helper.copyToClipboard( this.element.querySelector( '#app_id' ) ) );
+        }
+        else $.removeElement( this.element.querySelector( '#app_id' ) );
 
         // provide App via URL
-        const app_url = this.helper.appURL( this.url, store_settings, app_id );
-        this.element.querySelector( '#app_url'  ).value = app_url;
-        this.element.querySelector( '#url_copy' ).addEventListener( 'click', () => this.helper.copyToClipboard( this.element.querySelector( '#app_url' ) ) );
+        if ( this.enabled.app_url && app_url ) {
+          this.element.querySelector( '#app_url-input'  ).value = app_url;
+          this.element.querySelector( '#url_copy' ).addEventListener( 'click', () => this.helper.copyToClipboard( this.element.querySelector( '#app_url-input' ) ) );
+        }
+        else $.removeElement( this.element.querySelector( '#app_url' ) );
 
         // provide App via QR Code
-        if ( this.qr_code && qrcode ) {
+        if ( this.enabled.qr_code && app_url && this.qr_code && qrcode ) {
           let demoQRCode = qrcode( 0, 'M' );
           demoQRCode.addData( app_url );
           demoQRCode.make();
@@ -107,35 +132,32 @@
         else $.removeElement( this.element.querySelector( '#qr_code' ) );
 
         // provide App via Download as HTML File
-        if ( embed_code && this.helper.downloadApp )
+        if ( this.enabled.download_app && embed_code && this.helper.downloadApp )
           this.element.querySelector( '#download' ).addEventListener( 'click', () => this.helper.downloadApp( embed_code ) );
         else
           $.removeElement( this.element.querySelector( '#download' ) );
 
         // provide App via Bookmarklet
-        if ( this.window ) {
-          const window = await this.window.instance( { app: [ 'ccm.start', this.url, this.getValue() ] } );
+        if ( this.enabled.bookmarklet && this.window ) {
+          const window = await this.window.instance( { app: [ 'ccm.start', this.component_url, $.clone( dataset ) ] } );
           this.element.querySelector( '#bookmarklet' ).setAttribute( 'href', window.bookmarklet() );
         }
         else
           $.removeElement( this.element.querySelector( '#bookmarklet' ) );
 
         // provide App via iBook Widget
-        if ( embed_code && this.helper.iBookWidget )
+        if ( this.enabled.ibook_widget && embed_code && this.helper.iBookWidget )
           this.element.querySelector( '#ibook' ).addEventListener( 'click', () => this.helper.iBookWidget( embed_code ) );
         else
           $.removeElement( this.element.querySelector( '#ibook' ) );
 
         // provide App via SCORM
-        if ( embed_code && this.helper.scorm )
+        if ( this.enabled.scorm && embed_code && this.helper.scorm )
           this.element.querySelector( '#scorm' ).addEventListener( 'click', () => this.helper.scorm( embed_code ) );
         else
           $.removeElement( this.element.querySelector( '#scorm' ) );
 
       };
-
-      /** @returns {Object} instance configuration for target component */
-      this.getValue = () => $.clone( dataset );
 
     }
 

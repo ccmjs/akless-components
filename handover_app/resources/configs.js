@@ -20,7 +20,7 @@ ccm.files[ 'configs.js' ] = {
     "html.1": "../handover_app/resources/template.html",
     "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.2.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
     "qr_code": [ "ccm.load", "../libs/qrcode-generator/qrcode.min.js" ],
-    "url": "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-1.4.1.js",
+    "component_url": "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-1.4.1.js",
     "window": [ "ccm.component", "../window/ccm.window.js" ]
   },
 
@@ -30,7 +30,7 @@ ccm.files[ 'configs.js' ] = {
       "key": "1562402810547X2619441006187393"
     },
     "qr_code": [ "ccm.load", "https://ccmjs.github.io/akless-components/libs/qrcode-generator/qrcode.min.js" ],
-    "url": "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-1.4.1.js",
+    "component_url": "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-1.4.1.js",
     "window": [ "ccm.component", "https://ccmjs.github.io/akless-components/window/versions/ccm.window-1.0.0.js" ]
   }
 
