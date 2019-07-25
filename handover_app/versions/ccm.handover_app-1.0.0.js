@@ -11,7 +11,7 @@
 
   const component = {
 
-    name: 'handover_app', version: [ 1, 0, 0 ],
+    name: 'handover_app',
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-22.2.1.js',
 
