@@ -28,7 +28,7 @@
 //    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.2.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
 //    "qr_code": [ "ccm.load", "https://ccmjs.github.io/akless-components/libs/qrcode-generator/qrcode.min.js" ],
       "title": "Handover of the App",
-//    "url": "https://ccmjs.github.io/ccm-comonents/name/versions/ccm.name-1.0.0.js",
+//    "url": "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-1.4.1.js",
 //    "window": [ "ccm.component", "https://ccmjs.github.io/akless-components/window/versions/ccm.window-1.0.0.js" ]
 
     },

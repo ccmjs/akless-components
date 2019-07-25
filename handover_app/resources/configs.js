@@ -26,12 +26,12 @@ ccm.files[ 'configs.js' ] = {
 
   "demo": {
     "data": {
-      "store": [ "ccm.store", { "url": "http://localhost:8080", "name": "test-configs" } ],
+      "store": [ "ccm.store", { "url": "https://ccm2.inf.h-brs.de", "name": "test-configs" } ],
       "key": "1562399748746X5684041698054954"
     },
     "qr_code": [ "ccm.load", "https://ccmjs.github.io/akless-components/libs/qrcode-generator/qrcode.min.js" ],
-    "url": "https://ccmjs.github.io/akless-components/json_builder/ccm.json_builder.js",
-    "window": [ "ccm.component", "https://ccmjs.github.io/akless-components/window/ccm.window.js" ]
+    "url": "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-1.4.1.js",
+    "window": [ "ccm.component", "https://ccmjs.github.io/akless-components/window/versions/ccm.window-1.0.0.js" ]
   }
 
 };
