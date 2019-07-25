@@ -1,0 +1,18 @@
+/**
+ * @overview default layout of ccm component for handover of an app
+ * @author André Kless <andre.kless@web.de> 2019
+ * @license The MIT License (MIT)
+ */
+
+#element {
+  min-width: 350px;
+  max-width: 530px;
+  background-color: #fff;
+  background-clip: padding-box;
+  padding: 1em;
+}
+
+#qr_code img {
+  height: 145px;
+  width: 145px;
+}
