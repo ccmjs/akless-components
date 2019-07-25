@@ -22,6 +22,17 @@ export function appURL( component, store, app_id, website = 'https://ccmjs.githu
 }
 
 /**
+ * copies text inside a HTML element to clipboard
+ * @param {Element} element - HTML element
+ */
+export function copyToClipboard( element ) {
+
+  element.select();
+  document.execCommand( 'copy' );
+
+}
+
+/**
  * decomposes a given app URL into component URL, component index, component name, component version, store settings and app ID
  * @param {string} app_url - URL of a ccm-based app
  * @param {Object} [ccm=window.ccm] - ccm framework object
