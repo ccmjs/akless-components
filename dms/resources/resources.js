@@ -7,6 +7,7 @@
 ccm.files[ 'resources.js' ] = {
 
   "local": {
+    "app_manager": [ "ccm.component", "../app_manager/ccm.app_manager.js", [ "ccm.get", "../app_manager/resources/configs.js", "local" ] ],
     "css.1": "../dms/resources/css/dms.css",
     "component_manager": [ "ccm.component", "../component_manager/ccm.component_manager.js", {
       "key": [ "ccm.get", "../component_manager/resources/resources.js", "local" ],
@@ -98,6 +99,7 @@ ccm.files[ 'resources.js' ] = {
   },
 
   "demo": {
+    "app_manager": [ "ccm.component", "https://ccmjs.github.io/akless-components/app_manager/versions/ccm.app_manager-1.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/app_manager/resources/configs.js", "demo" ] ],
     "component_manager": [ "ccm.component", "https://ccmjs.github.io/akless-components/component_manager/versions/ccm.component_manager-3.0.0.js", {
       "key": [ "ccm.get", "https://ccmjs.github.io/akless-components/component_manager/resources/resources.js", "demo" ],
       "routing": [ "ccm.instance", "https://ccmjs.github.io/akless-components/routing/versions/ccm.routing-2.0.3.js", { "app": "section" } ],

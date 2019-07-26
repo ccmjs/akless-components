@@ -2,7 +2,7 @@
  * @overview ccm component for digital makerspace
  * @author André Kless <andre.kless@web.de> 2018-2019
  * @license MIT License
- * @version latest (2.2.0)
+ * @version 2.2.0
  * @changes
  * version 2.2.0 (26.07.2019):
  * - renders an app with ccm.app_manager.js v1.0.0
@@ -28,7 +28,7 @@
 
   const component = {
 
-    name: 'dms',
+    name: 'dms', version: [ 2, 0, 0 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-22.2.1.js',
 
