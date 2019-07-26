@@ -4,7 +4,7 @@
  * @license MIT License
  * @version 1.0.0
  * @changes
- * version 1.0.0 (25.07.2019)
+ * version 1.0.0 (26.07.2019)
  */
 
 ( () => {
@@ -97,7 +97,7 @@
          * URL of the app
          * @type {string}
          */
-        const app_url = this.app_url && this.helper.appURL( this.app_url, store_settings, app_id );
+        const app_url = this.helper.appURL( this.component_url, store_settings, app_id, this.app_url );
 
         // provide App via Embed Code
         if ( this.enabled.embed_code && embed_code ) {
