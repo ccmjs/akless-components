@@ -155,6 +155,23 @@ export async function embedCode( component, store, app_id, template = 'https://c
 }
 
 /**
+ * shows the content of an website area in fullscreen mode
+ * @param {Element} element - website area
+ */
+export function fullscreen( element ) {
+
+  if ( element.requestFullscreen )
+    element.requestFullscreen();
+  else if ( element.mozRequestFullScreen )    /* Firefox */
+    element.mozRequestFullScreen();
+  else if ( element.webkitRequestFullscreen ) /* Chrome, Safari and Opera */
+    element.webkitRequestFullscreen();
+  else if ( element.msRequestFullscreen )     /* IE/Edge */
+    element.msRequestFullscreen();
+
+}
+
+/**
  * provides a download of a ccm-based app as iBook Widget (ZIP file)
  * @param {string} embed_code - embed code of the ccm-based app
  * @param {string} [filename='app'] - file name without file extension
