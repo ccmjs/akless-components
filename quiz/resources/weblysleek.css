@@ -10,6 +10,7 @@
   font-family: WeblySleekUI, 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: larger;
   overflow-x: auto;
+  background-color: white;
 }
 
 #main {
