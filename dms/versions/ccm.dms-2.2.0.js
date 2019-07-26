@@ -28,7 +28,7 @@
 
   const component = {
 
-    name: 'dms', version: [ 2, 0, 0 ],
+    name: 'dms', version: [ 2, 2, 0 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-22.2.1.js',
 
