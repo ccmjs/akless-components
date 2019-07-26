@@ -1,0 +1,96 @@
+/**
+ * @overview default layout of ccm component for managing an app
+ * @author André Kless <andre.kless@web.de> 2019
+ * @license The MIT License (MIT)
+ */
+
+#element {
+  font-family: Helvetica, Arial, sans-serif;
+  padding: 1em;
+}
+
+#top {
+  display: flex;
+}
+
+#icon img {
+  width: 64px;
+  height: 64px;
+  border-radius: 100%;
+}
+
+#title-button {
+  padding-left: 1em;
+}
+
+#title {
+  font-size: x-large;
+  font-weight: bold;
+  color: #00BFFF;
+}
+
+#button {
+  padding-top: 0.3em;
+}
+
+#button button {
+  padding: 0.5em 0.8em;
+}
+
+#abstract {
+  margin-top: 0.5em;
+  background-color: lightgrey;
+  border-radius: 0.3em;
+  padding: 0.5em;
+  font-style: italic;
+  font-size: small;
+}
+
+.topic {
+  width: 100%;
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+#app {
+  border: 1px solid lightgrey;
+  border-radius: 0.3em;
+  box-shadow: rgba(0, 0, 0, 0.05) 0 1px 1px;
+  width: 100%;
+}
+
+.caption {
+  padding-top: 2em;
+  padding-bottom: 0.5em;
+  font-size: small;
+  color: grey;
+}
+
+#details {
+  display: table;
+  font-size: small;
+  width: 100%;
+}
+
+#details > div {
+  display: table-row;
+}
+
+#details > div > div {
+  display: table-cell;
+  padding: 0.5em;
+  border-top: 1px solid lightgrey;
+}
+
+#details > div > div:empty:before {
+  content: '-';
+}
+
+#details > div > div:first-child {
+  font-weight: bold;
+}
+
+#details > div:last-child > div {
+  border-bottom: 1px solid lightgrey;
+}

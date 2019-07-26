@@ -1,0 +1,63 @@
+<!--
+@overview HTML templates of ccm component for managing an app
+@author André Kless <andre.kless@web.de.de> 2019
+-->
+
+<ccm-template key="main">
+  <div id="top">
+    <div id="icon">
+      <img src="%icon%">
+    </div>
+    <div id="title-button">
+      <div id="title">%title%</div>
+      <div id="button">
+        <button onclick="%create_similar_app%">Create Similar App</button>
+      </div>
+    </div>
+  </div>
+  <div id="abstract">%abstract%</div>
+  <div class="topic">
+    <span class="caption">App</span>
+    <button onclick="%fullscreen%">Fullscreen</button>
+  </div>
+  <div id="app"></div>
+  <div id="description">
+    <div class="caption">Description</div>
+    <div>%description%</div>
+  </div>
+  <div class="caption">Additional Informations</div>
+  <div id="details">
+    <div>
+      <div>Category</div>
+      <div>%category%</div>
+    </div>
+    <div>
+      <div>Tags</div>
+      <div>%tags%</div>
+    </div>
+    <div>
+      <div>Language</div>
+      <div>%language%</div>
+    </div>
+    <div>
+      <div>Creator</div>
+      <div>%creator%</div>
+    </div>
+    <div>
+      <div>Published</div>
+      <div>%date%</div>
+    </div>
+    <div>
+      <div>Content License</div>
+      <div>%license%</div>
+    </div>
+    <div>
+      <div>Software License</div>
+      <div>MIT</div>
+    </div>
+  </div>
+  <div id="section-handover">
+    <div class="caption">Handover of the App</div>
+    <div id="handover"></div>
+  </div>
+</ccm-template>
