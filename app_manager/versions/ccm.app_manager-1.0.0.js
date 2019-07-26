@@ -57,7 +57,9 @@
 
         // render main HTML structure
         $.setContent( this.element, $.html( this.html.main, $.integrate( $.clone( dataset ), {
-          create_similar_app: () => {},
+          create_similar_app: async () => {
+            //showComponent( $.getIndex( event.data.path ).replace( /\./g, '-' ), await $.solveDependency( config ) )
+          },
           fullscreen: () => this.helper.fullscreen( this.element.querySelector( '#app' ) )
         } ) ) );
 

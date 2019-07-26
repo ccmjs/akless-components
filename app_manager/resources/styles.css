@@ -19,7 +19,7 @@
   border-radius: 100%;
 }
 
-#title-button {
+#title-created {
   padding-left: 1em;
 }
 
@@ -27,6 +27,10 @@
   font-size: x-large;
   font-weight: bold;
   color: #00BFFF;
+}
+
+#created {
+  color: grey;
 }
 
 #button {
