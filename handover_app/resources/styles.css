@@ -5,10 +5,12 @@
  */
 
 #element {
-  min-width: 350px;
+  min-width: 431px;
   max-width: 530px;
   background-color: #fff;
   background-clip: padding-box;
+  border: 1px solid rgb(221, 221, 221);
+  border-radius: 0.3em;
   padding: 1em;
 }
 
