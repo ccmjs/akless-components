@@ -5,7 +5,7 @@
  * @version 3.1.0
  * @changes
  * version 3.1.0 (28.07.2019):
- * - uses ccm v22.2.1
+ * - uses ccm v22.3.1
  * - HTML template via HTML file
  * - uses ccm.handover_app.js v1.0.0
  * version 3.0.0 (05.07.2019):
@@ -24,7 +24,7 @@
 
     name: 'app_builder', version: [ 3, 1, 0 ],
 
-    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-22.2.1.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-22.3.1.js',
 
     config: {
       "app": [ "ccm.component", "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-1.4.1.js" ],
