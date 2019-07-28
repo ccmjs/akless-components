@@ -28,7 +28,7 @@
       "builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-1.4.1.js", { "directly": true, "nosubmit": true } ],
 //    "convert": { "app_to_builder": json => json, "builder_to_app": json => json },
       "css": [ "ccm.load",
-        "https://ccmjs.github.io/akless-components/app_builder/resources/default-v2.css",
+        "https://ccmjs.github.io/akless-components/app_builder/resources/styles.css",
         "https://ccmjs.github.io/akless-components/libs/bootstrap-4/css/bootstrap.min.css",
         { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/bootstrap-4/css/bootstrap.min.css" }
       ],

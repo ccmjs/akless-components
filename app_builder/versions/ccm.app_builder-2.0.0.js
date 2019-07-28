@@ -343,7 +343,7 @@
         }
       },
       "css": [ "ccm.load",
-        "https://ccmjs.github.io/akless-components/app_builder/resources/default.css",
+        "https://ccmjs.github.io/akless-components/dms/1.0.7/app_builder.css",
         "https://ccmjs.github.io/akless-components/libs/bootstrap-4/css/bootstrap.min.css",
         { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/bootstrap-4/css/bootstrap.min.css" }
       ],
