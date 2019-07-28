@@ -17,11 +17,6 @@ ccm.files[ 'configs.js' ] = {
       "key": {}
     },
     "component_manager": [ "ccm.component", "https://ccmjs.github.io/akless-components/component_manager/versions/ccm.component_manager-2.2.6.js", {
-      "css": [ "ccm.load",
-        "https://ccmjs.github.io/akless-components/libs/bootstrap/css/bootstrap.css",
-        { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/bootstrap/css/font-face.css" },
-        "https://ccmjs.github.io/akless-components/component_manager/resources/default.css"
-      ],
       "rating.2.data.store.1": { "name": "component_ratings", "url": "https://ccm2.inf.h-brs.de" },
       "rating_result.2.data.store.1": { "name": "component_ratings", "url": "https://ccm2.inf.h-brs.de" },
       "commentary.2.data.store.1": { "name": "component_comments", "url": "https://ccm2.inf.h-brs.de" },
