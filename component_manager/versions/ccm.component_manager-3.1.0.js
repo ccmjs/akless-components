@@ -2,7 +2,7 @@
  * @overview ccm component for managing a component
  * @author André Kless <andre.kless@web.de> 2018-2019
  * @license MIT License
- * @version latest (3.1.0)
+ * @version 3.1.0
  * @changes
  * version 3.1.0 (28.07.2019):
  * - uses ccm v22.2.1
@@ -24,7 +24,7 @@
 
   const component = {
 
-    name: 'component_manager',
+    name: 'component_manager', version: [ 3, 1, 0 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-22.2.1.js',
 

@@ -12,7 +12,7 @@ ccm.files[ 'resources.js' ] = {
   "local": {
     "builder": [ "ccm.component", "../app_builder/ccm.app_builder.js", [ "ccm.get", "../app_builder/resources/resources.js", "local" ] ],
     "css": [ "ccm.load",
-      "../component_manager/resources/default-v2.css",
+      "../component_manager/resources/css/styles.css",
       "../libs/bootstrap-4/css/bootstrap.min.css",
       { "context": "head", "url": "../libs/bootstrap-4/css/bootstrap.min.css" }
     ],
@@ -31,7 +31,7 @@ ccm.files[ 'resources.js' ] = {
         "store": [ "ccm.store", { "name": "test-components", "url": "http://localhost:8080" } ]
       }
     } ],
-    "html": [ "ccm.get", "../component_manager/resources/resources.js", "html" ],
+    "html.1": "../component_manager/resources/templates.html",
     "ignore": {
       "apps": [ "ccm.store", { "url": "http://localhost:8080", "name": "test-apps" } ],
       "configs": [ "ccm.store", { "url": "http://localhost:8080", "name": "test-configs" } ],
@@ -40,7 +40,7 @@ ccm.files[ 'resources.js' ] = {
     "logger":  [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
     "menu_app": [ "ccm.component", "../menu/ccm.menu.js", {
       "css": [ "ccm.load",
-        "../component_manager/resources/menu_app.css",
+        "../component_manager/resources/css/menu_app.css",
         "../libs/bootstrap-4/css/bootstrap.min.css"
       ],
       "html": [ "ccm.get", "../component_manager/resources/resources.js", "menu_app_html" ],
@@ -49,7 +49,7 @@ ccm.files[ 'resources.js' ] = {
     } ],
     "menu_top": [ "ccm.component", "../menu/ccm.menu.js", {
       "css": [ "ccm.load",
-        "../component_manager/resources/menu_top.css",
+        "../component_manager/resources/css/menu_top.css",
         "../libs/bootstrap-4/css/bootstrap.min.css"
       ],
       "html": [ "ccm.get", "../component_manager/resources/resources.js", "menu_top_html" ],
@@ -72,7 +72,7 @@ ccm.files[ 'resources.js' ] = {
   },
 
   "demo": {
-    "builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/app_builder/versions/ccm.app_builder-3.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/app_builder/resources/resources.js", "demo" ] ],
+    "builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/app_builder/versions/ccm.app_builder-3.1.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/app_builder/resources/resources.js", "demo" ] ],
     "data": {
       "store": [ "ccm.store", { "name": "test-components", "url": "https://ccm2.inf.h-brs.de" } ],
       "key": "json_builder-1-4-1"
@@ -271,251 +271,9 @@ ccm.files[ 'resources.js' ] = {
     { "type": "submit" }
   ],
 
-  "html": {
-    "main": {
-      "tag": "div",
-      "id": "main",
-      "inner": [
-        {
-          "id": "header",
-          "inner": [
-            {
-              "id": "icon",
-              "inner": {
-                "tag": "img",
-                "src": "%icon%"
-              }
-            },
-            {
-              "inner": [
-                {
-                  "id": "title",
-                  "inner": [
-                    {
-                      "tag": "h2",
-                      "class": "text-monospace",
-                      "inner": {
-                        "tag": "span",
-                        "inner": "%title%"
-                      }
-                    },
-                    {
-                      "tag": "button",
-                      "id": "setup",
-                      "class": "btn btn-light btn-sm",
-                      "inner": [
-                        {
-                          "tag": "span",
-                          "inner": "&#9881;"
-                        },
-                        {
-                          "tag": "span",
-                          "inner": "SETUP"
-                        }
-                      ],
-                      "onclick": "%setup%"
-                    }
-                  ]
-                },
-                {
-                  "id": "version",
-                  "class": "text-muted",
-                  "inner": [
-                    "Version ",
-                    {
-                      "tag": "span",
-                      "id": "version_number",
-                      "inner": "%version%"
-                    }
-                  ]
-                }
-              ]
-            },
-            { "id": "user" }
-          ]
-        },
-        { "id": "menu-top" },
-        { "id": "content" }
-      ]
-    },
-    "overview": {
-      "id": "overview",
-      "inner": [
-        {
-          "id": "info",
-          "inner": [
-            {
-              "tag": "legend",
-              "class": "text-muted",
-              "inner": "INFO"
-            },
-            {
-              "class": "blockquote-footer",
-              "inner": [
-                "Published by",
-                {
-                  "tag": "span",
-                  "id": "creator",
-                  "class": "text-success",
-                  "inner": "%creator%"
-                }
-              ]
-            },
-            {
-              "id": "subject",
-              "class": "text-secondary",
-              "inner": "%subject%"
-            },
-            {
-              "tag": "p",
-              "id": "description",
-              "inner": "%description%"
-            },
-            {
-              "id": "details",
-              "inner": {
-                "tag": "table",
-                "class": "table table-sm small",
-                "inner": [
-                  {
-                    "tag": "tr",
-                    "inner": [
-                      {
-                        "tag": "td",
-                        "inner": "Index"
-                      },
-                      {
-                        "tag": "td",
-                        "inner": "%index%"
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "tr",
-                    "inner": [
-                      {
-                        "tag": "td",
-                        "inner": "URL"
-                      },
-                      {
-                        "tag": "td",
-                        "inner": {
-                          "tag": "a",
-                          "href": "%path%",
-                          "target": "_blank",
-                          "inner": "%path%"
-                        }
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "tr",
-                    "inner": [
-                      {
-                        "tag": "td",
-                        "inner": "Category"
-                      },
-                      {
-                        "tag": "td",
-                        "inner": "%category%"
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "tr",
-                    "inner": [
-                      {
-                        "tag": "td",
-                        "inner": "Tags"
-                      },
-                      {
-                        "tag": "td",
-                        "id": "tags"
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "tr",
-                    "inner": [
-                      {
-                        "tag": "td",
-                        "inner": "Published"
-                      },
-                      {
-                        "tag": "td",
-                        "inner": "%date%"
-                      }
-                    ]
-                  },
-                  {
-                    "tag": "tr",
-                    "inner": [
-                      {
-                        "tag": "td",
-                        "inner": "License"
-                      },
-                      {
-                        "tag": "td",
-                        "inner": {
-                          "tag": "a",
-                          "href": "https://en.wikipedia.org/wiki/MIT_License",
-                          "target": "_blank",
-                          "inner": "MIT"
-                        }
-                      }
-                    ]
-                  }
-                ]
-              }
-            }
-          ]
-        },
-        {
-          "id": "demo",
-          "inner": [
-            {
-              "id": "demo-legend",
-              "inner": {
-                "tag": "legend",
-                "class": "text-muted",
-                "inner": "DEMOS"
-              }
-            },
-            { "id": "demo-main" }
-          ]
-        }
-      ]
-    },
-    "collection": {
-      "id": "collection",
-      "inner": [
-        {
-          "id": "aside",
-          "inner": [
-            {
-              "id": "menu-caption",
-              "inner": "%caption%"
-            },
-            { "id": "menu-app" },
-            {
-              "id": "menu-below",
-              "inner": {
-                "tag": "button",
-                "class": "btn btn-link btn-block btn-sm",
-                "onclick": "%onclick%",
-                "inner": "%button%"
-              }
-            }
-          ]
-        },
-        { "id": "app" }
-      ]
-    }
-  },
-
   "menu_app": {
     "css": [ "ccm.load",
-      "https://ccmjs.github.io/akless-components/component_manager/resources/menu_app.css",
+      "https://ccmjs.github.io/akless-components/component_manager/resources/css/menu_app.css",
       "https://ccmjs.github.io/akless-components/libs/bootstrap-4/css/bootstrap.min.css"
     ],
     "html": [ "ccm.get", "https://ccmjs.github.io/akless-components/component_manager/resources/resources.js", "menu_app_html" ],
@@ -525,7 +283,7 @@ ccm.files[ 'resources.js' ] = {
 
   "menu_top": {
     "css": [ "ccm.load",
-      "https://ccmjs.github.io/akless-components/component_manager/resources/menu_top.css",
+      "https://ccmjs.github.io/akless-components/component_manager/resources/css/menu_top.css",
       "https://ccmjs.github.io/akless-components/libs/bootstrap-4/css/bootstrap.min.css"
     ],
     "data": { "entries": [ "Overview", "Reviews", "App Creation" ] },

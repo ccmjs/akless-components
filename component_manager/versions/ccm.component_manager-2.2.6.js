@@ -100,7 +100,7 @@
       "css": [ "ccm.load",
         "https://ccmjs.github.io/akless-components/libs/bootstrap/css/bootstrap.css",
         { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/bootstrap/css/font-face.css" },
-        "https://ccmjs.github.io/akless-components/component_manager/resources/default.css"
+        "https://ccmjs.github.io/akless-components/dms/v1.0.7/component_manager.css"
       ],
       "menu": {
         "component": [ "ccm.component", "https://ccmjs.github.io/akless-components/menu/versions/ccm.menu-2.4.4.js" ],

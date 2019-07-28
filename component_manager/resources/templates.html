@@ -1,0 +1,95 @@
+<!--
+@overview HTML templates of ccm component for managing a component
+@author André Kless <andre.kless@web.de.de> 2019
+-->
+
+<ccm-template key="main">
+  <div id="main">
+    <div id="header">
+      <div id="icon">
+        <img src="%icon%">
+      </div>
+      <div>
+        <div id="title">
+          <h2 class="text-monospace">
+            <span>%title%</span>
+          </h2>
+          <button id="setup" class="btn btn-light btn-sm" onclick="%setup%">
+            <span>⚙</span>
+            <span>SETUP</span>
+          </button>
+        </div>
+        <div id="version" class="text-muted">
+          Version <span id="version_number">%version%</span>
+        </div>
+      </div>
+      <div id="user"></div>
+    </div>
+    <div id="menu-top"></div>
+    <div id="content"></div>
+  </div>
+</ccm-template>
+
+<ccm-template key="overview">
+  <div id="overview">
+    <div id="info">
+      <legend class="text-muted">INFO</legend>
+      <div class="blockquote-footer">
+        Published by <span id="creator" class="text-success">%creator%</span>
+      </div>
+      <div id="subject" class="text-secondary">%subject%</div>
+      <p id="description">%description%</p>
+      <div id="details">
+        <table class="table table-sm small">
+          <tr>
+            <td>Index</td>
+            <td>%index%</td>
+          </tr>
+          <tr>
+            <td>URL</td>
+            <td>
+              <a href="%path%" target="_blank">%path%</a>
+            </td>
+          </tr>
+          <tr>
+            <td>Category</td>
+            <td>%category%</td>
+          </tr>
+          <tr>
+            <td>Tags</td>
+            <td id="tags"></td>
+          </tr>
+          <tr>
+            <td>Published</td>
+            <td>%date%</td>
+          </tr>
+          <tr>
+            <td>License</td>
+            <td>
+              <a href="https://en.wikipedia.org/wiki/MIT_License" target="_blank">MIT</a>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div id="demo">
+      <div id="demo-legend">
+        <legend class="text-muted">DEMOS</legend>
+      </div>
+      <div id="demo-main"></div>
+    </div>
+  </div>
+</ccm-template>
+
+<ccm-template key="collection">
+  <div id="collection">
+    <div id="aside">
+      <div id="menu-caption">%caption%</div>
+      <div id="menu-app"></div>
+      <div id="menu-below">
+        <button class="btn btn-link btn-block btn-sm" onclick="%onclick%">%button%</button>
+      </div>
+    </div>
+    <div id="app"></div>
+  </div>
+</ccm-template>
