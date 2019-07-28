@@ -5,7 +5,7 @@
  * @version latest (3.1.0)
  * @changes
  * version 3.1.0 (28.07.2019):
- * - uses ccm v22.2.1
+ * - uses ccm v22.3.1
  * - HTML template via HTML file
  * - uses ccm.menu.js v2.8.0
  * version 3.0.0 (08.07.2019):
@@ -26,7 +26,7 @@
 
     name: 'component_manager',
 
-    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-22.2.1.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-22.3.1.js',
 
     config: {
 //    "builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/app_builder/versions/ccm.app_builder-3.1.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/app_builder/resources/resources.js", "demo" ] ],
