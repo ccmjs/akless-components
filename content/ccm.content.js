@@ -5,7 +5,7 @@
  * @version latest (5.3.0)
  * @changes
  * version 5.3.0 (03.09.2019):
- * - uses ccm v22.4.0
+ * - uses ccm v22.5.0
  * - support of <ccm-app> tags in predefined content
  * version 5.2.1 (07.05.2019):
  * - uses ccm v20.3.0
@@ -51,7 +51,7 @@
 
     name: 'content',
 
-    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-22.4.0.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-22.5.0.js',
 
     config: {
 
