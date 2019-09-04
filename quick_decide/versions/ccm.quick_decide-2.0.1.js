@@ -2,7 +2,7 @@
  * @overview ccm component for quick decision
  * @author André Kless <andre.kless@web.de> 2018-2019
  * @license The MIT License (MIT)
- * @version latest (2.0.1)
+ * @version 2.0.1
  * @changes
  * version 2.0.1 (04.09.2019):
  * - clear interval if the app has no DOM contact
@@ -32,7 +32,7 @@
 
   const component = {
 
-    name: 'quick_decide',
+    name: 'quick_decide', version: [ 2, 0, 1 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-22.5.0.js',
 
