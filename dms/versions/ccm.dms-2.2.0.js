@@ -167,8 +167,11 @@
               },
               onclick: async event => {
 
+                // no app manager? => abort
+                if ( !this.app_manager ) return;
+
                 // render app manager
-                this.app_manager && await this.app_manager.start( {
+                await this.app_manager.start( {
                   root: content,
                   data: {
                     store: this.ignore.apps,
@@ -176,6 +179,14 @@
                   },
                   default_icon: this.default_icon
                 } );
+
+                // render 'Create Similar App' button
+                $.append( content, $.html( {
+                  "tag": "button",
+                  "style": "font-size: large; padding: 0.5em; margin: 0.5em;",
+                  "inner": "Create Similar App",
+                  "onclick": async () => showComponent( $.getIndex( event.data.path ).replace( /\./g, '-' ), await $.solveDependency( [ 'ccm.get', event.data.source[ 0 ], event.data.source[ 1 ] ] ) )
+                } ) );
 
               }
             } );
