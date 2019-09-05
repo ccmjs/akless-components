@@ -4,9 +4,10 @@
  * @license The MIT License (MIT)
  * @version latest (5.3.0)
  * @changes
- * version 5.3.0 (03.09.2019):
+ * version 5.3.0 (05.09.2019):
  * - uses ccm v22.5.0
  * - support of <ccm-app> tags in predefined content
+ * - support of json2json conversion for placeholder values
  * version 5.2.1 (07.05.2019):
  * - uses ccm v20.3.0
  * version 5.2.0 (06.02.2019):
@@ -80,7 +81,10 @@
         if ( typeof this.inner === 'string' ) this.inner = document.createRange().createContextualFragment( this.inner );
 
         // dynamic replacement of placeholders
-        if ( this.placeholder ) [ ...this.inner.children ].forEach( child => child.innerHTML = $.format( child.innerHTML, this.placeholder ) );
+        if ( this.placeholder ) {
+          if ( this.json2json ) this.placeholder = this.json2json( this.placeholder );
+          [ ...this.inner.children ].forEach( child => child.innerHTML = $.format( child.innerHTML, this.placeholder ) );
+        }
 
         // collect all ccm dependencies in Light DOM
         const self = this; collectDependencies( this.inner );
