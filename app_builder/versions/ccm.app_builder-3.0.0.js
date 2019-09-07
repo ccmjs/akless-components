@@ -35,7 +35,331 @@
       "data": { "store": [ "ccm.store" ] },
 //    "form": [ "ccm.component", "https://ccmjs.github.io/akless-components/submit/versions/ccm.submit-7.1.3.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/app_builder/resources/resources.js", "form" ] ],
       "helper": [ "ccm.load", { "url": "https://ccmjs.github.io/akless-components/modules/helper.mjs", "type": "module" } ],
-      "html": [ "ccm.get", "https://ccmjs.github.io/akless-components/app_builder/resources/resources.js", "html" ],
+      "html": {
+        "main": {
+          "id": "main",
+          "inner": [
+            {
+              "id": "header",
+              "inner": [
+                { "id": "lang" },
+                { "id": "user" }
+              ]
+            },
+            {
+              "id": "maker",
+              "inner": [
+                { "id": "builder" },
+                {
+                  "id": "preview",
+                  "inner": [
+                    { "tag": "b", "inner": "Preview:" },
+                    { "id": "app" }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "buttons",
+              "class": "d-flex justify-content-around flex-wrap bg-dark",
+              "inner": [
+                {
+                  "id": "button-update",
+                  "class": "btn btn-success disabled",
+                  "onclick": "%onUpdate%",
+                  "inner": "Save Changes"
+                },
+                {
+                  "id": "button-read",
+                  "class": "btn btn-primary",
+                  "onclick": "%onRead%",
+                  "inner": "Load App"
+                },
+                {
+                  "id": "button-create",
+                  "class": "btn btn-warning",
+                  "onclick": "%onCreate%",
+                  "inner": "Create As New"
+                },
+                {
+                  "id": "button-delete",
+                  "class": "btn btn-danger disabled",
+                  "onclick": "%onDelete%",
+                  "inner": "Delete"
+                }
+              ]
+            }
+          ]
+        },
+        "handover": {
+          "id": "handover",
+          "inner": [
+            {
+              "class": "d-flex",
+              "inner": [
+                {
+                  "inner": [
+                    {
+                      "id": "embed",
+                      "class": "input-group mb-3",
+                      "inner": [
+                        {
+                          "class": "input-group-prepend",
+                          "inner": {
+                            "tag": "span",
+                            "class": "input-group-text",
+                            "inner": "Embed"
+                          }
+                        },
+                        {
+                          "tag": "input",
+                          "readonly": true,
+                          "type": "text",
+                          "id": "embed_code",
+                          "class": "form-control bg-white",
+                          "aria-label": "Embed Code"
+                        },
+                        {
+                          "class": "input-group-append",
+                          "inner": {
+                            "tag": "button",
+                            "id": "embed_copy",
+                            "class": "btn btn-success",
+                            "type": "button",
+                            "inner": "Copy"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "class": "input-group mb-3",
+                      "inner": [
+                        {
+                          "class": "input-group-prepend",
+                          "inner": {
+                            "tag": "span",
+                            "class": "input-group-text",
+                            "inner": "App ID"
+                          }
+                        },
+                        {
+                          "tag": "input",
+                          "readonly": true,
+                          "type": "text",
+                          "id": "app_id",
+                          "class": "form-control bg-white",
+                          "aria-label": "App ID"
+                        },
+                        {
+                          "class": "input-group-append",
+                          "inner": {
+                            "tag": "button",
+                            "id": "id_copy",
+                            "class": "btn btn-success",
+                            "type": "button",
+                            "inner": "Copy"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "class": "input-group mb-3",
+                      "inner": [
+                        {
+                          "class": "input-group-prepend",
+                          "inner": {
+                            "tag": "span",
+                            "class": "input-group-text",
+                            "inner": "URL"
+                          }
+                        },
+                        {
+                          "tag": "input",
+                          "readonly": true,
+                          "type": "text",
+                          "id": "app_url",
+                          "class": "form-control bg-white",
+                          "aria-label": "URL"
+                        },
+                        {
+                          "class": "input-group-append",
+                          "inner": {
+                            "tag": "button",
+                            "id": "url_copy",
+                            "class": "btn btn-success",
+                            "type": "button",
+                            "inner": "Copy"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                { "id": "qr_code", "class": "pl-2" }
+              ]
+            },
+            {
+              "class": "text-center",
+              "inner": [
+                {
+                  "tag": "button",
+                  "type": "button",
+                  "id": "download",
+                  "class": "btn btn-primary mr-2",
+                  "inner": [
+                    {
+                      "tag": "span",
+                      "class": "fas fa-file-download"
+                    },
+                    " File"
+                  ]
+                },
+                {
+                  "tag": "a",
+                  "id": "bookmarklet",
+                  "class": "btn btn-secondary mr-2",
+                  "inner": [
+                    {
+                      "tag": "span",
+                      "class": "fas fa-bookmark"
+                    },
+                    " Bookmarklet"
+                  ]
+                },
+                {
+                  "tag": "button",
+                  "type": "button",
+                  "id": "ibook",
+                  "class": "btn btn-info mr-2",
+                  "inner": [
+                    {
+                      "tag": "span",
+                      "class": "fas fa-book"
+                    },
+                    " iBook Widget"
+                  ]
+                },
+                {
+                  "tag": "button",
+                  "type": "button",
+                  "id": "scorm",
+                  "class": "btn btn-danger",
+                  "inner": [
+                    {
+                      "tag": "span",
+                      "class": "fas fa-archive"
+                    },
+                    " SCORM"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "read": {
+          "id": "read",
+          "inner": [
+            {
+              "tag": "p",
+              "inner": "Use one of the following ways to load an app:"
+            },
+            {
+              "id": "embed",
+              "class": "input-group mb-3",
+              "inner": [
+                {
+                  "class": "input-group-prepend",
+                  "inner": {
+                    "tag": "span",
+                    "class": "input-group-text",
+                    "inner": "Embed"
+                  }
+                },
+                {
+                  "tag": "input",
+                  "type": "text",
+                  "id": "embed_code",
+                  "class": "form-control",
+                  "aria-label": "Embed Code"
+                },
+                {
+                  "class": "input-group-append",
+                  "inner": {
+                    "tag": "button",
+                    "id": "embed_load",
+                    "class": "btn btn-primary",
+                    "type": "button",
+                    "inner": "Load",
+                    "onclick": "%embed%"
+                  }
+                }
+              ]
+            },
+            {
+              "class": "input-group mb-3",
+              "inner": [
+                {
+                  "class": "input-group-prepend",
+                  "inner": {
+                    "tag": "span",
+                    "class": "input-group-text",
+                    "inner": "App ID"
+                  }
+                },
+                {
+                  "tag": "input",
+                  "type": "text",
+                  "id": "app_id",
+                  "class": "form-control",
+                  "aria-label": "App ID"
+                },
+                {
+                  "class": "input-group-append",
+                  "inner": {
+                    "tag": "button",
+                    "id": "id_copy",
+                    "class": "btn btn-primary",
+                    "type": "button",
+                    "inner": "Load",
+                    "onclick": "%app_id%"
+                  }
+                }
+              ]
+            },
+            {
+              "class": "input-group mb-3",
+              "inner": [
+                {
+                  "class": "input-group-prepend",
+                  "inner": {
+                    "tag": "span",
+                    "class": "input-group-text",
+                    "inner": "URL"
+                  }
+                },
+                {
+                  "tag": "input",
+                  "type": "text",
+                  "id": "app_url",
+                  "class": "form-control",
+                  "aria-label": "URL"
+                },
+                {
+                  "class": "input-group-append",
+                  "inner": {
+                    "tag": "button",
+                    "id": "url_copy",
+                    "class": "btn btn-primary",
+                    "type": "button",
+                    "inner": "Load",
+                    "onclick": "%url%"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      },
 //    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.2.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
 //    "meta_store": [ "ccm.store" ],
       "modal_dialog": [ "ccm.component", "https://ccmjs.github.io/tkless-components/modal/versions/ccm.modal-2.0.0.js", {
