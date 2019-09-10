@@ -159,7 +159,7 @@
         if ( !this.helper         ) $.removeElement( this.element.querySelector( '#fullscreen'  ) );
         if ( !dataset.description ) $.removeElement( this.element.querySelector( '#description' ) );
         if ( !this.user || !this.user.isLoggedIn() || this.user.data().user !== dataset._.creator || !this.form )
-          $.removeElement( this.element.querySelector( '#edit' ) );
+          $.removeElement( this.element.querySelector( '#edit_button' ) );
 
         // render login/logout area
         if ( this.user ) $.append( this.element.querySelector( '#top' ), this.user.root );

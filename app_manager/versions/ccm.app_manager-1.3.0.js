@@ -165,7 +165,7 @@
         if ( !this.helper         ) $.removeElement( this.element.querySelector( '#fullscreen'  ) );
         if ( !dataset.description ) $.removeElement( this.element.querySelector( '#description' ) );
         if ( !this.user || !this.user.isLoggedIn() || this.user.data().user !== dataset._.creator || !this.form )
-          $.removeElement( this.element.querySelector( '#edit' ) );
+          $.removeElement( this.element.querySelector( '#edit_button' ) );
 
         // render language area
         if ( this.lang ) { $.append( this.element.querySelector( '#top' ), this.lang.root ); this.lang.start(); }
