@@ -3,33 +3,57 @@
 @author André Kless <andre.kless@web.de.de> 2019
 -->
 
+<ccm-template key="empty">
+  <div id="empty">App not found</div>
+</ccm-template>
+
 <ccm-template key="main">
-  <div id="top">
-    <div id="icon">
-      <img src="%icon%">
+  <div id="main">
+    <div id="top"></div>
+    <div id="header">
+      <div id="icon">
+        <img src="%icon%">
+      </div>
+      <div id="title-created">
+        <div id="title">%title%</div>
+        <div id="created">Created %date% by %creator%</div>
+      </div>
     </div>
-    <div id="title-created">
-      <div id="title">%title%</div>
-      <div id="created">Created %date% by %creator%</div>
+    <div id="abstract">%abstract%</div>
+    <div id="app" class="section">
+      <div class="caption">
+        <span>App</span>
+        <button id="fullscreen" onclick="%fullscreen%">Fullscreen</button>
+      </div>
+      <div class="content"></div>
+    </div>
+    <div id="description" class="section">
+      <div class="caption">Description</div>
+      <div class="content">%description%</div>
+    </div>
+    <div id="details" class="section">
+      <div class="caption">
+        <span>Additional Informations</span>
+        <button id="edit_button" onclick="%edit%">Edit</button>
+      </div>
+      <div class="content"></div>
+    </div>
+    <div id="handover" class="section">
+      <div class="caption">Handover of the App</div>
+      <div class="content"></div>
     </div>
   </div>
-  <div id="abstract">%abstract%</div>
-  <div class="topic">
-    <span class="caption">App</span>
-    <button onclick="%fullscreen%">Fullscreen</button>
-  </div>
-  <div id="app"></div>
-  <div id="button">
-    <button onclick="%create_similar_app%">Create Similar App</button>
-  </div>
-  <div id="description">
-    <div class="caption">Description</div>
-    <div>%description%</div>
-  </div>
-  <div class="caption">Additional Informations</div>
-  <div id="details"></div>
-  <div id="section-handover">
-    <div class="caption">Handover of the App</div>
-    <div id="handover"></div>
+</ccm-template>
+
+<ccm-template key="edit">
+  <div id="edit">
+    <div id="back">
+      <button onclick="%cancel%">← Back to App</button>
+    </div>
+    <div id="form"></div>
+    <div id="footer">
+      <button onclick="%cancel%">Cancel</button>
+      <button onclick="%del%">Delete App</button>
+    </div>
   </div>
 </ccm-template>

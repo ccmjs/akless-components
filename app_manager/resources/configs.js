@@ -7,12 +7,14 @@
 ccm.files[ 'configs.js' ] = {
 
   "local": {
+    "app_details": [ "ccm.component", "../content/ccm.content.js", [ "ccm.get", "../content/resources/configs.js", "app_meta" ] ],
     "css.1": "../app_manager/resources/styles.css",
     "data": {
       "store": [ "ccm.store", { "url": "https://ccm2.inf.h-brs.de", "name": "dms-apps" } ],
       "key": "1562615085075X31075165857521436"
     },
     "default_icon": "../dms/resources/img/default.png",
+    "form": [ "ccm.component", "../submit/ccm.submit.js", [ "ccm.get", "../submit/resources/configs.js", "app_meta" ] ],
     "handover_app": [ "ccm.component", "../handover_app/ccm.handover_app.js", {
       "css": [ "ccm.load",
         "../handover_app/resources/styles.css",
@@ -24,14 +26,13 @@ ccm.files[ 'configs.js' ] = {
       "qr_code": [ "ccm.load", "../libs/qrcode-generator/qrcode.min.js" ],
       "window": [ "ccm.component", "../window/ccm.window.js" ]
     } ],
-    "helper.1": "../modules/helper.mjs",
+    "helper": [ "ccm.load", "../modules/helper.mjs" ],
     "html.1": "../app_manager/resources/templates.html",
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
     "user": [ "ccm.start", "../user/ccm.user.js", [ "ccm.get", "../user/resources/configs.js", "guest" ] ]
   },
 
   "demo": {
-    "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/app_manager/resources/styles.css" ],
     "data": {
       "store": [ "ccm.store", { "url": "https://ccm2.inf.h-brs.de", "name": "dms-apps" } ],
       "key": "1562615085075X31075165857521436"

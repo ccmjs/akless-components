@@ -5,40 +5,41 @@
  */
 
 #element {
+  background-color: white;
   font-family: Helvetica, Arial, sans-serif;
+}
+
+#main {
   padding: 1em;
 }
 
 #top {
   display: flex;
+  justify-content: flex-end;
 }
 
-#icon img {
+#header {
+  display: flex;
+}
+
+#header #icon {
+  padding-right: 1em;
+}
+
+#header #icon img {
   width: 64px;
   height: 64px;
   border-radius: 100%;
 }
 
-#title-created {
-  padding-left: 1em;
-}
-
-#title {
+#header #title {
   font-size: x-large;
   font-weight: bold;
   color: #00BFFF;
 }
 
-#created {
+#header #created {
   color: grey;
-}
-
-#button {
-  padding-top: 0.3em;
-}
-
-#button button {
-  padding: 0.5em 0.8em;
 }
 
 #abstract {
@@ -50,51 +51,33 @@
   font-size: small;
 }
 
-.topic {
+.caption {
   width: 100%;
   display: inline-flex;
   justify-content: space-between;
   align-items: baseline;
-}
-
-#app {
-  border: 1px solid lightgrey;
-  border-radius: 0.3em;
-  box-shadow: rgba(0, 0, 0, 0.05) 0 1px 1px;
-  width: 100%;
-}
-
-.caption {
   padding-top: 2em;
   padding-bottom: 0.5em;
   font-size: small;
   color: grey;
 }
 
-#details {
-  display: table;
-  font-size: small;
+#app .content {
+  border: 1px solid lightgrey;
+  box-shadow: rgba(0, 0, 0, 0.05) 0 1px 1px;
   width: 100%;
 }
 
-#details > div {
-  display: table-row;
+#back {
+  margin-top: 1em;
+  margin-bottom: -1em;
+  padding: 0 1em;
 }
 
-#details > div > div {
-  display: table-cell;
-  padding: 0.5em;
-  border-top: 1px solid lightgrey;
+#footer {
+  padding: 0 0.5em 1em;
 }
 
-#details > div > div:empty:before {
-  content: '-';
-}
-
-#details > div > div:first-child {
-  font-weight: bold;
-}
-
-#details > div:last-child > div {
-  border-bottom: 1px solid lightgrey;
+#footer button {
+  margin: 0 0.5em;
 }

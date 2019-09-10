@@ -2,7 +2,7 @@
  * @overview ccm component for managing an app
  * @author André Kless <andre.kless@web.de> 2019
  * @license MIT License
- * @version latest (1.2.0)
+ * @version 1.2.0
  * @changes
  * version 1.2.0 (10.09.2019)
  * - added login/logout area
@@ -24,7 +24,7 @@
 
   const component = {
 
-    name: 'app_manager',
+    name: 'app_manager', version: [ 1, 2, 0 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-22.5.0.js',
 
