@@ -28,6 +28,37 @@ ccm.files[ 'configs.js' ] = {
     } ],
     "helper": [ "ccm.load", "../modules/helper.mjs" ],
     "html.1": "../app_manager/resources/templates.html",
+    "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js", {
+      "translations": {
+        "de": {
+          "app": "App",
+          "back": "← Zurück zur App",
+          "cancel": "Abbrechen",
+          "created": "Erstellt von",
+          "delete": "App löschen",
+          "description": "Beschreibung",
+          "edit": "Bearbeiten",
+          "flag": "https://ccmjs.github.io/tkless-components/lang/resources/de.svg",
+          "fullscreen": "Vollbild",
+          "handover": "Übergabe der App",
+          "info": "Weitere Informationen"
+        },
+        "en": {
+          "app": "App",
+          "back": "← Back to App",
+          "cancel": "Cancel",
+          "created": "Created by",
+          "delete": "Delete App",
+          "description": "Description",
+          "edit": "Edit",
+          "flag": "https://ccmjs.github.io/tkless-components/lang/resources/en.svg",
+          "fullscreen": "Fullscreen",
+          "handover": "Handover of the App",
+          "info": "Additional Informations"
+        }
+      },
+      "active": "en"
+    } ],
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
     "user": [ "ccm.start", "../user/ccm.user.js", [ "ccm.get", "../user/resources/configs.js", "guest" ] ]
   },
@@ -45,6 +76,37 @@ ccm.files[ 'configs.js' ] = {
       "window": [ "ccm.component", "https://ccmjs.github.io/akless-components/window/versions/ccm.window-1.0.0.js" ]
     } ],
     "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/helper.mjs" ],
+    "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js", {
+      "translations": {
+        "de": {
+          "app": "App",
+          "back": "← Zurück zur App",
+          "cancel": "Abbrechen",
+          "created": "Erstellt von",
+          "delete": "App löschen",
+          "description": "Beschreibung",
+          "edit": "Bearbeiten",
+          "flag": "https://ccmjs.github.io/tkless-components/lang/resources/de.svg",
+          "fullscreen": "Vollbild",
+          "handover": "Übergabe der App",
+          "info": "Weitere Informationen"
+        },
+        "en": {
+          "app": "App",
+          "back": "← Back to App",
+          "cancel": "Cancel",
+          "created": "Created by",
+          "delete": "Delete App",
+          "description": "Description",
+          "edit": "Edit",
+          "flag": "https://ccmjs.github.io/tkless-components/lang/resources/en.svg",
+          "fullscreen": "Fullscreen",
+          "handover": "Handover of the App",
+          "info": "Additional Informations"
+        }
+      },
+      "active": "en"
+    } ],
     "user": [ "ccm.start", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.2.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "guest" ] ]
   }
 

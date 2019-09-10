@@ -9,6 +9,10 @@
   font-family: Helvetica, Arial, sans-serif;
 }
 
+#empty {
+  padding: 1em;
+}
+
 #main {
   padding: 1em;
 }
@@ -40,6 +44,7 @@
 
 #header #created {
   color: grey;
+  white-space: nowrap;
 }
 
 #abstract {
@@ -60,6 +65,7 @@
   padding-bottom: 0.5em;
   font-size: small;
   color: grey;
+  white-space: nowrap;
 }
 
 #app .content {

@@ -4,7 +4,7 @@
 -->
 
 <ccm-template key="empty">
-  <div id="empty">App not found</div>
+  <div id="empty">%% not found</div>
 </ccm-template>
 
 <ccm-template key="main">
@@ -16,30 +16,30 @@
       </div>
       <div id="title-created">
         <div id="title">%title%</div>
-        <div id="created">Created %date% by %creator%</div>
+        <div id="created"><span data-lang="created">Created by</span> %creator% <small>%date%</small></div>
       </div>
     </div>
     <div id="abstract">%abstract%</div>
     <div id="app" class="section">
       <div class="caption">
-        <span>App</span>
-        <button id="fullscreen" onclick="%fullscreen%">Fullscreen</button>
+        <span data-lang="app">App</span>
+        <button id="fullscreen" onclick="%fullscreen%" data-lang="fullscreen">Fullscreen</button>
       </div>
       <div class="content"></div>
     </div>
     <div id="description" class="section">
-      <div class="caption">Description</div>
+      <div class="caption" data-lang="description">Description</div>
       <div class="content">%description%</div>
     </div>
     <div id="details" class="section">
       <div class="caption">
-        <span>Additional Informations</span>
-        <button id="edit_button" onclick="%edit%">Edit</button>
+        <span data-lang="info">Additional Informations</span>
+        <button id="edit_button" onclick="%edit%" data-lang="edit">Edit</button>
       </div>
       <div class="content"></div>
     </div>
     <div id="handover" class="section">
-      <div class="caption">Handover of the App</div>
+      <div class="caption" data-lang="handover">Handover of the App</div>
       <div class="content"></div>
     </div>
   </div>
@@ -48,12 +48,12 @@
 <ccm-template key="edit">
   <div id="edit">
     <div id="back">
-      <button onclick="%cancel%">← Back to App</button>
+      <button onclick="%cancel%" data-lang="back">← Back to App</button>
     </div>
     <div id="form"></div>
     <div id="footer">
-      <button onclick="%cancel%">Cancel</button>
-      <button onclick="%del%">Delete App</button>
+      <button onclick="%cancel%" data-lang="cancel">Cancel</button>
+      <button onclick="%del%" data-lang="delete">Delete App</button>
     </div>
   </div>
 </ccm-template>
