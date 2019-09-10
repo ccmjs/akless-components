@@ -173,9 +173,9 @@
         // render login/logout area
         if ( this.user ) $.append( this.element.querySelector( '#top' ), this.user.root );
 
-        // app configuration exists? => render app
+        // render app
         if ( await this.ccm.get.apply( null, dataset.source ) )
-          await this.ccm.start( dataset.path, {
+          this.ccm.start( dataset.path, {
             key: [ 'ccm.get', dataset.source[ 0 ], dataset.source[ 1 ] ],
             parent: this,
             root: this.element.querySelector( '#app .content' )
@@ -199,7 +199,7 @@
 
         // render handover of the app
         if ( this.handover_app )
-          await this.handover_app.start( {
+          this.handover_app.start( {
             root: this.element.querySelector( '#handover .content' ),
             component_url: dataset.path,
             data: {
