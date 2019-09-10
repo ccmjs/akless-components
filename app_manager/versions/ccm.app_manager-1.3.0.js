@@ -192,7 +192,7 @@
           this.app_details.start( {
             root: this.element.querySelector( '#details .content' ),
             json2json: json => {
-              if ( json.language ) json.language = json.language.join( ', ' ).toUpperCase();
+              if ( json.language ) json.language = json.language.filter( Boolean ).join( ', ' ).toUpperCase();
               json.tags = json.tags.join( ', ' );
               return json;
             },
