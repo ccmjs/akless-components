@@ -2,7 +2,7 @@
  * @overview ccm component for submitting data
  * @author André Kless <andre.kless@web.de> 2018-2019
  * @license The MIT License (MIT)
- * @version latest (7.1.4)
+ * @version 7.1.4
  * @changes
  * version 7.1.4 (10.09.2019):
  * - layout change for submit button
@@ -33,7 +33,7 @@
 
   const component = {
 
-    name: 'submit',
+    name: 'submit', version: [ 7, 1, 4 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-20.5.0.js',
 
