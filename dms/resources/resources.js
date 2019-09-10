@@ -173,7 +173,57 @@ ccm.files[ 'resources.js' ] = {
   },
 
   "live": {
-    "app_manager": [ "ccm.component", "https://ccmjs.github.io/akless-components/app_manager/versions/ccm.app_manager-1.3.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/app_manager/resources/configs.js", "demo" ] ],
+    "app_manager": [ "ccm.component", "https://ccmjs.github.io/akless-components/app_manager/versions/ccm.app_manager-1.3.0.js", {
+      "app_details": [ "ccm.component", "https://ccmjs.github.io/akless-components/content/versions/ccm.content-5.3.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/content/resources/configs.js", "app_meta" ] ],
+      "data": {
+        "store": [ "ccm.store", { "url": "https://ccm2.inf.h-brs.de", "name": "dms-apps" } ],
+        "key": "1562615085075X31075165857521436"
+      },
+      "default_icon": "https://ccmjs.github.io/akless-components/dms/resources/img/default.png",
+      "form": [ "ccm.component", "https://ccmjs.github.io/akless-components/submit/versions/ccm.submit-7.1.4.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/submit/resources/configs.js", "app_meta" ] ],
+      "handover_app": [ "ccm.component", "https://ccmjs.github.io/akless-components/handover_app/versions/ccm.handover_app-1.0.0.js", {
+        "qr_code": [ "ccm.load", "https://ccmjs.github.io/akless-components/libs/qrcode-generator/qrcode.min.js" ],
+        "window": [ "ccm.component", "https://ccmjs.github.io/akless-components/window/versions/ccm.window-1.0.0.js" ]
+      } ],
+      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/helper.mjs" ],
+      "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js", {
+        "translations": {
+          "de": {
+            "app": "App",
+            "back": "← Zurück zur App",
+            "cancel": "Abbrechen",
+            "created": "Erstellt von",
+            "delete": "App löschen",
+            "description": "Beschreibung",
+            "edit": "Bearbeiten",
+            "flag": "https://ccmjs.github.io/tkless-components/lang/resources/de.svg",
+            "fullscreen": "Vollbild",
+            "handover": "Übergabe der App",
+            "info": "Weitere Informationen"
+          },
+          "en": {
+            "app": "App",
+            "back": "← Back to App",
+            "cancel": "Cancel",
+            "created": "Created by",
+            "delete": "Delete App",
+            "description": "Description",
+            "edit": "Edit",
+            "flag": "https://ccmjs.github.io/tkless-components/lang/resources/en.svg",
+            "fullscreen": "Fullscreen",
+            "handover": "Handover of the App",
+            "info": "Additional Informations"
+          }
+        },
+        "active": "en"
+      } ],
+      "user": [ "ccm.start", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.2.0.js", {
+        "realm": "cloud",
+        "url": "https://ccm2.inf.h-brs.de",
+        "store": "dms-user",
+        "hash": [ "ccm.load", { "url": "https://ccmjs.github.io/akless-components/modules/md5.mjs", "type": "module" } ]
+      } ]
+    } ],
     "component_manager": [ "ccm.component", "https://ccmjs.github.io/akless-components/component_manager/versions/ccm.component_manager-3.1.0.js", {
       "builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/app_builder/versions/ccm.app_builder-3.1.0.js", {
         "window": [ "ccm.component", "https://ccmjs.github.io/akless-components/window/versions/ccm.window-1.0.0.js" ],
