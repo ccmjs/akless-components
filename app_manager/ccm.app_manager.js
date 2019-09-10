@@ -144,7 +144,7 @@
             await this.form.start( {
               root: this.element.querySelector( '#form' ),
               data: {
-                store: this.data.store.source(),
+                store: [ 'ccm.store', this.data.store.source() ],
                 key: dataset.key
               }
             } );
