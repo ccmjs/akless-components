@@ -146,6 +146,10 @@
               data: {
                 store: [ 'ccm.store', this.data.store.source() ],
                 key: dataset.key
+              },
+              onfinish: {
+                store: true,
+                callback: this.start
               }
             } );
 
