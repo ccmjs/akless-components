@@ -32,3 +32,11 @@
 #meta > div:last-child > div {
   border-bottom: 1px solid lightgrey;
 }
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
