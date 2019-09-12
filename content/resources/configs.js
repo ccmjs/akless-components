@@ -26,6 +26,7 @@ ccm.files[ 'configs.js' ] = {
       if ( !json.category ) json.category = '';
       if ( json.language ) json.language = json.language.filter( Boolean ).join( ', ' ).toUpperCase();
       json.tags = json.tags.join( ', ' );
+      json.component = ccm.helper.getIndex( json.path );
       return json;
     },
     "placeholder": [ "ccm.get", { "url": "https://ccm2.inf.h-brs.de", "name": "dms-apps" }, "1562615085075X31075165857521436" ]
