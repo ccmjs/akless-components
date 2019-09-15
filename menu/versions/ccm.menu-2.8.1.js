@@ -56,7 +56,7 @@
 
   const component = {
 
-    name: 'menu', version: [ 22, 8, 1 ],
+    name: 'menu', version: [ 2, 8, 1 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-22.6.0.js',
 
