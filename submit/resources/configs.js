@@ -238,6 +238,65 @@ ccm.files[ 'configs.js' ] = {
           "type": "text"
         }
       },
+      {
+        "label": "Demos",
+        "name": "demos",
+        "type": "several",
+        "info": "Enter your own title and app ID for each app to be demo-listed. Only one value per input field. Via +/- you can add/remove additional input fields.",
+        "items": [
+          {
+            "label": "Title",
+            "name": "title",
+            "type": "text",
+            "info": "Title of the demo in the demo menu.",
+            "required": true
+          },
+          {
+            "label": "App ID",
+            "name": "app",
+            "type": "text",
+            "info": "App ID of the app created from this component to be used as a demo.",
+            "pattern": "[a-zA-Z0-9_-]+",
+            "title": "An App ID can only contain letters, numbers, and no special characters except \"-\" and \"_\".",
+            "required": true
+          }
+        ]
+      },
+      {
+        "label": "Builders",
+        "name": "builders",
+        "type": "several",
+        "info": "Enter the title, component index, and app ID for each builder app to be listed in the app creation section of the builder menu. Only one value per input field. Via +/- you can add/remove additional input fields.",
+        "items": [
+          {
+            "label": "Title",
+            "name": "title",
+            "type": "text",
+            "info": "Title of the builder app in the builder menu of the app creation section.",
+            "required": true
+          },
+          {
+            "label": "Component Index",
+            "name": "component",
+            "type": "text",
+            "info": "Index of the component from which the builder app is created. How to know the index? The index can be found in the overview section of the component.",
+            "placeholder": "json_builder-1-4-1",
+            "required": true,
+            "pattern": "([a-z][a-z0-9_]*)(-(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*))",
+            "title": "The index of a component starts with the unique component name and then a '-' followed by the component version number. Example: json_builder-1.4.1"
+          },
+          {
+            "label": "App ID",
+            "name": "app",
+            "type": "text",
+            "info": "App ID of the builder app to be used for app creation.",
+            "placeholder": "1559859507011X17772030423968155",
+            "pattern": "[a-zA-Z0-9_-]+",
+            "title": "An App ID can only contain letters, numbers, and no special characters except \"-\" and \"_\".",
+            "required": true
+          }
+        ]
+      },
       "<div class='well'><p>I agree that all software of my app is released as free software under the <a href='https://en.wikipedia.org/wiki/MIT_License' target='_blank'>MIT license</a>.</p><p>I agree that all content of my app will be released as public domain under the <a href='https://creativecommons.org/share-your-work/public-domain/cc0/' target='_blank'>CC0 license</a>.</p>I confirm that this does not violate the copyright of third parties.</div>",
       {
         "label": "<span style='color:red'>*</span>I Agree",
