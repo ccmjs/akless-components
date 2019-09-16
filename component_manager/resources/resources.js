@@ -25,12 +25,11 @@ ccm.files[ 'resources.js' ] = {
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
     "menu_app": [ "ccm.component", "../menu/ccm.menu.js", [ "ccm.get", "../component_manager/resources/resources.js", "menu_app" ] ],
     "menu_top": [ "ccm.component", "../menu/ccm.menu.js", [ "ccm.get", "../component_manager/resources/resources.js", "menu_top" ] ],
-    "rating": [ "ccm.component", "https://ccmjs.github.io/tkless-components/star_rating/versions/ccm.star_rating-4.0.0.js", {
-      "ccm": "https://ccmjs.github.io/ccm/versions/ccm-20.6.1.js",
+    "rating": [ "ccm.component", "https://ccmjs.github.io/tkless-components/star_rating/versions/ccm.star_rating-5.0.0.js", {
       "data": { "store": [ "ccm.store", [ "ccm.get", { "name": "dms-components-ratings", "url": "https://ccm2.inf.h-brs.de" }, {} ] ] },
       "user": [ "ccm.start", "../user/ccm.user.js", [ "ccm.get", "../component_manager/resources/resources.js", "user" ] ]
     } ],
-    "rating_result": [ "ccm.component", "https://ccmjs.github.io/tkless-components/star_rating_result/versions/ccm.star_rating_result-4.0.0.js", {
+    "rating_result": [ "ccm.component", "https://ccmjs.github.io/tkless-components/star_rating_result/versions/ccm.star_rating_result-5.0.0.js", {
       "ccm": "https://ccmjs.github.io/ccm/versions/ccm-20.6.1.js",
       "data": { "store": [ "ccm.store", [ "ccm.get", { "name": "dms-components-ratings", "url": "https://ccm2.inf.h-brs.de" }, {} ] ] },
       "detailed": true,
@@ -54,12 +53,12 @@ ccm.files[ 'resources.js' ] = {
       "builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-1.4.1.js", { "directly": true, "nosubmit": true } ]
     },
     "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/component_manager/resources/resources.js", "lang" ] ],
-    "rating": [ "ccm.component", "https://ccmjs.github.io/tkless-components/star_rating/versions/ccm.star_rating-4.0.0.js", {
+    "rating": [ "ccm.component", "https://ccmjs.github.io/tkless-components/star_rating/versions/ccm.star_rating-5.0.0.js", {
       "ccm": "https://ccmjs.github.io/ccm/versions/ccm-20.6.1.js",
       "data": { "store": [ "ccm.store", [ "ccm.get", { "name": "dms-components-ratings", "url": "https://ccm2.inf.h-brs.de" }, {} ] ] },
       "user": [ "ccm.start", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.2.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/component_manager/resources/resources.js", "user" ] ]
     } ],
-    "rating_result": [ "ccm.component", "https://ccmjs.github.io/tkless-components/star_rating_result/versions/ccm.star_rating_result-4.0.0.js", {
+    "rating_result": [ "ccm.component", "https://ccmjs.github.io/tkless-components/star_rating_result/versions/ccm.star_rating_result-5.0.0.js", {
       "ccm": "https://ccmjs.github.io/ccm/versions/ccm-20.6.1.js",
       "data": { "store": [ "ccm.store", [ "ccm.get", { "name": "dms-components-ratings", "url": "https://ccm2.inf.h-brs.de" }, {} ] ] },
       "detailed": true,
@@ -119,6 +118,25 @@ ccm.files[ 'resources.js' ] = {
     "selected": 1
   },
 
+  /** HTML templates for demo and builder menu */
+  "menu_app_html": {
+    "main": {
+      "id": "main",
+      "inner": {
+        "id": "entries",
+        "class": "list-group"
+      }
+    },
+    "entry": {
+      "tag": "a",
+      "class": "entry list-group-item list-group-item-action",
+      "onclick": "%click%",
+      "inner": {
+        "class": "title"
+      }
+    }
+  },
+
   /** configuration for section menu */
   "menu_top": {
     "css": [ "ccm.load",
@@ -151,25 +169,6 @@ ccm.files[ 'resources.js' ] = {
       }
     } ],
     "selected": 1
-  },
-
-  /** HTML templates for demo and builder menu */
-  "menu_app_html": {
-    "main": {
-      "id": "main",
-      "inner": {
-        "id": "entries",
-        "class": "list-group"
-      }
-    },
-    "entry": {
-      "tag": "a",
-      "class": "entry list-group-item list-group-item-action",
-      "onclick": "%click%",
-      "inner": {
-        "class": "title"
-      }
-    }
   },
 
   /** HTML templates for section menu */
