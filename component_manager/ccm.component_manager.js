@@ -318,20 +318,25 @@
             // render HTML structure of reviews section
             $.setContent( content, $.html( this.html.reviews ) );
 
+            // render rating results
+            let results;
+            if ( this.rating_result )
+              results = await this.rating_result.start( {
+                root: content.querySelector( '#results .content' ),
+                'data.key': dataset.key
+              } );
+            else
+              $.removeElement( content.querySelector( '#results' ) );
+
             // render rating
             if ( this.rating )
               await this.rating.start( {
                 root: content.querySelector( '#rating .content' ),
-                'data.key': dataset.key
+                'data.key': dataset.key,
+                onchange: results.start
               } );
             else
               $.removeElement( content.querySelector( '#rating' ) );
-
-            // render rating results
-            if ( this.rating_result )
-              await this.rating_result.start( { root: content.querySelector( '#results .content' ) } );
-            else
-              $.removeElement( content.querySelector( '#results' ) );
 
             // translate content
             this.lang && this.lang.translate();

@@ -11,9 +11,9 @@
  * - added login/logout area
  * - added multilingualism support
  * - optional default component icon
- * - uses ccm v22.6.1
  * - added rating and rating results in reviews section
  * - bug fix for create similar app button
+ * - uses ccm v22.6.1
  * version 3.1.0 (28.07.2019):
  * - uses ccm v22.3.1
  * - HTML template via HTML file
@@ -318,20 +318,25 @@
             // render HTML structure of reviews section
             $.setContent( content, $.html( this.html.reviews ) );
 
+            // render rating results
+            let results;
+            if ( this.rating_result )
+              results = await this.rating_result.start( {
+                root: content.querySelector( '#results .content' ),
+                'data.key': dataset.key
+              } );
+            else
+              $.removeElement( content.querySelector( '#results' ) );
+
             // render rating
             if ( this.rating )
               await this.rating.start( {
                 root: content.querySelector( '#rating .content' ),
-                'data.key': dataset.key
+                'data.key': dataset.key,
+                onchange: results.start
               } );
             else
               $.removeElement( content.querySelector( '#rating' ) );
-
-            // render rating results
-            if ( this.rating_result )
-              await this.rating_result.start( { root: content.querySelector( '#results .content' ) } );
-            else
-              $.removeElement( content.querySelector( '#results' ) );
 
             // translate content
             this.lang && this.lang.translate();
