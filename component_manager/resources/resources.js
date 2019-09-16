@@ -26,11 +26,10 @@ ccm.files[ 'resources.js' ] = {
     "menu_app": [ "ccm.component", "../menu/ccm.menu.js", [ "ccm.get", "../component_manager/resources/resources.js", "menu_app" ] ],
     "menu_top": [ "ccm.component", "../menu/ccm.menu.js", [ "ccm.get", "../component_manager/resources/resources.js", "menu_top" ] ],
     "rating": [ "ccm.component", "https://ccmjs.github.io/tkless-components/star_rating/versions/ccm.star_rating-5.0.0.js", {
-      "data": { "store": [ "ccm.store", [ "ccm.get", { "name": "dms-components-ratings", "url": "https://ccm2.inf.h-brs.de" }, {} ] ] },
+      "data": { "store": [ "ccm.store", { "name": "dms-components-ratings", "url": "https://ccm2.inf.h-brs.de" } ] },
       "user": [ "ccm.start", "../user/ccm.user.js", [ "ccm.get", "../component_manager/resources/resources.js", "user" ] ]
     } ],
     "rating_result": [ "ccm.component", "https://ccmjs.github.io/tkless-components/star_rating_result/versions/ccm.star_rating_result-5.0.0.js", {
-      "ccm": "https://ccmjs.github.io/ccm/versions/ccm-20.6.1.js",
       "data": { "store": [ "ccm.store", [ "ccm.get", { "name": "dms-components-ratings", "url": "https://ccm2.inf.h-brs.de" }, {} ] ] },
       "detailed": true,
       "user": [ "ccm.start", "../user/ccm.user.js", [ "ccm.get", "../component_manager/resources/resources.js", "user" ] ]
