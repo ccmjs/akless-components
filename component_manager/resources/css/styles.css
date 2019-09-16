@@ -5,40 +5,28 @@
  */
 
 #element {
-  --color1: #00BFFF;
-  --color2: #00376B;
-  --color3: #914D00;
-  --color4: #E6F4F1;
+  background-color: white;
+  font-family: Helvetica, Arial, sans-serif;
+  line-height: 1.5;
 }
 
-#element:empty, #content:empty {
-  margin: 1em;
-  text-align: center;
+#empty {
+  padding: 1em;
 }
 
-#element:empty:before {
-  content: 'No component found that could be managed.';
-}
-
-#content:empty:before {
-  content: 'Nothing to display.';
-}
-
-#element,
-#main,
-#content,
-#content > div {
-  height: 100%;
-}
-
-#main {
-  display: grid;
-  grid-template-rows: auto auto 1fr;
+#top {
+  display: flex;
+  justify-content: flex-end;
+  padding: 1em 1em 0;
 }
 
 #header {
-  padding: 2em 1em;
   display: flex;
+  padding: 0 1em 2em;
+}
+
+#header #icon {
+  padding-right: 1em;
 }
 
 #header #icon img {
@@ -48,79 +36,48 @@
 }
 
 #header #title {
-  display: inline-flex;
-}
-
-#header #title h2 {
-  color: var(--color1);
+  font-size: x-large;
   font-weight: bold;
-  margin: 0;
+  color: #00BFFF;
 }
 
-#header #title #setup {
-  margin-left: 1em;
-  display: inline-flex;
-}
-
-#header #title #setup span:last-child {
-  margin-bottom: 0.1em;
-  margin-left: 0.2em;
-}
-
-#header #title,
 #header #version {
-  padding-left: 1em;
+  color: grey;
+  white-space: nowrap;
 }
 
-#header #version select {
-  border: 0;
+#overview,
+#reviews {
+  margin: 0 1.5em 1em;
 }
 
-#header #user {
-  align-self: flex-start;
-  margin-left: auto;
-  padding-left: 1em;
-}
-
-#overview {
-  padding: 1em 0;
-}
-
-#overview #info,
-#overview #demo-legend {
-  padding: 1em 2em;
-}
-
-#overview legend {
-  letter-spacing: 0.1em;
-  font-weight: bold;
-}
-
-#overview #creator {
-  font-size: 110%;
-  margin-left: 0.3em;
-}
-
-#overview #description {
-  padding-top: 1em;
-}
-
-#overview #details {
-  padding-top: 1em;
-}
-
-#overview #details tr:last-child td {
-  border-bottom: 1px solid #dee2e6;
+.caption {
+  width: 100%;
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-top: 2em;
+  padding-bottom: 0.5em;
+  color: grey;
+  font-size: small;
+  white-space: nowrap;
 }
 
 #collection {
   display: grid;
   grid-template-columns: auto 1fr;
-  padding: 1em 0;
+}
+
+#content > #collection {
+  margin: 1em 0;
+}
+
+#demo .content {
+  margin-left: -1.5em;
 }
 
 #aside {
-  padding: 1em 1em 1em 0;
+  padding: 1em 2em 1em 0;
 }
 
 #menu-caption {
@@ -133,15 +90,28 @@
   content: ':';
 }
 
-#menu-below {
+#create_similar_app {
   padding: 0.5em;
 }
 
 #app {
-  margin: 0 1em;
   border: 3px double #ccc;
 }
 
 #app > * {
   height: 100%;
+}
+
+#back {
+  margin-top: 1em;
+  margin-bottom: -1em;
+  padding: 0 1em;
+}
+
+#footer {
+  padding: 0 0.5em 1em;
+}
+
+#footer button {
+  margin: 0 0.5em;
 }
