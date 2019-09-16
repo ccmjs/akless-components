@@ -4,8 +4,8 @@
  * @license The MIT License (MIT)
  * @version latest (7.1.5)
  * @changes
- * version 7.1.5 (15.09.2019):
- * - uses ccm v22.6.0
+ * version 7.1.5 (16.09.2019):
+ * - uses ccm v22.6.1
  * version 7.1.4 (10.09.2019):
  * - layout change for submit button
  * - uses ccm v22.5.0
@@ -37,7 +37,7 @@
 
     name: 'submit',
 
-    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-22.6.0.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-22.6.1.js',
 
     config: {
 

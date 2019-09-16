@@ -5,7 +5,7 @@
  * @version 5.3.1
  * @changes
  * version 5.3.1 (16.09.2019):
- * - uses ccm v22.6.0
+ * - uses ccm v22.6.1
  * version 5.3.0 (05.09.2019):
  * - uses ccm v22.5.0
  * - support of <ccm-app> tags in predefined content
@@ -54,7 +54,7 @@
 
     name: 'content', version: [ 5, 3, 1 ],
 
-    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-22.6.0.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-22.6.1.js',
 
     config: {
 
