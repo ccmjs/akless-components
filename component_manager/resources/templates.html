@@ -3,27 +3,22 @@
 @author André Kless <andre.kless@web.de.de> 2019
 -->
 
+<ccm-template key="empty">
+  <div id="empty">%% not found</div>
+</ccm-template>
+
 <ccm-template key="main">
   <div id="main">
+    <div id="top"></div>
     <div id="header">
       <div id="icon">
         <img src="%icon%">
       </div>
-      <div>
-        <div id="title">
-          <h2 class="text-monospace">
-            <span>%title%</span>
-          </h2>
-          <button id="setup" class="btn btn-light btn-sm" onclick="%setup%">
-            <span>⚙</span>
-            <span>SETUP</span>
-          </button>
-        </div>
-        <div id="version" class="text-muted">
-          Version <span id="version_number">%version%</span>
-        </div>
+      <div id="title-version">
+        <div id="title">%title%</div>
+        <div id="version"><span data-lang="version">Version</span> %version%</div>
+        <div id="edit_button"><button onclick="%edit%" data-lang="edit">Edit</button></div>
       </div>
-      <div id="user"></div>
     </div>
     <div id="menu-top"></div>
     <div id="content"></div>
@@ -32,51 +27,44 @@
 
 <ccm-template key="overview">
   <div id="overview">
-    <div id="info">
-      <legend class="text-muted">INFO</legend>
-      <div class="blockquote-footer">
-        Published by <span id="creator" class="text-success">%creator%</span>
+    <div id="abstract" class="section">
+      <div class="caption">
+        <span data-lang="abstract">Abstract</span>
       </div>
-      <div id="subject" class="text-secondary">%subject%</div>
-      <p id="description">%description%</p>
-      <div id="details">
-        <table class="table table-sm small">
-          <tr>
-            <td>Index</td>
-            <td>%index%</td>
-          </tr>
-          <tr>
-            <td>URL</td>
-            <td>
-              <a href="%path%" target="_blank">%path%</a>
-            </td>
-          </tr>
-          <tr>
-            <td>Category</td>
-            <td>%category%</td>
-          </tr>
-          <tr>
-            <td>Tags</td>
-            <td id="tags"></td>
-          </tr>
-          <tr>
-            <td>Published</td>
-            <td>%date%</td>
-          </tr>
-          <tr>
-            <td>License</td>
-            <td>
-              <a href="https://en.wikipedia.org/wiki/MIT_License" target="_blank">MIT</a>
-            </td>
-          </tr>
-        </table>
-      </div>
+      <div class="content">%subject%</div>
     </div>
-    <div id="demo">
-      <div id="demo-legend">
-        <legend class="text-muted">DEMOS</legend>
+    <div id="description" class="section">
+      <div class="caption">
+        <span data-lang="description">Description</span>
       </div>
-      <div id="demo-main"></div>
+      <div class="content">%description%</div>
+    </div>
+    <div id="details" class="section">
+      <div class="caption">
+        <span data-lang="info">Additional Informations</span>
+      </div>
+      <div class="content"></div>
+    </div>
+    <div id="demo" class="section">
+      <div class="caption" data-lang="demos">Demos</div>
+      <div class="content"></div>
+    </div>
+  </div>
+</ccm-template>
+
+<ccm-template key="reviews">
+  <div id="reviews">
+    <div id="rating" class="section">
+      <div class="caption">
+        <span data-lang="rating">Your Rating</span>
+      </div>
+      <div class="content"></div>
+    </div>
+    <div id="results" class="section">
+      <div class="caption">
+        <span data-lang="result">Rating Results</span>
+      </div>
+      <div class="content"></div>
     </div>
   </div>
 </ccm-template>
@@ -84,12 +72,27 @@
 <ccm-template key="collection">
   <div id="collection">
     <div id="aside">
-      <div id="menu-caption">%caption%</div>
       <div id="menu-app"></div>
-      <div id="menu-below">
-        <button class="btn btn-link btn-block btn-sm" onclick="%onclick%">%button%</button>
-      </div>
     </div>
     <div id="app"></div>
+  </div>
+</ccm-template>
+
+<ccm-template key="create_similar_app">
+  <div id="create_similar_app">
+    <button onclick="%%" data-lang="create_similar_app">Create Similar App</button>
+  </div>
+</ccm-template>
+
+<ccm-template key="edit">
+  <div id="edit">
+    <div id="back">
+      <button onclick="%cancel%" data-lang="back">← Back to App</button>
+    </div>
+    <div id="form"></div>
+    <div id="footer">
+      <button onclick="%cancel%" data-lang="cancel">Cancel</button>
+      <button onclick="%del%" data-lang="delete">Delete App</button>
+    </div>
   </div>
 </ccm-template>
