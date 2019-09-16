@@ -2,7 +2,7 @@
  * @overview ccm component for managing a component
  * @author André Kless <andre.kless@web.de> 2018-2019
  * @license MIT License
- * @version latest (3.2.0)
+ * @version 3.2.0
  * @changes
  * version 3.2.0 (16.09.2019):
  * - updated default HTML and CSS
@@ -11,9 +11,9 @@
  * - added login/logout area
  * - added multilingualism support
  * - optional default component icon
+ * - uses ccm v22.6.1
  * - added rating and rating results in reviews section
  * - bug fix for create similar app button
- * - uses ccm v22.6.1
  * version 3.1.0 (28.07.2019):
  * - uses ccm v22.3.1
  * - HTML template via HTML file
@@ -34,7 +34,7 @@
 
   const component = {
 
-    name: 'component_manager',
+    name: 'component_manager', version: [ 3, 2, 0 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-22.6.1.js',
 
