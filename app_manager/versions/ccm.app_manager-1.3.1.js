@@ -2,7 +2,7 @@
  * @overview ccm component for managing an app
  * @author André Kless <andre.kless@web.de> 2019
  * @license MIT License
- * @version latest (1.3.1)
+ * @version 1.3.1
  * @changes
  * version 1.3.1 (16.09.2019)
  * - bug fix for delete app
@@ -30,7 +30,7 @@
 
   const component = {
 
-    name: 'app_manager',
+    name: 'app_manager', version: [ 1, 3, 1 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-22.6.1.js',
 
