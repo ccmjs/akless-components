@@ -26,6 +26,7 @@ ccm.files[ 'configs.js' ] = {
       if ( !json.category ) json.category = '';
       if ( json.language ) json.language = json.language.filter( Boolean ).join( ', ' ).toUpperCase();
       json.tags = json.tags.join( ', ' );
+      json.created_at = json.created_at ? new Date( json.created_at ).toLocaleString() : '';
       json.component = ccm.helper.getIndex( json.path );
       return json;
     },
@@ -43,6 +44,7 @@ ccm.files[ 'configs.js' ] = {
     "json2json": json => {
       if ( !json.category ) json.category = '';
       json.tags = json.tags.join( ', ' );
+      json.created_at = json.created_at ? new Date( json.created_at ).toLocaleString() : '';
       return json;
     },
     "placeholder": [ "ccm.get", { "url": "https://ccm2.inf.h-brs.de", "name": "dms-components" }, "quiz-4-0-0" ]
