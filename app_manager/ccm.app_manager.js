@@ -39,7 +39,7 @@
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/app_manager/resources/styles.css" ],
       "data": { "store": [ "ccm.store" ] },
 //    "default_icon": "https://ccmjs.github.io/akless-components/dms/resources/img/default.png",
-//    "form": [ "ccm.component", "https://ccmjs.github.io/akless-components/submit/versions/ccm.submit-7.1.5.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/submit/resources/configs.js", "app_meta" ] ],
+//    "form": [ "ccm.component", "https://ccmjs.github.io/akless-components/submit/versions/ccm.submit-7.1.5.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/submit/resources/configs.js", "app_meta_edit" ] ],
 //    "handover_app": [ "ccm.component", "https://ccmjs.github.io/akless-components/handover_app/versions/ccm.handover_app-1.0.0.js" ],
 //    "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/helper.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/app_manager/resources/templates.html" ],
