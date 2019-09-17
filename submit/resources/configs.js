@@ -6,7 +6,7 @@
 
 ccm.files[ 'configs.js' ] = {
 
-  /** test configuration (relative paths) */
+  /** test (relative paths) */
   "local": {
     "key": "local",
 //  "inner": [ "ccm.load", { "url": "../submit/resources/demo.html", "type": "data" } ],
@@ -30,7 +30,7 @@ ccm.files[ 'configs.js' ] = {
     "onfinish": { "log": true }
   },
 
-  /** test configuration with localhost (relative paths) */
+  /** test with localhost (relative paths) */
   "localhost": {
     "key": "localhost",
 //  "inner": [ "ccm.load", { "url": "../submit/resources/demo.html", "type": "data" } ],
@@ -57,7 +57,7 @@ ccm.files[ 'configs.js' ] = {
     }
   },
 
-  /** demo configuration */
+  /** demo */
   "demo": {
     "key": "demo",
 //  "inner": [ "ccm.load", { "url": "https://ccmjs.github.io/akless-components/submit/resources/demo.html", "type": "data" } ],
@@ -77,7 +77,7 @@ ccm.files[ 'configs.js' ] = {
     }
   },
 
-  /** configuration for editing app metadata */
+  /** edit of app metadata */
   "app_meta_edit": {
     "entries": [
       "<div class='page-header'><h3>Edit of App Information</h3></div>",
@@ -157,7 +157,7 @@ ccm.files[ 'configs.js' ] = {
     ]
   },
 
-  /** configuration for creating app metadata */
+  /** create of app metadata */
   "app_meta_create": {
     "entries": [
       "<div class='page-header'><h3>Publish App</h3></div>",
@@ -197,7 +197,7 @@ ccm.files[ 'configs.js' ] = {
     ]
   },
 
-  /** configuration for editing component metadata */
+  /** edit of component metadata */
   "component_meta_edit": {
     "entries": [
       "<div class='page-header'><h3>Edit of Published Component</h3></div>",
@@ -353,7 +353,7 @@ ccm.files[ 'configs.js' ] = {
     ]
   },
 
-  /** configuration for creating component metadata */
+  /** create of component metadata */
   "component_meta_create": {
     "entries": [
       "<div class='page-header'><h3>Publish Component</h3></div>",
