@@ -267,6 +267,7 @@
                 json2json: json => {
                   if ( !json.category ) json.category = '';
                   json.tags = json.tags.join( ', ' );
+                  json.created_at = json.created_at ? new Date( json.created_at ).toLocaleString() : '';
                   return json;
                 },
                 placeholder: $.clone( dataset )

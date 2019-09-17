@@ -9,7 +9,7 @@ ccm.files[ 'resources.js' ] = {
   /** test configuration (relative paths) */
   "local": {
     "builder": [ "ccm.component", "../app_builder/ccm.app_builder.js", [ "ccm.get", "../app_builder/resources/resources.js", "local" ] ],
-    "component_details": [ "ccm.component", "../content/ccm.content.js", [ "ccm.get", "../content/resources/configs.js", "component_meta" ] ],
+    "component_details": [ "ccm.component", "../content/ccm.content.js", [ "ccm.get", "../content/resources/configs.js", "component_meta_test" ] ],
     "css.1": "../component_manager/resources/css/styles.css",
     "data": {
       "store": [ "ccm.store", { "name": "dms-components", "url": "https://ccm2.inf.h-brs.de" } ],
