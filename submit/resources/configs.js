@@ -160,7 +160,7 @@ ccm.files[ 'configs.js' ] = {
   /** configuration for editing component metadata */
   "component_meta_edit": {
     "entries": [
-      "<div class='page-header'><h3>Edit of Published Component%</h3></div>",
+      "<div class='page-header'><h3>Edit of Published Component</h3></div>",
       "<div class='well'>The more information about the published component you type here, the better your component can be found and reused by others.</div>",
       {
         "label": "<span style='color:red'>*</span>Title",
