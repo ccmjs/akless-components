@@ -38,8 +38,8 @@ ccm.files[ 'resources.js' ] = {
     "user": [ "ccm.start", "../user/ccm.user.js", [ "ccm.get", "../component_manager/resources/resources.js", "user" ] ]
   },
 
-  /** demo configuration (absolute paths) */
-  "demo": {
+  /** live configuration */
+  "live": {
     "builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/app_builder/versions/ccm.app_builder-3.1.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/app_builder/resources/resources.js", "demo" ] ],
     "component_details": [ "ccm.component", "https://ccmjs.github.io/akless-components/content/ccm.content.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/content/resources/configs.js", "component_meta" ] ],
     "data": {
