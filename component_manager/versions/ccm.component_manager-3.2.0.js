@@ -276,7 +276,7 @@
               $.removeElement( this.element.querySelector( '#details' ) );
 
             // no demos? => remove demo section and abort
-            if ( !dataset.ignore.demos || !dataset.ignore.demos.length || !this.ignore.configs ) return $.removeElement( content.querySelector( '#demos' ) );
+            if ( !dataset.ignore.demos || !dataset.ignore.demos.length || !this.ignore.configs ) return $.removeElement( content.querySelector( '#demo' ) );
 
             /**
              * app configuration of selected demo
