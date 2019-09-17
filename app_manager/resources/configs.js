@@ -6,6 +6,7 @@
 
 ccm.files[ 'configs.js' ] = {
 
+  /** test (relative paths) */
   "local": {
     "app_details": [ "ccm.component", "../content/ccm.content.js", [ "ccm.get", "../content/resources/configs.js", "app_meta" ] ],
     "css.1": "../app_manager/resources/styles.css",
@@ -63,7 +64,8 @@ ccm.files[ 'configs.js' ] = {
     "user": [ "ccm.start", "../user/ccm.user.js", [ "ccm.get", "../user/resources/configs.js", "guest" ] ]
   },
 
-  "demo": {
+  /** live (used by Digital Makerspace) */
+  "live": {
     "app_details": [ "ccm.component", "https://ccmjs.github.io/akless-components/content/versions/ccm.content-5.3.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/content/resources/configs.js", "app_meta" ] ],
     "data": {
       "store": [ "ccm.store", { "url": "https://ccm2.inf.h-brs.de", "name": "dms-apps" } ],
