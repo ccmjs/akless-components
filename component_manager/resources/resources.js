@@ -72,7 +72,7 @@ ccm.files[ 'resources.js' ] = {
     "translations": {
       "de": {
         "abstract": "Abstract",
-        "back": "← Zurück zur App",
+        "back": "← Zurück zur Komponente",
         "cancel": "Abbrechen",
         "create_similar_app": "Ähnliche App erstellen",
         "demos": "Demos",
@@ -88,7 +88,7 @@ ccm.files[ 'resources.js' ] = {
       },
       "en": {
         "abstract": "Abstract",
-        "back": "← Back to App",
+        "back": "← Back to Component",
         "cancel": "Cancel",
         "create_similar_app": "Create Similar App",
         "demos": "Demos",
