@@ -78,7 +78,7 @@ ccm.files[ 'configs.js' ] = {
   },
 
   /** configuration for editing app metadata */
-  "app_meta": {
+  "app_edit": {
     "entries": [
       "<div class='page-header'><h3>Edit of App Information</h3></div>",
       "<div class='well'>The more information about your app you type here, the better your app can be found by others.</div>",
@@ -145,6 +145,46 @@ ccm.files[ 'configs.js' ] = {
             "value": "de"
           }
         ]
+      },
+      "<div class='well'><p>I agree that all software of my app is released as free software under the <a href='https://en.wikipedia.org/wiki/MIT_License' target='_blank'>MIT license</a>.</p><p>I agree that all content of my app will be released as public domain under the <a href='https://creativecommons.org/share-your-work/public-domain/cc0/' target='_blank'>CC0 license</a>.</p>I confirm that this does not violate the copyright of third parties.</div>",
+      {
+        "label": "<span style='color:red'>*</span>I Agree",
+        "type": "checkbox",
+        "info": "Everything in a Digital Makerspace is free software and all content is public domain. So you can only publish anything if this requirement is fulfilled.",
+        "required": true
+      },
+      { "type": "submit" }
+    ]
+  },
+
+  /** configuration for creating app metadata */
+  "app_create": {
+    "entries": [
+      "<div class='page-header'><h3>Publish App</h3></div>",
+      "<div class='well'>The more information about your app you type here, the better your app can be found by others.</div>",
+      {
+        "label": "<span style='color:red'>*</span>Title",
+        "name": "title",
+        "type": "text",
+        "info": "Title of the app. As understandable and short as possible.",
+        "placeholder": "Digital Makerspace",
+        "required": true,
+        "maxlength": 35
+      },
+      {
+        "label": "Icon",
+        "name": "icon",
+        "type": "url",
+        "info": "The icon file must be accessible via a public URL on the web and is ideally a 64x64 SVG file. The icon will be published under the <a href='https://creativecommons.org/share-your-work/public-domain/cc0/' target='_blank'>CC0 license</a>. Make sure the icon is compatible with this license.",
+        "placeholder": "https://ccmjs.github.io/akless-components/dms/resources/component.png"
+      },
+      {
+        "label": "Abstract",
+        "name": "subject",
+        "type": "text",
+        "info": "A short description of your app. Ideally in title case",
+        "placeholder": "Provides Components for Creating Apps.",
+        "maxlength": 70
       },
       "<div class='well'><p>I agree that all software of my app is released as free software under the <a href='https://en.wikipedia.org/wiki/MIT_License' target='_blank'>MIT license</a>.</p><p>I agree that all content of my app will be released as public domain under the <a href='https://creativecommons.org/share-your-work/public-domain/cc0/' target='_blank'>CC0 license</a>.</p>I confirm that this does not violate the copyright of third parties.</div>",
       {
@@ -314,7 +354,7 @@ ccm.files[ 'configs.js' ] = {
   },
 
   /** configuration for creating component metadata */
-  "component_meta_publish": {
+  "component_meta_create": {
     "entries": [
       "<div class='page-header'><h3>Publish Component</h3></div>",
       "<div class='well'>Are you a component developer? Have you developed a useful component that you would like to offer to the world? Great! Then you can use this form to publish your component. The more information about the published component you type here, the better your component can be found and reused by others.</div>",
