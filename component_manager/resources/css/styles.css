@@ -42,8 +42,13 @@
 }
 
 #header #version {
+  display: inline-flex;
+  align-items: center;
   color: grey;
-  white-space: nowrap;
+}
+
+#header #version_number {
+  margin-left: 0.3em;
 }
 
 #overview,
