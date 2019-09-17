@@ -78,7 +78,7 @@ ccm.files[ 'configs.js' ] = {
   },
 
   /** configuration for editing app metadata */
-  "app_edit": {
+  "app_meta_edit": {
     "entries": [
       "<div class='page-header'><h3>Edit of App Information</h3></div>",
       "<div class='well'>The more information about your app you type here, the better your app can be found by others.</div>",
@@ -158,7 +158,7 @@ ccm.files[ 'configs.js' ] = {
   },
 
   /** configuration for creating app metadata */
-  "app_create": {
+  "app_meta_create": {
     "entries": [
       "<div class='page-header'><h3>Publish App</h3></div>",
       "<div class='well'>The more information about your app you type here, the better your app can be found by others.</div>",
