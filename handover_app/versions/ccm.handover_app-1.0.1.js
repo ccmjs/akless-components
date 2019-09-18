@@ -2,7 +2,7 @@
  * @overview ccm component for handover of an app
  * @author André Kless <andre.kless@web.de> 2019
  * @license MIT License
- * @version latest (1.0.1)
+ * @version 1.0.1
  * @changes
  * version 1.0.1 (18.09.2019)
  * - bug fix for copy app id to clipboard
@@ -14,7 +14,7 @@
 
   const component = {
 
-    name: 'handover_app',
+    name: 'handover_app', version: [ 1, 0, 1 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-22.6.1.js',
 
