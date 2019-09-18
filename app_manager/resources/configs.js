@@ -61,6 +61,7 @@ ccm.files[ 'configs.js' ] = {
       "active": "en"
     } ],
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
+    "onchange": console.log,
     "user": [ "ccm.start", "../user/ccm.user.js", {
       "hash": [ "ccm.load", { "url": "../modules/md5.mjs", "type": "module" } ],
       "realm": "cloud",

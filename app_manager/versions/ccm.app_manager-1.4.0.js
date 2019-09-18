@@ -2,7 +2,7 @@
  * @overview ccm component for managing an app
  * @author André Kless <andre.kless@web.de> 2019
  * @license MIT License
- * @version latest (1.4.0)
+ * @version 1.4.0
  * @changes
  * version 1.4.0 (18.09.2019)
  * - added onchange callback
@@ -32,7 +32,7 @@
 
   const component = {
 
-    name: 'app_manager',
+    name: 'app_manager', version: [ 1, 4, 0 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-22.6.1.js',
 
