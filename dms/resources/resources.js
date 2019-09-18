@@ -22,6 +22,7 @@ ccm.files[ 'resources.js' ] = {
     "default_icon": "../dms/resources/img/default.png",
     "form": [ "ccm.component", "../submit/ccm.submit.js", [ "ccm.get", "../submit/resources/configs.js", "component_meta_create" ] ],
     "html.1": "../dms/resources/html/dms.html",
+    "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js", [ "ccm.get", "../dms/resources/resources.js", "lang" ] ],
     "listing": {
       "apps": [ "ccm.component", "../listing/ccm.listing.js", {
         "html": [ "ccm.load", "../dms/resources/html/listing_apps.html" ],
@@ -77,6 +78,7 @@ ccm.files[ 'resources.js' ] = {
     },
     "default_icon": "https://ccmjs.github.io/akless-components/dms/resources/img/default.png",
     "form": [ "ccm.component", "https://ccmjs.github.io/akless-components/submit/versions/ccm.submit-7.1.5.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/submit/resources/configs.js", "component_meta_create" ] ],
+    "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/dms/resources/resources.js", "lang" ] ],
     "listing": {
       "apps": [ "ccm.component", "https://ccmjs.github.io/akless-components/listing/versions/ccm.listing-3.2.0.js", {
         "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/dms/resources/html/listing_apps.html" ],
@@ -114,6 +116,19 @@ ccm.files[ 'resources.js' ] = {
     },
     "routing": [ "ccm.instance", "https://ccmjs.github.io/akless-components/routing/versions/ccm.routing-2.0.3.js", { "app": "1562446314531X9878992170446217" } ],
     "user": [ "ccm.start", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.2.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/dms/resources/resources.js", "user" ] ]
+  },
+
+  /** configuration for multilingualism */
+  "lang": {
+    "translations": {
+      "de": {
+        "flag": "https://ccmjs.github.io/tkless-components/lang/resources/de.svg"
+      },
+      "en": {
+        "flag": "https://ccmjs.github.io/tkless-components/lang/resources/en.svg"
+      }
+    },
+    "active": "en"
   },
 
   /** configuration for header menu */

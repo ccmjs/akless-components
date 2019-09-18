@@ -32,6 +32,7 @@
 //    "form": [ "ccm.component", "https://ccmjs.github.io/akless-components/submit/versions/ccm.submit-7.1.5.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/submit/resources/configs.js", "component_meta" ] ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/dms/resources/html/dms.html" ],
 //    "listing": { "apps": [ "ccm.component", ... ], "components": [ "ccm.component", ... ] },
+//    "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js" ],
 //    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.2.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
 //    "logo": "https://ccmjs.github.io/akless-components/dms/resources/img/component.png",
       "menu": [ "ccm.component", "https://ccmjs.github.io/akless-components/menu/versions/ccm.menu-2.8.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/dms/resources/resources.js", "menu" ] ],
@@ -322,8 +323,11 @@
           selected: this.routing && this.routing.get() ? null : undefined
         } );
 
+        // render language area
+        if ( this.lang ) { $.append( this.element.querySelector( '#top' ), this.lang.root ); this.lang.start(); }
+
         // render login/logout area
-        this.user && $.setContent( this.element.querySelector( '#user' ), this.user.root );
+        if ( this.user ) $.append( this.element.querySelector( '#top' ), this.user.root );
 
         // define and check routes
         this.routing && await this.routing.define( {

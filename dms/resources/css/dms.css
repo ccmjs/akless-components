@@ -63,8 +63,12 @@
   font-size: large;
 }
 
-#user {
+#top:not(:empty) {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
   margin-left: auto;
+  padding: 0 1em;
 }
 
 #element, #content, #content > * {
