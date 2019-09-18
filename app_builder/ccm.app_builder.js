@@ -30,8 +30,8 @@
         { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/bootstrap-4/css/bootstrap.min.css" }
       ],
       "data": { "store": [ "ccm.store" ] },
-//    "form": [ "ccm.component", "https://ccmjs.github.io/akless-components/submit/ccm.submit.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/submit/resources/configs.js", "app_meta_create" ] ],
-//    "handover_app": [ "ccm.component", "https://ccmjs.github.io/akless-components/handover_app/versions/ccm.handover_app-1.0.0.js" ],
+//    "form": [ "ccm.component", "https://ccmjs.github.io/akless-components/submit/versions/ccm.submit-7.1.5.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/submit/resources/configs.js", "app_meta_create" ] ],
+//    "handover_app": [ "ccm.component", "https://ccmjs.github.io/akless-components/handover_app/versions/ccm.handover_app-1.0.1.js" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/app_builder/resources/templates.html" ],
 //    "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js" ],
 //    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.2.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
@@ -237,7 +237,6 @@
                   license: 'CC0',
                   path: self.app.url || self.app.index,
                   source: self.data.store.source(),
-                  version: 1,
                   creator: user.name || user.user || user.key || '',
                   tags: [],
                   ignore: { demos: [], builders: [] },

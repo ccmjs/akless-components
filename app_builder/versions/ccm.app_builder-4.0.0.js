@@ -237,7 +237,6 @@
                   license: 'CC0',
                   path: self.app.url || self.app.index,
                   source: self.data.store.source(),
-                  version: 1,
                   creator: user.name || user.user || user.key || '',
                   tags: [],
                   ignore: { demos: [], builders: [] },
