@@ -160,7 +160,8 @@
                     store: [ 'ccm.store', this.apps.source() ],
                     key: event.data.key
                   },
-                  default_icon: this.default_icon
+                  default_icon: this.default_icon,
+                  onchange: event => event.event === 'delete' && this.start()
                 } );
 
                 // render 'Create Similar App' button
