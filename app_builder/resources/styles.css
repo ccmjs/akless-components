@@ -14,11 +14,10 @@
   background-color: white;
 }
 
-#header {
+#top:not(:empty) {
   display: flex;
-  flex-wrap: wrap;
   justify-content: flex-end;
-  align-items: center;
+  padding: 1em 1em 0;
 }
 
 #maker {
