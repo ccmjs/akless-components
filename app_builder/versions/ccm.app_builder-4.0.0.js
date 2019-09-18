@@ -381,7 +381,7 @@
           app_id = await self.data.store.set( dataset ); delete dataset.key;
 
           // no component for modal dialog? => abort
-          if ( !self.modal ) alert( 'App updated successfully. App ID: ' + app_id );
+          if ( !self.modal_dialog ) alert( 'App updated successfully. App ID: ' + app_id );
 
           // has 'change' callback? => perform it
           self.onchange && self.onchange( self, 'update' );
