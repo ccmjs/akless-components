@@ -130,6 +130,7 @@
                 this.data.store.del( dataset.key ).then( async () => {
 
                   // delete app configuration
+                  dataset.source[ 0 ].parent = this;
                   await this.ccm.del.apply( null, dataset.source );
 
                   // logging of 'delete' event
