@@ -196,9 +196,10 @@
           this.app_details.start( {
             root: this.element.querySelector( '#details .content' ),
             json2json: json => {
-              if ( !json.category ) json.category = '';
+              json.category = json.category || '';
               if ( json.language ) json.language = json.language.filter( Boolean ).join( ', ' ).toUpperCase();
               json.tags = json.tags.join( ', ' );
+              json.language = json.language || '';
               json.created_at = json.created_at ? new Date( json.created_at ).toLocaleString() : '';
               json.component = $.getIndex( json.path );
               return json;

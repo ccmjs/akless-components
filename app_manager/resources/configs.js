@@ -61,7 +61,12 @@ ccm.files[ 'configs.js' ] = {
       "active": "en"
     } ],
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
-    "user": [ "ccm.start", "../user/ccm.user.js", [ "ccm.get", "../user/resources/configs.js", "guest" ] ]
+    "user": [ "ccm.start", "../user/ccm.user.js", {
+      "hash": [ "ccm.load", { "url": "../modules/md5.mjs", "type": "module" } ],
+      "realm": "cloud",
+      "store": "dms-user",
+      "url": "https://ccm2.inf.h-brs.de"
+    } ]
   },
 
   /** live (used by Digital Makerspace) */
@@ -109,7 +114,12 @@ ccm.files[ 'configs.js' ] = {
       },
       "active": "en"
     } ],
-    "user": [ "ccm.start", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.2.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "guest" ] ]
+    "user": [ "ccm.start", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.2.0.js", {
+      "hash": [ "ccm.load", { "url": "https://ccmjs.github.io/akless-components/modules/md5.mjs", "type": "module" } ],
+      "realm": "cloud",
+      "store": "dms-user",
+      "url": "https://ccm2.inf.h-brs.de"
+    } ]
   }
 
 };
