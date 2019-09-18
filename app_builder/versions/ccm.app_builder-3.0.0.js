@@ -492,7 +492,7 @@
 
           // add permission settings and dataset key of metadata
           if ( self.user ) dataset._ = { access: { get: 'all', set: 'creator', del: 'creator' } };
-          dataset.meta = [ self.meta_store.source(), metadata.key ];
+          if ( metadata ) dataset.meta = [ self.meta_store.source(), metadata.key ];
 
           // save app configuration
           app_id = await self.data.store.set( dataset ); delete dataset.key;
