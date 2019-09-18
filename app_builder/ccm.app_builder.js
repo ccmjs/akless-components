@@ -259,7 +259,7 @@
           self.logger && self.logger.log( 'read' );
 
           // has component for modal dialog? => load app via modal dialog
-          if ( self.modal_dialog ) {
+          if ( self.modal_dialog && self.helper ) {
 
             /**
              * modal dialog content for loading an existing app
@@ -335,7 +335,7 @@
             dataset = await store.get( key );
 
             // app configuration not exists? => abort
-            if ( !dataset ) return alert( 'App ID not exists' );
+            if ( !dataset ) return alert( 'App not exists' );
 
             // logging of 'load' event
             self.logger && self.logger.log( 'load', $.clone( dataset ) );
@@ -439,7 +439,10 @@
           self.modal_dialog && await self.modal_dialog.start( {
             modal_title: 'Handover of the App',
             modal_content: ( await self.handover_app.start( {
-              data: self.data,
+              data: {
+                store: [ 'ccm.store', self.data.store.source() ],
+                key: app_id
+              },
               component_url: self.app.url
             } ) ).root,
             footer: null

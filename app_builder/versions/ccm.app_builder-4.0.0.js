@@ -31,7 +31,7 @@
       ],
       "data": { "store": [ "ccm.store" ] },
 //    "form": [ "ccm.component", "https://ccmjs.github.io/akless-components/submit/versions/ccm.submit-7.1.5.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/submit/resources/configs.js", "app_meta_create" ] ],
-//    "handover_app": [ "ccm.component", "https://ccmjs.github.io/akless-components/handover_app/versions/ccm.handover_app-1.0.0.js" ],
+//    "handover_app": [ "ccm.component", "https://ccmjs.github.io/akless-components/handover_app/versions/ccm.handover_app-1.0.1.js" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/app_builder/resources/templates.html" ],
 //    "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js" ],
 //    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.2.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
@@ -259,7 +259,7 @@
           self.logger && self.logger.log( 'read' );
 
           // has component for modal dialog? => load app via modal dialog
-          if ( self.modal_dialog ) {
+          if ( self.modal_dialog && self.helper ) {
 
             /**
              * modal dialog content for loading an existing app
@@ -335,7 +335,7 @@
             dataset = await store.get( key );
 
             // app configuration not exists? => abort
-            if ( !dataset ) return alert( 'App ID not exists' );
+            if ( !dataset ) return alert( 'App not exists' );
 
             // logging of 'load' event
             self.logger && self.logger.log( 'load', $.clone( dataset ) );
@@ -439,7 +439,10 @@
           self.modal_dialog && await self.modal_dialog.start( {
             modal_title: 'Handover of the App',
             modal_content: ( await self.handover_app.start( {
-              data: self.data,
+              data: {
+                store: [ 'ccm.store', self.data.store.source() ],
+                key: app_id
+              },
               component_url: self.app.url
             } ) ).root,
             footer: null
