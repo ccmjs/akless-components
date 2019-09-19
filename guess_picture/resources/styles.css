@@ -1,0 +1,98 @@
+/**
+ * @overview default layout of ccm component for a guess picture game
+ * @author André Kless <andre.kless@web.de> 2018-2019
+ * @license The MIT License (MIT)
+ */
+
+#main {
+  background-color: white;
+  font-family: Helvetica, Arial, sans-serif;
+  text-align: center;
+}
+
+#top:not(:empty) {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 1em 1em 0;
+}
+
+#intro {
+  color: gray;
+  padding: 1em;
+}
+
+#intro #title {
+  font-size: x-large;
+  font-weight: bold;
+}
+
+#intro #description {
+  padding: 1.5em 2em 0;
+}
+
+#game {
+  margin: auto;
+  padding: 1em;
+}
+
+#picture {
+  position: relative;
+  height: 0;
+  padding-top: 100%;
+  border: 1px solid black;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+#inside {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+}
+
+.tile {
+  background-color: gray;
+}
+
+.tile.free {
+  background-color: transparent;
+}
+
+#solution {
+  padding: 1em;
+}
+
+#solution span {
+  padding-right: 1em;
+  font-weight: bold;
+  font-size: large;
+}
+
+#solution input {
+  padding: 0.5em;
+  letter-spacing: 0.2em;
+  font-size: large;
+  text-transform: uppercase;
+}
+
+#solution input.correct {
+  background-color: lime;
+}
+
+#solution input.wrong {
+  background-color: rgba(255,0,0,0.3);
+}
+
+#result {
+  padding: 1em;
+  font-size: x-large;
+  font-weight: bold;
+  color: gray;
+}
+
+#result span {
+  padding: 0 0.1em;
+}

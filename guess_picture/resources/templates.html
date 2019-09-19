@@ -1,0 +1,34 @@
+<!--
+@overview HTML templates of ccm component for a guess picture game
+@author André Kless <andre.kless@web.de.de> 2019
+-->
+
+<ccm-template key="main">
+  <div id="main">
+    <div id="top"></div>
+    <div id="intro">
+      <div id="title" data-lang="title"></div>
+      <div id="description" data-lang="description"></div>
+    </div>
+    <div id="game">
+      <div id="picture" style="background-image: url('%picture%')">
+        <div id="inside"></div>
+      </div>
+    </div>
+    <div id="solution">
+      <span data-lang="solution">Solution:</span><input type="text" oninput="%check%">
+    </div>
+  </div>
+</ccm-template>
+
+<ccm-template key="tile">
+  <div class="tile"></div>
+</ccm-template>
+
+<ccm-template key="result">
+  <div id="result">
+    <span data-lang="result"></span>
+    <span>%points%/%total%</span>
+    <span data-lang="points"></span>
+  </div>
+</ccm-template>
