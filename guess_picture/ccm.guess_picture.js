@@ -18,7 +18,7 @@
     config: {
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/guess_picture/resources/styles.css" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/guess_picture/resources/templates.html" ],
-      "interval": 2000,
+      "interval": 1500,
       "max_width": 500,
       "picture": "https://akless.github.io/akless/resources/sheep.png",
 //    "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js" ],
