@@ -2,7 +2,7 @@
  * @overview ccm component for digital makerspace
  * @author André Kless <andre.kless@web.de> 2018-2019
  * @license MIT License
- * @version latest (3.0.2)
+ * @version 3.0.2
  * @changes
  * version 3.0.2 (20.09.2019):
  * - added missing initial translation
@@ -22,7 +22,7 @@
 
   const component = {
 
-    name: 'dms',
+    name: 'dms', version: [ 3, 0, 2 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-22.6.1.js',
 
