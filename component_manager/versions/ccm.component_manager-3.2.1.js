@@ -416,7 +416,7 @@
         ];
 
         // render header menu
-        const menu = this.menu_top.start( {
+        const menu = await this.menu_top.start( {
           root: this.element.querySelector( '#menu-top' ),
           onclick: event => view[ event.nr - 1 ](),
           selected: this.ignore && this.ignore.create_similar_app ? 4 : ( this.routing && this.routing.get() ? null : undefined )
