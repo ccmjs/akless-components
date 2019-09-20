@@ -416,7 +416,7 @@ ccm.files[ 'configs.js' ] = {
       },
       { "type": "submit" }
     ],
-    "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js", [ "ccm.get", "../submit/resources/configs.js", "lang" ] ],
+    "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/submit/resources/configs.js", "lang" ] ],
   },
 
   /** configuration for multilingualism */
