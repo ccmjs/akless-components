@@ -2,7 +2,7 @@
  * @overview ccm component for submitting data
  * @author André Kless <andre.kless@web.de> 2018-2019
  * @license The MIT License (MIT)
- * @version latest (7.2.0)
+ * @version 7.2.0
  * @changes
  * version 7.2.0 (20.09.2019):
  * - added multilingualism support
@@ -37,7 +37,7 @@
 
   const component = {
 
-    name: 'submit',
+    name: 'submit', version: [ 7, 2, 0 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-22.6.1.js',
 
