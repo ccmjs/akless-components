@@ -262,7 +262,7 @@
 
             // render component metadata
             if ( this.component_details )
-              this.component_details.start( {
+              await this.component_details.start( {
                 root: this.element.querySelector( '#details .content' ),
                 json2json: json => {
                   if ( !json.category ) json.category = '';
