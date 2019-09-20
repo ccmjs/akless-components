@@ -2,7 +2,7 @@
  * @overview ccm component for digital makerspace
  * @author André Kless <andre.kless@web.de> 2018-2019
  * @license MIT License
- * @version latest (3.0.1)
+ * @version 3.0.1
  * @changes
  * version 3.0.1 (20.09.2019):
  * - a deleted app is directly removed in the listing of all apps (no more page refresh is needed)
@@ -20,7 +20,7 @@
 
   const component = {
 
-    name: 'dms',
+    name: 'dms', version: [ 3, 0, 1 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-22.6.1.js',
 
