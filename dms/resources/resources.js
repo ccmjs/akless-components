@@ -136,12 +136,31 @@ ccm.files[ 'resources.js' ] = {
     "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/menu/resources/text.css" ],
     "data": {
       "entries": [
-        { "id": "home",       "title": "Home"       },
-        { "id": "apps",       "title": "Apps"       },
-        { "id": "components", "title": "Components" },
-        { "id": "publish",    "title": "Publish"    }
+        { "id": "home",       "title": "home"       },
+        { "id": "apps",       "title": "apps"       },
+        { "id": "components", "title": "components" },
+        { "id": "publish",    "title": "publish"    }
       ]
     },
+    "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js", {
+      "translations": {
+        "de": {
+          "apps": "Apps",
+          "components": "Komponenten",
+          "flag": "https://ccmjs.github.io/tkless-components/lang/resources/de.svg",
+          "home": "Startseite",
+          "publish": "Veröffentlichen"
+        },
+        "en": {
+          "apps": "Apps",
+          "components": "Components",
+          "flag": "https://ccmjs.github.io/tkless-components/lang/resources/en.svg",
+          "home": "Home",
+          "publish": "Publish"
+        }
+      },
+      "active": "en"
+    } ],
     "selected": 3,
     "trigger_selected": true
   },
