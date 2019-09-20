@@ -356,27 +356,28 @@ ccm.files[ 'configs.js' ] = {
   /** create of component metadata */
   "component_meta_create": {
     "entries": [
-      "<div class='page-header'><h3>Publish Component</h3></div>",
-      "<div class='well'>Are you a component developer? Have you developed a useful component that you would like to offer to the world? Great! Then you can use this form to publish your component. The more information about the published component you type here, the better your component can be found and reused by others.</div>",
+      "<div class='page-header'><h3 data-lang='headline'>Publish Component</h3></div>",
+      "<div class='well' data-lang='description'>Are you a component developer? Have you developed a useful component that you would like to offer to the world? Great! Then you can use this form to publish your component. The more information about the published component you type here, the better your component can be found and reused by others.</div>",
       {
-        "label": "<span style='color:red'>*</span>Title",
+        "label": "<span style='color:red'>*</span><span data-lang='title'>Title</span>",
         "name": "title",
         "type": "text",
-        "info": "Title of the component. As understandable and short as possible.",
-        "placeholder": "Digital Makerspace",
+        "info": "<span data-lang='title_info'>Title of the component. As understandable and short as possible.</span>",
+//      "placeholder": "Digital Makerspace",
         "required": true,
         "maxlength": 35
       },
       {
-        "label": "<span style='color:red'>*</span>URL",
+        "label": "<span style='color:red'>*</span><span data-lang='url'>URL</span>",
         "name": "path",
         "type": "url",
-        "info": "Your component file must be accessible via a public URL on the web. Most developers use <a href='https://pages.github.com/' target='_blank'>GitHub Pages</a> for this. For the transparency please do not publish minimized code. Never publish the latest version of your component, but always a concrete version whose code does not change anymore.",
-        "placeholder": "https://ccmjs.github.io/akless-components/dms/versions/ccm.dms-2.0.0.js",
+        "info": "<span data-lang='url_info'>Your component file must be accessible via a public URL on the web. Most developers use <a href='https://pages.github.com/' target='_blank'>GitHub Pages</a> for this. For the transparency please do not publish minimized code. Never publish the latest version of your component, but always a concrete version whose code does not change anymore.</span>",
+//      "placeholder": "https://ccmjs.github.io/akless-components/dms/versions/ccm.dms-3.0.1.js",
         "required": true,
         "pattern": ".+/ccm\\.([a-z][a-z0-9_]*)(-(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*))(\\.js)$",
         "title": "The filename of the component must start with 'ccm.' followed by the unique component name and then a '-' followed by the component version number and a '.js' in the end. Example: ccm.dms-1.0.0.js"
       },
+/*
       {
         "label": "<span style='color:red'>*</span>SRI Hash",
         "name": "sri",
@@ -387,30 +388,71 @@ ccm.files[ 'configs.js' ] = {
         "pattern": "sha384-.+",
         "title": "An SRI hash always starts with \"sha384-\"."
       },
+*/
       {
-        "label": "Icon",
+        "label": "<span data-lang='icon'>Icon</span>",
         "name": "icon",
         "type": "url",
-        "info": "The icon file must be accessible via a public URL on the web and is ideally a 64x64 SVG file. The icon will be published under the <a href='https://creativecommons.org/share-your-work/public-domain/cc0/' target='_blank'>CC0 license</a>. Make sure the icon is compatible with this license.",
-        "placeholder": "https://ccmjs.github.io/akless-components/dms/resources/img/component.png"
+        "info": "<span data-lang='icon_info'>The icon file must be accessible via a public URL on the web and is ideally a 64x64 SVG file. The icon will be published under the <a href='https://creativecommons.org/share-your-work/public-domain/cc0/' target='_blank'>CC0 license</a>. Make sure the icon is compatible with this license.</span>",
+//      "placeholder": "https://ccmjs.github.io/akless-components/dms/resources/img/component.png"
       },
       {
-        "label": "Abstract",
+        "label": "<span data-lang='abstract'>Abstract</span>",
         "name": "subject",
         "type": "text",
-        "info": "A short description of your component. Ideally in title case",
-        "placeholder": "Provides Components for Creating Apps.",
+        "info": "<span data-lang='abstract_info'>A short description of your component. Ideally in title case</span>",
+//      "placeholder": "Provides Components for Creating Apps.",
         "maxlength": 70
       },
-      "<div class='well'><p>I agree that all software of my app is released as free software under the <a href='https://en.wikipedia.org/wiki/MIT_License' target='_blank'>MIT license</a>.</p><p>I agree that all content of my app will be released as public domain under the <a href='https://creativecommons.org/share-your-work/public-domain/cc0/' target='_blank'>CC0 license</a>.</p>I confirm that this does not violate the copyright of third parties.</div>",
+      "<div class='well' data-lang='license_info'><p>I agree that all software is released as free software under the <a href='https://en.wikipedia.org/wiki/MIT_License' target='_blank'>MIT license</a>.</p><p>I agree that all content will be released as public domain under the <a href='https://creativecommons.org/share-your-work/public-domain/cc0/' target='_blank'>CC0 license</a>.</p>I confirm that this does not violate the copyright of third parties.</div>",
       {
-        "label": "<span style='color:red'>*</span>I Agree",
+        "label": "<span style='color:red'>*</span><span data-lang='agree'>I Agree</span>",
         "type": "checkbox",
-        "info": "Everything in a Digital Makerspace is free software and all content is public domain. So you can only publish anything if this requirement is fulfilled.",
+        "info": "<span data-lang='agree_info'>Everything in a Digital Makerspace is free software and all content is public domain. So you can only publish anything if this requirement is fulfilled.</span>",
         "required": true
       },
       { "type": "submit" }
-    ]
+    ],
+    "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/submit/resources/configs.js", "lang" ] ],
+  },
+
+  /** configuration for multilingualism */
+  "lang": {
+    "translations": {
+      "de": {
+        "abstract": "Kurzbeschreibung",
+        "abstract_info": "Eine kurze Beschreibung Ihrer Komponente.",
+        "agree": "Ich stimme zu",
+        "agree_info": "Alles in einem Digital Makerspace ist freie Software und alle Inhalte sind gemeinfrei. Sie können also nur dann etwas veröffentlichen, wenn diese Voraussetzung erfüllt ist.",
+        "description": "Sind Sie ein Komponentenentwickler? Haben Sie eine nützliche Komponente entwickelt, die Sie der Welt anbieten möchten? Toll! Dann können Sie dieses Formular verwenden, um Ihre Komponente zu veröffentlichen. Je mehr Informationen Sie hier über die veröffentlichte Komponente eingeben, desto besser kann sie von anderen gefunden und wiederverwendet werden.",
+        "flag": "https://ccmjs.github.io/tkless-components/lang/resources/de.svg",
+        "headline": "Komponente veröffentlichen",
+        "icon": "Icon",
+        "icon_info": "Das Icon muss über eine öffentliche URL im Web zugänglich sein und ist idealerweise eine 64x64-SVG-Datei. Das Icon wird unter der <a href='https://creativecommons.org/share-your-work/public-domain/cc0/' target='_blank'>CC0-Lizenz</a> veröffentlicht. Stellen Sie sicher, dass das Icon mit dieser Lizenz kompatibel ist.",
+        "license_info": "<p>Ich bin damit einverstanden, dass die gesamte Software als freie Software unter der <a href='https://en.wikipedia.org/wiki/MIT_License' target='_blank'>MIT-Lizenz</a> veröffentlicht wird..</p><p>Ich bin damit einverstanden, dass alle Inhalte als gemeinfrei unter der <a href='https://creativecommons.org/share-your-work/public-domain/cc0/' target='_blank'>CC0-Lizenz</a> veröffentlicht werden.</p>Ich bestätige, dass dadurch keine Urheberrechte Dritter verletzt werden.",
+        "title": "Titel",
+        "title_info": "Titel der Komponente. So verständlich und kurz wie möglich.",
+        "url": "URL",
+        "url_info": "Ihre Komponentendatei muss über eine öffentliche URL im Web zugänglich sein. Die meisten Entwickler verwenden dazu <a href='https://pages.github.com/' target='_blank'>GitHub Pages</a>. Für die Transparenz veröffentlichen Sie bitte keinen minimierten Code. Veröffentlichen Sie niemals die \"latest\"-Version Ihrer Komponente, sondern immer eine konkrete Version, deren Code sich nicht mehr ändert."
+      },
+      "en": {
+        "abstract": "Abstract",
+        "abstract_info": "A short description of your component. Ideally in title case.",
+        "agree": "I Agree",
+        "agree_info": "Everything in a Digital Makerspace is free software and all content is public domain. So you can only publish anything if this requirement is fulfilled.",
+        "description": "Are you a component developer? Have you developed a useful component that you would like to offer to the world? Great! Then you can use this form to publish your component. The more information about the published component you type here, the better your component can be found and reused by others.",
+        "flag": "https://ccmjs.github.io/tkless-components/lang/resources/en.svg",
+        "headline": "Publish Component",
+        "icon": "Icon",
+        "icon_info": "The icon must be accessible via a public URL on the web and is ideally a 64x64 SVG file. The icon will be published under the <a href='https://creativecommons.org/share-your-work/public-domain/cc0/' target='_blank'>CC0 license</a>. Make sure the icon is compatible with this license.",
+        "license_info": "<p>I agree that all software is released as free software under the <a href='https://en.wikipedia.org/wiki/MIT_License' target='_blank'>MIT license</a>.</p><p>I agree that all content will be released as public domain under the <a href='https://creativecommons.org/share-your-work/public-domain/cc0/' target='_blank'>CC0 license</a>.</p>I confirm that this does not violate the copyright of third parties.",
+        "title": "Title",
+        "title_info": "Title of the component. As understandable and short as possible.",
+        "url": "URL",
+        "url_info": "Your component file must be accessible via a public URL on the web. Most developers use <a href='https://pages.github.com/' target='_blank'>GitHub Pages</a> for this. For the transparency please do not publish minimized code. Never publish the latest version of your component, but always a concrete version whose code does not change anymore."
+      }
+    },
+    "active": "en"
   }
 
 };
