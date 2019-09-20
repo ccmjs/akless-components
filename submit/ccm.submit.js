@@ -161,6 +161,7 @@
 
         // submitting own config to other recursive needed submit instances
         this.submit.config = $.integrate( JSON.parse( this.config ), this.submit.config );
+        this.submit.config.parent = this;
         delete this.submit.config.inner;
         delete this.submit.config.data;
 
