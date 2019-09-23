@@ -53,13 +53,11 @@ ccm.files[ 'resources.js' ] = {
     },
     "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/component_manager/resources/resources.js", "lang" ] ],
     "rating": [ "ccm.component", "https://ccmjs.github.io/tkless-components/star_rating/versions/ccm.star_rating-5.0.0.js", {
-      "ccm": "https://ccmjs.github.io/ccm/versions/ccm-20.6.1.js",
-      "data": { "store": [ "ccm.store", [ "ccm.get", { "name": "dms-components-ratings", "url": "https://ccm2.inf.h-brs.de" }, {} ] ] },
+      "data": { "store": [ "ccm.store", { "name": "dms-components-ratings", "url": "https://ccm2.inf.h-brs.de" } ] },
       "user": [ "ccm.start", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.2.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/component_manager/resources/resources.js", "user" ] ]
     } ],
     "rating_result": [ "ccm.component", "https://ccmjs.github.io/tkless-components/star_rating_result/versions/ccm.star_rating_result-5.0.0.js", {
-      "ccm": "https://ccmjs.github.io/ccm/versions/ccm-20.6.1.js",
-      "data": { "store": [ "ccm.store", [ "ccm.get", { "name": "dms-components-ratings", "url": "https://ccm2.inf.h-brs.de" }, {} ] ] },
+      "data": { "store": [ "ccm.store", { "name": "dms-components-ratings", "url": "https://ccm2.inf.h-brs.de" } ] },
       "detailed": true,
       "user": [ "ccm.start", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.2.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/component_manager/resources/resources.js", "user" ] ]
     } ],
