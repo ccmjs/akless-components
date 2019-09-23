@@ -61,3 +61,7 @@
 .card-title {
   margin-bottom: 0 !important;
 }
+
+.card-text {
+  font-size: smaller;
+}
