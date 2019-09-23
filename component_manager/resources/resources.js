@@ -30,7 +30,7 @@ ccm.files[ 'resources.js' ] = {
       "user": [ "ccm.start", "../user/ccm.user.js", [ "ccm.get", "../component_manager/resources/resources.js", "user" ] ]
     } ],
     "rating_result": [ "ccm.component", "https://ccmjs.github.io/tkless-components/star_rating_result/versions/ccm.star_rating_result-5.0.0.js", {
-      "data": { "store": [ "ccm.store", [ "ccm.get", { "name": "dms-components-ratings", "url": "https://ccm2.inf.h-brs.de" }, {} ] ] },
+      "data": { "store": [ "ccm.store", { "name": "dms-components-ratings", "url": "https://ccm2.inf.h-brs.de" } ] },
       "detailed": true,
       "user": [ "ccm.start", "../user/ccm.user.js", [ "ccm.get", "../component_manager/resources/resources.js", "user" ] ]
     } ],
