@@ -37,7 +37,7 @@ ccm.files[ 'configs.js' ] = {
   "component_meta": {
     "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/content/resources/css/meta.css" ],
     "inner": [ "ccm.load", "https://ccmjs.github.io/akless-components/content/resources/html/component_meta.html" ],
-    "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/content/configs/resources.js", "lang" ] ]
+    "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/content/resources/configs.js", "lang" ] ]
   },
   "component_meta_test": {
     "css": [ "ccm.load", "../content/resources/css/meta.css" ],
