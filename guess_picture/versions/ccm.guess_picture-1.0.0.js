@@ -108,7 +108,6 @@
              * @returns {boolean}
              */
             const isCorrect = () => {
-              console.log( value, this.solution );
               for ( let i = 0; i < this.solution.length; i++ )
                 if ( value === this.solution[ i ] ) return true;
             };
