@@ -280,40 +280,44 @@
             else
               $.removeElement( this.element.querySelector( '#details' ) );
 
+            // render demo section
+            if ( dataset.ignore.demos && dataset.ignore.demos.length && this.ignore.configs ) {
+
+              /**
+               * app configuration of selected demo
+               * @type {Object}
+               */
+              let config;
+
+              // render demo section
+              $.setContent( content.querySelector( '#demo .content' ), $.html( this.html.collection ) );
+
+              // append 'Create Similar App' button
+              $.append( content.querySelector( '#aside' ), $.html( this.html.create_similar_app, async () => {
+                this.ignore.create_similar_app = config;
+                menu.select( 'creation' );
+              } ) );
+
+              // render demo menu
+              this.menu_app.start( {
+                root: content.querySelector( '#menu-app' ),
+                data: { entries: dataset.ignore.demos.map( demo => demo.title ) },
+                'routing.2': this.routing && this.routing.app && { app: this.routing.app + '_demo' },
+                onclick: async event => {
+                  config = await $.solveDependency( dataset.ignore.demos[ event.nr - 1 ].app[ 2 ] );
+                  config.parent = this;
+                  const app = await $.solveDependency( dataset.ignore.demos[ event.nr - 1 ].app, config );
+                  $.setContent( content.querySelector( '#app' ), app.root );
+                  app.start();
+                }
+              } );
+
+            }
+            else
+              return $.removeElement( content.querySelector( '#demo' ) );
+
             // translate content
             this.lang && this.lang.translate();
-
-            // no demos? => remove demo section and abort
-            if ( !dataset.ignore.demos || !dataset.ignore.demos.length || !this.ignore.configs ) return $.removeElement( content.querySelector( '#demo' ) );
-
-            /**
-             * app configuration of selected demo
-             * @type {Object}
-             */
-            let config;
-
-            // render demo section
-            $.setContent( content.querySelector( '#demo .content' ), $.html( this.html.collection ) );
-
-            // append 'Create Similar App' button
-            $.append( content.querySelector( '#aside' ), $.html( this.html.create_similar_app, async () => {
-              this.ignore.create_similar_app = config;
-              menu.select( 'creation' );
-            } ) );
-
-            // render demo menu
-            this.menu_app.start( {
-              root: content.querySelector( '#menu-app' ),
-              data: { entries: dataset.ignore.demos.map( demo => demo.title ) },
-              'routing.2': this.routing && this.routing.app && { app: this.routing.app + '_demo' },
-              onclick: async event => {
-                config = await $.solveDependency( dataset.ignore.demos[ event.nr - 1 ].app[ 2 ] );
-                config.parent = this;
-                const app = await $.solveDependency( dataset.ignore.demos[ event.nr - 1 ].app, config );
-                $.setContent( content.querySelector( '#app' ), app.root );
-                app.start();
-              }
-            } );
 
           },
 
