@@ -141,11 +141,10 @@ ccm.files[ 'resources.js' ] = {
       "https://ccmjs.github.io/akless-components/libs/bootstrap-4/css/bootstrap.min.css"
     ],
     "data": { "entries": [
-        { "id": "overview", "title": "overview" },
-        { "id": "reviews", "title": "reviews" },
-        { "id": "apps", "title": "apps" },
-        { "id": "creation", "title": "creation" }
-      ] },
+      { "id": "overview", "title": "overview" },
+      { "id": "reviews",  "title": "reviews"  },
+      { "id": "creation", "title": "creation" }
+    ] },
     "html": [ "ccm.get", "https://ccmjs.github.io/akless-components/component_manager/resources/resources.js", "menu_top_html" ],
     "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js", {
       "translations": {
@@ -165,7 +164,7 @@ ccm.files[ 'resources.js' ] = {
         }
       }
     } ],
-    "selected": 1
+    "selected": "overview"
   },
 
   /** HTML templates for section menu */
