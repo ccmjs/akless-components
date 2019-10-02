@@ -422,7 +422,7 @@
         const menu = await this.menu_top.start( {
           root: this.element.querySelector( '#menu-top' ),
           onclick: event => view[ event.id ](),
-          selected: this.ignore && this.ignore.create_similar_app ? 'create' : ( this.routing && this.routing.get() ? null : undefined )
+          selected: this.ignore && this.ignore.create_similar_app ? 'creation' : ( this.routing && this.routing.get() ? null : undefined )
         } );
 
         // translate content
