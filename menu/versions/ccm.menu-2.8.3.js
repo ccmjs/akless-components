@@ -2,7 +2,7 @@
  * @overview ccm component for rendering a menu
  * @author André Kless <andre.kless@web.de> 2015-2016, 2018-2019
  * @license The MIT License (MIT)
- * @version latest (2.8.3)
+ * @version 2.8.3
  * @changes
  * version 2.8.3 (03.10.2019):
  * - bug fix for trigger already selected menu entry
@@ -62,7 +62,7 @@
 
   const component = {
 
-    name: 'menu',
+    name: 'menu', version: [ 2, 8, 3 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-22.7.2.js',
 
