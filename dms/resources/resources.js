@@ -102,7 +102,7 @@ ccm.files[ 'resources.js' ] = {
             "https://ccmjs.github.io/akless-components/dms/resources/css/rating_apps.css"
           ]
         } ],
-        "store": [ "ccm.store", [ "ccm.get", { "name": "dms-apps-ratings", "url": "https://ccm2.inf.h-brs.de" }, {} ] ]
+        "store": [ "ccm.store", { "name": "dms-apps-ratings", "url": "https://ccm2.inf.h-brs.de" } ]
       },
       "components": {
         "component": [ "ccm.component", "https://ccmjs.github.io/tkless-components/star_rating_result/versions/ccm.star_rating_result-5.0.0.js", {
@@ -111,7 +111,7 @@ ccm.files[ 'resources.js' ] = {
             "https://ccmjs.github.io/akless-components/dms/resources/css/rating_components.css"
           ]
         } ],
-        "store": [ "ccm.store", [ "ccm.get", { "name": "dms-components-ratings", "url": "https://ccm2.inf.h-brs.de" }, {} ] ]
+        "store": [ "ccm.store", { "name": "dms-components-ratings", "url": "https://ccm2.inf.h-brs.de" } ]
       }
     },
     "routing": [ "ccm.instance", "https://ccmjs.github.io/akless-components/routing/versions/ccm.routing-2.0.3.js", { "app": "1562446314531X9878992170446217" } ],
