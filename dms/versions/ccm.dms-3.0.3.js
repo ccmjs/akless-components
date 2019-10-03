@@ -2,7 +2,7 @@
  * @overview ccm component for digital makerspace
  * @author André Kless <andre.kless@web.de> 2018-2019
  * @license MIT License
- * @version latest (3.0.3)
+ * @version 3.0.3
  * @changes
  * version 3.0.3 (03.10.2019):
  * - uses ccm.menu.js v2.8.3 as default
@@ -25,7 +25,7 @@
 
   const component = {
 
-    name: 'dms',
+    name: 'dms', version: [ 3, 0, 3 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-22.7.2.js',
 
