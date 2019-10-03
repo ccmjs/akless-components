@@ -311,7 +311,8 @@
                 'routing.2': this.routing && this.routing.app && { app: this.routing.app + '_demo' },
                 onclick: async event => {
                   const app_dependency = $.clone( dataset.ignore.demos[ event.nr - 1 ].app );
-                  config = app_dependency[ 2 ] = await $.solveDependency( app_dependency[ 2 ] );
+                  config = $.clone( app_dependency[ 2 ] );
+                  app_dependency[ 2 ] = await $.solveDependency( app_dependency[ 2 ] );
                   app_dependency[ 2 ].parent = this;
                   const app = await $.solveDependency( app_dependency );
                   $.setContent( content.querySelector( '#app' ), app.root );
