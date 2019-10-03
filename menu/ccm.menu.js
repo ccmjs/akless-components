@@ -6,6 +6,7 @@
  * @changes
  * version 2.8.3 (03.10.2019):
  * - bug fix for trigger already selected menu entry
+ * - bug fix for set menu entry via route
  * - uses ccm v22.7.2
  * version 2.8.2 (24.09.2019):
  * - bug fix for select menu entry by ID
@@ -149,7 +150,7 @@
         else $.removeElement( lang_elem );
 
         // define and check routes
-        this.routing && this.routing.define( { entry: nr => entries_elem.querySelectorAll( '.entry' )[ nr - 1 ].click() } );
+        this.routing && this.routing.define( { entry: id => entries_elem.querySelector( '#entry-' + id ).click() } );
         this.routing && this.routing.refresh();
 
         /**

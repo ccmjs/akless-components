@@ -6,6 +6,7 @@
  * @changes
  * version 2.8.3 (03.10.2019):
  * - bug fix for trigger already selected menu entry
+ * - bug fix for set menu entry via route
  * - uses ccm v22.7.2
  * version 2.8.2 (24.09.2019):
  * - bug fix for select menu entry by ID
@@ -67,7 +68,7 @@
 //    "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js" ],
 //    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.2.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
 //    "onclick": ( event_data, instance ) => console.log( event_data, instance ),
-//    "routing": [ "ccm.instance", "https://ccmjs.github.io/akless-components/routing/versions/ccm.routing-2.0.3.js", { "app": true } ],
+//    "routing": [ "ccm.instance", "https://ccmjs.github.io/akless-components/routing/versions/ccm.routing-2.0.4.js", { "app": true } ],
 //    "selected": 1,
 //    "trigger_selected": true
 
@@ -149,7 +150,7 @@
         else $.removeElement( lang_elem );
 
         // define and check routes
-        this.routing && this.routing.define( { entry: nr => entries_elem.querySelectorAll( '.entry' )[ nr - 1 ].click() } );
+        this.routing && this.routing.define( { entry: id => entries_elem.querySelector( '#entry-' + id ).click() } );
         this.routing && this.routing.refresh();
 
         /**
