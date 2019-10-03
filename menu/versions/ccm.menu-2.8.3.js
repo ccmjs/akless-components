@@ -47,15 +47,7 @@
  * version 2.0.0 (08.09.2018):
  * - uses ccm v18.0.0
  * - supports optional deselection of active menu entry
- * version 1.2.1 (18.07.2018): bugfix for onclick callback
- * version 1.2.0 (04.07.2018):
- * - added HTML class 'active' for selected menu entry
- * - uses ccm v16.7.0
- * version 1.1.0 (13.05.2018):
- * - no privatization
- * - updated logged event data
- * - updated menu entry content and click handling
- * version 1.0.0 (09.05.2018): modernisation of old menu component
+ * (for older version changes see ccm.routing-1.2.1.js)
  */
 
 ( () => {
