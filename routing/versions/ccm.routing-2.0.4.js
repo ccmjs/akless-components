@@ -2,7 +2,7 @@
  * @overview ccm component for routing
  * @author André Kless <andre.kless@web.de> 2019
  * @license MIT License
- * @version latest (2.0.4)
+ * @version 2.0.4
  * @changes
  * version 2.0.4 (03.10.2019):
  * - remove event listener for 'hashchange' if DOM contact is lost
@@ -26,7 +26,7 @@
 
   const component = {
 
-    name: 'routing',
+    name: 'routing', version: [ 2, 0, 4 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-22.7.2.js',
 
