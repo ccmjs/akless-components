@@ -58,7 +58,9 @@ ccm.files[ 'configs.js' ] = {
         }
       },
       "active": "en"
-    } ]
+    } ],
+    "picture": "https://akless.github.io/akless/resources/sheep.png",
+    "solution": [ "Schaf", "Sheep" ],
   }
 
 };
