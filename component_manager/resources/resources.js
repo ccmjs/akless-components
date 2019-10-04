@@ -13,7 +13,7 @@ ccm.files[ 'resources.js' ] = {
     "css.1": "../component_manager/resources/css/styles.css",
     "data": {
       "store": [ "ccm.store", { "name": "dms-components", "url": "https://ccm2.inf.h-brs.de" } ],
-      "key": "quiz-4-0-0"
+      "key": "guess_picture-1-0-0"
     },
     "form": [ "ccm.component", "../submit/ccm.submit.js", [ "ccm.get", "../submit/resources/configs.js", "component_meta_edit" ] ],
     "html.1": "../component_manager/resources/templates.html",
@@ -44,7 +44,7 @@ ccm.files[ 'resources.js' ] = {
     "component_details": [ "ccm.component", "https://ccmjs.github.io/akless-components/content/versions/ccm.content-5.4.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/content/resources/configs.js", "component_meta" ] ],
     "data": {
       "store": [ "ccm.store", { "name": "dms-components", "url": "https://ccm2.inf.h-brs.de" } ],
-      "key": "quiz-4-0-0"
+      "key": "guess_picture-1-0-0"
     },
     "form": [ "ccm.component", "https://ccmjs.github.io/akless-components/submit/versions/ccm.submit-7.2.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/submit/resources/configs.js", "component_meta_edit" ] ],
     "ignore": {
