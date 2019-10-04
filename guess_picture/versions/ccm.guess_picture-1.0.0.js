@@ -20,7 +20,7 @@
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/guess_picture/resources/templates.html" ],
       "interval": 1500,
       "max_width": 500,
-//    "picture": "https://akless.github.io/akless/resources/sheep.png",
+      "picture": "",
 //    "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js" ],
 //    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.2.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
 //    "onfinish": { "log": true },
