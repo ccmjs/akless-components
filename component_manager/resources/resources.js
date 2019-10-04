@@ -126,6 +126,7 @@ ccm.files[ 'resources.js' ] = {
     },
     "entry": {
       "tag": "a",
+      "id": "%id%",
       "class": "entry list-group-item list-group-item-action",
       "onclick": "%click%",
       "inner": {
