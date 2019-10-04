@@ -376,7 +376,7 @@
              * current state of app configuration
              * @type {Object}
              */
-            let config = this.ignore.create_similar_app; delete this.ignore.create_similar_app;
+            let config = this.ignore.create_similar_app || { key: 'app' }; delete this.ignore.create_similar_app;
 
             // render app creation section
             $.setContent( content, $.html( this.html.collection, { caption: 'Choose Builder' } ) );
