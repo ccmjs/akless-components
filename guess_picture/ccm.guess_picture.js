@@ -92,8 +92,11 @@
           $.append( this.element.querySelector( '#main' ), $.html( this.html.result, {
             points: results.correct,
             total: results.total,
-            finish: () => this.onfinish && $.onFinish( this )
+            finish: () => $.onFinish( this )
           } ) );
+
+          // no finish actions? => remove finish button
+          if ( !this.onfinish ) $.removeElement( this.element.querySelector( '#finish' ) );
 
           // translate content
           this.lang && this.lang.translate();
