@@ -96,3 +96,13 @@
 #result span {
   padding: 0 0.1em;
 }
+
+#finish {
+  padding: 1em;
+  padding-bottom: 0em;
+}
+
+#finish button {
+  font-size: large;
+  text-transform: uppercase;
+}
