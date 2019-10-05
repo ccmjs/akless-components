@@ -10,29 +10,7 @@ ccm.files[ 'configs.js' ] = {
   "local": {
     "css.1": "../guess_picture/resources/styles.css",
     "html.1": "../guess_picture/resources/templates.html",
-    "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js", {
-      "translations": {
-        "de": {
-          "description": "Beantworten Sie möglichst schnell, was auf dem Bild zu sehen ist, das mit der Zeit immer mehr sichtbar wird.",
-          "finish": "Fertig",
-          "flag": "https://ccmjs.github.io/tkless-components/lang/resources/de.svg",
-          "points": "Punkte",
-          "result": "Dein Ergebnis:",
-          "solution": "Lösung:",
-          "title": "Bildratespiel"
-        },
-        "en": {
-          "description": "Answer as quickly as possible what can be seen in the picture, which becomes more and more visible over time.",
-          "finish": "Finish",
-          "flag": "https://ccmjs.github.io/tkless-components/lang/resources/en.svg",
-          "points": "Points",
-          "result": "You have reached",
-          "solution": "Solution:",
-          "title": "Image-Guess Game"
-        }
-      },
-      "active": "de"
-    } ],
+    "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js", [ "ccm.get", "../guess_picture/resources/configs.js", "lang" ] ],
     "onfinish": { "log": true, "restart": true },
     "pictures": [
       {
@@ -100,6 +78,10 @@ ccm.files[ 'configs.js' ] = {
         "solution": [ "Segelschiff", "Sailing Ship", "Sailing Vessel" ]
       },
       {
+        "image": "https://akless.github.io/akless/resources/images/snail.jpg",
+        "solution": [ "Schnecke", "Snail", "Slug" ]
+      },
+      {
         "image": "https://akless.github.io/akless/resources/images/snake.jpg",
         "solution": [ "Schlange", "Snake" ]
       },
@@ -122,29 +104,7 @@ ccm.files[ 'configs.js' ] = {
 
   /** demo configuration for external showcase (absolute paths) */
   "demo": {
-    "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js", {
-      "translations": {
-        "de": {
-          "description": "Beantworten Sie möglichst schnell, was auf dem Bild zu sehen ist, das mit der Zeit immer mehr sichtbar wird.",
-          "finish": "Fertig",
-          "flag": "https://ccmjs.github.io/tkless-components/lang/resources/de.svg",
-          "points": "Punkte",
-          "result": "Dein Ergebnis:",
-          "solution": "Lösung:",
-          "title": "Bildratespiel"
-        },
-        "en": {
-          "description": "Answer as quickly as possible what can be seen in the picture, which becomes more and more visible over time.",
-          "finish": "Finish",
-          "flag": "https://ccmjs.github.io/tkless-components/lang/resources/en.svg",
-          "points": "Points",
-          "result": "You have reached",
-          "solution": "Solution:",
-          "title": "Image-Guess Game"
-        }
-      },
-      "active": "en"
-    } ],
+    "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/guess_picture/resources/configs.js", "lang" ] ],
     "onfinish": { "restart": true },
     "pictures": [
       {
@@ -181,7 +141,7 @@ ccm.files[ 'configs.js' ] = {
       },
       {
         "image": "https://akless.github.io/akless/resources/images/mushroom.jpg",
-        "solution": [ "Pilz", "Fliegenpilz", "Mushroom", "Toadstool" ]
+        "solution": [ "Fliegenpilz", "Mushroom", "Toadstool" ]
       },
       {
         "image": "https://akless.github.io/akless/resources/images/notebook.jpg",
@@ -212,6 +172,10 @@ ccm.files[ 'configs.js' ] = {
         "solution": [ "Segelschiff", "Sailing Ship", "Sailing Vessel" ]
       },
       {
+        "image": "https://akless.github.io/akless/resources/images/snail.jpg",
+        "solution": [ "Schnecke", "Snail", "Slug" ]
+      },
+      {
         "image": "https://akless.github.io/akless/resources/images/snake.jpg",
         "solution": [ "Schlange", "Snake" ]
       },
@@ -228,6 +192,31 @@ ccm.files[ 'configs.js' ] = {
         "solution": [ "Schildkröte", "Turtle" ]
       }
     ]
+  },
+
+  /** configuration for multilingualism */
+  "lang": {
+    "translations": {
+      "de": {
+        "description": "Beantworten Sie möglichst schnell, was auf dem Bild zu sehen ist, das mit der Zeit immer mehr sichtbar wird.",
+        "finish": "Fertig",
+        "flag": "https://ccmjs.github.io/tkless-components/lang/resources/de.svg",
+        "points": "Punkte",
+        "result": "Dein Ergebnis:",
+        "solution": "Lösung:",
+        "title": "Bildratespiel"
+      },
+      "en": {
+        "description": "Answer as quickly as possible what can be seen in the picture, which becomes more and more visible over time.",
+        "finish": "Finish",
+        "flag": "https://ccmjs.github.io/tkless-components/lang/resources/en.svg",
+        "points": "Points",
+        "result": "You have reached",
+        "solution": "Solution:",
+        "title": "Image-Guess Game"
+      }
+    },
+    "active": "de"
   }
 
 };
