@@ -99,6 +99,7 @@ ccm.files[ 'configs.js' ] = {
       }
     ],
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
+    "size": 5,
     "user": [ "ccm.start", "../user/versions/ccm.user-9.2.0.js", [ "ccm.get", "../user/resources/configs.js", "guest" ] ]
   },
 
@@ -191,7 +192,8 @@ ccm.files[ 'configs.js' ] = {
         "image": "https://akless.github.io/akless/resources/images/turtle.jpg",
         "solution": [ "Schildkröte", "Turtle" ]
       }
-    ]
+    ],
+    "size": 5
   },
 
   /** configuration for multilingualism */
