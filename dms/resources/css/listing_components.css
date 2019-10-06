@@ -64,4 +64,6 @@
 
 .card-text {
   font-size: smaller;
+  max-height: 4em;
+  overflow: hidden;
 }
