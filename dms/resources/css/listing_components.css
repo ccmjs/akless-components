@@ -60,6 +60,8 @@
 
 .card-title {
   margin-bottom: 0 !important;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .card-text {
