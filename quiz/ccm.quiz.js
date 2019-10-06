@@ -363,7 +363,7 @@
           const evaluated = {};
 
           // logging of 'start' event
-          self.logger && self.logger.log( 'start' );
+          self.logger && self.logger.log( 'start', $.clone( dataset ) );
 
           // render main HTML structure
           $.setContent( self.element, $.html( self.html.main ) );
