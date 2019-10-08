@@ -2,7 +2,7 @@
  * @overview ccm component for submitting data
  * @author André Kless <andre.kless@web.de> 2018-2019
  * @license The MIT License (MIT)
- * @version latest (7.2.2)
+ * @version 7.2.2
  * @changes
  * version 7.2.2 (20.09.2019):
  * - bug fix for handle of <several> elements
@@ -43,7 +43,7 @@
 
   const component = {
 
-    name: 'submit',
+    name: 'submit', version: [ 7, 2, 2 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-23.0.2.js',
 
