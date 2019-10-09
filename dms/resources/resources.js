@@ -68,11 +68,11 @@ ccm.files[ 'resources.js' ] = {
     "form": [ "ccm.component", "https://ccmjs.github.io/akless-components/submit/versions/ccm.submit-7.2.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/submit/resources/configs.js", "component_meta_create" ] ],
     "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/dms/resources/resources.js", "lang" ] ],
     "listing": {
-      "apps": [ "ccm.component", "https://ccmjs.github.io/akless-components/listing/versions/ccm.listing-3.2.0.js", {
+      "apps": [ "ccm.component", "https://ccmjs.github.io/akless-components/listing/versions/ccm.listing-3.3.0.js", {
         "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/dms/resources/html/listing_apps.html" ],
         "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/dms/resources/css/listing_apps.css" ]
       } ],
-      "components": [ "ccm.component", "https://ccmjs.github.io/akless-components/listing/versions/ccm.listing-3.2.0.js", {
+      "components": [ "ccm.component", "https://ccmjs.github.io/akless-components/listing/versions/ccm.listing-3.3.0.js", {
         "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/dms/resources/html/listing_components.html" ],
         "css": [ "ccm.load",
           "https://ccmjs.github.io/akless-components/dms/resources/css/listing_components.css",
