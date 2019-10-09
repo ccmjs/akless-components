@@ -28,6 +28,7 @@
   padding: 1em;
   overflow: hidden;
   display: flex;
+  align-items: center;
   cursor: pointer;
 }
 
@@ -43,6 +44,15 @@
 #entries .entry img {
   width: 64px;
   height: 64px;
+  display: block;
+}
+
+#entries .entry .component {
+  font-family: Verdana, sans-serif;
+  font-size: x-small;
+  color: #00376B;
+  white-space: nowrap;
+  padding-left: 2px;
 }
 
 #entries .entry .title {
@@ -57,5 +67,6 @@
   font-size: 12px;
   color: #999999;
   white-space: nowrap;
+  padding-top: 0.2em;
   padding-left: 2px;
 }

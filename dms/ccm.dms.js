@@ -42,7 +42,7 @@
 
     Instance: function () {
 
-      let $, apps;
+      let $;
 
       this.ready = async () => {
 
@@ -92,13 +92,25 @@
             if ( !this.listing || !this.listing.apps || !this.apps ) return $.setContent( content, '' );
 
             // load all published apps
-            if ( !apps ) apps = await this.ccm.get( this.apps );
+            const apps = await this.ccm.store( await this.apps.get() );
+
+            // load all published components
+            const components = await this.ccm.store( await this.components.get() );
 
             // render listing with all apps
             this.listing.apps.start( {
               root: content,
-              data: apps,
-              defaults: { icon: '' },
+              convert: async json => {
+                const meta = await components.get( $.getIndex( json.path ) );
+                if ( !meta ) return json;
+                json.component = meta.title;
+                json.version = meta.key.split( '-' );
+                json.version.shift();
+                json.version = json.version.join( '.' );
+                return json;
+              },
+              data: await apps.get(),
+              defaults: { icon: '', component: '', version: '' },
               sort: ( a, b ) => {
                 const title_x = a.title.toLowerCase();
                 const title_y = b.title.toLowerCase();
@@ -115,10 +127,13 @@
                 // app has no own icon => use component icon or default icon
                 const icon = event.entry.querySelector( '.icon' );
                 if ( !icon.getAttribute( 'src' ) ) {
-                  const component = await this.components.get( $.getIndex( event.data.path ) );
+                  const component = await components.get( $.getIndex( event.data.path ) );
                   icon.setAttribute( 'src', component && component.icon || this.default_icon );
                 }
                 if ( !icon.getAttribute( 'src' ) ) $.removeElement( event.entry.querySelector( '.icon-area' ) );
+
+                // no component information? => remove element for component information
+                if ( !event.data.component || !event.data.version ) $.removeElement( event.entry.querySelector( '.component' ) );
 
                 // render rating
                 this.rating && this.rating.apps && this.rating.apps.component.start( {
@@ -145,7 +160,6 @@
 
                     // restart if an app was deleted
                     if ( event.event !== 'delete' ) return;
-                    apps = await this.ccm.get( this.apps );
                     this.start();
 
                   }
