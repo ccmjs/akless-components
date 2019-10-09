@@ -64,6 +64,11 @@
   overflow: hidden;
 }
 
+.creator-version {
+  white-space: nowrap;
+  overflow: hidden;
+}
+
 .card-text {
   font-size: smaller;
   height: 4em;
