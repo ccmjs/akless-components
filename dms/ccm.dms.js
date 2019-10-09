@@ -18,7 +18,7 @@
 
     name: 'dms',
 
-    ccm: '../../ccm/ccm.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-22.7.2.js',
 
     config: {
 //    "app_manager": [ "ccm.component", "https://ccmjs.github.io/akless-components/app_manager/versions/ccm.app_manager-1.4.0.js" ],
