@@ -6,6 +6,7 @@
  * @changes
  * version 4.0.1 (09.10.2019):
  * - changed handle of loading components, apps and ratings
+ * - added app route
  * - uses ccm v24.0.1
  * version 4.0.0 (04.10.2019):
  * - changed config property for components datastore
@@ -150,37 +151,7 @@
                 } );
 
               },
-              onclick: async event => {
-
-                // no app manager? => abort
-                if ( !this.app_manager ) return;
-
-                // render app manager
-                await this.app_manager.start( {
-                  root: content,
-                  data: {
-                    store: [ 'ccm.store', this.apps.source() ],
-                    key: event.data.key
-                  },
-                  default_icon: this.default_icon,
-                  onchange: async event => {
-
-                    // restart if an app was deleted
-                    if ( event.event !== 'delete' ) return;
-                    this.start();
-
-                  }
-                } );
-
-                // render 'Create Similar App' button
-                $.append( content, $.html( {
-                  "tag": "button",
-                  "style": "font-size: large; padding: 0.5em; margin: 0.5em;",
-                  "inner": "Create Similar App",
-                  "onclick": async () => await showComponent( $.getIndex( event.data.path ).replace( /\./g, '-' ), await $.solveDependency( [ 'ccm.get', event.data.source[ 0 ], event.data.source[ 1 ] ] ) )
-                } ) );
-
-              }
+              onclick: async event => showApp( event.data.key )
             } );
 
           },
@@ -196,7 +167,7 @@
 
             // filter highest version of each component
             const store = await this.ccm.store( components );
-            await $.asyncForEach( components, async component => {
+            await $.asyncForEach( await store.get(), async component => {
               let highest = component;
               const results = await store.get( { identifier: component.identifier } );
               results.forEach( result => {
@@ -307,8 +278,48 @@
 
         /**
          * shows a component
+         * @param {string} id - app ID
+         * @returns {Promise<void>}
+         */
+        const showApp = async id => {
+
+          // update route
+          this.routing && this.routing.set( `app-${id}` );
+
+          // no app manager? => abort
+          if ( !this.app_manager ) return $.setContent( content, '' );
+
+          // render app manager
+          await this.app_manager.start( {
+            root: content,
+            data: {
+              store: [ 'ccm.store', this.apps.source() ],
+              key: id
+            },
+            default_icon: this.default_icon,
+            onchange: async event => {
+
+              // restart if an app was deleted
+              if ( event.event !== 'delete' ) return;
+              this.start();
+
+            }
+          } );
+
+          // render 'Create Similar App' button
+          $.append( content, $.html( {
+            "tag": "button",
+            "style": "font-size: large; padding: 0.5em; margin: 0.5em;",
+            "inner": "Create Similar App",
+            "onclick": async () => await showComponent( $.getIndex( event.data.path ).replace( /\./g, '-' ), await $.solveDependency( [ 'ccm.get', event.data.source[ 0 ], event.data.source[ 1 ] ] ) )
+          } ) );
+
+        };
+
+        /**
+         * shows a component
          * @param {string} index - component index
-         * @param {Object} config - initial app configuration for app creation
+         * @param {Object} [config] - initial app configuration for app creation
          * @returns {Promise<void>}
          */
         const showComponent = async ( index, config ) => {
@@ -364,6 +375,7 @@
           apps:       () => menu.select( 'apps' ),
           components: () => menu.select( 'components' ),
           publish:    () => menu.select( 'publish' ),
+          app:        showApp,
           component:  ( name, major, minor, patch ) => showComponent( `${name}-${major}-${minor}-${patch}` )
         } );
 
