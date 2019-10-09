@@ -2,7 +2,7 @@
  * @overview ccm component for user authentication
  * @author André Kless <andre.kless@web.de> 2017-2019
  * @license The MIT License (MIT)
- * @version latest (9.2.1)
+ * @version 9.2.1
  * @changes
  * version 9.2.1 (09.10.2019):
  * - prevent render of same state twice
@@ -28,7 +28,7 @@
 
   const component = {
 
-    name: 'user',
+    name: 'user', version: [ 9, 2, 1 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-24.0.1.js',
 
