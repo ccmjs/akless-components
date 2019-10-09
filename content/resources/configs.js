@@ -17,7 +17,8 @@ ccm.files[ 'configs.js' ] = {
   /** visualisation of app metadata */
   "app_meta": {
     "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/content/resources/css/meta.css" ],
-    "inner": [ "ccm.load", "https://ccmjs.github.io/akless-components/content/resources/html/app_meta.html" ]
+    "inner": [ "ccm.load", "https://ccmjs.github.io/akless-components/content/resources/html/app_meta.html" ],
+    "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/content/resources/configs.js", "lang" ] ]
   },
   "app_meta_test": {
     "css": [ "ccm.load", "../content/resources/css/meta.css" ],
@@ -30,6 +31,7 @@ ccm.files[ 'configs.js' ] = {
       json.component = ccm.helper.getIndex( json.path );
       return json;
     },
+    "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js", [ "ccm.get", "../content/resources/configs.js", "lang" ] ],
     "placeholder": [ "ccm.get", { "url": "https://ccm2.inf.h-brs.de", "name": "dms-apps" }, "1562615085075X31075165857521436" ]
   },
 
@@ -57,9 +59,12 @@ ccm.files[ 'configs.js' ] = {
     "translations": {
       "de": {
         "category": "Kategorie",
+        "component": "Komponente",
         "content_license": "Content-Lizenz",
+        "creator": "Erstellt von",
         "index": "Komponentenindex",
         "flag": "https://ccmjs.github.io/tkless-components/lang/resources/de.svg",
+        "language": "Sprache",
         "publisher": "Veröffentlicht von",
         "release_date": "Veröffentlichungsdatum",
         "software_license": "Software-Lizenz",
@@ -68,9 +73,12 @@ ccm.files[ 'configs.js' ] = {
       },
       "en": {
         "category": "Category",
+        "component": "Component",
         "content_license": "Content License",
+        "creator": "Created By",
         "index": "Component Index",
         "flag": "https://ccmjs.github.io/tkless-components/lang/resources/en.svg",
+        "language": "Language",
         "publisher": "Publisher",
         "release_date": "Release Date",
         "software_license": "Software License",
@@ -78,7 +86,7 @@ ccm.files[ 'configs.js' ] = {
         "url": "URL"
       }
     },
-    "active": "en"
+    "active": "de"
   }
 
 };
