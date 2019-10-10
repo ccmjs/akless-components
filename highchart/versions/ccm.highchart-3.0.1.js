@@ -10,7 +10,7 @@
  * Make sure that you have a valid license of „Highcharts JS“ before using this ccm component.
  *
  * The developer Andre Kless of this component has a valid license of „Highcharts JS“ for not-for-profit educational use for the following product(s): Highcharts, Highstock, Highmaps
- * @version latest (3.0.1)
+ * @version 3.0.1
  * @changes
  * version 3.0.1 (10.10.2019):
  * - uses ccm v24.0.1
@@ -32,7 +32,7 @@
 
   const component = {
 
-    name: 'highchart',
+    name: 'highchart', version: [ 3, 0, 1 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-24.0.1.js',
 
