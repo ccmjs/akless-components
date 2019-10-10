@@ -2,8 +2,10 @@
  * @overview ccm component for rendering a predefined content
  * @author André Kless <andre.kless@web.de> 2016-2019
  * @license The MIT License (MIT)
- * @version 5.4.2
+ * @version 5.4.3
  * @changes
+ * version 5.4.3 (10.10.2019):
+ * - uses ccm v24.0.1
  * version 5.4.2 (01.10.2019):
  * - uses ccm v22.7.1
  * version 5.4.1 (24.09.2019):
@@ -40,19 +42,19 @@
 
   const component = {
 
-    name: 'content', version: [ 5, 4, 2 ],
+    name: 'content', version: [ 5, 4, 3 ],
 
-    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-22.7.1.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-24.0.1.js',
 
     config: {
 
-      //  afterstart: function () {},   // callback after instances has started ('this' is the instance)
+  //  afterstart: function () {},   // callback after instances has started ('this' is the instance)
       components: [],               // contains the components that are reused in the predefined content
       dependencies: [],             // contains the dependencies on the apps reused in the predefined content
-      //  inner: 'Hello, World!',       // predefined content (could be given as HTML string, DOM Element Nodes or ccm HTML data)
-      //  json2json: json => json,      // converts placeholders to different data structure (placeholders are passed as first parameter)
-      //  lang: [ 'ccm.instance', 'https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js' ],
-      //  placeholder: { foo: 'bar' }   // replaces all '%foo%' in predefined content with 'bar'
+  //  inner: 'Hello, World!',       // predefined content (could be given as HTML string, DOM Element Nodes or ccm HTML data)
+  //  json2json: json => json,      // converts placeholders to different data structure (placeholders are passed as first parameter)
+  //  lang: [ 'ccm.instance', 'https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js' ],
+  //  placeholder: { foo: 'bar' }   // replaces all '%foo%' in predefined content with 'bar'
 
     },
 
