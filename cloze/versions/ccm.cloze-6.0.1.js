@@ -2,7 +2,7 @@
  * @overview ccm component for rendering a fill-in-the-blank text
  * @author André Kless <andre.kless@web.de> 2017-2019
  * @license The MIT License (MIT)
- * @version latest (6.0.1)
+ * @version 6.0.1
  * @changes
  * version 6.0.1 (10.10.2019):
  * - uses ccm v24.0.1
@@ -17,7 +17,7 @@
 
   const component = {
 
-    name: 'cloze',
+    name: 'cloze', version: [ 6, 0, 1 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-24.0.1.js',
 
