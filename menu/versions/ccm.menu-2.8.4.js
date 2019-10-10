@@ -2,7 +2,7 @@
  * @overview ccm component for rendering a menu
  * @author André Kless <andre.kless@web.de> 2015-2016, 2018-2019
  * @license The MIT License (MIT)
- * @version latest (2.8.4)
+ * @version 2.8.4
  * @changes
  * version 2.8.4 (10.10.2019):
  * - uses ccm v24.0.1
@@ -57,7 +57,7 @@
 
   const component = {
 
-    name: 'menu',
+    name: 'menu', version: [ 2, 8, 4 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-24.0.1.js',
 
