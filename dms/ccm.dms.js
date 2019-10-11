@@ -306,12 +306,18 @@
             }
           } );
 
+          /**
+           * app metadata
+           * @type {Object}
+           */
+          const meta = await apps.get( id );
+
           // render 'Create Similar App' button
           $.append( content, $.html( {
             "tag": "button",
             "style": "font-size: large; padding: 0.5em; margin: 0.5em;",
             "inner": "Create Similar App",
-            "onclick": async () => await showComponent( $.getIndex( event.data.path ).replace( /\./g, '-' ), await $.solveDependency( [ 'ccm.get', event.data.source[ 0 ], event.data.source[ 1 ] ] ) )
+            "onclick": async () => await showComponent( $.getIndex( meta.path ), await $.solveDependency( [ 'ccm.get', meta.source[ 0 ], meta.source[ 1 ] ] ) )
           } ) );
 
         };

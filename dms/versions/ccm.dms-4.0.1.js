@@ -2,7 +2,7 @@
  * @overview ccm component for digital makerspace
  * @author André Kless <andre.kless@web.de> 2018-2019
  * @license MIT License
- * @version 4.0.1
+ * @version latest (4.0.1)
  * @changes
  * version 4.0.1 (09.10.2019):
  * - changed handle of loading components, apps and ratings
@@ -20,7 +20,7 @@
 
   const component = {
 
-    name: 'dms', version: [ 4, 0, 1 ],
+    name: 'dms',
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-24.0.1.js',
 
@@ -306,12 +306,18 @@
             }
           } );
 
+          /**
+           * app metadata
+           * @type {Object}
+           */
+          const meta = await apps.get( id );
+
           // render 'Create Similar App' button
           $.append( content, $.html( {
             "tag": "button",
             "style": "font-size: large; padding: 0.5em; margin: 0.5em;",
             "inner": "Create Similar App",
-            "onclick": async () => await showComponent( $.getIndex( event.data.path ).replace( /\./g, '-' ), await $.solveDependency( [ 'ccm.get', event.data.source[ 0 ], event.data.source[ 1 ] ] ) )
+            "onclick": async () => await showComponent( $.getIndex( meta.path ), await $.solveDependency( [ 'ccm.get', meta.source[ 0 ], meta.source[ 1 ] ] ) )
           } ) );
 
         };
