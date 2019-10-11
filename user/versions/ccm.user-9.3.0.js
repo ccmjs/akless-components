@@ -84,14 +84,14 @@
 
       this.ready = async () => {
 
+        // clear own website area
+        $.setContent( this.element, '' );
+
         // immediate login? => login user
         if ( this.logged_in || sessionStorage.getItem( 'ccm-user-' + my.realm ) ) await this.login( true );
 
         // logging of 'ready' event
         this.logger && this.logger.log( 'ready', $.privatize( this, true ) );
-
-        // clear own website area
-        $.setContent( this.element, '' );
 
       };
 
