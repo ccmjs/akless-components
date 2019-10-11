@@ -243,7 +243,7 @@
       this.ready = async () => {
 
         // support different forms of data structure
-        uniformData();
+        await uniformData();
 
         // result mode? => change configuration for result mode
         if ( self.show_results ) {
@@ -262,10 +262,10 @@
         self.logger && self.logger.log( 'ready', $.privatize( self, true ) );
 
         /** brings given data to uniform data structure */
-        function uniformData() {
+        async function uniformData() {
 
           // iterate over all question data sets
-          self.questions.forEach( async ( question, i ) => {
+          await $.asyncForEach( self.questions, async ( question, i ) => {
 
             // each question knows her original number and HTML ID
             question.nr = i + 1; question.id = 'question-' + question.nr;
