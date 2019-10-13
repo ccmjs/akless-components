@@ -37,14 +37,11 @@
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-24.0.1.js',
 
     config: {
-
-      "html": { "id": "chart", "style": "%%" },
       "data": {},
+      "html": { "id": "chart", "style": "%%" },
+  //  "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.2.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
       "settings": {},
       "style": "min-width: 400px; max-width: 800px; min-height: 400px; max-height: 800px; margin: 0 auto"
-
-  //  "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ]
-
     },
 
     ready: async function () {
