@@ -698,7 +698,7 @@
 
         // convert app URL back to ccm instance dependency
         [ ...element.querySelectorAll( 'input[type="app"]' ) ].forEach( input => {
-          if ( !results[ input.name ] ) return;
+          if ( !results[ input.name ] || !this.helper || !this.helper.decomposeAppURL ) return;
           const app = this.helper.decomposeAppURL( results[ input.name ] );
           const instance = [ 'ccm.instance', app.component, [ 'ccm.get', app.store, app.key ] ];
           results[ input.name ] = instance;
