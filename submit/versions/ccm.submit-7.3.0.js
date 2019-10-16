@@ -613,8 +613,8 @@
 
             case 'app':
               // convert instance dependency to App URL
-              if ( !self.helper || !self.helper.appURL ) return;
               const dependency = dataset[ input.name ];
+              if ( !dependency || !self.helper || !self.helper.appURL ) return;
               input.value = self.helper.appURL( dependency[ 1 ], dependency[ 2 ][ 1 ], dependency[ 2 ][ 2 ] );
               break;
 
