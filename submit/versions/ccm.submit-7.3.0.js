@@ -2,7 +2,7 @@
  * @overview ccm component for submitting data
  * @author André Kless <andre.kless@web.de> 2018-2019
  * @license The MIT License (MIT)
- * @version latest (7.3.0)
+ * @version 7.3.0
  * @changes
  * version 7.3.0 (16.10.2019):
  * - support of <input type="app">
@@ -48,7 +48,7 @@
 
   const component = {
 
-    name: 'submit',
+    name: 'submit', version: [ 7, 3, 0 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-24.0.4.js',
 

@@ -1,6 +1,6 @@
 /**
  * @overview datasets of ccm component for submitting data
- * @author André Kless <andre.kless@web.de> 2017-2018
+ * @author André Kless <andre.kless@web.de> 2017-2019
  * @license The MIT License (MIT)
  */
 
@@ -9,6 +9,7 @@ ccm.files[ 'datasets.js' ] = {
   // initial values for input elements of local demo
   "test": {
     "key": "test",
+    "app": [ "ccm.instance", "https://ccmjs.github.io/akless-components/guess_picture/versions/ccm.guess_picture-1.1.0.js", [ "ccm.get", { "name": "dms-configs", "url": "https://ccm2.inf.h-brs.de" }, "1570302728844X40325693007981256" ] ],
     "color": "#66CCFF",
     "date": "2017-11-21",
     "datetime-local": "2017-11-21T16:53",
@@ -251,6 +252,12 @@ ccm.files[ 'datasets.js' ] = {
         "label": "deep.property",
         "name": "deep.property",
         "type": "text",
+        "info": "Text Text Text"
+      },
+      {
+        "label": "app",
+        "name": "app",
+        "type": "app",
         "info": "Text Text Text"
       },
       {
