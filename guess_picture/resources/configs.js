@@ -1,5 +1,5 @@
 /**
- * @overview configurations of ccm component a guess picture game
+ * @overview configurations of ccm component for a guess picture game
  * @author André Kless <andre.kless@web.de> 2019
  * @license The MIT License (MIT)
  */
