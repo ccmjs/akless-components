@@ -43,14 +43,17 @@ ccm.files[ 'configs.js' ] = {
 
   /** configuration for menu */
   "menu": {
-    "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/libs/bootstrap-4/css/bootstrap.min.css" ],
+    "css": [ "ccm.load",
+      "https://ccmjs.github.io/akless-components/menu/resources/tab_menu.css",
+      "https://ccmjs.github.io/akless-components/libs/bootstrap-4/css/bootstrap.min.css"
+    ],
     "data": { "entries": [
       { "id": "apps",                 "title": "apps"                 },
       { "id": "components",           "title": "components"           },
       { "id": "app_creators",         "title": "app_creators"         },
       { "id": "component_developers", "title": "component_developers" }
     ] },
-    "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/menu/resources/tabs.html" ],
+    "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/menu/resources/tab_menu.html" ],
     "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js", {
       "translations": {
         "de": {
