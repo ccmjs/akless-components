@@ -79,3 +79,7 @@
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   padding: 1em;
 }
+
+#analytics {
+  margin: 0 -1em;
+}
