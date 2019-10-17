@@ -1,0 +1,21 @@
+/**
+ * @overview default layout of ccm component for render Digital Makerspace analytics
+ * @author André Kless <andre.kless@web.de> 2018-2019
+ * @license The MIT License (MIT)
+ */
+
+#main {
+  background-color: white;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+#top {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 1em 1em 0.5em;
+}
+
+#content {
+  padding: 2em 1em 1em;
+}
