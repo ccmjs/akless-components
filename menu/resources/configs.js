@@ -106,42 +106,29 @@ ccm.files[ 'configs.js' ] = {
   },
 
   "tabs": {
-    "key": "tabs",
-    "html": {
-      "main": {
-        "id": "main",
-        "inner": [
-          {
-            "tag": "ul",
-            "class": "nav nav-tabs",
-            "id": "entries"
-          },
-          {
-            "id": "content",
-            "style": "padding: 0.5rem;"
-          }
-        ]
-      },
-      "entry": {
-        "tag": "li",
-        "class": "entry",
-        "onclick": "%click%",
-        "style": "cursor: pointer; z-index: unset",
-        "inner": {
-          "tag": "a",
-          "class": "title"
+    "main": {
+      "id": "main",
+      "inner": [
+        {
+          "tag": "ul",
+          "id": "entries",
+          "class": "nav nav-tabs"
+        },
+        {
+          "id": "content"
         }
+      ]
+    },
+    "entry": {
+      "tag": "li",
+      "id": "%id%",
+      "class": "entry nav-item",
+      "onclick": "%click%",
+      "inner": {
+        "tag": "a",
+        "class": "title nav-link"
       }
-    },
-    "css": [ "ccm.load",
-      "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/bootstrap.css",
-      { "context": "head", "url": "https://ccmjs.github.io/tkless-components/libs/bootstrap/css/font-face.css" }
-    ],
-    "data": {
-      "store": [ "ccm.store", "https://ccmjs.github.io/akless-components/menu/resources/datasets.js" ],
-      "key": "demo"
-    },
-    "selected": 1
+    }
   },
 
   "list_group": {
