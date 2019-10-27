@@ -50,7 +50,7 @@
 
   const component = {
 
-    name: 'submit',
+    name: 'submit', version: [ 7, 3, 1 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-24.0.5.js',
 
