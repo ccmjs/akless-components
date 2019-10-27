@@ -2,7 +2,7 @@
  * @overview ccm component for submitting data
  * @author André Kless <andre.kless@web.de> 2018-2019
  * @license The MIT License (MIT)
- * @version latest (7.3.1)
+ * @version 7.3.1
  * @changes
  * version 7.3.1 (27.10.2019):
  * - uses ccm v24.0.5
