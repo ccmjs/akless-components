@@ -2,7 +2,7 @@
  * @overview ccm component for digital makerspace
  * @author André Kless <andre.kless@web.de> 2018-2019
  * @license MIT License
- * @version latest (4.1.0)
+ * @version 4.1.0
  * @changes
  * version 4.1.0 (03.11.2019):
  * - added app filters
@@ -26,7 +26,7 @@
 
   const component = {
 
-    name: 'dms',
+    name: 'dms', version: [ 4, 1, 0 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-24.0.5.js',
 

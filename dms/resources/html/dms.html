@@ -32,4 +32,42 @@
   </div>
 </ccm-template>
 
+<ccm-template key="list">
+  <div id="filters"></div>
+  <div id="listing"></div>
+</ccm-template>
+
 <!-- Der Digital Makerspace bietet jedem Bürger freie digitale Werkzeuge (Komponenten) zur Erstellung eigener Apps. Erstellte Apps können dann überall im Web flexibel eingesetzt und mit anderen geteilt werden. -->
+
+<ccm-template key="filters">
+  <div class="filter">
+    <label for="search">Title</label>
+    <input type="search" autocomplete="off" list="search_data" id="search" class="form-control">
+    <datalist id="search_data"></datalist>
+  </div>
+  <div class="filter">
+    <label for="component">Component</label>
+    <input type="search" autocomplete="off" list="component_data" id="component" class="form-control">
+    <datalist id="component_data"></datalist>
+  </div>
+  <div class="filter">
+    <label for="creator">Creator</label>
+    <input type="search" autocomplete="off" list="creator_data" id="creator" class="form-control">
+    <datalist id="creator_data"></datalist>
+  </div>
+  <div class="filter">
+    <label for="category">Category</label>
+    <input type="search" autocomplete="off" list="category_data" id="category" class="form-control">
+    <datalist id="category_data"></datalist>
+  </div>
+  <div class="filter">
+    <label for="tags">Tag</label>
+    <input type="search" autocomplete="off" list="tags_data" id="tags" class="form-control">
+    <datalist id="tags_data"></datalist>
+  </div>
+  <div class="filter">
+    <label for="language">Language</label>
+    <input type="search" autocomplete="off" list="language_data" id="language" class="form-control">
+    <datalist id="language_data"></datalist>
+  </div>
+</ccm-template>

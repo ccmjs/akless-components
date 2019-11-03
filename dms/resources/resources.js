@@ -11,7 +11,11 @@ ccm.files[ 'resources.js' ] = {
     "analytics": [ "ccm.component", "../dms_analytics/ccm.dms_analytics.js", [ "ccm.get", "../dms_analytics/resources/configs.js", "local" ] ],
     "app_manager": [ "ccm.component", "../app_manager/ccm.app_manager.js", [ "ccm.get", "../app_manager/resources/configs.js", "local" ] ],
     "apps": [ "ccm.store", { "name": "dms-apps", "url": "https://ccm2.inf.h-brs.de" } ],
-    "css.1": "../dms/resources/css/dms.css",
+    "css": [ "ccm.load",
+      "../dms/resources/css/dms.css",
+      "../libs/bootstrap-4/css/bootstrap.min.css",
+      { "context": "head", "url": "../libs/bootstrap-4/css/bootstrap.min.css" }
+    ],
     "component_manager": [ "ccm.component", "../component_manager/ccm.component_manager.js", [ "ccm.get", "../component_manager/resources/resources.js", "local" ] ],
     "components": [ "ccm.store", { "name": "dms-components", "url": "https://ccm2.inf.h-brs.de" } ],
     "default_icon": "../dms/resources/img/default.png",
