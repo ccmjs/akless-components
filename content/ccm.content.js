@@ -4,8 +4,8 @@
  * @license The MIT License (MIT)
  * @version latest (5.4.4)
  * @changes
- * version 5.4.4 (27.10.2019):
- * - uses ccm v24.0.5
+ * version 5.4.4 (13.11.2019):
+ * - uses ccm v24.1.0
  * version 5.4.3 (10.10.2019):
  * - uses ccm v24.0.1
  * version 5.4.2 (01.10.2019):
@@ -46,7 +46,7 @@
 
     name: 'content',
 
-    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-24.0.5.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-24.1.0.js',
 
     config: {
 
