@@ -1,10 +1,10 @@
 /**
- * @overview configurations of ccm component template
+ * @overview static data-based resources of ccm component template
  * @author André Kless <andre.kless@web.de> 2018-2019
  * @license The MIT License (MIT)
  */
 
-ccm.files[ 'configs.js' ] = {
+ccm.files[ 'resources.js' ] = {
 
   "local": {
     "key": "local",
