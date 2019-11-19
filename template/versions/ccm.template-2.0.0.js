@@ -19,8 +19,8 @@
 
     config: {
 
-      "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/guess_picture/resources/templates.html" ],
-      "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/guess_picture/resources/styles.css" ],
+      "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/template/resources/templates.html" ],
+      "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/template/resources/styles.css" ],
       "data": { "value": "Hello, World!" },
 
   //  "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.3.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "guest" ] ],
