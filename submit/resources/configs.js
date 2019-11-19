@@ -45,7 +45,7 @@ ccm.files[ 'configs.js' ] = {
     },
     "content": [ "ccm.component", "https://ccmjs.github.io/akless-components/content/versions/ccm.content-5.3.1.js" ],
     "helper": [ "ccm.load", { "url": "https://ccmjs.github.io/akless-components/modules/helper.mjs" } ],
-    "json_builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-1.4.1.js", {
+    "json_builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-1.4.3.js", {
       "html.inner.1": "",
       "directly": true
     } ],
