@@ -2,7 +2,7 @@
  * @overview ccm component template
  * @author André Kless <andre.kless@web.de> 2018-2019
  * @license The MIT License (MIT)
- * @version latest (2.0.0)
+ * @version 2.0.0
  * @changes
  * version 2.0.0 (19.11.2019)
  * - updated template
@@ -13,7 +13,7 @@
 
   const component = {
 
-    name: 'template',
+    name: 'template', version: [ 2, 0, 0 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-24.1.1.js',
 
