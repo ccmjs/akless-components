@@ -4,8 +4,8 @@
  * @license The MIT License (MIT)
  * @version latest (7.3.1)
  * @changes
- * version 7.3.1 (13.11.2019):
- * - uses ccm v24.1.0
+ * version 7.3.1 (19.11.2019):
+ * - uses ccm v24.1.1
  * version 7.3.0 (16.10.2019):
  * - support of <input type="app">
  * - uses ccm v24.0.4
@@ -52,7 +52,7 @@
 
     name: 'submit',
 
-    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-24.1.0.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-24.1.1.js',
 
     config: {
 

@@ -17,8 +17,8 @@ ccm.files[ 'configs.js' ] = {
       "../submit/resources/default.css"
     ],
     "data": {
-      "store": [ "ccm.store", "../submit/resources/datasets.js" ],
-      "key": "test"
+      "store": [ "ccm.store", { "name": "submit_data", "url": "https://ccm2.inf.h-brs.de" } ],
+      "key": "demo"
     },
     "content": [ "ccm.component", "../content/ccm.content.js" ],
     "helper": [ "ccm.load", { "url": "../modules/helper.mjs" } ],
@@ -28,31 +28,7 @@ ccm.files[ 'configs.js' ] = {
     } ],
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
     "onchange": function ( event ) { console.log( this.index, 'onchange', this.getValue(), event ) },
-    "onfinish": { "log": true }
-  },
-
-  /** test with localhost (relative paths) */
-  "localhost": {
-    "key": "localhost",
-//  "inner": [ "ccm.load", { "url": "../submit/resources/demo.html", "type": "data" } ],
-    "entries": [ "ccm.get", "../submit/resources/datasets.js", "demo.data" ],
-    "css": [ "ccm.load",
-      { "context": "head", "url": "../libs/bootstrap/css/font-face.css" },
-      "../libs/bootstrap/css/bootstrap.css",
-      "../submit/resources/default.css"
-    ],
-    "data": {
-      "store": [ "ccm.store", { "name": "submit", "url": "http://localhost:8080" } ],
-      "key": "test"
-    },
-    "content": [ "ccm.component", "../content/ccm.content.js" ],
-    "json_builder": [ "ccm.component", "../json_builder/ccm.json_builder.js", {
-      "html.inner.1": "",
-      "directly": true
-    } ],
-    "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
     "onfinish": {
-      "log": true,
       "store": true,
       "alert": "Saved!"
     }
