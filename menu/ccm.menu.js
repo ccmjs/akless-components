@@ -73,7 +73,7 @@
 //    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.2.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
 //    "onclick": ( event_data, instance ) => console.log( event_data, instance ),
 //    "routing": [ "ccm.instance", "https://ccmjs.github.io/akless-components/routing/versions/ccm.routing-2.0.4.js", { "app": true } ],
-//    "selected": 1,
+      "selected": 1,
 //    "trigger_selected": true
 
     },
