@@ -2,7 +2,7 @@
  * @overview ccm component for a guess picture game
  * @author André Kless <andre.kless@web.de> 2019
  * @license The MIT License (MIT)
- * @version latest (1.1.1)
+ * @version 1.1.1
  * @changes
  * version 1.1.1 (27.11.2019):
  * - uses ccm v24.1.1
@@ -18,7 +18,7 @@
 
   const component = {
 
-    name: 'guess_picture',
+    name: 'guess_picture', version: [ 1, 1, 1 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-24.1.1.js',
 
