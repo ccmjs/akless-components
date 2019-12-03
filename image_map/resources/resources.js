@@ -20,7 +20,7 @@ ccm.files[ 'resources.js' ] = {
 
   "demo": {
     "key": "demo",
-    "data": [ "ccm.get", "https://akless.github.io/akless-components/image_map/resources/resources.js", "data" ]
+    "data": [ "ccm.get", "https://ccmjs.github.io/akless-components/image_map/resources/resources.js", "data" ]
   },
 
   /** demo data */
