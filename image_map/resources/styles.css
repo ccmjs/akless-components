@@ -1,0 +1,45 @@
+/**
+ * @overview default layout of ccm component for an image map
+ * @author André Kless <andre.kless@web.de> 2019
+ * @license The MIT License (MIT)
+ */
+
+#element {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+#main {
+  margin: 1em;
+  box-shadow: 5px 5px 5px 0 rgba(0,0,0,0.2);
+}
+
+#map {
+  border: 1px solid lightgrey;
+  border-bottom: none;
+  background-color: lightgrey;
+  position: relative;
+}
+
+.area {
+  position: absolute;
+  cursor: pointer;
+}
+
+#info {
+  padding: 0.5em;
+  border: 3px double lightgrey;
+  background-color: white;
+}
+
+#back {
+  margin: 1em;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+}
+
+p {
+  margin-top: 0.5em;
+  font-size: small;
+}
