@@ -8,15 +8,9 @@
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
-#main {
-  margin: 1em;
-  box-shadow: 5px 5px 5px 0 rgba(0,0,0,0.2);
-}
-
 #map {
   border: 1px solid lightgrey;
   border-bottom: none;
-  background-color: lightgrey;
   position: relative;
 }
 
@@ -33,6 +27,12 @@
 
 #back {
   margin: 1em;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 h1, h2, h3, h4, h5, h6, p {

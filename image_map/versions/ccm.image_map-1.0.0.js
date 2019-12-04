@@ -25,7 +25,6 @@
   //  "onmouseout": event => console.log( event ),
   //  "onmouseover": event => console.log( event ),
   //  "onstart": event => console.log( event )
-
     },
 
     Instance: function () {
@@ -61,21 +60,6 @@
         $.setContent( this.element, $.html( this.html.main, $.clone( dataset ) ) );
 
         /**
-         * map section
-         * @type {Element}
-         */
-        const $map = this.element.querySelector( '#map' );
-
-        // render background image with scaled parameters
-        const width = this.element.querySelector( '#wrapper' ).clientWidth;
-        const factor = width / dataset.width;
-        const height = dataset.height * factor;
-        $map.style.backgroundImage = `url('${dataset.image}')`;
-        $map.style.backgroundSize = `${width}px ${height}px`;
-        $map.style.width = `${width}px`;
-        $map.style.height = `${height}px`;
-
-        /**
          * renders an area of the image map
          * @param {Object} area - area data
          */
@@ -89,16 +73,6 @@
 
           // render HTML structure of an area
           $.append( this.element.querySelector( '#map' ), $area );
-
-          // render background image with scaled parameters
-          const width = area.width * factor;
-          const height = area.height * factor;
-          $area.style.setProperty( 'left', `${area.x * factor}px` );
-          $area.style.setProperty( 'top', `${area.y * factor}px` );
-          $area.style.backgroundImage = `url('${area.image}')`;
-          $area.style.backgroundSize = `${width}px ${height}px`;
-          $area.style.width = `${width}px`;
-          $area.style.height = `${height}px`;
 
           // perform mouseout callback on mouseout event
           $area.addEventListener( 'mouseout', () =>
@@ -163,14 +137,6 @@
 
         // render info on hover
         this.element.querySelector( '#map' ).addEventListener( 'mouseover', () => renderInfo( dataset.info ) );
-
-        // resize image map on window resize event
-        const onResize = async () => {
-          window.removeEventListener( 'resize', onResize );     // remove event listener
-          await $.sleep( 1000 );                                // wait a second
-          await this.start();                                   // resize image map
-        };
-        window.addEventListener( 'resize', onResize );
 
         // perform start callback
         this.onstart && await this.onstart( { data: $.clone( dataset ), instance: this } );

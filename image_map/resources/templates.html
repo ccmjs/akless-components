@@ -5,15 +5,17 @@
 
 <ccm-template key="main">
   <div id="main">
-    <div id="wrapper">
-      <div id="map"></div>
+    <div id="map">
+      <img src="%image%">
     </div>
     <div id="info"></div>
   </div>
 </ccm-template>
 
 <ccm-template key="area">
-  <div class="area"></div>
+  <div class="area" style="position: absolute; left: %x%%; top: %y%%; width: %size%%;">
+    <img src="%image%">
+  </div>
 </ccm-template>
 
 <ccm-template key="app">
