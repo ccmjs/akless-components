@@ -26,15 +26,14 @@ ccm.files[ 'resources.js' ] = {
   /** demo data */
   "data": {
     "image": "https://akless.github.io/akless/resources/images/goldgrotte.png",
-    "width": 1000,
-    "height": 600,
+    "info": "<h3>Expedition Goldgrotte</h3><p>Der Forschungsdrang hat dich zu einer Goldgrotte geführt, in der es 6 Schätze zu entdecken gibt. Jeder Schatz enthält ein Quiz.</p>",
     "areas": [
       {
         "image": "https://akless.github.io/akless/resources/images/treasure.png",
         "x": 24,
         "y": 46,
         "size": 3,
-        "info": "<h3>Quiz: Was ist HTML?</h3><p>Klicke auf den Schatz um den Quiz zu starten.</p>",
+        "info": "<h3>Quiz 1: Was ist HTML?</h3><p>Klicke auf den Schatz um den Quiz zu starten.</p>",
         "action": [ "ccm.instance", "https://ccmjs.github.io/akless-components/quiz/versions/ccm.quiz-4.0.1.js", [ "ccm.get", { "name": "dms-configs", "url": "https://ccm2.inf.h-brs.de" }, "1570717629079X27916670596014836" ] ]
       },
       {
@@ -42,7 +41,7 @@ ccm.files[ 'resources.js' ] = {
         "x": 94,
         "y": 27,
         "size": 3,
-        "info": "<h3>Quiz: Erste 'Hallo Welt!'-Webseite</h3><p>Klicke auf den Schatz um den Quiz zu starten.</p>",
+        "info": "<h3>Quiz 2: Erste 'Hallo Welt!'-Webseite</h3><p>Klicke auf den Schatz um den Quiz zu starten.</p>",
         "action": [ "ccm.instance", "https://ccmjs.github.io/akless-components/quiz/versions/ccm.quiz-4.0.1.js", [ "ccm.get", { "name": "dms-configs", "url": "https://ccm2.inf.h-brs.de" }, "1570790042637X16404434157729564" ] ]
       },
       {
@@ -50,7 +49,7 @@ ccm.files[ 'resources.js' ] = {
         "x": 41,
         "y": 88,
         "size": 3,
-        "info": "<h3>Quiz: Was ist ein HTML-Tag?</h3><p>Klicke auf den Schatz um den Quiz zu starten.</p>",
+        "info": "<h3>Quiz 3: Was ist ein HTML-Tag?</h3><p>Klicke auf den Schatz um den Quiz zu starten.</p>",
         "action": [ "ccm.instance", "https://ccmjs.github.io/akless-components/quiz/versions/ccm.quiz-4.0.1.js", [ "ccm.get", { "name": "dms-configs", "url": "https://ccm2.inf.h-brs.de" }, "1570780952208X30947674462053376" ] ]
       },
       {
@@ -58,7 +57,7 @@ ccm.files[ 'resources.js' ] = {
         "x": 10,
         "y": 82,
         "size": 3,
-        "info": "<h3>Quiz: HTML-Grundgerüst</h3><p>Klicke auf den Schatz um den Quiz zu starten.</p>",
+        "info": "<h3>Quiz 4: HTML-Grundgerüst</h3><p>Klicke auf den Schatz um den Quiz zu starten.</p>",
         "action": [ "ccm.instance", "https://ccmjs.github.io/akless-components/quiz/versions/ccm.quiz-4.0.1.js", [ "ccm.get", { "name": "dms-configs", "url": "https://ccm2.inf.h-brs.de" }, "1570786190916X6161671089439225" ] ]
       },
       {
@@ -66,7 +65,7 @@ ccm.files[ 'resources.js' ] = {
         "x": 74,
         "y": 77,
         "size": 3,
-        "info": "<h3>Quiz: Was ist ein HTML-Attribut?</h3><p>Klicke auf den Schatz um den Quiz zu starten.</p>",
+        "info": "<h3>Quiz 5: Was ist ein HTML-Attribut?</h3><p>Klicke auf den Schatz um den Quiz zu starten.</p>",
         "action": [ "ccm.instance", "https://ccmjs.github.io/akless-components/quiz/versions/ccm.quiz-4.0.1.js", [ "ccm.get", { "name": "dms-configs", "url": "https://ccm2.inf.h-brs.de" }, "1570789265712X9642190088642415" ] ]
       },
       {
@@ -74,11 +73,10 @@ ccm.files[ 'resources.js' ] = {
         "x": 79,
         "y": 60,
         "size": 3,
-        "info": "<h3>Quiz: HTML-Tags und Attribute</h3><p>Klicke auf den Schatz um den Quiz zu starten.</p>",
+        "info": "<h3>Quiz 6: HTML-Tags und Attribute</h3><p>Klicke auf den Schatz um den Quiz zu starten.</p>",
         "action": [ "ccm.instance", "https://ccmjs.github.io/akless-components/quiz/versions/ccm.quiz-4.0.1.js", [ "ccm.get", { "name": "dms-configs", "url": "https://ccm2.inf.h-brs.de" }, "1570789457374X9739707044209898" ] ]
       }
-    ],
-    "info": "<h3>Expedition Goldgrotte</h3><p>Der Forschungsdrang hat dich zu einer Goldgrotte geführt, in der es 6 Schätze zu entdecken gibt. Jeder Schatz enthält ein Quiz.</p>"
+    ]
   }
 
 };
