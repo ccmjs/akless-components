@@ -18,6 +18,7 @@
     config: {
       "back": "← Back to Map",
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/image_map/resources/styles.css" ],
+      "data": {},
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/image_map/resources/templates.html" ],
   //  "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.2.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
   //  "onchange": event => console.log( event ),
@@ -66,7 +67,7 @@
         const $map = this.element.querySelector( '#map' );
 
         // render background image with scaled parameters
-        const width = $map.clientWidth;
+        const width = this.element.querySelector( '#wrapper' ).clientWidth;
         const factor = width / dataset.width;
         const height = dataset.height * factor;
         $map.style.backgroundImage = `url('${dataset.image}')`;
@@ -164,9 +165,7 @@
         this.element.querySelector( '#map' ).addEventListener( 'mouseover', () => renderInfo( dataset.info ) );
 
         // resize image map on window resize event
-        let waiting = false;
         const onResize = async () => {
-          if ( waiting ) return; waiting = true;                // already waiting? => abort
           window.removeEventListener( 'resize', onResize );     // remove event listener
           await $.sleep( 1000 );                                // wait a second
           await this.start();                                   // resize image map
