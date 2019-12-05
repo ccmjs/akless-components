@@ -2,7 +2,7 @@
  * @overview ccm component for managing a component
  * @author André Kless <andre.kless@web.de> 2018-2019
  * @license MIT License
- * @version latest (3.3.0)
+ * @version 3.3.0
  * @changes
  * version 3.3.0 (05.12.2019):
  * - considers the default configuration when passing an app configuration to an app builder
@@ -48,7 +48,7 @@
 
   const component = {
 
-    name: 'component_manager',
+    name: 'component_manager', version: [ 3, 3, 0 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-24.1.1.js',
 
