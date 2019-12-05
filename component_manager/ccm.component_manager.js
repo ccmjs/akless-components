@@ -405,7 +405,7 @@
 
               this.builder.start( {
                 root: content.querySelector( '#app' ),
-                data: { store: this.ignore.configs, key: [ 'ccm.get', { local: { app: $.integrate( config, ( await this.ccm.component( dataset.path ) ).config ) } }, 'app' ] },
+                data: { store: this.ignore.configs, key: [ 'ccm.get', { local: { app: await $.integrate( config, ( await this.ccm.component( dataset.path ) ).config ) } }, 'app' ] },
                 app: [ 'ccm.component', dataset.path, config ],
                 builder: builder,
                 onchange: ( instance, event ) => {
