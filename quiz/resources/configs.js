@@ -1,5 +1,7 @@
 /**
- * @overview configurations of ccm component for rendering a quiz
+ *----------------------------------------------------- DEPRECATED -----------------------------------------------------
+ *
+ * @overview configurations of ccm component for quiz
  * @author André Kless <andre.kless@web.de> 2018
  * @license The MIT License (MIT)
  */

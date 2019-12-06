@@ -4,7 +4,8 @@
  * @license The MIT License (MIT)
  * @version latest (4.0.2)
  * @changes
- * version 4.0.2 (27.11.2019):
+ * version 4.0.2 (06.12.2019):
+ * - updated default instance configuration
  * - uses ccm v24.1.1
  * version 4.0.1 (10.10.2019):
  * - uses ccm v24.0.1
@@ -28,93 +29,37 @@
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-24.1.1.js',
 
     config: {
-
-      "html": {
-        "start": {
-          "id": "start",
-          "inner": {
-            "tag": "button",
-            "inner": "Start",
-            "onclick": "%%"
-          }
-        },
-        "main": {
-          "id": "main",
-          "inner": [
-            { "id": "questions" },
-            {
-              "id": "buttons",
-              "inner": [
-                { "id": "cancel" },
-                { "id": "prev" },
-                { "id": "submit" },
-                { "id": "next" },
-                { "id": "finish" },
-                { "id": "timer" }
-              ]
-            }
-          ]
-        },
-        "question": {
-          "id": "%id%",
-          "class": "question",
-          "inner": [
-            {
-              "class": "title",
-              "inner": [
-                { "inner": "Question" },
-                { "inner": "%nr%/%count%" },
-                { "inner": "%text%" }
-              ]
-            },
-            {
-              "class": "description",
-              "inner": "%description%"
-            },
-            { "class": "answers" }
-          ]
-        },
-        "answer": {
-          "id": "%id%",
-          "class": "answer %class%",
-          "inner": {
-            "class": "entry",
-            "inner": [
-              {
-                "class": "text",
-                "inner": {
-                  "tag": "label",
-                  "inner": "%text%",
-                  "for": "%id%-input"
-                }
-              },
-              { "class": "comment" }
-            ]
-          }
-        },
-        "comment": {
-          "class": "tooltip",
-          "onclick": "%click%",
-          "inner": [
-            "i",
-            {
-              "tag": "div",
-              "class": "tooltiptext",
-              "inner": {
-                "inner": {
-                  "inner": "%comment%"
-                }
-              }
-            }
-          ]
-        },
-        "timer": {
-          "tag": "span",
-          "inner": "%%"
-        }
-      },
+//    "answers": [],
+//    "anytime_finish": true,
+//    "attributes": {},
+//    "correct": [],
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/quiz/resources/default.css" ],
-      "data": { "store": [ "ccm.store" ] },
+//    "cancel_button": true,
+      "data": {},
+//    "escape": true,
+//    "feedback": true,
+      "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/quiz/resources/templates.html" ],
+//    "input": 'radio',
+//    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.2.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
+//    "navigation": true,
+//    "oncancel":               () => console.log( 'Quiz canceled' ),
+//    "onchange":   ( data, elem ) => console.log( data, elem ),
+//    "oncomment":  ( data, elem ) => console.log( data, elem ),
+//    "onfeedback":   data =>         console.log( data ),
+//    "oninput":    ( data, elem ) => console.log( data, elem ),
+//    "onprev":     ( data, elem ) => console.log( data, elem ),
+//    "onnext":     ( data, elem ) => console.log( data, elem ),
+//    "onstart":                () => console.log( 'Quiz started' ),
+//    "onvalidation": data         => { console.log( data ); return true; },
+//    "onfinish":     results      =>   console.log( results ),
+      "placeholder": {
+        "cancel": "Cancel",
+        "prev": "Previous",
+        "submit": "Submit",
+        "next": "Next",
+        "correct": "Correct solution: ",
+        "finish": "Finish"
+      },
       "questions": [
         {
           "text": "First Question",
@@ -124,44 +69,14 @@
           ]
         }
       ],
-      "placeholder": {
-        "cancel": "Cancel",
-        "prev": "Previous",
-        "submit": "Submit",
-        "next": "Next",
-        "correct": "Correct solution: ",
-        "finish": "Finish"
-      }
-
-  //  "start_button": true,
-  //  "cancel_button": true,
-  //  "feedback": true,
-  //  "navigation": true,
-  //  "skippable": true,
-  //  "anytime_finish": true,
-  //  "time": 60,
-  //  "shuffle": true,
-  //  "random": true,
-  //  "answers": [],
-  //  "correct": [],
-  //  "input": 'radio',
-  //  "attributes": {},
-  //  "escape": true,
-  //  "swap": true,
-  //  "show_results": true,
-  //  "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-8.2.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "guest" ] ],
-  //  "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
-  //  "onstart":                () => console.log( 'Quiz started' ),
-  //  "oncancel":               () => console.log( 'Quiz canceled' ),
-  //  "oninput":    ( data, elem ) => console.log( data, elem ),
-  //  "onchange":   ( data, elem ) => console.log( data, elem ),
-  //  "oncomment":  ( data, elem ) => console.log( data, elem ),
-  //  "onprev":     ( data, elem ) => console.log( data, elem ),
-  //  "onnext":     ( data, elem ) => console.log( data, elem ),
-  //  "onvalidation": data => { console.log( data ); return true; },
-  //  "onfeedback":   data =>   console.log( data ),
-  //  "onfinish":  results =>   console.log( results )
-
+//    "random": true,
+//    "shuffle": true,
+//    "show_results": true,
+//    "skippable": true,
+//    "start_button": true,
+//    "swap": true,
+//    "time": 60,
+//    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.3.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "guest" ] ]
     },
 
     Instance: function () {
