@@ -12,26 +12,26 @@ ccm.files[ 'resources.js' ] = {
       "../quiz/resources/weblysleek.css",
       { "context": "head", "url": "../resources/fonts/WeblySleekUI/font.css" }
     ],
-    "questions": [ "ccm.get", "../quiz/resources/resources.js", "data.questions" ],
-    "html.1": "../quiz/resources/templates.html",
-    "show_results": false,
-    "start_button": false,
-    "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
     "feedback": true,
+    "html.1": "../quiz/resources/templates.html",
+    "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
     "navigation": true,
+    "onfinish": { "restart": true, "store": false },
     "placeholder.finish": "Restart",
-    "onfinish": { "restart": true, "store": false }
+    "questions": [ "ccm.get", "../quiz/resources/resources.js", "data.questions" ],
+    "show_results": false,
+    "start_button": false
   },
 
   /** demo configuration (absolute paths) */
   "demo": {
     "key": "demo",
     "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/quiz/resources/weblysleek.css", { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/weblysleekui/font.css" } ],
-    "questions": [ "ccm.get", "https://ccmjs.github.io/akless-components/quiz/quiz/resources/resources.js", "data.questions" ],
     "feedback": true,
     "navigation": true,
+    "onfinish": { "restart": true },
     "placeholder.finish": "Restart",
-    "onfinish": { "restart": true }
+    "questions": [ "ccm.get", "https://ccmjs.github.io/akless-components/quiz/resources/resources.js", "data.questions" ]
   },
 
   /** demo data for questions and answers */
