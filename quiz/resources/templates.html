@@ -1,0 +1,62 @@
+<!--
+@overview HTML template of ccm component for quiz
+@author André Kless <andre.kless@web.de.de> 2019
+-->
+
+<ccm-template key="start">
+  <div id="start">
+    <button onclick="%%">Start</button>
+  </div>
+</ccm-template>
+
+<ccm-template key="main">
+  <div id="main">
+    <div id="questions"></div>
+    <div id="buttons">
+      <div id="cancel"></div>
+      <div id="prev"></div>
+      <div id="submit"></div>
+      <div id="next"></div>
+      <div id="finish"></div>
+      <div id="timer"></div>
+    </div>
+  </div>
+</ccm-template>
+
+<ccm-template key="question">
+  <div id="%id%" class="question">
+    <div class="title">
+      <div>Question</div>
+      <div>%nr%/%count%</div>
+      <div>%text%</div>
+    </div>
+    <div class="description">%description%</div>
+    <div class="answers"></div>
+  </div>
+</ccm-template>
+
+<ccm-template key="answer">
+  <div id="%id%" class="answer %class%">
+    <div class="entry">
+      <div class="text">
+        <label for="%id%-input">%text%</label>
+      </div>
+      <div class="comment"></div>
+    </div>
+  </div>
+</ccm-template>
+
+<ccm-template key="comment">
+  <div class="tooltip" onclick="%click%">
+    i
+    <div class="tooltiptext">
+      <div>
+        <div>%comment%</div>
+      </div>
+    </div>
+  </div>
+</ccm-template>
+
+<ccm-template key="timer">
+  <span>%%</span>
+</ccm-template>
