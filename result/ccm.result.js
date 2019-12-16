@@ -93,6 +93,7 @@
         { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/bootstrap/css/font-face.css" },
         "https://ccmjs.github.io/akless-components/result/resources/default.css"
       ],
+      "libs": [ "ccm.load", "https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js" ],
       "store": [ "ccm.store" ],
       "menu": [ "ccm.component", "https://ccmjs.github.io/akless-components/menu/versions/ccm.menu-2.4.4.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/menu/resources/configs.js", "bootstrap" ] ],
       "table": [ "ccm.component", "https://ccmjs.github.io/tkless-components/table/versions/ccm.table-3.0.0.js" ],
@@ -275,6 +276,9 @@
 
               // set table row values
               await $.asyncForEach( results, async ( result, i ) => {
+
+                result.created_at = moment( result.created_at ).format( 'MMMM Do YYYY, h:mm:ss a' );
+                result.updated_at = moment( result.updated_at ).format( 'MMMM Do YYYY, h:mm:ss a' );
 
                 /**
                  * contains table row values for current app result data set
