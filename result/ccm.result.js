@@ -277,8 +277,6 @@
               // set table row values
               await $.asyncForEach( results, async ( result, i ) => {
 
-                result.created_at = moment( result.created_at ).format( 'MMMM Do YYYY, h:mm:ss a' );
-                result.updated_at = moment( result.updated_at ).format( 'MMMM Do YYYY, h:mm:ss a' );
 
                 /**
                  * contains table row values for current app result data set
@@ -290,8 +288,8 @@
                   result._app || ( Array.isArray( result.key ) ? result.key[ 0 ] : result.key ),  // 2: App
                   result.correct,                                                                 // 3: Correct
                   result.result,                                                                  // 4: Result
-                  result.created_at,                                                              // 5: Created
-                  result.updated_at,                                                              // 6: Last Update
+                  moment( result.created_at ).format( 'MMMM Do YYYY, h:mm:ss a' ),                                                              // 5: Created
+                  moment( result.updated_at ).format( 'MMMM Do YYYY, h:mm:ss a' ),                                                              // 6: Last Update
                   ''                                                                              // 7: Details Button
                 ];
 
