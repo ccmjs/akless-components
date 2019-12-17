@@ -99,7 +99,7 @@
         ]
       },
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/window/resources/default.css" ],
-      "icon": "https://ccmjs.github.io/digital-maker-space/dms/resources/component.png",
+      "icon": "https://ccmjs.github.io/akless-components/dms/resources/img/component.png",
       "draggable": true
 
   //  "app": [ "ccm.start", "https://ccmjs.github.io/akless-components/blank/ccm.blank.js" ],

@@ -97,7 +97,7 @@
         ]
       },
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/window/resources/default.css" ],
-      "icon": "https://ccmjs.github.io/digital-maker-space/dms/resources/component.png",
+      "icon": "https://ccmjs.github.io/akless-components/dms/resources/img/component.png",
       "draggable": true
 
   //  "app": [ "ccm.start", "https://ccmjs.github.io/akless-components/blank/ccm.blank.js" ],
@@ -126,7 +126,7 @@
 
           // make component URL part of instance configuration
           this.url = this.component.url;
-          this.config = $.stringify( $.integrate( { url: this.url }, $.parse( this.config ) ) );
+          this.config = $.stringify( await $.integrate( { url: this.url }, $.parse( this.config ) ) );
 
         }
 
@@ -210,10 +210,10 @@
        * @param {Object} [config] - priority data for instance configuration
        * @returns {string} bookmarklet
        */
-      this.bookmarklet = config => $.format( 'javascript:!function(){var%20e=document.createElement(%22script%22);e.setAttribute(%22src%22,%22%url%%22),document.head.appendChild(e),e=document.createElement(%22ccm-%index%%22),e.setAttribute(%22style%22,%22position:absolute;top:0%22),e.setAttribute(%22key%22,%22%config%%22),document.body.appendChild(e)}();', {
+      this.bookmarklet = async config => $.format( 'javascript:!function(){var%20e=document.createElement(%22script%22);e.setAttribute(%22src%22,%22%url%%22),document.head.appendChild(e),e=document.createElement(%22ccm-%index%%22),e.setAttribute(%22style%22,%22position:absolute;top:0%22),e.setAttribute(%22key%22,%22%config%%22),document.body.appendChild(e)}();', {
         url: this.url,
         index: this.component.index,
-        config: encodeURI( ( config ? $.stringify( $.integrate( config, $.parse( this.config ) ) ) : this.config ).replace( /"/g, '\\"' ) )
+        config: encodeURI( ( config ? $.stringify( await $.integrate( config, $.parse( this.config ) ) ) : this.config ).replace( /"/g, '\\"' ) )
       } );
 
     }
