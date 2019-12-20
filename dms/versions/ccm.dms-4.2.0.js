@@ -2,7 +2,7 @@
  * @overview ccm component for digital makerspace
  * @author André Kless <andre.kless@web.de> 2018-2019
  * @license MIT License
- * @version latest (4.2.0)
+ * @version 4.2.0
  * @changes
  * version 4.2.0 (20.12.2019):
  * - publish of a component fails if a component with the same name already exists
@@ -29,7 +29,7 @@
 
   const component = {
 
-    name: 'dms',
+    name: 'dms', version: [ 4, 2, 0 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-24.2.0.js',
 
