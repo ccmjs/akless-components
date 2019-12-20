@@ -7,6 +7,7 @@
  * version 4.2.0 (20.12.2019):
  * - publish of a component fails if a component with the same name already exists
  * - publish of a component fails if component is not valid
+ * - uses ccm v24.2.0
  * version 4.1.0 (03.11.2019):
  * - added app filters
  * - uses ccm v24.0.5
@@ -45,7 +46,7 @@
 //    "component_manager": [ "ccm.component", "https://ccmjs.github.io/akless-components/component_manager/versions/ccm.component_manager-3.3.0.js" ],
 //    "components": [ "ccm.store" ],
 //    "default_icon": "https://ccmjs.github.io/akless-components/dms/resources/img/default.png",
-//    "form": [ "ccm.component", "https://ccmjs.github.io/akless-components/submit/versions/ccm.submit-7.2.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/submit/resources/configs.js", "component_meta" ] ],
+//    "form": [ "ccm.component", "https://ccmjs.github.io/akless-components/submit/versions/ccm.submit-7.3.2.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/submit/resources/configs.js", "component_meta" ] ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/dms/resources/html/dms.html" ],
 //    "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js" ],
 //    "listing": { "apps": [ "ccm.component", ... ], "components": [ "ccm.component", ... ] },
