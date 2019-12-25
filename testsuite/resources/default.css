@@ -1,6 +1,6 @@
 /**
  * @overview default layout of ccm component for unit tests
- * @author André Kless <andre.kless@web.de.de> 2016-2017
+ * @author André Kless <andre.kless@web.de.de> 2016-2017, 2019
  * @license The MIT License (MIT)
  */
 
@@ -58,6 +58,7 @@
 
 .table {
   display: table;
+  border-collapse: collapse;
 }
 
 .tr {
@@ -104,12 +105,4 @@
   margin: 0 0.2em;
   background-color: tomato;
   padding: 0 0.1em;
-}
-
-.tr:not(:first-child) .td {
-  border-top: 0;
-}
-
-.td:not(:first-child) {
-  border-left: 0;
 }
