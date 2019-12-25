@@ -2,7 +2,7 @@
  * @overview ccm component for unit tests
  * @author André Kless <andre.kless@web.de> 2016-2017, 2019
  * @license The MIT License (MIT)
- * @version latest (2.0.0)
+ * @version 2.0.0
  * @changes
  * version 2.0.0 (25.12.2019):
  * - uses promises instead of callbacks
@@ -16,7 +16,7 @@
 
   const component = {
 
-    name: 'testsuite',
+    name: 'testsuite', version: [ 2, 0, 0 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-24.2.0.js',
 

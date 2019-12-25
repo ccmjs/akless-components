@@ -1,0 +1,45 @@
+<!--
+@overview HTML templates of ccm component for unit tests
+@author André Kless <andre.kless@web.de.de> 2019
+-->
+
+<ccm-template key="main">
+  <div id="main">
+    <div id="summary">
+      <div id="executed">0</div>
+      <div id="passed">0</div>
+      <div id="failed">0</div>
+    </div>
+    <div id="packages"></div>
+  </div>
+</ccm-template>
+
+<ccm-template key="package">
+  <div class="package">
+    <div class="label">%%</div>
+    <div class="table"></div>
+    <div class="conclusion"></div>
+  </div>
+</ccm-template>
+
+<ccm-template key="test">
+  <div class="tr">
+    <div class="td name">%%</div>
+    <div class="td result"></div>
+  </div>
+</ccm-template>
+
+<ccm-template key="result">
+  <div class="%value%">%value%</div>
+</ccm-template>
+
+<ccm-template key="message">
+  <div class="td details message">%%</div>
+</ccm-template>
+
+<ccm-template key="comparison">
+  <div class="td details comparison">
+    <div class="expected">%%</div>
+    <div class="actual">%%</div>
+  </div>
+</ccm-template>
