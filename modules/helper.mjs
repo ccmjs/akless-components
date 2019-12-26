@@ -1,8 +1,35 @@
 /**
- * @overview module for providing help functions
+ * @overview module for providing ccm helper functions
  * @author André Kless <andre.kless@web.de> 2019
  * @license The MIT License (MIT)
  */
+
+/**
+ * executes action data
+ * @param {Array} action data
+ * @param {Object} [context] - context for this
+ * @param {Object} [ccm=window.ccm] - ccm framework object
+ * @returns {Promise<*>} return value of executed action data
+ * @example action( [ functionName, 'param1', 'param2' ] )
+ * @example action( [ 'functionName', 'param1', 'param2' ] )
+ * @example action( [ 'this.functionName', 'param1', 'param2' ], context )
+ * @example action( [ 'my.namespace.functionName', 'param1', 'param2' ] )
+ * @example action( [ [ 'ccm.load', 'moduleURL#functionName' ], 'param1', 'param2' ] )
+ */
+export async function action( action, context, ccm = window.ccm ) {
+
+  // action is no array? => convert to array
+  if ( !Array.isArray( action ) ) action = [ action ];
+
+  // support import of an external function
+  action[ 0 ] = await ccm.helper.solveDependency( action[ 0 ] );
+
+  // execute action data
+  if ( typeof action[ 0 ] === 'function' )
+    return action[ 0 ].apply( context, action.slice( 1 ) );
+  else
+    return executeByName( action[ 0 ], action.slice( 1 ), context );
+}
 
 /**
  * returns the URL of a ccm-based app
@@ -152,6 +179,26 @@ export async function embedCode( component, store, app_id, template = 'https://c
     .replace( '__INDEX__', index );
 
   return template;
+}
+
+/**
+ * performs a function by function name
+ * @param {string} name - function name
+ * @param {Array} [args] - function arguments
+ * @param {Object} [context] - context for this
+ * @returns {*} return value of performed function
+ * @example action( [ 'functionName', 'param1', 'param2' ] )
+ * @example action( [ 'this.functionName', 'param1', 'param2' ], context )
+ * @example action( [ 'my.namespace.functionName', 'param1', 'param2' ] )
+ */
+export function executeByName( name, args, context ) {
+  const namespaces = name.split( '.' );
+  let flag;
+  if ( namespaces[ 0 ] === 'this' ) flag = !!namespaces.shift();
+  let namespace = flag ? context : window;
+  name = namespaces.pop();
+  namespaces.forEach( value => namespace = namespace[ value ] );
+  return namespace[ name ].apply( context, args );
 }
 
 /**
