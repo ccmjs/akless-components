@@ -6,4 +6,8 @@
 <title>Test Suite (local)</title>
 
 <script src="../testsuite/ccm.testsuite.js"></script>
-<ccm-testsuite key='["ccm.get","../testsuite/resources/resources.js","local"]'></ccm-testsuite>
+<ccm-testsuite key='["ccm.get","../testsuite/resources/resources.js","local"]' package="">
+  <ccm-load-tests.demo src="../testsuite/resources/tests.js"></ccm-load-tests.demo>
+  <!--<ccm-load-tests.ccm src="../../ccm/unit_tests/ccm-tests.js"></ccm-load-tests.ccm>-->
+  <ccm-load-tests.helper src="../unit-tests/module-helper.js"></ccm-load-tests.helper>
+</ccm-testsuite>
