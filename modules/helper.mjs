@@ -4,11 +4,12 @@
  * @license The MIT License (MIT)
  */
 
+/*--------------------------------------------------- Action Data ----------------------------------------------------*/
+
 /**
- * executes action data
+ * @summary executes action data
  * @param {Array} action data
  * @param {Object} [context] - context for this
- * @param {Object} [ccm=window.ccm] - ccm framework object
  * @returns {Promise<*>} return value of executed action data
  * @example action( [ functionName, 'param1', 'param2' ] )
  * @example action( [ 'functionName', 'param1', 'param2' ] )
@@ -16,7 +17,8 @@
  * @example action( [ 'my.namespace.functionName', 'param1', 'param2' ] )
  * @example action( [ [ 'ccm.load', 'moduleURL#functionName' ], 'param1', 'param2' ] )
  */
-export async function action( action, context, ccm = window.ccm ) {
+export async function action( action, context ) {
+  const ccm = framework( arguments );
 
   // action is no array? => convert to array
   if ( !Array.isArray( action ) ) action = [ action ];
@@ -28,8 +30,157 @@ export async function action( action, context, ccm = window.ccm ) {
   if ( typeof action[ 0 ] === 'function' )
     return action[ 0 ].apply( context, action.slice( 1 ) );
   else
-    return executeByName( action[ 0 ], action.slice( 1 ), context );
+    return executeByName( action[ 0 ], action.slice( 1 ), context, ccm );
 }
+
+/**
+ * @summary performs a function by function name
+ * @param {string} name - function name
+ * @param {Array} [args] - function arguments
+ * @param {Object} [context] - context for this
+ * @returns {*} return value of performed function
+ * @example action( [ 'functionName', 'param1', 'param2' ] )
+ * @example action( [ 'this.functionName', 'param1', 'param2' ], context )
+ * @example action( [ 'my.namespace.functionName', 'param1', 'param2' ] )
+ */
+export function executeByName( name, args, context ) {
+  const namespaces = name.split( '.' );
+  let flag;
+  if ( namespaces[ 0 ] === 'this' ) flag = !!namespaces.shift();
+  let namespace = flag ? context : window;
+  name = namespaces.pop();
+  namespaces.forEach( value => namespace = namespace[ value ] );
+  return namespace[ name ].apply( context, args );
+}
+
+/*------------------------------------------------- DOM Manipulation -------------------------------------------------*/
+
+/**
+ * @summary appends content to a HTML element (contained <script> tags will be removed)
+ * @param {Element} element - HTML element
+ * @param {...ccm.types.html} content
+ * @example append( document.body, 'Hello World!' )
+ * @example append( document.body, 'Hello', ' ', 'World', '!' )
+ * @example append( document.body, [ 'Hello', ' ', 'World', '!' ] )
+ * @example append( document.body, [ 'Hello', ' ', [ 'World', '!' ] ] )
+ * @example append( document.body, { inner: 'Hello World!' } )
+ * @example append( document.body, 'Hello', [ ' ', [ { inner: 'World' }, '!' ] ] )
+ */
+export function append( element, content ) {
+  const ccm = framework( arguments );
+
+  // hold content parameters in an array
+  content = [ ...arguments ]; content.shift();
+
+  // append each content to the HTML element
+  content.forEach( content => {
+
+    // is array? => recursive call for each value
+    if ( Array.isArray( content ) )
+      return content.forEach( content => append( element, content, ccm ) );
+
+    // append content
+    content = protect( ccm.helper.html( content ), ccm );
+    if ( typeof content === 'object' )
+      element.appendChild( content );
+    else
+      element.insertAdjacentHTML( 'beforeend', content );
+
+  } );
+
+}
+
+/**
+ * @summary prepends content to a HTML element (contained <script> tags will be removed)
+ * @param {Element} element - HTML element
+ * @param {...ccm.types.html} content
+ * @example prepend( document.body, 'Hello World!' )
+ * @example prepend( document.body, 'Hello', ' ', 'World', '!' )
+ * @example prepend( document.body, [ 'Hello', ' ', 'World', '!' ] )
+ * @example prepend( document.body, [ 'Hello', ' ', [ 'World', '!' ] ] )
+ * @example prepend( document.body, { inner: 'Hello World!' } )
+ * @example prepend( document.body, 'Hello', [ ' ', [ { inner: 'World' }, '!' ] ] )
+ */
+export function prepend( element, content ) {
+  const ccm = framework( arguments );
+
+  // hold content parameters in an array (in reverse order)
+  content = [ ...arguments ].reverse(); content.pop();
+
+  // prepend each content to the HTML element
+  content.forEach( content => {
+
+    // is array? => recursive call for each value
+    if ( Array.isArray( content ) )
+      return content.reverse().forEach( content => prepend( element, content, ccm ) );
+
+    // no child nodes? => append content
+    if ( !element.hasChildNodes() )
+      return append( element, content, ccm );
+
+    // prepend content
+    content = protect( ccm.helper.html( content ), ccm );
+    if ( typeof content === 'object' )
+      element.insertBefore( content, element.firstChild );
+    else
+      element.insertAdjacentHTML( 'afterbegin', content );
+
+  } );
+
+}
+
+/**
+ * @summary replaces a HTML element with an other single HTML element (contained <script> tags will be removed)
+ * @param {Element} element - HTML element (must have a parent)
+ * @param {ccm.types.html} other - other single HTML element
+ * @example replace( document.querySelector( '#myid' ), '<b>World</b>' )
+ * @example replace( document.querySelector( '#myid' ), { tag: 'b', inner: 'World' } )
+ */
+export function replace( element, other ) {
+  const ccm = framework( arguments );
+  element.parentNode && element.parentNode.replaceChild( protect( ccm.helper.html( other ), ccm ), element );
+}
+
+/**
+ * @summary set the content of a HTML element (contained <script> tags will be removed)
+ * @param {Element} element - HTML element
+ * @param {...ccm.types.html} content - new content for the HTML element (old content is cleared)
+ * @example setContent( document.body, 'Hello World!' )
+ * @example setContent( document.body, 'Hello', ' ', 'World', '!' )
+ * @example setContent( document.body, [ 'Hello', ' ', 'World', '!' ] )
+ * @example setContent( document.body, [ 'Hello', ' ', [ 'World', '!' ] ] )
+ * @example setContent( document.body, { inner: 'Hello World!' } )
+ * @example setContent( document.body, 'Hello', [ ' ', [ { inner: 'World' }, '!' ] ] )
+ */
+export function setContent( element, content ) {
+  element.innerHTML = '';           // clear old content
+  append.apply( null, arguments );  // append new content
+}
+
+/*----------------------------------------------------- Security -----------------------------------------------------*/
+
+/**
+ * @summary filters script elements out of given HTML
+ * @param {string|Element} html - HTML String or HTML Element
+ * @returns {string|Element} cleaned HTML
+ * @example protect( "Hello <script>alert('XSS');</script>World!" ) // => 'Hello World!'
+ * @example
+ * // <div>Hello <script>alert('XSS');</script>World!</div>
+ * div = protect( div ); // => <div>Hello, World!</div>
+ */
+export function protect( html ) {
+  const ccm = framework( arguments );
+
+  if ( typeof html === 'string' )
+    return html.replace( /<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '' );
+
+  if ( ccm.helper.isElementNode( html ) )
+    [ ...html.querySelectorAll( 'script' ) ].forEach( ccm.helper.removeElement );
+
+  return html;
+}
+
+/*--------------------------------------------------- Handover App ---------------------------------------------------*/
 
 /**
  * returns the URL of a ccm-based app
@@ -53,19 +204,18 @@ export function appURL( component, store, app_id, website = 'https://ccmjs.githu
  * @param {Element} element - HTML element
  */
 export function copyToClipboard( element ) {
-
   element.select();
   document.execCommand( 'copy' );
-
 }
 
 /**
  * decomposes a given app URL into component URL, component index, component name, component version, store settings and app ID
  * @param {string} app_url - URL of a ccm-based app
- * @param {Object} [ccm=window.ccm] - ccm framework object
+ * @param {ccm.types.framework} [ccm=window.ccm] - ccm framework version to be used internally
  * @returns {Object}
  */
-export function decomposeAppURL( app_url, ccm = window.ccm ) {
+export function decomposeAppURL( app_url ) {
+  const ccm = framework( arguments );
 
   if ( !app_url ) return;
 
@@ -93,10 +243,10 @@ export function decomposeAppURL( app_url, ccm = window.ccm ) {
 /**
  * decomposes a given embed code into component URL, component index, component name, component version, store settings and app ID
  * @param {string} embed_code - embed code of a ccm-based app
- * @param {Object} [ccm=window.ccm] - ccm framework object
  * @returns {Object}
  */
-export function decomposeEmbedCode( embed_code, ccm = window.ccm ) {
+export function decomposeEmbedCode( embed_code ) {
+  const ccm = framework( arguments );
 
   if ( !embed_code ) return;
   embed_code = ccm.helper.html( embed_code );
@@ -156,10 +306,10 @@ export async function downloadApp( embed_code, filename = 'app', title = 'App', 
  * @param {Object} store - settings of ccm data store which contains the ccm instance configuration data set
  * @param {string} app_id - dataset key of ccm instance configuration
  * @param {string} [template='https://ccmjs.github.io/akless-components/resources/templates/embed.html'] - URL of the HTML template file
- * @param {Object} [ccm=window.ccm] - ccm framework object
  * @returns {Promise<string>} generated embed code
  */
-export async function embedCode( component, store, app_id, template = 'https://ccmjs.github.io/akless-components/resources/templates/embed.html', ccm = window.ccm ) {
+export async function embedCode( component, store, app_id, template = 'https://ccmjs.github.io/akless-components/resources/templates/embed.html' ) {
+  const ccm = framework( arguments );
 
   // load content of HTML template file
   template = await fetch( template ).then( response => response.text() );
@@ -179,26 +329,6 @@ export async function embedCode( component, store, app_id, template = 'https://c
     .replace( '__INDEX__', index );
 
   return template;
-}
-
-/**
- * performs a function by function name
- * @param {string} name - function name
- * @param {Array} [args] - function arguments
- * @param {Object} [context] - context for this
- * @returns {*} return value of performed function
- * @example action( [ 'functionName', 'param1', 'param2' ] )
- * @example action( [ 'this.functionName', 'param1', 'param2' ], context )
- * @example action( [ 'my.namespace.functionName', 'param1', 'param2' ] )
- */
-export function executeByName( name, args, context ) {
-  const namespaces = name.split( '.' );
-  let flag;
-  if ( namespaces[ 0 ] === 'this' ) flag = !!namespaces.shift();
-  let namespace = flag ? context : window;
-  name = namespaces.pop();
-  namespaces.forEach( value => namespace = namespace[ value ] );
-  return namespace[ name ].apply( context, args );
 }
 
 /**
@@ -230,9 +360,9 @@ export function fullscreen( element ) {
  * @returns {Promise<void>}
  */
 export async function iBookWidget( embed_code, filename = 'app', title = 'App', folder='app',
-  template = 'https://ccmjs.github.io/akless-components/resources/templates/app.html',
-  info_file = 'https://ccmjs.github.io/akless-components/resources/templates/ibook_widget/Info.plist',
-  image_file = 'https://ccmjs.github.io/akless-components/resources/templates/ibook_widget/Default.png'
+                                   template = 'https://ccmjs.github.io/akless-components/resources/templates/app.html',
+                                   info_file = 'https://ccmjs.github.io/akless-components/resources/templates/ibook_widget/Info.plist',
+                                   image_file = 'https://ccmjs.github.io/akless-components/resources/templates/ibook_widget/Default.png'
 ) {
 
   template = await fetch( template ).then( response => response.text() );                 // load content of HTML template file
@@ -286,9 +416,9 @@ export async function loadScript( url ) {
  * @returns {Promise<void>}
  */
 export async function scorm( embed_code, filename = 'app', title = 'App', identifier = 'App',
-  html_template = 'https://ccmjs.github.io/akless-components/resources/templates/scorm/index.html',
-  manifest_template = 'https://ccmjs.github.io/akless-components/resources/templates/scorm/imsmanifest.xml',
-  api_file = 'https://ccmjs.github.io/akless-components/resources/templates/scorm/SCORM_API_wrapper.js'
+                             html_template = 'https://ccmjs.github.io/akless-components/resources/templates/scorm/index.html',
+                             manifest_template = 'https://ccmjs.github.io/akless-components/resources/templates/scorm/imsmanifest.xml',
+                             api_file = 'https://ccmjs.github.io/akless-components/resources/templates/scorm/SCORM_API_wrapper.js'
 ) {
 
   html_template = await fetch( html_template ).then( response => response.text() );                 // load content of HTML template file
@@ -309,4 +439,24 @@ export async function scorm( embed_code, filename = 'app', title = 'App', identi
   // provide download of generated ZIP file
   saveAs( widgetZip, `${filename}.zip` );
 
+}
+
+/*---------------------------------------- Framework Backwards Compatibility -----------------------------------------*/
+
+/**
+ * @summary returns the reference to the <i>ccm</i> framework version used for internal calls
+ * @description
+ * As the last parameter, each helper function can be given the reference to the ccm framework version to be used for internal calls.<br>
+ * The default return value is the latest framework version registered on the web page (<code>window.ccm</code>).
+ * @param {...*} args - passed helper function arguments (last argument will be checked)
+ * @returns {ccm.types.framework} reference to the internally used <i>ccm</i> framework version
+ */
+function framework( args ) {
+  const last = args[ args.length - 1 ];
+  if ( typeof last === 'object' && last !== null && last.components && last.version ) {
+    delete args[ args.length - 1 ];
+    args.length--;
+    return last;
+  }
+  return window.ccm;
 }
