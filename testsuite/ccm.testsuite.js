@@ -6,6 +6,7 @@
  * @changes
  * version 2.0.0 (25.12.2019):
  * - uses promises instead of callbacks
+ * - uses module helper functions
  * - added error handling
  * - added getValue method
  * - uses ccm v24.2.0
@@ -24,7 +25,8 @@
 
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/testsuite/resources/templates.html" ],
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/testsuite/resources/default.css" ],
-      "onfinish": { "log": true }
+      "onfinish": { "log": true },
+      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/helper.mjs" ]
 
   //  tests
   //  package
@@ -92,7 +94,7 @@
         if ( self.element ) {
           main_elem = $.html( self.html.main );
           packages_elem = main_elem.querySelector( '#packages' );
-          $.setContent( self.element, main_elem );
+          self.helper.setContent( self.element, main_elem );
         }
 
         // process relevant test package (including all subpackages)
@@ -265,7 +267,7 @@
               function addResult( result ) {
                 const value = result ? 'passed' : 'failed';
                 if ( result ) results.passed++; else results.failed++;
-                if ( self.element ) $.setContent( result_elem, $.html( self.html.result, { value: value } ) );
+                if ( self.element ) self.helper.setContent( result_elem, $.html( self.html.result, { value: value } ) );
                 results.details[ package_path + '.' + test.name ] = result;
               }
 

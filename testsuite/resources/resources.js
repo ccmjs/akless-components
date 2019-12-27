@@ -8,8 +8,9 @@ ccm.files[ 'resources.js' ] = {
 
   /** test configuration (relative paths) */
   "local": {
-    "html": [ "ccm.load", "../testsuite/resources/templates.html" ],
-    "css": [ "ccm.load", "../testsuite/resources/default.css" ]
+    "html.1": "../testsuite/resources/templates.html",
+    "css.1": "../testsuite/resources/default.css",
+    "helper.1": "../modules/helper.mjs"
   }
 
 };

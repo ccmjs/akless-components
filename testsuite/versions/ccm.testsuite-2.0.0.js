@@ -6,6 +6,7 @@
  * @changes
  * version 2.0.0 (25.12.2019):
  * - uses promises instead of callbacks
+ * - uses module helper functions
  * - added error handling
  * - added getValue method
  * - uses ccm v24.2.0
@@ -24,7 +25,8 @@
 
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/testsuite/resources/templates.html" ],
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/testsuite/resources/default.css" ],
-      "onfinish": { "log": true }
+      "onfinish": { "log": true },
+      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/helper.mjs" ]
 
   //  tests
   //  package
