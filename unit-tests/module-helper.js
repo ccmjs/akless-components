@@ -14,7 +14,7 @@ ccm.files[ 'module-helper.js' ] = {
 
   action: {
     setup: suite => {
-      suite.add = window.add = window.ccm.add = ( a, b ) => suite.sum = a + b;
+      suite.add = window.add = window.ccm.add = ( a = 0, b = 0 ) => suite.sum = a + b;
       suite.expected = 3;
     },
     tests: {
@@ -24,13 +24,15 @@ ccm.files[ 'module-helper.js' ] = {
       byContext:   async suite => suite.assertSame( suite.expected, await suite.modules.action( [ 'this.add', 1, 2 ], suite ) ),
       byNamespace: async suite => suite.assertSame( suite.expected, await suite.modules.action( [ 'ccm.add',  1, 2 ]        ) ),
       byExternal:  async suite => suite.assertSame( suite.expected, await suite.modules.action( [ [ 'ccm.load', suite.path + '#action' ], [ add, 1, 2 ] ] ) ),
-      useContext:  async suite => suite.assertSame( suite.expected, await suite.modules.action( function () { return this.add( 1, 2 ); }, suite ) )
+      useContext:  async suite => suite.assertSame( suite.expected, await suite.modules.action( function () { return this.add( 1, 2 ); }, suite ) ),
+      noParams:    async suite => suite.assertSame( 0, await suite.modules.action( [ suite.add ] ) ),
+      noArray:     async suite => suite.assertSame( 0, await suite.modules.action(   suite.add   ) )
     },
     finally: () => { delete window.add; delete window.ccm.add; }
   },
   executeByName: {
     setup: suite => {
-      suite.add = window.add = window.ccm.add = ( a, b ) => suite.sum = a + b;
+      suite.add = window.add = window.ccm.add = ( a = 0, b = 0 ) => suite.sum = a + b;
       suite.expected = 3;
     },
     tests: {
@@ -41,7 +43,9 @@ ccm.files[ 'module-helper.js' ] = {
       useContext:  async suite => {
         window.add = function () { return this.add( 1, 2 ); };
         suite.assertSame( suite.expected, await suite.modules.executeByName( 'add', [], window.ccm ) );
-      }
+      },
+      noParams:    async suite => suite.assertSame( 0, await suite.modules.executeByName( 'add', [] ) ),
+      noArray:     async suite => suite.assertSame( 0, await suite.modules.executeByName( 'add' ) )
     },
     finally: () => { delete window.add; delete window.ccm.add; }
   },
@@ -77,6 +81,10 @@ ccm.files[ 'module-helper.js' ] = {
       byMix: suite => {
         suite.modules.append( suite.element, ' ', [ { tag: 'b', inner: 'World' }, [ '!' ] ] );
         suite.assertSame( suite.expected, suite.element.innerText );
+      },
+      protect: suite => {
+        suite.modules.append( suite.element, "<b> World<script>alert('XSS');</script></b>!" );
+        suite.assertSame( suite.expected, suite.element.innerText );
       }
     }
   },
@@ -109,6 +117,10 @@ ccm.files[ 'module-helper.js' ] = {
       byMix: suite => {
         suite.modules.prepend( suite.element, [ 'Hello', [ ' ', { tag: 'b', inner: 'World' } ] ] );
         suite.assertSame( suite.expected, suite.element.innerText );
+      },
+      protect: suite => {
+        suite.modules.prepend( suite.element, "<span>Hello </span><b>World<script>alert('XSS');</script></b>" );
+        suite.assertSame( suite.expected, suite.element.innerText );
       }
     }
   },
@@ -124,6 +136,10 @@ ccm.files[ 'module-helper.js' ] = {
       },
       byJSON: suite => {
         suite.modules.replace( suite.element.querySelector( '#child' ), { tag: 'b', inner: 'World' } );
+        suite.assertSame( suite.expected, suite.element.innerText );
+      },
+      protect: suite => {
+        suite.modules.replace( suite.element.querySelector( '#child' ), "World<script>alert('XSS');</script>" );
         suite.assertSame( suite.expected, suite.element.innerText );
       }
     }
@@ -156,6 +172,10 @@ ccm.files[ 'module-helper.js' ] = {
       },
       byMix: suite => {
         suite.modules.setContent( suite.element, [ 'Hello', [ ' ', { tag: 'b', inner: 'World' }, [ '!' ] ] ] );
+        suite.assertSame( suite.expected, suite.element.innerText );
+      },
+      protect: suite => {
+        suite.modules.setContent( suite.element, "<span>Hello </span><b>World<script>alert('XSS');</script></b>!" );
         suite.assertSame( suite.expected, suite.element.innerText );
       }
     }
