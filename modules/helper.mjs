@@ -37,6 +37,30 @@ export async function action( action, context ) {
 }
 
 /**
+ * @summary converts an array to an object
+ * @param {Array|object} obj - array or object that contains the array
+ * @param {string} [key] - object property where the array is contained
+ * @returns {Object.<string,boolean>} resulting object
+ * @example console.log( arrToObj( [ 'foo', 'bar' ] ) );  // => { foo: true, bar: true }
+ * @example console.log( arrToObj( { key: [ 'foo', 'bar' ] }, 'key' ) );  // => { foo: true, bar: true }
+ * @example
+ * const obj = { key: [ 'foo', 'bar' ] };
+ * arrToObj( obj, 'key' );  // without return value (original object is manipulated)
+ * console.log( obj );      // => { key: { foo: true, bar: true } }
+ */
+export function arrToObj( obj, key ) {
+
+  const arr = key ? obj[ key ] : obj;
+  if ( !Array.isArray( arr ) ) return null;
+
+  const result = {};
+  arr.forEach( value => result[ value ] = true );
+  if ( key ) obj[ key ] = result;
+  return result;
+
+}
+
+/**
  * @summary performs a function by function name
  * @param {string} name - function name
  * @param {Array} [args] - function arguments
