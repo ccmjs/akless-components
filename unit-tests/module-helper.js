@@ -186,11 +186,11 @@ ccm.files[ 'module-helper.js' ] = {
   fillFormData: {
     setup: suite => {
       suite.element = document.createElement( 'div' );
-      suite.test = ( input, value = 'Hello World!', key = 'key' ) => {
+      suite.test = ( input, value = 'Hello World!', key = 'key', expected = value ) => {
         suite.element.innerHTML = input.replace( /%key%/g, key );
         const data = {}; data[ key ] = value;
         suite.modules.fillForm( suite.element, data );
-        suite.assertEquals( value, suite.ccm.helper.deepValue( suite.modules.formData( suite.element ), key ) );
+        suite.assertEquals( expected, suite.ccm.helper.deepValue( suite.modules.formData( suite.element ), key ) );
       };
     },
     tests: {
@@ -219,7 +219,8 @@ ccm.files[ 'module-helper.js' ] = {
       textarea:        suite => suite.test( "<textarea name='%key%'>" ),
       contenteditable: suite => suite.test( "<div contenteditable name='%key%'>" ),
       deeperProperty:  suite => suite.test( "<input type='text' name='%key%'>", 'value', 'deep.property.key' ),
-      complexData:     suite => suite.test( "<input type='text' name='%key%'>", { number: [ 1, 2, { a: 3 } ], checked: true, value: 'Hello World!' } )
+      complexData:     suite => suite.test( "<input type='text' name='%key%'>", { number: [ 1, 2, { a: 3 } ], checked: true, value: 'Hello World!' } ),
+      protect:         suite => suite.test( "<div contenteditable name='%key%'>", "Hello <script>alert('XSS');</script>World!", undefined, 'Hello World!' )
     }
   },
 
