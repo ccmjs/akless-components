@@ -36,6 +36,8 @@ export async function action( action, context ) {
     return executeByName( action[ 0 ], action.slice( 1 ), context, ccm );
 }
 
+/*------------------------------------------------- Data Conversion --------------------------------------------------*/
+
 /**
  * @summary converts an array to an object
  * @param {Array|object} obj - array or object that contains the array
