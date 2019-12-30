@@ -7,15 +7,18 @@
 /*--------------------------------------------------- Action Data ----------------------------------------------------*/
 
 /**
- * @summary executes action data
+ * @summary executes action data (performs a predefined function call)
  * @param {Array} action data
  * @param {Object} [context] - context for this
  * @returns {Promise<*>} return value of executed action data
  * @example action( [ functionName, 'param1', 'param2' ] )
  * @example action( [ 'functionName', 'param1', 'param2' ] )
  * @example action( [ 'this.functionName', 'param1', 'param2' ], context )
+ * @example action( [ function () { console.log( this ); } ], context )
  * @example action( [ 'my.namespace.functionName', 'param1', 'param2' ] )
  * @example action( [ [ 'ccm.load', 'moduleURL#functionName' ], 'param1', 'param2' ] )
+ * @example action( [ functionName ] )  // without parameters
+ * @example action( functionName )      // without array
  */
 export async function action( action, context ) {
   const ccm = framework( arguments );
@@ -155,6 +158,200 @@ export function replace( element, other ) {
 export function setContent( element, content ) {
   element.innerHTML = '';           // clear old content
   append.apply( null, arguments );  // append new content
+}
+
+/*----------------------------------------------- HTML Input Elements ------------------------------------------------*/
+
+/**
+ * @summary fills input elements with values
+ * @param {Element} element - HTML element which contains the input elements (must not be a HTML form tag)
+ * @param {Object} data - contains the values for the input elements
+ * @example
+ * // <body><input type="text" name="user"><input type="password" name="secret"></body>
+ * fillForm( document.body, { user: 'JohnDoe', secret: '1aA' } );
+ * console.log( formData( document.body ) ); // { user: 'JohnDoe', secret: '1aA' }
+ * @example
+ * // <body><input type="checkbox" name="agreed"></body> (boolean checkbox)
+ * fillForm( document.body, { agreed: true } );
+ * console.log( formData( document.body ) ); // { agreed: true }
+ * @example
+ * // <body><input type="checkbox" name="role" value="Coordinator"></body> (value checkbox)
+ * fillForm( document.body, { role: 'Coordinator' } );
+ * console.log( formData( document.body ) ); // { role: 'Coordinator' }
+ * @example
+ * // <body><input type="checkbox" name="types" value="A"><input type="checkbox" name="types" value="B"></body> (multi checkbox)
+ * fillForm( document.body, { types: [ 'A', 'B' ] } );
+ * console.log( formData( document.body ) ); // { types: [ 'A', 'B' ] }
+ * @example
+ * // <body><input type="radio" name="choice" value="A"><input type="radio" name="choice" value="B"></body> (radio buttons)
+ * fillForm( document.body, { choice: 'A' } );
+ * console.log( formData( document.body ) ); // { choice: 'A' }
+ * @example
+ * // <body><select name="item"><option value="A">Item A</option><option value="B">Item B</option></select></body> (selector box)
+ * fillForm( document.body, { item: 'A' } );
+ * console.log( formData( document.body ) ); // { item: 'A' }
+ * @example
+ * // <body><select name="item"><option>A</option><option>B</option></select></body> (selector box without values)
+ * fillForm( document.body, { item: 'A' } );
+ * console.log( formData( document.body ) ); // { item: 'A' }
+ * @example
+ * // <body><select multiple name="items"><option value="A">Item A</option><option value="B">Item B</option></select></body> (multi-selector box)
+ * fillForm( document.body, { items: [ 'A', 'B' ] } );
+ * console.log( formData( document.body ) ); // { items: [ 'A', 'B' ] }
+ * @example
+ * // <body><textarea name="description"></description></body> (textarea)
+ * fillForm( document.body, { description: 'Hello World!' } );
+ * console.log( formData( document.body ) ); // { description: 'Hello World!' }
+ * @example
+ * // <body><div contenteditable name="topic"></div></body> (in-place editing with contenteditable)
+ * fillForm( document.body, { topic: 'Hello World!' } );
+ * console.log( formData( document.body ) ); // { topic: 'Hello World!' }
+ * @example
+ * // <body><input type="text" name="deep.property.key"></input></body> (deep property value)
+ * fillForm( document.body, { 'deep.property.key': 'value' } );
+ * console.log( formData( document.body ) ); // { deep: { property: { key: 'value' } } }
+ * @example
+ * // <body><input type="text" name="data"></input></body> (complex data value)
+ * fillForm( document.body, { data: { number: [ 1, 2, { a: 3 } ], checked: true, value: 'Hello World!' } } );
+ * console.log( formData( document.body ) ); // { data: { number: [ 1, 2, { a: 3 } ], checked: true, value: 'Hello World!' } }
+ */
+export function fillForm( element, data ) {
+  const ccm = framework( arguments );
+
+  data = ccm.helper.clone( data );
+  const dot = ccm.helper.toDotNotation( data, true );
+  for ( const key in dot ) data[ key ] = dot[ key ];
+  for ( const key in data ) {
+    if ( !data[ key ] ) continue;
+    if ( typeof data[ key ] === 'object' ) data[ key ] = ccm.helper.encodeObject( data[ key ] );
+    if ( typeof data[ key ] === 'string' ) data[ key ] = ccm.helper.unescapeHTML( data[ key ] );
+    element.querySelectorAll( '[name="' + key + '"]' ).forEach( input => {
+      if ( input.type === 'checkbox' ) {
+        if ( input.value && typeof data[ key ] === 'string' && data[ key ].charAt( 0 ) === '[' )
+          ccm.helper.decodeObject( data[ key ] ).forEach( value => { if ( value === input.value ) input.checked = true; } );
+        else
+          input.checked = true;
+      }
+      else if ( input.type === 'radio' ) {
+        if ( data[ key ] === input.value )
+          input.checked = true;
+      }
+      else if ( input.tagName.toLowerCase() === 'select' ) {
+        if ( input.hasAttribute( 'multiple' ) )
+          data[ key ] = ccm.helper.decodeObject( data[ key ] );
+        input.querySelectorAll( 'option' ).forEach( option => {
+          if ( input.hasAttribute( 'multiple' ) )
+            data[ key ].forEach( value => ccm.helper.encodeObject( value ) === ( option.value ? option.value : option.innerHTML.trim() ) && ( option.selected = true ) );
+          else if ( data[ key ] === ( option.value ? option.value : option.innerHTML.trim() ) )
+            option.selected = true;
+        } );
+      }
+      else if ( input.value === undefined )
+        input.innerHTML = protect( data[ key ], ccm );
+      else
+        input.value = data[ key ];
+    } );
+  }
+
+}
+
+/**
+ * @summary gets the values of input elements
+ * @param {Element} element - HTML element which contains the input elements (must not be a HTML form tag)
+ * @returns {Object} values of the input elements
+ * @example
+ * // <body><input type="text" name="user"><input type="password" name="secret"></body>
+ * fillForm( document.body, { user: 'JohnDoe', secret: '1aA' } );
+ * console.log( formData( document.body ) ); // { user: 'JohnDoe', secret: '1aA' }
+ * @example
+ * // <body><input type="checkbox" name="agreed"></body> (boolean checkbox)
+ * fillForm( document.body, { agreed: true } );
+ * console.log( formData( document.body ) ); // { agreed: true }
+ * @example
+ * // <body><input type="checkbox" name="role" value="Coordinator"></body> (value checkbox)
+ * fillForm( document.body, { role: 'Coordinator' } );
+ * console.log( formData( document.body ) ); // { role: 'Coordinator' }
+ * @example
+ * // <body><input type="checkbox" name="types" value="A"><input type="checkbox" name="types" value="B"></body> (multi checkbox)
+ * fillForm( document.body, { types: [ 'A', 'B' ] } );
+ * console.log( formData( document.body ) ); // { types: [ 'A', 'B' ] }
+ * @example
+ * // <body><input type="radio" name="choice" value="A"><input type="radio" name="choice" value="B"></body> (radio buttons)
+ * fillForm( document.body, { choice: 'A' } );
+ * console.log( formData( document.body ) ); // { choice: 'A' }
+ * @example
+ * // <body><select name="item"><option value="A">Item A</option><option value="B">Item B</option></select></body> (selector box)
+ * fillForm( document.body, { item: 'A' } );
+ * console.log( formData( document.body ) ); // { item: 'A' }
+ * @example
+ * // <body><select name="item"><option>A</option><option>B</option></select></body> (selector box without values)
+ * fillForm( document.body, { item: 'A' } );
+ * console.log( formData( document.body ) ); // { item: 'A' }
+ * @example
+ * // <body><select multiple name="items"><option value="A">Item A</option><option value="B">Item B</option></select></body> (multi-selector box)
+ * fillForm( document.body, { items: [ 'A', 'B' ] } );
+ * console.log( formData( document.body ) ); // { items: [ 'A', 'B' ] }
+ * @example
+ * // <body><textarea name="description"></description></body> (textarea)
+ * fillForm( document.body, { description: 'Hello World!' } );
+ * console.log( formData( document.body ) ); // { description: 'Hello World!' }
+ * @example
+ * // <body><div contenteditable name="topic"></div></body> (in-place editing with contenteditable)
+ * fillForm( document.body, { topic: 'Hello World!' } );
+ * console.log( formData( document.body ) ); // { topic: 'Hello World!' }
+ * @example
+ * // <body><input type="text" name="deep.property.key"></input></body> (deep property value)
+ * fillForm( document.body, { 'deep.property.key': 'value' } );
+ * console.log( formData( document.body ) ); // { deep: { property: { key: 'value' } } }
+ * @example
+ * // <body><input type="text" name="data"></input></body> (complex data value)
+ * fillForm( document.body, { data: { number: [ 1, 2, { a: 3 } ], checked: true, value: 'Hello World!' } } );
+ * console.log( formData( document.body ) ); // { data: { number: [ 1, 2, { a: 3 } ], checked: true, value: 'Hello World!' } }
+ */
+export function formData( element ) {
+  const ccm = framework( arguments );
+
+  const data = {};
+  element.querySelectorAll( '[name]' ).forEach( input => {
+    let name = input.getAttribute( 'name' );
+    if ( input.type === 'checkbox' ) {
+      const value = input.checked ? ( input.value === 'on' ? true : input.value ) : ( input.value === 'on' ? false : '' );
+      const multi = [ ...element.querySelectorAll( '[name="' + name + '"]' ) ].length > 1;
+      if ( multi ) {
+        if ( !data[ name ] ) data[ name ] = [];
+        value && data[ name ].push( value );
+      }
+      else data[ name ] = value;
+    }
+    else if ( input.type === 'radio' )
+      data[ name ] = input.checked ? input.value : ( data[ name ] ? data[ name ] : '' );
+    else if ( input.tagName.toLowerCase() === 'select' ) {
+      let result = [];
+      if ( input.hasAttribute( 'multiple' ) )
+        input.querySelectorAll( 'option' ).forEach( option => option.selected && result.push( option.value ? option.value : option.inner ) );
+      else
+        input.querySelectorAll( 'option' ).forEach( option => {
+          if ( option.selected ) result = option.value ? option.value : option.inner;
+        } );
+      data[ name ] = result;
+    }
+    else if ( input.type === 'number' || input.type === 'range' ) {
+      let value = parseInt( input.value );
+      if ( isNaN( value ) ) value = '';
+      data[ name ] = value;
+    }
+    else if ( input.value !== undefined )
+      data[ name ] = input.value;
+    else
+      data[ input.getAttribute( 'name' ) ] = input.innerHTML;
+    try {
+      if ( typeof data[ name ] === 'string' )
+        if ( ccm.helper.regex( 'json' ).test( data[ name ] ) )
+          data[ name ] = ccm.helper.decodeObject( data[ name ] );
+    } catch ( err ) {}
+  } );
+  return ccm.helper.solveDotNotation( data );
+
 }
 
 /*----------------------------------------------------- Security -----------------------------------------------------*/
