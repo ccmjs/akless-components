@@ -50,6 +50,21 @@ ccm.files[ 'module-helper.js' ] = {
     finally: () => { delete window.add; delete window.ccm.add; }
   },
 
+/*------------------------------------------------- Data Conversion --------------------------------------------------*/
+
+  arrToObj: {
+    setup: suite => suite.expected = { foo: true, bar: true },
+    tests: {
+      byArray:  suite => suite.assertEquals( suite.expected, suite.modules.arrToObj( [ 'foo', 'bar' ] ) ),
+      byObject: suite => suite.assertEquals( suite.expected, suite.modules.arrToObj( { key: [ 'foo', 'bar' ] }, 'key' ) ),
+      noReturn: suite => {
+        const obj = { key: [ 'foo', 'bar' ] };
+        suite.modules.arrToObj( obj, 'key' );
+        suite.assertEquals( suite.expected, obj.key );
+      }
+    }
+  },
+
 /*------------------------------------------------- DOM Manipulation -------------------------------------------------*/
 
   append: {
