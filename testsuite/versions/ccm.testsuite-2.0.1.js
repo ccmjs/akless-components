@@ -2,7 +2,7 @@
  * @overview ccm component for unit tests
  * @author André Kless <andre.kless@web.de> 2016-2017, 2019
  * @license The MIT License (MIT)
- * @version latest (2.0.1)
+ * @version 2.0.1
  * @changes
  * version 2.0.1 (30.12.2019):
  * - bug fix for assertEquals with strings
@@ -19,7 +19,7 @@
 
   const component = {
 
-    name: 'testsuite',
+    name: 'testsuite', version: [ 2, 0, 1 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-24.2.0.js',
 
