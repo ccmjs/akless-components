@@ -50,6 +50,21 @@ ccm.files[ 'module-helper.js' ] = {
     finally: () => { delete window.add; delete window.ccm.add; }
   },
 
+/*--------------------------------------------- Asynchronous Programming ---------------------------------------------*/
+
+  asyncForEach: {
+    tests: {
+      waitSum: async suite => {
+        let sum = 0;
+        await suite.modules.asyncForEach( [ 1, 2, 3 ], async ( value, i, array ) => {
+          await suite.ccm.helper.sleep( value );
+          sum += value + i + array.length
+        } );
+        suite.assertSame( 18, sum );
+      }
+    }
+  },
+
 /*------------------------------------------------- Data Conversion --------------------------------------------------*/
 
   arrToObj: {
