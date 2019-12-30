@@ -36,6 +36,47 @@ export async function action( action, context ) {
     return executeByName( action[ 0 ], action.slice( 1 ), context, ccm );
 }
 
+/**
+ * @summary performs a function by function name
+ * @param {string} name - function name
+ * @param {Array} [args] - function arguments
+ * @param {Object} [context] - context for this
+ * @returns {*} return value of performed function
+ * @example action( [ 'functionName', 'param1', 'param2' ] )
+ * @example action( [ 'this.functionName', 'param1', 'param2' ], context )
+ * @example action( [ 'my.namespace.functionName', 'param1', 'param2' ] )
+ */
+export function executeByName( name, args, context ) {
+  const namespaces = name.split( '.' );
+  let flag;
+  if ( namespaces[ 0 ] === 'this' ) flag = !!namespaces.shift();
+  let namespace = flag ? context : window;
+  name = namespaces.pop();
+  namespaces.forEach( value => namespace = namespace[ value ] );
+  return namespace[ name ].apply( context, args );
+}
+
+/*--------------------------------------------- Asynchronous Programming ---------------------------------------------*/
+
+/**
+ * @summary workaround for an asynchronous foreach
+ * @param {Array} array - array to be iterated
+ * @param {Function} callback - asynchronous function that is called for each array value
+ * @returns {Promise<void>}
+ * @example
+ * const waiting_times = [ 100, 200, 300 ];
+ * await asyncForEach( waiting_times, async ( value, i, array ) => {
+ *   await ccm.helper.sleep( value );
+ *   console.log( value, i, array );
+ * } );
+ */
+export async function asyncForEach( array, callback ) {
+
+  for ( let i = 0; i < array.length; i++ )
+    await callback( array[ i ], i, array );
+
+}
+
 /*------------------------------------------------- Data Conversion --------------------------------------------------*/
 
 /**
@@ -60,26 +101,6 @@ export function arrToObj( obj, key ) {
   if ( key ) obj[ key ] = result;
   return result;
 
-}
-
-/**
- * @summary performs a function by function name
- * @param {string} name - function name
- * @param {Array} [args] - function arguments
- * @param {Object} [context] - context for this
- * @returns {*} return value of performed function
- * @example action( [ 'functionName', 'param1', 'param2' ] )
- * @example action( [ 'this.functionName', 'param1', 'param2' ], context )
- * @example action( [ 'my.namespace.functionName', 'param1', 'param2' ] )
- */
-export function executeByName( name, args, context ) {
-  const namespaces = name.split( '.' );
-  let flag;
-  if ( namespaces[ 0 ] === 'this' ) flag = !!namespaces.shift();
-  let namespace = flag ? context : window;
-  name = namespaces.pop();
-  namespaces.forEach( value => namespace = namespace[ value ] );
-  return namespace[ name ].apply( context, args );
 }
 
 /*------------------------------------------------- DOM Manipulation -------------------------------------------------*/
