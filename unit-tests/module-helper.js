@@ -181,6 +181,48 @@ ccm.files[ 'module-helper.js' ] = {
     }
   },
 
+/*----------------------------------------------- HTML Input Elements ------------------------------------------------*/
+
+  fillFormData: {
+    setup: suite => {
+      suite.element = document.createElement( 'div' );
+      suite.test = ( input, value = 'Hello World!', key = 'key' ) => {
+        suite.element.innerHTML = input.replace( /%key%/g, key );
+        const data = {}; data[ key ] = value;
+        suite.modules.fillForm( suite.element, data );
+        suite.assertEquals( value, suite.ccm.helper.deepValue( suite.modules.formData( suite.element ), key ) );
+      };
+    },
+    tests: {
+      text:            suite => suite.test( "<input type='text'     name='%key%'>" ),
+      password:        suite => suite.test( "<input type='password' name='%key%'>" ),
+      search:          suite => suite.test( "<input type='search'   name='%key%'>" ),
+      hidden:          suite => suite.test( "<input type='hidden'   name='%key%'>" ),
+      email:           suite => suite.test( "<input type='email'    name='%key%'>", 'john.doe@web.de' ),
+      url:             suite => suite.test( "<input type='url'      name='%key%'>", 'https://www.john-doe.com' ),
+      tel:             suite => suite.test( "<input type='tel'      name='%key%'>", '0123456789' ),
+      number:          suite => suite.test( "<input type='number'   name='%key%'>", 3 ),
+      range:           suite => suite.test( "<input type='range'    name='%key%'>", 3 ),
+      color:           suite => suite.test( "<input type='color'    name='%key%'>", '#abcdef' ),
+      time:            suite => suite.test( "<input type='time'     name='%key%'>", '19:41' ),
+      week:            suite => suite.test( "<input type='week'     name='%key%'>", '2019-W52' ),
+      month:           suite => suite.test( "<input type='month'    name='%key%'>", '2017-11' ),
+      date:            suite => suite.test( "<input type='date'     name='%key%'>", '2019-12-29' ),
+      datetimeLocal:   suite => suite.test( "<input type='datetime-local' name='%key%'>", '2019-12-29T19:35' ),
+      boolCheckbox:    suite => suite.test( "<input type='checkbox' name='%key%'>", true ),
+      valueCheckbox:   suite => suite.test( "<input type='checkbox' name='%key%' value='Hello World!'>" ),
+      multiCheckbox:   suite => suite.test( "<input type='checkbox' name='%key%' value='A'><input type='checkbox' name='%key%' value='B'><input type='checkbox' name='%key%' value='C'>", [ 'A', 'C' ] ),
+      radio:           suite => suite.test( "<input type='radio'    name='%key%' value='A'><input type='radio'    name='%key%' value='B'>", 'A' ),
+      valueSelect:     suite => suite.test( "<select name='%key%'><option value='A'></option><option value='B'></option></select>", 'A' ),
+      innerSelect:     suite => suite.test( "<select name='%key%'><option>A</option><option>B</option></select>", 'A' ),
+      multiSelect:     suite => suite.test( "<select multiple name='%key%'><option>A</option><option>B</option><option>C</option></select>", [ 'A', 'C' ] ),
+      textarea:        suite => suite.test( "<textarea name='%key%'>" ),
+      contenteditable: suite => suite.test( "<div contenteditable name='%key%'>" ),
+      deeperProperty:  suite => suite.test( "<input type='text' name='%key%'>", 'value', 'deep.property.key' ),
+      complexData:     suite => suite.test( "<input type='text' name='%key%'>", { number: [ 1, 2, { a: 3 } ], checked: true, value: 'Hello World!' } )
+    }
+  },
+
 /*----------------------------------------------------- Security -----------------------------------------------------*/
 
   protect: {
