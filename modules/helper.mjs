@@ -103,6 +103,34 @@ export function arrToObj( obj, key ) {
 
 }
 
+/**
+ * cleans an object from falsy values
+ * @param {object|Array} obj - object or array
+ * @param {boolean} [deep] - clean also deeper properties (recursive)
+ * @returns {object|Array} cleaned object (or array)
+ * @example cleanObject( [ 'foo', false, 0, '', null, undefined, [], {} ] )  // => [ 'foo', [], {} ]
+ */
+export function cleanObject( obj, deep ) {
+  const ccm = framework( arguments );
+
+  if ( Array.isArray( obj ) ) {
+    for ( let i = obj.length - 1; i >= 0; i-- )
+      if ( !obj[ i ] )
+        obj.splice( i, 1 );
+      else if ( deep && typeof obj[ i ] === 'object' && !ccm.helper.isSpecialObject( obj[ i ] ) )
+        cleanObject( obj[ i ], ccm );
+  }
+  else
+    for ( const key in obj )
+      if ( obj.hasOwnProperty( key ) )
+        if ( !obj[ key ] )
+          delete obj[ key ];
+        else if ( deep && typeof obj[ key ] === 'object' && !ccm.helper.isSpecialObject( obj[ key ] ) )
+          cleanObject( obj[ key ], ccm );
+
+  return obj;
+}
+
 /*------------------------------------------------- DOM Manipulation -------------------------------------------------*/
 
 /**
