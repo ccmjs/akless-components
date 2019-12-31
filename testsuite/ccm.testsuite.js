@@ -4,8 +4,9 @@
  * @license The MIT License (MIT)
  * @version latest (2.0.1)
  * @changes
- * version 2.0.1 (30.12.2019):
+ * version 2.0.1 (31.12.2019):
  * - bug fix for assertEquals with strings
+ * - uses helper.asyncForEach from module
  * version 2.0.0 (25.12.2019):
  * - uses promises instead of callbacks
  * - uses module helper functions
@@ -149,7 +150,7 @@
             }
 
             // run unit tests
-            await $.asyncForEach( Object.keys( tests ).map( key => tests[ key ] ), async test => {
+            await self.helper.asyncForEach( Object.keys( tests ).map( key => tests[ key ] ), async test => {
 
               // has website area?
               if ( self.element ) {
@@ -243,7 +244,7 @@
 
               };
 
-              await $.asyncForEach( setups, async setup => setup( suite ) );  // run setup functions
+              await self.helper.asyncForEach( setups, async setup => setup( suite ) );  // run setup functions
               results.executed++;                                             // increase counters for executed tests
 
               // run current unit test (with error handling)
@@ -263,7 +264,7 @@
               }
 
               // run all relevant finally functions
-              await $.asyncForEach( finallies, final => final( suite ) );
+              await self.helper.asyncForEach( finallies, final => final( suite ) );
 
               /** replaces loading icon with test result and increases passed or failed counter */
               function addResult( result ) {
@@ -281,7 +282,7 @@
 
               /** show expected and actual value as detail information for a failed test */
               function addComparison( expected, actual ) {
-                if ( self.element ) test_elem.appendChild( $.html( self.html.comparison, $.stringify( expected ), '' + $.stringify( actual ) ) );
+                if ( self.element ) test_elem.appendChild( $.html( self.html.comparison, typeof expected === 'object' ? $.stringify( expected ) : '' + expected, typeof actual === 'object' ? $.stringify( actual ) : '' + actual ) );
                 results.details[ package_path + '.' + test.name ] = { expected: expected, actual: actual };
               }
 
