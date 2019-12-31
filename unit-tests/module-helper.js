@@ -79,6 +79,30 @@ ccm.files[ 'module-helper.js' ] = {
       }
     }
   },
+  cleanObject: {
+    tests: {
+      byArray:  suite => suite.assertEquals( [ 'foo', [], {} ], suite.modules.cleanObject( [ 'foo', false, 0, '', null, undefined, [], {} ] ) ),
+      byObject: suite => suite.assertEquals( { a: 'foo', g: [], h: {} }, suite.modules.cleanObject( { a: 'foo', b: false, c: 0, d: '', e: null, f: undefined, g: [], h: {} } ) ),
+      deepArrayFalse: suite => suite.assertEquals( [
+        'Hello World!', [], {},
+        [ 'foo', false, 0, '', null, undefined, [], {} ],
+        { a: 'bar', b: false, c: 0, d: '', e: null, f: undefined, g: [], h: {} }
+      ], suite.modules.cleanObject( [
+        'Hello World!', false, 0, '', null, undefined, [], {},
+        [ 'foo', false, 0, '', null, undefined, [], {} ],
+        { a: 'bar', b: false, c: 0, d: '', e: null, f: undefined, g: [], h: {} }
+      ] ) ),
+      deepArrayTrue: suite => suite.assertEquals( [
+        'Hello World!', [], {},
+        [ 'foo', [], {} ],
+        { a: 'bar', g: [], h: {} }
+      ], suite.modules.cleanObject( [
+        'Hello World!', false, 0, '', null, undefined, [], {},
+        [ 'foo', false, 0, '', null, undefined, [], {} ],
+        { a: 'bar', b: false, c: 0, d: '', e: null, f: undefined, g: [], h: {} }
+      ], true ) )
+    }
+  },
 
 /*------------------------------------------------- DOM Manipulation -------------------------------------------------*/
 
