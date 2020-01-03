@@ -65,7 +65,64 @@ ccm.files[ 'module-helper.js' ] = {
     }
   },
 
-/*------------------------------------------------- Data Conversion --------------------------------------------------*/
+/*------------------------------------------------- Data Management --------------------------------------------------*/
+
+  dataset: {
+    setup: async suite => {
+      suite.store = await suite.ccm.store();
+      suite.key = 'dataset_key';
+      suite.dataset = { key: suite.key, foo: 'bar' };
+    },
+    tests: {
+      exists: async suite => {
+        await suite.store.set( suite.dataset );
+        suite.assertEquals( suite.dataset, await suite.modules.dataset( { store: suite.store, key: suite.key } ) );
+      },
+      notExists: async suite => suite.assertEquals( { key: suite.key }, await suite.modules.dataset( { store: suite.store, key: suite.key } ) ),
+      notStored: async suite => {
+        await suite.modules.dataset( { store: suite.store, key: suite.key } );
+        suite.assertFalse( await suite.store.get( suite.key ) );
+      },
+      generated: async suite => {
+        const dataset = await suite.modules.dataset( { store: suite.store } );
+        suite.assertTrue( Object.keys( dataset ).length === 1 && ccm.helper.isKey( dataset.key ) );
+      },
+      datasetAsSettings: async suite => suite.assertEquals( suite.dataset, await suite.modules.dataset( suite.dataset ) ),
+      datasetAsKey: async suite => suite.assertEquals( suite.dataset, await suite.modules.dataset( { store: suite.store, key: suite.dataset } ) ),
+      default: async suite => suite.assertEquals( {}, await suite.modules.dataset() ),
+      cloned: async suite => suite.assertNotSame( suite.dataset, await suite.modules.dataset( suite.dataset ) ),
+      userLogin: async suite => {
+        suite.store.user = { login: () => {} };
+        await suite.store.set( suite.dataset );
+        suite.assertEquals( suite.dataset, await suite.modules.dataset( { store: suite.store, key: suite.key, login: true } ) );
+      },
+      userLoginFailed: async suite => {
+        try {
+          suite.store.user = { login: function () { throw new Error( 'Authentication failed' ); } };
+          await suite.modules.dataset( { store: suite.store, key: suite.key, login: true } );
+          suite.failed( 'Exception was not caught' );
+        }
+        catch( e ) {
+          suite.passed();
+        }
+      },
+      userSpecificKey: async suite => {
+        suite.store.user = { isLoggedIn: () => true, data: () => { return { key: 'john' } }, ccm: true, component: { Instance: true } };
+        await suite.store.set( { key: [ suite.key, 'john' ], foo: 'bar' } );
+        suite.assertEquals( { key: [ suite.key, 'john' ], foo: 'bar' }, await suite.modules.dataset( { store: suite.store, key: suite.key, user: true } ) );
+      },
+      permissions: async suite => {
+        const permissions = { creator: 'john', realm: 'guest', access: 'creator' };
+        suite.assertEquals( { key: suite.key, _: permissions }, await suite.modules.dataset( { store: suite.store, key: suite.key, permissions: permissions } ) );
+      },
+      convert: async suite => {
+        await suite.store.set( suite.dataset );
+        suite.assertEquals( { key: suite.key, foo: 'BAR' }, await suite.modules.dataset( { store: suite.store, key: suite.key, convert: dataset => { dataset.foo = dataset.foo.toUpperCase(); return dataset; } } ) );
+      }
+    }
+  },
+
+/*----------------------------------------------- Data Transformation ------------------------------------------------*/
 
   arrToObj: {
     setup: suite => suite.expected = { foo: true, bar: true },
@@ -133,61 +190,18 @@ ccm.files[ 'module-helper.js' ] = {
       }
     }
   },
-
-/*------------------------------------------------- Data Management --------------------------------------------------*/
-
-  dataset: {
-    setup: async suite => {
-      suite.store = await suite.ccm.store();
-      suite.key = 'dataset_key';
-      suite.dataset = { key: suite.key, foo: 'bar' };
-    },
+  decodeJSON: {
     tests: {
-      exists: async suite => {
-        await suite.store.set( suite.dataset );
-        suite.assertEquals( suite.dataset, await suite.modules.dataset( { store: suite.store, key: suite.key } ) );
-      },
-      notExists: async suite => suite.assertEquals( { key: suite.key }, await suite.modules.dataset( { store: suite.store, key: suite.key } ) ),
-      notStored: async suite => {
-        await suite.modules.dataset( { store: suite.store, key: suite.key } );
-        suite.assertFalse( await suite.store.get( suite.key ) );
-      },
-      generated: async suite => {
-        const dataset = await suite.modules.dataset( { store: suite.store } );
-        suite.assertTrue( Object.keys( dataset ).length === 1 && ccm.helper.isKey( dataset.key ) );
-      },
-      datasetAsSettings: async suite => suite.assertEquals( suite.dataset, await suite.modules.dataset( suite.dataset ) ),
-      datasetAsKey: async suite => suite.assertEquals( suite.dataset, await suite.modules.dataset( { store: suite.store, key: suite.dataset } ) ),
-      default: async suite => suite.assertEquals( {}, await suite.modules.dataset() ),
-      cloned: async suite => suite.assertNotSame( suite.dataset, await suite.modules.dataset( suite.dataset ) ),
-      userLogin: async suite => {
-        suite.store.user = { login: () => {} };
-        await suite.store.set( suite.dataset );
-        suite.assertEquals( suite.dataset, await suite.modules.dataset( { store: suite.store, key: suite.key, login: true } ) );
-      },
-      userLoginFailed: async suite => {
-        try {
-          suite.store.user = { login: function () { throw new Error( 'Authentication failed' ); } };
-          await suite.modules.dataset( { store: suite.store, key: suite.key, login: true } );
-          suite.failed( 'Exception was not caught' );
-        }
-        catch( e ) {
-          suite.passed();
-        }
-      },
-      userSpecificKey: async suite => {
-        suite.store.user = { isLoggedIn: () => true, data: () => { return { key: 'john' } }, ccm: true, component: { Instance: true } };
-        await suite.store.set( { key: [ suite.key, 'john' ], foo: 'bar' } );
-        suite.assertEquals( { key: [ suite.key, 'john' ], foo: 'bar' }, await suite.modules.dataset( { store: suite.store, key: suite.key, user: true } ) );
-      },
-      permissions: async suite => {
-        const permissions = { creator: 'john', realm: 'guest', access: 'creator' };
-        suite.assertEquals( { key: suite.key, _: permissions }, await suite.modules.dataset( { store: suite.store, key: suite.key, permissions: permissions } ) );
-      },
-      convert: async suite => {
-        await suite.store.set( suite.dataset );
-        suite.assertEquals( { key: suite.key, foo: 'BAR' }, await suite.modules.dataset( { store: suite.store, key: suite.key, convert: dataset => { dataset.foo = dataset.foo.toUpperCase(); return dataset; } } ) );
-      }
+      array:  suite => suite.assertEquals( { log: true, restart: true }, suite.modules.decodeJSON( "{%'%log%'%:true,%'%restart%'%:true}" ) ),
+      object: suite => suite.assertEquals( [ 'ccm.instance', './ccm.user.js' ], suite.modules.decodeJSON( "[%'%ccm.instance%'%,%'%./ccm.user.js%'%]" ) ),
+      input:  suite => suite.assertEquals( [ 'ccm.instance', './ccm.user.js' ], suite.modules.decodeJSON( suite.ccm.helper.html( { tag: 'input', type: 'checkbox', value: suite.modules.encodeJSON( [ 'ccm.instance', './ccm.user.js' ] ) } ).value ) )
+    }
+  },
+  encodeJSON: {
+    tests: {
+      array:  suite => suite.assertSame( "{%'%log%'%:true,%'%restart%'%:true}", suite.modules.encodeJSON( { log: true, restart: true } ) ),
+      object: suite => suite.assertSame( "[%'%ccm.instance%'%,%'%./ccm.user.js%'%]", suite.modules.encodeJSON( [ 'ccm.instance', './ccm.user.js' ] ) ),
+      input:  suite => suite.assertSame( "[%'%ccm.instance%'%,%'%./ccm.user.js%'%]", suite.ccm.helper.html( { tag: 'input', type: 'checkbox', value: suite.modules.encodeJSON( [ 'ccm.instance', './ccm.user.js' ] ) } ).value )
     }
   },
 
