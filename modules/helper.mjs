@@ -77,7 +77,88 @@ export async function asyncForEach( array, callback ) {
 
 }
 
-/*------------------------------------------------- Data Conversion --------------------------------------------------*/
+/*------------------------------------------------- Data Management --------------------------------------------------*/
+
+/**
+ * @summary gets a dataset from a datastore via given settings
+ * @description
+ * If the settings do not contain a dataset key, a unique key is generated.<br>
+ * If the dataset does not exist in the datastore, an empty dataset is returned. This dataset is not newly created in the datastore and is only returned locally.<br>
+ * The original settings given are not changed (they are cloned).<br>
+ * Instead of the settings, a dataset can be given directly. This dataset is then returned as result.<br>
+ * If the dataset key is specified directly in the settings as the dataset, this dataset is returned as the result.<br>
+ * A user instance that can be reached from the datastore is automatically detected.
+ * @param {Object|ccm.types.dataset} [settings={}] - contains the required data to determine the dataset (or is directly the dataset)
+ * @param {ccm.Datastore} settings.store - the datastore that contains the dataset
+ * @param {ccm.types.key|ccm.types.dataset} [settings.key] - the key of the dataset in the datastore (or initial dataset)
+ * @param {boolean} [settings.login] - The user must log in if he is not already logged in to receive the dataset (only if a user instance could be determined automatically).
+ * @param {boolean} [settings.user] - The dataset key given in the settings is expanded to a user-specific key: <code>[ dataset_key, user_key ]</code> (only if user is detected and logged in)
+ * @param {ccm.types.permissions} [settings.permissions] - If the dataset does not exist, the empty dataset then returned will contain these permission settings.
+ * @param {Function} [settings.convert] - With this function, the data contained in the result dataset can be adjusted.
+ * @returns {Promise<ccm.types.dataset>}
+ * @throws {Error} if user must log in and login is canceled
+ * @example await dataset( { store: datastore, key: dataset_key } )  // => { key: dataset_key, ... }
+ * @example await dataset( { key: dataset_key, ... } )  // => { key: dataset_key, ... }
+ * @example await dataset( { store: datastore, key: { key: dataset_key, ... } } )  // => { key: dataset_key, ... }
+ * @example await dataset( {
+ *   store: datastore,
+ *   key: dataset_key,
+ *   login: true,
+ *   user: true
+ * } )  // => { key: [ dataset_key, user_key ], ... }
+ * @example await dataset( {
+ *   store: datastore,
+ *   permissions: { creator: 'john', realm: 'guest', access: 'creator' }
+ * } )  // => { key: generated_key, _: { creator: 'john', realm: 'guest', access: 'creator' } }
+ * @example await dataset( {
+ *   store: datastore,
+ *   key: dataset_key,
+ *   convert: dataset => { dataset.lang = dataset.lang.toUpperCase(); return dataset; }
+ * } )  // => { key: dataset_key, lang: 'EN', ... }
+ */
+export async function dataset( settings={} ) {
+  const ccm = framework( arguments );
+
+  // no manipulation of original passed parameter (avoids unwanted side effects)
+  settings = ccm.helper.clone( settings );
+
+  // settings are dataset directly? => dataset is result
+  if ( !ccm.helper.isDatastore( settings.store ) ) return settings;
+
+  // no dataset key? => generate a unique key
+  if ( !settings.key ) settings.key = ccm.helper.generateKey();
+
+  // key is initial data? => take it as result
+  if ( ccm.helper.isDataset( settings.key ) ) return settings.convert ? await settings.convert( settings.key ) : settings.key;
+
+  /**
+   * nearest user instance in ccm context tree
+   * @type {ccm.types.instance}
+   */
+  const user = ccm.context.find( settings.store, 'user' );
+
+  // user exists and must be logged in? => login user (if not already logged in)
+  user && settings.login && await user.login();
+
+  // should a user-specific key be used? => make key user-specific
+  if ( ccm.helper.isInstance( user ) && settings.user && user.isLoggedIn() ) settings.key = [ settings.key, user.data().key ];
+
+  // get dataset from datastore
+  let dataset = await settings.store.get( settings.key );
+
+  // dataset not exists? => use empty dataset
+  if ( !dataset ) {
+    dataset = { key: settings.key };
+    if ( settings.permissions ) dataset._ = settings.permissions;
+  }
+
+  // has converter? => convert dataset
+  if ( settings.convert ) dataset = await settings.convert( dataset );
+
+  return dataset;
+}
+
+/*----------------------------------------------- Data Transformation ------------------------------------------------*/
 
 /**
  * @summary converts an array to an object
@@ -176,84 +257,38 @@ export function convertComponentURL( url ) {
   return data;
 }
 
-/*------------------------------------------------- Data Management --------------------------------------------------*/
-
 /**
- * @summary gets a dataset from a datastore via given settings
+ * @summary decodes with encodeJSON() encoded JSON
  * @description
- * If the settings do not contain a dataset key, a unique key is generated.<br>
- * If the dataset does not exist in the datastore, an empty dataset is returned. This dataset is not newly created in the datastore and is only returned locally.<br>
- * The original settings given are not changed (they are cloned).<br>
- * Instead of the settings, a dataset can be given directly. This dataset is then returned as result.<br>
- * If the dataset key is specified directly in the settings as the dataset, this dataset is returned as the result.<br>
- * A user instance that can be reached from the datastore is automatically detected.
- * @param {Object|ccm.types.dataset} [settings={}] - contains the required data to determine the dataset (or is directly the dataset)
- * @param {ccm.Datastore} settings.store - the datastore that contains the dataset
- * @param {ccm.types.key|ccm.types.dataset} [settings.key] - the key of the dataset in the datastore (or initial dataset)
- * @param {boolean} [settings.login] - The user must log in if he is not already logged in to receive the dataset (only if a user instance could be determined automatically).
- * @param {boolean} [settings.user] - The dataset key given in the settings is expanded to a user-specific key: <code>[ dataset_key, user_key ]</code> (only if user is detected and logged in)
- * @param {ccm.types.permissions} [settings.permissions] - If the dataset does not exist, the empty dataset then returned will contain these permission settings.
- * @param {Function} [settings.convert] - With this function, the data contained in the result dataset can be adjusted.
- * @returns {Promise<ccm.types.dataset>}
- * @example await dataset( { store: datastore, key: dataset_key } )  // => { key: dataset_key, ... }
- * @example await dataset( { key: dataset_key, ... } )  // => { key: dataset_key, ... }
- * @example await dataset( { store: datastore, key: { key: dataset_key, ... } } )  // => { key: dataset_key, ... }
- * @example await dataset( {
- *   store: datastore,
- *   key: dataset_key,
- *   login: true,
- *   user: true
- * } )  // => { key: [ dataset_key, user_key ], ... }
- * @example await dataset( {
- *   store: datastore,
- *   permissions: { creator: 'john', realm: 'guest', access: 'creator' }
- * } )  // => { key: generated_key, _: { creator: 'john', realm: 'guest', access: 'creator' } }
- * @example await dataset( {
- *   store: datastore,
- *   key: dataset_key,
- *   convert: dataset => { dataset.lang = dataset.lang.toUpperCase(); return dataset; }
- * } )  // => { key: dataset_key, lang: 'EN', ... }
+ * All <code>%'%</code> are replaced with <code>"</code>.<br>
+ * Returns passed parameter if decoding fails.
+ * @param {string} str - encoded JSON
+ * @returns {Object|Array} decoded JSON
+ * @example decodeJSON( "{%'%log%'%:true,%'%restart%'%:true}" )       // => { log: true, restart: true }
+ * @example decodeJSON( "[%'%ccm.instance%'%,%'%./ccm.user.js%'%]" )  // => [ "ccm.instance", "./ccm.user.js" ]
  */
-export async function dataset( settings={} ) {
+export function decodeJSON( str ) {
   const ccm = framework( arguments );
 
-  // no manipulation of original passed parameter (avoids unwanted side effects)
-  settings = ccm.helper.clone( settings );
+  if ( typeof str !== 'string' || !ccm.helper.regex( 'json' ).test( str ) ) return str;
+  return ccm.helper.parse( str.replace( /%'%/g, '"' ) );
+}
 
-  // settings are dataset directly? => dataset is result
-  if ( !ccm.helper.isDatastore( settings.store ) ) return settings;
+/**
+ * @summary encodes JSON as string so that it can be set as value for input elements
+ * @description
+ * All <code>"</code> are replaced with <code>%'%</code>.<br>
+ * Returns passed parameter if encoding fails.
+ * @param {Object|Array} json - JSON
+ * @returns {string} encoded JSON
+ * @example encodeJSON( { log: true, restart: true } )         // => "{%'%log%'%:true,%'%restart%'%:true}"
+ * @example encodeJSON( [ 'ccm.instance', './ccm.user.js' ] )  // => "[%'%ccm.instance%'%,%'%./ccm.user.js%'%]"
+ */
+export function encodeJSON( json ) {
+  const ccm = framework( arguments );
 
-  // no dataset key? => generate a unique key
-  if ( !settings.key ) settings.key = ccm.helper.generateKey();
-
-  // key is initial data? => take it as result
-  if ( ccm.helper.isDataset( settings.key ) ) return settings.convert ? await settings.convert( settings.key ) : settings.key;
-
-  /**
-   * nearest user instance in ccm context tree
-   * @type {ccm.types.instance}
-   */
-  const user = ccm.context.find( settings.store, 'user' );
-
-  // user exists and must be logged in? => login user (if not already logged in)
-  user && settings.login && await user.login();
-
-  // should a user-specific key be used? => make key user-specific
-  if ( ccm.helper.isInstance( user ) && settings.user && user.isLoggedIn() ) settings.key = [ settings.key, user.data().key ];
-
-  // get dataset from datastore
-  let dataset = await settings.store.get( settings.key );
-
-  // dataset not exists? => use empty dataset
-  if ( !dataset ) {
-    dataset = { key: settings.key };
-    if ( settings.permissions ) dataset._ = settings.permissions;
-  }
-
-  // has converter? => convert dataset
-  if ( settings.convert ) dataset = await settings.convert( dataset );
-
-  return dataset;
+  if ( typeof json !== 'object' ) return json;
+  return ccm.helper.stringify( json ).replace( /"/g, "%'%" );
 }
 
 /*------------------------------------------------- DOM Manipulation -------------------------------------------------*/
@@ -423,12 +458,12 @@ export function fillForm( element, data ) {
   for ( const key in dot ) data[ key ] = dot[ key ];
   for ( const key in data ) {
     if ( !data[ key ] ) continue;
-    if ( typeof data[ key ] === 'object' ) data[ key ] = ccm.helper.encodeObject( data[ key ] );
+    if ( typeof data[ key ] === 'object' ) data[ key ] = encodeJSON( data[ key ], ccm );
     if ( typeof data[ key ] === 'string' ) data[ key ] = ccm.helper.unescapeHTML( data[ key ] );
     element.querySelectorAll( '[name="' + key + '"]' ).forEach( input => {
       if ( input.type === 'checkbox' ) {
         if ( input.value && typeof data[ key ] === 'string' && data[ key ].charAt( 0 ) === '[' )
-          ccm.helper.decodeObject( data[ key ] ).forEach( value => { if ( value === input.value ) input.checked = true; } );
+          decodeJSON( data[ key ], ccm ).forEach( value => { if ( value === input.value ) input.checked = true; } );
         else
           input.checked = true;
       }
@@ -438,10 +473,10 @@ export function fillForm( element, data ) {
       }
       else if ( input.tagName.toLowerCase() === 'select' ) {
         if ( input.hasAttribute( 'multiple' ) )
-          data[ key ] = ccm.helper.decodeObject( data[ key ] );
+          data[ key ] = decodeJSON( data[ key ], ccm );
         input.querySelectorAll( 'option' ).forEach( option => {
           if ( input.hasAttribute( 'multiple' ) )
-            data[ key ].forEach( value => ccm.helper.encodeObject( value ) === ( option.value ? option.value : option.innerHTML.trim() ) && ( option.selected = true ) );
+            data[ key ].forEach( value => encodeJSON( value, ccm ) === ( option.value ? option.value : option.innerHTML.trim() ) && ( option.selected = true ) );
           else if ( data[ key ] === ( option.value ? option.value : option.innerHTML.trim() ) )
             option.selected = true;
         } );
@@ -547,7 +582,7 @@ export function formData( element ) {
     try {
       if ( typeof data[ name ] === 'string' )
         if ( ccm.helper.regex( 'json' ).test( data[ name ] ) )
-          data[ name ] = ccm.helper.decodeObject( data[ name ] );
+          data[ name ] = decodeJSON( data[ name ], ccm );
     } catch ( err ) {}
   } );
   return ccm.helper.solveDotNotation( data );
