@@ -176,6 +176,86 @@ export function convertComponentURL( url ) {
   return data;
 }
 
+/*------------------------------------------------- Data Management --------------------------------------------------*/
+
+/**
+ * @summary gets a dataset from a datastore via given settings
+ * @description
+ * If the settings do not contain a dataset key, a unique key is generated.<br>
+ * If the dataset does not exist in the datastore, an empty dataset is returned. This dataset is not newly created in the datastore and is only returned locally.<br>
+ * The original settings given are not changed (they are cloned).<br>
+ * Instead of the settings, a dataset can be given directly. This dataset is then returned as result.<br>
+ * If the dataset key is specified directly in the settings as the dataset, this dataset is returned as the result.<br>
+ * A user instance that can be reached from the datastore is automatically detected.
+ * @param {Object|ccm.types.dataset} [settings={}] - contains the required data to determine the dataset (or is directly the dataset)
+ * @param {ccm.Datastore} settings.store - the datastore that contains the dataset
+ * @param {ccm.types.key|ccm.types.dataset} [settings.key] - the key of the dataset in the datastore (or initial dataset)
+ * @param {boolean} [settings.login] - The user must log in if he is not already logged in to receive the dataset (only if a user instance could be determined automatically).
+ * @param {boolean} [settings.user] - The dataset key given in the settings is expanded to a user-specific key: <code>[ dataset_key, user_key ]</code> (only if user is detected and logged in)
+ * @param {ccm.types.permissions} [settings.permissions] - If the dataset does not exist, the empty dataset then returned will contain these permission settings.
+ * @param {Function} [settings.convert] - With this function, the data contained in the result dataset can be adjusted.
+ * @returns {Promise<ccm.types.dataset>}
+ * @example await dataset( { store: datastore, key: dataset_key } )  // => { key: dataset_key, ... }
+ * @example await dataset( { key: dataset_key, ... } )  // => { key: dataset_key, ... }
+ * @example await dataset( { store: datastore, key: { key: dataset_key, ... } } )  // => { key: dataset_key, ... }
+ * @example await dataset( {
+ *   store: datastore,
+ *   key: dataset_key,
+ *   login: true,
+ *   user: true
+ * } )  // => { key: [ dataset_key, user_key ], ... }
+ * @example await dataset( {
+ *   store: datastore,
+ *   permissions: { creator: 'john', realm: 'guest', access: 'creator' }
+ * } )  // => { key: generated_key, _: { creator: 'john', realm: 'guest', access: 'creator' } }
+ * @example await dataset( {
+ *   store: datastore,
+ *   key: dataset_key,
+ *   convert: dataset => { dataset.lang = dataset.lang.toUpperCase(); return dataset; }
+ * } )  // => { key: dataset_key, lang: 'EN', ... }
+ */
+export async function dataset( settings={} ) {
+  const ccm = framework( arguments );
+
+  // no manipulation of original passed parameter (avoids unwanted side effects)
+  settings = ccm.helper.clone( settings );
+
+  // settings are dataset directly? => dataset is result
+  if ( !ccm.helper.isDatastore( settings.store ) ) return settings;
+
+  // no dataset key? => generate a unique key
+  if ( !settings.key ) settings.key = ccm.helper.generateKey();
+
+  // key is initial data? => take it as result
+  if ( ccm.helper.isDataset( settings.key ) ) return settings.convert ? await settings.convert( settings.key ) : settings.key;
+
+  /**
+   * nearest user instance in ccm context tree
+   * @type {ccm.types.instance}
+   */
+  const user = ccm.context.find( settings.store, 'user' );
+
+  // user exists and must be logged in? => login user (if not already logged in)
+  user && settings.login && await user.login();
+
+  // should a user-specific key be used? => make key user-specific
+  if ( ccm.helper.isInstance( user ) && settings.user && user.isLoggedIn() ) settings.key = [ settings.key, user.data().key ];
+
+  // get dataset from datastore
+  let dataset = await settings.store.get( settings.key );
+
+  // dataset not exists? => use empty dataset
+  if ( !dataset ) {
+    dataset = { key: settings.key };
+    if ( settings.permissions ) dataset._ = settings.permissions;
+  }
+
+  // has converter? => convert dataset
+  if ( settings.convert ) dataset = await settings.convert( dataset );
+
+  return dataset;
+}
+
 /*------------------------------------------------- DOM Manipulation -------------------------------------------------*/
 
 /**
