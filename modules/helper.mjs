@@ -1,6 +1,6 @@
 /**
  * @overview module for providing ccm helper functions
- * @author André Kless <andre.kless@web.de> 2019
+ * @author André Kless <andre.kless@web.de> 2019-2020
  * @license The MIT License (MIT)
  */
 
@@ -210,51 +210,6 @@ export function cleanObject( obj, deep ) {
           cleanObject( obj[ key ], ccm );
 
   return obj;
-}
-
-/**
- * @summary extract data from the URL of a ccm component
- * @description
- * The result data contains the unique 'name', 'version' and 'index' of the component.<br>
- * The 'minified' flag is set if the filename contains a ".min".
- * @param {string} url - ccm component URL
- * @returns {{name: string, index: string, version: string, url: string, minified: boolean}} extracted data
- * @throws {Error} if component filename is not valid
- * @example
- * const data = ccm.helper.convertComponentURL( './ccm.quiz-4.0.2.js' );
- * console.log( data );  // {"name":"quiz","version":"4.0.2","index":"quiz-4-0-2","url":"./ccm.quiz-4.0.2.js"}
- * @example
- * const data = ccm.helper.convertComponentURL( './ccm.quiz.js' );  // latest version
- * console.log( data );  // {"name":"quiz","index":"quiz","url":"./ccm.quiz.js"}
- * @example
- * const data = ccm.helper.convertComponentURL( './ccm.quiz.min.js' );  // minified
- * console.log( data );  // {"name":"quiz","index":"quiz","url":"./ccm.quiz.min.js","minified":true}
- */
-export function convertComponentURL( url ) {
-  const ccm = framework( arguments );
-
-  /**
-   * from given url extracted filename of the ccm component
-   * @type {string}
-   */
-  const filename = url.split( '/' ).pop();
-
-  // abort if extracted filename is not a valid filename for a ccm component
-  if ( !ccm.helper.regex( 'filename' ).test( filename ) ) throw new Error( 'invalid component filename: ' + filename );
-
-  // extract data
-  const data = { url: url };
-  let tmp = filename.substring( 4, filename.length - 3 );  // remove prefix 'ccm.' and postfix '.js'
-  if ( tmp.endsWith( '.min' ) ) {
-    data.minified = true;
-    tmp = tmp.substr( 0, tmp.length - 4 );  // removes optional infix '.min'
-  }
-  tmp = tmp.split( '-' );
-  data.name = tmp.shift();                                                                    // name
-  if ( tmp.length ) data.version = tmp[ 0 ];                                                  // version
-  data.index = data.name + ( data.version ? '-' + data.version.replace( /\./g, '-' ) : '' );  // index
-
-  return data;
 }
 
 /**
