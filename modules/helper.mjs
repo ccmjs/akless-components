@@ -395,6 +395,35 @@ export function setContent( element, content ) {
   append.apply( null, arguments );  // append new content
 }
 
+/*-------------------------------------------------- HTML Escaping ---------------------------------------------------*/
+
+/**
+ * @summary escapes HTML characters of a string value
+ * @param {string} value - string value
+ * @returns {string}
+ * @example escapeHTML( 'Hello <b>World</b>!' )  // => 'Hello &lt;b&gt;World&lt;/b&gt;!'
+ */
+export function escapeHTML( value ) {
+  const text = document.createTextNode( value );
+  const div = document.createElement( 'div' );
+  div.appendChild( text );
+  return div.innerHTML;
+}
+
+/**
+ * @summary unescapes HTML characters of a string value
+ * @param {string} value - string value
+ * @returns {string}
+ * @example escapeHTML( 'Hello &lt;b&gt;World&lt;/b&gt;!' )  // => 'Hello <b>World</b>!'
+ */
+export function unescapeHTML( value ) {
+  const element = document.createElement( 'div' );
+  return value.replace( /\&[#0-9a-z]+;/gi, x => {
+    element.innerHTML = x;
+    return element.innerText;
+  } );
+}
+
 /*----------------------------------------------- HTML Input Elements ------------------------------------------------*/
 
 /**
@@ -459,7 +488,6 @@ export function fillForm( element, data ) {
   for ( const key in data ) {
     if ( !data[ key ] ) continue;
     if ( typeof data[ key ] === 'object' ) data[ key ] = encodeJSON( data[ key ], ccm );
-    if ( typeof data[ key ] === 'string' ) data[ key ] = ccm.helper.unescapeHTML( data[ key ] );
     element.querySelectorAll( '[name="' + key + '"]' ).forEach( input => {
       if ( input.type === 'checkbox' ) {
         if ( input.value && typeof data[ key ] === 'string' && data[ key ].charAt( 0 ) === '[' )
