@@ -77,6 +77,54 @@ export async function asyncForEach( array, callback ) {
 
 }
 
+/*--------------------------------------------------- ccm Instance ---------------------------------------------------*/
+
+/**
+ * @summary checks if an ccm instance has DOM contact
+ * @param {ccm.types.instance} instance - ccm instance
+ * @returns {boolean}
+ * @example
+ * // <body><div id="app"></div></body>
+ * const instance = await suite.ccm.instance( component, { root: document.querySelector( '#app' ) } );
+ * console.log( hasDomContact( instance ) ) );  // => true
+ * @example
+ * const instance = await suite.ccm.instance( component, { root: document.createElement( 'div' ) } );
+ * console.log( hasDomContact( instance ) ) );  // => false
+ * @example
+ * // <body><div id="app"></div></body>
+ * const parent = await suite.ccm.instance( component, { root: document.querySelector( '#app' ) } );
+ * const instance = await suite.ccm.instance( component, { parent: parent } );
+ * parent.element.appendChild( instance.root );
+ * console.log( hasDomContact( instance ) ) );  // => true
+ * @example
+ * // <body><div id="app"></div></body>
+ * const parent = await suite.ccm.instance( component, { root: document.querySelector( '#app' ) } );
+ * const instance = await suite.ccm.instance( component, { parent: parent } );
+ * console.log( hasDomContact( instance ) ) );  // => false
+ */
+export function hasDomContact( instance ) {
+  const ccm = framework( arguments );
+  return document.contains( ccm.context.root( instance ).root ) && ( hasParentContact( instance, ccm ) || !instance.parent )
+}
+
+/**
+ * @summary checks if an ccm instance has parent element contact
+ * @param {ccm.types.instance} instance - ccm instance
+ * @returns {boolean}
+ * @example
+ * const parent = await suite.ccm.instance( component );
+ * const instance = await suite.ccm.instance( component, { parent: parent } );
+ * parent.element.appendChild( instance.root );
+ * console.log( hasParentContact( instance ) ) );  // => true
+ * @example
+ * const parent = await suite.ccm.instance( component );
+ * const instance = await suite.ccm.instance( component, { parent: parent } );
+ * console.log( hasParentContact( instance ) ) );  // => false
+ */
+export function hasParentContact( instance ) {
+  return instance.parent && instance.parent.element.contains( instance.root );
+}
+
 /*-------------------------------------------------- Data Handling ---------------------------------------------------*/
 
 /**
@@ -288,27 +336,6 @@ export async function dataset( settings={} ) {
   if ( settings.convert ) dataset = await settings.convert( dataset );
 
   return dataset;
-}
-
-/*--------------------------------------------------- DOM Analysis ---------------------------------------------------*/
-
-/**
- * @summary checks if an ccm instance has DOM contact
- * @param {ccm.types.instance} instance - ccm instance
- * @returns {boolean}
- */
-export function hasDomContact( instance ) {
-  const ccm = framework( arguments );
-  return document.contains( ccm.context.root( instance ).root ) && ( hasParentContact( instance, ccm ) || !instance.parent )
-}
-
-/**
- * @summary checks if an ccm instance has parent element contact
- * @param {ccm.types.instance} instance - ccm instance
- * @returns {boolean}
- */
-export function hasParentContact( instance ) {
-  return instance.parent && instance.parent.element.contains( instance.root );
 }
 
 /*------------------------------------------------- DOM Manipulation -------------------------------------------------*/
