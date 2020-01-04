@@ -336,6 +336,20 @@ ccm.files[ 'module-helper.js' ] = {
     }
   },
 
+/*-------------------------------------------------- HTML Escaping ---------------------------------------------------*/
+
+  escapeHTML: {
+    tests: {
+      string: suite => suite.assertSame( 'Hello &lt;b&gt;World&lt;/b&gt;!', suite.modules.escapeHTML( 'Hello <b>World</b>!' ) )
+    }
+  },
+
+  unescapeHTML: {
+    tests: {
+      string: suite => suite.assertSame( 'Hello <b>World</b>!', suite.modules.unescapeHTML( 'Hello &lt;b&gt;World&lt;/b&gt;!' ) )
+    }
+  },
+
 /*----------------------------------------------- HTML Input Elements ------------------------------------------------*/
 
   fillFormData: {
