@@ -65,6 +65,58 @@ ccm.files[ 'module-helper.js' ] = {
     }
   },
 
+/*--------------------------------------------------- ccm Instance ---------------------------------------------------*/
+
+  hasDomContact: {
+    setup: suite => suite.element = document.createElement( 'div' ),
+    tests: {
+      contact: async suite => {
+        document.body.appendChild( suite.element );
+        const instance = await suite.ccm.instance( { Instance: function () {}, ccm: suite.ccm }, { root: suite.element } );
+        suite.assertTrue( suite.modules.hasDomContact( instance ) );
+        document.body.removeChild( suite.element );
+      },
+      noContact: async suite => {
+        const instance = await suite.ccm.instance( { Instance: function () {}, ccm: suite.ccm }, { root: suite.element } );
+        suite.assertFalse( suite.modules.hasDomContact( instance ) );
+      },
+      parentContact: async suite => {
+        document.body.appendChild( suite.element );
+        const parent = await suite.ccm.instance( { Instance: function () {}, ccm: suite.ccm }, { root: suite.element } );
+        const instance = await suite.ccm.instance( { Instance: function () {}, ccm: suite.ccm }, { parent: parent } );
+        parent.element.appendChild( instance.root );
+        suite.assertTrue( suite.modules.hasDomContact( instance ) );
+        document.body.removeChild( suite.element );
+      },
+      noParentContact: async suite => {
+        document.body.appendChild( suite.element );
+        const parent = await suite.ccm.instance( { Instance: function () {}, ccm: suite.ccm }, { root: suite.element } );
+        const instance = await suite.ccm.instance( { Instance: function () {}, ccm: suite.ccm }, { parent: parent } );
+        suite.assertFalse( suite.modules.hasDomContact( instance ) );
+        document.body.removeChild( suite.element );
+      }
+    }
+  },
+  hasParentContact: {
+    tests: {
+      contact: async suite => {
+        const parent = await suite.ccm.instance( { Instance: function () {}, ccm: suite.ccm } );
+        const instance = await suite.ccm.instance( { Instance: function () {}, ccm: suite.ccm }, { parent: parent } );
+        parent.element.appendChild( instance.root );
+        suite.assertTrue( suite.modules.hasParentContact( instance ) );
+      },
+      noContact: async suite => {
+        const parent = await suite.ccm.instance( { Instance: function () {}, ccm: suite.ccm } );
+        const instance = await suite.ccm.instance( { Instance: function () {}, ccm: suite.ccm }, { parent: parent } );
+        suite.assertFalse( suite.modules.hasParentContact( instance ) );
+      },
+      noParent: async suite => {
+        const instance = await suite.ccm.instance( { Instance: function () {}, ccm: suite.ccm } );
+        suite.assertFalse( suite.modules.hasParentContact( instance ) );
+      }
+    }
+  },
+
 /*-------------------------------------------------- Data Handling ---------------------------------------------------*/
 
   arrToObj: {
@@ -186,58 +238,6 @@ ccm.files[ 'module-helper.js' ] = {
       convert: async suite => {
         await suite.store.set( suite.dataset );
         suite.assertEquals( { key: suite.key, foo: 'BAR' }, await suite.modules.dataset( { store: suite.store, key: suite.key, convert: dataset => { dataset.foo = dataset.foo.toUpperCase(); return dataset; } } ) );
-      }
-    }
-  },
-
-/*--------------------------------------------------- ccm Instance ---------------------------------------------------*/
-
-  hasDomContact: {
-    setup: suite => suite.element = document.createElement( 'div' ),
-    tests: {
-      contact: async suite => {
-        document.body.appendChild( suite.element );
-        const instance = await suite.ccm.instance( { Instance: function () {}, ccm: suite.ccm }, { root: suite.element } );
-        suite.assertTrue( suite.modules.hasDomContact( instance ) );
-        document.body.removeChild( suite.element );
-      },
-      noContact: async suite => {
-        const instance = await suite.ccm.instance( { Instance: function () {}, ccm: suite.ccm }, { root: suite.element } );
-        suite.assertFalse( suite.modules.hasDomContact( instance ) );
-      },
-      parentContact: async suite => {
-        document.body.appendChild( suite.element );
-        const parent = await suite.ccm.instance( { Instance: function () {}, ccm: suite.ccm }, { root: suite.element } );
-        const instance = await suite.ccm.instance( { Instance: function () {}, ccm: suite.ccm }, { parent: parent } );
-        parent.element.appendChild( instance.root );
-        suite.assertTrue( suite.modules.hasDomContact( instance ) );
-        document.body.removeChild( suite.element );
-      },
-      noParentContact: async suite => {
-        document.body.appendChild( suite.element );
-        const parent = await suite.ccm.instance( { Instance: function () {}, ccm: suite.ccm }, { root: suite.element } );
-        const instance = await suite.ccm.instance( { Instance: function () {}, ccm: suite.ccm }, { parent: parent } );
-        suite.assertFalse( suite.modules.hasDomContact( instance ) );
-        document.body.removeChild( suite.element );
-      }
-    }
-  },
-  hasParentContact: {
-    tests: {
-      contact: async suite => {
-        const parent = await suite.ccm.instance( { Instance: function () {}, ccm: suite.ccm } );
-        const instance = await suite.ccm.instance( { Instance: function () {}, ccm: suite.ccm }, { parent: parent } );
-        parent.element.appendChild( instance.root );
-        suite.assertTrue( suite.modules.hasParentContact( instance ) );
-      },
-      noContact: async suite => {
-        const parent = await suite.ccm.instance( { Instance: function () {}, ccm: suite.ccm } );
-        const instance = await suite.ccm.instance( { Instance: function () {}, ccm: suite.ccm }, { parent: parent } );
-        suite.assertFalse( suite.modules.hasParentContact( instance ) );
-      },
-      noParent: async suite => {
-        const instance = await suite.ccm.instance( { Instance: function () {}, ccm: suite.ccm } );
-        suite.assertFalse( suite.modules.hasParentContact( instance ) );
       }
     }
   },
