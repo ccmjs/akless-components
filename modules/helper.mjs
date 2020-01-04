@@ -292,6 +292,19 @@ export function encodeJSON( json ) {
 }
 
 /**
+ * @summary escapes HTML characters of a string value
+ * @param {string} value - string value
+ * @returns {string}
+ * @example escapeHTML( 'Hello <b>World</b>!' )  // => 'Hello &lt;b&gt;World&lt;/b&gt;!'
+ */
+export function escapeHTML( value ) {
+  const text = document.createTextNode( value );
+  const div = document.createElement( 'div' );
+  div.appendChild( text );
+  return div.innerHTML;
+}
+
+/**
  * @summary filters properties from an object
  * @param {Object} obj - object
  * @param {...string} [properties] - properties
@@ -306,6 +319,20 @@ export function filterProperties( obj, properties ) {
       result[ property ] = obj[ property ];
   } );
   return result;
+}
+
+/**
+ * @summary unescapes HTML characters of a string value
+ * @param {string} value - string value
+ * @returns {string}
+ * @example escapeHTML( 'Hello &lt;b&gt;World&lt;/b&gt;!' )  // => 'Hello <b>World</b>!'
+ */
+export function unescapeHTML( value ) {
+  const element = document.createElement( 'div' );
+  return value.replace( /\&[#0-9a-z]+;/gi, x => {
+    element.innerHTML = x;
+    return element.innerText;
+  } );
 }
 
 /*------------------------------------------------- DOM Manipulation -------------------------------------------------*/
@@ -410,35 +437,6 @@ export function replace( element, other ) {
 export function setContent( element, content ) {
   element.innerHTML = '';           // clear old content
   append.apply( null, arguments );  // append new content
-}
-
-/*-------------------------------------------------- HTML Escaping ---------------------------------------------------*/
-
-/**
- * @summary escapes HTML characters of a string value
- * @param {string} value - string value
- * @returns {string}
- * @example escapeHTML( 'Hello <b>World</b>!' )  // => 'Hello &lt;b&gt;World&lt;/b&gt;!'
- */
-export function escapeHTML( value ) {
-  const text = document.createTextNode( value );
-  const div = document.createElement( 'div' );
-  div.appendChild( text );
-  return div.innerHTML;
-}
-
-/**
- * @summary unescapes HTML characters of a string value
- * @param {string} value - string value
- * @returns {string}
- * @example escapeHTML( 'Hello &lt;b&gt;World&lt;/b&gt;!' )  // => 'Hello <b>World</b>!'
- */
-export function unescapeHTML( value ) {
-  const element = document.createElement( 'div' );
-  return value.replace( /\&[#0-9a-z]+;/gi, x => {
-    element.innerHTML = x;
-    return element.innerText;
-  } );
 }
 
 /*----------------------------------------------- HTML Input Elements ------------------------------------------------*/
