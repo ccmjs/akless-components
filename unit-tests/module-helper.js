@@ -122,7 +122,7 @@ ccm.files[ 'module-helper.js' ] = {
     }
   },
 
-/*----------------------------------------------- Data Transformation ------------------------------------------------*/
+/*------------------------------------------------ Data Manipulation -------------------------------------------------*/
 
   arrToObj: {
     setup: suite => suite.expected = { foo: true, bar: true },
@@ -202,6 +202,21 @@ ccm.files[ 'module-helper.js' ] = {
       array:  suite => suite.assertSame( "{%'%log%'%:true,%'%restart%'%:true}", suite.modules.encodeJSON( { log: true, restart: true } ) ),
       object: suite => suite.assertSame( "[%'%ccm.instance%'%,%'%./ccm.user.js%'%]", suite.modules.encodeJSON( [ 'ccm.instance', './ccm.user.js' ] ) ),
       input:  suite => suite.assertSame( "[%'%ccm.instance%'%,%'%./ccm.user.js%'%]", suite.ccm.helper.html( { tag: 'input', type: 'checkbox', value: suite.modules.encodeJSON( [ 'ccm.instance', './ccm.user.js' ] ) } ).value )
+    }
+  },
+  escapeHTML: {
+    tests: {
+      string: suite => suite.assertSame( 'Hello &lt;b&gt;World&lt;/b&gt;!', suite.modules.escapeHTML( 'Hello <b>World</b>!' ) )
+    }
+  },
+  filterProperties: {
+    tests: {
+      object: suite => suite.assertEquals( { a: 'x', b: 'y' }, suite.modules.filterProperties( { a: 'x', b: 'y', c: 'z' }, 'a', 'b' ) )
+    }
+  },
+  unescapeHTML: {
+    tests: {
+      string: suite => suite.assertSame( 'Hello <b>World</b>!', suite.modules.unescapeHTML( 'Hello &lt;b&gt;World&lt;/b&gt;!' ) )
     }
   },
 
@@ -333,20 +348,6 @@ ccm.files[ 'module-helper.js' ] = {
         suite.modules.setContent( suite.element, "<span>Hello </span><b>World<script>alert('XSS');</script></b>!" );
         suite.assertSame( suite.expected, suite.element.innerText );
       }
-    }
-  },
-
-/*-------------------------------------------------- HTML Escaping ---------------------------------------------------*/
-
-  escapeHTML: {
-    tests: {
-      string: suite => suite.assertSame( 'Hello &lt;b&gt;World&lt;/b&gt;!', suite.modules.escapeHTML( 'Hello <b>World</b>!' ) )
-    }
-  },
-
-  unescapeHTML: {
-    tests: {
-      string: suite => suite.assertSame( 'Hello <b>World</b>!', suite.modules.unescapeHTML( 'Hello &lt;b&gt;World&lt;/b&gt;!' ) )
     }
   },
 
