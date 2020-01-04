@@ -158,7 +158,7 @@ export async function dataset( settings={} ) {
   return dataset;
 }
 
-/*----------------------------------------------- Data Transformation ------------------------------------------------*/
+/*------------------------------------------------ Data Manipulation -------------------------------------------------*/
 
 /**
  * @summary converts an array to an object
@@ -289,6 +289,23 @@ export function encodeJSON( json ) {
 
   if ( typeof json !== 'object' ) return json;
   return ccm.helper.stringify( json ).replace( /"/g, "%'%" );
+}
+
+/**
+ * @summary filters properties from an object
+ * @param {Object} obj - object
+ * @param {...string} [properties] - properties
+ * @return {Object} filtered properties
+ * @example filterProperties( { a: 'x', b: 'y', c: 'z' }, 'a', 'b' )  // => { a: 'x', b: 'y' }
+ */
+export function filterProperties( obj, properties ) {
+  const result = {};
+  properties = [ ...arguments ]; properties.shift();
+  properties.forEach( property => {
+    if ( obj[ property ] !== undefined )
+      result[ property ] = obj[ property ];
+  } );
+  return result;
 }
 
 /*------------------------------------------------- DOM Manipulation -------------------------------------------------*/
