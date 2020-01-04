@@ -1,6 +1,6 @@
 /**
- * @overview unit tests for modules
- * @author André Kless <andre.kless@web.de> 2019
+ * @overview unit tests for module helper functions
+ * @author André Kless <andre.kless@web.de> 2019-2020
  * @license The MIT License (MIT)
  */
 
@@ -158,36 +158,6 @@ ccm.files[ 'module-helper.js' ] = {
         [ 'foo', false, 0, '', null, undefined, [], {} ],
         { a: 'bar', b: false, c: 0, d: '', e: null, f: undefined, g: [], h: {} }
       ], true ) )
-    }
-  },
-  convertComponentURL: {
-    tests: {
-      latest: suite => suite.assertEquals( {
-        url: './ccm.quiz.js',
-        name: 'quiz',
-        index: 'quiz'
-      }, suite.modules.convertComponentURL( './ccm.quiz.js' ) ),
-      versioned: suite => suite.assertEquals( {
-        url: './ccm.quiz-4.0.2.js',
-        name: 'quiz',
-        version: '4.0.2',
-        index: 'quiz-4-0-2'
-      }, suite.modules.convertComponentURL( './ccm.quiz-4.0.2.js' ) ),
-      minified: suite => suite.assertEquals( {
-        url: './ccm.quiz.min.js',
-        minified: true,
-        name: 'quiz',
-        index: 'quiz',
-      }, suite.modules.convertComponentURL( './ccm.quiz.min.js' ) ),
-      error: suite => {
-        try {
-          suite.modules.convertComponentURL( './ccm-quiz.js' );
-          suite.failed( 'Exception was not caught' );
-        }
-        catch( e ) {
-          suite.passed();
-        }
-      }
     }
   },
   decodeJSON: {
