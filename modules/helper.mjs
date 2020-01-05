@@ -77,7 +77,7 @@ export async function asyncForEach( array, callback ) {
 
 }
 
-/*--------------------------------------------------- ccm Instance ---------------------------------------------------*/
+/*----------------------------------------------------- Checker ------------------------------------------------------*/
 
 /**
  * @summary checks if an ccm instance has DOM contact
@@ -123,6 +123,30 @@ export function hasDomContact( instance ) {
  */
 export function hasParentContact( instance ) {
   return instance.parent && instance.parent.element.contains( instance.root );
+}
+
+/**
+ * @summary checks if current web browser is Firefox
+ * @returns {boolean}
+ */
+export function isFirefox() {
+  return navigator.userAgent.search( 'Firefox' ) > -1;
+}
+
+/**
+ * @summary checks if current web browser is Google Chrome
+ * @returns {boolean}
+ */
+export function isGoogleChrome() {
+  return /Chrome/.test( navigator.userAgent ) && /Google Inc/.test( navigator.vendor );
+}
+
+/**
+ * @summary checks if current web browser is Safari
+ * @returns {boolean}
+ */
+export function isSafari() {
+  return /^((?!chrome|android).)*safari/i.test( navigator.userAgent );
 }
 
 /*-------------------------------------------------- Data Handling ---------------------------------------------------*/
@@ -373,6 +397,33 @@ export function append( element, content ) {
 
   } );
 
+}
+
+/**
+ * @summary returns a <i>ccm</i> loading icon
+ * @param {ccm.types.instance} [instance] - <i>ccm</i> instance (for determining Shadow DOM)
+ * @returns {Element} <i>ccm</i> loading icon
+ * @example document.body.appendChild( loading() )
+ * @example document.body.appendChild( loading( instance ) )
+ */
+export function loading( instance ) {
+
+  // set keyframe for ccm loading icon animation
+  let element = instance ? instance.element.parentNode : document.head;
+  if ( !element.querySelector( '#ccm_keyframe' ) ) {
+    const style = document.createElement( 'style' );
+    style.id = 'ccm_keyframe';
+    style.appendChild( document.createTextNode( '@keyframes ccm_loading { to { transform: rotate(360deg); } }' ) );
+    element.appendChild( style );
+  }
+
+  // create loading icon
+  element = document.createElement( 'div' );
+  element.classList.add( 'ccm_loading' );
+  element.setAttribute( 'style', 'display: grid; padding: 0.5em;' );
+  element.innerHTML = '<div style="align-self: center; justify-self: center; display: inline-block; width: 2em; height: 2em; border: 0.3em solid #f3f3f3; border-top-color: #009ee0; border-left-color: #009ee0; border-radius: 50%; animation: ccm_loading 1.5s linear infinite;"></div>';
+
+  return element;
 }
 
 /**
@@ -652,7 +703,7 @@ export function protect( html ) {
   if ( typeof html === 'string' )
     return html.replace( /<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '' );
 
-  if ( ccm.helper.isElementNode( html ) )
+  if ( ccm.helper.isElement( html ) )
     [ ...html.querySelectorAll( 'script' ) ].forEach( ccm.helper.removeElement );
 
   return html;
