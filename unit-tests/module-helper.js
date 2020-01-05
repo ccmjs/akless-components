@@ -65,7 +65,7 @@ ccm.files[ 'module-helper.js' ] = {
     }
   },
 
-/*--------------------------------------------------- ccm Instance ---------------------------------------------------*/
+/*----------------------------------------------------- Checker ------------------------------------------------------*/
 
   hasDomContact: {
     setup: suite => suite.element = document.createElement( 'div' ),
@@ -277,6 +277,20 @@ ccm.files[ 'module-helper.js' ] = {
       protect: suite => {
         suite.modules.append( suite.element, "<b> World<script>alert('XSS');</script></b>!" );
         suite.assertSame( suite.expected, suite.element.innerText );
+      }
+    }
+  },
+  loading: {
+    tests: {
+      element: suite => suite.assertTrue( suite.ccm.helper.isElement( suite.modules.loading() ) ),
+      keyframeHead: suite => {
+        suite.modules.loading();
+        suite.assertTrue( document.head.querySelector( 'style#ccm_keyframe' ) );
+      },
+      keyframeShadow: async suite => {
+        const instance = await suite.ccm.instance( { Instance: function () {}, ccm: suite.ccm } );
+        suite.modules.loading( instance );
+        suite.assertTrue( instance.element.parentNode.querySelector( 'style#ccm_keyframe' ) );
       }
     }
   },
