@@ -407,7 +407,7 @@
                   const component = await this.components.get( { name: data.name } );
                   if ( component.length )
                     alert( `Publish failed. A component with the unique name '${data.name}' has already been released.` );
-                  return !component;
+                  return !component.length;
                 },
                 convert: async json => {
 
