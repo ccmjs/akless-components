@@ -405,7 +405,7 @@
                   }
                   const data = $.convertComponentURL( results.path );
                   const component = await this.components.get( { name: data.name } );
-                  if ( component )
+                  if ( component.length )
                     alert( `Publish failed. A component with the unique name '${data.name}' has already been released.` );
                   return !component;
                 },
