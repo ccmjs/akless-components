@@ -281,14 +281,14 @@ export function unescapeHTML( value ) {
   } );
 }
 
-/*------------------------------------------------- Data Management --------------------------------------------------*/
+/*-------------------------------------------------- Data Workflow ---------------------------------------------------*/
 
 /**
  * @summary gets a dataset from a datastore via given settings
  * @description
+ * The original settings given are not changed (they are cloned).<br>
  * If the settings do not contain a dataset key, a unique key is generated.<br>
  * If the dataset does not exist in the datastore, an empty dataset is returned. This dataset is not newly created in the datastore and is only returned locally.<br>
- * The original settings given are not changed (they are cloned).<br>
  * Instead of the settings, a dataset can be given directly. This dataset is then returned as result.<br>
  * If the dataset key is specified directly in the settings as the dataset, this dataset is returned as the result.<br>
  * A user instance that can be reached from the datastore is automatically detected.
@@ -360,6 +360,170 @@ export async function dataset( settings={} ) {
   if ( settings.convert ) dataset = await settings.convert( dataset );
 
   return dataset;
+}
+
+/**
+ * @summary allows a declarative way to perform usual finish actions
+ * @description
+ * The original parameters given are not changed (they are cloned).<br>
+ * If a <i>ccm</i> instance is passed for <code>settings</code>, the finish actions defined via the <code>instance.onfinish</code> property are used.<br>
+ * If a function is passed for <code>settings</code>, the function is called with the result data.<br>
+ * If a <i>ccm</i> instance is passed for <code>settings</code>, the result data are automatically determined via <code>instance.getValue()</code>. To do this, the instance must have a <code>getValue</code> method.<br>
+ * If a <i>ccm</i> instance is passed for <code>settings</code>, the nearest user instance in the <i>ccm</i> context of the instance is automatically determined.
+ * @param {Object|Function|ccm.types.Instance} settings - declarative settings for usual finish actions (or 'onfinish' callback or finished <i>ccm</i> instance)
+ * @param {Object} [results] - result data of the finished <i>ccm</i> instance
+ * @param {string} [settings.confirm] - show confirm box (no finish actions will be performed if user chooses abort)
+ * @param {Function} [settings.condition] - no finish actions will be performed if this function returns a falsy value (result data and possibly the <i>ccm</i> instance is passed as parameters)
+ * @param {boolean} [settings.login] - user will be logged in if not already logged in (only works if a user instance could be determined)
+ * @param {Function} [settings.convert] - for dynamic adjustment of the results data (result data is passed as parameter, must return adjusted result data)
+ * @param {boolean} [settings.log] - log result data in the developer console of the web browser
+ * @param {Object} [settings.clear] - clear website area of the finished <i>ccm</i> instance
+ * @param {Object|boolean} [settings.store] - use this to store the result data in a data store (use boolean true to apply the settings of <code>instance.data</code>")
+ * @param {ccm.types.settings} settings.store.settings - settings for a <i>ccm</i> datastore (result data will be set in this datastore)
+ * @param {ccm.types.key} [settings.store.key] - dataset key for result data in the datastore (default is generated key)
+ * @param {boolean} [settings.store.user] - The dataset key is expanded to an user-specific key: <code>[ dataset_key, user_key ]</code> (only if user is detected and logged in)
+ * @param {boolean} [settings.store.unique] - The dataset key is expanded with an unique hash: <code>[ dataset_key, user_key, unique_hash ]</code>
+ * @param {ccm.types.permissions} [settings.store.permissions] - If the dataset does not exist, the dataset then will created with these permission settings.
+ * @param {string} [settings.alert] - show alert message
+ * @param {boolean} [settings.restart] - restart finished <i>ccm</i> instance
+ * @param {{component: string, config: Object}|ccm.types.html} [settings.render] - render other content (<i>ccm</i>-based app or HTML content, as default the content is rendered in the root element of the instance)
+ * @param {callback} [settings.callback] - additional finish callback which will be called after the other finish actions (result data and possibly the <i>ccm</i> instance is passed as parameter)
+ * @returns {Promise<void>}
+ * @example
+ * instance.onfinish = {
+ *   confirm: 'Are you sure?',
+ *   condition: ( results, instance ) => true,
+ *   login: true,
+ *   convert: json => json,
+ *   log: true,
+ *   clear: true,
+ *   store: {
+ *     settings: { name: 'store_name', url: 'path/to/server/interface.php' },
+ *     key: 'dataset_key',
+ *     user: true,
+ *     unique: true,
+ *     permissions: {
+ *       creator: 'john',
+ *       group: {
+ *         john: true,
+ *         jane: true
+ *       },
+ *       access: {
+ *         get: 'all',
+ *         set: 'group',
+ *         del: 'creator'
+ *       }
+ *     }
+ *   },
+ *   alert: 'Finished!',
+ *   restart: true,
+ *   render: {
+ *     component: 'component_url',
+ *     config: {...}
+ *   },
+ *   callback: ( results, instance ) => console.log( results, instance )
+ * };
+ * onFinish( instance );
+ * @example
+ * instance.data = {
+ *   store: { name: 'store_name', url: 'path/to/server/interface.php' }
+ *   key: 'dataset_key',
+ *   user: true,
+ *   unique: true,
+ *   permissions: {...}
+ * };
+ * instance.onfinish = {
+ *   store: true
+ * };
+ * onFinish( instance );
+ * @example
+ * onFinish( { render: {
+ *   component: 'component_url',
+ *   config: {
+ *     root: document.body,
+ *     ...
+ *   }
+ * } } );
+ * @example
+ * instance.onfinish = { render: 'Hello <b>World</b>!' };
+ * onFinish( instance );
+ * @example
+ * instance.onfinish = { render: { inner: 'Hello World!' } } };
+ * onFinish( instance );
+ */
+export async function onFinish( settings, results ) {
+  const ccm = framework( arguments );
+  let instance, user;
+
+  // no manipulation of original passed parameters (avoids unwanted side effects)
+  settings = ccm.helper.clone( settings );
+  results  = ccm.helper.clone( results  );
+
+  // has ccm instance? => take finish actions from 'instance.onfinish' and result data from 'instance.getValue()'
+  if ( ccm.helper.isInstance( settings ) ) {
+    instance = settings;
+    if ( !results && settings.getValue ) results = settings.getValue();  // determine result data
+    settings = settings.onfinish;                                        // determine finish actions
+    user = ccm.context.find( instance, 'user' );                         // determine nearest user instance in the ccm context of the instance
+  }
+
+  if ( !settings ) return;                                           // no finish actions? => abort
+  if ( typeof settings === 'function' ) return settings( results );  // are the finish actions defined by function? => perform function with results
+
+  if ( settings.confirm && confirm( !settings.confirm ) ) return;                          // confirm box
+  if ( settings.condition && !( await settings.condition( results, instance ) ) ) return;  // check condition
+  user && settings.login && await user.login();                                            // login user (if not already logged in)
+  if ( settings.convert ) results = await settings.convert( results );                     // adjust result data
+  settings.log && console.log( results );                                                  // log result data (if necessary)
+  if ( instance && settings.clear ) instance.element.innerHTML = '';                       // clear website area of the instance (if necessary)
+
+  // store result data in a datastore
+  if ( settings.store && results ) {
+
+    /**
+     * deep copy of result data
+     * @type {Object}
+     */
+    const dataset = ccm.helper.clone( results );
+
+    // allow shortcut for update dataset in its original datastore
+    if ( instance && settings.store === true ) {
+      settings.store = {};
+      if ( ccm.helper.isObject( instance.data ) && ccm.helper.isDatastore( instance.data.store ) ) {
+        settings.store = ccm.helper.clone( instance.data );
+        settings.store.settings = settings.store.store;
+        delete settings.store.store;
+      }
+    }
+
+    // prepare dataset key
+    dataset.key = settings.store.key || ccm.helper.generateKey();
+    if ( !Array.isArray( dataset.key ) && ( settings.store.user || settings.store.unique ) ) dataset.key = [ dataset.key ];
+    settings.store.user && user && user.isLoggedIn() && dataset.key.push( user.data().key );
+    settings.store.unique && dataset.key.push( ccm.helper.generateKey() );
+
+    if ( settings.store.permissions ) dataset._ = settings.store.permissions;  // prepare permission settings
+    if ( user ) settings.store.settings.user = user;                           // set user instance for datastore
+    await ccm.set( settings.store.settings, dataset );                         // store result data in datastore
+
+  }
+
+  if ( settings.alert ) alert( settings.alert );           // alert message
+  instance && settings.restart && await instance.start();  // restart ccm instance
+
+  // render other content (ccm-based app or HTML content)
+  if ( settings.render )
+    if ( ccm.helper.isObject( settings.render ) && settings.render.component ) {
+      let config = settings.render.config || {};                                  // determine instance configuration
+      config.root = config.root || instance && instance.root;                     // default root element is root of instance
+      config.parent = !settings.render.root && instance && instance.parent;       // set parent instance
+      await ccm.start( settings.render.component, config );                       // render ccm-based app
+    }
+    else instance && setContent( instance.root, ccm.helper.html( settings.render ), ccm );  // render HTML content
+
+  // perform additional finish callback
+  settings.callback && await settings.callback( results, instance );
+
 }
 
 /*------------------------------------------------- DOM Manipulation -------------------------------------------------*/
