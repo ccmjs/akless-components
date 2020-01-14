@@ -4,7 +4,7 @@
  * @license The MIT License (MIT)
  */
 
-( function () {
+( () => {
 
   const component = {
 
