@@ -10,7 +10,7 @@ ccm.files[ 'module-helper.js' ] = {
     suite.modules = await suite.ccm.load( suite.path );
   },
 
-/*--------------------------------------------------- Action Data ----------------------------------------------------*/
+/*----------------------------------------- Action Data and Data Management ------------------------------------------*/
 
   action: {
     setup: suite => {
@@ -185,7 +185,7 @@ ccm.files[ 'module-helper.js' ] = {
     }
   },
 
-/*------------------------------------------------- Data Management --------------------------------------------------*/
+/*-------------------------------------------------- Data Workflow ---------------------------------------------------*/
 
   dataset: {
     setup: async suite => {
@@ -238,6 +238,160 @@ ccm.files[ 'module-helper.js' ] = {
       convert: async suite => {
         await suite.store.set( suite.dataset );
         suite.assertEquals( { key: suite.key, foo: 'BAR' }, await suite.modules.dataset( { store: suite.store, key: suite.key, convert: dataset => { dataset.foo = dataset.foo.toUpperCase(); return dataset; } } ) );
+      }
+    }
+  },
+  onFinish: {
+    setup: suite => suite.instance = { ccm: true, component: { Instance: true } },
+    tests: {
+      byFunction: suite => suite.modules.onFinish( () => suite.passed() ),
+      byObject: suite => suite.modules.onFinish( { callback: () => suite.passed() } ),
+      byInstance: suite => {
+        suite.instance.onfinish = () => suite.passed();
+        suite.modules.onFinish( suite.instance );
+      },
+      getValue: suite => {
+        const results = { key: 'value' };
+        suite.instance.getValue = () => results;
+        suite.instance.onfinish = results2 => suite.assertSame( results, results2 );
+        suite.modules.onFinish( suite.instance );
+      },
+      conditionPassed: suite => {
+        suite.instance.onfinish = { condition: () => true, callback: () => suite.passed() };
+        suite.modules.onFinish( suite.instance );
+      },
+      conditionFailed: suite => {
+        suite.instance.onfinish = { condition: () => false, callback: () => suite.failed( 'condition has not failed' ) };
+        suite.modules.onFinish( suite.instance );
+        suite.passed();
+      },
+      conditionParams: suite => {
+        suite.instance.onfinish = { condition: ( results, instance ) => results && instance, callback: () => suite.passed() };
+        suite.modules.onFinish( suite.instance, {} );
+      },
+      userLogin: async suite => {
+        suite.instance.user = { login: () => {} };
+        suite.instance.onfinish = { login: true };
+        await suite.modules.onFinish( suite.instance );
+        suite.passed();
+      },
+      userLoginFailed: async suite => {
+        try {
+          suite.instance.user = { login: function () { throw new Error( 'Authentication failed' ); } };
+          suite.instance.onfinish = { login: true };
+          await suite.modules.onFinish( suite.instance );
+          suite.failed( 'Exception was not caught' );
+        }
+        catch( e ) {
+          suite.passed();
+        }
+      },
+      convert: suite => suite.modules.onFinish( { convert: results => { results.foo = results.foo.toUpperCase(); return results; }, callback: results => suite.assertEquals( { foo: 'BAR' }, results ) }, { foo: 'bar' } ),
+      clear: suite => {
+        suite.instance.element = suite.ccm.helper.html( { inner: 'Hello World!' } );
+        suite.instance.onfinish = { clear: true };
+        suite.modules.onFinish( suite.instance );
+        suite.assertSame( '', suite.instance.element.innerHTML );
+      },
+      clonedSettings: suite => {
+        suite.instance.data = {};
+        suite.instance.onfinish = { store: true };
+        suite.modules.onFinish( suite.instance, { key: 'value' } );
+        suite.assertEquals( { store: true }, suite.instance.onfinish );
+      },
+      clonedResults: suite => {
+        const results = {};
+        const settings = { callback: results2 => {
+          if ( results === results2 ) return suite.failed( 'original results are manipulated' );
+          suite.assertEquals( results, results2 );
+        } };
+        suite.modules.onFinish( settings, results );
+      },
+      restart: suite => {
+        const content = '!';
+        suite.instance.element = suite.ccm.helper.html( { inner: content } );
+        suite.instance.start = () => suite.instance.element.innerHTML += content;
+        suite.instance.onfinish = { restart: true };
+        suite.modules.onFinish( suite.instance );
+        suite.assertSame( '!!', suite.instance.element.innerHTML );
+      },
+      renderApp: async suite => {
+        const div = suite.ccm.helper.html( { inner: 'Hello World!' } );
+        suite.instance.root = div;
+        suite.instance.onfinish = { render: { component: { name: 'test', ccm: suite.ccm, Instance: function () { this.start = () => { this.element.innerHTML = 'foo' }; } }, config: { shadow: 'none' } } };
+        await suite.modules.onFinish( suite.instance );
+        suite.assertSame( 'foo', div.textContent );
+      },
+      renderWithoutInstance: async suite => {
+        const div = suite.ccm.helper.html( { inner: 'Hello World!' } );
+        await suite.modules.onFinish( { render: { component: { name: 'test', ccm: suite.ccm, Instance: function () { this.start = () => { this.element.innerHTML = 'foo' }; } }, config: { shadow: 'none', root: div } } } );
+        suite.assertSame( 'foo', div.textContent );
+      },
+      renderHTML: async suite => {
+        const div = suite.ccm.helper.html( { inner: 'Hello World!' } );
+        suite.instance.root = div;
+        suite.instance.onfinish = { render: 'foo' };
+        await suite.modules.onFinish( suite.instance );
+        suite.assertSame( 'foo', div.textContent );
+      },
+      renderText: async suite => {
+        const div = suite.ccm.helper.html( { inner: 'Hello World!' } );
+        suite.instance.root = div;
+        suite.instance.onfinish = { render: { inner: 'foo' } };
+        await suite.modules.onFinish( suite.instance );
+        suite.assertSame( 'foo', div.textContent );
+      }
+    },
+    store: {
+      setup: async suite => {
+        suite.store = await suite.ccm.store();
+        suite.instance.user = { isLoggedIn: () => true, data: () => { return { key: 'user_key' } } };
+      },
+      tests: {
+        bySettings: async suite => {
+          await suite.modules.onFinish( { store: { settings: { name: 'test' }, key: 'value' } }, { foo: 'bar' } );
+          const store = await suite.ccm.store( { name: 'test' } );
+          suite.assertEquals( { foo: 'bar', key: 'value' }, await store.get( 'value' ) );
+          await store.del( 'value' );
+        },
+        byKey: async suite => {
+          await suite.modules.onFinish( { store: { settings: suite.store, key: 'value' } }, { foo: 'bar' } );
+          suite.assertEquals( { foo: 'bar', key: 'value' }, await suite.store.get( 'value' ) );
+        },
+        byGeneratedKey: async suite => {
+          await suite.modules.onFinish( { store: { settings: suite.store } }, { foo: 'bar' } );
+          const dataset = ( await suite.store.get( { foo: 'bar' } ) )[ 0 ];
+          suite.assertTrue( suite.ccm.helper.isKey( dataset.key ) && dataset.foo === 'bar' );
+        },
+        byUserKey: async suite => {
+          suite.instance.onfinish = { store: { settings: suite.store, key: 'dataset_key', user: true } };
+          await suite.modules.onFinish( suite.instance, { foo: 'bar' } );
+          suite.assertEquals( { foo: 'bar', key: [ 'dataset_key', 'user_key' ] }, await suite.store.get( [ 'dataset_key', 'user_key' ] ) );
+        },
+        byUniqueKey: async suite => {
+          suite.instance.onfinish = { store: { settings: suite.store, key: 'dataset_key', unique: true } };
+          await suite.modules.onFinish( suite.instance, { foo: 'bar' } );
+          const dataset = ( await suite.store.get( { foo: 'bar' } ) )[ 0 ];
+          suite.assertTrue( dataset.key.length === 2 && dataset.key[ 0 ] === 'dataset_key' && dataset.foo === 'bar' );
+        },
+        byUserUniqueKey: async suite => {
+          suite.instance.onfinish = { store: { settings: suite.store, key: 'dataset_key', user: true, unique: true } };
+          await suite.modules.onFinish( suite.instance, { foo: 'bar' } );
+          const dataset = ( await suite.store.get( { foo: 'bar' } ) )[ 0 ];
+          suite.assertTrue( dataset.key.length === 3 && dataset.key[ 0 ] === 'dataset_key' && dataset.key[ 1 ] === 'user_key' && dataset.foo === 'bar' );
+        },
+        withPermissions: async suite => {
+          const permissions = { creator: 'john', realm: 'guest', access: 'creator' };
+          await suite.modules.onFinish( { store: { settings: suite.store, key: 'value', permissions: permissions } }, { foo: 'bar' } );
+          suite.assertEquals( { foo: 'bar', key: 'value', _: permissions }, await suite.store.get( 'value' ) );
+        },
+        byData: async suite => {
+          const permissions = { creator: 'john', realm: 'guest', access: 'creator' };
+          suite.instance.data = { store: suite.store, key: 'dataset_key', user: true, permissions: permissions };
+          suite.instance.onfinish = { store: true };
+          await suite.modules.onFinish( suite.instance, { foo: 'bar' } );
+          suite.assertEquals( { foo: 'bar', key: [ 'dataset_key', 'user_key' ], _: permissions }, await suite.store.get( [ 'dataset_key', 'user_key' ] ) );
+        }
       }
     }
   },
