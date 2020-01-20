@@ -284,6 +284,22 @@ export function renameProperty( obj, before, after ) {
 }
 
 /**
+ * @summary shuffles an array in place with the Fisher-Yates algorithm
+ * @see https://stackoverflow.com/a/6274381
+ * @param {Array} array
+ * @example
+ * const array = [ 1, 2, 3 ];
+ * shuffleArray( array );
+ * console.log( array );
+ */
+export function shuffleArray( array ) {
+  for ( let i = array.length - 1; i > 0; i-- ) {
+    const j = Math.floor( Math.random() * ( i + 1 ) );
+    [ array[ i ], array[ j ] ] = [ array[ j ], array[ i ] ];
+  }
+}
+
+/**
  * @summary unescapes HTML characters of a string value
  * @param {string} value - string value
  * @returns {string}
