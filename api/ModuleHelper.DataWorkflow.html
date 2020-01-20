@@ -131,7 +131,7 @@
             
             <div class="container-source members">
                 <code><a href="helper.mjs.html">helper.mjs</a></code>,
-                <code><a href="helper.mjs.html#line412">line 412</a></code>
+                <code><a href="helper.mjs.html#line430">line 430</a></code>
             </div>
             
         </h4>
@@ -149,7 +149,7 @@
 If the settings do not contain a dataset key, a unique key is generated.<br>
 If the dataset does not exist in the datastore, an empty dataset is returned. This dataset is not newly created in the datastore and is only returned locally.<br>
 Instead of the settings, a dataset can be given directly. This dataset is then returned as result.<br>
-If the dataset key is specified directly in the settings as the dataset, this dataset is returned as the result.<br>
+If the dataset key is specified in the settings directly as the dataset, this dataset is returned as the result.<br>
 A user instance that can be reached from the datastore is automatically detected.
     </div>
     
@@ -555,29 +555,41 @@ A user instance that can be reached from the datastore is automatically detected
     
         <h5>Examples</h5>
         
-    <pre class="prettyprint"><code>await dataset( { store: datastore, key: dataset_key } )  // => { key: dataset_key, ... }</code></pre>
+    <pre class="prettyprint"><code>// load dataset by datastore and key
+const dataset = await dataset( { store: datastore, key: dataset_key } );
+console.log( dataset );  // => { key: dataset_key, ... }</code></pre>
 
-    <pre class="prettyprint"><code>await dataset( { key: dataset_key, ... } )  // => { key: dataset_key, ... }</code></pre>
+    <pre class="prettyprint"><code>// passed dataset is directly returned as the result
+const dataset = await dataset( { key: dataset_key, ... } );
+console.log( dataset );  // => { key: dataset_key, ... }</code></pre>
 
-    <pre class="prettyprint"><code>await dataset( { store: datastore, key: { key: dataset_key, ... } } )  // => { key: dataset_key, ... }</code></pre>
+    <pre class="prettyprint"><code>// passed dataset as key is directly returned as the result
+const dataset = await dataset( { store: datastore, key: { key: dataset_key, ... } } );
+console.log( dataset );  // => { key: dataset_key, ... }</code></pre>
 
-    <pre class="prettyprint"><code>await dataset( {
+    <pre class="prettyprint"><code>// load of a user-specific dataset
+const dataset = await dataset( {
   store: datastore,
   key: dataset_key,
-  login: true,
-  user: true
-} )  // => { key: [ dataset_key, user_key ], ... }</code></pre>
+  login: true,       // user must log in if not already logged in
+  user: true         // dataset key and user key will be combined
+} );
+console.log( dataset );  // => { key: [ dataset_key, user_key ], ... }</code></pre>
 
-    <pre class="prettyprint"><code>await dataset( {
+    <pre class="prettyprint"><code>// get new empty dataset with generated key that contains only given permission settings
+const dataset = await dataset( {
   store: datastore,
   permissions: { creator: 'john', realm: 'guest', access: 'creator' }
-} )  // => { key: generated_key, _: { creator: 'john', realm: 'guest', access: 'creator' } }</code></pre>
+} );
+console.log( dataset );  // => { key: generated_key, _: { creator: 'john', realm: 'guest', access: 'creator' } }</code></pre>
 
-    <pre class="prettyprint"><code>await dataset( {
+    <pre class="prettyprint"><code>// adaptation of the data structure of the loaded dataset using a convert function
+const dataset = await dataset( {
   store: datastore,
   key: dataset_key,
   convert: dataset => { dataset.lang = dataset.lang.toUpperCase(); return dataset; }
-} )  // => { key: dataset_key, lang: 'EN', ... }</code></pre>
+} );
+console.log( dataset );  // => { key: dataset_key, lang: 'EN', ... }</code></pre>
 
     
 
@@ -595,13 +607,13 @@ A user instance that can be reached from the datastore is automatically detected
             
             <div class="container-source members">
                 <code><a href="helper.mjs.html">helper.mjs</a></code>,
-                <code><a href="helper.mjs.html#line544">line 544</a></code>
+                <code><a href="helper.mjs.html#line562">line 562</a></code>
             </div>
             
         </h4>
 
         
-        <p class="summary">allows a declarative way to perform usual finish actions</p>
+        <p class="summary">allows a declarative way to perform common finish actions</p>
         
     
 </dt>

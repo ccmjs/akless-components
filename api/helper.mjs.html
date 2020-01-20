@@ -241,7 +241,7 @@ export function isSafari() {
  */
 
 /**
- * converts an array to an object
+ * converts an array of strings or numbers to an object of booleans
  * @param {Array|Object} obj - array or object that contains the array
  * @param {string} [key] - object property where the array is contained
  * @returns {Object.&lt;string,boolean>} resulting object
@@ -426,7 +426,7 @@ export function unescapeHTML( value ) {
  * If the settings do not contain a dataset key, a unique key is generated.&lt;br>
  * If the dataset does not exist in the datastore, an empty dataset is returned. This dataset is not newly created in the datastore and is only returned locally.&lt;br>
  * Instead of the settings, a dataset can be given directly. This dataset is then returned as result.&lt;br>
- * If the dataset key is specified directly in the settings as the dataset, this dataset is returned as the result.&lt;br>
+ * If the dataset key is specified in the settings directly as the dataset, this dataset is returned as the result.&lt;br>
  * A user instance that can be reached from the datastore is automatically detected.
  * @param {Object} [settings={}] - contains the required data to determine the dataset (or is directly the dataset)
  * @param {Object} settings.store - the datastore that contains the dataset
@@ -437,24 +437,42 @@ export function unescapeHTML( value ) {
  * @param {Function} [settings.convert] - With this function, the data contained in the result dataset can be adjusted.
  * @returns {Promise&lt;Object>}
  * @throws {Error} if user must log in and login is canceled
- * @example await dataset( { store: datastore, key: dataset_key } )  // => { key: dataset_key, ... }
- * @example await dataset( { key: dataset_key, ... } )  // => { key: dataset_key, ... }
- * @example await dataset( { store: datastore, key: { key: dataset_key, ... } } )  // => { key: dataset_key, ... }
- * @example await dataset( {
+ * @example
+ * // load dataset by datastore and key
+ * const dataset = await dataset( { store: datastore, key: dataset_key } );
+ * console.log( dataset );  // => { key: dataset_key, ... }
+ * @example
+ * // passed dataset is directly returned as the result
+ * const dataset = await dataset( { key: dataset_key, ... } );
+ * console.log( dataset );  // => { key: dataset_key, ... }
+ * @example
+ * // passed dataset as key is directly returned as the result
+ * const dataset = await dataset( { store: datastore, key: { key: dataset_key, ... } } );
+ * console.log( dataset );  // => { key: dataset_key, ... }
+ * @example
+ * // load of a user-specific dataset
+ * const dataset = await dataset( {
  *   store: datastore,
  *   key: dataset_key,
- *   login: true,
- *   user: true
- * } )  // => { key: [ dataset_key, user_key ], ... }
- * @example await dataset( {
+ *   login: true,       // user must log in if not already logged in
+ *   user: true         // dataset key and user key will be combined
+ * } );
+ * console.log( dataset );  // => { key: [ dataset_key, user_key ], ... }
+ * @example
+ * // get new empty dataset with generated key that contains only given permission settings
+ * const dataset = await dataset( {
  *   store: datastore,
  *   permissions: { creator: 'john', realm: 'guest', access: 'creator' }
- * } )  // => { key: generated_key, _: { creator: 'john', realm: 'guest', access: 'creator' } }
- * @example await dataset( {
+ * } );
+ * console.log( dataset );  // => { key: generated_key, _: { creator: 'john', realm: 'guest', access: 'creator' } }
+ * @example
+ * // adaptation of the data structure of the loaded dataset using a convert function
+ * const dataset = await dataset( {
  *   store: datastore,
  *   key: dataset_key,
  *   convert: dataset => { dataset.lang = dataset.lang.toUpperCase(); return dataset; }
- * } )  // => { key: dataset_key, lang: 'EN', ... }
+ * } );
+ * console.log( dataset );  // => { key: dataset_key, lang: 'EN', ... }
  * @memberOf ModuleHelper.DataWorkflow
  */
 export async function dataset( settings={} ) {
@@ -500,7 +518,7 @@ export async function dataset( settings={} ) {
 }
 
 /**
- * @summary allows a declarative way to perform usual finish actions
+ * @summary allows a declarative way to perform common finish actions
  * @description
  * The original parameters given are not changed (they are cloned).&lt;br>
  * If a &lt;i>ccm&lt;/i> instance is passed for &lt;code>settings&lt;/code>, the finish actions defined via the &lt;code>instance.onfinish&lt;/code> property are used.&lt;br>
