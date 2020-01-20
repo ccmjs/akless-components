@@ -630,6 +630,19 @@ export function prepend( element, content ) {
 }
 
 /**
+ * @summary removes an HTML element from its parent
+ * @param {Element} element - HTML element
+ * @example
+ * const element = document.createElement( 'div' );
+ * document.body.appendChild( element );
+ * removeElement( element );
+ * console.log( element.parentNode );  // => null
+ */
+export function remove( element ) {
+  element && element.parentNode && element.parentNode.removeChild( element );
+}
+
+/**
  * @summary replaces a HTML element with an other single HTML element (contained <script> tags will be removed)
  * @param {Element} element - HTML element (must have a parent)
  * @param {ccm.types.html} other - other single HTML element
@@ -972,7 +985,7 @@ export function protect( html ) {
     return html.replace( /<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '' );
 
   if ( ccm.helper.isElement( html ) )
-    [ ...html.querySelectorAll( 'script' ) ].forEach( ccm.helper.removeElement );
+    [ ...html.querySelectorAll( 'script' ) ].forEach( remove );
 
   return html;
 }
