@@ -1,14 +1,22 @@
 /**
- * @overview module for providing ccm helper functions
+ * <p>ES6 module that exports helper functions for <i>ccm</i> component developers</p>
+ * <p>(namespaces are only used for categorization)</p>
  * @author André Kless <andre.kless@web.de> 2019-2020
  * @license The MIT License (MIT)
+ * @version 1.0.0
+ * @namespace ModuleHelper
  */
 
 /*--------------------------------------------------- Action Data ----------------------------------------------------*/
 
 /**
- * @summary executes action data (performs a predefined function call)
- * @param {Array} action data
+ * helper functions for handling action data (predefined function calls)
+ * @namespace ModuleHelper.ActionData
+ */
+
+/**
+ * executes action data
+ * @param {Array} action - action data
  * @param {Object} [context] - context for this
  * @returns {Promise<*>} return value of executed action data
  * @example action( [ functionName, 'param1', 'param2' ] )
@@ -19,6 +27,7 @@
  * @example action( [ [ 'ccm.load', 'moduleURL#functionName' ], 'param1', 'param2' ] )
  * @example action( [ functionName ] )  // without parameters
  * @example action( functionName )      // without array
+ * @memberOf ModuleHelper.ActionData
  */
 export async function action( action, context ) {
   const ccm = framework( arguments );
@@ -37,7 +46,7 @@ export async function action( action, context ) {
 }
 
 /**
- * @summary performs a function by function name
+ * performs a function by function name
  * @param {string} name - function name
  * @param {Array} [args] - function arguments
  * @param {Object} [context] - context for this
@@ -45,6 +54,7 @@ export async function action( action, context ) {
  * @example action( [ 'functionName', 'param1', 'param2' ] )
  * @example action( [ 'this.functionName', 'param1', 'param2' ], context )
  * @example action( [ 'my.namespace.functionName', 'param1', 'param2' ] )
+ * @memberOf ModuleHelper.ActionData
  */
 export function executeByName( name, args, context ) {
   const namespaces = name.split( '.' );
@@ -59,7 +69,12 @@ export function executeByName( name, args, context ) {
 /*--------------------------------------------- Asynchronous Programming ---------------------------------------------*/
 
 /**
- * @summary workaround for an asynchronous foreach
+ * helper functions for handling asynchronous programming
+ * @namespace ModuleHelper.AsynchronousProgramming
+ */
+
+/**
+ * workaround for an asynchronous foreach
  * @param {Array} array - array to be iterated
  * @param {Function} callback - asynchronous function that is called for each array value
  * @returns {Promise<void>}
@@ -69,6 +84,7 @@ export function executeByName( name, args, context ) {
  *   await ccm.helper.sleep( value );
  *   console.log( value, i, array );
  * } );
+ * @memberOf ModuleHelper.AsynchronousProgramming
  */
 export async function asyncForEach( array, callback ) {
 
@@ -78,19 +94,25 @@ export async function asyncForEach( array, callback ) {
 }
 
 /**
- * @summary sleep for a given number of milliseconds
+ * sleep for a given number of milliseconds
  * @param {number} time - sleep time in milliseconds
  * @returns {Promise<void>}
  * @example await sleep( 3000 );
  * @example sleep( 3000 ).then( () => {...} ) );
+ * @memberOf ModuleHelper.AsynchronousProgramming
  */
 export function sleep( time ) { return new Promise( resolve => setTimeout( resolve, time ) ); }
 
 /*----------------------------------------------------- Checker ------------------------------------------------------*/
 
 /**
- * @summary checks if an ccm instance has DOM contact
- * @param {ccm.types.instance} instance - ccm instance
+ * helper functions for checking conditions
+ * @namespace ModuleHelper.Checker
+ */
+
+/**
+ * checks if an ccm instance has DOM contact
+ * @param {Object} instance - ccm instance
  * @returns {boolean}
  * @example
  * // <body><div id="app"></div></body>
@@ -110,6 +132,7 @@ export function sleep( time ) { return new Promise( resolve => setTimeout( resol
  * const parent = await suite.ccm.instance( component, { root: document.querySelector( '#app' ) } );
  * const instance = await suite.ccm.instance( component, { parent: parent } );
  * console.log( hasDomContact( instance ) ) );  // => false
+ * @memberOf ModuleHelper.Checker
  */
 export function hasDomContact( instance ) {
   const ccm = framework( arguments );
@@ -117,8 +140,8 @@ export function hasDomContact( instance ) {
 }
 
 /**
- * @summary checks if an ccm instance has parent element contact
- * @param {ccm.types.instance} instance - ccm instance
+ * checks if an ccm instance has parent element contact
+ * @param {Object} instance - ccm instance
  * @returns {boolean}
  * @example
  * const parent = await suite.ccm.instance( component );
@@ -129,30 +152,34 @@ export function hasDomContact( instance ) {
  * const parent = await suite.ccm.instance( component );
  * const instance = await suite.ccm.instance( component, { parent: parent } );
  * console.log( hasParentContact( instance ) ) );  // => false
+ * @memberOf ModuleHelper.Checker
  */
 export function hasParentContact( instance ) {
   return instance.parent && instance.parent.element.contains( instance.root );
 }
 
 /**
- * @summary checks if current web browser is Firefox
+ * checks if current web browser is Firefox
  * @returns {boolean}
+ * @memberOf ModuleHelper.Checker
  */
 export function isFirefox() {
   return navigator.userAgent.search( 'Firefox' ) > -1;
 }
 
 /**
- * @summary checks if current web browser is Google Chrome
+ * checks if current web browser is Google Chrome
  * @returns {boolean}
+ * @memberOf ModuleHelper.Checker
  */
 export function isGoogleChrome() {
   return /Chrome/.test( navigator.userAgent ) && /Google Inc/.test( navigator.vendor );
 }
 
 /**
- * @summary checks if current web browser is Safari
+ * checks if current web browser is Safari
  * @returns {boolean}
+ * @memberOf ModuleHelper.Checker
  */
 export function isSafari() {
   return /^((?!chrome|android).)*safari/i.test( navigator.userAgent );
@@ -161,7 +188,12 @@ export function isSafari() {
 /*-------------------------------------------------- Data Handling ---------------------------------------------------*/
 
 /**
- * @summary converts an array to an object
+ * helper functions for data handling
+ * @namespace ModuleHelper.DataHandling
+ */
+
+/**
+ * converts an array to an object
  * @param {Array|Object} obj - array or object that contains the array
  * @param {string} [key] - object property where the array is contained
  * @returns {Object.<string,boolean>} resulting object
@@ -172,6 +204,7 @@ export function isSafari() {
  * const obj = { key: [ 'foo', 'bar' ] };
  * arrToObj( obj, 'key' );  // without return value (original object is manipulated)
  * console.log( obj );      // => { key: { foo: true, bar: true } }
+ * @memberOf ModuleHelper.DataHandling
  */
 export function arrToObj( obj, key ) {
 
@@ -191,6 +224,7 @@ export function arrToObj( obj, key ) {
  * @param {boolean} [deep] - clean also deeper properties (recursive)
  * @returns {object|Array} cleaned object (or array)
  * @example cleanObject( [ 'foo', false, 0, '', null, undefined, [], {} ] )  // => [ 'foo', [], {} ]
+ * @memberOf ModuleHelper.DataHandling
  */
 export function cleanObject( obj, deep ) {
   const ccm = framework( arguments );
@@ -222,6 +256,7 @@ export function cleanObject( obj, deep ) {
  * @returns {Object|Array} decoded JSON
  * @example decodeJSON( "{%'%log%'%:true,%'%restart%'%:true}" )       // => { log: true, restart: true }
  * @example decodeJSON( "[%'%ccm.instance%'%,%'%./ccm.user.js%'%]" )  // => [ "ccm.instance", "./ccm.user.js" ]
+ * @memberOf ModuleHelper.DataHandling
  */
 export function decodeJSON( str ) {
   const ccm = framework( arguments );
@@ -239,6 +274,7 @@ export function decodeJSON( str ) {
  * @returns {string} encoded JSON
  * @example encodeJSON( { log: true, restart: true } )         // => "{%'%log%'%:true,%'%restart%'%:true}"
  * @example encodeJSON( [ 'ccm.instance', './ccm.user.js' ] )  // => "[%'%ccm.instance%'%,%'%./ccm.user.js%'%]"
+ * @memberOf ModuleHelper.DataHandling
  */
 export function encodeJSON( json ) {
   const ccm = framework( arguments );
@@ -248,10 +284,11 @@ export function encodeJSON( json ) {
 }
 
 /**
- * @summary escapes HTML characters of a string value
+ * escapes HTML characters of a string value
  * @param {string} value - string value
  * @returns {string}
  * @example escapeHTML( 'Hello <b>World</b>!' )  // => 'Hello &lt;b&gt;World&lt;/b&gt;!'
+ * @memberOf ModuleHelper.DataHandling
  */
 export function escapeHTML( value ) {
   const text = document.createTextNode( value );
@@ -261,11 +298,12 @@ export function escapeHTML( value ) {
 }
 
 /**
- * @summary filters properties from an object
+ * filters properties from an object
  * @param {Object} obj - object
  * @param {...string} [properties] - properties
  * @return {Object} filtered properties
  * @example filterProperties( { a: 'x', b: 'y', c: 'z' }, 'a', 'b' )  // => { a: 'x', b: 'y' }
+ * @memberOf ModuleHelper.DataHandling
  */
 export function filterProperties( obj, properties ) {
   const result = {};
@@ -278,7 +316,7 @@ export function filterProperties( obj, properties ) {
 }
 
 /**
- * @summary renames the property name of an object
+ * renames the property name of an object
  * @param {Object} obj - the object that contains the property
  * @param {string} before - old property name
  * @param {string} after - new property name
@@ -286,6 +324,7 @@ export function filterProperties( obj, properties ) {
  * const obj = { foo: 4711 };
  * renameProperty( obj, 'foo', 'bar' );
  * console.log( obj );  // => { "bar": 4711 }
+ * @memberOf ModuleHelper.DataHandling
  */
 export function renameProperty( obj, before, after ) {
   obj[ after ] = obj[ before ];
@@ -294,13 +333,14 @@ export function renameProperty( obj, before, after ) {
 }
 
 /**
- * @summary shuffles an array in place with the Fisher-Yates algorithm
+ * shuffles an array in place with the Fisher-Yates algorithm
  * @see https://stackoverflow.com/a/6274381
  * @param {Array} array
  * @example
  * const array = [ 1, 2, 3 ];
  * shuffleArray( array );
  * console.log( array );
+ * @memberOf ModuleHelper.DataHandling
  */
 export function shuffleArray( array ) {
   for ( let i = array.length - 1; i > 0; i-- ) {
@@ -310,10 +350,11 @@ export function shuffleArray( array ) {
 }
 
 /**
- * @summary unescapes HTML characters of a string value
+ * unescapes HTML characters of a string value
  * @param {string} value - string value
  * @returns {string}
  * @example escapeHTML( 'Hello &lt;b&gt;World&lt;/b&gt;!' )  // => 'Hello <b>World</b>!'
+ * @memberOf ModuleHelper.DataHandling
  */
 export function unescapeHTML( value ) {
   const element = document.createElement( 'div' );
@@ -326,6 +367,11 @@ export function unescapeHTML( value ) {
 /*-------------------------------------------------- Data Workflow ---------------------------------------------------*/
 
 /**
+ * helper functions for data workflow handling
+ * @namespace ModuleHelper.DataWorkflow
+ */
+
+/**
  * @summary gets a dataset from a datastore via given settings
  * @description
  * The original settings given are not changed (they are cloned).<br>
@@ -334,14 +380,14 @@ export function unescapeHTML( value ) {
  * Instead of the settings, a dataset can be given directly. This dataset is then returned as result.<br>
  * If the dataset key is specified directly in the settings as the dataset, this dataset is returned as the result.<br>
  * A user instance that can be reached from the datastore is automatically detected.
- * @param {Object|ccm.types.dataset} [settings={}] - contains the required data to determine the dataset (or is directly the dataset)
- * @param {ccm.Datastore} settings.store - the datastore that contains the dataset
- * @param {ccm.types.key|ccm.types.dataset} [settings.key] - the key of the dataset in the datastore (or initial dataset)
+ * @param {Object} [settings={}] - contains the required data to determine the dataset (or is directly the dataset)
+ * @param {Object} settings.store - the datastore that contains the dataset
+ * @param {*} [settings.key] - the key of the dataset in the datastore (or initial dataset)
  * @param {boolean} [settings.login] - The user must log in if he is not already logged in to receive the dataset (only if a user instance could be determined automatically).
  * @param {boolean} [settings.user] - The dataset key given in the settings is expanded to a user-specific key: <code>[ dataset_key, user_key ]</code> (only if user is detected and logged in)
- * @param {ccm.types.permissions} [settings.permissions] - If the dataset does not exist, the empty dataset then returned will contain these permission settings.
+ * @param {Object} [settings.permissions] - If the dataset does not exist, the empty dataset then returned will contain these permission settings.
  * @param {Function} [settings.convert] - With this function, the data contained in the result dataset can be adjusted.
- * @returns {Promise<ccm.types.dataset>}
+ * @returns {Promise<Object>}
  * @throws {Error} if user must log in and login is canceled
  * @example await dataset( { store: datastore, key: dataset_key } )  // => { key: dataset_key, ... }
  * @example await dataset( { key: dataset_key, ... } )  // => { key: dataset_key, ... }
@@ -361,6 +407,7 @@ export function unescapeHTML( value ) {
  *   key: dataset_key,
  *   convert: dataset => { dataset.lang = dataset.lang.toUpperCase(); return dataset; }
  * } )  // => { key: dataset_key, lang: 'EN', ... }
+ * @memberOf ModuleHelper.DataWorkflow
  */
 export async function dataset( settings={} ) {
   const ccm = framework( arguments );
@@ -379,7 +426,7 @@ export async function dataset( settings={} ) {
 
   /**
    * nearest user instance in ccm context tree
-   * @type {ccm.types.instance}
+   * @type {Object}
    */
   const user = ccm.context.find( settings.store, 'user' );
 
@@ -412,7 +459,7 @@ export async function dataset( settings={} ) {
  * If a function is passed for <code>settings</code>, the function is called with the result data.<br>
  * If a <i>ccm</i> instance is passed for <code>settings</code>, the result data are automatically determined via <code>instance.getValue()</code>. To do this, the instance must have a <code>getValue</code> method.<br>
  * If a <i>ccm</i> instance is passed for <code>settings</code>, the nearest user instance in the <i>ccm</i> context of the instance is automatically determined.
- * @param {Object|Function|ccm.types.Instance} settings - declarative settings for usual finish actions (or 'onfinish' callback or finished <i>ccm</i> instance)
+ * @param {Object|Function} settings - declarative settings for usual finish actions (or 'onfinish' callback or finished <i>ccm</i> instance)
  * @param {Object} [results] - result data of the finished <i>ccm</i> instance
  * @param {string} [settings.confirm] - show confirm box (no finish actions will be performed if user chooses abort)
  * @param {Function} [settings.condition] - no finish actions will be performed if this function returns a falsy value (result data and possibly the <i>ccm</i> instance is passed as parameters)
@@ -421,14 +468,14 @@ export async function dataset( settings={} ) {
  * @param {boolean} [settings.log] - log result data in the developer console of the web browser
  * @param {Object} [settings.clear] - clear website area of the finished <i>ccm</i> instance
  * @param {Object|boolean} [settings.store] - use this to store the result data in a data store (use boolean true to apply the settings of <code>instance.data</code>")
- * @param {ccm.types.settings} settings.store.settings - settings for a <i>ccm</i> datastore (result data will be set in this datastore)
- * @param {ccm.types.key} [settings.store.key] - dataset key for result data in the datastore (default is generated key)
+ * @param {Object} settings.store.settings - settings for a <i>ccm</i> datastore (result data will be set in this datastore)
+ * @param {*} [settings.store.key] - dataset key for result data in the datastore (default is generated key)
  * @param {boolean} [settings.store.user] - The dataset key is expanded to an user-specific key: <code>[ dataset_key, user_key ]</code> (only if user is detected and logged in)
  * @param {boolean} [settings.store.unique] - The dataset key is expanded with an unique hash: <code>[ dataset_key, user_key, unique_hash ]</code>
- * @param {ccm.types.permissions} [settings.store.permissions] - If the dataset does not exist, the dataset then will created with these permission settings.
+ * @param {Object} [settings.store.permissions] - If the dataset does not exist, the dataset then will created with these permission settings.
  * @param {string} [settings.alert] - show alert message
  * @param {boolean} [settings.restart] - restart finished <i>ccm</i> instance
- * @param {{component: string, config: Object}|ccm.types.html} [settings.render] - render other content (<i>ccm</i>-based app or HTML content, as default the content is rendered in the root element of the instance)
+ * @param {{component: string, config: Object}|*} [settings.render] - render other content (<i>ccm</i>-based app or HTML content, as default the content is rendered in the root element of the instance)
  * @param {callback} [settings.callback] - additional finish callback which will be called after the other finish actions (result data and possibly the <i>ccm</i> instance is passed as parameter)
  * @returns {Promise<void>}
  * @example
@@ -492,6 +539,7 @@ export async function dataset( settings={} ) {
  * @example
  * instance.onfinish = { render: { inner: 'Hello World!' } } };
  * onFinish( instance );
+ * @memberOf ModuleHelper.DataWorkflow
  */
 export async function onFinish( settings, results ) {
   const ccm = framework( arguments );
@@ -571,15 +619,21 @@ export async function onFinish( settings, results ) {
 /*------------------------------------------------- DOM Manipulation -------------------------------------------------*/
 
 /**
- * @summary appends content to a HTML element (contained <script> tags will be removed)
+ * helper functions for DOM Manipulation
+ * @namespace ModuleHelper.DomManipulation
+ */
+
+/**
+ * appends content to a HTML element (contained script tags will be removed)
  * @param {Element} element - HTML element
- * @param {...ccm.types.html} content
+ * @param {...*} content
  * @example append( document.body, 'Hello World!' )
  * @example append( document.body, 'Hello', ' ', 'World', '!' )
  * @example append( document.body, [ 'Hello', ' ', 'World', '!' ] )
  * @example append( document.body, [ 'Hello', ' ', [ 'World', '!' ] ] )
  * @example append( document.body, { inner: 'Hello World!' } )
  * @example append( document.body, 'Hello', [ ' ', [ { inner: 'World' }, '!' ] ] )
+ * @memberOf ModuleHelper.DomManipulation
  */
 export function append( element, content ) {
   const ccm = framework( arguments );
@@ -606,11 +660,12 @@ export function append( element, content ) {
 }
 
 /**
- * @summary returns a <i>ccm</i> loading icon
- * @param {ccm.types.instance} [instance] - <i>ccm</i> instance (for determining Shadow DOM)
+ * returns a <i>ccm</i> loading icon
+ * @param {Object} [instance] - <i>ccm</i> instance (for determining Shadow DOM)
  * @returns {Element} <i>ccm</i> loading icon
  * @example document.body.appendChild( loading() )
  * @example document.body.appendChild( loading( instance ) )
+ * @memberOf ModuleHelper.DomManipulation
  */
 export function loading( instance ) {
 
@@ -633,15 +688,16 @@ export function loading( instance ) {
 }
 
 /**
- * @summary prepends content to a HTML element (contained <script> tags will be removed)
+ * prepends content to a HTML element (contained script tags will be removed)
  * @param {Element} element - HTML element
- * @param {...ccm.types.html} content
+ * @param {...*} content
  * @example prepend( document.body, 'Hello World!' )
  * @example prepend( document.body, 'Hello', ' ', 'World', '!' )
  * @example prepend( document.body, [ 'Hello', ' ', 'World', '!' ] )
  * @example prepend( document.body, [ 'Hello', ' ', [ 'World', '!' ] ] )
  * @example prepend( document.body, { inner: 'Hello World!' } )
  * @example prepend( document.body, 'Hello', [ ' ', [ { inner: 'World' }, '!' ] ] )
+ * @memberOf ModuleHelper.DomManipulation
  */
 export function prepend( element, content ) {
   const ccm = framework( arguments );
@@ -672,24 +728,26 @@ export function prepend( element, content ) {
 }
 
 /**
- * @summary removes an HTML element from its parent
+ * removes an HTML element from its parent
  * @param {Element} element - HTML element
  * @example
  * const element = document.createElement( 'div' );
  * document.body.appendChild( element );
  * removeElement( element );
  * console.log( element.parentNode );  // => null
+ * @memberOf ModuleHelper.DomManipulation
  */
 export function remove( element ) {
   element && element.parentNode && element.parentNode.removeChild( element );
 }
 
 /**
- * @summary replaces a HTML element with an other single HTML element (contained <script> tags will be removed)
+ * replaces a HTML element with an other single HTML element (contained script tags will be removed)
  * @param {Element} element - HTML element (must have a parent)
- * @param {ccm.types.html} other - other single HTML element
+ * @param {Object|string} other - other single HTML element
  * @example replace( document.querySelector( '#myid' ), '<b>World</b>' )
  * @example replace( document.querySelector( '#myid' ), { tag: 'b', inner: 'World' } )
+ * @memberOf ModuleHelper.DomManipulation
  */
 export function replace( element, other ) {
   const ccm = framework( arguments );
@@ -697,15 +755,16 @@ export function replace( element, other ) {
 }
 
 /**
- * @summary set the content of a HTML element (contained <script> tags will be removed)
+ * set the content of a HTML element (contained script tags will be removed)
  * @param {Element} element - HTML element
- * @param {...ccm.types.html} content - new content for the HTML element (old content is cleared)
+ * @param {...*} content - new content for the HTML element (old content is cleared)
  * @example setContent( document.body, 'Hello World!' )
  * @example setContent( document.body, 'Hello', ' ', 'World', '!' )
  * @example setContent( document.body, [ 'Hello', ' ', 'World', '!' ] )
  * @example setContent( document.body, [ 'Hello', ' ', [ 'World', '!' ] ] )
  * @example setContent( document.body, { inner: 'Hello World!' } )
  * @example setContent( document.body, 'Hello', [ ' ', [ { inner: 'World' }, '!' ] ] )
+ * @memberOf ModuleHelper.DomManipulation
  */
 export function setContent( element, content ) {
   element.innerHTML = '';           // clear old content
@@ -715,7 +774,12 @@ export function setContent( element, content ) {
 /*----------------------------------------------- HTML Input Elements ------------------------------------------------*/
 
 /**
- * @summary fills input elements with values
+ * helper functions for handling of HTML input elements
+ * @namespace ModuleHelper.InputElements
+ */
+
+/**
+ * fills input elements with values
  * @param {Element} element - HTML element which contains the input elements (must not be a HTML form tag)
  * @param {Object} data - contains the values for the input elements
  * @example
@@ -766,6 +830,7 @@ export function setContent( element, content ) {
  * // <body><input type="text" name="data"></input></body> (complex data value)
  * fillForm( document.body, { data: { number: [ 1, 2, { a: 3 } ], checked: true, value: 'Hello World!' } } );
  * console.log( formData( document.body ) ); // { data: { number: [ 1, 2, { a: 3 } ], checked: true, value: 'Hello World!' } }
+ * @memberOf ModuleHelper.InputElements
  */
 export function fillForm( element, data ) {
   const ccm = framework( arguments );
@@ -807,7 +872,7 @@ export function fillForm( element, data ) {
 }
 
 /**
- * @summary gets the values of input elements
+ * gets the values of input elements
  * @param {Element} element - HTML element which contains the input elements (must not be a HTML form tag)
  * @returns {Object} values of the input elements
  * @example
@@ -858,6 +923,7 @@ export function fillForm( element, data ) {
  * // <body><input type="text" name="data"></input></body> (complex data value)
  * fillForm( document.body, { data: { number: [ 1, 2, { a: 3 } ], checked: true, value: 'Hello World!' } } );
  * console.log( formData( document.body ) ); // { data: { number: [ 1, 2, { a: 3 } ], checked: true, value: 'Hello World!' } }
+ * @memberOf ModuleHelper.InputElements
  */
 export function formData( element ) {
   const ccm = framework( arguments );
@@ -908,6 +974,11 @@ export function formData( element ) {
 /*----------------------------------------------------- Security -----------------------------------------------------*/
 
 /**
+ * helper functions for security handling
+ * @namespace ModuleHelper.Security
+ */
+
+/**
  * @summary privatizes public members of an object
  * @description
  * Deletes all given properties in an object and returns another object with the deleted properties and there values.<br>
@@ -926,7 +997,7 @@ export function formData( element ) {
  * </ul>
  * In addition to this: All functions and depending <i>ccm</i> context relevant <i>ccm</i> instances will also not be privatized.
  * If the first passed property is boolean 'true', than the privatized properties will not be deleted in the passed object.
- * @param {Object||ccm.types.instance} object - object or <i>ccm</i> instance
+ * @param {Object} object - object or <i>ccm</i> instance
  * @param {...string|boolean} [properties] - properties that have to privatized
  * @returns {Object} object that contains the privatized properties and there values
  * @example
@@ -976,6 +1047,7 @@ export function formData( element ) {
  *     };
  *   }
  * } );
+ * @memberOf ModuleHelper.Security
  */
 export function privatize( object, properties ) {
 
@@ -1012,13 +1084,14 @@ export function privatize( object, properties ) {
 }
 
 /**
- * @summary filters script elements out of given HTML
+ * filters script elements out of given HTML
  * @param {string|Element} html - HTML String or HTML Element
  * @returns {string|Element} cleaned HTML
  * @example protect( "Hello <script>alert('XSS');</script>World!" ) // => 'Hello World!'
  * @example
  * // <div>Hello <script>alert('XSS');</script>World!</div>
  * div = protect( div ); // => <div>Hello, World!</div>
+ * @memberOf ModuleHelper.Security
  */
 export function protect( html ) {
   const ccm = framework( arguments );
@@ -1035,12 +1108,18 @@ export function protect( html ) {
 /*--------------------------------------------------- Handover App ---------------------------------------------------*/
 
 /**
+ * helper functions for handover of an app
+ * @namespace ModuleHelper.HandoverApp
+ */
+
+/**
  * returns the URL of a ccm-based app
  * @param {string} component - URL of the ccm component
  * @param {Object} store - settings for the ccm data store that contains the ccm instance configuration
  * @param {string|string[]} app_id - key of the data set that hold the ccm instance configuration
  * @param {string} website - URL of the website which renders the ccm-based app
  * @returns {string}
+ * @memberOf ModuleHelper.HandoverApp
  */
 export function appURL( component, store, app_id, website = 'https://ccmjs.github.io/digital-maker-space/app.html' ) {
 
@@ -1054,6 +1133,7 @@ export function appURL( component, store, app_id, website = 'https://ccmjs.githu
 /**
  * copies text inside a HTML element to clipboard
  * @param {Element} element - HTML element
+ * @memberOf ModuleHelper.HandoverApp
  */
 export function copyToClipboard( element ) {
   element.select();
@@ -1063,8 +1143,9 @@ export function copyToClipboard( element ) {
 /**
  * decomposes a given app URL into component URL, component index, component name, component version, store settings and app ID
  * @param {string} app_url - URL of a ccm-based app
- * @param {ccm.types.framework} [ccm=window.ccm] - ccm framework version to be used internally
+ * @param {Object} [ccm=window.ccm] - ccm framework version to be used internally
  * @returns {Object}
+ * @memberOf ModuleHelper.HandoverApp
  */
 export function decomposeAppURL( app_url ) {
   const ccm = framework( arguments );
@@ -1096,6 +1177,7 @@ export function decomposeAppURL( app_url ) {
  * decomposes a given embed code into component URL, component index, component name, component version, store settings and app ID
  * @param {string} embed_code - embed code of a ccm-based app
  * @returns {Object}
+ * @memberOf ModuleHelper.HandoverApp
  */
 export function decomposeEmbedCode( embed_code ) {
   const ccm = framework( arguments );
@@ -1123,6 +1205,7 @@ export function decomposeEmbedCode( embed_code ) {
  * @param {string} filename - file name including file extension
  * @param {string} content - content of the file
  * @param {string} [mime='text/html;charset=utf-8'] - media type followed by charset or 'base64' if non-textual
+ * @memberOf ModuleHelper.HandoverApp
  */
 export function download( filename, content, mime = 'text/html;charset=utf-8' ) {
 
@@ -1143,6 +1226,7 @@ export function download( filename, content, mime = 'text/html;charset=utf-8' ) 
  * @param {string} [title='App'] - website title
  * @param {string} [template='https://ccmjs.github.io/akless-components/resources/templates/app.html'] - URL of the HTML template file
  * @returns {Promise<void>}
+ * @memberOf ModuleHelper.HandoverApp
  */
 export async function downloadApp( embed_code, filename = 'app', title = 'App', template = 'https://ccmjs.github.io/akless-components/resources/templates/app.html' ) {
 
@@ -1159,6 +1243,7 @@ export async function downloadApp( embed_code, filename = 'app', title = 'App', 
  * @param {string} app_id - dataset key of ccm instance configuration
  * @param {string} [template='https://ccmjs.github.io/akless-components/resources/templates/embed.html'] - URL of the HTML template file
  * @returns {Promise<string>} generated embed code
+ * @memberOf ModuleHelper.HandoverApp
  */
 export async function embedCode( component, store, app_id, template = 'https://ccmjs.github.io/akless-components/resources/templates/embed.html' ) {
   const ccm = framework( arguments );
@@ -1186,6 +1271,7 @@ export async function embedCode( component, store, app_id, template = 'https://c
 /**
  * shows the content of an website area in fullscreen mode
  * @param {Element} element - website area
+ * @memberOf ModuleHelper.HandoverApp
  */
 export function fullscreen( element ) {
 
@@ -1210,6 +1296,7 @@ export function fullscreen( element ) {
  * @param {string} info_file - URL of the info file
  * @param {string} image_file - URL of the image file
  * @returns {Promise<void>}
+ * @memberOf ModuleHelper.HandoverApp
  */
 export async function iBookWidget( embed_code, filename = 'app', title = 'App', folder='app',
                                    template = 'https://ccmjs.github.io/akless-components/resources/templates/app.html',
@@ -1240,6 +1327,7 @@ export async function iBookWidget( embed_code, filename = 'app', title = 'App', 
  * executes the included code of a JavaScript file
  * @param {string} url - URL of the JavaScript file
  * @returns {Promise<void>}
+ * @memberOf ModuleHelper.HandoverApp
  */
 export async function loadScript( url ) {
 
@@ -1266,6 +1354,7 @@ export async function loadScript( url ) {
  * @param {string} [manifest_template='https://ccmjs.github.io/akless-components/resources/templates/scorm/imsmanifest.xml'] - URL of manifest template
  * @param {string} [api_file='https://ccmjs.github.io/akless-components/resources/templates/scorm/SCORM_API_wrapper.js'] - URL of SCORM API file
  * @returns {Promise<void>}
+ * @memberOf ModuleHelper.HandoverApp
  */
 export async function scorm( embed_code, filename = 'app', title = 'App', identifier = 'App',
                              html_template = 'https://ccmjs.github.io/akless-components/resources/templates/scorm/index.html',
@@ -1301,7 +1390,8 @@ export async function scorm( embed_code, filename = 'app', title = 'App', identi
  * As the last parameter, each helper function can be given the reference to the ccm framework version to be used for internal calls.<br>
  * The default return value is the latest framework version registered on the web page (<code>window.ccm</code>).
  * @param {...*} args - passed helper function arguments (last argument will be checked)
- * @returns {ccm.types.framework} reference to the internally used <i>ccm</i> framework version
+ * @returns {Object} reference to the internally used <i>ccm</i> framework version
+ * @ignore
  */
 function framework( args ) {
   const last = args[ args.length - 1 ];
