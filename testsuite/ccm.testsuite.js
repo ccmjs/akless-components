@@ -24,7 +24,7 @@
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/testsuite/resources/templates.html" ],
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/testsuite/resources/default.css" ],
       "onfinish": { "log": true },
-      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/helper.mjs" ]
+      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-1.0.0.mjs" ]
 
   //  tests
   //  package
