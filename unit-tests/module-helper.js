@@ -57,10 +57,23 @@ ccm.files[ 'module-helper.js' ] = {
       waitSum: async suite => {
         let sum = 0;
         await suite.modules.asyncForEach( [ 1, 2, 3 ], async ( value, i, array ) => {
-          await suite.ccm.helper.sleep( value );
+          await suite.modules.sleep( value );
           sum += value + i + array.length
         } );
         suite.assertSame( 18, sum );
+      }
+    }
+  },
+  sleep: {
+    tests: {
+      await: async suite => {
+        let time = new Date();
+        await suite.modules.sleep( 10 );
+        suite.assertTrue( new Date() - time >= 10 );
+      },
+      promise: async suite => {
+        let time = new Date();
+        await suite.modules.sleep( 10 ).then( () => suite.assertTrue( new Date() - time >= 10 ) );
       }
     }
   },
