@@ -586,6 +586,62 @@ ccm.files[ 'module-helper.js' ] = {
 
 /*----------------------------------------------------- Security -----------------------------------------------------*/
 
+  privatize: {
+    setup: suite => suite.obj = { foo: 'abc', bar: 'xyz', baz: 4711 },
+    tests: {
+      objRemoved: suite => {
+        suite.modules.privatize( suite.obj, 'foo', 'bar' );
+        suite.assertEquals( { baz: 4711 }, suite.obj );
+      },
+      objResult: suite => suite.assertEquals( { foo: 'abc', bar: 'xyz' }, suite.modules.privatize( suite.obj, 'foo', 'bar' ) ),
+      objKeepRemoved: suite => {
+        suite.modules.privatize( suite.obj, true, 'foo', 'bar' );
+        suite.assertEquals( { foo: 'abc', bar: 'xyz', baz: 4711 }, suite.obj );
+      },
+      objKeepResult: suite => suite.assertEquals( { foo: 'abc', bar: 'xyz' }, suite.modules.privatize( suite.obj, true, 'foo', 'bar' ) ),
+      instanceRemoved: async suite => {
+        await suite.ccm.instance( {
+          name: 'dummy1',
+          ccm: suite.ccm,
+          config: { foo: 'abc', bar: 'xyz', baz: 4711, onchange: function () {} },
+          Instance: function () {
+            this.ready = async () => {
+              suite.modules.privatize( this );
+              suite.assertFalse( this.foo || this.bar || this.baz || !this.onchange );
+            };
+          }
+        } );
+      },
+      instanceResult: async suite => {
+        await suite.ccm.instance( {
+          name: 'dummy2',
+          ccm: suite.ccm,
+          config: { foo: 'abc', bar: 'xyz', baz: 4711, onchange: function () {} },
+          Instance: function () {
+            let my;
+            this.ready = async () => {
+              my = suite.modules.privatize( this );
+              suite.assertEquals( suite.obj, my );
+            };
+          }
+        } );
+      },
+      instanceKeep: async suite => {
+        await suite.ccm.instance( {
+          name: 'dummy3',
+          ccm: suite.ccm,
+          config: { foo: 'abc', bar: 'xyz', baz: 4711, onchange: function () {} },
+          Instance: function () {
+            let my;
+            this.ready = async () => {
+              my = suite.modules.privatize( this, true );
+              suite.assertTrue( this.foo && this.bar && this.baz && this.onchange );
+            };
+          }
+        } );
+      }
+    }
+  },
   protect: {
     setup: suite => {
       suite.html = "Hello <script>alert('XSS');</script>World!";
