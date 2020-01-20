@@ -3,7 +3,7 @@
  * <p>(namespaces are only used for categorization)</p>
  * @author André Kless <andre.kless@web.de> 2019-2020
  * @license The MIT License (MIT)
- * @version latest (1.0.0)
+ * @version 1.0.0
  * @namespace ModuleHelper
  */
 
