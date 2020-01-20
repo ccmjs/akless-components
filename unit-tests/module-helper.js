@@ -135,7 +135,8 @@ ccm.files[ 'module-helper.js' ] = {
   arrToObj: {
     setup: suite => suite.expected = { foo: true, bar: true },
     tests: {
-      byArray:  suite => suite.assertEquals( suite.expected, suite.modules.arrToObj( [ 'foo', 'bar' ] ) ),
+      byStringArray:  suite => suite.assertEquals( suite.expected, suite.modules.arrToObj( [ 'foo', 'bar' ] ) ),
+      byNumberArray:  suite => suite.assertEquals( { 1: true, 2: true }, suite.modules.arrToObj( [ 1, 2 ] ) ),
       byObject: suite => suite.assertEquals( suite.expected, suite.modules.arrToObj( { key: [ 'foo', 'bar' ] }, 'key' ) ),
       noReturn: suite => {
         const obj = { key: [ 'foo', 'bar' ] };
@@ -208,18 +209,6 @@ ccm.files[ 'module-helper.js' ] = {
         suite.modules.shuffleArray( array );
         if ( array.length !== 5 ) suite.failed( 'invalid array size' );
         suite.assertNotEquals( [ 4711, 'foo', true, () => {}, {} ], array );
-      }
-    }
-  },
-  strArrToBoolObj: {
-    tests: {
-      strings: suite => {
-        console.log( suite.modules.arrToBoolObj( [ 'foo', 'bar' ] ) );
-        suite.assertEquals( { foo: true, bar: true }, suite.modules.arrToBoolObj( [ 'foo', 'bar' ] ) );
-      },
-      numbers: suite => {
-        console.log( suite.modules.arrToBoolObj( [ 1, 2 ] ) );
-        suite.assertEquals( { 1: true, 2: true }, suite.modules.arrToBoolObj( [ 1, 2 ] ) )
       }
     }
   },
