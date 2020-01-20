@@ -77,6 +77,15 @@ export async function asyncForEach( array, callback ) {
 
 }
 
+/**
+ * @summary sleep for a given number of milliseconds
+ * @param {number} time - sleep time in milliseconds
+ * @returns {Promise<void>}
+ * @example await sleep( 3000 );
+ * @example sleep( 3000 ).then( () => {...} ) );
+ */
+export function sleep( time ) { return new Promise( resolve => setTimeout( resolve, time ) ); }
+
 /*----------------------------------------------------- Checker ------------------------------------------------------*/
 
 /**
