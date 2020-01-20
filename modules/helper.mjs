@@ -268,6 +268,22 @@ export function filterProperties( obj, properties ) {
 }
 
 /**
+ * @summary renames the property name of an object
+ * @param {Object} obj - the object that contains the property
+ * @param {string} before - old property name
+ * @param {string} after - new property name
+ * @example
+ * const obj = { foo: 4711 };
+ * renameProperty( obj, 'foo', 'bar' );
+ * console.log( obj );  // => { "bar": 4711 }
+ */
+export function renameProperty( obj, before, after ) {
+  obj[ after ] = obj[ before ];
+  delete obj[ before ];
+  if ( obj[ after ] === undefined ) delete obj[ after ];
+}
+
+/**
  * @summary unescapes HTML characters of a string value
  * @param {string} value - string value
  * @returns {string}
