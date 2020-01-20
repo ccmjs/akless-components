@@ -211,6 +211,18 @@ ccm.files[ 'module-helper.js' ] = {
       }
     }
   },
+  strArrToBoolObj: {
+    tests: {
+      strings: suite => {
+        console.log( suite.modules.arrToBoolObj( [ 'foo', 'bar' ] ) );
+        suite.assertEquals( { foo: true, bar: true }, suite.modules.arrToBoolObj( [ 'foo', 'bar' ] ) );
+      },
+      numbers: suite => {
+        console.log( suite.modules.arrToBoolObj( [ 1, 2 ] ) );
+        suite.assertEquals( { 1: true, 2: true }, suite.modules.arrToBoolObj( [ 1, 2 ] ) )
+      }
+    }
+  },
   unescapeHTML: {
     tests: {
       string: suite => suite.assertSame( 'Hello <b>World</b>!', suite.modules.unescapeHTML( 'Hello &lt;b&gt;World&lt;/b&gt;!' ) )
