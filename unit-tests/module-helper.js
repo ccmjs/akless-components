@@ -179,6 +179,15 @@ ccm.files[ 'module-helper.js' ] = {
       object: suite => suite.assertEquals( { a: 'x', b: 'y' }, suite.modules.filterProperties( { a: 'x', b: 'y', c: 'z' }, 'a', 'b' ) )
     }
   },
+  renameProperty: {
+    tests: {
+      rename: suite => {
+        const obj = { foo: 4711 };
+        suite.modules.renameProperty( obj, 'foo', 'bar' );
+        suite.assertEquals( { bar: 4711 }, obj );
+      }
+    }
+  },
   unescapeHTML: {
     tests: {
       string: suite => suite.assertSame( 'Hello <b>World</b>!', suite.modules.unescapeHTML( 'Hello &lt;b&gt;World&lt;/b&gt;!' ) )
@@ -485,16 +494,14 @@ ccm.files[ 'module-helper.js' ] = {
     }
   },
   remove: {
-    setup: suite => {
-      suite.parent = document.createElement( 'div' );
-      suite.element = document.createElement( 'div' );
-    },
+    setup: suite => suite.element = document.createElement( 'div' ),
     tests: {
       withParent: suite => {
-        suite.parent.appendChild( suite.element );
-        if ( suite.element.parentNode !== suite.parent ) return suite.failed( 'incorrect parent reference' );
+        const parent = document.createElement( 'div' );
+        parent.appendChild( suite.element );
+        if ( suite.element.parentNode !== parent ) return suite.failed( 'incorrect parent reference' );
         suite.modules.remove( suite.element );
-        suite.assertNotSame( suite.parent, suite.element.parentNode );
+        suite.assertNotSame( parent, suite.element.parentNode );
       },
       noParent: suite => {
         suite.modules.remove( suite.element );
