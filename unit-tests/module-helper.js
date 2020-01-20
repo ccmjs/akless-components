@@ -484,6 +484,24 @@ ccm.files[ 'module-helper.js' ] = {
       }
     }
   },
+  remove: {
+    setup: suite => {
+      suite.parent = document.createElement( 'div' );
+      suite.element = document.createElement( 'div' );
+    },
+    tests: {
+      withParent: suite => {
+        suite.parent.appendChild( suite.element );
+        if ( suite.element.parentNode !== suite.parent ) return suite.failed( 'incorrect parent reference' );
+        suite.modules.remove( suite.element );
+        suite.assertNotSame( suite.parent, suite.element.parentNode );
+      },
+      noParent: suite => {
+        suite.modules.remove( suite.element );
+        suite.passed();
+      }
+    }
+  },
   replace: {
     setup: suite => {
       suite.element = suite.ccm.helper.html( { inner: [ { inner: 'Hello' }, ' ', { id: 'child', inner: 'old' }, { inner: '!' } ] } );
