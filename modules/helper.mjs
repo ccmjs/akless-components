@@ -309,6 +309,23 @@ export function shuffleArray( array ) {
 }
 
 /**
+ * @summary converts an array with strings or numbers to a boolean object
+ * @param {string[]||number[]} arr - string array
+ * @returns {Object.<string,boolean>} boolean object
+ * @example
+ * const obj = arrToBoolObj( [ 'foo', 'bar' ] );
+ * console.log( obj );  // => { foo: true, bar: true }
+ * @example
+ * const obj = arrToBoolObj( [ 1, 2 ] );
+ * console.log( obj );  // => { 1: true, 2: true }
+ */
+export function arrToBoolObj( arr ) {
+  const obj = {};
+  arr.forEach( value => obj[ value ] = true );
+  return obj;
+}
+
+/**
  * @summary unescapes HTML characters of a string value
  * @param {string} value - string value
  * @returns {string}
