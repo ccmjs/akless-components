@@ -65,7 +65,7 @@
 /**
  * executes action data
  * @param {Array} action - action data
- * @param {Object} [context] - context for this
+ * @param {Object} [context] - context for &lt;code>this&lt;/code>
  * @returns {Promise&lt;*>} return value of executed action data
  * @example action( [ functionName, 'param1', 'param2' ] )
  * @example action( [ 'functionName', 'param1', 'param2' ] )
@@ -129,7 +129,7 @@ export function executeByName( name, args, context ) {
  * @example
  * const waiting_times = [ 100, 200, 300 ];
  * await asyncForEach( waiting_times, async ( value, i, array ) => {
- *   await ccm.helper.sleep( value );
+ *   await sleep( value );
  *   console.log( value, i, array );
  * } );
  * @memberOf ModuleHelper.AsynchronousProgramming

@@ -301,7 +301,7 @@
         
     <pre class="prettyprint"><code>const waiting_times = [ 100, 200, 300 ];
 await asyncForEach( waiting_times, async ( value, i, array ) => {
-  await ccm.helper.sleep( value );
+  await sleep( value );
   console.log( value, i, array );
 } );</code></pre>
 
