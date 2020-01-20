@@ -6,7 +6,7 @@
 
 ccm.files[ 'module-helper.js' ] = {
   setup: async suite => {
-    suite.path = '../modules/helper.mjs';
+    suite.path = 'https://ccmjs.github.io/akless-components/modules/helper.mjs';
     suite.modules = await suite.ccm.load( suite.path );
   },
 
