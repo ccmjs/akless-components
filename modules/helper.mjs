@@ -162,10 +162,11 @@ export function isSafari() {
 
 /**
  * @summary converts an array to an object
- * @param {Array|object} obj - array or object that contains the array
+ * @param {Array|Object} obj - array or object that contains the array
  * @param {string} [key] - object property where the array is contained
  * @returns {Object.<string,boolean>} resulting object
  * @example console.log( arrToObj( [ 'foo', 'bar' ] ) );  // => { foo: true, bar: true }
+ * @example console.log( arrToObj( [ 1, 2 ] ) );  // => { 1: true, 2: true }
  * @example console.log( arrToObj( { key: [ 'foo', 'bar' ] }, 'key' ) );  // => { foo: true, bar: true }
  * @example
  * const obj = { key: [ 'foo', 'bar' ] };
@@ -306,23 +307,6 @@ export function shuffleArray( array ) {
     const j = Math.floor( Math.random() * ( i + 1 ) );
     [ array[ i ], array[ j ] ] = [ array[ j ], array[ i ] ];
   }
-}
-
-/**
- * @summary converts an array with strings or numbers to a boolean object
- * @param {string[]||number[]} arr - string array
- * @returns {Object.<string,boolean>} boolean object
- * @example
- * const obj = arrToBoolObj( [ 'foo', 'bar' ] );
- * console.log( obj );  // => { foo: true, bar: true }
- * @example
- * const obj = arrToBoolObj( [ 1, 2 ] );
- * console.log( obj );  // => { 1: true, 2: true }
- */
-export function arrToBoolObj( arr ) {
-  const obj = {};
-  arr.forEach( value => obj[ value ] = true );
-  return obj;
 }
 
 /**
