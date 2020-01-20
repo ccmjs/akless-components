@@ -159,8 +159,8 @@ export function sleep( time ) { return new Promise( resolve => setTimeout( resol
  */
 
 /**
- * checks if an ccm instance has DOM contact
- * @param {Object} instance - ccm instance
+ * checks if an &lt;i>ccm&lt;/i> instance has DOM contact
+ * @param {Object} instance - &lt;i>ccm&lt;/i> instance
  * @returns {boolean}
  * @example
  * // &lt;body>&lt;div id="app">&lt;/div>&lt;/body>
@@ -188,8 +188,8 @@ export function hasDomContact( instance ) {
 }
 
 /**
- * checks if an ccm instance has parent element contact
- * @param {Object} instance - ccm instance
+ * checks if an &lt;i>ccm&lt;/i> instance has parent element contact
+ * @param {Object} instance - &lt;i>ccm&lt;/i> instance
  * @returns {boolean}
  * @example
  * const parent = await suite.ccm.instance( component );
@@ -473,7 +473,7 @@ export async function dataset( settings={} ) {
   if ( ccm.helper.isDataset( settings.key ) ) return settings.convert ? await settings.convert( settings.key ) : settings.key;
 
   /**
-   * nearest user instance in ccm context tree
+   * nearest user instance in &lt;i>ccm&lt;/i> context tree
    * @type {Object}
    */
   const user = ccm.context.find( settings.store, 'user' );
@@ -1161,11 +1161,11 @@ export function protect( html ) {
  */
 
 /**
- * returns the URL of a ccm-based app
- * @param {string} component - URL of the ccm component
- * @param {Object} store - settings for the ccm data store that contains the ccm instance configuration
- * @param {string|string[]} app_id - key of the data set that hold the ccm instance configuration
- * @param {string} website - URL of the website which renders the ccm-based app
+ * returns the URL of a &lt;i>ccm&lt;/i>-based app
+ * @param {string} component - URL of the &lt;i>ccm&lt;/i> component
+ * @param {Object} store - settings for the &lt;i>ccm&lt;/i> data store that contains the &lt;i>ccm&lt;/i> instance configuration
+ * @param {string|string[]} app_id - key of the data set that hold the &lt;i>ccm&lt;/i> instance configuration
+ * @param {string} website - URL of the website which renders the &lt;i>ccm&lt;/i>-based app
  * @returns {string}
  * @memberOf ModuleHelper.HandoverApp
  */
@@ -1190,8 +1190,7 @@ export function copyToClipboard( element ) {
 
 /**
  * decomposes a given app URL into component URL, component index, component name, component version, store settings and app ID
- * @param {string} app_url - URL of a ccm-based app
- * @param {Object} [ccm=window.ccm] - ccm framework version to be used internally
+ * @param {string} app_url - URL of a &lt;i>ccm&lt;/i>-based app
  * @returns {Object}
  * @memberOf ModuleHelper.HandoverApp
  */
@@ -1223,7 +1222,7 @@ export function decomposeAppURL( app_url ) {
 
 /**
  * decomposes a given embed code into component URL, component index, component name, component version, store settings and app ID
- * @param {string} embed_code - embed code of a ccm-based app
+ * @param {string} embed_code - embed code of a &lt;i>ccm&lt;/i>-based app
  * @returns {Object}
  * @memberOf ModuleHelper.HandoverApp
  */
@@ -1268,8 +1267,8 @@ export function download( filename, content, mime = 'text/html;charset=utf-8' ) 
 }
 
 /**
- * provides a download of a ccm-based app as HTML file
- * @param {string} embed_code - embed code of the ccm-based app
+ * provides a download of a &lt;i>ccm&lt;/i>-based app as HTML file
+ * @param {string} embed_code - embed code of the &lt;i>ccm&lt;/i>-based app
  * @param {string} [filename='app'] - file name without file extension
  * @param {string} [title='App'] - website title
  * @param {string} [template='https://ccmjs.github.io/akless-components/resources/templates/app.html'] - URL of the HTML template file
@@ -1285,10 +1284,10 @@ export async function downloadApp( embed_code, filename = 'app', title = 'App', 
 }
 
 /**
- * generates the HTML embed code of a ccm-based app
- * @param {string} component - URL of ccm component
- * @param {Object} store - settings of ccm data store which contains the ccm instance configuration data set
- * @param {string} app_id - dataset key of ccm instance configuration
+ * generates the HTML embed code of a &lt;i>ccm&lt;/i>-based app
+ * @param {string} component - URL of &lt;i>ccm&lt;/i> component
+ * @param {Object} store - settings of ccm data store which contains the &lt;i>ccm&lt;/i> instance configuration data set
+ * @param {string} app_id - dataset key of &lt;i>ccm&lt;/i> instance configuration
  * @param {string} [template='https://ccmjs.github.io/akless-components/resources/templates/embed.html'] - URL of the HTML template file
  * @returns {Promise&lt;string>} generated embed code
  * @memberOf ModuleHelper.HandoverApp
@@ -1335,8 +1334,8 @@ export function fullscreen( element ) {
 }
 
 /**
- * provides a download of a ccm-based app as iBook Widget (ZIP file)
- * @param {string} embed_code - embed code of the ccm-based app
+ * provides a download of a &lt;i>ccm&lt;/i>-based app as iBook Widget (ZIP file)
+ * @param {string} embed_code - embed code of the &lt;i>ccm&lt;/i>-based app
  * @param {string} [filename='app'] - file name without file extension
  * @param {string} [title='App'] - website title for the index.html
  * @param {string} [folder='app'] - name of the folder inside the iBook Widget
@@ -1393,8 +1392,8 @@ export async function loadScript( url ) {
 }
 
 /**
- * provides a download of a ccm-based app as SCORM package (ZIP file)
- * @param {string} embed_code - embed code of the ccm-based app
+ * provides a download of a &lt;i>ccm&lt;/i>-based app as SCORM package (ZIP file)
+ * @param {string} embed_code - embed code of the &lt;i>ccm&lt;/i>-based app
  * @param {string} [filename='app'] - file name without file extension
  * @param {string} [title='App'] - website title within the manifest
  * @param {string} [identifier='App'] - identifier within the manifest
@@ -1435,7 +1434,7 @@ export async function scorm( embed_code, filename = 'app', title = 'App', identi
 /**
  * @summary returns the reference to the &lt;i>ccm&lt;/i> framework version used for internal calls
  * @description
- * As the last parameter, each helper function can be given the reference to the ccm framework version to be used for internal calls.&lt;br>
+ * As the last parameter, each helper function can be given the reference to the &lt;i>ccm&lt;/i> framework version to be used for internal calls.&lt;br>
  * The default return value is the latest framework version registered on the web page (&lt;code>window.ccm&lt;/code>).
  * @param {...*} args - passed helper function arguments (last argument will be checked)
  * @returns {Object} reference to the internally used &lt;i>ccm&lt;/i> framework version
