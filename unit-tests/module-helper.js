@@ -188,6 +188,16 @@ ccm.files[ 'module-helper.js' ] = {
       }
     }
   },
+  shuffleArray: {
+    tests: {
+      shuffle: suite => {
+        const array = [ 4711, 'foo', true, () => {}, null ];
+        suite.modules.shuffleArray( array );
+        if ( array.length !== 5 ) suite.failed( 'invalid array size' );
+        suite.assertNotEquals( [ 4711, 'foo', true, () => {}, {} ], array );
+      }
+    }
+  },
   unescapeHTML: {
     tests: {
       string: suite => suite.assertSame( 'Hello <b>World</b>!', suite.modules.unescapeHTML( 'Hello &lt;b&gt;World&lt;/b&gt;!' ) )
