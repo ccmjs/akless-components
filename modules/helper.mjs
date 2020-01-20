@@ -853,6 +853,110 @@ export function formData( element ) {
 /*----------------------------------------------------- Security -----------------------------------------------------*/
 
 /**
+ * @summary privatizes public members of an object
+ * @description
+ * Deletes all given properties in an object and returns another object with the deleted properties and there values.<br>
+ * If no properties are given, then all not <i>ccm</i> relevant instance members will be privatized.<br>
+ * List of <i>ccm</i> relevant properties that will not be privatized:
+ * <ul>
+ *   <li><code>ccm</code></li>
+ *   <li><code>component</code></li>
+ *   <li><code>config</code></li>
+ *   <li><code>element</code></li>
+ *   <li><code>id</code></li>
+ *   <li><code>index</code></li>
+ *   <li><code>parent</code></li>
+ *   <li><code>root</code></li>
+ *   <li><code>shadow</code></li>
+ * </ul>
+ * In addition to this: All functions and depending <i>ccm</i> context relevant <i>ccm</i> instances will also not be privatized.
+ * If the first passed property is boolean 'true', than the privatized properties will not be deleted in the passed object.
+ * @param {Object||ccm.types.instance} object - object or <i>ccm</i> instance
+ * @param {...string|boolean} [properties] - properties that have to privatized
+ * @returns {Object} object that contains the privatized properties and there values
+ * @example
+ * // privatize two public instance members
+ * ccm.component( {
+ *   name: 'dummy1',
+ *   ccm: ccm,
+ *   config: { foo: 'abc', bar: 'xyz', baz: 4711 },
+ *   Instance: function () {
+ *     let my;
+ *     this.ready = async () => {
+ *       my = ccm.helper.privatize( this, 'foo', 'bar' );
+ *       console.log( my );                // => { foo: 'abc', bar: 'xyz' }
+ *       console.log( my.foo, this.foo );  // => abc undefined
+ *       console.log( my.bar, this.bar );  // => xyz undefined
+ *       console.log( my.baz, this.baz );  // => undefined 4711
+ *     };
+ *   }
+ * } );
+ * @example
+ * // privatize all possible public instance members
+ * ccm.component( {
+ *   name: 'dummy2',
+ *   ccm: ccm,
+ *   config: { foo: 'abc', bar: 'xyz', baz: 4711 },
+ *   Instance: function () {
+ *     let my;
+ *     this.ready = async () => {
+ *       my = ccm.helper.privatize( this );
+ *       console.log( my );                // => { foo: 'abc', bar: 'xyz', baz: 4711 }
+ *       console.log( my.foo, this.foo );  // => abc undefined
+ *       console.log( my.bar, this.bar );  // => xyz undefined
+ *       console.log( my.baz, this.baz );  // => 4711 undefined
+ *     };
+ *   }
+ * } );
+ * @example
+ * // log all non-ccm specific instance members
+ * ccm.component( {
+ *   name: 'dummy3',
+ *   ccm: ccm,
+ *   config: { foo: 'abc', bar: 'xyz', baz: 4711, logger: [ 'ccm.instance', logger_component_url, logger_config ] },
+ *   Instance: function () {
+ *     this.ready = async () => {
+ *       this.logger && this.logger.log( 'ready', $.privatize( this, true ) );
+ *       console.log( this.foo, this.bar, this.foo );  // => abc xyz 4711
+ *     };
+ *   }
+ * } );
+ */
+export function privatize( object, properties ) {
+
+  const keep = properties === true;
+  const obj = {};
+  if ( properties && ( !keep || arguments[ 2 ] ) )
+    for ( let i = 1; i < arguments.length; i++ )
+      privatizeProperty( arguments[ i ] );
+  else
+    for ( const key in object )
+      privatizeProperty( key );
+  return obj;
+
+  function privatizeProperty( key ) {
+    if ( key === true ) return;
+    switch ( key ) {
+      case 'ccm':
+      case 'component':
+      case 'config':
+      case 'element':
+      case 'id':
+      case 'index':
+      case 'parent':
+      case 'root':
+      case 'shadow':
+        break;
+      default:
+        if ( typeof object[ key ] === 'function' ) return;
+        if ( object[ key ] !== undefined ) obj[ key ] = object[ key ];
+        if ( !keep ) delete object[ key ];
+    }
+  }
+
+}
+
+/**
  * @summary filters script elements out of given HTML
  * @param {string|Element} html - HTML String or HTML Element
  * @returns {string|Element} cleaned HTML
