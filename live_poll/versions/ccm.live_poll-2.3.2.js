@@ -41,12 +41,12 @@
 
     config: {
 
-      "admin": "guest",
+      "admin": "admin",
       "chart": [ "ccm.component", "https://ccmjs.github.io/akless-components/highchart/versions/ccm.highchart-3.0.0.js" ],
       "converter": [ "ccm.load", { "url": "https://ccmjs.github.io/akless-components/modules/json2json.mjs", "type": "module", "import": "poll_to_highchart" } ],
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/live_poll/resources/styles.css" ],
       "data": {
-        "store": [ "ccm.store" ],
+        "store": [ "ccm.store", { "url": "https://ccm2.inf.h-brs.de", "name": "live_poll_data" } ],
         "key": "test"
       },
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/live_poll/resources/templates.html" ],
