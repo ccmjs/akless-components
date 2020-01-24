@@ -46,8 +46,7 @@
       "converter": [ "ccm.load", { "url": "https://ccmjs.github.io/akless-components/modules/json2json.mjs", "type": "module", "import": "poll_to_highchart" } ],
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/live_poll/resources/styles.css" ],
       "data": {
-        "store": [ "ccm.store", { "url": "https://ccm2.inf.h-brs.de", "name": "live_poll_data" } ],
-        "key": "test"
+        "store": [ "ccm.store", { "url": "https://ccm2.inf.h-brs.de", "name": "live_poll_data" } ]
       },
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/live_poll/resources/templates.html" ],
 //    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.2.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
