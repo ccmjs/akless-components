@@ -137,9 +137,9 @@
       "data": { "store": [ "ccm.store" ] },
 
   //  "disabled": true,
-  //  "helper": [ "ccm.load", { "url": "https://ccmjs.github.io/akless-components/modules/helper.mjs" } ],
   //  "no_submit_button": true,
   //  "entries": [ "ccm.get", "https://ccmjs.github.io/akless-components/submit/resources/datasets.js", "demo.data" ],
+  //  "helper": [ "ccm.load", { "url": "https://ccmjs.github.io/akless-components/modules/versions/helper-1.0.0.mjs" } ],
   //  "ignore": { "defaults": { "name": "value" } },
   //  "onchange": function ( event ) { console.log( 'change event', this, event, event.target ) },
   //  "content": [ "ccm.component", "https://ccmjs.github.io/akless-components/content/versions/ccm.content-5.3.0.js" ],
