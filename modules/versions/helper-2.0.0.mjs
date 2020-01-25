@@ -1263,12 +1263,12 @@ export async function downloadApp( embed_code, filename = 'app', title = 'App', 
  * @summary generates the HTML embed code of a <i>ccm</i>-based app
  * @description
  * The entire app configuration is included in the embed code.<br>
- * If the app configuration is in a ccm data store, it can also be linked via a data dependency instead.<br>
+ * If the app configuration is in a <i>ccm</i> datastore, it can also be linked via a data dependency instead.<br>
  * For this purpose, an object with the datastore settings and the dataset key must be passed instead of the app configuration.<br>
  * If the embed code does not contain a script tag, it will only work if a ccm framework is already present in the website.<br>
  * Instead of datastore settings an already created datastore could also be passed.
  * @param {string} component - URL of <i>ccm</i> component
- * @param {Object|{store: Object, key: *}} config - app configuration
+ * @param {Object} config - app configuration
  * @param {boolean} noscript - embed code does not contain a script tag
  * @returns {string} generated embed code
  * @example
