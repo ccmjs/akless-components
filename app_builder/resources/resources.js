@@ -49,7 +49,7 @@ ccm.files[ 'resources.js' ] = {
       "qr_code": [ "ccm.load", "https://ccmjs.github.io/akless-components/libs/qrcode-generator/qrcode.min.js" ],
 //    "window": [ "ccm.component", "https://ccmjs.github.io/akless-components/window/versions/ccm.window-1.0.0.js" ]
     } ],
-    "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/helper.mjs" ],
+    "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-1.0.0.mjs" ],
     "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/app_builder/resources/resources.js", "lang" ] ],
     "meta_store": [ "ccm.store", { "url": "https://ccm2.inf.h-brs.de", "name": "dms-apps" } ],
     "modal_dialog": [ "ccm.component", "https://ccmjs.github.io/tkless-components/modal/versions/ccm.modal-2.0.0.js", {
