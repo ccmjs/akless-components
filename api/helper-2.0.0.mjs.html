@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Source: helper.mjs | Source: helper.mjs</title>
+    <title>Source: helper-2.0.0.mjs | Source: helper-2.0.0.mjs</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -26,7 +26,7 @@
         
     </div>
     <div class="title">
-        <h1><a href="index.html" class="link">Source: helper.mjs</a></h1>
+        <h1><a href="index.html" class="link">Source: helper-2.0.0.mjs</a></h1>
         
     </div>
     <div class="search-container" id="search-container">
@@ -51,7 +51,13 @@
  * &lt;p>(namespaces are only used for categorization)&lt;/p>
  * @author André Kless &lt;andre.kless@web.de> 2019-2020
  * @license The MIT License (MIT)
- * @version 1.0.0
+ * @version 2.0.0
+ * @changes
+ * version 2.0.0 (25.01.2020): updated helper function 'embedCode'
+ * - changed parameters
+ * - uses no external template
+ * - supports embed code without script tag
+ * version 1.0.0 (20.01.2020)
  * @namespace ModuleHelper
  */
 
@@ -1302,35 +1308,53 @@ export async function downloadApp( embed_code, filename = 'app', title = 'App', 
 }
 
 /**
- * generates the HTML embed code of a &lt;i>ccm&lt;/i>-based app
+ * @summary generates the HTML embed code of a &lt;i>ccm&lt;/i>-based app
+ * @description
+ * The entire app configuration is included in the embed code.&lt;br>
+ * If the app configuration is in a &lt;i>ccm&lt;/i> datastore, it can also be linked via a data dependency instead.&lt;br>
+ * For this purpose, an object with the datastore settings and the dataset key must be passed instead of the app configuration.&lt;br>
+ * If the embed code does not contain a script tag, it will only work if a ccm framework is already present in the website.&lt;br>
+ * Instead of datastore settings an already created datastore could also be passed.
  * @param {string} component - URL of &lt;i>ccm&lt;/i> component
- * @param {Object} store - settings of ccm data store which contains the &lt;i>ccm&lt;/i> instance configuration data set
- * @param {string} app_id - dataset key of &lt;i>ccm&lt;/i> instance configuration
- * @param {string} [template='https://ccmjs.github.io/akless-components/resources/templates/embed.html'] - URL of the HTML template file
- * @returns {Promise&lt;string>} generated embed code
+ * @param {Object} config - app configuration
+ * @param {boolean} noscript - embed code does not contain a script tag
+ * @returns {string} generated embed code
+ * @example
+ * embedCode( component_url, app_configuration );
+ * // &lt;script src='component_url'>&lt;/script>&lt;ccm-index key='{..config..}'>&lt;/ccm-index>
+ * @example
+ * embedCode( component_url, { store: { name: store_name, url: server_url }, key: dataset_key } );
+ * // &lt;ccm-app component='component_url' key='["ccm.get",{"name":"store_name"},"dataset_key"]'>&lt;/ccm-app>
+ * @example
+ * embedCode( component_url, { store: await ccm.store(...), key: dataset_key } );
+ * // &lt;ccm-app component='component_url' key='["ccm.get",{"name":"store_name"},"dataset_key"]'>&lt;/ccm-app>
+ * @example
+ * embedCode( component_url, app_configuration, true );
+ * // &lt;ccm-app key='component_url' key='{..config..}'>&lt;/ccm-app>
+ * @example
+ * embedCode( component_url, { store: { name: store_name, url: server_url }, key: dataset_key }, true );
+ * // &lt;ccm-app key='component_url' key='["ccm.get",{"name":"store_name"},"dataset_key"]'>&lt;/ccm-app>
+ * @example
+ * embedCode( component_url, { store: await ccm.store(...), key: dataset_key }, true );
+ * // &lt;ccm-app key='component_url' key='["ccm.get",{"name":"store_name"},"dataset_key"]'>&lt;/ccm-app>
  * @memberOf ModuleHelper.HandoverApp
- */
-export async function embedCode( component, store, app_id, template = 'https://ccmjs.github.io/akless-components/resources/templates/embed.html' ) {
+*/
+export function embedCode( component, config, noscript ) {
   const ccm = framework( arguments );
-
-  // load content of HTML template file
-  template = await fetch( template ).then( response => response.text() );
 
   /**
    * index of the ccm component
    * @type {string}
    */
-  const index = ccm.helper.getIndex( component );
+  const index = ccm.helper.convertComponentURL( component ).index;
 
-  // replace placeholders in template
-  template = template
-    .replace( '__URL__', component )
-    .replace( '__INDEX__', index )
-    .replace( '__STORE__', ccm.helper.stringify( store ) )
-    .replace( '__KEY__', app_id )
-    .replace( '__INDEX__', index );
+  // app configuration comes from a datastore? => use data dependency
+  if ( config.store &amp;&amp; config.key ) config = [ 'ccm.get', ccm.helper.isDatastore( config.store ) ? config.store.source() : config.store, config.key ];
 
-  return template;
+  if ( noscript )
+    return `&lt;ccm-app component='${component}' key='${ccm.helper.stringify(config)}'>&lt;/ccm-app>`;
+  else
+    return `&lt;script src='${component}'>&lt;/script>&lt;ccm-${index} key='${ccm.helper.stringify(config)}'>&lt;/ccm-${index}>`;
 }
 
 /**

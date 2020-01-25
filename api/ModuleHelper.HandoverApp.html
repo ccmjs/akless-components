@@ -130,8 +130,8 @@
                 
             
             <div class="container-source members">
-                <code><a href="helper.mjs.html">helper.mjs</a></code>,
-                <code><a href="helper.mjs.html#line1142">line 1142</a></code>
+                <code><a href="helper-2.0.0.mjs.html">helper-2.0.0.mjs</a></code>,
+                <code><a href="helper-2.0.0.mjs.html#line1148">line 1148</a></code>
             </div>
             
         </h4>
@@ -360,8 +360,8 @@
                 
             
             <div class="container-source members">
-                <code><a href="helper.mjs.html">helper.mjs</a></code>,
-                <code><a href="helper.mjs.html#line1156">line 1156</a></code>
+                <code><a href="helper-2.0.0.mjs.html">helper-2.0.0.mjs</a></code>,
+                <code><a href="helper-2.0.0.mjs.html#line1162">line 1162</a></code>
             </div>
             
         </h4>
@@ -499,8 +499,8 @@
                 
             
             <div class="container-source members">
-                <code><a href="helper.mjs.html">helper.mjs</a></code>,
-                <code><a href="helper.mjs.html#line1167">line 1167</a></code>
+                <code><a href="helper-2.0.0.mjs.html">helper-2.0.0.mjs</a></code>,
+                <code><a href="helper-2.0.0.mjs.html#line1173">line 1173</a></code>
             </div>
             
         </h4>
@@ -657,8 +657,8 @@
                 
             
             <div class="container-source members">
-                <code><a href="helper.mjs.html">helper.mjs</a></code>,
-                <code><a href="helper.mjs.html#line1199">line 1199</a></code>
+                <code><a href="helper-2.0.0.mjs.html">helper-2.0.0.mjs</a></code>,
+                <code><a href="helper-2.0.0.mjs.html#line1205">line 1205</a></code>
             </div>
             
         </h4>
@@ -815,8 +815,8 @@
                 
             
             <div class="container-source members">
-                <code><a href="helper.mjs.html">helper.mjs</a></code>,
-                <code><a href="helper.mjs.html#line1227">line 1227</a></code>
+                <code><a href="helper-2.0.0.mjs.html">helper-2.0.0.mjs</a></code>,
+                <code><a href="helper-2.0.0.mjs.html#line1233">line 1233</a></code>
             </div>
             
         </h4>
@@ -1044,8 +1044,8 @@
                 
             
             <div class="container-source members">
-                <code><a href="helper.mjs.html">helper.mjs</a></code>,
-                <code><a href="helper.mjs.html#line1248">line 1248</a></code>
+                <code><a href="helper-2.0.0.mjs.html">helper-2.0.0.mjs</a></code>,
+                <code><a href="helper-2.0.0.mjs.html#line1254">line 1254</a></code>
             </div>
             
         </h4>
@@ -1331,16 +1331,18 @@
     
         <h4 class="name" id=".exports.embedCode">
             
-                <span class="type-signature"><span class="icon green">static</span> </span>exports.embedCode<span class="signature">(component, store, app_id, template<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise.&lt;string>}</span>
+                <span class="type-signature"><span class="icon green">static</span> </span>exports.embedCode<span class="signature">(component, config, noscript)</span><span class="type-signature"> &rarr; {string}</span>
                 
             
             <div class="container-source members">
-                <code><a href="helper.mjs.html">helper.mjs</a></code>,
-                <code><a href="helper.mjs.html#line1265">line 1265</a></code>
+                <code><a href="helper-2.0.0.mjs.html">helper-2.0.0.mjs</a></code>,
+                <code><a href="helper-2.0.0.mjs.html#line1294">line 1294</a></code>
             </div>
             
         </h4>
 
+        
+        <p class="summary">generates the HTML embed code of a <i>ccm</i>-based app</p>
         
     
 </dt>
@@ -1348,7 +1350,11 @@
 
     
     <div class="description">
-        generates the HTML embed code of a <i>ccm</i>-based app
+        The entire app configuration is included in the embed code.<br>
+If the app configuration is in a <i>ccm</i> datastore, it can also be linked via a data dependency instead.<br>
+For this purpose, an object with the datastore settings and the dataset key must be passed instead of the app configuration.<br>
+If the embed code does not contain a script tag, it will only work if a ccm framework is already present in the website.<br>
+Instead of datastore settings an already created datastore could also be passed.
     </div>
     
 
@@ -1372,11 +1378,7 @@
         <th>Type</th>
 
         
-        <th>Attributes</th>
-        
 
-        
-        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -1401,19 +1403,7 @@
             </td>
 
             
-                <td class="attributes">
-                
 
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                </td>
             
 
             <td class="description last">URL of <i>ccm</i> component</td>
@@ -1423,7 +1413,7 @@
 
         <tr>
             
-                <td class="name"><code>store</code></td>
+                <td class="name"><code>config</code></td>
             
 
             <td class="type">
@@ -1436,96 +1426,33 @@
             </td>
 
             
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
 
             
-                <td class="default">
-                
-                </td>
-            
 
-            <td class="description last">settings of ccm data store which contains the <i>ccm</i> instance configuration data set</td>
+            <td class="description last">app configuration</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>app_id</code></td>
+                <td class="name"><code>noscript</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">string</span>
+<span class="param-type">boolean</span>
 
 
             
             </td>
 
             
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
 
             
-                <td class="default">
-                
-                </td>
-            
 
-            <td class="description last">dataset key of <i>ccm</i> instance configuration</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>template</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                    'https://ccmjs.github.io/akless-components/resources/templates/embed.html'
-                
-                </td>
-            
-
-            <td class="description last">URL of the HTML template file</td>
+            <td class="description last">embed code does not contain a script tag</td>
         </tr>
 
     
@@ -1553,7 +1480,7 @@
 
 
 
-<span class="param-type">Promise.&lt;string></span>
+<span class="param-type">string</span>
 
 
 
@@ -1606,6 +1533,27 @@
 
 
     
+        <h5>Examples</h5>
+        
+    <pre class="prettyprint"><code>embedCode( component_url, app_configuration );
+// &lt;script src='component_url'>&lt;/script>&lt;ccm-index key='{..config..}'>&lt;/ccm-index></code></pre>
+
+    <pre class="prettyprint"><code>embedCode( component_url, { store: { name: store_name, url: server_url }, key: dataset_key } );
+// &lt;ccm-app component='component_url' key='["ccm.get",{"name":"store_name"},"dataset_key"]'>&lt;/ccm-app></code></pre>
+
+    <pre class="prettyprint"><code>embedCode( component_url, { store: await ccm.store(...), key: dataset_key } );
+// &lt;ccm-app component='component_url' key='["ccm.get",{"name":"store_name"},"dataset_key"]'>&lt;/ccm-app></code></pre>
+
+    <pre class="prettyprint"><code>embedCode( component_url, app_configuration, true );
+// &lt;ccm-app key='component_url' key='{..config..}'>&lt;/ccm-app></code></pre>
+
+    <pre class="prettyprint"><code>embedCode( component_url, { store: { name: store_name, url: server_url }, key: dataset_key }, true );
+// &lt;ccm-app key='component_url' key='["ccm.get",{"name":"store_name"},"dataset_key"]'>&lt;/ccm-app></code></pre>
+
+    <pre class="prettyprint"><code>embedCode( component_url, { store: await ccm.store(...), key: dataset_key }, true );
+// &lt;ccm-app key='component_url' key='["ccm.get",{"name":"store_name"},"dataset_key"]'>&lt;/ccm-app></code></pre>
+
+    
 
 </dd>
 
@@ -1620,8 +1568,8 @@
                 
             
             <div class="container-source members">
-                <code><a href="helper.mjs.html">helper.mjs</a></code>,
-                <code><a href="helper.mjs.html#line1293">line 1293</a></code>
+                <code><a href="helper-2.0.0.mjs.html">helper-2.0.0.mjs</a></code>,
+                <code><a href="helper-2.0.0.mjs.html#line1317">line 1317</a></code>
             </div>
             
         </h4>
@@ -1759,8 +1707,8 @@
                 
             
             <div class="container-source members">
-                <code><a href="helper.mjs.html">helper.mjs</a></code>,
-                <code><a href="helper.mjs.html#line1318">line 1318</a></code>
+                <code><a href="helper-2.0.0.mjs.html">helper-2.0.0.mjs</a></code>,
+                <code><a href="helper-2.0.0.mjs.html#line1342">line 1342</a></code>
             </div>
             
         </h4>
@@ -2155,8 +2103,8 @@
                 
             
             <div class="container-source members">
-                <code><a href="helper.mjs.html">helper.mjs</a></code>,
-                <code><a href="helper.mjs.html#line1349">line 1349</a></code>
+                <code><a href="helper-2.0.0.mjs.html">helper-2.0.0.mjs</a></code>,
+                <code><a href="helper-2.0.0.mjs.html#line1373">line 1373</a></code>
             </div>
             
         </h4>
@@ -2313,8 +2261,8 @@
                 
             
             <div class="container-source members">
-                <code><a href="helper.mjs.html">helper.mjs</a></code>,
-                <code><a href="helper.mjs.html#line1376">line 1376</a></code>
+                <code><a href="helper-2.0.0.mjs.html">helper-2.0.0.mjs</a></code>,
+                <code><a href="helper-2.0.0.mjs.html#line1400">line 1400</a></code>
             </div>
             
         </h4>
