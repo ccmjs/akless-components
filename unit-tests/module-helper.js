@@ -6,7 +6,7 @@
 
 ccm.files[ 'module-helper.js' ] = {
   setup: async suite => {
-    suite.path = 'https://ccmjs.github.io/akless-components/modules/helper.mjs';
+    suite.path = '../modules/helper.mjs';
     suite.modules = await suite.ccm.load( suite.path );
   },
 
@@ -630,6 +630,19 @@ ccm.files[ 'module-helper.js' ] = {
       deeperProperty:  suite => suite.test( "<input type='text' name='%key%'>", 'value', 'deep.property.key' ),
       complexData:     suite => suite.test( "<input type='text' name='%key%'>", { number: [ 1, 2, { a: 3 } ], checked: true, value: 'Hello World!' } ),
       protect:         suite => suite.test( "<div contenteditable name='%key%'>", "Hello <script>alert('XSS');</script>World!", undefined, 'Hello World!' )
+    }
+  },
+
+/*--------------------------------------------------- Handover App ---------------------------------------------------*/
+
+  embedCode: {
+    tests: {
+      byConfig: suite => suite.assertSame( `<script src='ccm.blank.js'></script><ccm-blank key='{"foo":"bar"}'></ccm-blank>`, suite.modules.embedCode( 'ccm.blank.js', { foo: 'bar' } ) ),
+      bySource: suite => suite.assertSame( `<script src='ccm.blank.js'></script><ccm-blank key='["ccm.get",{"local":{"config":{"foo":"bar"}}},"config"]'></ccm-blank>`, suite.modules.embedCode( 'ccm.blank.js', { store: { local: { config: { foo: 'bar' } } }, key: 'config' } ) ),
+      byStore: async suite => suite.assertSame( `<script src='ccm.blank.js'></script><ccm-blank key='["ccm.get",{"local":{"config":{"foo":"bar"}}},"config"]'></ccm-blank>`, suite.modules.embedCode( 'ccm.blank.js', { store: await ccm.store( { local: { config: { foo: 'bar' } } } ), key: 'config' } ) ),
+      byConfigNoScript: suite => suite.assertSame( `<ccm-app component='ccm.blank.js' key='{"foo":"bar"}'></ccm-app>`, suite.modules.embedCode( 'ccm.blank.js', { foo: 'bar' }, true ) ),
+      bySourceNoScript: suite => suite.assertSame( `<ccm-app component='ccm.blank.js' key='["ccm.get",{"local":{"config":{"foo":"bar"}}},"config"]'></ccm-app>`, suite.modules.embedCode( 'ccm.blank.js', { store: { local: { config: { foo: 'bar' } } }, key: 'config' }, true ) ),
+      byStoreNoScript: async suite => suite.assertSame( `<ccm-app component='ccm.blank.js' key='["ccm.get",{"local":{"config":{"foo":"bar"}}},"config"]'></ccm-app>`, suite.modules.embedCode( 'ccm.blank.js', { store: await ccm.store( { local: { config: { foo: 'bar' } } } ), key: 'config' }, true ) )
     }
   },
 
