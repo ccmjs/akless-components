@@ -39,7 +39,7 @@
         "scorm": true
       },
 //    "embed_template": "https://ccmjs.github.io/akless-components/resources/templates/embed.html",
-      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/helper.mjs" ],
+      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-1.0.0.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/handover_app/resources/template.html" ],
 //    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.2.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
 //    "qr_code": [ "ccm.load", "https://ccmjs.github.io/akless-components/libs/qrcode-generator/qrcode.min.js" ],
