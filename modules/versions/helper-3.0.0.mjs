@@ -1,63 +1,15 @@
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>Source: helper-2.0.0.mjs | Source: helper-2.0.0.mjs</title>
-
-    <script src="scripts/prettify/prettify.js"> </script>
-    <script src="scripts/prettify/lang-css.js"> </script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <link type="text/css" rel="stylesheet" href="styles/bootstrap.min.css">
-    <link type="text/css" rel="stylesheet" href="styles/prettify-jsdoc.css">
-    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
-    <link type="text/css" rel="stylesheet" href="styles/tui-doc.css">
-
-    
-</head>
-<body>
-<nav class="lnb" id="lnb">
-    <div class="logo" style="">
-        
-            <img src="img/toast-ui.png" width="100%" height="100%">
-        
-    </div>
-    <div class="title">
-        <h1><a href="index.html" class="link">Source: helper-2.0.0.mjs</a></h1>
-        
-    </div>
-    <div class="search-container" id="search-container">
-        <input type="text" placeholder="Search">
-        <ul></ul>
-    </div>
-    
-    <div class="lnb-api hidden"><h3>Namespaces</h3><ul><li><a href="ModuleHelper.html">ModuleHelper</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="ModuleHelper_sub"></div></li><li><a href="ModuleHelper.ActionData.html">ModuleHelper.ActionData</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="ModuleHelper.ActionData_sub"><div class="member-type">Methods</div><ul class="inner"><li><a href="ModuleHelper.ActionData.html#.exports.action">exports.action</a></li><li><a href="ModuleHelper.ActionData.html#.exports.executeByName">exports.executeByName</a></li></ul></div></li><li><a href="ModuleHelper.AsynchronousProgramming.html">ModuleHelper.AsynchronousProgramming</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="ModuleHelper.AsynchronousProgramming_sub"><div class="member-type">Methods</div><ul class="inner"><li><a href="ModuleHelper.AsynchronousProgramming.html#.exports.asyncForEach">exports.asyncForEach</a></li><li><a href="ModuleHelper.AsynchronousProgramming.html#.exports.sleep">exports.sleep</a></li></ul></div></li><li><a href="ModuleHelper.Checker.html">ModuleHelper.Checker</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="ModuleHelper.Checker_sub"><div class="member-type">Methods</div><ul class="inner"><li><a href="ModuleHelper.Checker.html#.exports.hasDomContact">exports.hasDomContact</a></li><li><a href="ModuleHelper.Checker.html#.exports.hasParentContact">exports.hasParentContact</a></li><li><a href="ModuleHelper.Checker.html#.exports.isFirefox">exports.isFirefox</a></li><li><a href="ModuleHelper.Checker.html#.exports.isGoogleChrome">exports.isGoogleChrome</a></li><li><a href="ModuleHelper.Checker.html#.exports.isSafari">exports.isSafari</a></li></ul></div></li><li><a href="ModuleHelper.DataHandling.html">ModuleHelper.DataHandling</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="ModuleHelper.DataHandling_sub"><div class="member-type">Methods</div><ul class="inner"><li><a href="ModuleHelper.DataHandling.html#.exports.arrToObj">exports.arrToObj</a></li><li><a href="ModuleHelper.DataHandling.html#.exports.cleanObject">exports.cleanObject</a></li><li><a href="ModuleHelper.DataHandling.html#.exports.decodeJSON">exports.decodeJSON</a></li><li><a href="ModuleHelper.DataHandling.html#.exports.encodeJSON">exports.encodeJSON</a></li><li><a href="ModuleHelper.DataHandling.html#.exports.escapeHTML">exports.escapeHTML</a></li><li><a href="ModuleHelper.DataHandling.html#.exports.filterProperties">exports.filterProperties</a></li><li><a href="ModuleHelper.DataHandling.html#.exports.renameProperty">exports.renameProperty</a></li><li><a href="ModuleHelper.DataHandling.html#.exports.shuffleArray">exports.shuffleArray</a></li><li><a href="ModuleHelper.DataHandling.html#.exports.unescapeHTML">exports.unescapeHTML</a></li></ul></div></li><li><a href="ModuleHelper.DataWorkflow.html">ModuleHelper.DataWorkflow</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="ModuleHelper.DataWorkflow_sub"><div class="member-type">Methods</div><ul class="inner"><li><a href="ModuleHelper.DataWorkflow.html#.exports.dataset">exports.dataset</a></li><li><a href="ModuleHelper.DataWorkflow.html#.exports.onFinish">exports.onFinish</a></li></ul></div></li><li><a href="ModuleHelper.DomManipulation.html">ModuleHelper.DomManipulation</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="ModuleHelper.DomManipulation_sub"><div class="member-type">Methods</div><ul class="inner"><li><a href="ModuleHelper.DomManipulation.html#.exports.append">exports.append</a></li><li><a href="ModuleHelper.DomManipulation.html#.exports.loading">exports.loading</a></li><li><a href="ModuleHelper.DomManipulation.html#.exports.prepend">exports.prepend</a></li><li><a href="ModuleHelper.DomManipulation.html#.exports.remove">exports.remove</a></li><li><a href="ModuleHelper.DomManipulation.html#.exports.replace">exports.replace</a></li><li><a href="ModuleHelper.DomManipulation.html#.exports.setContent">exports.setContent</a></li></ul></div></li><li><a href="ModuleHelper.HandoverApp.html">ModuleHelper.HandoverApp</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="ModuleHelper.HandoverApp_sub"><div class="member-type">Methods</div><ul class="inner"><li><a href="ModuleHelper.HandoverApp.html#.exports.appURL">exports.appURL</a></li><li><a href="ModuleHelper.HandoverApp.html#.exports.copyToClipboard">exports.copyToClipboard</a></li><li><a href="ModuleHelper.HandoverApp.html#.exports.decomposeAppURL">exports.decomposeAppURL</a></li><li><a href="ModuleHelper.HandoverApp.html#.exports.decomposeEmbedCode">exports.decomposeEmbedCode</a></li><li><a href="ModuleHelper.HandoverApp.html#.exports.download">exports.download</a></li><li><a href="ModuleHelper.HandoverApp.html#.exports.downloadApp">exports.downloadApp</a></li><li><a href="ModuleHelper.HandoverApp.html#.exports.embedCode">exports.embedCode</a></li><li><a href="ModuleHelper.HandoverApp.html#.exports.fullscreen">exports.fullscreen</a></li><li><a href="ModuleHelper.HandoverApp.html#.exports.iBookWidget">exports.iBookWidget</a></li><li><a href="ModuleHelper.HandoverApp.html#.exports.loadScript">exports.loadScript</a></li><li><a href="ModuleHelper.HandoverApp.html#.exports.scorm">exports.scorm</a></li></ul></div></li><li><a href="ModuleHelper.InputElements.html">ModuleHelper.InputElements</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="ModuleHelper.InputElements_sub"><div class="member-type">Methods</div><ul class="inner"><li><a href="ModuleHelper.InputElements.html#.exports.fillForm">exports.fillForm</a></li><li><a href="ModuleHelper.InputElements.html#.exports.formData">exports.formData</a></li></ul></div></li><li><a href="ModuleHelper.Security.html">ModuleHelper.Security</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="ModuleHelper.Security_sub"><div class="member-type">Methods</div><ul class="inner"><li><a href="ModuleHelper.Security.html#.exports.privatize">exports.privatize</a></li><li><a href="ModuleHelper.Security.html#.exports.protect">exports.protect</a></li></ul></div></li></ul></div>
-</nav>
-<div id="resizer"></div>
-
-<div class="main" id="main">
-    
-
-
-
-    
-    <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>/**
- * &lt;p>ES6 module that exports helper functions for &lt;i>ccm&lt;/i> component developers&lt;/p>
- * &lt;p>(namespaces are only used for categorization)&lt;/p>
- * @author André Kless &lt;andre.kless@web.de> 2019-2020
+/**
+ * <p>ES6 module that exports helper functions for <i>ccm</i> component developers</p>
+ * <p>(namespaces are only used for categorization)</p>
+ * @author André Kless <andre.kless@web.de> 2019-2020
  * @license The MIT License (MIT)
- * @version 2.0.0
+ * @version 3.0.0
  * @changes
- * version 2.0.0 (25.01.2020): updated helper function 'embedCode'
+ * version 3.0.0 (26.01.2020): updated helper function 'appURL'
  * - changed parameters
- * - uses no external template
- * - supports embed code without script tag
- * version 1.0.0 (20.01.2020)
+ * - supports app URL that directly contains the app configuration without data dependency
+ * - updated examples in doc comments of helper function 'embedCode'
+ * (for older version changes see helper-2.0.0.mjs)
  * @namespace ModuleHelper
  */
 
@@ -71,8 +23,8 @@
 /**
  * executes action data
  * @param {Array} action - action data
- * @param {Object} [context] - context for &lt;code>this&lt;/code>
- * @returns {Promise&lt;*>} return value of executed action data
+ * @param {Object} [context] - context for <code>this</code>
+ * @returns {Promise<*>} return value of executed action data
  * @example action( [ functionName, 'param1', 'param2' ] )
  * @example action( [ 'functionName', 'param1', 'param2' ] )
  * @example action( [ 'this.functionName', 'param1', 'param2' ], context )
@@ -131,7 +83,7 @@ export function executeByName( name, args, context ) {
  * workaround for an asynchronous foreach
  * @param {Array} array - array to be iterated
  * @param {Function} callback - asynchronous function that is called for each array value
- * @returns {Promise&lt;void>}
+ * @returns {Promise<void>}
  * @example
  * const waiting_times = [ 100, 200, 300 ];
  * await asyncForEach( waiting_times, async ( value, i, array ) => {
@@ -142,7 +94,7 @@ export function executeByName( name, args, context ) {
  */
 export async function asyncForEach( array, callback ) {
 
-  for ( let i = 0; i &lt; array.length; i++ )
+  for ( let i = 0; i < array.length; i++ )
     await callback( array[ i ], i, array );
 
 }
@@ -150,7 +102,7 @@ export async function asyncForEach( array, callback ) {
 /**
  * sleep for a given number of milliseconds
  * @param {number} time - sleep time in milliseconds
- * @returns {Promise&lt;void>}
+ * @returns {Promise<void>}
  * @example await sleep( 3000 );
  * @example sleep( 3000 ).then( () => {...} ) );
  * @memberOf ModuleHelper.AsynchronousProgramming
@@ -165,24 +117,24 @@ export function sleep( time ) { return new Promise( resolve => setTimeout( resol
  */
 
 /**
- * checks if an &lt;i>ccm&lt;/i> instance has DOM contact
- * @param {Object} instance - &lt;i>ccm&lt;/i> instance
+ * checks if an <i>ccm</i> instance has DOM contact
+ * @param {Object} instance - <i>ccm</i> instance
  * @returns {boolean}
  * @example
- * // &lt;body>&lt;div id="app">&lt;/div>&lt;/body>
+ * // <body><div id="app"></div></body>
  * const instance = await suite.ccm.instance( component, { root: document.querySelector( '#app' ) } );
  * console.log( hasDomContact( instance ) ) );  // => true
  * @example
  * const instance = await suite.ccm.instance( component, { root: document.createElement( 'div' ) } );
  * console.log( hasDomContact( instance ) ) );  // => false
  * @example
- * // &lt;body>&lt;div id="app">&lt;/div>&lt;/body>
+ * // <body><div id="app"></div></body>
  * const parent = await suite.ccm.instance( component, { root: document.querySelector( '#app' ) } );
  * const instance = await suite.ccm.instance( component, { parent: parent } );
  * parent.element.appendChild( instance.root );
  * console.log( hasDomContact( instance ) ) );  // => true
  * @example
- * // &lt;body>&lt;div id="app">&lt;/div>&lt;/body>
+ * // <body><div id="app"></div></body>
  * const parent = await suite.ccm.instance( component, { root: document.querySelector( '#app' ) } );
  * const instance = await suite.ccm.instance( component, { parent: parent } );
  * console.log( hasDomContact( instance ) ) );  // => false
@@ -190,12 +142,12 @@ export function sleep( time ) { return new Promise( resolve => setTimeout( resol
  */
 export function hasDomContact( instance ) {
   const ccm = framework( arguments );
-  return document.contains( ccm.context.root( instance ).root ) &amp;&amp; ( hasParentContact( instance, ccm ) || !instance.parent )
+  return document.contains( ccm.context.root( instance ).root ) && ( hasParentContact( instance, ccm ) || !instance.parent )
 }
 
 /**
- * checks if an &lt;i>ccm&lt;/i> instance has parent element contact
- * @param {Object} instance - &lt;i>ccm&lt;/i> instance
+ * checks if an <i>ccm</i> instance has parent element contact
+ * @param {Object} instance - <i>ccm</i> instance
  * @returns {boolean}
  * @example
  * const parent = await suite.ccm.instance( component );
@@ -209,7 +161,7 @@ export function hasDomContact( instance ) {
  * @memberOf ModuleHelper.Checker
  */
 export function hasParentContact( instance ) {
-  return instance.parent &amp;&amp; instance.parent.element.contains( instance.root );
+  return instance.parent && instance.parent.element.contains( instance.root );
 }
 
 /**
@@ -227,7 +179,7 @@ export function isFirefox() {
  * @memberOf ModuleHelper.Checker
  */
 export function isGoogleChrome() {
-  return /Chrome/.test( navigator.userAgent ) &amp;&amp; /Google Inc/.test( navigator.vendor );
+  return /Chrome/.test( navigator.userAgent ) && /Google Inc/.test( navigator.vendor );
 }
 
 /**
@@ -250,7 +202,7 @@ export function isSafari() {
  * converts an array of strings or numbers to an object of booleans
  * @param {Array|Object} obj - array or object that contains the array
  * @param {string} [key] - object property where the array is contained
- * @returns {Object.&lt;string,boolean>} resulting object
+ * @returns {Object.<string,boolean>} resulting object
  * @example console.log( arrToObj( [ 'foo', 'bar' ] ) );  // => { foo: true, bar: true }
  * @example console.log( arrToObj( [ 1, 2 ] ) );  // => { 1: true, 2: true }
  * @example console.log( arrToObj( { key: [ 'foo', 'bar' ] }, 'key' ) );  // => { foo: true, bar: true }
@@ -287,7 +239,7 @@ export function cleanObject( obj, deep ) {
     for ( let i = obj.length - 1; i >= 0; i-- )
       if ( !obj[ i ] )
         obj.splice( i, 1 );
-      else if ( deep &amp;&amp; typeof obj[ i ] === 'object' &amp;&amp; !ccm.helper.isSpecialObject( obj[ i ] ) )
+      else if ( deep && typeof obj[ i ] === 'object' && !ccm.helper.isSpecialObject( obj[ i ] ) )
         cleanObject( obj[ i ], ccm );
   }
   else
@@ -295,7 +247,7 @@ export function cleanObject( obj, deep ) {
       if ( obj.hasOwnProperty( key ) )
         if ( !obj[ key ] )
           delete obj[ key ];
-        else if ( deep &amp;&amp; typeof obj[ key ] === 'object' &amp;&amp; !ccm.helper.isSpecialObject( obj[ key ] ) )
+        else if ( deep && typeof obj[ key ] === 'object' && !ccm.helper.isSpecialObject( obj[ key ] ) )
           cleanObject( obj[ key ], ccm );
 
   return obj;
@@ -304,7 +256,7 @@ export function cleanObject( obj, deep ) {
 /**
  * @summary decodes with encodeJSON() encoded JSON
  * @description
- * All &lt;code>%'%&lt;/code> are replaced with &lt;code>"&lt;/code>.&lt;br>
+ * All <code>%'%</code> are replaced with <code>"</code>.<br>
  * Returns passed parameter if decoding fails.
  * @param {string} str - encoded JSON
  * @returns {Object|Array} decoded JSON
@@ -322,7 +274,7 @@ export function decodeJSON( str ) {
 /**
  * @summary encodes JSON as string so that it can be set as value for input elements
  * @description
- * All &lt;code>"&lt;/code> are replaced with &lt;code>%'%&lt;/code>.&lt;br>
+ * All <code>"</code> are replaced with <code>%'%</code>.<br>
  * Returns passed parameter if encoding fails.
  * @param {Object|Array} json - JSON
  * @returns {string} encoded JSON
@@ -341,7 +293,7 @@ export function encodeJSON( json ) {
  * escapes HTML characters of a string value
  * @param {string} value - string value
  * @returns {string}
- * @example escapeHTML( 'Hello &lt;b>World&lt;/b>!' )  // => 'Hello &amp;lt;b&amp;gt;World&amp;lt;/b&amp;gt;!'
+ * @example escapeHTML( 'Hello <b>World</b>!' )  // => 'Hello &lt;b&gt;World&lt;/b&gt;!'
  * @memberOf ModuleHelper.DataHandling
  */
 export function escapeHTML( value ) {
@@ -407,12 +359,12 @@ export function shuffleArray( array ) {
  * unescapes HTML characters of a string value
  * @param {string} value - string value
  * @returns {string}
- * @example escapeHTML( 'Hello &amp;lt;b&amp;gt;World&amp;lt;/b&amp;gt;!' )  // => 'Hello &lt;b>World&lt;/b>!'
+ * @example escapeHTML( 'Hello &lt;b&gt;World&lt;/b&gt;!' )  // => 'Hello <b>World</b>!'
  * @memberOf ModuleHelper.DataHandling
  */
 export function unescapeHTML( value ) {
   const element = document.createElement( 'div' );
-  return value.replace( /\&amp;[#0-9a-z]+;/gi, x => {
+  return value.replace( /\&[#0-9a-z]+;/gi, x => {
     element.innerHTML = x;
     return element.innerText;
   } );
@@ -428,20 +380,20 @@ export function unescapeHTML( value ) {
 /**
  * @summary gets a dataset from a datastore via given settings
  * @description
- * The original settings given are not changed (they are cloned).&lt;br>
- * If the settings do not contain a dataset key, a unique key is generated.&lt;br>
- * If the dataset does not exist in the datastore, an empty dataset is returned. This dataset is not newly created in the datastore and is only returned locally.&lt;br>
- * Instead of the settings, a dataset can be given directly. This dataset is then returned as result.&lt;br>
- * If the dataset key is specified in the settings directly as the dataset, this dataset is returned as the result.&lt;br>
+ * The original settings given are not changed (they are cloned).<br>
+ * If the settings do not contain a dataset key, a unique key is generated.<br>
+ * If the dataset does not exist in the datastore, an empty dataset is returned. This dataset is not newly created in the datastore and is only returned locally.<br>
+ * Instead of the settings, a dataset can be given directly. This dataset is then returned as result.<br>
+ * If the dataset key is specified in the settings directly as the dataset, this dataset is returned as the result.<br>
  * A user instance that can be reached from the datastore is automatically detected.
  * @param {Object} [settings={}] - contains the required data to determine the dataset (or is directly the dataset)
  * @param {Object} settings.store - the datastore that contains the dataset
  * @param {*} [settings.key] - the key of the dataset in the datastore (or initial dataset)
  * @param {boolean} [settings.login] - The user must log in if he is not already logged in to receive the dataset (only if a user instance could be determined automatically).
- * @param {boolean} [settings.user] - The dataset key given in the settings is expanded to a user-specific key: &lt;code>[ dataset_key, user_key ]&lt;/code> (only if user is detected and logged in)
+ * @param {boolean} [settings.user] - The dataset key given in the settings is expanded to a user-specific key: <code>[ dataset_key, user_key ]</code> (only if user is detected and logged in)
  * @param {Object} [settings.permissions] - If the dataset does not exist, the empty dataset then returned will contain these permission settings.
  * @param {Function} [settings.convert] - With this function, the data contained in the result dataset can be adjusted.
- * @returns {Promise&lt;Object>}
+ * @returns {Promise<Object>}
  * @throws {Error} if user must log in and login is canceled
  * @example
  * // load dataset by datastore and key
@@ -497,16 +449,16 @@ export async function dataset( settings={} ) {
   if ( ccm.helper.isDataset( settings.key ) ) return settings.convert ? await settings.convert( settings.key ) : settings.key;
 
   /**
-   * nearest user instance in &lt;i>ccm&lt;/i> context tree
+   * nearest user instance in <i>ccm</i> context tree
    * @type {Object}
    */
   const user = ccm.context.find( settings.store, 'user' );
 
   // user exists and must be logged in? => login user (if not already logged in)
-  user &amp;&amp; settings.login &amp;&amp; await user.login();
+  user && settings.login && await user.login();
 
   // should a user-specific key be used? => make key user-specific
-  if ( ccm.helper.isInstance( user ) &amp;&amp; settings.user &amp;&amp; user.isLoggedIn() ) settings.key = [ settings.key, user.data().key ];
+  if ( ccm.helper.isInstance( user ) && settings.user && user.isLoggedIn() ) settings.key = [ settings.key, user.data().key ];
 
   // get dataset from datastore
   let dataset = await settings.store.get( settings.key );
@@ -526,30 +478,30 @@ export async function dataset( settings={} ) {
 /**
  * @summary allows a declarative way to perform common finish actions
  * @description
- * The original parameters given are not changed (they are cloned).&lt;br>
- * If a &lt;i>ccm&lt;/i> instance is passed for &lt;code>settings&lt;/code>, the finish actions defined via the &lt;code>instance.onfinish&lt;/code> property are used.&lt;br>
- * If a function is passed for &lt;code>settings&lt;/code>, the function is called with the result data.&lt;br>
- * If a &lt;i>ccm&lt;/i> instance is passed for &lt;code>settings&lt;/code>, the result data are automatically determined via &lt;code>instance.getValue()&lt;/code>. To do this, the instance must have a &lt;code>getValue&lt;/code> method.&lt;br>
- * If a &lt;i>ccm&lt;/i> instance is passed for &lt;code>settings&lt;/code>, the nearest user instance in the &lt;i>ccm&lt;/i> context of the instance is automatically determined.
- * @param {Object|Function} settings - declarative settings for usual finish actions (or 'onfinish' callback or finished &lt;i>ccm&lt;/i> instance)
- * @param {Object} [results] - result data of the finished &lt;i>ccm&lt;/i> instance
+ * The original parameters given are not changed (they are cloned).<br>
+ * If a <i>ccm</i> instance is passed for <code>settings</code>, the finish actions defined via the <code>instance.onfinish</code> property are used.<br>
+ * If a function is passed for <code>settings</code>, the function is called with the result data.<br>
+ * If a <i>ccm</i> instance is passed for <code>settings</code>, the result data are automatically determined via <code>instance.getValue()</code>. To do this, the instance must have a <code>getValue</code> method.<br>
+ * If a <i>ccm</i> instance is passed for <code>settings</code>, the nearest user instance in the <i>ccm</i> context of the instance is automatically determined.
+ * @param {Object|Function} settings - declarative settings for usual finish actions (or 'onfinish' callback or finished <i>ccm</i> instance)
+ * @param {Object} [results] - result data of the finished <i>ccm</i> instance
  * @param {string} [settings.confirm] - show confirm box (no finish actions will be performed if user chooses abort)
- * @param {Function} [settings.condition] - no finish actions will be performed if this function returns a falsy value (result data and possibly the &lt;i>ccm&lt;/i> instance is passed as parameters)
+ * @param {Function} [settings.condition] - no finish actions will be performed if this function returns a falsy value (result data and possibly the <i>ccm</i> instance is passed as parameters)
  * @param {boolean} [settings.login] - user will be logged in if not already logged in (only works if a user instance could be determined)
  * @param {Function} [settings.convert] - for dynamic adjustment of the results data (result data is passed as parameter, must return adjusted result data)
  * @param {boolean} [settings.log] - log result data in the developer console of the web browser
- * @param {Object} [settings.clear] - clear website area of the finished &lt;i>ccm&lt;/i> instance
- * @param {Object|boolean} [settings.store] - use this to store the result data in a data store (use boolean true to apply the settings of &lt;code>instance.data&lt;/code>")
- * @param {Object} settings.store.settings - settings for a &lt;i>ccm&lt;/i> datastore (result data will be set in this datastore)
+ * @param {Object} [settings.clear] - clear website area of the finished <i>ccm</i> instance
+ * @param {Object|boolean} [settings.store] - use this to store the result data in a data store (use boolean true to apply the settings of <code>instance.data</code>")
+ * @param {Object} settings.store.settings - settings for a <i>ccm</i> datastore (result data will be set in this datastore)
  * @param {*} [settings.store.key] - dataset key for result data in the datastore (default is generated key)
- * @param {boolean} [settings.store.user] - The dataset key is expanded to an user-specific key: &lt;code>[ dataset_key, user_key ]&lt;/code> (only if user is detected and logged in)
- * @param {boolean} [settings.store.unique] - The dataset key is expanded with an unique hash: &lt;code>[ dataset_key, user_key, unique_hash ]&lt;/code>
+ * @param {boolean} [settings.store.user] - The dataset key is expanded to an user-specific key: <code>[ dataset_key, user_key ]</code> (only if user is detected and logged in)
+ * @param {boolean} [settings.store.unique] - The dataset key is expanded with an unique hash: <code>[ dataset_key, user_key, unique_hash ]</code>
  * @param {Object} [settings.store.permissions] - If the dataset does not exist, the dataset then will created with these permission settings.
  * @param {string} [settings.alert] - show alert message
- * @param {boolean} [settings.restart] - restart finished &lt;i>ccm&lt;/i> instance
- * @param {{component: string, config: Object}|*} [settings.render] - render other content (&lt;i>ccm&lt;/i>-based app or HTML content, as default the content is rendered in the root element of the instance)
- * @param {callback} [settings.callback] - additional finish callback which will be called after the other finish actions (result data and possibly the &lt;i>ccm&lt;/i> instance is passed as parameter)
- * @returns {Promise&lt;void>}
+ * @param {boolean} [settings.restart] - restart finished <i>ccm</i> instance
+ * @param {{component: string, config: Object}|*} [settings.render] - render other content (<i>ccm</i>-based app or HTML content, as default the content is rendered in the root element of the instance)
+ * @param {callback} [settings.callback] - additional finish callback which will be called after the other finish actions (result data and possibly the <i>ccm</i> instance is passed as parameter)
+ * @returns {Promise<void>}
  * @example
  * instance.onfinish = {
  *   confirm: 'Are you sure?',
@@ -606,7 +558,7 @@ export async function dataset( settings={} ) {
  *   }
  * } } );
  * @example
- * instance.onfinish = { render: 'Hello &lt;b>World&lt;/b>!' };
+ * instance.onfinish = { render: 'Hello <b>World</b>!' };
  * onFinish( instance );
  * @example
  * instance.onfinish = { render: { inner: 'Hello World!' } } };
@@ -624,7 +576,7 @@ export async function onFinish( settings, results ) {
   // has ccm instance? => take finish actions from 'instance.onfinish' and result data from 'instance.getValue()'
   if ( ccm.helper.isInstance( settings ) ) {
     instance = settings;
-    if ( !results &amp;&amp; settings.getValue ) results = settings.getValue();  // determine result data
+    if ( !results && settings.getValue ) results = settings.getValue();  // determine result data
     settings = settings.onfinish;                                        // determine finish actions
     user = ccm.context.find( instance, 'user' );                         // determine nearest user instance in the ccm context of the instance
   }
@@ -632,15 +584,15 @@ export async function onFinish( settings, results ) {
   if ( !settings ) return;                                           // no finish actions? => abort
   if ( typeof settings === 'function' ) return settings( results );  // are the finish actions defined by function? => perform function with results
 
-  if ( settings.confirm &amp;&amp; confirm( !settings.confirm ) ) return;                          // confirm box
-  if ( settings.condition &amp;&amp; !( await settings.condition( results, instance ) ) ) return;  // check condition
-  user &amp;&amp; settings.login &amp;&amp; await user.login();                                            // login user (if not already logged in)
+  if ( settings.confirm && confirm( !settings.confirm ) ) return;                          // confirm box
+  if ( settings.condition && !( await settings.condition( results, instance ) ) ) return;  // check condition
+  user && settings.login && await user.login();                                            // login user (if not already logged in)
   if ( settings.convert ) results = await settings.convert( results );                     // adjust result data
-  settings.log &amp;&amp; console.log( results );                                                  // log result data (if necessary)
-  if ( instance &amp;&amp; settings.clear ) instance.element.innerHTML = '';                       // clear website area of the instance (if necessary)
+  settings.log && console.log( results );                                                  // log result data (if necessary)
+  if ( instance && settings.clear ) instance.element.innerHTML = '';                       // clear website area of the instance (if necessary)
 
   // store result data in a datastore
-  if ( settings.store &amp;&amp; results ) {
+  if ( settings.store && results ) {
 
     /**
      * deep copy of result data
@@ -649,9 +601,9 @@ export async function onFinish( settings, results ) {
     const dataset = ccm.helper.clone( results );
 
     // allow shortcut for update dataset in its original datastore
-    if ( instance &amp;&amp; settings.store === true ) {
+    if ( instance && settings.store === true ) {
       settings.store = {};
-      if ( ccm.helper.isObject( instance.data ) &amp;&amp; ccm.helper.isDatastore( instance.data.store ) ) {
+      if ( ccm.helper.isObject( instance.data ) && ccm.helper.isDatastore( instance.data.store ) ) {
         settings.store = ccm.helper.clone( instance.data );
         settings.store.settings = settings.store.store;
         delete settings.store.store;
@@ -660,9 +612,9 @@ export async function onFinish( settings, results ) {
 
     // prepare dataset key
     dataset.key = settings.store.key || ccm.helper.generateKey();
-    if ( !Array.isArray( dataset.key ) &amp;&amp; ( settings.store.user || settings.store.unique ) ) dataset.key = [ dataset.key ];
-    settings.store.user &amp;&amp; user &amp;&amp; user.isLoggedIn() &amp;&amp; dataset.key.push( user.data().key );
-    settings.store.unique &amp;&amp; dataset.key.push( ccm.helper.generateKey() );
+    if ( !Array.isArray( dataset.key ) && ( settings.store.user || settings.store.unique ) ) dataset.key = [ dataset.key ];
+    settings.store.user && user && user.isLoggedIn() && dataset.key.push( user.data().key );
+    settings.store.unique && dataset.key.push( ccm.helper.generateKey() );
 
     if ( settings.store.permissions ) dataset._ = settings.store.permissions;  // prepare permission settings
     if ( user ) settings.store.settings.user = user;                           // set user instance for datastore
@@ -671,20 +623,20 @@ export async function onFinish( settings, results ) {
   }
 
   if ( settings.alert ) alert( settings.alert );           // alert message
-  instance &amp;&amp; settings.restart &amp;&amp; await instance.start();  // restart ccm instance
+  instance && settings.restart && await instance.start();  // restart ccm instance
 
   // render other content (ccm-based app or HTML content)
   if ( settings.render )
-    if ( ccm.helper.isObject( settings.render ) &amp;&amp; settings.render.component ) {
+    if ( ccm.helper.isObject( settings.render ) && settings.render.component ) {
       let config = settings.render.config || {};                                  // determine instance configuration
-      config.root = config.root || instance &amp;&amp; instance.root;                     // default root element is root of instance
-      config.parent = !settings.render.root &amp;&amp; instance &amp;&amp; instance.parent;       // set parent instance
+      config.root = config.root || instance && instance.root;                     // default root element is root of instance
+      config.parent = !settings.render.root && instance && instance.parent;       // set parent instance
       await ccm.start( settings.render.component, config );                       // render ccm-based app
     }
-    else instance &amp;&amp; setContent( instance.root, ccm.helper.html( settings.render ), ccm );  // render HTML content
+    else instance && setContent( instance.root, ccm.helper.html( settings.render ), ccm );  // render HTML content
 
   // perform additional finish callback
-  settings.callback &amp;&amp; await settings.callback( results, instance );
+  settings.callback && await settings.callback( results, instance );
 
 }
 
@@ -732,9 +684,9 @@ export function append( element, content ) {
 }
 
 /**
- * returns a &lt;i>ccm&lt;/i> loading icon
- * @param {Object} [instance] - &lt;i>ccm&lt;/i> instance (for determining Shadow DOM)
- * @returns {Element} &lt;i>ccm&lt;/i> loading icon
+ * returns a <i>ccm</i> loading icon
+ * @param {Object} [instance] - <i>ccm</i> instance (for determining Shadow DOM)
+ * @returns {Element} <i>ccm</i> loading icon
  * @example document.body.appendChild( loading() )
  * @example document.body.appendChild( loading( instance ) )
  * @memberOf ModuleHelper.DomManipulation
@@ -754,7 +706,7 @@ export function loading( instance ) {
   element = document.createElement( 'div' );
   element.classList.add( 'ccm_loading' );
   element.setAttribute( 'style', 'display: grid; padding: 0.5em;' );
-  element.innerHTML = '&lt;div style="align-self: center; justify-self: center; display: inline-block; width: 2em; height: 2em; border: 0.3em solid #f3f3f3; border-top-color: #009ee0; border-left-color: #009ee0; border-radius: 50%; animation: ccm_loading 1.5s linear infinite;">&lt;/div>';
+  element.innerHTML = '<div style="align-self: center; justify-self: center; display: inline-block; width: 2em; height: 2em; border: 0.3em solid #f3f3f3; border-top-color: #009ee0; border-left-color: #009ee0; border-radius: 50%; animation: ccm_loading 1.5s linear infinite;"></div>';
 
   return element;
 }
@@ -810,20 +762,20 @@ export function prepend( element, content ) {
  * @memberOf ModuleHelper.DomManipulation
  */
 export function remove( element ) {
-  element &amp;&amp; element.parentNode &amp;&amp; element.parentNode.removeChild( element );
+  element && element.parentNode && element.parentNode.removeChild( element );
 }
 
 /**
  * replaces a HTML element with an other single HTML element (contained script tags will be removed)
  * @param {Element} element - HTML element (must have a parent)
  * @param {Object|string} other - other single HTML element
- * @example replace( document.querySelector( '#myid' ), '&lt;b>World&lt;/b>' )
+ * @example replace( document.querySelector( '#myid' ), '<b>World</b>' )
  * @example replace( document.querySelector( '#myid' ), { tag: 'b', inner: 'World' } )
  * @memberOf ModuleHelper.DomManipulation
  */
 export function replace( element, other ) {
   const ccm = framework( arguments );
-  element.parentNode &amp;&amp; element.parentNode.replaceChild( protect( ccm.helper.html( other ), ccm ), element );
+  element.parentNode && element.parentNode.replaceChild( protect( ccm.helper.html( other ), ccm ), element );
 }
 
 /**
@@ -855,51 +807,51 @@ export function setContent( element, content ) {
  * @param {Element} element - HTML element which contains the input elements (must not be a HTML form tag)
  * @param {Object} data - contains the values for the input elements
  * @example
- * // &lt;body>&lt;input type="text" name="user">&lt;input type="password" name="secret">&lt;/body>
+ * // <body><input type="text" name="user"><input type="password" name="secret"></body>
  * fillForm( document.body, { user: 'JohnDoe', secret: '1aA' } );
  * console.log( formData( document.body ) ); // { user: 'JohnDoe', secret: '1aA' }
  * @example
- * // &lt;body>&lt;input type="checkbox" name="agreed">&lt;/body> (boolean checkbox)
+ * // <body><input type="checkbox" name="agreed"></body> (boolean checkbox)
  * fillForm( document.body, { agreed: true } );
  * console.log( formData( document.body ) ); // { agreed: true }
  * @example
- * // &lt;body>&lt;input type="checkbox" name="role" value="Coordinator">&lt;/body> (value checkbox)
+ * // <body><input type="checkbox" name="role" value="Coordinator"></body> (value checkbox)
  * fillForm( document.body, { role: 'Coordinator' } );
  * console.log( formData( document.body ) ); // { role: 'Coordinator' }
  * @example
- * // &lt;body>&lt;input type="checkbox" name="types" value="A">&lt;input type="checkbox" name="types" value="B">&lt;/body> (multi checkbox)
+ * // <body><input type="checkbox" name="types" value="A"><input type="checkbox" name="types" value="B"></body> (multi checkbox)
  * fillForm( document.body, { types: [ 'A', 'B' ] } );
  * console.log( formData( document.body ) ); // { types: [ 'A', 'B' ] }
  * @example
- * // &lt;body>&lt;input type="radio" name="choice" value="A">&lt;input type="radio" name="choice" value="B">&lt;/body> (radio buttons)
+ * // <body><input type="radio" name="choice" value="A"><input type="radio" name="choice" value="B"></body> (radio buttons)
  * fillForm( document.body, { choice: 'A' } );
  * console.log( formData( document.body ) ); // { choice: 'A' }
  * @example
- * // &lt;body>&lt;select name="item">&lt;option value="A">Item A&lt;/option>&lt;option value="B">Item B&lt;/option>&lt;/select>&lt;/body> (selector box)
+ * // <body><select name="item"><option value="A">Item A</option><option value="B">Item B</option></select></body> (selector box)
  * fillForm( document.body, { item: 'A' } );
  * console.log( formData( document.body ) ); // { item: 'A' }
  * @example
- * // &lt;body>&lt;select name="item">&lt;option>A&lt;/option>&lt;option>B&lt;/option>&lt;/select>&lt;/body> (selector box without values)
+ * // <body><select name="item"><option>A</option><option>B</option></select></body> (selector box without values)
  * fillForm( document.body, { item: 'A' } );
  * console.log( formData( document.body ) ); // { item: 'A' }
  * @example
- * // &lt;body>&lt;select multiple name="items">&lt;option value="A">Item A&lt;/option>&lt;option value="B">Item B&lt;/option>&lt;/select>&lt;/body> (multi-selector box)
+ * // <body><select multiple name="items"><option value="A">Item A</option><option value="B">Item B</option></select></body> (multi-selector box)
  * fillForm( document.body, { items: [ 'A', 'B' ] } );
  * console.log( formData( document.body ) ); // { items: [ 'A', 'B' ] }
  * @example
- * // &lt;body>&lt;textarea name="description">&lt;/description>&lt;/body> (textarea)
+ * // <body><textarea name="description"></description></body> (textarea)
  * fillForm( document.body, { description: 'Hello World!' } );
  * console.log( formData( document.body ) ); // { description: 'Hello World!' }
  * @example
- * // &lt;body>&lt;div contenteditable name="topic">&lt;/div>&lt;/body> (in-place editing with contenteditable)
+ * // <body><div contenteditable name="topic"></div></body> (in-place editing with contenteditable)
  * fillForm( document.body, { topic: 'Hello World!' } );
  * console.log( formData( document.body ) ); // { topic: 'Hello World!' }
  * @example
- * // &lt;body>&lt;input type="text" name="deep.property.key">&lt;/input>&lt;/body> (deep property value)
+ * // <body><input type="text" name="deep.property.key"></input></body> (deep property value)
  * fillForm( document.body, { 'deep.property.key': 'value' } );
  * console.log( formData( document.body ) ); // { deep: { property: { key: 'value' } } }
  * @example
- * // &lt;body>&lt;input type="text" name="data">&lt;/input>&lt;/body> (complex data value)
+ * // <body><input type="text" name="data"></input></body> (complex data value)
  * fillForm( document.body, { data: { number: [ 1, 2, { a: 3 } ], checked: true, value: 'Hello World!' } } );
  * console.log( formData( document.body ) ); // { data: { number: [ 1, 2, { a: 3 } ], checked: true, value: 'Hello World!' } }
  * @memberOf ModuleHelper.InputElements
@@ -915,7 +867,7 @@ export function fillForm( element, data ) {
     if ( typeof data[ key ] === 'object' ) data[ key ] = encodeJSON( data[ key ], ccm );
     element.querySelectorAll( '[name="' + key + '"]' ).forEach( input => {
       if ( input.type === 'checkbox' ) {
-        if ( input.value &amp;&amp; typeof data[ key ] === 'string' &amp;&amp; data[ key ].charAt( 0 ) === '[' )
+        if ( input.value && typeof data[ key ] === 'string' && data[ key ].charAt( 0 ) === '[' )
           decodeJSON( data[ key ], ccm ).forEach( value => { if ( value === input.value ) input.checked = true; } );
         else
           input.checked = true;
@@ -929,7 +881,7 @@ export function fillForm( element, data ) {
           data[ key ] = decodeJSON( data[ key ], ccm );
         input.querySelectorAll( 'option' ).forEach( option => {
           if ( input.hasAttribute( 'multiple' ) )
-            data[ key ].forEach( value => encodeJSON( value, ccm ) === ( option.value ? option.value : option.innerHTML.trim() ) &amp;&amp; ( option.selected = true ) );
+            data[ key ].forEach( value => encodeJSON( value, ccm ) === ( option.value ? option.value : option.innerHTML.trim() ) && ( option.selected = true ) );
           else if ( data[ key ] === ( option.value ? option.value : option.innerHTML.trim() ) )
             option.selected = true;
         } );
@@ -948,51 +900,51 @@ export function fillForm( element, data ) {
  * @param {Element} element - HTML element which contains the input elements (must not be a HTML form tag)
  * @returns {Object} values of the input elements
  * @example
- * // &lt;body>&lt;input type="text" name="user">&lt;input type="password" name="secret">&lt;/body>
+ * // <body><input type="text" name="user"><input type="password" name="secret"></body>
  * fillForm( document.body, { user: 'JohnDoe', secret: '1aA' } );
  * console.log( formData( document.body ) ); // { user: 'JohnDoe', secret: '1aA' }
  * @example
- * // &lt;body>&lt;input type="checkbox" name="agreed">&lt;/body> (boolean checkbox)
+ * // <body><input type="checkbox" name="agreed"></body> (boolean checkbox)
  * fillForm( document.body, { agreed: true } );
  * console.log( formData( document.body ) ); // { agreed: true }
  * @example
- * // &lt;body>&lt;input type="checkbox" name="role" value="Coordinator">&lt;/body> (value checkbox)
+ * // <body><input type="checkbox" name="role" value="Coordinator"></body> (value checkbox)
  * fillForm( document.body, { role: 'Coordinator' } );
  * console.log( formData( document.body ) ); // { role: 'Coordinator' }
  * @example
- * // &lt;body>&lt;input type="checkbox" name="types" value="A">&lt;input type="checkbox" name="types" value="B">&lt;/body> (multi checkbox)
+ * // <body><input type="checkbox" name="types" value="A"><input type="checkbox" name="types" value="B"></body> (multi checkbox)
  * fillForm( document.body, { types: [ 'A', 'B' ] } );
  * console.log( formData( document.body ) ); // { types: [ 'A', 'B' ] }
  * @example
- * // &lt;body>&lt;input type="radio" name="choice" value="A">&lt;input type="radio" name="choice" value="B">&lt;/body> (radio buttons)
+ * // <body><input type="radio" name="choice" value="A"><input type="radio" name="choice" value="B"></body> (radio buttons)
  * fillForm( document.body, { choice: 'A' } );
  * console.log( formData( document.body ) ); // { choice: 'A' }
  * @example
- * // &lt;body>&lt;select name="item">&lt;option value="A">Item A&lt;/option>&lt;option value="B">Item B&lt;/option>&lt;/select>&lt;/body> (selector box)
+ * // <body><select name="item"><option value="A">Item A</option><option value="B">Item B</option></select></body> (selector box)
  * fillForm( document.body, { item: 'A' } );
  * console.log( formData( document.body ) ); // { item: 'A' }
  * @example
- * // &lt;body>&lt;select name="item">&lt;option>A&lt;/option>&lt;option>B&lt;/option>&lt;/select>&lt;/body> (selector box without values)
+ * // <body><select name="item"><option>A</option><option>B</option></select></body> (selector box without values)
  * fillForm( document.body, { item: 'A' } );
  * console.log( formData( document.body ) ); // { item: 'A' }
  * @example
- * // &lt;body>&lt;select multiple name="items">&lt;option value="A">Item A&lt;/option>&lt;option value="B">Item B&lt;/option>&lt;/select>&lt;/body> (multi-selector box)
+ * // <body><select multiple name="items"><option value="A">Item A</option><option value="B">Item B</option></select></body> (multi-selector box)
  * fillForm( document.body, { items: [ 'A', 'B' ] } );
  * console.log( formData( document.body ) ); // { items: [ 'A', 'B' ] }
  * @example
- * // &lt;body>&lt;textarea name="description">&lt;/description>&lt;/body> (textarea)
+ * // <body><textarea name="description"></description></body> (textarea)
  * fillForm( document.body, { description: 'Hello World!' } );
  * console.log( formData( document.body ) ); // { description: 'Hello World!' }
  * @example
- * // &lt;body>&lt;div contenteditable name="topic">&lt;/div>&lt;/body> (in-place editing with contenteditable)
+ * // <body><div contenteditable name="topic"></div></body> (in-place editing with contenteditable)
  * fillForm( document.body, { topic: 'Hello World!' } );
  * console.log( formData( document.body ) ); // { topic: 'Hello World!' }
  * @example
- * // &lt;body>&lt;input type="text" name="deep.property.key">&lt;/input>&lt;/body> (deep property value)
+ * // <body><input type="text" name="deep.property.key"></input></body> (deep property value)
  * fillForm( document.body, { 'deep.property.key': 'value' } );
  * console.log( formData( document.body ) ); // { deep: { property: { key: 'value' } } }
  * @example
- * // &lt;body>&lt;input type="text" name="data">&lt;/input>&lt;/body> (complex data value)
+ * // <body><input type="text" name="data"></input></body> (complex data value)
  * fillForm( document.body, { data: { number: [ 1, 2, { a: 3 } ], checked: true, value: 'Hello World!' } } );
  * console.log( formData( document.body ) ); // { data: { number: [ 1, 2, { a: 3 } ], checked: true, value: 'Hello World!' } }
  * @memberOf ModuleHelper.InputElements
@@ -1008,7 +960,7 @@ export function formData( element ) {
       const multi = [ ...element.querySelectorAll( '[name="' + name + '"]' ) ].length > 1;
       if ( multi ) {
         if ( !data[ name ] ) data[ name ] = [];
-        value &amp;&amp; data[ name ].push( value );
+        value && data[ name ].push( value );
       }
       else data[ name ] = value;
     }
@@ -1017,7 +969,7 @@ export function formData( element ) {
     else if ( input.tagName.toLowerCase() === 'select' ) {
       let result = [];
       if ( input.hasAttribute( 'multiple' ) )
-        input.querySelectorAll( 'option' ).forEach( option => option.selected &amp;&amp; result.push( option.value ? option.value : option.inner ) );
+        input.querySelectorAll( 'option' ).forEach( option => option.selected && result.push( option.value ? option.value : option.inner ) );
       else
         input.querySelectorAll( 'option' ).forEach( option => {
           if ( option.selected ) result = option.value ? option.value : option.inner;
@@ -1053,23 +1005,23 @@ export function formData( element ) {
 /**
  * @summary privatizes public members of an object
  * @description
- * Deletes all given properties in an object and returns another object with the deleted properties and there values.&lt;br>
- * If no properties are given, then all not &lt;i>ccm&lt;/i> relevant instance members will be privatized.&lt;br>
- * List of &lt;i>ccm&lt;/i> relevant properties that will not be privatized:
- * &lt;ul>
- *   &lt;li>&lt;code>ccm&lt;/code>&lt;/li>
- *   &lt;li>&lt;code>component&lt;/code>&lt;/li>
- *   &lt;li>&lt;code>config&lt;/code>&lt;/li>
- *   &lt;li>&lt;code>element&lt;/code>&lt;/li>
- *   &lt;li>&lt;code>id&lt;/code>&lt;/li>
- *   &lt;li>&lt;code>index&lt;/code>&lt;/li>
- *   &lt;li>&lt;code>parent&lt;/code>&lt;/li>
- *   &lt;li>&lt;code>root&lt;/code>&lt;/li>
- *   &lt;li>&lt;code>shadow&lt;/code>&lt;/li>
- * &lt;/ul>
- * In addition to this: All functions and depending &lt;i>ccm&lt;/i> context relevant &lt;i>ccm&lt;/i> instances will also not be privatized.
+ * Deletes all given properties in an object and returns another object with the deleted properties and there values.<br>
+ * If no properties are given, then all not <i>ccm</i> relevant instance members will be privatized.<br>
+ * List of <i>ccm</i> relevant properties that will not be privatized:
+ * <ul>
+ *   <li><code>ccm</code></li>
+ *   <li><code>component</code></li>
+ *   <li><code>config</code></li>
+ *   <li><code>element</code></li>
+ *   <li><code>id</code></li>
+ *   <li><code>index</code></li>
+ *   <li><code>parent</code></li>
+ *   <li><code>root</code></li>
+ *   <li><code>shadow</code></li>
+ * </ul>
+ * In addition to this: All functions and depending <i>ccm</i> context relevant <i>ccm</i> instances will also not be privatized.
  * If the first passed property is boolean 'true', than the privatized properties will not be deleted in the passed object.
- * @param {Object} object - object or &lt;i>ccm&lt;/i> instance
+ * @param {Object} object - object or <i>ccm</i> instance
  * @param {...string|boolean} [properties] - properties that have to privatized
  * @returns {Object} object that contains the privatized properties and there values
  * @example
@@ -1114,7 +1066,7 @@ export function formData( element ) {
  *   config: { foo: 'abc', bar: 'xyz', baz: 4711, logger: [ 'ccm.instance', logger_component_url, logger_config ] },
  *   Instance: function () {
  *     this.ready = async () => {
- *       this.logger &amp;&amp; this.logger.log( 'ready', $.privatize( this, true ) );
+ *       this.logger && this.logger.log( 'ready', $.privatize( this, true ) );
  *       console.log( this.foo, this.bar, this.foo );  // => abc xyz 4711
  *     };
  *   }
@@ -1125,8 +1077,8 @@ export function privatize( object, properties ) {
 
   const keep = properties === true;
   const obj = {};
-  if ( properties &amp;&amp; ( !keep || arguments[ 2 ] ) )
-    for ( let i = 1; i &lt; arguments.length; i++ )
+  if ( properties && ( !keep || arguments[ 2 ] ) )
+    for ( let i = 1; i < arguments.length; i++ )
       privatizeProperty( arguments[ i ] );
   else
     for ( const key in object )
@@ -1159,17 +1111,17 @@ export function privatize( object, properties ) {
  * filters script elements out of given HTML
  * @param {string|Element} html - HTML String or HTML Element
  * @returns {string|Element} cleaned HTML
- * @example protect( "Hello &lt;script>alert('XSS');&lt;/script>World!" ) // => 'Hello World!'
+ * @example protect( "Hello <script>alert('XSS');</script>World!" ) // => 'Hello World!'
  * @example
- * // &lt;div>Hello &lt;script>alert('XSS');&lt;/script>World!&lt;/div>
- * div = protect( div ); // => &lt;div>Hello, World!&lt;/div>
+ * // <div>Hello <script>alert('XSS');</script>World!</div>
+ * div = protect( div ); // => <div>Hello, World!</div>
  * @memberOf ModuleHelper.Security
  */
 export function protect( html ) {
   const ccm = framework( arguments );
 
   if ( typeof html === 'string' )
-    return html.replace( /&lt;script\b[^&lt;]*(?:(?!&lt;\/script>)&lt;[^&lt;]*)*&lt;\/script>/gi, '' );
+    return html.replace( /<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '' );
 
   if ( ccm.helper.isElement( html ) )
     [ ...html.querySelectorAll( 'script' ) ].forEach( remove );
@@ -1185,21 +1137,35 @@ export function protect( html ) {
  */
 
 /**
- * returns the URL of a &lt;i>ccm&lt;/i>-based app
- * @param {string} component - URL of the &lt;i>ccm&lt;/i> component
- * @param {Object} store - settings for the &lt;i>ccm&lt;/i> data store that contains the &lt;i>ccm&lt;/i> instance configuration
- * @param {string|string[]} app_id - key of the data set that hold the &lt;i>ccm&lt;/i> instance configuration
- * @param {string} website - URL of the website which renders the &lt;i>ccm&lt;/i>-based app
+ * @summary returns the URL of a <i>ccm</i>-based app
+ * @description
+ * The entire app configuration is included in the app URL.<br>
+ * If the app configuration is in a <i>ccm</i> datastore, it can also be linked via a data dependency instead.<br>
+ * For this purpose, an object with the datastore settings and the dataset key must be passed instead of the app configuration.<br>
+ * Instead of datastore settings an already created datastore could also be passed.
+ * @param {string} component - URL of <i>ccm</i> component
+ * @param {Object} [config={}] - app configuration
+ * @param {string} [website="https://ccmjs.github.io/digital-maker-space/app.html"] - URL of the website which renders the <i>ccm</i>-based app
+ * @example // with default configuration
+ * appURL( 'https://ccmjs.github.io/akless-components/blank/ccm.blank.js' )
+ * // https://ccmjs.github.io/digital-maker-space/app.html#component=https://ccmjs.github.io/akless-components/blank/ccm.blank.js&config={}
+ * @example // with individual configuration
+ * appURL( 'https://ccmjs.github.io/akless-components/multi_blank/ccm.multi_blank.js', { times: 5 } )
+ * // https://ccmjs.github.io/digital-maker-space/app.html#component=https://ccmjs.github.io/akless-components/multi_blank/ccm.multi_blank.js&config={"times":5}
+ * @example // with individual configuration that is stored in a ccm datastore
+ * appURL( 'https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js', { store: 'https://ccmjs.github.io/akless-components/cloze/resources/configs.js', key: 'demo' } )
+ * // https://ccmjs.github.io/digital-maker-space/app.html#component=https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js&config={"store":"https://ccmjs.github.io/akless-components/cloze/resources/configs.js","key":"demo"}
+ * @example // pass an already created ccm datastore instead of datastore settings
+ * appURL( 'https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js', { store: await ccm.store( { name: 'cloze', url: 'https://ccm2.inf.h-brs.de' } ), key: 'demo' } )
+ * // https://ccmjs.github.io/digital-maker-space/app.html#component=https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js&config={"store":{"name":"cloze","url":"https://ccm2.inf.h-brs.de"},"key":"demo"}
  * @returns {string}
  * @memberOf ModuleHelper.HandoverApp
  */
-export function appURL( component, store, app_id, website = 'https://ccmjs.github.io/digital-maker-space/app.html' ) {
+export function appURL( component, config = {}, website = 'https://ccmjs.github.io/digital-maker-space/app.html' ) {
+  const ccm = framework( arguments );
 
-  if ( store &amp;&amp; app_id )
-    return `${website}#component=${component}&amp;name=${store.name}&amp;url=${store.url}&amp;key=${app_id}`;
-  else
-    return `${website}#component=${component}`;   // render with default instance configuration
-
+  if ( ccm.helper.isDatastore( config.store ) ) config.store = config.store.source();
+  return `${website}#component=${component}&config=${ccm.helper.stringify(config)}`;
 }
 
 /**
@@ -1214,7 +1180,7 @@ export function copyToClipboard( element ) {
 
 /**
  * decomposes a given app URL into component URL, component index, component name, component version, store settings and app ID
- * @param {string} app_url - URL of a &lt;i>ccm&lt;/i>-based app
+ * @param {string} app_url - URL of a <i>ccm</i>-based app
  * @returns {Object}
  * @memberOf ModuleHelper.HandoverApp
  */
@@ -1225,7 +1191,7 @@ export function decomposeAppURL( app_url ) {
 
   const result = { store: {} };
 
-  app_url.split( '#' )[ 1 ].split( '&amp;' ).forEach( part => {
+  app_url.split( '#' )[ 1 ].split( '&' ).forEach( part => {
     if ( part.startsWith( 'component=' ) ) result.component  = part.split( '=' )[ 1 ];
     if ( part.startsWith( 'name='      ) ) result.store.name = part.split( '=' )[ 1 ];
     if ( part.startsWith( 'url='       ) ) result.store.url  = part.split( '=' )[ 1 ];
@@ -1246,7 +1212,7 @@ export function decomposeAppURL( app_url ) {
 
 /**
  * decomposes a given embed code into component URL, component index, component name, component version, store settings and app ID
- * @param {string} embed_code - embed code of a &lt;i>ccm&lt;/i>-based app
+ * @param {string} embed_code - embed code of a <i>ccm</i>-based app
  * @returns {Object}
  * @memberOf ModuleHelper.HandoverApp
  */
@@ -1291,12 +1257,12 @@ export function download( filename, content, mime = 'text/html;charset=utf-8' ) 
 }
 
 /**
- * provides a download of a &lt;i>ccm&lt;/i>-based app as HTML file
- * @param {string} embed_code - embed code of the &lt;i>ccm&lt;/i>-based app
+ * provides a download of a <i>ccm</i>-based app as HTML file
+ * @param {string} embed_code - embed code of the <i>ccm</i>-based app
  * @param {string} [filename='app'] - file name without file extension
  * @param {string} [title='App'] - website title
  * @param {string} [template='https://ccmjs.github.io/akless-components/resources/templates/app.html'] - URL of the HTML template file
- * @returns {Promise&lt;void>}
+ * @returns {Promise<void>}
  * @memberOf ModuleHelper.HandoverApp
  */
 export async function downloadApp( embed_code, filename = 'app', title = 'App', template = 'https://ccmjs.github.io/akless-components/resources/templates/app.html' ) {
@@ -1308,38 +1274,44 @@ export async function downloadApp( embed_code, filename = 'app', title = 'App', 
 }
 
 /**
- * @summary generates the HTML embed code of a &lt;i>ccm&lt;/i>-based app
+ * @summary generates the HTML embed code of a <i>ccm</i>-based app
  * @description
- * The entire app configuration is included in the embed code.&lt;br>
- * If the app configuration is in a &lt;i>ccm&lt;/i> datastore, it can also be linked via a data dependency instead.&lt;br>
- * For this purpose, an object with the datastore settings and the dataset key must be passed instead of the app configuration.&lt;br>
- * If the embed code does not contain a script tag, it will only work if a ccm framework is already present in the website.&lt;br>
- * Instead of datastore settings an already created datastore could also be passed.
- * @param {string} component - URL of &lt;i>ccm&lt;/i> component
- * @param {Object} config - app configuration
+ * The entire app configuration is included in the embed code.<br>
+ * If the app configuration is in a <i>ccm</i> datastore, it can also be linked via a data dependency instead.<br>
+ * For this purpose, an object with the datastore settings and the dataset key must be passed instead of the app configuration.<br>
+ * Instead of datastore settings an already created datastore could also be passed.<br>
+ * If the embed code does not contain a script tag, it will only work if a ccm framework is already present in the website.
+ * @param {string} component - URL of <i>ccm</i> component
+ * @param {Object} [config={}] - app configuration
  * @param {boolean} noscript - embed code does not contain a script tag
  * @returns {string} generated embed code
- * @example
- * embedCode( component_url, app_configuration );
- * // &lt;script src='component_url'>&lt;/script>&lt;ccm-index key='{..config..}'>&lt;/ccm-index>
- * @example
- * embedCode( component_url, { store: { name: store_name, url: server_url }, key: dataset_key } );
- * // &lt;ccm-app component='component_url' key='["ccm.get",{"name":"store_name"},"dataset_key"]'>&lt;/ccm-app>
- * @example
- * embedCode( component_url, { store: await ccm.store(...), key: dataset_key } );
- * // &lt;ccm-app component='component_url' key='["ccm.get",{"name":"store_name"},"dataset_key"]'>&lt;/ccm-app>
- * @example
- * embedCode( component_url, app_configuration, true );
- * // &lt;ccm-app key='component_url' key='{..config..}'>&lt;/ccm-app>
- * @example
- * embedCode( component_url, { store: { name: store_name, url: server_url }, key: dataset_key }, true );
- * // &lt;ccm-app key='component_url' key='["ccm.get",{"name":"store_name"},"dataset_key"]'>&lt;/ccm-app>
- * @example
- * embedCode( component_url, { store: await ccm.store(...), key: dataset_key }, true );
- * // &lt;ccm-app key='component_url' key='["ccm.get",{"name":"store_name"},"dataset_key"]'>&lt;/ccm-app>
+ * @example // with default configuration
+ * embedCode( 'https://ccmjs.github.io/akless-components/blank/ccm.blank.js' )
+ * // <script src='https://ccmjs.github.io/akless-components/blank/ccm.blank.js'></script><ccm-blank key='{}'></ccm-blank>
+ * @example // with individual configuration
+ * embedCode( 'https://ccmjs.github.io/akless-components/multi_blank/ccm.multi_blank.js', { times: 5 } )
+ * // <script src='https://ccmjs.github.io/akless-components/multi_blank/ccm.multi_blank.js'></script><ccm-multi_blank key='{"times":5}'></ccm-multi_blank>
+ * @example // with individual configuration that is stored in a ccm datastore
+ * embedCode( embedCode( 'https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js', { store: 'https://ccmjs.github.io/akless-components/cloze/resources/configs.js', key: 'demo' } ) )
+ * // <script src='https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js'></script><ccm-cloze-6-0-3 key='["ccm.get","https://ccmjs.github.io/akless-components/cloze/resources/configs.js","demo"]'></ccm-cloze-6-0-3>
+ * @example // pass an already created ccm datastore instead of datastore settings
+ * embedCode( 'https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js', { store: await ccm.store( { name: 'cloze', url: 'https://ccm2.inf.h-brs.de' } ), key: 'demo' } )
+ * // <script src='https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js'></script><ccm-cloze-6-0-3 key='["ccm.get",{"name":"cloze","url":"https://ccm2.inf.h-brs.de"},"demo"]'></ccm-cloze-6-0-3>
+ * @example // with no script tag and default configuration
+ * embedCode( 'https://ccmjs.github.io/akless-components/blank/ccm.blank.js', undefined, true )
+ * // <ccm-app component='https://ccmjs.github.io/akless-components/blank/ccm.blank.js' key='{}'></ccm-app>
+ * @example // with no script tag and individual configuration
+ * embedCode( 'https://ccmjs.github.io/akless-components/multi_blank/ccm.multi_blank.js', { times: 5 }, true )
+ * // <ccm-app component='https://ccmjs.github.io/akless-components/multi_blank/ccm.multi_blank.js' key='{"times":5}'></ccm-app>
+ * @example // with no script tag and individual configuration that is stored in a ccm datastore
+ * embedCode( 'https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js', { store: 'https://ccmjs.github.io/akless-components/cloze/resources/configs.js', key: 'demo' }, true )
+ * // <ccm-app component='https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js' key='["ccm.get","https://ccmjs.github.io/akless-components/cloze/resources/configs.js","demo"]'></ccm-app>
+ * @example // with no script tag and an already created ccm datastore is passed instead of datastore settings
+ * embedCode( 'https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js', { store: await ccm.store( { name: 'cloze', url: 'https://ccm2.inf.h-brs.de' } ), key: 'demo' }, true )
+ * // <ccm-app component='https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js' key='["ccm.get",{"name":"cloze","url":"https://ccm2.inf.h-brs.de"},"demo"]'></ccm-app>
  * @memberOf ModuleHelper.HandoverApp
 */
-export function embedCode( component, config, noscript ) {
+export function embedCode( component, config = {}, noscript ) {
   const ccm = framework( arguments );
 
   /**
@@ -1349,12 +1321,12 @@ export function embedCode( component, config, noscript ) {
   const index = ccm.helper.convertComponentURL( component ).index;
 
   // app configuration comes from a datastore? => use data dependency
-  if ( config.store &amp;&amp; config.key ) config = [ 'ccm.get', ccm.helper.isDatastore( config.store ) ? config.store.source() : config.store, config.key ];
+  if ( config.store && config.key ) config = [ 'ccm.get', ccm.helper.isDatastore( config.store ) ? config.store.source() : config.store, config.key ];
 
   if ( noscript )
-    return `&lt;ccm-app component='${component}' key='${ccm.helper.stringify(config)}'>&lt;/ccm-app>`;
+    return `<ccm-app component='${component}' key='${ccm.helper.stringify(config)}'></ccm-app>`;
   else
-    return `&lt;script src='${component}'>&lt;/script>&lt;ccm-${index} key='${ccm.helper.stringify(config)}'>&lt;/ccm-${index}>`;
+    return `<script src='${component}'></script><ccm-${index} key='${ccm.helper.stringify(config)}'></ccm-${index}>`;
 }
 
 /**
@@ -1376,15 +1348,15 @@ export function fullscreen( element ) {
 }
 
 /**
- * provides a download of a &lt;i>ccm&lt;/i>-based app as iBook Widget (ZIP file)
- * @param {string} embed_code - embed code of the &lt;i>ccm&lt;/i>-based app
+ * provides a download of a <i>ccm</i>-based app as iBook Widget (ZIP file)
+ * @param {string} embed_code - embed code of the <i>ccm</i>-based app
  * @param {string} [filename='app'] - file name without file extension
  * @param {string} [title='App'] - website title for the index.html
  * @param {string} [folder='app'] - name of the folder inside the iBook Widget
  * @param {string} template - URL of the HTML template
  * @param {string} info_file - URL of the info file
  * @param {string} image_file - URL of the image file
- * @returns {Promise&lt;void>}
+ * @returns {Promise<void>}
  * @memberOf ModuleHelper.HandoverApp
  */
 export async function iBookWidget( embed_code, filename = 'app', title = 'App', folder='app',
@@ -1399,8 +1371,8 @@ export async function iBookWidget( embed_code, filename = 'app', title = 'App', 
   image_file = await fetch( image_file ).then( response => response.blob() );             // load content of image file
 
   // generate ZIP file
-  !window.JSZip  &amp;&amp; await loadScript( 'https://ccmjs.github.io/akless-components/libs/jszip/jszip.min.js' );
-  !window.saveAs &amp;&amp; await loadScript( 'https://ccmjs.github.io/akless-components/libs/FileSaver/FileSaver.js' );
+  !window.JSZip  && await loadScript( 'https://ccmjs.github.io/akless-components/libs/jszip/jszip.min.js' );
+  !window.saveAs && await loadScript( 'https://ccmjs.github.io/akless-components/libs/FileSaver/FileSaver.js' );
   let widgetZip = new JSZip();
   widgetZip.folder( `${folder}.wdgt` ).file( 'index.html', template );
   widgetZip.folder( `${folder}.wdgt` ).file( 'Info.plist', info_file );
@@ -1415,7 +1387,7 @@ export async function iBookWidget( embed_code, filename = 'app', title = 'App', 
 /**
  * executes the included code of a JavaScript file
  * @param {string} url - URL of the JavaScript file
- * @returns {Promise&lt;void>}
+ * @returns {Promise<void>}
  * @memberOf ModuleHelper.HandoverApp
  */
 export async function loadScript( url ) {
@@ -1434,15 +1406,15 @@ export async function loadScript( url ) {
 }
 
 /**
- * provides a download of a &lt;i>ccm&lt;/i>-based app as SCORM package (ZIP file)
- * @param {string} embed_code - embed code of the &lt;i>ccm&lt;/i>-based app
+ * provides a download of a <i>ccm</i>-based app as SCORM package (ZIP file)
+ * @param {string} embed_code - embed code of the <i>ccm</i>-based app
  * @param {string} [filename='app'] - file name without file extension
  * @param {string} [title='App'] - website title within the manifest
  * @param {string} [identifier='App'] - identifier within the manifest
  * @param {string} [html_template='https://ccmjs.github.io/akless-components/resources/templates/scorm/index.html'] - URL of HTML template
  * @param {string} [manifest_template='https://ccmjs.github.io/akless-components/resources/templates/scorm/imsmanifest.xml'] - URL of manifest template
  * @param {string} [api_file='https://ccmjs.github.io/akless-components/resources/templates/scorm/SCORM_API_wrapper.js'] - URL of SCORM API file
- * @returns {Promise&lt;void>}
+ * @returns {Promise<void>}
  * @memberOf ModuleHelper.HandoverApp
  */
 export async function scorm( embed_code, filename = 'app', title = 'App', identifier = 'App',
@@ -1458,8 +1430,8 @@ export async function scorm( embed_code, filename = 'app', title = 'App', identi
   api_file = await fetch( api_file ).then( response => response.blob() );                           // load content of SCORM API file
 
   // generate ZIP file
-  !window.JSZip  &amp;&amp; await loadScript( 'https://ccmjs.github.io/akless-components/libs/jszip/jszip.min.js' );
-  !window.saveAs &amp;&amp; await loadScript( 'https://ccmjs.github.io/akless-components/libs/FileSaver/FileSaver.js' );
+  !window.JSZip  && await loadScript( 'https://ccmjs.github.io/akless-components/libs/jszip/jszip.min.js' );
+  !window.saveAs && await loadScript( 'https://ccmjs.github.io/akless-components/libs/FileSaver/FileSaver.js' );
   let widgetZip = new JSZip();
   widgetZip.file( 'index.html', html_template );
   widgetZip.file( 'imsmanifest.xml', manifest_template );
@@ -1474,50 +1446,20 @@ export async function scorm( embed_code, filename = 'app', title = 'App', identi
 /*---------------------------------------- Framework Backwards Compatibility -----------------------------------------*/
 
 /**
- * @summary returns the reference to the &lt;i>ccm&lt;/i> framework version used for internal calls
+ * @summary returns the reference to the <i>ccm</i> framework version used for internal calls
  * @description
- * As the last parameter, each helper function can be given the reference to the &lt;i>ccm&lt;/i> framework version to be used for internal calls.&lt;br>
- * The default return value is the latest framework version registered on the web page (&lt;code>window.ccm&lt;/code>).
+ * As the last parameter, each helper function can be given the reference to the <i>ccm</i> framework version to be used for internal calls.<br>
+ * The default return value is the latest framework version registered on the web page (<code>window.ccm</code>).
  * @param {...*} args - passed helper function arguments (last argument will be checked)
- * @returns {Object} reference to the internally used &lt;i>ccm&lt;/i> framework version
+ * @returns {Object} reference to the internally used <i>ccm</i> framework version
  * @ignore
  */
 function framework( args ) {
   const last = args[ args.length - 1 ];
-  if ( typeof last === 'object' &amp;&amp; last !== null &amp;&amp; last.components &amp;&amp; last.version ) {
+  if ( typeof last === 'object' && last !== null && last.components && last.version ) {
     delete args[ args.length - 1 ];
     args.length--;
     return last;
   }
   return window.ccm;
 }
-</code></pre>
-        </article>
-    </section>
-
-
-
-
-</div>
-
-<footer>
-    <img class="logo" src="img/toast-ui.png" style="">
-    <div class="footer-text">NHN Entertainment. Frontend Development Lab</div>
-</footer>
-<script>prettyPrint();</script>
-<script src="scripts/jquery.min.js"></script>
-<script src="scripts/tui-doc.js"></script>
-<script src="scripts/linenumber.js"></script>
-
-    <script>
-        var id = '_sub'.replace(/"/g, '_');
-        var selectedApi = document.getElementById(id); // do not use jquery selector
-        var $selectedApi = $(selectedApi);
-
-        $selectedApi.removeClass('hidden');
-        $selectedApi.parent().find('.glyphicon').removeClass('glyphicon-plus').addClass('glyphicon-minus');
-        showLnbApi();
-    </script>
-
-</body>
-</html>

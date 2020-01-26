@@ -8,6 +8,7 @@
  * version 2.0.0 (25.01.2020): updated helper function 'embedCode'
  * - changed parameters
  * - uses no external template
+ * - supports embed code that directly contains the app configuration without data dependency
  * - supports embed code without script tag
  * version 1.0.0 (20.01.2020)
  * @namespace ModuleHelper

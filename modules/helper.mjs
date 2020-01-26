@@ -3,13 +3,13 @@
  * <p>(namespaces are only used for categorization)</p>
  * @author André Kless <andre.kless@web.de> 2019-2020
  * @license The MIT License (MIT)
- * @version latest (2.0.0)
+ * @version latest (3.0.0)
  * @changes
- * version 2.0.0 (25.01.2020): updated helper function 'embedCode'
+ * version 3.0.0 (26.01.2020): updated helper function 'appURL'
  * - changed parameters
- * - uses no external template
- * - supports embed code without script tag
- * version 1.0.0 (20.01.2020)
+ * - supports app URL that directly contains the app configuration without data dependency
+ * - updated examples in doc comments of helper function 'embedCode'
+ * (for older version changes see helper-2.0.0.mjs)
  * @namespace ModuleHelper
  */
 
@@ -1137,21 +1137,35 @@ export function protect( html ) {
  */
 
 /**
- * returns the URL of a <i>ccm</i>-based app
- * @param {string} component - URL of the <i>ccm</i> component
- * @param {Object} store - settings for the <i>ccm</i> data store that contains the <i>ccm</i> instance configuration
- * @param {string|string[]} app_id - key of the data set that hold the <i>ccm</i> instance configuration
- * @param {string} website - URL of the website which renders the <i>ccm</i>-based app
+ * @summary returns the URL of a <i>ccm</i>-based app
+ * @description
+ * The entire app configuration is included in the app URL.<br>
+ * If the app configuration is in a <i>ccm</i> datastore, it can also be linked via a data dependency instead.<br>
+ * For this purpose, an object with the datastore settings and the dataset key must be passed instead of the app configuration.<br>
+ * Instead of datastore settings an already created datastore could also be passed.
+ * @param {string} component - URL of <i>ccm</i> component
+ * @param {Object} [config={}] - app configuration
+ * @param {string} [website="https://ccmjs.github.io/digital-maker-space/app.html"] - URL of the website which renders the <i>ccm</i>-based app
+ * @example // with default configuration
+ * appURL( 'https://ccmjs.github.io/akless-components/blank/ccm.blank.js' )
+ * // https://ccmjs.github.io/digital-maker-space/app.html#component=https://ccmjs.github.io/akless-components/blank/ccm.blank.js&config={}
+ * @example // with individual configuration
+ * appURL( 'https://ccmjs.github.io/akless-components/multi_blank/ccm.multi_blank.js', { times: 5 } )
+ * // https://ccmjs.github.io/digital-maker-space/app.html#component=https://ccmjs.github.io/akless-components/multi_blank/ccm.multi_blank.js&config={"times":5}
+ * @example // with individual configuration that is stored in a ccm datastore
+ * appURL( 'https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js', { store: 'https://ccmjs.github.io/akless-components/cloze/resources/configs.js', key: 'demo' } )
+ * // https://ccmjs.github.io/digital-maker-space/app.html#component=https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js&config={"store":"https://ccmjs.github.io/akless-components/cloze/resources/configs.js","key":"demo"}
+ * @example // pass an already created ccm datastore instead of datastore settings
+ * appURL( 'https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js', { store: await ccm.store( { name: 'cloze', url: 'https://ccm2.inf.h-brs.de' } ), key: 'demo' } )
+ * // https://ccmjs.github.io/digital-maker-space/app.html#component=https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js&config={"store":{"name":"cloze","url":"https://ccm2.inf.h-brs.de"},"key":"demo"}
  * @returns {string}
  * @memberOf ModuleHelper.HandoverApp
  */
-export function appURL( component, store, app_id, website = 'https://ccmjs.github.io/digital-maker-space/app.html' ) {
+export function appURL( component, config = {}, website = 'https://ccmjs.github.io/digital-maker-space/app.html' ) {
+  const ccm = framework( arguments );
 
-  if ( store && app_id )
-    return `${website}#component=${component}&name=${store.name}&url=${store.url}&key=${app_id}`;
-  else
-    return `${website}#component=${component}`;   // render with default instance configuration
-
+  if ( ccm.helper.isDatastore( config.store ) ) config.store = config.store.source();
+  return `${website}#component=${component}&config=${ccm.helper.stringify(config)}`;
 }
 
 /**
@@ -1265,33 +1279,39 @@ export async function downloadApp( embed_code, filename = 'app', title = 'App', 
  * The entire app configuration is included in the embed code.<br>
  * If the app configuration is in a <i>ccm</i> datastore, it can also be linked via a data dependency instead.<br>
  * For this purpose, an object with the datastore settings and the dataset key must be passed instead of the app configuration.<br>
- * If the embed code does not contain a script tag, it will only work if a ccm framework is already present in the website.<br>
- * Instead of datastore settings an already created datastore could also be passed.
+ * Instead of datastore settings an already created datastore could also be passed.<br>
+ * If the embed code does not contain a script tag, it will only work if a ccm framework is already present in the website.
  * @param {string} component - URL of <i>ccm</i> component
- * @param {Object} config - app configuration
+ * @param {Object} [config={}] - app configuration
  * @param {boolean} noscript - embed code does not contain a script tag
  * @returns {string} generated embed code
- * @example
- * embedCode( component_url, app_configuration );
- * // <script src='component_url'></script><ccm-index key='{..config..}'></ccm-index>
- * @example
- * embedCode( component_url, { store: { name: store_name, url: server_url }, key: dataset_key } );
- * // <ccm-app component='component_url' key='["ccm.get",{"name":"store_name"},"dataset_key"]'></ccm-app>
- * @example
- * embedCode( component_url, { store: await ccm.store(...), key: dataset_key } );
- * // <ccm-app component='component_url' key='["ccm.get",{"name":"store_name"},"dataset_key"]'></ccm-app>
- * @example
- * embedCode( component_url, app_configuration, true );
- * // <ccm-app key='component_url' key='{..config..}'></ccm-app>
- * @example
- * embedCode( component_url, { store: { name: store_name, url: server_url }, key: dataset_key }, true );
- * // <ccm-app key='component_url' key='["ccm.get",{"name":"store_name"},"dataset_key"]'></ccm-app>
- * @example
- * embedCode( component_url, { store: await ccm.store(...), key: dataset_key }, true );
- * // <ccm-app key='component_url' key='["ccm.get",{"name":"store_name"},"dataset_key"]'></ccm-app>
+ * @example // with default configuration
+ * embedCode( 'https://ccmjs.github.io/akless-components/blank/ccm.blank.js' )
+ * // <script src='https://ccmjs.github.io/akless-components/blank/ccm.blank.js'></script><ccm-blank key='{}'></ccm-blank>
+ * @example // with individual configuration
+ * embedCode( 'https://ccmjs.github.io/akless-components/multi_blank/ccm.multi_blank.js', { times: 5 } )
+ * // <script src='https://ccmjs.github.io/akless-components/multi_blank/ccm.multi_blank.js'></script><ccm-multi_blank key='{"times":5}'></ccm-multi_blank>
+ * @example // with individual configuration that is stored in a ccm datastore
+ * embedCode( embedCode( 'https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js', { store: 'https://ccmjs.github.io/akless-components/cloze/resources/configs.js', key: 'demo' } ) )
+ * // <script src='https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js'></script><ccm-cloze-6-0-3 key='["ccm.get","https://ccmjs.github.io/akless-components/cloze/resources/configs.js","demo"]'></ccm-cloze-6-0-3>
+ * @example // pass an already created ccm datastore instead of datastore settings
+ * embedCode( 'https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js', { store: await ccm.store( { name: 'cloze', url: 'https://ccm2.inf.h-brs.de' } ), key: 'demo' } )
+ * // <script src='https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js'></script><ccm-cloze-6-0-3 key='["ccm.get",{"name":"cloze","url":"https://ccm2.inf.h-brs.de"},"demo"]'></ccm-cloze-6-0-3>
+ * @example // with no script tag and default configuration
+ * embedCode( 'https://ccmjs.github.io/akless-components/blank/ccm.blank.js', undefined, true )
+ * // <ccm-app component='https://ccmjs.github.io/akless-components/blank/ccm.blank.js' key='{}'></ccm-app>
+ * @example // with no script tag and individual configuration
+ * embedCode( 'https://ccmjs.github.io/akless-components/multi_blank/ccm.multi_blank.js', { times: 5 }, true )
+ * // <ccm-app component='https://ccmjs.github.io/akless-components/multi_blank/ccm.multi_blank.js' key='{"times":5}'></ccm-app>
+ * @example // with no script tag and individual configuration that is stored in a ccm datastore
+ * embedCode( 'https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js', { store: 'https://ccmjs.github.io/akless-components/cloze/resources/configs.js', key: 'demo' }, true )
+ * // <ccm-app component='https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js' key='["ccm.get","https://ccmjs.github.io/akless-components/cloze/resources/configs.js","demo"]'></ccm-app>
+ * @example // with no script tag and an already created ccm datastore is passed instead of datastore settings
+ * embedCode( 'https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js', { store: await ccm.store( { name: 'cloze', url: 'https://ccm2.inf.h-brs.de' } ), key: 'demo' }, true )
+ * // <ccm-app component='https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js' key='["ccm.get",{"name":"cloze","url":"https://ccm2.inf.h-brs.de"},"demo"]'></ccm-app>
  * @memberOf ModuleHelper.HandoverApp
 */
-export function embedCode( component, config, noscript ) {
+export function embedCode( component, config = {}, noscript ) {
   const ccm = framework( arguments );
 
   /**
