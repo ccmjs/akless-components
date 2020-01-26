@@ -126,16 +126,18 @@
     
         <h4 class="name" id=".exports.appURL">
             
-                <span class="type-signature"><span class="icon green">static</span> </span>exports.appURL<span class="signature">(component, store, app_id, website)</span><span class="type-signature"> &rarr; {string}</span>
+                <span class="type-signature"><span class="icon green">static</span> </span>exports.appURL<span class="signature">(component, config<span class="signature-attributes">opt</span>, website<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {string}</span>
                 
             
             <div class="container-source members">
-                <code><a href="helper-2.0.0.mjs.html">helper-2.0.0.mjs</a></code>,
-                <code><a href="helper-2.0.0.mjs.html#line1148">line 1148</a></code>
+                <code><a href="helper-3.0.0.mjs.html">helper-3.0.0.mjs</a></code>,
+                <code><a href="helper-3.0.0.mjs.html#line1164">line 1164</a></code>
             </div>
             
         </h4>
 
+        
+        <p class="summary">returns the URL of a <i>ccm</i>-based app</p>
         
     
 </dt>
@@ -143,7 +145,10 @@
 
     
     <div class="description">
-        returns the URL of a <i>ccm</i>-based app
+        The entire app configuration is included in the app URL.<br>
+If the app configuration is in a <i>ccm</i> datastore, it can also be linked via a data dependency instead.<br>
+For this purpose, an object with the datastore settings and the dataset key must be passed instead of the app configuration.<br>
+Instead of datastore settings an already created datastore could also be passed.
     </div>
     
 
@@ -167,7 +172,11 @@
         <th>Type</th>
 
         
+        <th>Attributes</th>
+        
 
+        
+        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -192,17 +201,29 @@
             </td>
 
             
+                <td class="attributes">
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last">URL of the <i>ccm</i> component</td>
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">URL of <i>ccm</i> component</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>store</code></td>
+                <td class="name"><code>config</code></td>
             
 
             <td class="type">
@@ -215,36 +236,26 @@
             </td>
 
             
-
-            
-
-            <td class="description last">settings for the <i>ccm</i> data store that contains the <i>ccm</i> instance configuration</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>app_id</code></td>
-            
-
-            <td class="type">
-            
+                <td class="attributes">
                 
-<span class="param-type">string</span>
-|
+                    &lt;optional><br>
+                
 
-<span class="param-type">Array.&lt;string></span>
+                
 
-
-            
-            </td>
-
+                
+                </td>
             
 
             
+                <td class="default">
+                
+                    {}
+                
+                </td>
+            
 
-            <td class="description last">key of the data set that hold the <i>ccm</i> instance configuration</td>
+            <td class="description last">app configuration</td>
         </tr>
 
     
@@ -264,7 +275,23 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    "https://ccmjs.github.io/digital-maker-space/app.html"
+                
+                </td>
             
 
             <td class="description last">URL of the website which renders the <i>ccm</i>-based app</td>
@@ -346,6 +373,25 @@
 
 
     
+        <h5>Examples</h5>
+        
+    <pre class="prettyprint"><code>// with default configuration
+appURL( 'https://ccmjs.github.io/akless-components/blank/ccm.blank.js' )
+// https://ccmjs.github.io/digital-maker-space/app.html#component=https://ccmjs.github.io/akless-components/blank/ccm.blank.js&amp;config={}</code></pre>
+
+    <pre class="prettyprint"><code>// with individual configuration
+appURL( 'https://ccmjs.github.io/akless-components/multi_blank/ccm.multi_blank.js', { times: 5 } )
+// https://ccmjs.github.io/digital-maker-space/app.html#component=https://ccmjs.github.io/akless-components/multi_blank/ccm.multi_blank.js&amp;config={"times":5}</code></pre>
+
+    <pre class="prettyprint"><code>// with individual configuration that is stored in a ccm datastore
+appURL( 'https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js', { store: 'https://ccmjs.github.io/akless-components/cloze/resources/configs.js', key: 'demo' } )
+// https://ccmjs.github.io/digital-maker-space/app.html#component=https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js&amp;config={"store":"https://ccmjs.github.io/akless-components/cloze/resources/configs.js","key":"demo"}</code></pre>
+
+    <pre class="prettyprint"><code>// pass an already created ccm datastore instead of datastore settings
+appURL( 'https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js', { store: await ccm.store( { name: 'cloze', url: 'https://ccm2.inf.h-brs.de' } ), key: 'demo' } )
+// https://ccmjs.github.io/digital-maker-space/app.html#component=https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js&amp;config={"store":{"name":"cloze","url":"https://ccm2.inf.h-brs.de"},"key":"demo"}</code></pre>
+
+    
 
 </dd>
 
@@ -360,8 +406,8 @@
                 
             
             <div class="container-source members">
-                <code><a href="helper-2.0.0.mjs.html">helper-2.0.0.mjs</a></code>,
-                <code><a href="helper-2.0.0.mjs.html#line1162">line 1162</a></code>
+                <code><a href="helper-3.0.0.mjs.html">helper-3.0.0.mjs</a></code>,
+                <code><a href="helper-3.0.0.mjs.html#line1176">line 1176</a></code>
             </div>
             
         </h4>
@@ -499,8 +545,8 @@
                 
             
             <div class="container-source members">
-                <code><a href="helper-2.0.0.mjs.html">helper-2.0.0.mjs</a></code>,
-                <code><a href="helper-2.0.0.mjs.html#line1173">line 1173</a></code>
+                <code><a href="helper-3.0.0.mjs.html">helper-3.0.0.mjs</a></code>,
+                <code><a href="helper-3.0.0.mjs.html#line1187">line 1187</a></code>
             </div>
             
         </h4>
@@ -657,8 +703,8 @@
                 
             
             <div class="container-source members">
-                <code><a href="helper-2.0.0.mjs.html">helper-2.0.0.mjs</a></code>,
-                <code><a href="helper-2.0.0.mjs.html#line1205">line 1205</a></code>
+                <code><a href="helper-3.0.0.mjs.html">helper-3.0.0.mjs</a></code>,
+                <code><a href="helper-3.0.0.mjs.html#line1219">line 1219</a></code>
             </div>
             
         </h4>
@@ -815,8 +861,8 @@
                 
             
             <div class="container-source members">
-                <code><a href="helper-2.0.0.mjs.html">helper-2.0.0.mjs</a></code>,
-                <code><a href="helper-2.0.0.mjs.html#line1233">line 1233</a></code>
+                <code><a href="helper-3.0.0.mjs.html">helper-3.0.0.mjs</a></code>,
+                <code><a href="helper-3.0.0.mjs.html#line1247">line 1247</a></code>
             </div>
             
         </h4>
@@ -1044,8 +1090,8 @@
                 
             
             <div class="container-source members">
-                <code><a href="helper-2.0.0.mjs.html">helper-2.0.0.mjs</a></code>,
-                <code><a href="helper-2.0.0.mjs.html#line1254">line 1254</a></code>
+                <code><a href="helper-3.0.0.mjs.html">helper-3.0.0.mjs</a></code>,
+                <code><a href="helper-3.0.0.mjs.html#line1268">line 1268</a></code>
             </div>
             
         </h4>
@@ -1331,12 +1377,12 @@
     
         <h4 class="name" id=".exports.embedCode">
             
-                <span class="type-signature"><span class="icon green">static</span> </span>exports.embedCode<span class="signature">(component, config, noscript)</span><span class="type-signature"> &rarr; {string}</span>
+                <span class="type-signature"><span class="icon green">static</span> </span>exports.embedCode<span class="signature">(component, config<span class="signature-attributes">opt</span>, noscript)</span><span class="type-signature"> &rarr; {string}</span>
                 
             
             <div class="container-source members">
-                <code><a href="helper-2.0.0.mjs.html">helper-2.0.0.mjs</a></code>,
-                <code><a href="helper-2.0.0.mjs.html#line1294">line 1294</a></code>
+                <code><a href="helper-3.0.0.mjs.html">helper-3.0.0.mjs</a></code>,
+                <code><a href="helper-3.0.0.mjs.html#line1314">line 1314</a></code>
             </div>
             
         </h4>
@@ -1353,8 +1399,8 @@
         The entire app configuration is included in the embed code.<br>
 If the app configuration is in a <i>ccm</i> datastore, it can also be linked via a data dependency instead.<br>
 For this purpose, an object with the datastore settings and the dataset key must be passed instead of the app configuration.<br>
-If the embed code does not contain a script tag, it will only work if a ccm framework is already present in the website.<br>
-Instead of datastore settings an already created datastore could also be passed.
+Instead of datastore settings an already created datastore could also be passed.<br>
+If the embed code does not contain a script tag, it will only work if a ccm framework is already present in the website.
     </div>
     
 
@@ -1378,7 +1424,11 @@ Instead of datastore settings an already created datastore could also be passed.
         <th>Type</th>
 
         
+        <th>Attributes</th>
+        
 
+        
+        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -1403,7 +1453,19 @@ Instead of datastore settings an already created datastore could also be passed.
             </td>
 
             
+                <td class="attributes">
+                
 
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
             
 
             <td class="description last">URL of <i>ccm</i> component</td>
@@ -1426,7 +1488,23 @@ Instead of datastore settings an already created datastore could also be passed.
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    {}
+                
+                </td>
             
 
             <td class="description last">app configuration</td>
@@ -1449,7 +1527,19 @@ Instead of datastore settings an already created datastore could also be passed.
             </td>
 
             
+                <td class="attributes">
+                
 
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
             
 
             <td class="description last">embed code does not contain a script tag</td>
@@ -1535,23 +1625,37 @@ Instead of datastore settings an already created datastore could also be passed.
     
         <h5>Examples</h5>
         
-    <pre class="prettyprint"><code>embedCode( component_url, app_configuration );
-// &lt;script src='component_url'>&lt;/script>&lt;ccm-index key='{..config..}'>&lt;/ccm-index></code></pre>
+    <pre class="prettyprint"><code>// with default configuration
+embedCode( 'https://ccmjs.github.io/akless-components/blank/ccm.blank.js' )
+// &lt;script src='https://ccmjs.github.io/akless-components/blank/ccm.blank.js'>&lt;/script>&lt;ccm-blank key='{}'>&lt;/ccm-blank></code></pre>
 
-    <pre class="prettyprint"><code>embedCode( component_url, { store: { name: store_name, url: server_url }, key: dataset_key } );
-// &lt;ccm-app component='component_url' key='["ccm.get",{"name":"store_name"},"dataset_key"]'>&lt;/ccm-app></code></pre>
+    <pre class="prettyprint"><code>// with individual configuration
+embedCode( 'https://ccmjs.github.io/akless-components/multi_blank/ccm.multi_blank.js', { times: 5 } )
+// &lt;script src='https://ccmjs.github.io/akless-components/multi_blank/ccm.multi_blank.js'>&lt;/script>&lt;ccm-multi_blank key='{"times":5}'>&lt;/ccm-multi_blank></code></pre>
 
-    <pre class="prettyprint"><code>embedCode( component_url, { store: await ccm.store(...), key: dataset_key } );
-// &lt;ccm-app component='component_url' key='["ccm.get",{"name":"store_name"},"dataset_key"]'>&lt;/ccm-app></code></pre>
+    <pre class="prettyprint"><code>// with individual configuration that is stored in a ccm datastore
+embedCode( embedCode( 'https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js', { store: 'https://ccmjs.github.io/akless-components/cloze/resources/configs.js', key: 'demo' } ) )
+// &lt;script src='https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js'>&lt;/script>&lt;ccm-cloze-6-0-3 key='["ccm.get","https://ccmjs.github.io/akless-components/cloze/resources/configs.js","demo"]'>&lt;/ccm-cloze-6-0-3></code></pre>
 
-    <pre class="prettyprint"><code>embedCode( component_url, app_configuration, true );
-// &lt;ccm-app key='component_url' key='{..config..}'>&lt;/ccm-app></code></pre>
+    <pre class="prettyprint"><code>// pass an already created ccm datastore instead of datastore settings
+embedCode( 'https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js', { store: await ccm.store( { name: 'cloze', url: 'https://ccm2.inf.h-brs.de' } ), key: 'demo' } )
+// &lt;script src='https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js'>&lt;/script>&lt;ccm-cloze-6-0-3 key='["ccm.get",{"name":"cloze","url":"https://ccm2.inf.h-brs.de"},"demo"]'>&lt;/ccm-cloze-6-0-3></code></pre>
 
-    <pre class="prettyprint"><code>embedCode( component_url, { store: { name: store_name, url: server_url }, key: dataset_key }, true );
-// &lt;ccm-app key='component_url' key='["ccm.get",{"name":"store_name"},"dataset_key"]'>&lt;/ccm-app></code></pre>
+    <pre class="prettyprint"><code>// with no script tag and default configuration
+embedCode( 'https://ccmjs.github.io/akless-components/blank/ccm.blank.js', undefined, true )
+// &lt;ccm-app component='https://ccmjs.github.io/akless-components/blank/ccm.blank.js' key='{}'>&lt;/ccm-app></code></pre>
 
-    <pre class="prettyprint"><code>embedCode( component_url, { store: await ccm.store(...), key: dataset_key }, true );
-// &lt;ccm-app key='component_url' key='["ccm.get",{"name":"store_name"},"dataset_key"]'>&lt;/ccm-app></code></pre>
+    <pre class="prettyprint"><code>// with no script tag and individual configuration
+embedCode( 'https://ccmjs.github.io/akless-components/multi_blank/ccm.multi_blank.js', { times: 5 }, true )
+// &lt;ccm-app component='https://ccmjs.github.io/akless-components/multi_blank/ccm.multi_blank.js' key='{"times":5}'>&lt;/ccm-app></code></pre>
+
+    <pre class="prettyprint"><code>// with no script tag and individual configuration that is stored in a ccm datastore
+embedCode( 'https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js', { store: 'https://ccmjs.github.io/akless-components/cloze/resources/configs.js', key: 'demo' }, true )
+// &lt;ccm-app component='https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js' key='["ccm.get","https://ccmjs.github.io/akless-components/cloze/resources/configs.js","demo"]'>&lt;/ccm-app></code></pre>
+
+    <pre class="prettyprint"><code>// with no script tag and an already created ccm datastore is passed instead of datastore settings
+embedCode( 'https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js', { store: await ccm.store( { name: 'cloze', url: 'https://ccm2.inf.h-brs.de' } ), key: 'demo' }, true )
+// &lt;ccm-app component='https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js' key='["ccm.get",{"name":"cloze","url":"https://ccm2.inf.h-brs.de"},"demo"]'>&lt;/ccm-app></code></pre>
 
     
 
@@ -1568,8 +1672,8 @@ Instead of datastore settings an already created datastore could also be passed.
                 
             
             <div class="container-source members">
-                <code><a href="helper-2.0.0.mjs.html">helper-2.0.0.mjs</a></code>,
-                <code><a href="helper-2.0.0.mjs.html#line1317">line 1317</a></code>
+                <code><a href="helper-3.0.0.mjs.html">helper-3.0.0.mjs</a></code>,
+                <code><a href="helper-3.0.0.mjs.html#line1337">line 1337</a></code>
             </div>
             
         </h4>
@@ -1707,8 +1811,8 @@ Instead of datastore settings an already created datastore could also be passed.
                 
             
             <div class="container-source members">
-                <code><a href="helper-2.0.0.mjs.html">helper-2.0.0.mjs</a></code>,
-                <code><a href="helper-2.0.0.mjs.html#line1342">line 1342</a></code>
+                <code><a href="helper-3.0.0.mjs.html">helper-3.0.0.mjs</a></code>,
+                <code><a href="helper-3.0.0.mjs.html#line1362">line 1362</a></code>
             </div>
             
         </h4>
@@ -2103,8 +2207,8 @@ Instead of datastore settings an already created datastore could also be passed.
                 
             
             <div class="container-source members">
-                <code><a href="helper-2.0.0.mjs.html">helper-2.0.0.mjs</a></code>,
-                <code><a href="helper-2.0.0.mjs.html#line1373">line 1373</a></code>
+                <code><a href="helper-3.0.0.mjs.html">helper-3.0.0.mjs</a></code>,
+                <code><a href="helper-3.0.0.mjs.html#line1393">line 1393</a></code>
             </div>
             
         </h4>
@@ -2261,8 +2365,8 @@ Instead of datastore settings an already created datastore could also be passed.
                 
             
             <div class="container-source members">
-                <code><a href="helper-2.0.0.mjs.html">helper-2.0.0.mjs</a></code>,
-                <code><a href="helper-2.0.0.mjs.html#line1400">line 1400</a></code>
+                <code><a href="helper-3.0.0.mjs.html">helper-3.0.0.mjs</a></code>,
+                <code><a href="helper-3.0.0.mjs.html#line1420">line 1420</a></code>
             </div>
             
         </h4>
