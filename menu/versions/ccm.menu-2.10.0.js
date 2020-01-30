@@ -2,7 +2,7 @@
  * @overview ccm component for rendering a menu
  * @author André Kless <andre.kless@web.de> 2015-2016, 2018-2020
  * @license The MIT License (MIT)
- * @version latest (2.10.0)
+ * @version 2.10.0
  * @changes
  * version 2.10.0 (30.01.2020):
  * - added 'getValue' method which returns currently selected menu entry
@@ -69,7 +69,7 @@
 
   const component = {
 
-    name: 'menu',
+    name: 'menu', version: [ 2, 10, 0 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-24.2.0.js',
 

@@ -270,7 +270,9 @@ ccm.files[ 'configs.js' ] = {
         }
       }
     } ],
-    "selected": 1
+    "selected": 1,
+    "keyboard_control": true,
+    "touch_control": true
   }
 
 };
