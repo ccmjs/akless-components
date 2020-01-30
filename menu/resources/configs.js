@@ -1,6 +1,6 @@
 /**
  * @overview configurations of ccm component for rendering a menu
- * @author André Kless <andre.kless@web.de> 2018-2019
+ * @author André Kless <andre.kless@web.de> 2018-2020
  * @license The MIT License (MIT)
  */
 
@@ -271,8 +271,7 @@ ccm.files[ 'configs.js' ] = {
       }
     } ],
     "selected": 1,
-    "keyboard_control": true,
-    "touch_control": true
+    "keyboard_control": true
   }
 
 };
