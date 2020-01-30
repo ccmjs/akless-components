@@ -84,7 +84,7 @@
 //    "onclick": ( event_data, instance ) => console.log( event_data, instance ),
 //    "routing": [ "ccm.instance", "https://ccmjs.github.io/akless-components/routing/versions/ccm.routing-2.0.4.js", { "app": true } ],
       "selected": 1,
-//    "touch_control": true,
+      "touch_control": true,
 //    "trigger_selected": true
     },
 
@@ -162,8 +162,8 @@
         // touch control
         let x_start = null;
         if ( this.touch_control ) {
-          document.addEventListener( 'touchstart', handleTouchStart );
-          document.addEventListener( 'touchmove', handleTouchMove );
+          this.element.addEventListener( 'touchstart', handleTouchStart );
+          this.element.addEventListener( 'touchmove', handleTouchMove );
         }
 
         // translate content

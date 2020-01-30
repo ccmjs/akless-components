@@ -162,8 +162,8 @@
         // touch control
         let x_start = null;
         if ( this.touch_control ) {
-          document.addEventListener( 'touchstart', handleTouchStart );
-          document.addEventListener( 'touchmove', handleTouchMove );
+          this.element.addEventListener( 'touchstart', handleTouchStart );
+          this.element.addEventListener( 'touchmove', handleTouchMove );
         }
 
         // translate content
