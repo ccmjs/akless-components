@@ -13,6 +13,7 @@ ccm.files[ 'configs.js' ] = {
       "store": [ "ccm.store", "../menu/resources/datasets.js" ],
       "key": "demo"
     },
+    "helper.1": "../modules/helper.mjs",
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ]
   },
 
@@ -251,7 +252,9 @@ ccm.files[ 'configs.js' ] = {
         }
       ]
     },
+    "helper.1": "../modules/helper.mjs",
     "html.1": "../menu/resources/slide.html",
+    "keyboard_control": true,
     "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js", {
       "translations": {
         "de": {
@@ -270,8 +273,7 @@ ccm.files[ 'configs.js' ] = {
         }
       }
     } ],
-    "selected": 1,
-    "keyboard_control": true
+    "selected": 1
   }
 
 };
