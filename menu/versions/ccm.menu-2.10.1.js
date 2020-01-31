@@ -176,7 +176,7 @@
           lang_elem && $.setContent( lang_elem, self.lang.root );
           self.lang.translate();
         }
-        else $.removeElement( lang_elem );
+        else $.remove( lang_elem );
 
         // define and check routes
         this.routing && this.routing.define( { entry: id => entries_elem.querySelector( '#entry-' + id ).click() } );
