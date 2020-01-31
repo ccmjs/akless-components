@@ -209,6 +209,7 @@ ccm.files[ 'configs.js' ] = {
       ]
     },
     "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/menu/resources/slide.html" ],
+    "keyboard_control": true,
     "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js", {
       "translations": {
         "de": {
