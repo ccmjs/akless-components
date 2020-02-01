@@ -3,8 +3,11 @@
  * <p>(namespaces are only used for categorization)</p>
  * @author André Kless <andre.kless@web.de> 2019-2020
  * @license The MIT License (MIT)
- * @version latest (4.0.0)
+ * @version latest (4.0.1)
  * @changes
+ * version 4.0.1 (01.02.2020):
+ * - updated @examples in doc comments
+ * - moved some helper functions to an other category
  * version 4.0.0 (01.02.2020): updated helper function 'decomposeAppURL' and 'decomposeEmbedCode'
  * - decomposing of an app URL or embed code which contains the config directly
  * - decomposing of an embed code which contains no script tag
@@ -685,34 +688,6 @@ export function append( element, content ) {
 }
 
 /**
- * returns a <i>ccm</i> loading icon
- * @param {Object} [instance] - <i>ccm</i> instance (for determining Shadow DOM)
- * @returns {Element} <i>ccm</i> loading icon
- * @example document.body.appendChild( loading() )
- * @example document.body.appendChild( loading( instance ) )
- * @memberOf ModuleHelper.DomManipulation
- */
-export function loading( instance ) {
-
-  // set keyframe for ccm loading icon animation
-  let element = instance ? instance.element.parentNode : document.head;
-  if ( !element.querySelector( '#ccm_keyframe' ) ) {
-    const style = document.createElement( 'style' );
-    style.id = 'ccm_keyframe';
-    style.appendChild( document.createTextNode( '@keyframes ccm_loading { to { transform: rotate(360deg); } }' ) );
-    element.appendChild( style );
-  }
-
-  // create loading icon
-  element = document.createElement( 'div' );
-  element.classList.add( 'ccm_loading' );
-  element.setAttribute( 'style', 'display: grid; padding: 0.5em;' );
-  element.innerHTML = '<div style="align-self: center; justify-self: center; display: inline-block; width: 2em; height: 2em; border: 0.3em solid #f3f3f3; border-top-color: #009ee0; border-left-color: #009ee0; border-radius: 50%; animation: ccm_loading 1.5s linear infinite;"></div>';
-
-  return element;
-}
-
-/**
  * prepends content to a HTML element (contained script tags will be removed)
  * @param {Element} element - HTML element
  * @param {...*} content
@@ -996,6 +971,393 @@ export function formData( element ) {
 
 }
 
+/*--------------------------------------------------- Handover App ---------------------------------------------------*/
+
+/**
+ * helper functions for handover of an app
+ * @namespace ModuleHelper.HandoverApp
+ */
+
+/**
+ * @summary returns the URL of a <i>ccm</i>-based app
+ * @description
+ * The entire app configuration is included in the app URL.<br>
+ * If the app configuration is in a <i>ccm</i> datastore, it can also be linked via a data dependency instead.<br>
+ * For this purpose, an object with the datastore settings and the dataset key must be passed instead of the app configuration.<br>
+ * Instead of datastore settings an already created datastore could also be passed.
+ * @param {string} component - URL of <i>ccm</i> component
+ * @param {Object} [config={}] - app configuration
+ * @param {string} [website="https://ccmjs.github.io/digital-maker-space/app.html"] - URL of the website which renders the <i>ccm</i>-based app
+ * @example // with default configuration
+ * appURL( 'https://ccmjs.github.io/akless-components/blank/ccm.blank.js' )
+ * // https://ccmjs.github.io/digital-maker-space/app.html#component=https://ccmjs.github.io/akless-components/blank/ccm.blank.js&config={}
+ * @example // with individual configuration
+ * appURL( 'https://ccmjs.github.io/akless-components/multi_blank/ccm.multi_blank.js', { times: 5 } )
+ * // https://ccmjs.github.io/digital-maker-space/app.html#component=https://ccmjs.github.io/akless-components/multi_blank/ccm.multi_blank.js&config={"times":5}
+ * @example // with individual configuration that is stored in a ccm datastore
+ * appURL( 'https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js', { store: 'https://ccmjs.github.io/akless-components/cloze/resources/configs.js', key: 'demo' } )
+ * // https://ccmjs.github.io/digital-maker-space/app.html#component=https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js&config={"store":"https://ccmjs.github.io/akless-components/cloze/resources/configs.js","key":"demo"}
+ * @example // pass an already created ccm datastore instead of datastore settings
+ * appURL( 'https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js', { store: await ccm.store( { name: 'cloze', url: 'https://ccm2.inf.h-brs.de' } ), key: 'demo' } )
+ * // https://ccmjs.github.io/digital-maker-space/app.html#component=https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js&config={"store":{"name":"cloze","url":"https://ccm2.inf.h-brs.de"},"key":"demo"}
+ * @returns {string}
+ * @memberOf ModuleHelper.HandoverApp
+ */
+export function appURL( component, config = {}, website = 'https://ccmjs.github.io/digital-maker-space/app.html' ) {
+  const ccm = framework( arguments );
+
+  if ( ccm.helper.isDatastore( config.store ) ) config.store = config.store.source();
+  return `${website}#component=${component}&config=${ccm.helper.stringify(config)}`;
+}
+
+/**
+ * decomposes a given app URL of a <i>ccm</i>-based app into component URL and app configuration
+ * @param {string} app_url - URL of the <i>ccm</i>-based app
+ * @returns {{component:string,config:Object}}
+ * @example
+ * decomposeAppURL( 'https://ccmjs.github.io/digital-maker-space/app.html#component=https://ccmjs.github.io/akless-components/blank/ccm.blank.js&config={}' )
+ * // { component: 'https://ccmjs.github.io/akless-components/blank/ccm.blank.js' }
+ * @example
+ * decomposeAppURL( 'https://ccmjs.github.io/digital-maker-space/app.html#component=https://ccmjs.github.io/akless-components/multi_blank/ccm.multi_blank.js&config={"times":5}' )
+ * // { component: 'https://ccmjs.github.io/akless-components/multi_blank/ccm.multi_blank.js', config: { times: 5 } }
+ * @example
+ * decomposeAppURL( 'https://ccmjs.github.io/digital-maker-space/app.html#component=https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js&config={"store":"https://ccmjs.github.io/akless-components/cloze/resources/configs.js","key":"demo"}' )
+ * // { component: 'https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js', config: { store: 'https://ccmjs.github.io/akless-components/cloze/resources/configs.js', key: 'demo' } }
+ * @memberOf ModuleHelper.HandoverApp
+ */
+export function decomposeAppURL( app_url ) {
+
+  // decompose app URL
+  const result = {};
+  app_url.substr( app_url.indexOf( '#' ) + 1 ).split( '&' ).forEach( part => {
+    part = part.split( '=' );
+    result[ part[ 0 ] ] = part[ 1 ];
+  } );
+
+  // adjust config
+  if ( result.config )
+    if ( result.config === '{}' ) delete result.config;
+    else result.config = JSON.parse( result.config );
+
+  return result;
+}
+
+/**
+ * decomposes a given embed code of a <i>ccm</i>-based app into component URL and app configuration
+ * @param {string} embed_code - embed code of the <i>ccm</i>-based app
+ * @returns {{component:string,config:Object}}
+ * @example
+ * decomposeEmbedCode( `<script src='https://ccmjs.github.io/akless-components/blank/ccm.blank.js'></script><ccm-blank key='{}'></ccm-blank>` )
+ * // { component: 'https://ccmjs.github.io/akless-components/blank/ccm.blank.js' }
+ * @example
+ * decomposeEmbedCode( `<script src='https://ccmjs.github.io/akless-components/multi_blank/ccm.multi_blank.js'></script><ccm-multi_blank key='{"times":5}'></ccm-multi_blank>` )
+ * // { component: 'https://ccmjs.github.io/akless-components/multi_blank/ccm.multi_blank.js', config: { times: 5 } }
+ * @example
+ * decomposeEmbedCode( `<script src='https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js'></script><ccm-cloze-6-0-3 key='["ccm.get","https://ccmjs.github.io/akless-components/cloze/resources/configs.js","demo"]'></ccm-cloze-6-0-3>` )
+ * // { component: 'https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js', config: { store: 'https://ccmjs.github.io/akless-components/cloze/resources/configs.js', key: 'demo' } }
+ * @example
+ * decomposeEmbedCode( `<ccm-app component='https://ccmjs.github.io/akless-components/blank/ccm.blank.js' key='{}'></ccm-app>` )
+ * // { component: 'https://ccmjs.github.io/akless-components/blank/ccm.blank.js' }
+ * @example
+ * decomposeEmbedCode( `<ccm-app component='https://ccmjs.github.io/akless-components/multi_blank/ccm.multi_blank.js' key='{"times":5}'></ccm-app>` )
+ * // { component: 'https://ccmjs.github.io/akless-components/multi_blank/ccm.multi_blank.js', config: { times: 5 } }
+ * @example
+ * decomposeEmbedCode( `<ccm-app component='https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js' key='["ccm.get","https://ccmjs.github.io/akless-components/cloze/resources/configs.js","demo"]'></ccm-app>` )
+ * // { component: 'https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js', config: { store: 'https://ccmjs.github.io/akless-components/cloze/resources/configs.js', key: 'demo' } }
+ * @memberOf ModuleHelper.HandoverApp
+ */
+export function decomposeEmbedCode( embed_code ) {
+  const ccm = framework( arguments );
+
+  // decompose embed code
+  embed_code = ccm.helper.html( `<div>${embed_code}</div>`, undefined, { no_evaluation: true } );
+  const result = {
+    component: embed_code.firstChild.getAttribute( 'src' ) || embed_code.firstChild.getAttribute( 'component' ),
+    config: embed_code.lastChild.getAttribute( 'key' )
+  };
+
+  // adjust config
+  if ( result.config )
+    if ( result.config === '{}' ) delete result.config;
+    else result.config = JSON.parse( result.config );
+
+  // config is a data dependency? => use object with store and key for config
+  if ( Array.isArray( result.config ) )
+    result.config = { store: result.config[ 1 ], key: result.config[ 2 ] };
+
+  return result;
+}
+
+/**
+ * provides a download of a <i>ccm</i>-based app as HTML file
+ * @param {string} embed_code - embed code (with script tag) of the <i>ccm</i>-based app
+ * @param {string} [filename='app'] - file name without file extension
+ * @param {string} [title='App'] - website title
+ * @param {string} [template='https://ccmjs.github.io/akless-components/resources/templates/app.html'] - URL of the HTML template file
+ * @returns {Promise<void>}
+ * @example
+ * const embed_code = "<script src='https://ccmjs.github.io/akless-components/blank/ccm.blank.js'></sc"+"ript><ccm-blank key='{}'></ccm-blank>";
+ * downloadApp( embed_code, 'blank', 'Blank App' );
+ * @memberOf ModuleHelper.HandoverApp
+ */
+export async function downloadApp( embed_code, filename = 'app', title = 'App', template = 'https://ccmjs.github.io/akless-components/resources/templates/app.html' ) {
+
+  template = await fetch( template ).then( response => response.text() );                 // load content of HTML template file
+  template = template.replace( '__TITLE__', title ).replace( '__EMBED__', embed_code );   // integrate title and embed code
+  download( `${filename}.html`, template );                                               // provide download of HTML file
+
+}
+
+/**
+ * @summary generates the HTML embed code of a <i>ccm</i>-based app
+ * @description
+ * The entire app configuration is included in the embed code.<br>
+ * If the app configuration is in a <i>ccm</i> datastore, it can also be linked via a data dependency instead.<br>
+ * For this purpose, an object with the datastore settings and the dataset key must be passed instead of the app configuration.<br>
+ * Instead of datastore settings an already created datastore could also be passed.<br>
+ * If the embed code does not contain a script tag, it will only work if a ccm framework is already present in the website.
+ * @param {string} component - URL of <i>ccm</i> component
+ * @param {Object} [config={}] - app configuration
+ * @param {boolean} noscript - embed code does not contain a script tag
+ * @returns {string} generated embed code
+ * @example // with default configuration
+ * embedCode( 'https://ccmjs.github.io/akless-components/blank/ccm.blank.js' )
+ * // <script src='https://ccmjs.github.io/akless-components/blank/ccm.blank.js'></script><ccm-blank key='{}'></ccm-blank>
+ * @example // with individual configuration
+ * embedCode( 'https://ccmjs.github.io/akless-components/multi_blank/ccm.multi_blank.js', { times: 5 } )
+ * // <script src='https://ccmjs.github.io/akless-components/multi_blank/ccm.multi_blank.js'></script><ccm-multi_blank key='{"times":5}'></ccm-multi_blank>
+ * @example // with individual configuration that is stored in a ccm datastore
+ * embedCode( embedCode( 'https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js', { store: 'https://ccmjs.github.io/akless-components/cloze/resources/configs.js', key: 'demo' } ) )
+ * // <script src='https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js'></script><ccm-cloze-6-0-3 key='["ccm.get","https://ccmjs.github.io/akless-components/cloze/resources/configs.js","demo"]'></ccm-cloze-6-0-3>
+ * @example // pass an already created ccm datastore instead of datastore settings
+ * embedCode( 'https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js', { store: await ccm.store( { name: 'cloze', url: 'https://ccm2.inf.h-brs.de' } ), key: 'demo' } )
+ * // <script src='https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js'></script><ccm-cloze-6-0-3 key='["ccm.get",{"name":"cloze","url":"https://ccm2.inf.h-brs.de"},"demo"]'></ccm-cloze-6-0-3>
+ * @example // with no script tag and default configuration
+ * embedCode( 'https://ccmjs.github.io/akless-components/blank/ccm.blank.js', undefined, true )
+ * // <ccm-app component='https://ccmjs.github.io/akless-components/blank/ccm.blank.js' key='{}'></ccm-app>
+ * @example // with no script tag and individual configuration
+ * embedCode( 'https://ccmjs.github.io/akless-components/multi_blank/ccm.multi_blank.js', { times: 5 }, true )
+ * // <ccm-app component='https://ccmjs.github.io/akless-components/multi_blank/ccm.multi_blank.js' key='{"times":5}'></ccm-app>
+ * @example // with no script tag and individual configuration that is stored in a ccm datastore
+ * embedCode( 'https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js', { store: 'https://ccmjs.github.io/akless-components/cloze/resources/configs.js', key: 'demo' }, true )
+ * // <ccm-app component='https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js' key='["ccm.get","https://ccmjs.github.io/akless-components/cloze/resources/configs.js","demo"]'></ccm-app>
+ * @example // with no script tag and an already created ccm datastore is passed instead of datastore settings
+ * embedCode( 'https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js', { store: await ccm.store( { name: 'cloze', url: 'https://ccm2.inf.h-brs.de' } ), key: 'demo' }, true )
+ * // <ccm-app component='https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js' key='["ccm.get",{"name":"cloze","url":"https://ccm2.inf.h-brs.de"},"demo"]'></ccm-app>
+ * @memberOf ModuleHelper.HandoverApp
+*/
+export function embedCode( component, config = {}, noscript ) {
+  const ccm = framework( arguments );
+
+  /**
+   * index of the ccm component
+   * @type {string}
+   */
+  const index = ccm.helper.convertComponentURL( component ).index;
+
+  // app configuration comes from a datastore? => use data dependency
+  if ( config.store && config.key ) config = [ 'ccm.get', ccm.helper.isDatastore( config.store ) ? config.store.source() : config.store, config.key ];
+
+  if ( noscript )
+    return `<ccm-app component='${component}' key='${ccm.helper.stringify(config)}'></ccm-app>`;
+  else
+    return `<script src='${component}'></script><ccm-${index} key='${ccm.helper.stringify(config)}'></ccm-${index}>`;
+}
+
+/**
+ * provides a download of a <i>ccm</i>-based app as iBook Widget (ZIP file)
+ * @param {string} embed_code - embed code (with script tag) of the <i>ccm</i>-based app
+ * @param {string} [filename='app'] - file name without file extension
+ * @param {string} [title='App'] - website title for the index.html
+ * @param {string} [folder='app'] - name of the folder inside the iBook Widget
+ * @param {string} template - URL of the HTML template
+ * @param {string} info_file - URL of the info file
+ * @param {string} image_file - URL of the image file
+ * @returns {Promise<void>}
+ * @example
+ * const embed_code = "<script src='https://ccmjs.github.io/akless-components/blank/ccm.blank.js'></sc"+"ript><ccm-blank key='{}'></ccm-blank>";
+ * iBookWidget( embed_code, 'blank', 'Blank App', 'blank_app' );
+ * @memberOf ModuleHelper.HandoverApp
+ */
+export async function iBookWidget( embed_code, filename = 'app', title = 'App', folder='app',
+                                   template = 'https://ccmjs.github.io/akless-components/resources/templates/app.html',
+                                   info_file = 'https://ccmjs.github.io/akless-components/resources/templates/ibook_widget/Info.plist',
+                                   image_file = 'https://ccmjs.github.io/akless-components/resources/templates/ibook_widget/Default.png'
+) {
+
+  template = await fetch( template ).then( response => response.text() );                 // load content of HTML template file
+  template = template.replace( '__TITLE__', title ).replace( '__EMBED__', embed_code );   // integrate title and embed code
+  info_file = await fetch( info_file ).then( response => response.blob() );               // load content of info file
+  image_file = await fetch( image_file ).then( response => response.blob() );             // load content of image file
+
+  // generate ZIP file
+  !window.JSZip  && await loadScript( 'https://ccmjs.github.io/akless-components/libs/jszip/jszip.min.js' );
+  !window.saveAs && await loadScript( 'https://ccmjs.github.io/akless-components/libs/FileSaver/FileSaver.js' );
+  let widgetZip = new JSZip();
+  widgetZip.folder( `${folder}.wdgt` ).file( 'index.html', template );
+  widgetZip.folder( `${folder}.wdgt` ).file( 'Info.plist', info_file );
+  widgetZip.folder( `${folder}.wdgt` ).file( 'Default.png', image_file );
+  widgetZip = await widgetZip.generateAsync( { type: 'blob' } );
+
+  // provide download of generated ZIP file
+  saveAs( widgetZip, `${filename}.zip`);
+
+}
+
+/**
+ * provides a download of a <i>ccm</i>-based app as SCORM package (ZIP file)
+ * @param {string} embed_code - embed code (with script tag) of the <i>ccm</i>-based app
+ * @param {string} [filename='app'] - file name without file extension
+ * @param {string} [title='App'] - website title within the manifest
+ * @param {string} [identifier='App'] - identifier within the manifest
+ * @param {string} [html_template='https://ccmjs.github.io/akless-components/resources/templates/scorm/index.html'] - URL of HTML template
+ * @param {string} [manifest_template='https://ccmjs.github.io/akless-components/resources/templates/scorm/imsmanifest.xml'] - URL of manifest template
+ * @param {string} [api_file='https://ccmjs.github.io/akless-components/resources/templates/scorm/SCORM_API_wrapper.js'] - URL of SCORM API file
+ * @returns {Promise<void>}
+ * @example
+ * const embed_code = "<script src='https://ccmjs.github.io/akless-components/blank/ccm.blank.js'></sc"+"ript><ccm-blank key='{}'></ccm-blank>";
+ * scorm( embed_code, 'blank', 'Blank App', 'blank_app' );
+ * @memberOf ModuleHelper.HandoverApp
+ */
+export async function scorm( embed_code, filename = 'app', title = 'App', identifier = 'App',
+                             html_template = 'https://ccmjs.github.io/akless-components/resources/templates/scorm/index.html',
+                             manifest_template = 'https://ccmjs.github.io/akless-components/resources/templates/scorm/imsmanifest.xml',
+                             api_file = 'https://ccmjs.github.io/akless-components/resources/templates/scorm/SCORM_API_wrapper.js'
+) {
+
+  html_template = await fetch( html_template ).then( response => response.text() );                 // load content of HTML template file
+  html_template = html_template.replace( '__TITLE__', title ).replace( '__EMBED__', embed_code );   // integrate title and embed code in HTML template
+  manifest_template = await fetch( manifest_template ).then( response => response.text() );         // load content of manifest template file
+  manifest_template.replace( '__IDENTIFIER__', identifier ).replace( '__TITLE__', title );          // integrate identifier and title in manifest template
+  api_file = await fetch( api_file ).then( response => response.blob() );                           // load content of SCORM API file
+
+  // generate ZIP file
+  !window.JSZip  && await loadScript( 'https://ccmjs.github.io/akless-components/libs/jszip/jszip.min.js' );
+  !window.saveAs && await loadScript( 'https://ccmjs.github.io/akless-components/libs/FileSaver/FileSaver.js' );
+  let widgetZip = new JSZip();
+  widgetZip.file( 'index.html', html_template );
+  widgetZip.file( 'imsmanifest.xml', manifest_template );
+  widgetZip.file( 'SCORM_API_wrapper.js', api_file );
+  widgetZip = await widgetZip.generateAsync( { type: 'blob' } );
+
+  // provide download of generated ZIP file
+  saveAs( widgetZip, `${filename}.zip` );
+
+}
+
+/*------------------------------------------------------ Others ------------------------------------------------------*/
+
+/**
+ * not categorizable helper functions
+ * @namespace ModuleHelper.Others
+ */
+
+/**
+ * copies text inside a HTML element to clipboard
+ * @param {Element} element - HTML element
+ * @example
+ * // <body><input type="text" value="Hello World!"></body>
+ * copyToClipboard( document.body.querySelector( 'input' ) )
+ * // STRG+V then pastes 'Hello, World!' from clipboard
+ * @memberOf ModuleHelper.Others
+ */
+export function copyToClipboard( element ) {
+  element.select();
+  document.execCommand( 'copy' );
+}
+
+/**
+ * provides a download of an on-the-fly created file
+ * @param {string} filename - file name including file extension
+ * @param {string} content - content of the file
+ * @param {string} [mime='text/html;charset=utf-8'] - media type followed by charset or 'base64' if non-textual
+ * @example download( 'hello_world.html', '<!DOCTYPE html><meta charset="utf-8">Hello World!' )
+ * @memberOf ModuleHelper.Others
+ */
+export function download( filename, content, mime = 'text/html;charset=utf-8' ) {
+
+  const element = document.createElement( 'a' );
+  element.setAttribute( 'href', `data:${mime},${encodeURIComponent(content)}` );
+  element.setAttribute( 'download', filename );
+  element.style.display = 'none';
+  document.body.appendChild( element );
+  element.click();
+  document.body.removeChild( element );
+
+}
+
+/**
+ * shows the content of an website area in fullscreen mode
+ * @param {Element} element - website area
+ * @example
+ * // <body><div id="app">Hello World!</div></body>
+ * fullscreen( document.body.querySelector( '#app' ) )
+ * @memberOf ModuleHelper.Others
+ */
+export function fullscreen( element ) {
+
+  if ( element.requestFullscreen )
+    element.requestFullscreen();
+  else if ( element.mozRequestFullScreen )    /* Firefox */
+    element.mozRequestFullScreen();
+  else if ( element.webkitRequestFullscreen ) /* Chrome, Safari and Opera */
+    element.webkitRequestFullscreen();
+  else if ( element.msRequestFullscreen )     /* IE/Edge */
+    element.msRequestFullscreen();
+
+}
+
+/**
+ * returns a <i>ccm</i> loading icon
+ * @param {Object} [instance] - <i>ccm</i> instance (for determining Shadow DOM)
+ * @returns {Element} <i>ccm</i> loading icon
+ * @example document.body.appendChild( loading() )
+ * @example document.body.appendChild( loading( instance ) )
+ * @memberOf ModuleHelper.Others
+ */
+export function loading( instance ) {
+
+  // set keyframe for ccm loading icon animation
+  let element = instance ? instance.element.parentNode : document.head;
+  if ( !element.querySelector( '#ccm_keyframe' ) ) {
+    const style = document.createElement( 'style' );
+    style.id = 'ccm_keyframe';
+    style.appendChild( document.createTextNode( '@keyframes ccm_loading { to { transform: rotate(360deg); } }' ) );
+    element.appendChild( style );
+  }
+
+  // create loading icon
+  element = document.createElement( 'div' );
+  element.classList.add( 'ccm_loading' );
+  element.setAttribute( 'style', 'display: grid; padding: 0.5em;' );
+  element.innerHTML = '<div style="align-self: center; justify-self: center; display: inline-block; width: 2em; height: 2em; border: 0.3em solid #f3f3f3; border-top-color: #009ee0; border-left-color: #009ee0; border-radius: 50%; animation: ccm_loading 1.5s linear infinite;"></div>';
+
+  return element;
+}
+
+/**
+ * executes the included code of a JavaScript file
+ * @param {string} url - URL of the JavaScript file
+ * @returns {Promise<void>}
+ * @example await loadScript( 'https://ccmjs.github.io/akless-components/libs/jszip/jszip.min.js' )
+ * @example await loadScript( 'https://ccmjs.github.io/akless-components/libs/FileSaver/FileSaver.js' )
+ * @memberOf ModuleHelper.Others
+ */
+export async function loadScript( url ) {
+
+  return new Promise( ( resolve, reject ) => {
+
+    const script = document.createElement( 'script' );
+    document.head.appendChild( script );
+    script.onload  = () => { document.head.removeChild( script ); resolve(); };
+    script.onerror = () => { document.head.removeChild( script ); reject();  };
+    script.async = true;
+    script.src = url;
+
+  } );
+
+}
+
 /*----------------------------------------------------- Security -----------------------------------------------------*/
 
 /**
@@ -1128,346 +1490,6 @@ export function protect( html ) {
     [ ...html.querySelectorAll( 'script' ) ].forEach( remove );
 
   return html;
-}
-
-/*--------------------------------------------------- Handover App ---------------------------------------------------*/
-
-/**
- * helper functions for handover of an app
- * @namespace ModuleHelper.HandoverApp
- */
-
-/**
- * @summary returns the URL of a <i>ccm</i>-based app
- * @description
- * The entire app configuration is included in the app URL.<br>
- * If the app configuration is in a <i>ccm</i> datastore, it can also be linked via a data dependency instead.<br>
- * For this purpose, an object with the datastore settings and the dataset key must be passed instead of the app configuration.<br>
- * Instead of datastore settings an already created datastore could also be passed.
- * @param {string} component - URL of <i>ccm</i> component
- * @param {Object} [config={}] - app configuration
- * @param {string} [website="https://ccmjs.github.io/digital-maker-space/app.html"] - URL of the website which renders the <i>ccm</i>-based app
- * @example // with default configuration
- * appURL( 'https://ccmjs.github.io/akless-components/blank/ccm.blank.js' )
- * // https://ccmjs.github.io/digital-maker-space/app.html#component=https://ccmjs.github.io/akless-components/blank/ccm.blank.js&config={}
- * @example // with individual configuration
- * appURL( 'https://ccmjs.github.io/akless-components/multi_blank/ccm.multi_blank.js', { times: 5 } )
- * // https://ccmjs.github.io/digital-maker-space/app.html#component=https://ccmjs.github.io/akless-components/multi_blank/ccm.multi_blank.js&config={"times":5}
- * @example // with individual configuration that is stored in a ccm datastore
- * appURL( 'https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js', { store: 'https://ccmjs.github.io/akless-components/cloze/resources/configs.js', key: 'demo' } )
- * // https://ccmjs.github.io/digital-maker-space/app.html#component=https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js&config={"store":"https://ccmjs.github.io/akless-components/cloze/resources/configs.js","key":"demo"}
- * @example // pass an already created ccm datastore instead of datastore settings
- * appURL( 'https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js', { store: await ccm.store( { name: 'cloze', url: 'https://ccm2.inf.h-brs.de' } ), key: 'demo' } )
- * // https://ccmjs.github.io/digital-maker-space/app.html#component=https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js&config={"store":{"name":"cloze","url":"https://ccm2.inf.h-brs.de"},"key":"demo"}
- * @returns {string}
- * @memberOf ModuleHelper.HandoverApp
- */
-export function appURL( component, config = {}, website = 'https://ccmjs.github.io/digital-maker-space/app.html' ) {
-  const ccm = framework( arguments );
-
-  if ( ccm.helper.isDatastore( config.store ) ) config.store = config.store.source();
-  return `${website}#component=${component}&config=${ccm.helper.stringify(config)}`;
-}
-
-/**
- * TODO: unit tests + api
- * copies text inside a HTML element to clipboard
- * @param {Element} element - HTML element
- * @memberOf ModuleHelper.HandoverApp
- */
-export function copyToClipboard( element ) {
-  element.select();
-  document.execCommand( 'copy' );
-}
-
-/**
- * decomposes a given app URL of a <i>ccm</i>-based app into component URL and app configuration
- * @param {string} app_url - URL of the <i>ccm</i>-based app
- * @returns {{component:string,config:Object}}
- * @example
- * decomposeAppURL( 'https://ccmjs.github.io/digital-maker-space/app.html#component=https://ccmjs.github.io/akless-components/blank/ccm.blank.js&config={}' )
- * // { component: 'https://ccmjs.github.io/akless-components/blank/ccm.blank.js' }
- * @example
- * decomposeAppURL( 'https://ccmjs.github.io/digital-maker-space/app.html#component=https://ccmjs.github.io/akless-components/multi_blank/ccm.multi_blank.js&config={"times":5}' )
- * // { component: 'https://ccmjs.github.io/akless-components/multi_blank/ccm.multi_blank.js', config: { times: 5 } }
- * @example
- * decomposeAppURL( 'https://ccmjs.github.io/digital-maker-space/app.html#component=https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js&config={"store":"https://ccmjs.github.io/akless-components/cloze/resources/configs.js","key":"demo"}' )
- * // { component: 'https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js', config: { store: 'https://ccmjs.github.io/akless-components/cloze/resources/configs.js', key: 'demo' } }
- * @memberOf ModuleHelper.HandoverApp
- */
-export function decomposeAppURL( app_url ) {
-
-  // decompose app URL
-  const result = {};
-  app_url.substr( app_url.indexOf( '#' ) + 1 ).split( '&' ).forEach( part => {
-    part = part.split( '=' );
-    result[ part[ 0 ] ] = part[ 1 ];
-  } );
-
-  // adjust config
-  if ( result.config )
-    if ( result.config === '{}' ) delete result.config;
-    else result.config = JSON.parse( result.config );
-
-  return result;
-}
-
-/**
- * decomposes a given embed code of a <i>ccm</i>-based app into component URL and app configuration
- * @param {string} embed_code - embed code of the <i>ccm</i>-based app
- * @returns {{component:string,config:Object}}
- * @example
- * decomposeEmbedCode( `<script src='https://ccmjs.github.io/akless-components/blank/ccm.blank.js'></script><ccm-blank key='{}'></ccm-blank>` )
- * // { component: 'https://ccmjs.github.io/akless-components/blank/ccm.blank.js' }
- * @example
- * decomposeEmbedCode( `<script src='https://ccmjs.github.io/akless-components/multi_blank/ccm.multi_blank.js'></script><ccm-multi_blank key='{"times":5}'></ccm-multi_blank>` )
- * // { component: 'https://ccmjs.github.io/akless-components/multi_blank/ccm.multi_blank.js', config: { times: 5 } }
- * @example
- * decomposeEmbedCode( `<script src='https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js'></script><ccm-cloze-6-0-3 key='["ccm.get","https://ccmjs.github.io/akless-components/cloze/resources/configs.js","demo"]'></ccm-cloze-6-0-3>` )
- * // { component: 'https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js', config: { store: 'https://ccmjs.github.io/akless-components/cloze/resources/configs.js', key: 'demo' } }
- * @example
- * decomposeEmbedCode( `<ccm-app component='https://ccmjs.github.io/akless-components/blank/ccm.blank.js' key='{}'></ccm-app>` )
- * // { component: 'https://ccmjs.github.io/akless-components/blank/ccm.blank.js' }
- * @example
- * decomposeEmbedCode( `<ccm-app component='https://ccmjs.github.io/akless-components/multi_blank/ccm.multi_blank.js' key='{"times":5}'></ccm-app>` )
- * // { component: 'https://ccmjs.github.io/akless-components/multi_blank/ccm.multi_blank.js', config: { times: 5 } }
- * @example
- * decomposeEmbedCode( `<ccm-app component='https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js' key='["ccm.get","https://ccmjs.github.io/akless-components/cloze/resources/configs.js","demo"]'></ccm-app>` )
- * // { component: 'https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js', config: { store: 'https://ccmjs.github.io/akless-components/cloze/resources/configs.js', key: 'demo' } }
- * @memberOf ModuleHelper.HandoverApp
- */
-export function decomposeEmbedCode( embed_code ) {
-  const ccm = framework( arguments );
-
-  // decompose embed code
-  embed_code = ccm.helper.html( `<div>${embed_code}</div>`, undefined, { no_evaluation: true } );
-  const result = {
-    component: embed_code.firstChild.getAttribute( 'src' ) || embed_code.firstChild.getAttribute( 'component' ),
-    config: embed_code.lastChild.getAttribute( 'key' )
-  };
-
-  // adjust config
-  if ( result.config )
-    if ( result.config === '{}' ) delete result.config;
-    else result.config = JSON.parse( result.config );
-
-  // config is a data dependency? => use object with store and key for config
-  if ( Array.isArray( result.config ) )
-    result.config = { store: result.config[ 1 ], key: result.config[ 2 ] };
-
-  return result;
-}
-
-/**
- * TODO: unit tests + api
- * provides a download of an on-the-fly created file
- * @param {string} filename - file name including file extension
- * @param {string} content - content of the file
- * @param {string} [mime='text/html;charset=utf-8'] - media type followed by charset or 'base64' if non-textual
- * @memberOf ModuleHelper.HandoverApp
- */
-export function download( filename, content, mime = 'text/html;charset=utf-8' ) {
-
-  const element = document.createElement( 'a' );
-  element.setAttribute( 'href', `data:${mime},${encodeURIComponent(content)}` );
-  element.setAttribute( 'download', filename );
-  element.style.display = 'none';
-  document.body.appendChild( element );
-  element.click();
-  document.body.removeChild( element );
-
-}
-
-/**
- * TODO: unit tests + api
- * provides a download of a <i>ccm</i>-based app as HTML file
- * @param {string} embed_code - embed code of the <i>ccm</i>-based app
- * @param {string} [filename='app'] - file name without file extension
- * @param {string} [title='App'] - website title
- * @param {string} [template='https://ccmjs.github.io/akless-components/resources/templates/app.html'] - URL of the HTML template file
- * @returns {Promise<void>}
- * @memberOf ModuleHelper.HandoverApp
- */
-export async function downloadApp( embed_code, filename = 'app', title = 'App', template = 'https://ccmjs.github.io/akless-components/resources/templates/app.html' ) {
-
-  template = await fetch( template ).then( response => response.text() );                 // load content of HTML template file
-  template = template.replace( '__TITLE__', title ).replace( '__EMBED__', embed_code );   // integrate title and embed code
-  download( `${filename}.html`, template );                                               // provide download of HTML file
-
-}
-
-/**
- * @summary generates the HTML embed code of a <i>ccm</i>-based app
- * @description
- * The entire app configuration is included in the embed code.<br>
- * If the app configuration is in a <i>ccm</i> datastore, it can also be linked via a data dependency instead.<br>
- * For this purpose, an object with the datastore settings and the dataset key must be passed instead of the app configuration.<br>
- * Instead of datastore settings an already created datastore could also be passed.<br>
- * If the embed code does not contain a script tag, it will only work if a ccm framework is already present in the website.
- * @param {string} component - URL of <i>ccm</i> component
- * @param {Object} [config={}] - app configuration
- * @param {boolean} noscript - embed code does not contain a script tag
- * @returns {string} generated embed code
- * @example // with default configuration
- * embedCode( 'https://ccmjs.github.io/akless-components/blank/ccm.blank.js' )
- * // <script src='https://ccmjs.github.io/akless-components/blank/ccm.blank.js'></script><ccm-blank key='{}'></ccm-blank>
- * @example // with individual configuration
- * embedCode( 'https://ccmjs.github.io/akless-components/multi_blank/ccm.multi_blank.js', { times: 5 } )
- * // <script src='https://ccmjs.github.io/akless-components/multi_blank/ccm.multi_blank.js'></script><ccm-multi_blank key='{"times":5}'></ccm-multi_blank>
- * @example // with individual configuration that is stored in a ccm datastore
- * embedCode( embedCode( 'https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js', { store: 'https://ccmjs.github.io/akless-components/cloze/resources/configs.js', key: 'demo' } ) )
- * // <script src='https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js'></script><ccm-cloze-6-0-3 key='["ccm.get","https://ccmjs.github.io/akless-components/cloze/resources/configs.js","demo"]'></ccm-cloze-6-0-3>
- * @example // pass an already created ccm datastore instead of datastore settings
- * embedCode( 'https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js', { store: await ccm.store( { name: 'cloze', url: 'https://ccm2.inf.h-brs.de' } ), key: 'demo' } )
- * // <script src='https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js'></script><ccm-cloze-6-0-3 key='["ccm.get",{"name":"cloze","url":"https://ccm2.inf.h-brs.de"},"demo"]'></ccm-cloze-6-0-3>
- * @example // with no script tag and default configuration
- * embedCode( 'https://ccmjs.github.io/akless-components/blank/ccm.blank.js', undefined, true )
- * // <ccm-app component='https://ccmjs.github.io/akless-components/blank/ccm.blank.js' key='{}'></ccm-app>
- * @example // with no script tag and individual configuration
- * embedCode( 'https://ccmjs.github.io/akless-components/multi_blank/ccm.multi_blank.js', { times: 5 }, true )
- * // <ccm-app component='https://ccmjs.github.io/akless-components/multi_blank/ccm.multi_blank.js' key='{"times":5}'></ccm-app>
- * @example // with no script tag and individual configuration that is stored in a ccm datastore
- * embedCode( 'https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js', { store: 'https://ccmjs.github.io/akless-components/cloze/resources/configs.js', key: 'demo' }, true )
- * // <ccm-app component='https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js' key='["ccm.get","https://ccmjs.github.io/akless-components/cloze/resources/configs.js","demo"]'></ccm-app>
- * @example // with no script tag and an already created ccm datastore is passed instead of datastore settings
- * embedCode( 'https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js', { store: await ccm.store( { name: 'cloze', url: 'https://ccm2.inf.h-brs.de' } ), key: 'demo' }, true )
- * // <ccm-app component='https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js' key='["ccm.get",{"name":"cloze","url":"https://ccm2.inf.h-brs.de"},"demo"]'></ccm-app>
- * @memberOf ModuleHelper.HandoverApp
-*/
-export function embedCode( component, config = {}, noscript ) {
-  const ccm = framework( arguments );
-
-  /**
-   * index of the ccm component
-   * @type {string}
-   */
-  const index = ccm.helper.convertComponentURL( component ).index;
-
-  // app configuration comes from a datastore? => use data dependency
-  if ( config.store && config.key ) config = [ 'ccm.get', ccm.helper.isDatastore( config.store ) ? config.store.source() : config.store, config.key ];
-
-  if ( noscript )
-    return `<ccm-app component='${component}' key='${ccm.helper.stringify(config)}'></ccm-app>`;
-  else
-    return `<script src='${component}'></script><ccm-${index} key='${ccm.helper.stringify(config)}'></ccm-${index}>`;
-}
-
-/**
- * TODO: unit tests + api
- * shows the content of an website area in fullscreen mode
- * @param {Element} element - website area
- * @memberOf ModuleHelper.HandoverApp
- */
-export function fullscreen( element ) {
-
-  if ( element.requestFullscreen )
-    element.requestFullscreen();
-  else if ( element.mozRequestFullScreen )    /* Firefox */
-    element.mozRequestFullScreen();
-  else if ( element.webkitRequestFullscreen ) /* Chrome, Safari and Opera */
-    element.webkitRequestFullscreen();
-  else if ( element.msRequestFullscreen )     /* IE/Edge */
-    element.msRequestFullscreen();
-
-}
-
-/**
- * TODO: unit tests + api
- * provides a download of a <i>ccm</i>-based app as iBook Widget (ZIP file)
- * @param {string} embed_code - embed code of the <i>ccm</i>-based app
- * @param {string} [filename='app'] - file name without file extension
- * @param {string} [title='App'] - website title for the index.html
- * @param {string} [folder='app'] - name of the folder inside the iBook Widget
- * @param {string} template - URL of the HTML template
- * @param {string} info_file - URL of the info file
- * @param {string} image_file - URL of the image file
- * @returns {Promise<void>}
- * @memberOf ModuleHelper.HandoverApp
- */
-export async function iBookWidget( embed_code, filename = 'app', title = 'App', folder='app',
-                                   template = 'https://ccmjs.github.io/akless-components/resources/templates/app.html',
-                                   info_file = 'https://ccmjs.github.io/akless-components/resources/templates/ibook_widget/Info.plist',
-                                   image_file = 'https://ccmjs.github.io/akless-components/resources/templates/ibook_widget/Default.png'
-) {
-
-  template = await fetch( template ).then( response => response.text() );                 // load content of HTML template file
-  template = template.replace( '__TITLE__', title ).replace( '__EMBED__', embed_code );   // integrate title and embed code
-  info_file = await fetch( info_file ).then( response => response.blob() );               // load content of info file
-  image_file = await fetch( image_file ).then( response => response.blob() );             // load content of image file
-
-  // generate ZIP file
-  !window.JSZip  && await loadScript( 'https://ccmjs.github.io/akless-components/libs/jszip/jszip.min.js' );
-  !window.saveAs && await loadScript( 'https://ccmjs.github.io/akless-components/libs/FileSaver/FileSaver.js' );
-  let widgetZip = new JSZip();
-  widgetZip.folder( `${folder}.wdgt` ).file( 'index.html', template );
-  widgetZip.folder( `${folder}.wdgt` ).file( 'Info.plist', info_file );
-  widgetZip.folder( `${folder}.wdgt` ).file( 'Default.png', image_file );
-  widgetZip = await widgetZip.generateAsync( { type: 'blob' } );
-
-  // provide download of generated ZIP file
-  saveAs( widgetZip, `${filename}.zip`);
-
-}
-
-/**
- * TODO: unit tests + api
- * executes the included code of a JavaScript file
- * @param {string} url - URL of the JavaScript file
- * @returns {Promise<void>}
- * @memberOf ModuleHelper.HandoverApp
- */
-export async function loadScript( url ) {
-
-  return new Promise( ( resolve, reject ) => {
-
-    const script = document.createElement( 'script' );
-    document.head.appendChild( script );
-    script.onload  = () => { document.head.removeChild( script ); resolve(); };
-    script.onerror = () => { document.head.removeChild( script ); reject();  };
-    script.async = true;
-    script.src = url;
-
-  } );
-
-}
-
-/**
- * TODO: unit tests + api
- * provides a download of a <i>ccm</i>-based app as SCORM package (ZIP file)
- * @param {string} embed_code - embed code of the <i>ccm</i>-based app
- * @param {string} [filename='app'] - file name without file extension
- * @param {string} [title='App'] - website title within the manifest
- * @param {string} [identifier='App'] - identifier within the manifest
- * @param {string} [html_template='https://ccmjs.github.io/akless-components/resources/templates/scorm/index.html'] - URL of HTML template
- * @param {string} [manifest_template='https://ccmjs.github.io/akless-components/resources/templates/scorm/imsmanifest.xml'] - URL of manifest template
- * @param {string} [api_file='https://ccmjs.github.io/akless-components/resources/templates/scorm/SCORM_API_wrapper.js'] - URL of SCORM API file
- * @returns {Promise<void>}
- * @memberOf ModuleHelper.HandoverApp
- */
-export async function scorm( embed_code, filename = 'app', title = 'App', identifier = 'App',
-                             html_template = 'https://ccmjs.github.io/akless-components/resources/templates/scorm/index.html',
-                             manifest_template = 'https://ccmjs.github.io/akless-components/resources/templates/scorm/imsmanifest.xml',
-                             api_file = 'https://ccmjs.github.io/akless-components/resources/templates/scorm/SCORM_API_wrapper.js'
-) {
-
-  html_template = await fetch( html_template ).then( response => response.text() );                 // load content of HTML template file
-  html_template = html_template.replace( '__TITLE__', title ).replace( '__EMBED__', embed_code );   // integrate title and embed code in HTML template
-  manifest_template = await fetch( manifest_template ).then( response => response.text() );         // load content of manifest template file
-  manifest_template.replace( '__IDENTIFIER__', identifier ).replace( '__TITLE__', title );          // integrate identifier and title in manifest template
-  api_file = await fetch( api_file ).then( response => response.blob() );                           // load content of SCORM API file
-
-  // generate ZIP file
-  !window.JSZip  && await loadScript( 'https://ccmjs.github.io/akless-components/libs/jszip/jszip.min.js' );
-  !window.saveAs && await loadScript( 'https://ccmjs.github.io/akless-components/libs/FileSaver/FileSaver.js' );
-  let widgetZip = new JSZip();
-  widgetZip.file( 'index.html', html_template );
-  widgetZip.file( 'imsmanifest.xml', manifest_template );
-  widgetZip.file( 'SCORM_API_wrapper.js', api_file );
-  widgetZip = await widgetZip.generateAsync( { type: 'blob' } );
-
-  // provide download of generated ZIP file
-  saveAs( widgetZip, `${filename}.zip` );
-
 }
 
 /*---------------------------------------- Framework Backwards Compatibility -----------------------------------------*/
