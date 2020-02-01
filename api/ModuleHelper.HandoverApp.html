@@ -130,8 +130,8 @@
                 
             
             <div class="container-source members">
-                <code><a href="helper-3.0.0.mjs.html">helper-3.0.0.mjs</a></code>,
-                <code><a href="helper-3.0.0.mjs.html#line1164">line 1164</a></code>
+                <code><a href="helper-4.0.0.mjs.html">helper-4.0.0.mjs</a></code>,
+                <code><a href="helper-4.0.0.mjs.html#line1165">line 1165</a></code>
             </div>
             
         </h4>
@@ -406,8 +406,8 @@ appURL( 'https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.
                 
             
             <div class="container-source members">
-                <code><a href="helper-3.0.0.mjs.html">helper-3.0.0.mjs</a></code>,
-                <code><a href="helper-3.0.0.mjs.html#line1176">line 1176</a></code>
+                <code><a href="helper-4.0.0.mjs.html">helper-4.0.0.mjs</a></code>,
+                <code><a href="helper-4.0.0.mjs.html#line1178">line 1178</a></code>
             </div>
             
         </h4>
@@ -419,7 +419,8 @@ appURL( 'https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.
 
     
     <div class="description">
-        copies text inside a HTML element to clipboard
+        TODO: unit tests + api
+copies text inside a HTML element to clipboard
     </div>
     
 
@@ -545,8 +546,8 @@ appURL( 'https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.
                 
             
             <div class="container-source members">
-                <code><a href="helper-3.0.0.mjs.html">helper-3.0.0.mjs</a></code>,
-                <code><a href="helper-3.0.0.mjs.html#line1187">line 1187</a></code>
+                <code><a href="helper-4.0.0.mjs.html">helper-4.0.0.mjs</a></code>,
+                <code><a href="helper-4.0.0.mjs.html#line1198">line 1198</a></code>
             </div>
             
         </h4>
@@ -558,7 +559,7 @@ appURL( 'https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.
 
     
     <div class="description">
-        decomposes a given app URL into component URL, component index, component name, component version, store settings and app ID
+        decomposes a given app URL of a <i>ccm</i>-based app into component URL and app configuration
     </div>
     
 
@@ -610,7 +611,7 @@ appURL( 'https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.
 
             
 
-            <td class="description last">URL of a <i>ccm</i>-based app</td>
+            <td class="description last">URL of the <i>ccm</i>-based app</td>
         </tr>
 
     
@@ -689,6 +690,18 @@ appURL( 'https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.
 
 
     
+        <h5>Examples</h5>
+        
+    <pre class="prettyprint"><code>decomposeAppURL( 'https://ccmjs.github.io/digital-maker-space/app.html#component=https://ccmjs.github.io/akless-components/blank/ccm.blank.js&amp;config={}' )
+// { component: 'https://ccmjs.github.io/akless-components/blank/ccm.blank.js' }</code></pre>
+
+    <pre class="prettyprint"><code>decomposeAppURL( 'https://ccmjs.github.io/digital-maker-space/app.html#component=https://ccmjs.github.io/akless-components/multi_blank/ccm.multi_blank.js&amp;config={"times":5}' )
+// { component: 'https://ccmjs.github.io/akless-components/multi_blank/ccm.multi_blank.js', config: { times: 5 } }</code></pre>
+
+    <pre class="prettyprint"><code>decomposeAppURL( 'https://ccmjs.github.io/digital-maker-space/app.html#component=https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js&amp;config={"store":"https://ccmjs.github.io/akless-components/cloze/resources/configs.js","key":"demo"}' )
+// { component: 'https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js', config: { store: 'https://ccmjs.github.io/akless-components/cloze/resources/configs.js', key: 'demo' } }</code></pre>
+
+    
 
 </dd>
 
@@ -703,8 +716,8 @@ appURL( 'https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.
                 
             
             <div class="container-source members">
-                <code><a href="helper-3.0.0.mjs.html">helper-3.0.0.mjs</a></code>,
-                <code><a href="helper-3.0.0.mjs.html#line1219">line 1219</a></code>
+                <code><a href="helper-4.0.0.mjs.html">helper-4.0.0.mjs</a></code>,
+                <code><a href="helper-4.0.0.mjs.html#line1239">line 1239</a></code>
             </div>
             
         </h4>
@@ -716,7 +729,7 @@ appURL( 'https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.
 
     
     <div class="description">
-        decomposes a given embed code into component URL, component index, component name, component version, store settings and app ID
+        decomposes a given embed code of a <i>ccm</i>-based app into component URL and app configuration
     </div>
     
 
@@ -768,7 +781,7 @@ appURL( 'https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.
 
             
 
-            <td class="description last">embed code of a <i>ccm</i>-based app</td>
+            <td class="description last">embed code of the <i>ccm</i>-based app</td>
         </tr>
 
     
@@ -847,6 +860,27 @@ appURL( 'https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.
 
 
     
+        <h5>Examples</h5>
+        
+    <pre class="prettyprint"><code>decomposeEmbedCode( `&lt;script src='https://ccmjs.github.io/akless-components/blank/ccm.blank.js'>&lt;/script>&lt;ccm-blank key='{}'>&lt;/ccm-blank>` )
+// { component: 'https://ccmjs.github.io/akless-components/blank/ccm.blank.js' }</code></pre>
+
+    <pre class="prettyprint"><code>decomposeEmbedCode( `&lt;script src='https://ccmjs.github.io/akless-components/multi_blank/ccm.multi_blank.js'>&lt;/script>&lt;ccm-multi_blank key='{"times":5}'>&lt;/ccm-multi_blank>` )
+// { component: 'https://ccmjs.github.io/akless-components/multi_blank/ccm.multi_blank.js', config: { times: 5 } }</code></pre>
+
+    <pre class="prettyprint"><code>decomposeEmbedCode( `&lt;script src='https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js'>&lt;/script>&lt;ccm-cloze-6-0-3 key='["ccm.get","https://ccmjs.github.io/akless-components/cloze/resources/configs.js","demo"]'>&lt;/ccm-cloze-6-0-3>` )
+// { component: 'https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js', config: { store: 'https://ccmjs.github.io/akless-components/cloze/resources/configs.js', key: 'demo' } }</code></pre>
+
+    <pre class="prettyprint"><code>decomposeEmbedCode( `&lt;ccm-app component='https://ccmjs.github.io/akless-components/blank/ccm.blank.js' key='{}'>&lt;/ccm-app>` )
+// { component: 'https://ccmjs.github.io/akless-components/blank/ccm.blank.js' }</code></pre>
+
+    <pre class="prettyprint"><code>decomposeEmbedCode( `&lt;ccm-app component='https://ccmjs.github.io/akless-components/multi_blank/ccm.multi_blank.js' key='{"times":5}'>&lt;/ccm-app>` )
+// { component: 'https://ccmjs.github.io/akless-components/multi_blank/ccm.multi_blank.js', config: { times: 5 } }</code></pre>
+
+    <pre class="prettyprint"><code>decomposeEmbedCode( `&lt;ccm-app component='https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js' key='["ccm.get","https://ccmjs.github.io/akless-components/cloze/resources/configs.js","demo"]'>&lt;/ccm-app>` )
+// { component: 'https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js', config: { store: 'https://ccmjs.github.io/akless-components/cloze/resources/configs.js', key: 'demo' } }</code></pre>
+
+    
 
 </dd>
 
@@ -861,8 +895,8 @@ appURL( 'https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.
                 
             
             <div class="container-source members">
-                <code><a href="helper-3.0.0.mjs.html">helper-3.0.0.mjs</a></code>,
-                <code><a href="helper-3.0.0.mjs.html#line1247">line 1247</a></code>
+                <code><a href="helper-4.0.0.mjs.html">helper-4.0.0.mjs</a></code>,
+                <code><a href="helper-4.0.0.mjs.html#line1269">line 1269</a></code>
             </div>
             
         </h4>
@@ -874,7 +908,8 @@ appURL( 'https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.
 
     
     <div class="description">
-        provides a download of an on-the-fly created file
+        TODO: unit tests + api
+provides a download of an on-the-fly created file
     </div>
     
 
@@ -1090,8 +1125,8 @@ appURL( 'https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.
                 
             
             <div class="container-source members">
-                <code><a href="helper-3.0.0.mjs.html">helper-3.0.0.mjs</a></code>,
-                <code><a href="helper-3.0.0.mjs.html#line1268">line 1268</a></code>
+                <code><a href="helper-4.0.0.mjs.html">helper-4.0.0.mjs</a></code>,
+                <code><a href="helper-4.0.0.mjs.html#line1291">line 1291</a></code>
             </div>
             
         </h4>
@@ -1103,7 +1138,8 @@ appURL( 'https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.
 
     
     <div class="description">
-        provides a download of a <i>ccm</i>-based app as HTML file
+        TODO: unit tests + api
+provides a download of a <i>ccm</i>-based app as HTML file
     </div>
     
 
@@ -1381,8 +1417,8 @@ appURL( 'https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.
                 
             
             <div class="container-source members">
-                <code><a href="helper-3.0.0.mjs.html">helper-3.0.0.mjs</a></code>,
-                <code><a href="helper-3.0.0.mjs.html#line1314">line 1314</a></code>
+                <code><a href="helper-4.0.0.mjs.html">helper-4.0.0.mjs</a></code>,
+                <code><a href="helper-4.0.0.mjs.html#line1337">line 1337</a></code>
             </div>
             
         </h4>
@@ -1672,8 +1708,8 @@ embedCode( 'https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6
                 
             
             <div class="container-source members">
-                <code><a href="helper-3.0.0.mjs.html">helper-3.0.0.mjs</a></code>,
-                <code><a href="helper-3.0.0.mjs.html#line1337">line 1337</a></code>
+                <code><a href="helper-4.0.0.mjs.html">helper-4.0.0.mjs</a></code>,
+                <code><a href="helper-4.0.0.mjs.html#line1361">line 1361</a></code>
             </div>
             
         </h4>
@@ -1685,7 +1721,8 @@ embedCode( 'https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6
 
     
     <div class="description">
-        shows the content of an website area in fullscreen mode
+        TODO: unit tests + api
+shows the content of an website area in fullscreen mode
     </div>
     
 
@@ -1811,8 +1848,8 @@ embedCode( 'https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6
                 
             
             <div class="container-source members">
-                <code><a href="helper-3.0.0.mjs.html">helper-3.0.0.mjs</a></code>,
-                <code><a href="helper-3.0.0.mjs.html#line1362">line 1362</a></code>
+                <code><a href="helper-4.0.0.mjs.html">helper-4.0.0.mjs</a></code>,
+                <code><a href="helper-4.0.0.mjs.html#line1387">line 1387</a></code>
             </div>
             
         </h4>
@@ -1824,7 +1861,8 @@ embedCode( 'https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6
 
     
     <div class="description">
-        provides a download of a <i>ccm</i>-based app as iBook Widget (ZIP file)
+        TODO: unit tests + api
+provides a download of a <i>ccm</i>-based app as iBook Widget (ZIP file)
     </div>
     
 
@@ -2207,8 +2245,8 @@ embedCode( 'https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6
                 
             
             <div class="container-source members">
-                <code><a href="helper-3.0.0.mjs.html">helper-3.0.0.mjs</a></code>,
-                <code><a href="helper-3.0.0.mjs.html#line1393">line 1393</a></code>
+                <code><a href="helper-4.0.0.mjs.html">helper-4.0.0.mjs</a></code>,
+                <code><a href="helper-4.0.0.mjs.html#line1419">line 1419</a></code>
             </div>
             
         </h4>
@@ -2220,7 +2258,8 @@ embedCode( 'https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6
 
     
     <div class="description">
-        executes the included code of a JavaScript file
+        TODO: unit tests + api
+executes the included code of a JavaScript file
     </div>
     
 
@@ -2365,8 +2404,8 @@ embedCode( 'https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6
                 
             
             <div class="container-source members">
-                <code><a href="helper-3.0.0.mjs.html">helper-3.0.0.mjs</a></code>,
-                <code><a href="helper-3.0.0.mjs.html#line1420">line 1420</a></code>
+                <code><a href="helper-4.0.0.mjs.html">helper-4.0.0.mjs</a></code>,
+                <code><a href="helper-4.0.0.mjs.html#line1447">line 1447</a></code>
             </div>
             
         </h4>
@@ -2378,7 +2417,8 @@ embedCode( 'https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6
 
     
     <div class="description">
-        provides a download of a <i>ccm</i>-based app as SCORM package (ZIP file)
+        TODO: unit tests + api
+provides a download of a <i>ccm</i>-based app as SCORM package (ZIP file)
     </div>
     
 

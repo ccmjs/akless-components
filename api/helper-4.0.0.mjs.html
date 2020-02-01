@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Source: helper-3.0.0.mjs | Source: helper-3.0.0.mjs</title>
+    <title>Source: helper-4.0.0.mjs | Source: helper-4.0.0.mjs</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -26,7 +26,7 @@
         
     </div>
     <div class="title">
-        <h1><a href="index.html" class="link">Source: helper-3.0.0.mjs</a></h1>
+        <h1><a href="index.html" class="link">Source: helper-4.0.0.mjs</a></h1>
         
     </div>
     <div class="search-container" id="search-container">
@@ -51,13 +51,14 @@
  * &lt;p>(namespaces are only used for categorization)&lt;/p>
  * @author André Kless &lt;andre.kless@web.de> 2019-2020
  * @license The MIT License (MIT)
- * @version 3.0.0
+ * @version 4.0.0
  * @changes
- * version 3.0.0 (26.01.2020): updated helper function 'appURL'
- * - changed parameters
- * - supports app URL that directly contains the app configuration without data dependency
- * - updated examples in doc comments of helper function 'embedCode'
- * (for older version changes see helper-2.0.0.mjs)
+ * version 4.0.0 (01.02.2020): updated helper function 'decomposeAppURL' and 'decomposeEmbedCode'
+ * - decomposing of an app URL or embed code which contains the config directly
+ * - decomposing of an embed code which contains no script tag
+ * - changed structure of returned result
+ * - not backwards compatible with older forms of app URLs and embed codes
+ * (for older version changes see helper-3.0.0.mjs)
  * @namespace ModuleHelper
  */
 
@@ -1217,6 +1218,7 @@ export function appURL( component, config = {}, website = 'https://ccmjs.github.
 }
 
 /**
+ * TODO: unit tests + api
  * copies text inside a HTML element to clipboard
  * @param {Element} element - HTML element
  * @memberOf ModuleHelper.HandoverApp
@@ -1227,65 +1229,85 @@ export function copyToClipboard( element ) {
 }
 
 /**
- * decomposes a given app URL into component URL, component index, component name, component version, store settings and app ID
- * @param {string} app_url - URL of a &lt;i>ccm&lt;/i>-based app
- * @returns {Object}
+ * decomposes a given app URL of a &lt;i>ccm&lt;/i>-based app into component URL and app configuration
+ * @param {string} app_url - URL of the &lt;i>ccm&lt;/i>-based app
+ * @returns {{component:string,config:Object}}
+ * @example
+ * decomposeAppURL( 'https://ccmjs.github.io/digital-maker-space/app.html#component=https://ccmjs.github.io/akless-components/blank/ccm.blank.js&amp;config={}' )
+ * // { component: 'https://ccmjs.github.io/akless-components/blank/ccm.blank.js' }
+ * @example
+ * decomposeAppURL( 'https://ccmjs.github.io/digital-maker-space/app.html#component=https://ccmjs.github.io/akless-components/multi_blank/ccm.multi_blank.js&amp;config={"times":5}' )
+ * // { component: 'https://ccmjs.github.io/akless-components/multi_blank/ccm.multi_blank.js', config: { times: 5 } }
+ * @example
+ * decomposeAppURL( 'https://ccmjs.github.io/digital-maker-space/app.html#component=https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js&amp;config={"store":"https://ccmjs.github.io/akless-components/cloze/resources/configs.js","key":"demo"}' )
+ * // { component: 'https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js', config: { store: 'https://ccmjs.github.io/akless-components/cloze/resources/configs.js', key: 'demo' } }
  * @memberOf ModuleHelper.HandoverApp
  */
 export function decomposeAppURL( app_url ) {
-  const ccm = framework( arguments );
 
-  if ( !app_url ) return;
-
-  const result = { store: {} };
-
-  app_url.split( '#' )[ 1 ].split( '&amp;' ).forEach( part => {
-    if ( part.startsWith( 'component=' ) ) result.component  = part.split( '=' )[ 1 ];
-    if ( part.startsWith( 'name='      ) ) result.store.name = part.split( '=' )[ 1 ];
-    if ( part.startsWith( 'url='       ) ) result.store.url  = part.split( '=' )[ 1 ];
-    if ( part.startsWith( 'key='       ) ) result.key        = part.split( '=' )[ 1 ];
+  // decompose app URL
+  const result = {};
+  app_url.substr( app_url.indexOf( '#' ) + 1 ).split( '&amp;' ).forEach( part => {
+    part = part.split( '=' );
+    result[ part[ 0 ] ] = part[ 1 ];
   } );
 
-  result.index = ccm.helper.getIndex( result.component );
-  result.version = result.index.split( '-' );
-  result.name = result.version[ 0 ];
-  result.version.shift();
-  result.version = result.version.length ? result.version : 'latest';
-
-  if ( result.store.name === 'undefined' ) delete result.store.name;
-  if ( result.store.url  === 'undefined' ) delete result.store.url;
+  // adjust config
+  if ( result.config )
+    if ( result.config === '{}' ) delete result.config;
+    else result.config = JSON.parse( result.config );
 
   return result;
 }
 
 /**
- * decomposes a given embed code into component URL, component index, component name, component version, store settings and app ID
- * @param {string} embed_code - embed code of a &lt;i>ccm&lt;/i>-based app
- * @returns {Object}
+ * decomposes a given embed code of a &lt;i>ccm&lt;/i>-based app into component URL and app configuration
+ * @param {string} embed_code - embed code of the &lt;i>ccm&lt;/i>-based app
+ * @returns {{component:string,config:Object}}
+ * @example
+ * decomposeEmbedCode( `&lt;script src='https://ccmjs.github.io/akless-components/blank/ccm.blank.js'>&lt;/script>&lt;ccm-blank key='{}'>&lt;/ccm-blank>` )
+ * // { component: 'https://ccmjs.github.io/akless-components/blank/ccm.blank.js' }
+ * @example
+ * decomposeEmbedCode( `&lt;script src='https://ccmjs.github.io/akless-components/multi_blank/ccm.multi_blank.js'>&lt;/script>&lt;ccm-multi_blank key='{"times":5}'>&lt;/ccm-multi_blank>` )
+ * // { component: 'https://ccmjs.github.io/akless-components/multi_blank/ccm.multi_blank.js', config: { times: 5 } }
+ * @example
+ * decomposeEmbedCode( `&lt;script src='https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js'>&lt;/script>&lt;ccm-cloze-6-0-3 key='["ccm.get","https://ccmjs.github.io/akless-components/cloze/resources/configs.js","demo"]'>&lt;/ccm-cloze-6-0-3>` )
+ * // { component: 'https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js', config: { store: 'https://ccmjs.github.io/akless-components/cloze/resources/configs.js', key: 'demo' } }
+ * @example
+ * decomposeEmbedCode( `&lt;ccm-app component='https://ccmjs.github.io/akless-components/blank/ccm.blank.js' key='{}'>&lt;/ccm-app>` )
+ * // { component: 'https://ccmjs.github.io/akless-components/blank/ccm.blank.js' }
+ * @example
+ * decomposeEmbedCode( `&lt;ccm-app component='https://ccmjs.github.io/akless-components/multi_blank/ccm.multi_blank.js' key='{"times":5}'>&lt;/ccm-app>` )
+ * // { component: 'https://ccmjs.github.io/akless-components/multi_blank/ccm.multi_blank.js', config: { times: 5 } }
+ * @example
+ * decomposeEmbedCode( `&lt;ccm-app component='https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js' key='["ccm.get","https://ccmjs.github.io/akless-components/cloze/resources/configs.js","demo"]'>&lt;/ccm-app>` )
+ * // { component: 'https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js', config: { store: 'https://ccmjs.github.io/akless-components/cloze/resources/configs.js', key: 'demo' } }
  * @memberOf ModuleHelper.HandoverApp
  */
 export function decomposeEmbedCode( embed_code ) {
   const ccm = framework( arguments );
 
-  if ( !embed_code ) return;
-  embed_code = ccm.helper.html( embed_code );
-  const dependency = ccm.helper.parse( embed_code.lastChild.getAttribute( 'key' ) );
-  const index = embed_code.lastChild.tagName.substr( 'ccm-'.length ).toLowerCase();
-  let version = index.split( '-' );
-  const name = version[ 0 ];
-  version.shift();
-  return {
-    component: embed_code.firstChild.getAttribute( 'src' ),
-    index: index,
-    name: name,
-    version: version.length ? version : 'latest',
-    store: dependency[ 1 ],
-    key: dependency[ 2 ]
+  // decompose embed code
+  embed_code = ccm.helper.html( `&lt;div>${embed_code}&lt;/div>`, undefined, { no_evaluation: true } );
+  const result = {
+    component: embed_code.firstChild.getAttribute( 'src' ) || embed_code.firstChild.getAttribute( 'component' ),
+    config: embed_code.lastChild.getAttribute( 'key' )
   };
 
+  // adjust config
+  if ( result.config )
+    if ( result.config === '{}' ) delete result.config;
+    else result.config = JSON.parse( result.config );
+
+  // config is a data dependency? => use object with store and key for config
+  if ( Array.isArray( result.config ) )
+    result.config = { store: result.config[ 1 ], key: result.config[ 2 ] };
+
+  return result;
 }
 
 /**
+ * TODO: unit tests + api
  * provides a download of an on-the-fly created file
  * @param {string} filename - file name including file extension
  * @param {string} content - content of the file
@@ -1305,6 +1327,7 @@ export function download( filename, content, mime = 'text/html;charset=utf-8' ) 
 }
 
 /**
+ * TODO: unit tests + api
  * provides a download of a &lt;i>ccm&lt;/i>-based app as HTML file
  * @param {string} embed_code - embed code of the &lt;i>ccm&lt;/i>-based app
  * @param {string} [filename='app'] - file name without file extension
@@ -1378,6 +1401,7 @@ export function embedCode( component, config = {}, noscript ) {
 }
 
 /**
+ * TODO: unit tests + api
  * shows the content of an website area in fullscreen mode
  * @param {Element} element - website area
  * @memberOf ModuleHelper.HandoverApp
@@ -1396,6 +1420,7 @@ export function fullscreen( element ) {
 }
 
 /**
+ * TODO: unit tests + api
  * provides a download of a &lt;i>ccm&lt;/i>-based app as iBook Widget (ZIP file)
  * @param {string} embed_code - embed code of the &lt;i>ccm&lt;/i>-based app
  * @param {string} [filename='app'] - file name without file extension
@@ -1433,6 +1458,7 @@ export async function iBookWidget( embed_code, filename = 'app', title = 'App', 
 }
 
 /**
+ * TODO: unit tests + api
  * executes the included code of a JavaScript file
  * @param {string} url - URL of the JavaScript file
  * @returns {Promise&lt;void>}
@@ -1454,6 +1480,7 @@ export async function loadScript( url ) {
 }
 
 /**
+ * TODO: unit tests + api
  * provides a download of a &lt;i>ccm&lt;/i>-based app as SCORM package (ZIP file)
  * @param {string} embed_code - embed code of the &lt;i>ccm&lt;/i>-based app
  * @param {string} [filename='app'] - file name without file extension
