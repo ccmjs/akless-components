@@ -52,7 +52,7 @@
       this.ready = async () => {
 
         // set shortcut to help functions
-        $ = self.ccm.helper;
+        $ = this.ccm.helper;
 
         // logging of 'ready' event
         this.logger && this.logger.log( 'ready', $.privatize( this, true ) );
