@@ -643,6 +643,23 @@ ccm.files[ 'module-helper.js' ] = {
       byStore: async suite => suite.assertSame( 'https://ccmjs.github.io/digital-maker-space/app.html#component=https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js&config={"store":{"name":"cloze","url":"https://ccm2.inf.h-brs.de"},"key":"demo"}', suite.modules.appURL( 'https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js', { store: await ccm.store( { name: 'cloze', url: 'https://ccm2.inf.h-brs.de' } ), key: 'demo' } ) )
     }
   },
+  decomposeAppURL: {
+    tests: {
+      byDefault: suite => suite.assertEquals( { component: 'https://ccmjs.github.io/akless-components/blank/ccm.blank.js' }, suite.modules.decomposeAppURL( 'https://ccmjs.github.io/digital-maker-space/app.html#component=https://ccmjs.github.io/akless-components/blank/ccm.blank.js&config={}' ) ),
+      byConfig: suite => suite.assertEquals( { component: 'https://ccmjs.github.io/akless-components/multi_blank/ccm.multi_blank.js', config: { times: 5 } }, suite.modules.decomposeAppURL( 'https://ccmjs.github.io/digital-maker-space/app.html#component=https://ccmjs.github.io/akless-components/multi_blank/ccm.multi_blank.js&config={"times":5}' ) ),
+      bySource: suite => suite.assertEquals( { component: 'https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js', config: { store: 'https://ccmjs.github.io/akless-components/cloze/resources/configs.js', key: 'demo' } }, suite.modules.decomposeAppURL( 'https://ccmjs.github.io/digital-maker-space/app.html#component=https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js&config={"store":"https://ccmjs.github.io/akless-components/cloze/resources/configs.js","key":"demo"}' ) )
+    }
+  },
+  decomposeEmbedCode: {
+    tests: {
+      byDefault: suite => suite.assertEquals( { component: 'https://ccmjs.github.io/akless-components/blank/ccm.blank.js' }, suite.modules.decomposeEmbedCode( `<script src='https://ccmjs.github.io/akless-components/blank/ccm.blank.js'></script><ccm-blank key='{}'></ccm-blank>` ) ),
+      byConfig: suite => suite.assertEquals( { component: 'https://ccmjs.github.io/akless-components/multi_blank/ccm.multi_blank.js', config: { times: 5 } }, suite.modules.decomposeEmbedCode( `<script src='https://ccmjs.github.io/akless-components/multi_blank/ccm.multi_blank.js'></script><ccm-multi_blank key='{"times":5}'></ccm-multi_blank>` ) ),
+      bySource: suite => suite.assertEquals( { component: 'https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js', config: { store: 'https://ccmjs.github.io/akless-components/cloze/resources/configs.js', key: 'demo' } }, suite.modules.decomposeEmbedCode( `<script src='https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js'></script><ccm-cloze-6-0-3 key='["ccm.get","https://ccmjs.github.io/akless-components/cloze/resources/configs.js","demo"]'></ccm-cloze-6-0-3>` ) ),
+      byDefaultNoScript: suite => suite.assertEquals( { component: 'https://ccmjs.github.io/akless-components/blank/ccm.blank.js' }, suite.modules.decomposeEmbedCode( `<ccm-app component='https://ccmjs.github.io/akless-components/blank/ccm.blank.js' key='{}'></ccm-app>` ) ),
+      byConfigNoScript: suite => suite.assertEquals( { component: 'https://ccmjs.github.io/akless-components/multi_blank/ccm.multi_blank.js', config: { times: 5 } }, suite.modules.decomposeEmbedCode( `<ccm-app component='https://ccmjs.github.io/akless-components/multi_blank/ccm.multi_blank.js' key='{"times":5}'></ccm-app>` ) ),
+      bySourceNoScript: suite => suite.assertEquals( { component: 'https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js', config: { store: 'https://ccmjs.github.io/akless-components/cloze/resources/configs.js', key: 'demo' } }, suite.modules.decomposeEmbedCode( `<ccm-app component='https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js' key='["ccm.get","https://ccmjs.github.io/akless-components/cloze/resources/configs.js","demo"]'></ccm-app>` ) )
+    }
+  },
   embedCode: {
     tests: {
       byDefault: suite => suite.assertSame( `<script src='https://ccmjs.github.io/akless-components/blank/ccm.blank.js'></script><ccm-blank key='{}'></ccm-blank>`, suite.modules.embedCode( 'https://ccmjs.github.io/akless-components/blank/ccm.blank.js' ) ),
