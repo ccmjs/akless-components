@@ -467,20 +467,6 @@ ccm.files[ 'module-helper.js' ] = {
       }
     }
   },
-  loading: {
-    tests: {
-      element: suite => suite.assertTrue( suite.ccm.helper.isElement( suite.modules.loading() ) ),
-      keyframeHead: suite => {
-        suite.modules.loading();
-        suite.assertTrue( document.head.querySelector( 'style#ccm_keyframe' ) );
-      },
-      keyframeShadow: async suite => {
-        const instance = await suite.ccm.instance( { Instance: function () {}, ccm: suite.ccm } );
-        suite.modules.loading( instance );
-        suite.assertTrue( instance.element.parentNode.querySelector( 'style#ccm_keyframe' ) );
-      }
-    }
-  },
   prepend: {
     setup: suite => {
       suite.element = suite.ccm.helper.html( { inner: '!' } );
@@ -670,6 +656,23 @@ ccm.files[ 'module-helper.js' ] = {
       byConfigNoScript: suite => suite.assertSame( `<ccm-app component='https://ccmjs.github.io/akless-components/multi_blank/ccm.multi_blank.js' key='{"times":5}'></ccm-app>`, suite.modules.embedCode( 'https://ccmjs.github.io/akless-components/multi_blank/ccm.multi_blank.js', { times: 5 }, true ) ),
       bySourceNoScript: suite => suite.assertSame( `<ccm-app component='https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js' key='["ccm.get","https://ccmjs.github.io/akless-components/cloze/resources/configs.js","demo"]'></ccm-app>`, suite.modules.embedCode( 'https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js', { store: 'https://ccmjs.github.io/akless-components/cloze/resources/configs.js', key: 'demo' }, true ) ),
       byStoreNoScript: async suite => suite.assertSame( `<ccm-app component='https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js' key='["ccm.get",{"name":"cloze","url":"https://ccm2.inf.h-brs.de"},"demo"]'></ccm-app>`, suite.modules.embedCode( 'https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js', { store: await ccm.store( { name: 'cloze', url: 'https://ccm2.inf.h-brs.de' } ), key: 'demo' }, true ) )
+    }
+  },
+
+/*------------------------------------------------------ Others ------------------------------------------------------*/
+
+  loading: {
+    tests: {
+      element: suite => suite.assertTrue( suite.ccm.helper.isElement( suite.modules.loading() ) ),
+      keyframeHead: suite => {
+        suite.modules.loading();
+        suite.assertTrue( document.head.querySelector( 'style#ccm_keyframe' ) );
+      },
+      keyframeShadow: async suite => {
+        const instance = await suite.ccm.instance( { Instance: function () {}, ccm: suite.ccm } );
+        suite.modules.loading( instance );
+        suite.assertTrue( instance.element.parentNode.querySelector( 'style#ccm_keyframe' ) );
+      }
     }
   },
 
