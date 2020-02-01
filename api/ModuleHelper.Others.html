@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Namespace: DomManipulation | Namespace: DomManipulation</title>
+    <title>Namespace: Others | Namespace: Others</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -24,7 +24,7 @@
         
     </div>
     <div class="title">
-        <h1><a href="index.html" class="link">Namespace: DomManipulation</a></h1>
+        <h1><a href="index.html" class="link">Namespace: Others</a></h1>
         
     </div>
     <div class="search-container" id="search-container">
@@ -47,7 +47,7 @@
 <header>
     
         <h2>
-            <span class="ancestors"><a href="ModuleHelper.html">ModuleHelper</a>.</span>DomManipulation</h2>
+            <span class="ancestors"><a href="ModuleHelper.html">ModuleHelper</a>.</span>Others</h2>
         
     
 </header>
@@ -57,7 +57,7 @@
         <div class="container-overview">
         
             
-                <div class="description">helper functions for DOM Manipulation</div>
+                <div class="description">not categorizable helper functions</div>
             
 
             
@@ -124,14 +124,14 @@
 
 <dt>
     
-        <h4 class="name" id=".exports.append">
+        <h4 class="name" id=".exports.copyToClipboard">
             
-                <span class="type-signature"><span class="icon green">static</span> </span>exports.append<span class="signature">(element, &hellip;content)</span><span class="type-signature"></span>
+                <span class="type-signature"><span class="icon green">static</span> </span>exports.copyToClipboard<span class="signature">(element)</span><span class="type-signature"></span>
                 
             
             <div class="container-source members">
                 <code><a href="helper-4.0.1.mjs.html">helper-4.0.1.mjs</a></code>,
-                <code><a href="helper-4.0.1.mjs.html#line666">line 666</a></code>
+                <code><a href="helper-4.0.1.mjs.html#line1264">line 1264</a></code>
             </div>
             
         </h4>
@@ -143,401 +143,7 @@
 
     
     <div class="description">
-        appends content to a HTML element (contained script tags will be removed)
-    </div>
-    
-
-    
-
-    
-
-    
-
-    
-    <div class="container-params">
-        <h5>Parameters:</h5>
-        
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Attributes</th>
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>element</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Element</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last">HTML element</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>content</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">*</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                    &lt;repeatable><br>
-                
-                </td>
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-    </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-    
-        <h5>Examples</h5>
-        
-    <pre class="prettyprint"><code>append( document.body, 'Hello World!' )</code></pre>
-
-    <pre class="prettyprint"><code>append( document.body, 'Hello', ' ', 'World', '!' )</code></pre>
-
-    <pre class="prettyprint"><code>append( document.body, [ 'Hello', ' ', 'World', '!' ] )</code></pre>
-
-    <pre class="prettyprint"><code>append( document.body, [ 'Hello', ' ', [ 'World', '!' ] ] )</code></pre>
-
-    <pre class="prettyprint"><code>append( document.body, { inner: 'Hello World!' } )</code></pre>
-
-    <pre class="prettyprint"><code>append( document.body, 'Hello', [ ' ', [ { inner: 'World' }, '!' ] ] )</code></pre>
-
-    
-
-</dd>
-
-            
-                
-
-<dt>
-    
-        <h4 class="name" id=".exports.prepend">
-            
-                <span class="type-signature"><span class="icon green">static</span> </span>exports.prepend<span class="signature">(element, &hellip;content)</span><span class="type-signature"></span>
-                
-            
-            <div class="container-source members">
-                <code><a href="helper-4.0.1.mjs.html">helper-4.0.1.mjs</a></code>,
-                <code><a href="helper-4.0.1.mjs.html#line702">line 702</a></code>
-            </div>
-            
-        </h4>
-
-        
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        prepends content to a HTML element (contained script tags will be removed)
-    </div>
-    
-
-    
-
-    
-
-    
-
-    
-    <div class="container-params">
-        <h5>Parameters:</h5>
-        
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Attributes</th>
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>element</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Element</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last">HTML element</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>content</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">*</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                    &lt;repeatable><br>
-                
-                </td>
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-    </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-    
-        <h5>Examples</h5>
-        
-    <pre class="prettyprint"><code>prepend( document.body, 'Hello World!' )</code></pre>
-
-    <pre class="prettyprint"><code>prepend( document.body, 'Hello', ' ', 'World', '!' )</code></pre>
-
-    <pre class="prettyprint"><code>prepend( document.body, [ 'Hello', ' ', 'World', '!' ] )</code></pre>
-
-    <pre class="prettyprint"><code>prepend( document.body, [ 'Hello', ' ', [ 'World', '!' ] ] )</code></pre>
-
-    <pre class="prettyprint"><code>prepend( document.body, { inner: 'Hello World!' } )</code></pre>
-
-    <pre class="prettyprint"><code>prepend( document.body, 'Hello', [ ' ', [ { inner: 'World' }, '!' ] ] )</code></pre>
-
-    
-
-</dd>
-
-            
-                
-
-<dt>
-    
-        <h4 class="name" id=".exports.remove">
-            
-                <span class="type-signature"><span class="icon green">static</span> </span>exports.remove<span class="signature">(element)</span><span class="type-signature"></span>
-                
-            
-            <div class="container-source members">
-                <code><a href="helper-4.0.1.mjs.html">helper-4.0.1.mjs</a></code>,
-                <code><a href="helper-4.0.1.mjs.html#line740">line 740</a></code>
-            </div>
-            
-        </h4>
-
-        
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        removes an HTML element from its parent
+        copies text inside a HTML element to clipboard
     </div>
     
 
@@ -651,10 +257,9 @@
     
         <h5>Example</h5>
         
-    <pre class="prettyprint"><code>const element = document.createElement( 'div' );
-document.body.appendChild( element );
-removeElement( element );
-console.log( element.parentNode );  // => null</code></pre>
+    <pre class="prettyprint"><code>// &lt;body>&lt;input type="text" value="Hello World!">&lt;/body>
+copyToClipboard( document.body.querySelector( 'input' ) )
+// STRG+V then pastes 'Hello, World!' from clipboard</code></pre>
 
     
 
@@ -665,14 +270,14 @@ console.log( element.parentNode );  // => null</code></pre>
 
 <dt>
     
-        <h4 class="name" id=".exports.replace">
+        <h4 class="name" id=".exports.download">
             
-                <span class="type-signature"><span class="icon green">static</span> </span>exports.replace<span class="signature">(element, other)</span><span class="type-signature"></span>
+                <span class="type-signature"><span class="icon green">static</span> </span>exports.download<span class="signature">(filename, content, mime<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span>
                 
             
             <div class="container-source members">
                 <code><a href="helper-4.0.1.mjs.html">helper-4.0.1.mjs</a></code>,
-                <code><a href="helper-4.0.1.mjs.html#line752">line 752</a></code>
+                <code><a href="helper-4.0.1.mjs.html#line1277">line 1277</a></code>
             </div>
             
         </h4>
@@ -684,7 +289,7 @@ console.log( element.parentNode );  // => null</code></pre>
 
     
     <div class="description">
-        replaces a HTML element with an other single HTML element (contained script tags will be removed)
+        provides a download of an on-the-fly created file
     </div>
     
 
@@ -708,7 +313,11 @@ console.log( element.parentNode );  // => null</code></pre>
         <th>Type</th>
 
         
+        <th>Attributes</th>
+        
 
+        
+        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -720,38 +329,12 @@ console.log( element.parentNode );  // => null</code></pre>
 
         <tr>
             
-                <td class="name"><code>element</code></td>
+                <td class="name"><code>filename</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">Element</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">HTML element (must have a parent)</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>other</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-|
-
 <span class="param-type">string</span>
 
 
@@ -759,10 +342,96 @@ console.log( element.parentNode );  // => null</code></pre>
             </td>
 
             
+                <td class="attributes">
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last">other single HTML element</td>
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">file name including file extension</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>content</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">content of the file</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>mime</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    'text/html;charset=utf-8'
+                
+                </td>
+            
+
+            <td class="description last">media type followed by charset or 'base64' if non-textual</td>
         </tr>
 
     
@@ -822,11 +491,9 @@ console.log( element.parentNode );  // => null</code></pre>
 
 
     
-        <h5>Examples</h5>
+        <h5>Example</h5>
         
-    <pre class="prettyprint"><code>replace( document.querySelector( '#myid' ), '&lt;b>World&lt;/b>' )</code></pre>
-
-    <pre class="prettyprint"><code>replace( document.querySelector( '#myid' ), { tag: 'b', inner: 'World' } )</code></pre>
+    <pre class="prettyprint"><code>download( 'hello_world.html', '&lt;!DOCTYPE html>&lt;meta charset="utf-8">Hello World!' )</code></pre>
 
     
 
@@ -837,14 +504,14 @@ console.log( element.parentNode );  // => null</code></pre>
 
 <dt>
     
-        <h4 class="name" id=".exports.setContent">
+        <h4 class="name" id=".exports.fullscreen">
             
-                <span class="type-signature"><span class="icon green">static</span> </span>exports.setContent<span class="signature">(element, &hellip;content)</span><span class="type-signature"></span>
+                <span class="type-signature"><span class="icon green">static</span> </span>exports.fullscreen<span class="signature">(element)</span><span class="type-signature"></span>
                 
             
             <div class="container-source members">
                 <code><a href="helper-4.0.1.mjs.html">helper-4.0.1.mjs</a></code>,
-                <code><a href="helper-4.0.1.mjs.html#line769">line 769</a></code>
+                <code><a href="helper-4.0.1.mjs.html#line1297">line 1297</a></code>
             </div>
             
         </h4>
@@ -856,7 +523,152 @@ console.log( element.parentNode );  // => null</code></pre>
 
     
     <div class="description">
-        set the content of a HTML element (contained script tags will be removed)
+        shows the content of an website area in fullscreen mode
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-params">
+        <h5>Parameters:</h5>
+        
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>element</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Element</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">website area</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+        <h5>Example</h5>
+        
+    <pre class="prettyprint"><code>// &lt;body>&lt;div id="app">Hello World!&lt;/div>&lt;/body>
+fullscreen( document.body.querySelector( '#app' ) )</code></pre>
+
+    
+
+</dd>
+
+            
+                
+
+<dt>
+    
+        <h4 class="name" id=".exports.loading">
+            
+                <span class="type-signature"><span class="icon green">static</span> </span>exports.loading<span class="signature">(instance<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Element}</span>
+                
+            
+            <div class="container-source members">
+                <code><a href="helper-4.0.1.mjs.html">helper-4.0.1.mjs</a></code>,
+                <code><a href="helper-4.0.1.mjs.html#line1318">line 1318</a></code>
+            </div>
+            
+        </h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        returns a <i>ccm</i> loading icon
     </div>
     
 
@@ -894,13 +706,13 @@ console.log( element.parentNode );  // => null</code></pre>
 
         <tr>
             
-                <td class="name"><code>element</code></td>
+                <td class="name"><code>instance</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">Element</span>
+<span class="param-type">Object</span>
 
 
             
@@ -908,6 +720,8 @@ console.log( element.parentNode );  // => null</code></pre>
 
             
                 <td class="attributes">
+                
+                    &lt;optional><br>
                 
 
                 
@@ -918,40 +732,7 @@ console.log( element.parentNode );  // => null</code></pre>
 
             
 
-            <td class="description last">HTML element</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>content</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">*</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                    &lt;repeatable><br>
-                
-                </td>
-            
-
-            
-
-            <td class="description last">new content for the HTML element (old content is cleared)</td>
+            <td class="description last"><i>ccm</i> instance (for determining Shadow DOM)</td>
         </tr>
 
     
@@ -971,6 +752,27 @@ console.log( element.parentNode );  // => null</code></pre>
 
     
 
+    
+    <div class="container-returns">
+        <h5>Returns:</h5>
+        
+                
+
+
+
+<span class="param-type">Element</span>
+
+
+
+
+
+- <i>ccm</i> loading icon
+
+
+
+
+            
+    </div>
     
 
     
@@ -1013,17 +815,174 @@ console.log( element.parentNode );  // => null</code></pre>
     
         <h5>Examples</h5>
         
-    <pre class="prettyprint"><code>setContent( document.body, 'Hello World!' )</code></pre>
+    <pre class="prettyprint"><code>document.body.appendChild( loading() )</code></pre>
 
-    <pre class="prettyprint"><code>setContent( document.body, 'Hello', ' ', 'World', '!' )</code></pre>
+    <pre class="prettyprint"><code>document.body.appendChild( loading( instance ) )</code></pre>
 
-    <pre class="prettyprint"><code>setContent( document.body, [ 'Hello', ' ', 'World', '!' ] )</code></pre>
+    
 
-    <pre class="prettyprint"><code>setContent( document.body, [ 'Hello', ' ', [ 'World', '!' ] ] )</code></pre>
+</dd>
 
-    <pre class="prettyprint"><code>setContent( document.body, { inner: 'Hello World!' } )</code></pre>
+            
+                
 
-    <pre class="prettyprint"><code>setContent( document.body, 'Hello', [ ' ', [ { inner: 'World' }, '!' ] ] )</code></pre>
+<dt>
+    
+        <h4 class="name" id=".exports.loadScript">
+            
+                <span class="type-signature"><span class="icon green">static</span> </span>exports.loadScript<span class="signature">(url)</span><span class="type-signature"> &rarr; {Promise.&lt;void>}</span>
+                
+            
+            <div class="container-source members">
+                <code><a href="helper-4.0.1.mjs.html">helper-4.0.1.mjs</a></code>,
+                <code><a href="helper-4.0.1.mjs.html#line1346">line 1346</a></code>
+            </div>
+            
+        </h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        executes the included code of a JavaScript file
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-params">
+        <h5>Parameters:</h5>
+        
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>url</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">URL of the JavaScript file</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="container-returns">
+        <h5>Returns:</h5>
+        
+                
+
+
+
+<span class="param-type">Promise.&lt;void></span>
+
+
+
+
+
+
+
+
+            
+    </div>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+        <h5>Examples</h5>
+        
+    <pre class="prettyprint"><code>await loadScript( 'https://ccmjs.github.io/akless-components/libs/jszip/jszip.min.js' )</code></pre>
+
+    <pre class="prettyprint"><code>await loadScript( 'https://ccmjs.github.io/akless-components/libs/FileSaver/FileSaver.js' )</code></pre>
 
     
 
@@ -1054,7 +1013,7 @@ console.log( element.parentNode );  // => null</code></pre>
 <script src="scripts/linenumber.js"></script>
 
     <script>
-        var id = 'ModuleHelper.DomManipulation_sub'.replace(/"/g, '_');
+        var id = 'ModuleHelper.Others_sub'.replace(/"/g, '_');
         var selectedApi = document.getElementById(id); // do not use jquery selector
         var $selectedApi = $(selectedApi);
 
