@@ -6,10 +6,12 @@
 
 ccm.files[ 'resources.js' ] = {
 
+  /** test configuration (relative paths) */
   "local": {
     "key": "local",
     "css.1": "../image_map/resources/styles.css",
     "data": [ "ccm.get", "../image_map/resources/resources.js", "data" ],
+    "helper.1": "https://ccmjs.github.io/akless-components/modules/versions/helper-4.0.1.mjs",
     "html.1": "../image_map/resources/templates.html",
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
     "onchange": event => console.log( event ),
@@ -18,6 +20,7 @@ ccm.files[ 'resources.js' ] = {
     "onstart": event => console.log( event )
   },
 
+  /** demo configuration (absolute paths) */
   "demo": {
     "key": "demo",
     "data": [ "ccm.get", "https://ccmjs.github.io/akless-components/image_map/resources/resources.js", "data" ]
