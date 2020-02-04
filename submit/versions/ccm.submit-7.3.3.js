@@ -2,7 +2,7 @@
  * @overview ccm component for submitting data
  * @author André Kless <andre.kless@web.de> 2018-2020
  * @license The MIT License (MIT)
- * @version latest (7.3.3)
+ * @version 7.3.3
  * @changes
  * version 7.3.3 (03.02.2020):
  * - bug fix when ccm-based input element returns no result
