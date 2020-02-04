@@ -1,6 +1,6 @@
 /**
  * @overview configurations of ccm component for submitting data
- * @author André Kless <andre.kless@web.de> 2018-2019
+ * @author André Kless <andre.kless@web.de> 2018-2020
  * @license The MIT License (MIT)
  */
 
@@ -8,7 +8,6 @@ ccm.files[ 'configs.js' ] = {
 
   /** test (relative paths) */
   "local": {
-    "key": "local",
 //  "inner": [ "ccm.load", { "url": "../submit/resources/demo.html", "type": "data" } ],
     "entries": [ "ccm.get", "../submit/resources/datasets.js", "demo.data" ],
     "css": [ "ccm.load",
@@ -20,8 +19,9 @@ ccm.files[ 'configs.js' ] = {
       "store": [ "ccm.store", { "name": "submit_data", "url": "https://ccm2.inf.h-brs.de" } ],
       "key": "demo"
     },
+    "html.1": "../submit/resources/templates.html",
     "content": [ "ccm.component", "../content/ccm.content.js" ],
-    "helper": [ "ccm.load", { "url": "../modules/helper.mjs" } ],
+    "helper.1": "../modules/helper.mjs",
     "json_builder": [ "ccm.component", "../json_builder/ccm.json_builder.js", {
       "html.inner.1": "",
       "directly": true
@@ -36,7 +36,6 @@ ccm.files[ 'configs.js' ] = {
 
   /** demo */
   "demo": {
-    "key": "demo",
 //  "inner": [ "ccm.load", { "url": "https://ccmjs.github.io/akless-components/submit/resources/demo.html", "type": "data" } ],
     "entries": [ "ccm.get", "https://ccmjs.github.io/akless-components/submit/resources/datasets.js", "demo.data" ],
     "data": {
@@ -44,7 +43,6 @@ ccm.files[ 'configs.js' ] = {
       "key": "demo"
     },
     "content": [ "ccm.component", "https://ccmjs.github.io/akless-components/content/versions/ccm.content-5.3.1.js" ],
-    "helper": [ "ccm.load", { "url": "https://ccmjs.github.io/akless-components/modules/versions/helper-1.0.0.mjs" } ],
     "json_builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-1.4.3.js", {
       "html.inner.1": "",
       "directly": true
