@@ -45,9 +45,8 @@ ccm.files[ 'datasets.js' ] = {
   "demo": {
     "key": "demo",
     "data": [
-      "<source src='https://ccmjs.github.io/akless-components/blank/ccm.blank.js'>",
       "<legend>Decoration</legend>",
-      "<ccm-blank></ccm-blank>",
+      "<ccm-app component='https://ccmjs.github.io/akless-components/blank/ccm.blank.js'></ccm-app>",
       "<legend>Input</legend>",
       {
         "label": "color",
