@@ -645,7 +645,7 @@
 
         // fetch values from ccm-based input elements (convention: ccm instance must have a 'getValue()' method)
         inputs.forEach( input => {
-          const result = input.instance.getValue();
+          const result = input.instance.getValue() || {};
           delete result.key;
           const keys = Object.keys( result );
           if ( keys.length === 2 && keys.every( key => [ 'property', 'value' ].includes( key ) ) )
