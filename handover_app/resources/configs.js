@@ -7,31 +7,25 @@
 ccm.files[ 'configs.js' ] = {
 
   "local": {
+    "component_url": "https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js",
     "css": [ "ccm.load",
       "../handover_app/resources/styles.css",
       "../libs/bootstrap-4/css/bootstrap.min.css",
       { "context": "head", "url": "../libs/bootstrap-4/css/bootstrap.min.css" }
     ],
-    "data": {
-      "store": [ "ccm.store", { "url": "http://localhost:8080", "name": "test-configs" } ],
-      "key": "1562399748746X5684041698054954"
-    },
+    "data": { "store": "https://ccmjs.github.io/akless-components/cloze/resources/configs.js", "key": "demo" },
     "helper.1": "../modules/helper.mjs",
     "html.1": "../handover_app/resources/template.html",
-    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.2.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
+    "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
     "qr_code": [ "ccm.load", "../libs/qrcode-generator/qrcode.min.js" ],
-    "component_url": "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-1.4.1.js",
-    "window": [ "ccm.component", "../window/ccm.window.js" ]
+//  "window": [ "ccm.component", "../window/ccm.window.js" ]
   },
 
   "demo": {
-    "data": {
-      "store": [ "ccm.store", { "url": "https://ccm2.inf.h-brs.de", "name": "test-configs" } ],
-      "key": "1562402810547X2619441006187393"
-    },
+    "component_url": "https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js",
+    "data": { "store": "https://ccmjs.github.io/akless-components/cloze/resources/configs.js", "key": "demo" },
     "qr_code": [ "ccm.load", "https://ccmjs.github.io/akless-components/libs/qrcode-generator/qrcode.min.js" ],
-    "component_url": "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-1.4.1.js",
-    "window": [ "ccm.component", "https://ccmjs.github.io/akless-components/window/versions/ccm.window-1.0.0.js" ]
+//  "window": [ "ccm.component", "https://ccmjs.github.io/akless-components/window/versions/ccm.window-1.0.0.js" ]
   }
 
 };

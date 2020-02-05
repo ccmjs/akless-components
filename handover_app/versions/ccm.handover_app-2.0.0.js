@@ -2,7 +2,7 @@
  * @overview ccm component for handover of an app
  * @author André Kless <andre.kless@web.de> 2019-2020
  * @license MIT License
- * @version latest (2.0.0)
+ * @version 2.0.0
  * @changes
  * version 2.0.0 (05.02.2020)
  * - allows embed code and app URL with directly integrated app configuration
@@ -15,7 +15,7 @@
 
   const component = {
 
-    name: 'handover_app',
+    name: 'handover_app', version: [ 2, 0, 0 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-25.0.0.js',
 
