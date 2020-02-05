@@ -1,6 +1,6 @@
 /**
  * @overview configurations of ccm component for app manager
- * @author André Kless <andre.kless@web.de> 2019
+ * @author André Kless <andre.kless@web.de> 2019-2020
  * @license The MIT License (MIT)
  */
 
