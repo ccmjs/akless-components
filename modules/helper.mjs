@@ -8,6 +8,7 @@
  * version 4.0.1 (01.02.2020):
  * - updated @examples in doc comments
  * - moved some helper functions to an other category
+ * - decomposeAppURL() uses decodeURIComponent()
  * version 4.0.0 (01.02.2020): updated helper function 'decomposeAppURL' and 'decomposeEmbedCode'
  * - decomposing of an app URL or embed code which contains the config directly
  * - decomposing of an embed code which contains no script tag
@@ -1029,7 +1030,7 @@ export function decomposeAppURL( app_url ) {
 
   // decompose app URL
   const result = {};
-  app_url.substr( app_url.indexOf( '#' ) + 1 ).split( '&' ).forEach( part => {
+  decodeURIComponent( app_url.substr( app_url.indexOf( '#' ) + 1 ) ).split( '&' ).forEach( part => {
     part = part.split( '=' );
     result[ part[ 0 ] ] = part[ 1 ];
   } );
