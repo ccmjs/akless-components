@@ -60,7 +60,7 @@ ccm.files[ 'resources.js' ] = {
         { "context": "head", "url": "https://use.fontawesome.com/releases/v5.6.3/css/all.css" }
       ]
     } ],
-    "user": [ "ccm.start", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.2.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/app_builder/resources/resources.js", "user" ] ]
+    "user": [ "ccm.start", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.3.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/app_builder/resources/resources.js", "user" ] ]
   },
 
   /** configuration for multilingualism */
