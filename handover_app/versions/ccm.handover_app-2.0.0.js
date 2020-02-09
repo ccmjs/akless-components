@@ -2,11 +2,12 @@
  * @overview ccm component for handover of an app
  * @author André Kless <andre.kless@web.de> 2019-2020
  * @license MIT License
- * @version 2.0.0
+ * @version latest (2.0.0)
  * @changes
  * version 2.0.0 (05.02.2020)
  * - allows embed code and app URL with directly integrated app configuration
  * - no backwards compatibility to older forms of embed code and app ID
+ * - no QR Code when app configuration size is to much
  * - uses ccm v25.0.0
  * (for older version changes see ccm.handover_app-1.0.1.js)
  */
@@ -58,6 +59,12 @@
       };
 
       this.ready = async () => {
+
+        // app configuration is stored in a local datastore? => use app configuration without datastore
+        if ( $.isDatastore( this.data.store ) && !this.data.store.source().name ) {
+          this.data = await this.data.store.get( this.data.key );
+          delete this.data.key; delete this.data._;
+        }
 
         // logging of 'ready' event
         this.logger && this.logger.log( 'ready', $.privatize( this, true ) );
@@ -119,12 +126,16 @@
 
         // provide App via QR Code
         if ( this.enabled.qr_code && app_url && this.qr_code && qrcode ) {
-          const demoQRCode = qrcode( 0, 'M' );
-          demoQRCode.addData( app_url );
-          demoQRCode.make();
-          const qrCodeSVGTag = document.createElement( 'div' );
-          qrCodeSVGTag.innerHTML = demoQRCode.createImgTag();
-          $.setContent( this.element.querySelector( '#qr_code' ), qrCodeSVGTag.firstChild );
+          try {
+            const demoQRCode = qrcode( 0, 'M' );
+            demoQRCode.addData( app_url );
+            demoQRCode.make();
+            const qrCodeSVGTag = document.createElement( 'div' );
+            qrCodeSVGTag.innerHTML = demoQRCode.createImgTag();
+            $.setContent( this.element.querySelector( '#qr_code' ), qrCodeSVGTag.firstChild );
+          } catch ( e ) {
+            $.remove( this.element.querySelector( '#qr_code' ) );
+          }
         }
         else $.remove( this.element.querySelector( '#qr_code' ) );
 
