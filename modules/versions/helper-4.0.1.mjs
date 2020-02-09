@@ -1031,7 +1031,7 @@ export function decomposeAppURL( app_url ) {
 
   // decompose app URL
   const result = {};
-  try { app_url = decodeURIComponent( app_url ); } catch ( e ) { debugger; }
+  try { app_url = decodeURIComponent( app_url ); } catch ( e ) {}
   app_url.substr( app_url.indexOf( '#' ) + 1 ).split( '&' ).forEach( part => {
     part = part.split( '=' );
     result[ part[ 0 ] ] = part[ 1 ];
