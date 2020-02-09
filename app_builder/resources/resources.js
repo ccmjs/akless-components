@@ -78,7 +78,7 @@ ccm.files[ 'resources.js' ] = {
 
   /** configuration for user authentication */
   "user": {
-    "hash": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/md5.mjs" ],
+    "hash": [ "ccm.load", { "url": "https://ccmjs.github.io/akless-components/modules/md5.mjs", "type": "module" } ],
     "realm": "cloud",
     "store": "dms-user",
     "url": "https://ccm2.inf.h-brs.de"
