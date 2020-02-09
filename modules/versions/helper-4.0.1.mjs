@@ -3,12 +3,13 @@
  * <p>(namespaces are only used for categorization)</p>
  * @author André Kless <andre.kless@web.de> 2019-2020
  * @license The MIT License (MIT)
- * @version latest (4.0.1)
+ * @version 4.0.1
  * @changes
  * version 4.0.1 (01.02.2020):
  * - updated @examples in doc comments
  * - moved some helper functions to an other category
  * - decomposeAppURL() uses decodeURIComponent()
+ * - bug fix for onFinish() with function as settings
  * version 4.0.0 (01.02.2020): updated helper function 'decomposeAppURL' and 'decomposeEmbedCode'
  * - decomposing of an app URL or embed code which contains the config directly
  * - decomposing of an embed code which contains no script tag
@@ -586,8 +587,8 @@ export async function onFinish( settings, results ) {
     user = ccm.context.find( instance, 'user' );                         // determine nearest user instance in the ccm context of the instance
   }
 
-  if ( !settings ) return;                                           // no finish actions? => abort
-  if ( typeof settings === 'function' ) return settings( results );  // are the finish actions defined by function? => perform function with results
+  if ( !settings ) return;                                                     // no finish actions? => abort
+  if ( typeof settings === 'function' ) return settings( results, instance );  // are the finish actions defined by function? => perform function with results
 
   if ( settings.confirm && confirm( !settings.confirm ) ) return;                          // confirm box
   if ( settings.condition && !( await settings.condition( results, instance ) ) ) return;  // check condition
