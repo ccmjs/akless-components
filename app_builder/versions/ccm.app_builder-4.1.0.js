@@ -10,6 +10,8 @@
  * - supports handle of app configuration without datastore
  * - creation of apps does not need a logged in user
  * - bug fix that buttons always stay on bottom
+ * - added 'Permission denied' messages
+ * - initial dataset which not exists in the datastore counts as new app configuration
  * version 4.0.0 (18.09.2019):
  * - changed config parameters
  * - many config properties are now optional
@@ -100,13 +102,13 @@
          * dataset key of app configuration
          * @type {string}
          */
-        let app_id = has_store && !is_local && ( dataset.key || this.data.key ); delete dataset.key;
+        let app_id = has_store && !is_local && ( dataset.key ); delete dataset.key;
 
         /**
          * starting with new app configuration
          * @type {boolean}
          */
-        let is_new = !Object.keys( dataset ).length;
+        let is_new = !Object.keys( dataset ).length || app_id && !await this.data.store.get( app_id );
 
         // render main HTML structure
         $.setContent( this.element, $.html( this.html.main, {
@@ -368,7 +370,7 @@
             if ( config && config.store && config.key ) {
 
               // load app configuration
-              dataset = await self.ccm.get( config.store, config.key );
+              try { dataset = await self.ccm.get( config.store, config.key ); } catch ( e ) { alert( 'Permission denied' ); }
 
             }
             // app configuration is given directly
@@ -421,7 +423,7 @@
           self.logger && self.logger.log( 'update', $.clone( dataset ) );
 
           // save app configuration
-          app_id = await self.data.store.set( dataset ); delete dataset.key;
+          try { app_id = await self.data.store.set( dataset ); delete dataset.key; } catch ( e ) { return alert( 'Permission denied' ); }
 
           // no component for modal dialog? => abort
           if ( !self.modal_dialog ) alert( 'App updated successfully. App ID: ' + app_id );
@@ -452,14 +454,18 @@
           // logging of 'delete' event
           self.logger && self.logger.log( 'delete', $.clone( app_id ) );
 
-          // delete app metadata
-          if ( dataset.meta && self.meta_store && !is_local ) {
-            dataset = await self.data.store.get( app_id );
-            await self.meta_store.del( dataset.meta[ 1 ] );
-          }
+          try {
 
-          // delete app configuration
-          await self.data.store.del( app_id );
+            // delete app metadata
+            if ( dataset.meta && self.meta_store && !is_local ) {
+              dataset = await self.data.store.get( app_id );
+              await self.meta_store.del( dataset.meta[ 1 ] );
+            }
+
+            // delete app configuration
+            await self.data.store.del( app_id );
+
+          } catch ( e ) { return alert( 'Permission denied' ); }
 
           // forget App-ID
           app_id = undefined;
