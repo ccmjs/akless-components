@@ -21,6 +21,7 @@ ccm.files[ 'resources.js' ] = {
     //"data": { "store": [ "ccm.store", { "name": "apps" } ], "key": "app" },
     "data": { "store": [ "ccm.store", { "name": "dms-configs", "url": "https://ccm2.inf.h-brs.de" } ] },
     //"data": { "store": [ "ccm.store", { "name": "dms-configs", "url": "https://ccm2.inf.h-brs.de" } ], "key": "1562611840656X9787377358125973" },
+    //"data": { "store": [ "ccm.store", { "name": "dms-configs", "url": "https://ccm2.inf.h-brs.de" } ], "key": { "key": "default", "keywords": true } },
     "form": [ "ccm.component", "../submit/ccm.submit.js", [ "ccm.get", "../submit/resources/configs.js", "app_meta_create" ] ],
     "handover_app": [ "ccm.component", "../handover_app/ccm.handover_app.js", {
       "qr_code": [ "ccm.load", "../libs/qrcode-generator/qrcode.min.js" ],
