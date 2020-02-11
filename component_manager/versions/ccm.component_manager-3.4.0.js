@@ -440,7 +440,7 @@
         } );
 
         // perform 'onstart' callback
-        this.onstart && this.onstart( this );
+        this.onstart && await this.onstart( this );
 
         // translate content
         this.lang && this.lang.translate();
