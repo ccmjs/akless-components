@@ -6,7 +6,7 @@
  * @changes
  * version 3.4.0 (11.02.2020):
  * - uses ccm v25.0.0
- * - show demo with default app configuration when component hasn't any demo (optional)
+ * - show demo with default app configuration when managed component hasn't any demo (optional)
  * - added optional 'onstart' callback
  * version 3.3.0 (05.12.2019):
  * - considers the default configuration when passing an app configuration to an app builder
