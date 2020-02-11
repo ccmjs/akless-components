@@ -9,7 +9,7 @@
  * - updated @examples in doc comments
  * - moved some helper functions to an other category
  * - decomposeAppURL() uses decodeURIComponent()
- * - bug fix for onFinish() with function as settings
+ * - bug fix for callback parameters in onFinish()
  * version 4.0.0 (01.02.2020): updated helper function 'decomposeAppURL' and 'decomposeEmbedCode'
  * - decomposing of an app URL or embed code which contains the config directly
  * - decomposing of an embed code which contains no script tag
@@ -593,7 +593,7 @@ export async function onFinish( settings, results ) {
   if ( settings.confirm && confirm( !settings.confirm ) ) return;                          // confirm box
   if ( settings.condition && !( await settings.condition( results, instance ) ) ) return;  // check condition
   user && settings.login && await user.login();                                            // login user (if not already logged in)
-  if ( settings.convert ) results = await settings.convert( results );                     // adjust result data
+  if ( settings.convert ) results = await settings.convert( results, instance );           // adjust result data
   settings.log && console.log( results );                                                  // log result data (if necessary)
   if ( instance && settings.clear ) instance.element.innerHTML = '';                       // clear website area of the instance (if necessary)
 
