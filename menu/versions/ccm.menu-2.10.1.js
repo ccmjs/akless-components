@@ -79,7 +79,7 @@
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/menu/resources/default.css" ],
       "data": { "store": [ "ccm.store" ] },
 //    "deselectable": true,
-      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-2.0.0.mjs" ],
+      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-4.0.1.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/menu/resources/templates.html" ],
 //    "keyboard_control": true,
 //    "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js" ],
