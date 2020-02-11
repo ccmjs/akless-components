@@ -8,6 +8,7 @@ ccm.files[ 'resources.js' ] = {
 
   /** test configuration (relative paths) */
   "local": {
+    "convert.1.url": "../modules/json2json.mjs",
     "helper.1": "../modules/helper.mjs",
     "html.1": "../image_map_builder/resources/templates.html",
     "image_map.1": "../image_map/ccm.image_map.js",

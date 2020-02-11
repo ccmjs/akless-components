@@ -2,6 +2,7 @@
  * @overview ccm component for building image maps
  * @author André Kless <andre.kless@web.de> 2020
  * @license The MIT License (MIT)
+ * @version latest (1.0.0)
  * @changes
  * version 1.0.0 (05.02.2020)
  */
@@ -15,7 +16,7 @@
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-25.0.0.js',
 
     config: {
-      "convert": json => json.slides ? json.slides[ 0 ].data : undefined,
+      "convert": [ "ccm.load", { "url": "https://ccmjs.github.io/akless-components/modules/json2json.mjs", "import": "upload2data" } ],
       "data": {},
       "default_image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=",
       "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-4.0.1.mjs" ],
