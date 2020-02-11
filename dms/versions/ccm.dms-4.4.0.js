@@ -404,13 +404,7 @@
               root: content,
               data: { store: [ 'ccm.store', this.components.source() ] },
               onfinish: {
-                condition: async form => {
-
-                  /**
-                   * entered component metadata
-                   * @type {Object}
-                   */
-                  const results = form.getValue();
+                condition: async results => {
 
                   // validate component object
                   try {
