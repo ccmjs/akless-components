@@ -10,6 +10,7 @@
  * - app store is optional
  * - bug fix for publish already existing component
  * - bug fix for show correct active menu entry
+ * - bug fix for usage of optional default icon when a new component is published
  * - adding of versions selector box via 'onstart' callback of component manager
  * - added 'Add Version' entry in versions selector box for publish new version of a component (optional)
  * - a deleted component is directly removed from local components list (no more need for page reload)
@@ -444,6 +445,7 @@
                     ignore: { demos: [], builders: [] },
                     _: { access: { get: 'all', set: 'creator', del: 'creator' } }
                   } );
+                  if ( !json.icon && this.default_icon ) json.icon = this.default_icon;
 
                   // set component identifier and version
                   json.version = json.key.split( '-' );
