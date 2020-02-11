@@ -570,7 +570,7 @@
                   if ( url.name !== component.identifier ) return alert( 'Invalid component name' );
                   if ( versions.includes( url.version ) ) return alert( 'Version already exists' );
                   component.path = url.url; component.version = url.version; component.key = url.index; delete component.created_at; delete component.updated_at;
-                  component.ignore.demos.forEach( demo => demo.app[ 1 ] = component.version );
+                  component.ignore.demos.forEach( demo => demo.app[ 1 ] = component.path );
                   await this.components.set( component );
                   await components.set( component );
                   await showComponent( component.key );
