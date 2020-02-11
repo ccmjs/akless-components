@@ -424,7 +424,7 @@
                   return !component.length;
 
                 },
-                convert: async json => {
+                convert: async ( json, instance ) => {
 
                   /**
                    * user data
@@ -434,7 +434,7 @@
 
                   // expand entered component metadata
                   Object.assign( json, {
-                    key: $.convertComponentURL( json.path ).index,
+                    key: instance.data.key = $.convertComponentURL( json.path ).index,
                     metaFormat: 'ccm-meta',
                     metaVersion: '2.0.0',
                     format: 'application/js',
