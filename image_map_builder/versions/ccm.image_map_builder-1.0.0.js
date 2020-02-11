@@ -152,7 +152,7 @@
           const copy = $.clone( config );
           copy.data.areas.forEach( area => {
             if ( area.x === undefined ) area.x = area.y = 1;
-            delete area.app;
+            delete area.action;
           } );
           const image_map = await this.image_map.start( Object.assign( {}, copy, { root: this.element.querySelector( '#placement' ) } ) );
           const draggable = ( element, i ) => {
