@@ -1,6 +1,6 @@
 /**
- * @overview data-based resources of ccm component for digital makerspace
- * @author André Kless <andre.kless@web.de> 2019
+ * @overview data-based resources of ccm component for Digital Makerspace
+ * @author André Kless <andre.kless@web.de> 2019-2020
  * @license The MIT License (MIT)
  */
 
@@ -8,6 +8,7 @@ ccm.files[ 'resources.js' ] = {
 
   /** test configuration (relative paths) */
   "local": {
+    "add_version": true,
     "analytics": [ "ccm.component", "../dms_analytics/ccm.dms_analytics.js", [ "ccm.get", "../dms_analytics/resources/configs.js", "local" ] ],
     "app_manager": [ "ccm.component", "../app_manager/ccm.app_manager.js", [ "ccm.get", "../app_manager/resources/configs.js", "local" ] ],
     "apps": [ "ccm.store", { "name": "dms-apps", "url": "https://ccm2.inf.h-brs.de" } ],
@@ -20,6 +21,7 @@ ccm.files[ 'resources.js' ] = {
     "components": [ "ccm.store", { "name": "dms-components", "url": "https://ccm2.inf.h-brs.de" } ],
     "default_icon": "../dms/resources/img/default.png",
     "form": [ "ccm.component", "../submit/ccm.submit.js", [ "ccm.get", "../submit/resources/configs.js", "component_meta_create" ] ],
+    "helper.1": "../modules/helper.mjs",
     "html.1": "../dms/resources/html/dms.html",
     "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js", [ "ccm.get", "../dms/resources/resources.js", "lang" ] ],
     "listing": {
@@ -65,13 +67,14 @@ ccm.files[ 'resources.js' ] = {
 
   /** live configuration */
   "live": {
+    "add_version": true,
     "analytics": [ "ccm.component", "https://ccmjs.github.io/akless-components/dms_analytics/versions/ccm.dms_analytics-1.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/dms_analytics/resources/configs.js", "live" ] ],
     "app_manager": [ "ccm.component", "https://ccmjs.github.io/akless-components/app_manager/versions/ccm.app_manager-1.4.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/app_manager/resources/configs.js", "live" ] ],
     "apps": [ "ccm.store", { "name": "dms-apps", "url": "https://ccm2.inf.h-brs.de" } ],
     "component_manager": [ "ccm.component", "https://ccmjs.github.io/akless-components/component_manager/versions/ccm.component_manager-3.4.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/component_manager/resources/resources.js", "live" ] ],
     "components": [ "ccm.store", { "name": "dms-components", "url": "https://ccm2.inf.h-brs.de" } ],
     "default_icon": "https://ccmjs.github.io/akless-components/dms/resources/img/default.png",
-    "form": [ "ccm.component", "https://ccmjs.github.io/akless-components/submit/versions/ccm.submit-7.3.2.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/submit/resources/configs.js", "component_meta_create" ] ],
+    "form": [ "ccm.component", "https://ccmjs.github.io/akless-components/submit/versions/ccm.submit-7.3.3.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/submit/resources/configs.js", "component_meta_create" ] ],
     "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/dms/resources/resources.js", "lang" ] ],
     "listing": {
       "apps": [ "ccm.component", "https://ccmjs.github.io/akless-components/listing/versions/ccm.listing-3.3.0.js", {
