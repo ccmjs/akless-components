@@ -8,6 +8,7 @@
  * - uses ccm v25.0.0
  * - show demo with default app configuration when managed component hasn't any demo (optional)
  * - added optional 'onstart' callback
+ * - added optional 'onchange' callback (triggers only on deletion of the managed component)
  * version 3.3.0 (05.12.2019):
  * - considers the default configuration when passing an app configuration to an app builder
  * - uses ccm v24.1.1
@@ -76,6 +77,7 @@
       "menu_app": [ "ccm.component", "https://ccmjs.github.io/akless-components/menu/versions/ccm.menu-2.10.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/component_manager/resources/resources.js", "menu_app" ] ],
       "menu_top": [ "ccm.component", "https://ccmjs.github.io/akless-components/menu/versions/ccm.menu-2.10.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/component_manager/resources/resources.js", "menu_top" ] ],
 //    "onstart": instance => console.log( instance ),
+//    "onchange": event => console.log( event ),
 //    "rating": [ "ccm.component", "https://ccmjs.github.io/tkless-components/star_rating/versions/ccm.star_rating-5.0.0.js" ],
 //    "rating_result": [ "ccm.component", "https://ccmjs.github.io/tkless-components/star_rating_result/versions/ccm.star_rating_result-5.0.0.js" ],
 //    "routing": [ "ccm.instance", "https://ccmjs.github.io/akless-components/routing/versions/ccm.routing-2.0.4.js" ],
@@ -155,8 +157,11 @@
                   // logging of 'delete' event
                   this.logger && this.logger.log( 'delete', { store: this.data.store.source(), key: dataset.key } );
 
+                  // perform 'onchange' callback
+                  this.onchange && await this.onchange( { event: 'del', instance: this, dataset: $.clone( dataset ), store: this.data.store.source() } );
+
                   // restart app
-                  this.start();
+                  await this.start();
 
                 } );
 
