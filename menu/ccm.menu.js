@@ -148,10 +148,12 @@
 
         // want specific preselected menu entry? => trigger click event
         if ( this.selected && ( !this.routing || !this.routing.get() ) ) {
+          let entry;
           if ( typeof this.selected === 'string' )
-            entries_elem.querySelector( '#entry-' + this.selected ).click();
+            entry = entries_elem.querySelector( '#entry-' + this.selected );
           else
-            entries_elem.querySelectorAll( '.entry' )[ this.selected - 1 ].click();
+            entry = entries_elem.querySelectorAll( '.entry' )[ this.selected - 1 ];
+          entry && entry.click();
         }
 
         // keyboard + remote control
