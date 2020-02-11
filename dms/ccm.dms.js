@@ -565,7 +565,7 @@
               options.length > 1 && $.replace( version_number, $.html( { tag: 'select', id: 'version_number', class: 'text-muted', inner: options, onchange: async event => {
                 if ( event.target.value === 'add' ) {
                   let url = prompt( 'Please enter the URL of the component version file:' );
-                  if ( !$.regex( 'filename' ).test( url.split( '/' ).pop() ) ) return alert( 'Invalid component URL' );
+                  if ( !url || typeof url !== 'string' || !$.regex( 'filename' ).test( url.split( '/' ).pop() ) ) return alert( 'Invalid component URL' );
                   url = $.convertComponentURL( url );
                   if ( url.name !== component.identifier ) return alert( 'Invalid component name' );
                   if ( versions.includes( url.version ) ) return alert( 'Version already exists' );
