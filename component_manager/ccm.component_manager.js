@@ -8,7 +8,7 @@
  * - uses ccm v25.0.0
  * - show demo with default app configuration when managed component hasn't any demo (optional)
  * - added optional 'onstart' callback
- * - added optional 'onchange' callback (triggers only on deletion of the managed component)
+ * - added optional 'onchange' callback
  * version 3.3.0 (05.12.2019):
  * - considers the default configuration when passing an app configuration to an app builder
  * - uses ccm v24.1.1
@@ -155,7 +155,7 @@
                 this.data.store.del( dataset.key ).then( async () => {
 
                   // logging of 'delete' event
-                  this.logger && this.logger.log( 'delete', { store: this.data.store.source(), key: dataset.key } );
+                  this.logger && this.logger.log( 'delete', { dataset: $.clone( dataset ), store: this.data.store.source(), key: dataset.key } );
 
                   // perform 'onchange' callback
                   this.onchange && await this.onchange( { event: 'del', instance: this, dataset: $.clone( dataset ), store: this.data.store.source() } );
@@ -236,7 +236,18 @@
                   return json;
                 },
                 store: true,
-                callback: this.start
+                callback: async ( results, instance ) => {
+
+                  // logging of 'edit' event
+                  this.logger && this.logger.log( 'edit', { dataset: $.clone( results ), store: this.data.store.source(), key: results.key } );
+
+                  // perform 'onchange' callback
+                  this.onchange && await this.onchange( { event: 'edit', instance: this, dataset: $.clone( results ), store: this.data.store.source() } );
+
+                  // restart app
+                  await this.start();
+
+                }
               }
             } );
 
