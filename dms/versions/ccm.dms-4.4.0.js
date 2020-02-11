@@ -12,6 +12,7 @@
  * - bug fix for show correct active menu entry
  * - adding of versions selector box via 'onstart' callback of component manager
  * - added 'Add Version' entry in versions selector box for publish new version of a component (optional)
+ * - a deleted component is directly removed from local components list (no more need for page reload)
  * version 4.3.0 (22.12.2019):
  * - DMS analytics is optional
  * - bug fix for listing of all apps without icons
@@ -542,6 +543,7 @@
               key: index
             },
             'ignore.create_similar_app': $.clone( config ),
+            onchange: async event => event.event === 'del' && await components.del( event.dataset.key ),
             onstart: async component_manager => {
 
               // replace version number with selector box
