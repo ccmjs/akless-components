@@ -1,6 +1,6 @@
 /**
  * @overview Module for conversion of JSON
- * @author André Kless <andre.kless@web.de> 2018
+ * @author André Kless <andre.kless@web.de> 2019-2020
  * @license The MIT License (MIT)
  */
 
@@ -82,4 +82,13 @@ export function poll_to_highchart( poll, answers ) {
     }
   };
 
+}
+
+/**
+ * converts result data of ccm.file_upload.js to base64 encoded file data
+ * @param {Object} json - result data of ccm.file_upload.js
+ * @returns {String} base64 encoded file data
+ */
+export function upload2data( json ) {
+  return json.slides ? json.slides[ 0 ].data : undefined;
 }
