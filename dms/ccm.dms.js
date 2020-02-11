@@ -454,9 +454,9 @@
                 login: true,
                 store: true,
                 alert: 'Congratulations! You have successfully published a component.',
-                callback: async ( instance, result ) => {
-                  await components.set( result );          // add component in local components data
-                  await showComponent( result.key );       // show published component in component manager
+                callback: async results => {
+                  await components.set( results );     // add component in local components data
+                  await showComponent( results.key );  // show published component in component manager
                 }
               }
             } );
