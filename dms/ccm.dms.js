@@ -546,8 +546,15 @@
             },
             'ignore.create_similar_app': $.clone( config ),
             onchange: async event => {
-              event.event === 'del' && await components.del( event.dataset.key );
-              await menu.select( 'components' );
+              switch ( event.event ) {
+                case 'edit':
+                  await components.set( event.dataset );
+                  break;
+                case 'del':
+                  await components.del( event.dataset.key );
+                  await menu.select( 'components' );
+                  break;
+              }
             },
             onstart: async component_manager => {
 
