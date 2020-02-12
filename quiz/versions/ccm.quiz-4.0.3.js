@@ -2,7 +2,7 @@
  * @overview ccm component for quiz
  * @author André Kless <andre.kless@web.de> 2016-2020
  * @license The MIT License (MIT)
- * @version latest (4.0.3)
+ * @version 4.0.3
  * @changes
  * version 4.0.3 (12.02.2020):
  * - uses ccm v25.0.0
@@ -26,7 +26,7 @@
 
   const component = {
 
-    name: 'quiz',
+    name: 'quiz', version: [ 4, 0, 3 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-25.0.0.js',
 
