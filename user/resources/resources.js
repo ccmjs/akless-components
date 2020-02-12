@@ -1,50 +1,59 @@
 /**
  * @overview data-based resources of ccm component for user authentication
- * @author André Kless <andre.kless@web.de> 2019
+ * @author André Kless <andre.kless@web.de> 2019-2020
  * @license The MIT License (MIT)
  */
 
 ccm.files[ 'resources.js' ] = {
 
-  "cfg_local": {
+  /** test configuration (relative paths) */
+  "local": {
     "css": [ "ccm.load",
       "../libs/bootstrap/css/bootstrap.css",
       { "context": "head", "url": "../libs/bootstrap/css/font-face.css" },
       "../user/resources/default.css"
     ],
+    "helper.1": "../modules/versions/helper-4.0.1.mjs",
     "html": [ "ccm.get", "../user/resources/resources.js", "html" ],
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ]
   },
 
-  "cfg_guest": {
+  /** guest mode configuration */
+  "guest": {
     "title": "Guest Mode: Please enter any username"
   },
 
-  "cfg_pseudo": {
+  /** one-time pseudonym configuration */
+  "pseudo": {
     "realm": "guest",
     "guest": true
   },
 
-  "cfg_cloud": {
+  /** cloud mode configuration */
+  "cloud": {
     "realm": "cloud",
     "url": "https://ccm2.inf.h-brs.de",
     "title": "Please enter username and password",
     "hash": [ "ccm.load", { "url": "https://ccmjs.github.io/akless-components/modules/md5.mjs", "type": "module" } ]
   },
 
-  "cfg_hbrsinfkaul": {
+  /** configuration for login with a Hochschule Bonn-Rhein-Sieg FB02 Computer Science account */
+  "hbrsinfkaul": {
     "realm": "hbrsinfkaul"
   },
 
-  "cfg_hbrsinfpseudo": {
+  /** configuraiton for pseudonym mode of login with a Hochschule Bonn-Rhein-Sieg FB02 Computer Science account */
+  "hbrsinfpseudo": {
     "realm": "hbrsinfpseudo"
   },
 
-  "cfg_lea": {
+  /** configuration for adaptation of a LEA account (LEA is the learning platform of the Hochschule Bonn-Rhein-Sieg) */
+  "lea": {
     "realm": "lea"
   },
 
-  "cfg_compact": {
+  /** compact mode for guest configuration */
+  "compact": {
     "title": "Guest Mode: Please enter any username",
     "html.logged_in": {
       "id": "logged_in",
@@ -89,6 +98,7 @@ ccm.files[ 'resources.js' ] = {
     }
   },
 
+  /** HTML templates */
   "html": {
     "logged_in": {
       "id": "logged_in",

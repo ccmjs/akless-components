@@ -2,7 +2,7 @@
  * @overview ccm component for user authentication
  * @author André Kless <andre.kless@web.de> 2017-2020
  * @license The MIT License (MIT)
- * @version latest (9.3.1)
+ * @version 9.3.1
  * @changes
  * version 9.3.1 (12.02.2020):
  * - uses ccm v25.0.0
@@ -33,7 +33,7 @@
 
   const component = {
 
-    name: 'user',
+    name: 'user', version: [ 9, 3, 1 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-25.0.0.js',
 
