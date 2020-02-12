@@ -1,6 +1,6 @@
 /**
  * @overview static data-based resources of ccm component for quiz
- * @author André Kless <andre.kless@web.de> 2019
+ * @author André Kless <andre.kless@web.de> 2019-2020
  * @license The MIT License (MIT)
  */
 
@@ -13,10 +13,11 @@ ccm.files[ 'resources.js' ] = {
       { "context": "head", "url": "../resources/fonts/WeblySleekUI/font.css" }
     ],
     "feedback": true,
+    "helper.1": "../modules/helper.mjs",
     "html.1": "../quiz/resources/templates.html",
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
     "navigation": true,
-    "onfinish": { "restart": true, "store": false },
+    "onfinish": { "restart": true },
     "placeholder.finish": "Restart",
     "questions": [ "ccm.get", "../quiz/resources/resources.js", "data.questions" ],
     "show_results": false,
