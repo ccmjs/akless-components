@@ -125,7 +125,7 @@
         else $.remove( this.element.querySelector( '#app_url' ) );
 
         // provide App via QR Code
-        if ( this.enabled.qr_code && app_url && this.qr_code && qrcode ) {
+        if ( this.enabled.qr_code && app_url && app_id && this.qr_code && qrcode ) {
           try {
             const demoQRCode = qrcode( 0, 'M' );
             demoQRCode.addData( app_url );
