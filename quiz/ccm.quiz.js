@@ -67,8 +67,8 @@
         {
           "text": "First Question",
           "answers": [
-            "Answer A",
-            "Answer B"
+            { "text": "Answer A" },
+            { "text": "Answer B" }
           ]
         }
       ],
