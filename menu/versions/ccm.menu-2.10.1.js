@@ -6,6 +6,7 @@
  * @changes
  * version 2.10.1 (31.01.2020):
  * - uses ccm v25.0.0
+ * - no default for optional preselected menu entry
  * version 2.10.0 (30.01.2020):
  * - added 'getValue' method which returns currently selected menu entry
  * - added tooltip for menu entries which shows the menu entry ID
@@ -86,7 +87,7 @@
 //    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.2.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
 //    "onclick": ( event_data, instance ) => console.log( event_data, instance ),
 //    "routing": [ "ccm.instance", "https://ccmjs.github.io/akless-components/routing/versions/ccm.routing-2.0.4.js", { "app": true } ],
-      "selected": 1,
+//    "selected": 1,
 //    "touch_control": true,
 //    "trigger_selected": true
     },
