@@ -2,7 +2,7 @@
  * @overview ccm component for rendering a predefined content
  * @author André Kless <andre.kless@web.de> 2016-2020
  * @license The MIT License (MIT)
- * @version latest (5.4.5)
+ * @version 5.4.5
  * @changes
  * version 5.4.5 (16.02.2020):
  * - uses ccm v25.0.0
@@ -46,7 +46,7 @@
 
   const component = {
 
-    name: 'content',
+    name: 'content', version: [ 5, 4, 5 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-25.0.0.js',
 

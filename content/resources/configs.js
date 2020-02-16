@@ -1,6 +1,6 @@
 /**
  * @overview configurations of ccm component for rendering a predefined content
- * @author André Kless <andre.kless@web.de> 2017-2019
+ * @author André Kless <andre.kless@web.de> 2017-2020
  * @license The MIT License (MIT)
  */
 
@@ -8,6 +8,7 @@ ccm.files[ 'configs.js' ] = {
 
   /** local test and remote demo */
   "local": {
+    "helper.1": "../modules/helper.mjs",
     "inner": "<source src=../blank/ccm.blank.js>Welcome.<ccm-blank></ccm-blank>Good day."
   },
   "demo": {
