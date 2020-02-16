@@ -12,6 +12,7 @@
  * - bug fix that buttons always stay on bottom
  * - added 'Permission denied' messages
  * - initial dataset which not exists in the datastore counts as new app configuration
+ * - apps with to much config size can only be created as logged in user
  * version 4.0.0 (18.09.2019):
  * - changed config parameters
  * - many config properties are now optional
@@ -188,11 +189,20 @@
         /** when "Create" button has been clicked */
         async function createApp() {
 
-          // get app metadata from user
-          const metadata = await getMetadata();
-
           // get current app configuration from app-specific builder
           dataset = self.getValue(); delete dataset.key;
+
+          // config size is to much? => user must login or app creation fails
+          if ( $.stringify( dataset ).length > 500000 )
+            if ( self.user ) {
+              if ( !self.user.isLoggedIn() )
+                alert( 'Apps of this size can only be created as logged in user.' );
+              await self.user.login();
+            }
+            else return alert( 'Failed: App size is to big' );
+
+          // get app metadata from user
+          const metadata = await getMetadata();
 
           // add permission settings and dataset key of metadata
           if ( self.user && self.user.isLoggedIn() && has_store && !is_local ) dataset._ = { access: { get: 'all', set: 'creator', del: 'creator' } };
