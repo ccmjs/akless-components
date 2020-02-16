@@ -28,7 +28,7 @@
 
   const component = {
 
-    name: 'routing',
+    name: 'routing', version: [ 2, 0, 5 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-25.0.0.js',
 
