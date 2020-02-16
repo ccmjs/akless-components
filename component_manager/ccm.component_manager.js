@@ -93,9 +93,6 @@
         // set shortcut to help functions
         $ = Object.assign( {}, this.ccm.helper, this.helper );
 
-        // listen to login/logout events => restart
-        if ( this.user ) this.user.onchange = this.start;
-
       };
 
       this.ready = async () => {
