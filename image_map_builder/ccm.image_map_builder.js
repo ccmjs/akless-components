@@ -131,7 +131,10 @@
         // render submit builder
         const submit = await this.submit.start( {
           root: this.element.querySelector( '#submit' ),
-          data: $.clone( config ),
+          data: {
+            store: [ 'ccm.store', { app: $.clone( config ) } ],
+            key: 'app'
+          },
           onchange: async () => {
             const results = submit.getValue();
             results.data.image = this.convert( results.data.image ) || config.data.image;
