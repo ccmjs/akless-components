@@ -165,16 +165,16 @@
               },
               onfinish: {
                 store: true,
-                callback: async instance => {
+                callback: async results => {
 
                   // logging of 'update' event
-                  this.logger && this.logger.log( 'update', { store: this.data.store.source(), dataset: instance.getValue() } );
+                  this.logger && this.logger.log( 'update', { store: this.data.store.source(), dataset: results } );
 
                   // restart
                   await this.start();
 
                   // perform 'onchange' callback
-                  this.onchange && this.onchange( { event: 'update', instance: this, dataset: instance.getValue() } );
+                  this.onchange && this.onchange( { event: 'update', instance: this, dataset: results } );
 
                 }
               }
