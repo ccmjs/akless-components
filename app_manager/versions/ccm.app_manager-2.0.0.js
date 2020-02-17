@@ -2,7 +2,7 @@
  * @overview ccm component for managing an app
  * @author André Kless <andre.kless@web.de> 2019-2020
  * @license MIT License
- * @version latest (2.0.0)
+ * @version 2.0.0
  * @changes
  * version 2.0.0 (17.02.2020)
  * - uses ccm v25.0.0
@@ -37,7 +37,7 @@
 
   const component = {
 
-    name: 'app_manager',
+    name: 'app_manager', version: [ 2, 0, 0 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-25.0.0.js',
 

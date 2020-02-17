@@ -1,6 +1,6 @@
 /**
  * @overview configurations of ccm component for app manager
- * @author André Kless <andre.kless@web.de> 2019
+ * @author André Kless <andre.kless@web.de> 2019-2020
  * @license The MIT License (MIT)
  */
 
@@ -27,7 +27,7 @@ ccm.files[ 'configs.js' ] = {
       "qr_code": [ "ccm.load", "../libs/qrcode-generator/qrcode.min.js" ],
       "window": [ "ccm.component", "../window/ccm.window.js" ]
     } ],
-    "helper": [ "ccm.load", "../modules/helper.mjs" ],
+    "helper.1": "../modules/helper.mjs",
     "html.1": "../app_manager/resources/templates.html",
     "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js", {
       "translations": {
