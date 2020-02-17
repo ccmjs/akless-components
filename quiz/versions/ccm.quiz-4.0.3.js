@@ -660,7 +660,7 @@
                 // user gives no value for a (correct) multiple choice answer? => mark missed correct answer as correct
                 input === false && solution !== false && answer.elem.classList.add( 'correct' );
 
-                // number or text input field and user gives not correct value? => show user correct value (via placeholder attribute)
+                // number or text input field and user gives not correct value? => show user correct value
                 if ( question.input !== 'checkbox' && solution !== '' && input !== solution )
                   answer.comment = self.placeholder.correct + solution + ( answer.comment ? '. ' + answer.comment : '' );
 
