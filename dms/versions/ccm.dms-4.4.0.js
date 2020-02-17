@@ -2,7 +2,7 @@
  * @overview ccm component for Digital Makerspace
  * @author André Kless <andre.kless@web.de> 2018-2020
  * @license MIT License
- * @version 4.4.0
+ * @version latest (4.4.0)
  * @changes
  * version 4.4.0 (11.02.2020):
  * - uses ccm v25.0.0
@@ -14,6 +14,7 @@
  * - adding of versions selector box via 'onstart' callback of component manager
  * - added 'Add Version' entry in versions selector box for publish new version of a component (optional)
  * - a deleted component is directly removed from local components list (no more need for page reload)
+ * - uses onstart callback of app manager
  * version 4.3.0 (22.12.2019):
  * - DMS analytics is optional
  * - bug fix for listing of all apps without icons
@@ -45,14 +46,14 @@
 
   const component = {
 
-    name: 'dms', version: [ 4, 4, 0 ],
+    name: 'dms',
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-25.0.0.js',
 
     config: {
 //    "add_version": true,
 //    "analytics": [ "ccm.component", "https://ccmjs.github.io/akless-components/dms_analytics/versions/ccm.dms_analytics-1.0.0.js" ],
-//    "app_manager": [ "ccm.component", "https://ccmjs.github.io/akless-components/app_manager/versions/ccm.app_manager-1.4.0.js" ],
+//    "app_manager": [ "ccm.component", "https://ccmjs.github.io/akless-components/app_manager/versions/ccm.app_manager-2.0.0.js" ],
 //    "apps": [ "ccm.store" ],
       "css": [ "ccm.load",
         "https://ccmjs.github.io/akless-components/dms/resources/css/dms.css",
@@ -491,6 +492,9 @@
             default_icon: this.default_icon,
             onchange: async event => {
 
+              // edited app metadata? => update app in local apps data
+              if ( event.event === 'update' ) await apps.set( await this.apps.get( id ) );
+
               // deleted app metadata and config?
               if ( event.event === 'delete' ) {
                 await apps.del( event.dataset.key );  // delete app in local apps data
@@ -498,25 +502,28 @@
                 menu.select( 'apps' );                // render apps view
               }
 
-              // edited app metadata? => update app in local apps data
-              if ( event.event === 'update' ) await apps.set( await this.apps.get( id ) );
+            },
+            onstart: async app_manager => {
+
+              /**
+               * app metadata
+               * @type {Object}
+               */
+              const meta = await apps.get( id );
+
+              // render 'Create Similar App' button
+              $.append( app_manager.element.querySelector( '#main' ), $.html( {
+                "id": "create_similar_app",
+                "inner": {
+                  "tag": "button",
+                  "style": "font-size: large; padding: 0.5em; margin: 1em 0; width: 100%;",
+                  "inner": "Create Similar App",
+                  "onclick": async () => await showComponent( $.convertComponentURL( meta.path ).index, await $.solveDependency( [ 'ccm.get', meta.source[ 0 ], meta.source[ 1 ] ] ) )
+                }
+              } ) );
 
             }
           } );
-
-          /**
-           * app metadata
-           * @type {Object}
-           */
-          const meta = await apps.get( id );
-
-          // render 'Create Similar App' button
-          $.append( content, $.html( {
-            "tag": "button",
-            "style": "font-size: large; padding: 0.5em; margin: 0.5em;",
-            "inner": "Create Similar App",
-            "onclick": async () => await showComponent( $.convertComponentURL( meta.path ).index, await $.solveDependency( [ 'ccm.get', meta.source[ 0 ], meta.source[ 1 ] ] ) )
-          } ) );
 
         };
 
