@@ -15,6 +15,7 @@
  * - added 'Add Version' entry in versions selector box for publish new version of a component (optional)
  * - a deleted component is directly removed from local components list (no more need for page reload)
  * - uses onstart callback of app manager
+ * - bug fix for correct default icon for app manager
  * version 4.3.0 (22.12.2019):
  * - DMS analytics is optional
  * - bug fix for listing of all apps without icons
@@ -489,7 +490,7 @@
               store: [ 'ccm.store', this.apps.source() ],
               key: id
             },
-            default_icon: this.default_icon,
+            default_icon: ( await components.get( $.convertComponentURL( ( await apps.get( id ) ).path ).index ) ).icon || this.default_icon,
             onchange: async event => {
 
               // edited app metadata? => update app in local apps data
