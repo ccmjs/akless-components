@@ -123,6 +123,22 @@ ccm.files[ 'configs.js' ] = {
         "maxlength": 70
       },
       {
+        "label": "Component",
+        "name": "path",
+        "type": "text",
+        "info": "The public URL of the component used to display the app.",
+        "items": [
+          {
+            "label": "English",
+            "value": "en"
+          },
+          {
+            "label": "German",
+            "value": "de"
+          }
+        ]
+      },
+      {
         "label": "Description",
         "name": "description",
         "type": "textarea",
@@ -160,7 +176,7 @@ ccm.files[ 'configs.js' ] = {
             "label": "German",
             "value": "de"
           }
-        ]
+        ],
       },
       "<div class='well'><p>I agree that all software of my app is released as free software under the <a href='https://en.wikipedia.org/wiki/MIT_License' target='_blank'>MIT license</a>.</p><p>I agree that all content of my app will be released as public domain under the <a href='https://creativecommons.org/share-your-work/public-domain/cc0/' target='_blank'>CC0 license</a>.</p>I confirm that this does not violate the copyright of third parties.</div>",
       {
