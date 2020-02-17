@@ -2,7 +2,7 @@
  * @overview ccm component for Digital Makerspace
  * @author André Kless <andre.kless@web.de> 2018-2020
  * @license MIT License
- * @version latest (4.4.0)
+ * @version 4.4.0
  * @changes
  * version 4.4.0 (11.02.2020):
  * - uses ccm v25.0.0
