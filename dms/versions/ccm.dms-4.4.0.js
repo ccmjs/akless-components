@@ -46,7 +46,7 @@
 
   const component = {
 
-    name: 'dms',
+    name: 'dms', version: [ 4, 4, 0 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-25.0.0.js',
 
