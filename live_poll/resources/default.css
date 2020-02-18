@@ -76,10 +76,19 @@
   width: 30px;
   text-align: center;
   cursor: pointer;
+  white-space: nowrap;
+}
+
+#main #question #lock span {
+  font-size: small;
 }
 
 #main #question #lock:hover {
   font-size: xx-large;
+}
+
+#main #question #lock:hover span {
+  font-size: x-large;
 }
 
 #main #answers .answer {
