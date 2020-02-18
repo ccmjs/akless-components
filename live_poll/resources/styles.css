@@ -1,6 +1,6 @@
 /**
  * @overview default layout of ccm component for live poll
- * @author André Kless <andre.kless@web.de.de> 2019
+ * @author André Kless <andre.kless@web.de.de> 2019-2020
  * @license The MIT License (MIT)
  */
 
@@ -76,10 +76,19 @@
   width: 30px;
   text-align: center;
   cursor: pointer;
+  white-space: nowrap;
+}
+
+#main #question #lock span {
+  font-size: small;
 }
 
 #main #question #lock:hover {
   font-size: xx-large;
+}
+
+#main #question #lock:hover span {
+  font-size: x-large;
 }
 
 #main #answers .answer {
