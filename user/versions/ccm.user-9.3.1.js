@@ -7,6 +7,7 @@
  * version 9.3.1 (12.02.2020):
  * - uses ccm v25.0.0
  * - bug fix for user key on realm 'hbrsinfkaul' and 'hbrsinfpseudo'
+ * - changed default title text of login dialog
  * version 9.3.0 (09.10.2019):
  * - added optional restart of parent instance after logout
  * version 9.2.1 (09.10.2019):
@@ -55,7 +56,7 @@
       "realm": "guest",
 //    "restart": true,
 //    "store": "ccm-user",
-      "title": "Please enter username and password",
+      "title": "Guest Mode: Please enter any username"
 //    "url": "ccm2.inf.h-brs.de"
 
     },

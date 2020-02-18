@@ -18,11 +18,6 @@ ccm.files[ 'resources.js' ] = {
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ]
   },
 
-  /** guest mode configuration */
-  "guest": {
-    "title": "Guest Mode: Please enter any username"
-  },
-
   /** one-time pseudonym configuration */
   "pseudo": {
     "realm": "guest",
