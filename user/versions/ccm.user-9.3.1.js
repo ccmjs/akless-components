@@ -6,7 +6,7 @@
  * @changes
  * version 9.3.1 (12.02.2020):
  * - uses ccm v25.0.0
- * - bug fix for user key on realm 'hbrsinfkaul' and 'hbrsinfpseudo'
+ * - bug fix for user key
  * - changed default title text of login dialog
  * version 9.3.0 (09.10.2019):
  * - added optional restart of parent instance after logout
@@ -162,7 +162,7 @@
                   result = await renderLogin( this.title );
                   if ( !result ) { await this.start(); throw new Error( 'login aborted' ); }
                 }
-                result.token = result.user;
+                result.key = result.token = result.user;
                 break;
               case 'hbrsinfkaul':
                 result = await this.ccm.load( { url: 'https://kaul.inf.h-brs.de/login/login.php', method: 'JSONP', params: { realm: my.realm } } );
