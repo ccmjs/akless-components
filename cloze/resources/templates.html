@@ -1,0 +1,49 @@
+<!--
+@overview HTML template of ccm component fill-in-the-blank texts
+@author André Kless <andre.kless@web.de.de> 2020
+-->
+
+<ccm-template key="start">
+  <div id="start">
+    <button onclick="%onclick%">%caption%</button>
+  </div>
+</ccm-template>
+
+<ccm-template key="main">
+  <div id="main">
+    <div class="row" id="keywords"></div>
+    <div class="row" id="box">
+      <div id="text"></div>
+      <div id="buttons">
+        <div id="cancel"></div>
+        <div id="submit"></div>
+        <div id="finish"></div>
+        <div id="timer"></div>
+      </div>
+    </div>
+    <div id="conclusion"></div>
+  </div>
+</ccm-template>
+
+<ccm-template key="keyword">
+  <div class="keyword" onclick="%onclick%">%keyword%</div>
+</ccm-template>
+
+<ccm-template key="input">
+  <input type="text" size="10" autocorrect="off" autocapitalize="none" required oninput="%oninput%" onchange="%onchange%">
+</ccm-template>
+
+<ccm-template key="button">
+  <button onclick="%onclick%">%caption%</button>
+</ccm-template>
+
+<ccm-template key="timer">
+  <span>%%</span>
+</ccm-template>
+
+<ccm-template key="feedback">
+  <div id="points">%points%</div>
+  <div id="feedback">
+    <div id="progress-bar"></div>
+  </div>
+</ccm-template>
