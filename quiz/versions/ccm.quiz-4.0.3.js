@@ -37,7 +37,7 @@
 //    "correct": [],
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/quiz/resources/default.css" ],
 //    "cancel_button": true,
-      "data": {},
+//    "data": { "store": [ "ccm.store" ] },
 //    "escape": true,
 //    "feedback": true,
       "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-4.0.1.mjs" ],
