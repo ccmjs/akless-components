@@ -6,6 +6,7 @@
  * @changes
  * version 5.4.5 (16.02.2020):
  * - uses ccm v25.0.0
+ * - bug fix for collect all ccm dependencies in Light DOM
  * version 5.4.4 (13.11.2019):
  * - uses ccm v24.1.0
  * version 5.4.3 (10.10.2019):
@@ -85,7 +86,7 @@
         }
 
         // collect all ccm dependencies in Light DOM
-        const self = this; collectDependencies( this.inner );
+        const self = this; collectDependencies( $.html( { inner: this.inner } ) );
 
         /**
          * collects all dependencies in a given HTML element (recursive)
