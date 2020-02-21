@@ -40,7 +40,7 @@
   //  "oncancel": function ( instance ) { console.log( 'Fill-in-the-blank text canceled' ); },
   //  "onchange": function ( instance, data ) { console.log( data ); },
   //  "onfeedback": function ( instance, data ) { console.log( data ); },
-  //  "onfinish": { "clear": true, "log": true },
+  //  "onfinish": { "restart": true },
   //  "oninput":  function ( instance, data ) { console.log( data ); },
   //  "onstart": function ( instance ) { console.log( 'Fill-in-the-blank text started' ); },
   //  "onvalidation": function ( instance, data ) { if ( data.gap % 2 ) data.correct = data.nearly = true; console.log( data ); },
