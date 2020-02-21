@@ -166,6 +166,7 @@
             let config = self.getValue();
             if ( self.convert ) config = await self.convert( config );
             config.root = self.element.querySelector( '#app' );
+            config.parent = null;
 
             // render app in preview section
             await self.app.start( config );
