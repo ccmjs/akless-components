@@ -623,6 +623,7 @@ export async function onFinish( settings, results ) {
     if ( !Array.isArray( dataset.key ) && ( settings.store.user || settings.store.unique ) ) dataset.key = [ dataset.key ];
     settings.store.user && user && user.isLoggedIn() && dataset.key.push( user.data().key );
     settings.store.unique && dataset.key.push( ccm.helper.generateKey() );
+    if ( dataset.key.length === 1 ) dataset.key = dataset.key[ 0 ];
 
     if ( settings.store.permissions ) dataset._ = settings.store.permissions;  // prepare permission settings
     if ( user ) settings.store.settings.user = user;                           // set user instance for datastore
