@@ -32,7 +32,7 @@
         "finish": "Finish"
       },
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/cloze/resources/default.css" ],
-      "data": { "store": [ "ccm.store" ] },
+  //  "data": { "store": [ "ccm.store" ] },
       "feedback": true,
       "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-4.0.2.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/cloze/resources/templates.html" ],
