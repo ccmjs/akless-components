@@ -8,7 +8,8 @@
  * - progress bar on feedback is optional
  * - changed template property 'click' to 'onclick'
  * - uses HTML template file as default
- * - bugfix for no feedback on finish button
+ * - bug fix for no feedback on finish button
+ * - uses helper.mjs v4.0.2 as default
  * (for older version changes see ccm.cloze-6.0.4.js)
  */
 
@@ -33,7 +34,7 @@
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/cloze/resources/default.css" ],
       "data": { "store": [ "ccm.store" ] },
       "feedback": true,
-      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-4.0.1.mjs" ],
+      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-4.0.2.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/cloze/resources/templates.html" ],
       "keywords": true,
   //  "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.2.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
@@ -524,7 +525,7 @@
             self.logger && self.logger.log( 'finish', $.clone( results ) );
 
             // perform 'finish' actions and provide result data
-            $.onFinish( self, results );
+            $.onFinish( self );
 
           }
 

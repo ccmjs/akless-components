@@ -3,7 +3,7 @@
  * <p>(namespaces are only used for categorization)</p>
  * @author André Kless <andre.kless@web.de> 2019-2020
  * @license The MIT License (MIT)
- * @version latest (4.0.2)
+ * @version 4.0.2
  * @changes
  * version 4.0.2 (21.02.2020):
  * - bug fix for using confirm in onFinish()
