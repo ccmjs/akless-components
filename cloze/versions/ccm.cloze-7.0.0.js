@@ -525,7 +525,7 @@
             self.logger && self.logger.log( 'finish', $.clone( results ) );
 
             // perform 'finish' actions and provide result data
-            $.onFinish( self, results );
+            $.onFinish( self );
 
           }
 
