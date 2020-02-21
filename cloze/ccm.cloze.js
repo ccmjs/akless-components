@@ -8,6 +8,7 @@
  * - progress bar on feedback is optional
  * - changed template property 'click' to 'onclick'
  * - uses HTML template file as default
+ * - bugfix for no feedback on finish button
  * (for older version changes see ccm.cloze-6.0.4.js)
  */
 
@@ -394,15 +395,17 @@
 
               // give visual feedback for correctness
               gap.disabled = true;
-              if ( !event_data.nearly && self.solutions ) gap.value = '';
-              if ( self.solutions ) {
-                let placeholder = '';
-                for ( let j = 0; j < keywords[ i ].length; j++ )
-                  if ( !keywords[ i ][ j ].used ) { placeholder = keywords[ i ][ j ].word; break; }
-                gap.setAttribute( 'placeholder', placeholder );
-                placeholder.length <= 0 ? gap.size = gap.value.length : gap.size = placeholder.length;
+              if ( self.feedback ) {
+                if ( !event_data.nearly && self.solutions ) gap.value = '';
+                if ( self.solutions ) {
+                  let placeholder = '';
+                  for ( let j = 0; j < keywords[ i ].length; j++ )
+                    if ( !keywords[ i ][ j ].used ) { placeholder = keywords[ i ][ j ].word; break; }
+                  gap.setAttribute( 'placeholder', placeholder );
+                  placeholder.length <= 0 ? gap.size = gap.value.length : gap.size = placeholder.length;
+                }
+                gap.parentNode.classList.add( event_data.correct ? 'correct' : ( event_data.nearly ? 'nearly' : 'wrong' ) );
               }
-              gap.parentNode.classList.add( event_data.correct ? 'correct' : ( event_data.nearly ? 'nearly' : 'wrong' ) );
 
               // set detail informations for current gap result
               results.sections.push( event_data );
@@ -425,7 +428,7 @@
             updateButtons( true );
 
             // render feedback for results
-            self.progress_bar && renderProgressBar( results.correct );
+            self.progress_bar && self.feedback && renderProgressBar( results.correct );
 
             function renderProgressBar( correct ) {
               $.setContent( main_elem.querySelector( '#conclusion' ), $.html( self.html.feedback, { points: correct + '/' + keywords.length } ) );

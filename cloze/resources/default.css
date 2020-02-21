@@ -1,6 +1,6 @@
 /**
  * @overview default layout of ccm component for fill-in-the-blank texts
- * @author André Kless <andre.kless@web.de> 2017, 2019
+ * @author André Kless <andre.kless@web.de> 2017, 2019-2020
  * @license The MIT License (MIT)
  */
 
@@ -80,6 +80,10 @@ button:disabled {
   border: 1px solid #a0a0a0;
   white-space: nowrap;
   letter-spacing: 1px;
+}
+
+.gap input:disabled {
+  background-color: aliceblue;
 }
 
 .gap input:focus {
