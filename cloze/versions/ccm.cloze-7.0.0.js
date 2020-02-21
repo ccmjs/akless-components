@@ -7,6 +7,7 @@
  * version 7.0.0 (21.02.2020):
  * - progress bar on feedback is optional
  * - changed template property 'click' to 'onclick'
+ * - uses HTML template file as default
  * (for older version changes see ccm.cloze-6.0.4.js)
  */
 
