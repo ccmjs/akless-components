@@ -13,6 +13,7 @@
  * - added 'Permission denied' messages
  * - initial dataset which not exists in the datastore counts as new app configuration
  * - apps with to much config size can only be created as logged in user
+ * - previewed app is independent of own context (no parent dependency)
  * version 4.0.0 (18.09.2019):
  * - changed config parameters
  * - many config properties are now optional
