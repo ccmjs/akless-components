@@ -95,7 +95,7 @@
         function collectDependencies( element ) {
 
           // is ccm Custom Element? => collect dependency
-          if ( element.tagName.indexOf( 'CCM-' ) === 0 ) return collectDependency( element );
+          //if ( element.tagName.indexOf( 'CCM-' ) === 0 ) return collectDependency( element );
 
           // iterate over all child DOM Element Nodes and collect dependencies
           [ ...element.children ].forEach( collectDependency );
