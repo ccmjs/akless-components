@@ -79,6 +79,13 @@
         // Light DOM is given as HTML string? => use fragment with HTML string as innerHTML
         if ( typeof this.inner === 'string' ) this.inner = document.createRange().createContextualFragment( this.inner );
 
+        // Light DOM is given as array? => use fragment with array elements as children
+        if ( Array.isArray( this.inner ) ) {
+          const fragment = document.createDocumentFragment();
+          this.inner.forEach( element => fragment.appendChild( $.html( element ) ) );
+          this.inner = fragment;
+        }
+
         // dynamic replacement of placeholders
         if ( this.placeholder ) {
           if ( this.json2json ) this.placeholder = this.json2json( this.placeholder );
