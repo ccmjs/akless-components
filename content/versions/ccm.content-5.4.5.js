@@ -86,7 +86,7 @@
         }
 
         // collect all ccm dependencies in Light DOM
-        const self = this; collectDependencies( $.html( { inner: this.inner } ) );
+        const self = this; collectDependencies( this.inner );
 
         /**
          * collects all dependencies in a given HTML element (recursive)
@@ -94,17 +94,26 @@
          */
         function collectDependencies( element ) {
 
-          // iterate over all child DOM Element Nodes
-          [ ...element.children ].forEach( child => {
+          // is ccm Custom Element? => collect dependency
+          if ( element.tagName.indexOf( 'CCM-' ) === 0 ) return collectDependency( element );
+
+          // iterate over all child DOM Element Nodes and collect dependencies
+          [ ...element.children ].forEach( collectDependency );
+
+          /**
+           * collects a dependency from a given HTML element
+           * @param element - HTML element
+           */
+          function collectDependency( element ) {
 
             // no ccm Custom Element? => abort and collect dependencies inside of it
-            if ( child.tagName.indexOf( 'CCM-' ) !== 0 ) return collectDependencies( child );  // recursive call
+            if ( element.tagName.indexOf( 'CCM-' ) !== 0 ) return collectDependencies( element );  // recursive call
 
             // generate ccm dependency out of founded ccm Custom Element
             const component = getComponent(); if ( !component ) return;
-            const config = $.generateConfig( child );
+            const config = $.generateConfig( element );
             config.parent = self;
-            config.root = child;
+            config.root = element;
             self.dependencies.push( $.isComponent( component ) ? [ component, config ] : [ 'ccm.start', component, config ] );
 
             /**
@@ -117,12 +126,12 @@
                * index of ccm component
                * @type {string}
                */
-              const index = child.tagName.substr( 4 ).toLowerCase();
+              const index = element.tagName.substr( 4 ).toLowerCase();
 
               // is a <ccm-app> element? => result is value of component attribute
               if ( index === 'app' ) {
-                const component = child.getAttribute( 'component' );
-                child.removeAttribute( 'component' );
+                const component = element.getAttribute( 'component' );
+                element.removeAttribute( 'component' );
                 return component;
               }
 
@@ -141,7 +150,7 @@
 
             }
 
-          } );
+          }
 
         }
 
