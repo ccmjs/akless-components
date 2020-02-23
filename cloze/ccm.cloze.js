@@ -10,6 +10,7 @@
  * - uses HTML template file as default
  * - bug fix for no feedback on finish button
  * - uses helper.mjs v4.0.2 as default
+ * - bug fix for HTML escaping
  * (for older version changes see ccm.cloze-6.0.4.js)
  */
 

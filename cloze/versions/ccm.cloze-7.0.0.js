@@ -10,6 +10,7 @@
  * - uses HTML template file as default
  * - bug fix for no feedback on finish button
  * - uses helper.mjs v4.0.2 as default
+ * - bug fix for HTML escaping
  * (for older version changes see ccm.cloze-6.0.4.js)
  */
 
@@ -104,16 +105,11 @@
           // remove distinguishing characteristic '*'
           keyword = keyword.substr( 1, keyword.length - 2 );
 
-          // strip HTML from keyword
-          const div = document.createElement( 'div' );
-          div.innerHTML = keyword;
-          keyword = div.textContent || div.innerText || '';
-
           // the same as a previous gap? => use reference of previous gap
           if ( regex_reference.test( keyword ) ) return keywords.push( keywords[ keyword.substr( 1 ) - 1 ] );
 
           const entry = [];
-          keyword.split( '/' ).forEach( keyword => entry.push( determineKeywordData( keyword.trim() ) ) );
+          keyword.split( /(?<!<)\// ).forEach( keyword => entry.push( determineKeywordData( keyword.trim() ) ) );
           keywords.push( entry );
 
           function determineKeywordData( keyword ) {
@@ -226,7 +222,7 @@
             // prepare keyword containers
             ( self.keywords === true ? keywords : self.keywords ).forEach( keyword => {
               entries.push( $.html( self.html.keyword, {
-                keyword: self.keywords === true ? keyword[ 0 ].word : keyword,
+                keyword: $.escapeHTML( self.keywords === true ? keyword[ 0 ].word : keyword ),
                 onclick: function () { this.classList.toggle( 'marked' ); }
               } ) );
             } );
@@ -403,7 +399,7 @@
                   for ( let j = 0; j < keywords[ i ].length; j++ )
                     if ( !keywords[ i ][ j ].used ) { placeholder = keywords[ i ][ j ].word; break; }
                   gap.setAttribute( 'placeholder', placeholder );
-                  placeholder.length <= 0 ? gap.size = gap.value.length : gap.size = placeholder.length;
+                  placeholder.length <= 0 ? gap.size = gap.value.length || gap.size : gap.size = placeholder.length || gap.size;
                 }
                 gap.parentNode.classList.add( event_data.correct ? 'correct' : ( event_data.nearly ? 'nearly' : 'wrong' ) );
               }
