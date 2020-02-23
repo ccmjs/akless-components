@@ -1,5 +1,5 @@
 /**
- * @overview configurations of ccm component for rendering a fill-in-the-blank text
+ * @overview configurations of ccm component for fill-in-the-blank texts
  * @author André Kless <andre.kless@web.de> 2017-2018, 2020
  * @license The MIT License (MIT)
  */
