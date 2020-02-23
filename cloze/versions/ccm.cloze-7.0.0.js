@@ -226,7 +226,7 @@
             // prepare keyword containers
             ( self.keywords === true ? keywords : self.keywords ).forEach( keyword => {
               entries.push( $.html( self.html.keyword, {
-                keyword: $.escapeHTML( self.keywords === true ? keyword[ 0 ].word : keyword ),
+                keyword: self.keywords === true ? keyword[ 0 ].word : keyword,
                 onclick: function () { this.classList.toggle( 'marked' ); }
               } ) );
             } );
