@@ -8,6 +8,7 @@
   font-family: WeblySleekUI, sans-serif;
   font-size: 19px;
   overflow-x: auto;
+  padding: 0.5em;
 }
 
 #text {
