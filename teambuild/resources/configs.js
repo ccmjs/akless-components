@@ -6,11 +6,10 @@
 
 ccm.files[ 'configs.js' ] = {
 
-  "localhost": {
-    "key": "localhost",
+  "local": {
     "css": [ "ccm.load", "../teambuild/resources/default.css" ],
     "data": {
-      "store": [ "ccm.store", { "name": "teambuild_data", "url": "ws://localhost:8080" } ],
+      "store": [ "ccm.store", { "name": "teambuild_data", "url": "wss://ccm2.inf.h-brs.de" } ],
       "key": "test",
       "permissions": {
         "creator": "akless",
@@ -23,7 +22,8 @@ ccm.files[ 'configs.js' ] = {
       }
     },
     "user": [ "ccm.instance", "../user/ccm.user.js", [ "ccm.get", "../user/resources/configs.js", "local" ] ],
-    "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ]
+    "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
+    "helper.1": "../modules/helper.mjs"
   },
 
   "demo": {

@@ -2,7 +2,7 @@
  * @overview ccm component for team building
  * @author André Kless <andre.kless@web.de> 2017-2020
  * @license The MIT License (MIT)
- * @version latest (3.1.2)
+ * @version 3.1.2
  * @changes
  * version 3.1.2 (10.10.2019)
  * - uses ccm v25.0.0
@@ -26,7 +26,7 @@
 
   const component = {
 
-    name: 'teambuild',
+    name: 'teambuild', version: [ 3, 1, 2 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-25.0.0.js',
 
