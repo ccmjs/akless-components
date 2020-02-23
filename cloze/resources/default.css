@@ -54,11 +54,11 @@ button:disabled {
   color: rgba(128, 128, 128, 0.44);
 }
 
-.keyword {
+.keyword span {
   cursor: pointer;
 }
 
-.keyword.marked {
+.keyword.marked span {
   text-decoration: line-through;
 }
 
