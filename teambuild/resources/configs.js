@@ -1,6 +1,6 @@
 /**
  * @overview configurations of ccm component for team building
- * @author André Kless <andre.kless@web.de> 2017-2019
+ * @author André Kless <andre.kless@web.de> 2017-2020
  * @license The MIT License (MIT)
  */
 
@@ -21,13 +21,13 @@ ccm.files[ 'configs.js' ] = {
         }
       }
     },
-    "user": [ "ccm.instance", "../user/ccm.user.js", [ "ccm.get", "../user/resources/configs.js", "local" ] ],
+    "helper.1": "../modules/helper.mjs",
+    "html.1": "../teambuild/resources/templates.html",
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
-    "helper.1": "../modules/helper.mjs"
+    "user": [ "ccm.instance", "../user/ccm.user.js", [ "ccm.get", "../user/resources/configs.js", "local" ] ]
   },
 
   "demo": {
-    "key": "demo",
     "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/teambuild/resources/default.css" ],
     "data": {
       "store": [ "ccm.store", { "name": "teambuild_data", "url": "wss://ccm2.inf.h-brs.de" } ],
@@ -42,7 +42,7 @@ ccm.files[ 'configs.js' ] = {
         }
       }
     },
-    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "guest" ] ]
+    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.3.1.js" ]
   },
 
   "clicker": {

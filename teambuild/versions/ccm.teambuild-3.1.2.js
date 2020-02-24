@@ -4,8 +4,9 @@
  * @license The MIT License (MIT)
  * @version 3.1.2
  * @changes
- * version 3.1.2 (10.10.2019)
+ * version 3.1.2 (24.02.2020)
  * - uses ccm v25.0.0
+ * - uses HTML template file as default
  * version 3.1.1 (10.10.2019)
  * - uses ccm v24.0.1
  * version 3.1.0 (06.02.2019)
@@ -32,45 +33,17 @@
 
     config: {
 
-      "html": {
-        "main": {
-          "id": "element",
-          "inner": [
-            { "id": "user" },
-            { "id": "teams" }
-          ]
-        },
-        "team": {
-          "class": "team",
-          "inner": [
-            {
-              "class": "header",
-              "inner": [
-                {
-                  "class": "name",
-                  "inner": "%name%"
-                },
-                { "class": "button" }
-              ]
-            },
-            { "class": "members" }
-          ]
-        },
-        "button": {
-          "tag": "button",
-          "inner": "%caption%",
-          "onclick": "%onclick%"
-        },
-        "member": {
-          "class": "member",
-          "inner": {
-            "class": "name",
-            "inner": "%name%"
-          }
-        }
-      },
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/teambuild/resources/default.css" ],
       "data": { "store": [ "ccm.store" ] },
+      "editable": true,
+      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-4.0.2.mjs" ],
+      "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/teambuild/resources/templates.html" ],
+      "icon": {},
+  //  "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.2.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
+  //  "max_members": 3,
+  //  "max_teams": 5,
+  //  "names": [ "Team Red", "Team Blue" ],
+  //  "onchange": event => console.log( event_data ),
       "text": {
         "team": "Team",
         "leave": "leave",
@@ -78,16 +51,7 @@
         "free": "free",
         "message": "Nothing to display."
       },
-      "icon": {},
-      "editable": true,
-      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-4.0.2.mjs" ]
-
-  //  "names": [ "Team Red", "Team Blue" ],
-  //  "max_teams": 5,
-  //  "max_members": 3,
-  //  "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "demo" ] ],
-  //  "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.2.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
-  //  "onchange": event_data => { console.log( event_data ); }
+  //  "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.3.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "demo" ] ]
 
     },
 
