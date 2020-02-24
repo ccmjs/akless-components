@@ -11,6 +11,7 @@
  * - bug fix for no feedback on finish button
  * - uses helper.mjs v4.0.2 as default
  * - bug fix for HTML escaping
+ * - updated dynamic placeholder size for solutions
  * (for older version changes see ccm.cloze-6.0.4.js)
  */
 
@@ -400,6 +401,7 @@
                     if ( !keywords[ i ][ j ].used ) { placeholder = keywords[ i ][ j ].word; break; }
                   gap.setAttribute( 'placeholder', placeholder );
                   placeholder.length <= 0 ? gap.size = gap.value.length || gap.size : gap.size = placeholder.length || gap.size;
+                  gap.size *= 1.2;
                 }
                 gap.parentNode.classList.add( event_data.correct ? 'correct' : ( event_data.nearly ? 'nearly' : 'wrong' ) );
               }
