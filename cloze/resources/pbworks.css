@@ -36,6 +36,11 @@
   text-decoration: line-through;
 }
 
+#box,
+#conclusion {
+  padding: 0 1em;
+}
+
 #text {
   background: #fff;
   line-height: 1.6em;
