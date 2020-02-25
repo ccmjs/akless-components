@@ -40,6 +40,7 @@
   position: sticky;
   bottom: 0;
   padding: 0.5em;
+  z-index: 100;
 }
 
 .btn {
