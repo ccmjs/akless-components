@@ -23,15 +23,18 @@
     config: {
 
       "autofocus": true,
-      "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/json_builder/resources/default.css" ],
+      "css": [ "ccm.load", [
+        "https://ccmjs.github.io/akless-components/json_builder/resources/default.css",
+        "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.0/codemirror.min.css"
+      ] ],
       "data": {},
   //  "directly": true,
-      "editor": [ 'ccm.load', [ "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.0/codemirror.min.js"],
-       [ "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.0/codemirror.min.css",
+      "editor": [ 'ccm.load', [
+        "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.0/codemirror.min.js",
         "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.0/mode/javascript/javascript.min.js",
         "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.0/addon/edit/matchbrackets.min.js",
-         "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.0/addon/lint/json-lint.min.js" ]
-      ],
+        "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.0/addon/lint/json-lint.min.js"
+      ] ],
       "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-4.0.2.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/json_builder/resources/templates.html" ],
   //  "ignore": { "defaults": { "foo": "baz" } },
