@@ -41,6 +41,10 @@
   padding: 0 1em;
 }
 
+#box {
+  padding-bottom: 1em;
+}
+
 #text {
   background: #fff;
   line-height: 1.6em;
