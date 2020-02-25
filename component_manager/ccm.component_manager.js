@@ -68,7 +68,7 @@
       "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-4.0.1.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/component_manager/resources/templates.html" ],
       "ignore": {
-//      "builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-1.4.3.js", { "directly": true, "nosubmit": true } ],
+//      "builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-2.0.0.js", { "directly": true, "nosubmit": true } ],
         "configs": [ "ccm.store" ]
 //      "create_similar_app": {}
       },
