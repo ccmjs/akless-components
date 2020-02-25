@@ -1,13 +1,12 @@
 /**
  * @overview configurations of ccm component for JSON builder
- * @author André Kless <andre.kless@web.de> 2018
+ * @author André Kless <andre.kless@web.de> 2018, 2020
  * @license The MIT License (MIT)
  */
 
 ccm.files[ 'configs.js' ] = {
 
   "local": {
-    "key": "local",
     "css.1": "../json_builder/resources/default.css",
     "data": {
       "json": {
@@ -19,9 +18,11 @@ ccm.files[ 'configs.js' ] = {
         }
       }
     },
+    "helper.1": "../modules/helper.mjs",
+    "html.1": "../json_builder/resources/templates.html",
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
-    "oninput": function ( event ) { console.log( 'input event', this.getValue(), event.target ) },
-    "onchange": function ( event ) { console.log( 'change event', this.getValue(), event.target ) },
+    "oninput": event => console.log( 'input event', event.instance.getValue() ),
+    "onchange": event => console.log( 'change event', event.instance.getValue() ),
     "onfinish": { "log": true }
   },
 
