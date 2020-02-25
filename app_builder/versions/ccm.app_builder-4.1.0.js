@@ -14,6 +14,7 @@
  * - initial dataset which not exists in the datastore counts as new app configuration
  * - apps with to much config size can only be created as logged in user
  * - previewed app is independent of own context (no parent dependency)
+ * - uses ccm.json_builder.js v2.0.0 as default
  * version 4.0.0 (18.09.2019):
  * - changed config parameters
  * - many config properties are now optional
@@ -32,7 +33,7 @@
 
     config: {
 //    "app": [ "ccm.component", "https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js" ],
-      "builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-1.4.3.js", { "directly": true, "nosubmit": true } ],
+      "builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-2.0.0.js", { "directly": true, "nosubmit": true } ],
 //    "convert": json => json,
       "css": [ "ccm.load",
         "https://ccmjs.github.io/akless-components/app_builder/resources/styles.css",
