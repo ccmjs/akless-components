@@ -4,6 +4,7 @@
  * @license The MIT License (MIT)
  */
 
+
 #element {
   overflow: auto;
   padding: 0.5em;
@@ -22,8 +23,8 @@
   background-color: rgba( 0, 255, 0, 0.1 );
 }
 
-#input.invalid {
-  background-color: rgba( 255, 0, 0, 0.1 );
+.invalid {
+  background-color: rgba( 255, 0, 0, 0.1 ) !important;
 }
 
 #button {
@@ -33,4 +34,9 @@
 
 #button:disabled {
   cursor: not-allowed;
+}
+
+.CodeMirror {
+  border: 1px solid #eee;
+  height: unset !important;
 }

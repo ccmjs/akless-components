@@ -56,7 +56,13 @@
       },
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/json_builder/resources/default.css" ],
       "data": {},
-      "space": 2
+      "space": 2,
+      "editor": [ 'ccm.load', [ "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.0/codemirror.min.js"],
+       [ "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.0/codemirror.min.css",
+        "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.0/mode/javascript/javascript.min.js",
+        "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.0/addon/edit/matchbrackets.min.js",
+         "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.0/addon/lint/json-lint.min.js" ]
+      ],
 
   //  "replacer": ( key, value ) => typeof value === 'string' ? undefined : value,
   //  "directly": true,
@@ -72,6 +78,8 @@
     Instance: function () {
 
       let $, dataset, tmp;
+
+      const self = this;
 
       this.ready = async () => {
 
@@ -104,48 +112,10 @@
 
         // prepare main HTML structure
         $.setContent( this.element, $.html( this.html, {
-          oninput: event => {
-
-            /**
-             * input element
-             * @type {Element}
-             */
-            const input_elem = this.element.querySelector( '#input' );
-
-            /**
-             * input element value
-             * @type {string}
-             */
-            let value = input_elem.value;
-
-            // add evaluated JSON to result data
-            try { dataset.json = $.solveDotNotation( $.parse( value ) ); dataset.valid = true; } catch ( err ) { dataset.valid = false; }
-
-            // show feedback for valid/invalid JSON
-            feedback( dataset.valid );
-
-            // button is disabled when JSON is invalid
-            const button = this.element.querySelector( '#button' );
-            if ( button )
-              if ( dataset.valid )
-                button.removeAttribute( 'disabled' );
-              else
-                button.setAttribute( 'disabled', true );
-
-            // logging of 'input' event
-            this.logger && this.logger.log( 'input', this.getValue() );
-
-            // perform individual 'input' callback
-            this.oninput && this.oninput.call( this, event );
-
-            /** shows feedback for valid/invalid JSON */
-            function feedback( valid ) { input_elem.classList[ valid ? 'remove' : 'add' ]( 'invalid' ) }
-
-          },
           onchange: event => {
 
             // logging of 'change' event
-            this.logger && this.logger.log( 'change', this.getValue() );
+            this.logger && this.logger.log( 'change', code_editor.getValue() );
 
             // perform individual 'change' callback
             this.onchange && this.onchange.call( this, event );
@@ -170,6 +140,48 @@
 
         // put JSON string in input element
         this.element.querySelector( '#input' ).value = $.stringify( dataset.json, this.replacer, this.space );
+
+        let code_editor = CodeMirror.fromTextArea( this.element.querySelector( '#input' ), {
+          value:  this.element.querySelector( '#input' ).value,
+          autofocus: true,
+          lineNumbers: true,
+          lineWrapping: true,
+          foldGutter: true,
+          matchBrackets: true,
+          autoCloseBrackets: true,
+          mode: "application/ld+json",
+          lint: true
+      }).on( 'change' , function ( editor ) {
+          /**
+           * input element value
+           * @type {string}
+           */
+          let value = editor.getValue();
+
+          // add evaluated JSON to result data
+          try { dataset.json = $.solveDotNotation( $.parse( value ) ); dataset.valid = true; } catch ( err ) { dataset.valid = false; }
+
+          // show feedback for valid/invalid JSON
+          feedback( dataset.valid );
+
+          // button is disabled when JSON is invalid
+          const button = self.element.querySelector( '#button' );
+          if ( button )
+            if ( dataset.valid )
+              button.removeAttribute( 'disabled' );
+            else
+              button.setAttribute( 'disabled', true );
+
+          // logging of 'input' event
+          self.logger && self.logger.log( 'input', editor.getValue() );
+
+          // perform individual 'input' callback
+          self.oninput && self.oninput.call( self, editor );
+
+          /** shows feedback for valid/invalid JSON */
+          function feedback( valid ) { self.element.querySelector( '.CodeMirror' ).classList[ valid ? 'remove' : 'add' ]( 'invalid' ) }
+
+        } );
 
       };
 
