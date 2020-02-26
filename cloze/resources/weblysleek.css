@@ -115,6 +115,9 @@ code {
   background-color: snow;
   padding: 0.5em;
   font-size: 80%;
+}
+
+pre {
   white-space: pre-wrap;
   word-wrap: break-word;
 }
