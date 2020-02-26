@@ -2,7 +2,7 @@
  * @overview ccm component for visualisation of result data
  * @author André Kless <andre.kless@web.de> 2019
  * @license The MIT License (MIT)
- * @version latest (2.0.2)
+ * @version 2.0.2
  * @changes
  * version 2.0.2 (16.12.2019):
  * - added Moment.js for display of timestamps
@@ -20,7 +20,7 @@
 
   const component = {
 
-    name: 'result',
+    name: 'result', version: [ 2, 0, 2 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-24.1.1.js',
 
@@ -280,6 +280,8 @@
               // set table row values
               await $.asyncForEach( results, async ( result, i ) => {
 
+                result.created_at = moment( result.created_at ).format( 'MMMM Do YYYY, h:mm:ss a' );
+                result.updated_at = moment( result.updated_at ).format( 'MMMM Do YYYY, h:mm:ss a' );
 
                 /**
                  * contains table row values for current app result data set
@@ -291,8 +293,8 @@
                   result._app || ( Array.isArray( result.key ) ? result.key[ 0 ] : result.key ),  // 2: App
                   result.correct,                                                                 // 3: Correct
                   result.result,                                                                  // 4: Result
-                  moment( result.created_at ).format( 'MMMM Do YYYY, h:mm:ss a' ),                                                              // 5: Created
-                  moment( result.updated_at ).format( 'MMMM Do YYYY, h:mm:ss a' ),                                                              // 6: Last Update
+                  result.created_at,                                                              // 5: Created
+                  result.updated_at,                                                              // 6: Last Update
                   ''                                                                              // 7: Details Button
                 ];
 
