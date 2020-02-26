@@ -115,6 +115,8 @@ code {
   background-color: snow;
   padding: 0.5em;
   font-size: 80%;
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
 
 #points {
