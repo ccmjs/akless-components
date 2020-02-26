@@ -7,7 +7,7 @@
 ccm.files[ 'configs.js' ] = {
 
   "local": {
-    "css.1.0": "../json_builder/resources/default.css",
+    "css.1": "../json_builder/resources/default.css",
     "data": {
       "json": {
         "obj": {
