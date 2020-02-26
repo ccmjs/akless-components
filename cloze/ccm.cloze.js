@@ -12,6 +12,7 @@
  * - uses helper.mjs v4.0.2 as default
  * - bug fix for HTML escaping
  * - updated dynamic placeholder size for solutions
+ * - prevent escaped HTML in a keyword
  * (for older version changes see ccm.cloze-6.0.4.js)
  */
 
@@ -114,6 +115,9 @@
           keywords.push( entry );
 
           function determineKeywordData( keyword ) {
+
+            // prevent escaped HTML in a keyword
+            keyword = $.unescapeHTML( keyword );
 
             // replace all given characters of a keywords with '*'
             const keyw__d = keyword.replace( '*', '#' ).replace( regex_given, given => {
