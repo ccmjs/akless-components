@@ -31,7 +31,11 @@
         "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.0/codemirror.min.css",
         "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.0/mode/javascript/javascript.min.js",
         "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.0/addon/edit/matchbrackets.min.js",
-        "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.0/addon/lint/json-lint.min.js"
+        "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.0/addon/lint/json-lint.min.js",
+        "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.0/addon/fold/foldcode.min.js",
+        "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.0/addon/fold/foldgutter.min.js",
+        "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.0/addon/fold/foldgutter.min.css",
+        "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.0/addon/fold/brace-fold.min.js"
       ] ],
       "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-4.0.2.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/json_builder/resources/templates.html" ],
@@ -108,9 +112,38 @@
           lineNumbers: this.line_numbers,
           lineWrapping: this.line_wrapping,
           matchBrackets: true,
-          mode: 'application/ld+json',
-          lint: true
-      } );
+          mode: {name: "javascript", json: true},
+          lint: true,
+          extraKeys: {"Ctrl-Q": function(cm){ cm.foldCode(cm.getCursor()); }},
+          foldGutter: true,
+          gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
+          foldOptions: {
+            widget: (from, to) => {
+              let count = undefined;
+
+              // Get open / close token
+              let startToken = '{', endToken = '}';
+              let prevLine = editor.getLine(from.line);
+              if (prevLine.lastIndexOf('[') > prevLine.lastIndexOf('{')) {
+                startToken = '[', endToken = ']';
+              }
+
+              // Get json content
+              let internal = editor.getRange(from, to);
+              let toParse = startToken + internal + endToken;
+
+              // Get key count
+              try {
+                let parsed = JSON.parse(toParse);
+                count = Object.keys(parsed).length;
+              } catch(e) { }
+
+              return count ? `\u21A4${count}\u21A6` : '\u2194';
+            }
+          }
+        } );
+        editor.foldCode(CodeMirror.Pos(0, 0));
+
         editor.on( 'blur', async () => {
 
           // logging of 'change' event
