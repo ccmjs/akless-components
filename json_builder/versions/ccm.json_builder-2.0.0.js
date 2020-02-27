@@ -42,6 +42,7 @@
   //  "ignore": { "defaults": { "foo": "baz" } },
       "line_numbers": true,
       "line_wrapping": true,
+      "fold_code": true,
   //  "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.2.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
   //  "nosubmit": true,
   //  "oninput": event => console.log( 'input event', event.instance.getValue() ),
@@ -114,35 +115,9 @@
           matchBrackets: true,
           mode: {name: "javascript", json: true},
           lint: true,
-          extraKeys: {"Ctrl-Q": function(cm){ cm.foldCode(cm.getCursor()); }},
-          foldGutter: true,
-          gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
-          foldOptions: {
-            widget: (from, to) => {
-              let count = undefined;
-
-              // Get open / close token
-              let startToken = '{', endToken = '}';
-              let prevLine = editor.getLine(from.line);
-              if (prevLine.lastIndexOf('[') > prevLine.lastIndexOf('{')) {
-                startToken = '[', endToken = ']';
-              }
-
-              // Get json content
-              let internal = editor.getRange(from, to);
-              let toParse = startToken + internal + endToken;
-
-              // Get key count
-              try {
-                let parsed = JSON.parse(toParse);
-                count = Object.keys(parsed).length;
-              } catch(e) { }
-
-              return count ? `\u21A4${count}\u21A6` : '\u2194';
-            }
-          }
+          foldGutter: this.fold_code,
+          gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"]
         } );
-        editor.foldCode(CodeMirror.Pos(0, 0));
 
         editor.on( 'blur', async () => {
 
