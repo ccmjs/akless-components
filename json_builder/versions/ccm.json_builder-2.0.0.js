@@ -142,7 +142,7 @@
             }
           }
         } );
-        editor.foldCode(CodeMirror.Pos(0, 0));
+        editor.foldCode(CodeMirror.Pos(1, 0));
 
         editor.on( 'blur', async () => {
 
