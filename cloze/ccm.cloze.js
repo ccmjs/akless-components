@@ -107,6 +107,9 @@
           // remove distinguishing characteristic '*'
           keyword = keyword.substr( 1, keyword.length - 2 );
 
+          // prevent escaped HTML in a keyword
+          keyword = $.unescapeHTML( keyword );
+
           // the same as a previous gap? => use reference of previous gap
           if ( regex_reference.test( keyword ) ) return keywords.push( keywords[ keyword.substr( 1 ) - 1 ] );
 
@@ -115,9 +118,6 @@
           keywords.push( entry );
 
           function determineKeywordData( keyword ) {
-
-            // prevent escaped HTML in a keyword
-            keyword = $.unescapeHTML( keyword );
 
             // replace all given characters of a keywords with '*'
             const keyw__d = keyword.replace( '*', '#' ).replace( regex_given, given => {
