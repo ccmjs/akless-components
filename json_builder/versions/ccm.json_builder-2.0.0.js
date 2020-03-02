@@ -29,13 +29,14 @@
       "editor": [ 'ccm.load', [
         "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.0/codemirror.min.js",
         "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.0/codemirror.min.css",
+        "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.0/addon/fold/foldgutter.min.css",
         "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.0/mode/javascript/javascript.min.js",
         "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.0/addon/edit/matchbrackets.min.js",
         "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.0/addon/lint/json-lint.min.js",
         "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.0/addon/fold/foldcode.min.js",
         "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.0/addon/fold/foldgutter.min.js",
-        "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.0/addon/fold/foldgutter.min.css",
-        "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.0/addon/fold/brace-fold.min.js"
+        "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.0/addon/fold/brace-fold.min.js",
+        "https://codemirror.net/addon/display/autorefresh.js"
       ] ],
       "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-4.0.2.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/json_builder/resources/templates.html" ],
@@ -108,17 +109,18 @@
         // put JSON string in input element
         this.element.querySelector( '#input' ).value = $.stringify( dataset.json, this.replacer, this.space );
 
+        // transform textarea to code editor
         const editor = CodeMirror.fromTextArea( this.element.querySelector( '#input' ), {
           autofocus: this.autofocus,
+          autoRefresh: true,
           lineNumbers: this.line_numbers,
           lineWrapping: this.line_wrapping,
-          matchBrackets: true,
-          mode: {name: "javascript", json: true},
           lint: true,
+          matchBrackets: true,
+          mode: { name: 'javascript', json: true },
           foldGutter: this.fold_code,
-          gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"]
+          gutters: [ 'CodeMirror-linenumbers', 'CodeMirror-foldgutter' ],
         } );
-
         editor.on( 'blur', async () => {
 
           // logging of 'change' event
