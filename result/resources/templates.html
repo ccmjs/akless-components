@@ -1,0 +1,43 @@
+<!--
+@overview HTML template of ccm component for visualisation of result data
+@author André Kless <andre.kless@web.de.de> 2020
+-->
+
+<ccm-template key="main">
+  <div id="main" class="container-fluid">
+    <div id="user"></div>
+    <div id="menu"></div>
+    <div id="section"></div>
+  </div>
+</ccm-template>
+
+<ccm-template key="section">
+  <div>
+    <div id="filter"></div>
+    <div id="content"></div>
+  </div>
+</ccm-template>
+
+<ccm-template key="filter">
+  <div id="%filter%-entry" class="filter">
+    <label id="%filter%-label" for="%filter%-input">%label%</label>
+    <select id="%filter%-input" class="form-control" onchange="%onchange%">
+      <option value="">%first%</option>
+    </select>
+  </div>
+</ccm-template>
+
+<ccm-template key="button">
+  <div>
+    <a id="%id%" class="button-details btn btn-primary btn-xs">%caption%</a>
+  </div>
+</ccm-template>
+
+<ccm-template key="details">
+  <div id="details">
+    <div id="app"></div>
+    <div id="back">
+      <a class="btn btn-primary" onclick="%onclick%">%caption%</a>
+    </div>
+  </div>
+</ccm-template>

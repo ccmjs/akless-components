@@ -1,44 +1,45 @@
 /**
  * @overview configurations of ccm component for visualisation of result data
- * @author André Kless <andre.kless@web.de> 2019
+ * @author André Kless <andre.kless@web.de> 2019-2020
  * @license The MIT License (MIT)
  */
 
 ccm.files[ 'configs.js' ] = {
 
   "local": {
-    "key": "local",
-    "css": [ "ccm.load",
-      "../result/resources/default.css",
-      "../libs/bootstrap-4/css/bootstrap.min.css"
-    ],
+    /*
     "app": [
       {
+        "name": "Fill in the Blanks",
         "component": [ "ccm.component", "../cloze/ccm.cloze.js" ],
-        "configs": [ "ccm.store", { "name": "cloze", "url": "https://ccm2.inf.h-brs.de" } ],
+        "configs": [ "ccm.store", { "name": "ws_cloze", "url": "https://ccm2.inf.h-brs.de" } ],
       },
       {
+        "name": "Quiz",
         "component": [ "ccm.component", "../quiz/ccm.quiz.js" ],
-        "configs": [ "ccm.store", { "name": "quiz", "url": "https://ccm2.inf.h-brs.de" } ],
+        "configs": [ "ccm.store", { "name": "ws_quiz", "url": "https://ccm2.inf.h-brs.de" } ],
       }
     ],
-    "store": [ "ccm.store", { "name": "result_data", "url": "wss://ccm2.inf.h-brs.de" } ],
+    */
+    "chart.1": "../highchart/ccm.highchart.js",
+    "css.1": "../result/resources/default.css",
+    "helper.1": "../modules/helper.mjs",
+    "html.1": "../result/resources/templates.html",
+    "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
     "menu": [ "ccm.component", "../menu/ccm.menu.js", [ "ccm.get", "../menu/resources/configs.js", "bootstrap" ] ],
-    "table": [ "ccm.component", "https://ccmjs.github.io/tkless-components/table/ccm.table.js" ],
-    "chart": [ "ccm.component", "../highchart/ccm.highchart.js" ],
-    "user": [ "ccm.instance", "../user/ccm.user.js", [ "ccm.get", "../user/resources/configs.js", "guest" ] ],
-    "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ]
+    "store": [ "ccm.store", { "name": "ws_result_data", "url": "wss://ccm2.inf.h-brs.de" } ],
+    "user.1": "../user/ccm.user.js"
   },
 
   "demo": {
     "key": "demo",
     "app": [
       {
-        "component": [ "ccm.component", "https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.0.js" ],
+        "component": [ "ccm.component", "https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-7.0.0.js" ],
         "configs": [ "ccm.store", { "name": "cloze", "url": "https://ccm2.inf.h-brs.de" } ]
       },
       {
-        "component": [ "ccm.component", "https://ccmjs.github.io/akless-components/quiz/versions/ccm.quiz-4.0.0.js" ],
+        "component": [ "ccm.component", "https://ccmjs.github.io/akless-components/quiz/versions/ccm.quiz-4.0.3.js" ],
         "configs": [ "ccm.store", { "name": "quiz", "url": "https://ccm2.inf.h-brs.de" } ]
       }
     ],
