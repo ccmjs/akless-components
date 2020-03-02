@@ -21,6 +21,10 @@ legend {
   border-bottom: 1px solid #e5e5e5;
 }
 
+label.item-label {
+  font-weight: bold;
+}
+
 .info > .alert-info {
   display: none;
 }

@@ -2,7 +2,7 @@
  * @overview ccm component for submitting data
  * @author André Kless <andre.kless@web.de> 2018-2020
  * @license The MIT License (MIT)
- * @version latest (8.0.0)
+ * @version 8.0.0
  * @changes
  * version 8.0.0 (02.03.2020):
  * - default layout with bootstrap 4
@@ -14,7 +14,7 @@
 
   const component = {
 
-    name: 'submit',
+    name: 'submit', version: [ 8, 0, 0 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-25.0.0.js',
 
