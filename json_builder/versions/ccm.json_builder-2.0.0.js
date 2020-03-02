@@ -31,13 +31,18 @@
         "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.0/codemirror.min.css",
         "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.0/mode/javascript/javascript.min.js",
         "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.0/addon/edit/matchbrackets.min.js",
-        "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.0/addon/lint/json-lint.min.js"
+        "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.0/addon/lint/json-lint.min.js",
+        "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.0/addon/fold/foldcode.min.js",
+        "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.0/addon/fold/foldgutter.min.js",
+        "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.0/addon/fold/foldgutter.min.css",
+        "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.0/addon/fold/brace-fold.min.js"
       ] ],
       "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-4.0.2.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/json_builder/resources/templates.html" ],
   //  "ignore": { "defaults": { "foo": "baz" } },
       "line_numbers": true,
       "line_wrapping": true,
+      "fold_code": true,
   //  "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.2.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
   //  "nosubmit": true,
   //  "oninput": event => console.log( 'input event', event.instance.getValue() ),
@@ -108,9 +113,12 @@
           lineNumbers: this.line_numbers,
           lineWrapping: this.line_wrapping,
           matchBrackets: true,
-          mode: 'application/ld+json',
-          lint: true
-      } );
+          mode: {name: "javascript", json: true},
+          lint: true,
+          foldGutter: this.fold_code,
+          gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"]
+        } );
+
         editor.on( 'blur', async () => {
 
           // logging of 'change' event
