@@ -63,11 +63,13 @@
 
     config: {
 
-      "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/submit/resources/templates.html" ],
+      "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/submit/resources/templates_b4.html" ],
       "css": [ "ccm.load",
-        { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/bootstrap/css/font-face.css" },
-        "https://ccmjs.github.io/akless-components/libs/bootstrap/css/bootstrap.css",
-        "https://ccmjs.github.io/akless-components/submit/resources/default.css"
+        { "context": "head", "url": "https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" },
+        {  "url": "https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp", "type": "css" },
+        {  "url": "https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp", "type": "css", "context": "head" },
+        "https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css",
+        "resources/default_b4.css"
       ],
       "data": { "store": [ "ccm.store" ] },
       "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-4.0.1.mjs" ]
@@ -182,6 +184,8 @@
               case 'checkbox':
                 delete entry.label;
                 entry.tag = 'input';
+                entry_elem.classList.remove( 'form-group' );
+                entry_elem.classList.add( 'form-inline' );
                 entry_elem.appendChild( $.html( { class: 'checkbox', inner: { tag: 'label', inner: entry } } ) );
                 break;
               case 'multi-checkbox':
@@ -235,7 +239,7 @@
                 ];
               case 'several':
                 if ( entry.name ) {
-                  const callout_elem = $.html( { class: 'callout callout-primary' } );
+                  const callout_elem = $.html( { class: 'callout callout-info' } );
                   const several_elem = $.html( { tag: 'several', name: entry.name } );
                   entry.items.forEach( ( item, i ) => callout_elem.appendChild( newItem( item, i ) ) );
                   several_elem.appendChild( callout_elem );
@@ -244,7 +248,7 @@
                 else {
                   const several_elem = $.html( { tag: 'several' } );
                   const item_elem = newItem( entry.item );
-                  item_elem.classList.add( 'callout', 'callout-primary' );
+                  item_elem.classList.add( 'callout', 'callout-info' );
                   several_elem.appendChild( item_elem );
                   entry_elem.appendChild( several_elem );
                 }

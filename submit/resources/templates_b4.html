@@ -1,0 +1,37 @@
+<!--
+@overview HTML template of ccm component for submitting data
+@author André Kless <andre.kless@web.de.de> 2020
+-->
+
+<ccm-template key="entry">
+  <div class="form-group"></div>
+</ccm-template>
+
+<ccm-template key="label">
+  <label class="item-label">%label%</label>
+</ccm-template>
+
+<ccm-template key="info">
+  <span class="info">
+    <input type="checkbox" id="%id%">
+    <label for="%id%">
+      <i class="material-icons text-info ml-1"> info </i>
+    </label>
+    <span class="alert alert-info">%info%</span>
+  </span>
+</ccm-template>
+
+<ccm-template key="section">
+  <div class="section">
+    <input type="hidden" name="%name%" value="%value%">
+    <div class="items"></div>
+    <div class="buttons btn-group" role="group">
+      <button type="button" class="add btn btn-outline-info btn-sm" role="button" onclick="%add%">
+        <i class="material-icons">add</i>
+      </button>
+      <button type="button" class="del btn btn-outline-info btn-sm" role="button" onclick="%del%">
+        <i class="material-icons">remove</i>
+      </button>
+    </div>
+  </div>
+</ccm-template>
