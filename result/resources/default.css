@@ -46,10 +46,14 @@ select {
   cursor: pointer;
 }
 
+button {
+  font-family: sans-serif;
+}
+
 #details {
   padding: 0.5em;
 }
 
 #back {
-  padding-top: 1em;
+  padding: 0.5em;
 }

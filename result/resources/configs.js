@@ -45,7 +45,7 @@ ccm.files[ 'configs.js' ] = {
       }
     ],
     "chart.1": "../highchart/ccm.highchart.js",
-    "css.1": "../result/resources/default.css",
+    "css.1.1": "../result/resources/default.css",
     "helper.1": "../modules/helper.mjs",
     "html.1": "../result/resources/templates.html",
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],

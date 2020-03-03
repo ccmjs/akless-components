@@ -31,7 +31,7 @@
   //  "choosed_comp": "component_name",
   //  "choosed_user": "user_key",
       "css": [ "ccm.load", [
-        "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css",
+        "https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css",
         "https://ccmjs.github.io/akless-components/result/resources/default.css"
       ] ],
       "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-4.0.2.mjs" ],
