@@ -55,7 +55,7 @@
       "sections": [ "Show Results", "Ranking", "Correctness", "Timing", "Sections" ],
       "store": [ "ccm.store" ],
       "table": [ "ccm.component", "https://ccmjs.github.io/tkless-components/table/versions/ccm.table-4.1.0.js" ],
-      "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.3.1.js" ]
+  //  "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.3.1.js" ]
 
     },
 
@@ -120,7 +120,7 @@
         results = await self.ccm.store( await self.store.get( {} ) );
 
         // try to detect corresponding app for each result
-        self.app && await $.asyncForEach( await results.get( {} ), async result => searchApp( result ) );
+        self.app && await $.asyncForEach( await results.get( {} ), result => searchApp( result ) );
 
         // render header menu
         await self.menu.start( {
@@ -793,7 +793,7 @@
         result._name = app.name || app.component.name;
         result._app = result._config.key.toString();
 
-        await results.set( result );
+        results.local[ result.key ] = result;
 
       }
 
