@@ -48,6 +48,19 @@
         // logging of 'start' event
         this.logger && this.logger.log( 'start' );
 
+        // calculate solutions
+        let solutions = this.numbers.slice();
+        let numbers = this.numbers;
+        let tmp = [];
+        while ( numbers.length > 0 ) {
+          for ( let i = numbers.length - 1; i > 0; i-- )
+            tmp.unshift( numbers[ i ] + numbers[ i - 1 ] );
+          solutions = tmp.concat( solutions );
+          numbers = tmp;
+          tmp = [];
+        }
+        const max_length = solutions[ 0 ].toString().length;
+
         // render main HTML structure
         $.setContent( this.element, $.html( this.html.main ) );
 
@@ -61,13 +74,13 @@
             else
               $.append( pyramid, brick = $.html( { contenteditable: true, oncopy: 'return false', oncut: 'return false', onpaste: 'return false', onkeypress: event => {
                 const char = String.fromCharCode( event.which );
-                if ( isNaN( char ) || char === '0' && !event.target.innerText ) event.preventDefault();
+                if ( isNaN( char ) || char === '0' && !event.target.innerText || event.target.innerText.length >= max_length ) event.preventDefault();
               } } ) );
             brick.style.gridColumnStart = this.numbers.length - i + 2 * k++;
           }
           brick.style.gridRowStart = i + 1;
         }
-        pyramid.style.gridTemplateColumns = `repeat( ${ this.numbers.length * 2 }, ${ this.numbers.length / 2 }em )`;
+        pyramid.style.gridTemplateColumns = `repeat( ${ this.numbers.length * 2 }, ${ max_length / 2 }em )`;
         pyramid.style.gridTemplateRows = `repeat( ${ this.numbers.length }, auto )`;
 
       };
