@@ -11,7 +11,9 @@
 #main {
   padding: 1em;
   display: flex;
-  place-content: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 #pyramid {
@@ -24,8 +26,40 @@
   border: 1px solid black;
   text-align: center;
   grid-column-end: span 2;
+  height: 1em;
 }
 
 #pyramid > div.disabled {
-  background-color: lightgray;
+  background-color: #d3d3d3d3;
+}
+
+#pyramid > div.correct {
+  background-color: lime;
+}
+
+#pyramid > div.wrong {
+  background-color: red;
+}
+
+#buttons {
+  padding: 2em;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+#buttons > div {
+  padding: 0.25em;
+}
+
+button {
+  background-color: #e7e7e7;
+  color: black;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
 }

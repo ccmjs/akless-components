@@ -12,10 +12,16 @@ ccm.files[ 'resources.js' ] = {
     "helper.1": "../modules/helper.mjs",
     "html.1": "../math_pyramid/resources/templates.html",
 //  "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
-    "numbers": [ 28, 53, 4, 17, 36 ],
+    "max": 150,
+    "min": 100,
+//  "numbers": [ 28, 53, 4, 17, 36 ],
+//  "oncancel": instance => console.log( instance ),
 //  "onchange": event => console.log( event ),
-//  "onfinish": { "log": true },
+    "onfinish": { "log": true, "restart": true },
     "operation": "+",
+    "retry": true,
+    "size": 6,
+    "solutions": false,
 //  "user": [ "ccm.instance", "../user/ccm.user.js", [ "ccm.get", "../user/resources/configs.js", "guest" ] ]
   },
 
