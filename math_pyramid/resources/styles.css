@@ -1,0 +1,31 @@
+/**
+ * @overview default layout of ccm component for math pyramids
+ * @author André Kless <andre.kless@web.de> 2020
+ * @license The MIT License (MIT)
+ */
+
+#element {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+#main {
+  padding: 1em;
+  display: flex;
+  place-content: center;
+}
+
+#pyramid {
+  display: grid;
+  grid-gap: 0.15em;
+}
+
+#pyramid > div {
+  padding: 0.5em;
+  border: 1px solid black;
+  text-align: center;
+  grid-column-end: span 2;
+}
+
+#pyramid > div.disabled {
+  background-color: lightgray;
+}
