@@ -2,7 +2,7 @@
  * @overview ccm component for math pyramids
  * @author André Kless <andre.kless@web.de> 2020
  * @license The MIT License (MIT)
- * @version latest (1.0.0)
+ * @version 1.0.0
  * @changes
  * version 1.0.0 (08.03.2020)
  */
@@ -11,7 +11,7 @@
 
   const component = {
 
-    name: 'math_pyramid',
+    name: 'math_pyramid', version: [ 1, 0, 0 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-25.1.0.js',
 

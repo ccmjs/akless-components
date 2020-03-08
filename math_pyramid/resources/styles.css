@@ -17,6 +17,10 @@
   height: 100%;
 }
 
+#top {
+  margin: 1em;
+}
+
 #pyramid {
   display: grid;
   grid-gap: 0.15em;
@@ -44,7 +48,7 @@
 }
 
 #buttons {
-  padding: 2em;
+  margin: 1em;
   display: flex;
   flex-wrap: wrap;
   align-items: center;

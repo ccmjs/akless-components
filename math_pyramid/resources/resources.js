@@ -12,9 +12,22 @@ ccm.files[ 'resources.js' ] = {
       "cancel": "Abbrechen",
       "feedback": "Feedback",
       "retry": "Weitermachen",
-      "finish": "Neustarten"
+      "finish": "Speichern"
     },
     "css.1": "../math_pyramid/resources/styles.css",
+    "data": {
+      "store": [ "ccm.store", { "name": "math_pyramid", "url": "https://ccm2.inf.h-brs.de" } ],
+      "key": "test",
+      "login": true,
+      "user": true,
+      "permissions": {
+        "access": {
+          "get": "all",
+          "set": "creator",
+          "del": "creator"
+        }
+      }
+    },
     "helper.1": "../modules/helper.mjs",
     "html.1": "../math_pyramid/resources/templates.html",
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
@@ -24,12 +37,18 @@ ccm.files[ 'resources.js' ] = {
     "onchange": event => console.log( event ),
     "onfeedback": instance => console.log( instance ),
     "onretry": instance => console.log( instance ),
-    "onfinish": { "log": true, "restart": true },
+    "onfinish": {
+      "log": true,
+      "store": true,
+      "alert": "Gespeichert!",
+      "restart": true
+    },
     "operator": "+",
-    "retry": false,
+    "retry": true,
+    "show_results": false,
     "size": 8,
     "solutions": false,
-//  "user": [ "ccm.instance", "../user/ccm.user.js", [ "ccm.get", "../user/resources/configs.js", "guest" ] ]
+    "user": [ "ccm.start", "../user/ccm.user.js", [ "ccm.get", "../user/resources/configs.js", "guest" ] ]
   },
 
   /** demo configuration (absolute paths) */
