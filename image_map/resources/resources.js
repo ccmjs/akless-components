@@ -1,6 +1,6 @@
 /**
  * @overview static data-based resources of ccm component for an image map
- * @author André Kless <andre.kless@web.de> 2019
+ * @author André Kless <andre.kless@web.de> 2019-2020
  * @license The MIT License (MIT)
  */
 
@@ -11,7 +11,7 @@ ccm.files[ 'resources.js' ] = {
     "key": "local",
     "css.1": "../image_map/resources/styles.css",
     "data": [ "ccm.get", "../image_map/resources/resources.js", "data" ],
-    "helper.1": "https://ccmjs.github.io/akless-components/modules/versions/helper-4.0.1.mjs",
+    "helper.1": "../modules/helper.mjs",
     "html.1": "../image_map/resources/templates.html",
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
     "onchange": event => console.log( event ),
