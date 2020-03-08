@@ -18,7 +18,7 @@
     config: {
       "captions": {
         "cancel": "Cancel",
-        "submit": "Submit",
+        "feedback": "Feedback",
         "retry": "Retry",
         "finish": "Finish"
       },
@@ -27,14 +27,15 @@
       "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-4.0.2.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/math_pyramid/resources/templates.html" ],
   //  "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.2.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
-      "max": 100,
-      "min": 50,
+      "max": 1000,
+      "min": 500,
   //  "numbers": [ 28, 53, 4, 17, 36 ],
   //  "oncancel": instance => console.log( instance ),
   //  "onchange": event => console.log( event ),
   //  "onfeedback": instance => console.log( instance ),
   //  "onfinish": { "log": true },
   //  "onretry": instance => console.log( instance ),
+      "operator": "+",
   //  "retry": true,
       "size": 5,
   //  "solutions": true,
@@ -58,9 +59,13 @@
 
       this.start = async () => {
 
-        calculateNumbers();  // calculate numbers of the lowest level of the math pyramid
-        buildPyramid();      // build pyramid
-        renderButtons();     // render buttons
+        // restore initial state
+        numbers = solutions = undefined; results = {}; $.setContent( self.element, '' );
+
+        calculateNumbers();      // calculate numbers of the lowest level of the math pyramid
+        if ( !numbers ) return;  // calculation of numbers failed? => abort
+        buildPyramid();          // build pyramid
+        renderButtons();         // render buttons
 
         // logging of 'start' event
         this.logger && this.logger.log( 'start', numbers.splice() );
@@ -70,18 +75,24 @@
 
           if ( Array.isArray( self.numbers ) )
             numbers = self.numbers.slice();
-          else if ( self.size && self.min >= 0 && self.min <= self.max ) {
-            let randoms;
+          else {
+            let randoms, tries = 0;
             do {
+              if ( tries++ > 1000000 ) return console.log( 'Calculation of numbers failed.' );
               randoms = [];
-              for ( let i = 0; i < self.size; i++ )
-                randoms.push( Math.floor( Math.random() * self.max / 2 ) );
-              solutions = calculateSolutions( randoms )
+              let max;
+              for ( let i = 0; i < self.size; i++ ) {
+                switch ( self.operator ) {
+                  case '+': max = self.max / self.size; break;
+                  case '*': max = self.max / Math.pow( 2, self.size ); break;
+                  default: max = self.max;
+                }
+                randoms.push( Math.floor( 1 + Math.random() * max ) );
+              }
+              solutions = calculateSolutions( randoms );
             } while ( solutions[ 0 ] < self.min || solutions[ 0 ] > self.max );
             numbers = randoms;
           }
-          else
-            return $.setContent( self.element, 'Nothing to display.' );
 
           /**
            * calculates the solutions of the math pyramid
@@ -93,12 +104,19 @@
             let tmp = [];
             while ( numbers.length > 0 ) {
               for ( let i = numbers.length - 1; i > 0; i-- )
-                tmp.unshift( numbers[ i ] + numbers[ i - 1 ] );
+                tmp.unshift( operator( numbers[ i ], numbers[ i - 1 ] ) );
               solutions = tmp.concat( solutions );
               numbers = tmp;
               tmp = [];
             }
             return solutions;
+
+            function operator( a, b ) {
+              switch ( self.operator ) {
+                case '+': return a + b;
+                case '*': return a * b;
+              }
+            }
           }
 
         }
@@ -116,7 +134,7 @@
               else
                 $.append( pyramid, brick = $.html( { contenteditable: true, oncopy: 'return false', oncut: 'return false', onpaste: 'return false', onkeypress: event => {
                   const char = String.fromCharCode( event.which );
-                  if ( isNaN( char ) || event.target.innerText === '0' || event.target.innerText.length >= max_number_length - 1 ) event.preventDefault();
+                  if ( isNaN( char ) || event.target.innerText.length >= max_number_length - 1 ) event.preventDefault();
                 } } ) );
               brick.style.gridColumnStart = numbers.length - i + 2 * k++;
             }
@@ -127,12 +145,16 @@
 
           // set 'change' callback
           self.element.querySelectorAll( '#pyramid > div' ).forEach( ( brick, i ) =>
-            brick.addEventListener( 'input', event =>
-              self.onchange && self.onchange( { instance: self, element: event.target, section: i, value: parseInt( event.target.innerText ) } ) ) );
-
+            brick.addEventListener( 'input', event => {
+              const value = event.target.innerText;
+              if ( value.startsWith( '0' ) && value !== '0' )
+                event.target.innerText = parseInt( value );
+              else
+                self.onchange && self.onchange( { instance: self, element: event.target, section: i, value: parseInt( value ) } );
+            } ) );
         }
 
-        /** renders cancel, submit and finish button */
+        /** renders cancel, feedback and finish button */
         function renderButtons() {
 
           // render 'cancel' button (if needed)
@@ -141,8 +163,8 @@
             self.oncancel( self );                                        // perform 'cancel' callback
           } );
 
-          // render 'submit' button (if needed)
-          self.feedback && renderButton( self.element.querySelector( '#submit' ), self.captions.submit, feedback );
+          // render 'feedback' button (if needed)
+          self.feedback && renderButton( self.element.querySelector( '#feedback' ), self.captions.feedback, feedback );
 
           // render 'finish' button (if needed)
           self.onfinish && renderButton( self.element.querySelector( '#finish' ), self.captions.finish, onFinish );
@@ -171,32 +193,32 @@
               brick.classList.remove( 'correct', 'wrong' );
               brick.contentEditable = false;
               brick.classList.add( correct ? 'correct' : 'wrong' );
-              if ( self.solutions && !self.retry ) brick.innerText = solutions[ i ];
+              if ( self.solutions ) brick.innerText = solutions[ i ];
 
             } );
 
             self.logger && self.logger.log( 'feedback', self.getValue() );  // logging of 'feedback' event
             self.onfeedback && self.onfeedback( self );                     // perform 'feedback' callback
-            updateSubmitButton( true );                                     // (re)render submit button
+            updateFeedbackButton( true );                                   // (re)render 'feedback' button
 
             /**
-             * (re)renders the submit button
-             * @param {boolean} [submitted] - user has already submitted
+             * (re)renders the feedback button
+             * @param {boolean} [feedback] - user already sees feedback
              */
-            function updateSubmitButton( submitted ) {
+            function updateFeedbackButton( feedback ) {
 
               // no visual feedback? => abort
               if ( !self.feedback ) return;
 
-              // user see's already the feedback? => render 'submit' button
-              if ( !submitted )
-                renderButton( self.element.querySelector( '#submit' ), self.captions.submit, feedback );
-              // submitted and retry is allowed? => render 'retry' button
-              else if ( self.retry )
-                renderButton( self.element.querySelector( '#submit' ), self.captions.retry, retry );
-              // submitted without retry? => disable 'submit' button
+              // user see's no feedback? => render 'feedback' button
+              if ( !feedback )
+                renderButton( self.element.querySelector( '#feedback' ), self.captions.feedback, feedback );
+              // user see's feedback and retry is allowed? => render 'retry' button
+              else if ( self.retry && !self.solutions )
+                renderButton( self.element.querySelector( '#feedback' ), self.captions.retry, retry );
+              // user see's feedback retry is not allowed? => disable 'feedback' button
               else
-                self.element.querySelector( '#submit button' ).disabled = true;
+                self.element.querySelector( '#feedback button' ).disabled = true;
 
               /** removes the feedback and enables the input fields */
               function retry() {
@@ -209,7 +231,7 @@
 
                 self.logger && self.logger.log( 'retry', self.getValue() );  // logging of 'retry' event
                 self.onretry && self.onretry( self );                        // perform 'retry' callback
-                updateSubmitButton();                                        // (re)render submit button
+                updateFeedbackButton();                                      // (re)render feedback button
 
               }
 

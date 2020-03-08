@@ -6,19 +6,21 @@
 
 #element {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  height: 100%;
 }
 
 #main {
-  padding: 1em;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 100%;
 }
 
 #pyramid {
   display: grid;
   grid-gap: 0.15em;
+  margin: 1em;
 }
 
 #pyramid > div {
@@ -62,4 +64,9 @@ button {
   display: inline-block;
   font-size: 16px;
   cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
 }

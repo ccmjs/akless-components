@@ -8,21 +8,26 @@ ccm.files[ 'resources.js' ] = {
 
   /** test configuration (relative paths) */
   "local": {
+    "captions": {
+      "cancel": "Abbrechen",
+      "feedback": "Feedback",
+      "retry": "Weitermachen",
+      "finish": "Neustarten"
+    },
     "css.1": "../math_pyramid/resources/styles.css",
     "helper.1": "../modules/helper.mjs",
     "html.1": "../math_pyramid/resources/templates.html",
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
-    "max": 150,
-    "min": 100,
-//  "numbers": [ 28, 53, 4, 17, 36 ],
-    "oncancel": instance => console.log( instance ),
+    "max": 2000,
+    "min": 1000,
+//  "oncancel": instance => console.log( instance ),
     "onchange": event => console.log( event ),
     "onfeedback": instance => console.log( instance ),
     "onretry": instance => console.log( instance ),
     "onfinish": { "log": true, "restart": true },
-    "operation": "+",
-    "retry": true,
-    "size": 6,
+    "operator": "+",
+    "retry": false,
+    "size": 8,
     "solutions": false,
 //  "user": [ "ccm.instance", "../user/ccm.user.js", [ "ccm.get", "../user/resources/configs.js", "guest" ] ]
   },
