@@ -32,8 +32,9 @@
   //  "numbers": [ 28, 53, 4, 17, 36 ],
   //  "oncancel": instance => console.log( instance ),
   //  "onchange": event => console.log( event ),
-  //  "onfeedback": event => console.log( event ),
+  //  "onfeedback": instance => console.log( instance ),
   //  "onfinish": { "log": true },
+  //  "onretry": instance => console.log( instance ),
   //  "retry": true,
       "size": 5,
   //  "solutions": true,
@@ -104,7 +105,6 @@
 
         /** renders the math pyramid */
         function buildPyramid() {
-
           $.setContent( self.element, $.html( self.html.main ) );
           const max_number_length = ( self.max || solutions[ 0 ] ).toString().length + 1;
           const pyramid = self.element.querySelector( '#pyramid' );
@@ -125,6 +125,11 @@
           pyramid.style.gridTemplateColumns = `repeat( ${ numbers.length * 2 }, ${ max_number_length / 2 }em )`;
           pyramid.style.gridTemplateRows = `repeat( ${ numbers.length }, auto )`;
 
+          // set 'change' callback
+          self.element.querySelectorAll( '#pyramid > div' ).forEach( ( brick, i ) =>
+            brick.addEventListener( 'input', event =>
+              self.onchange && self.onchange( { instance: self, element: event.target, section: i, value: parseInt( event.target.innerText ) } ) ) );
+
         }
 
         /** renders cancel, submit and finish button */
@@ -132,13 +137,8 @@
 
           // render 'cancel' button (if needed)
           self.oncancel && renderButton( self.element.querySelector( '#cancel' ), self.captions.cancel, () => {
-
-            // logging of 'cancel' event
-            this.logger && this.logger.log( 'cancel', self.getValue() );
-
-            // perform 'cancel' callback
-            self.oncancel( self );
-
+            self.logger && self.logger.log( 'cancel', self.getValue() );  // logging of 'cancel' event
+            self.oncancel( self );                                        // perform 'cancel' callback
           } );
 
           // render 'submit' button (if needed)
@@ -173,16 +173,11 @@
               brick.classList.add( correct ? 'correct' : 'wrong' );
               if ( self.solutions && !self.retry ) brick.innerText = solutions[ i ];
 
-              // logging of 'feedback' event
-              self.logger && self.logger.log( 'feedback', self.getValue() );
-
-              // perform 'feedback' callback
-              self.onfeedback && self.onfeedback( { instance: self, results: $.clone( results ) } );
-
             } );
 
-            // change buttons
-            updateSubmitButton( true );
+            self.logger && self.logger.log( 'feedback', self.getValue() );  // logging of 'feedback' event
+            self.onfeedback && self.onfeedback( self );                     // perform 'feedback' callback
+            updateSubmitButton( true );                                     // (re)render submit button
 
             /**
              * (re)renders the submit button
@@ -212,8 +207,9 @@
                   brick.contentEditable = true;
                 } );
 
-                self.logger && self.logger.log( 'retry' );  // logging of 'retry' event
-                updateSubmitButton();                       // change buttons
+                self.logger && self.logger.log( 'retry', self.getValue() );  // logging of 'retry' event
+                self.onretry && self.onretry( self );                        // perform 'retry' callback
+                updateSubmitButton();                                        // (re)render submit button
 
               }
 
