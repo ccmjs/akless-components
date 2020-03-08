@@ -12,9 +12,10 @@ ccm.files[ 'resources.js' ] = {
       "cancel": "Abbrechen",
       "feedback": "Feedback",
       "retry": "Weitermachen",
-      "finish": "Speichern"
+      "finish": "Neues Spiel"
     },
     "css.1": "../math_pyramid/resources/styles.css",
+    /*
     "data": {
       "store": [ "ccm.store", { "name": "math_pyramid", "url": "https://ccm2.inf.h-brs.de" } ],
       "key": "test",
@@ -28,6 +29,7 @@ ccm.files[ 'resources.js' ] = {
         }
       }
     },
+    */
     "helper.1": "../modules/helper.mjs",
     "html.1": "../math_pyramid/resources/templates.html",
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
@@ -39,8 +41,8 @@ ccm.files[ 'resources.js' ] = {
     "onretry": instance => console.log( instance ),
     "onfinish": {
       "log": true,
-      "store": true,
-      "alert": "Gespeichert!",
+//    "store": true,
+//    "alert": "Gespeichert!",
       "restart": true
     },
     "operator": "+",
@@ -53,9 +55,10 @@ ccm.files[ 'resources.js' ] = {
 
   /** demo configuration (absolute paths) */
   "demo": {
-    "numbers": [ 28, 53, 4, 17, 36 ],
-    "operation": "+",
-//  "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.3.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "guest" ] ]
+    "onfinish": {
+      "restart": true
+    },
+    "retry": true
   }
 
 };

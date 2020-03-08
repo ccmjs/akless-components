@@ -85,21 +85,34 @@
           else if ( Array.isArray( self.numbers ) )
             numbers = self.numbers.slice();
           else {
-            let randoms, tries = 0;
-            do {
-              if ( tries++ > 1000000 ) return console.log( 'Calculation of numbers failed.' );
-              randoms = [];
-              let max;
-              for ( let i = 0; i < self.size; i++ ) {
-                switch ( self.operator ) {
-                  case '+': max = self.max / self.size; break;
-                  case '*': max = self.max / Math.pow( 2, self.size ); break;
-                  default: max = self.max;
-                }
-                randoms.push( Math.floor( 1 + Math.random() * max ) );
+            let randoms = [], tries = 0;
+            let max;
+            for ( let i = 0; i < self.size; i++ ) {
+              switch ( self.operator ) {
+                case '+': max = self.max / self.size; break;
+                case '*': max = self.max / Math.pow( 2, self.size ); break;
+                default: max = self.max;
+              }
+              randoms.push( Math.floor( 1 + Math.random() * max ) );
+            }
+            solutions = calculateSolutions( randoms );
+            while ( solutions[ 0 ] < self.min || solutions[ 0 ] > self.max ) {
+              let i = 0;
+              if ( solutions[ 0 ] < self.min ) {
+                for ( let j = 1; j < randoms.length; j++ )
+                  if ( randoms[ j ] < randoms[ i ] )
+                    i = j;
+                randoms[ i ] = Math.floor( randoms[ i ] + Math.random() * ( max - randoms[ i ] ) );
+              }
+              else if ( solutions[ 0 ] > self.max ) {
+                for ( let j = 1; j < randoms.length; j++ )
+                  if ( randoms[ j ] > randoms[ i ] )
+                    i = j;
+                randoms[ i ] = Math.floor( 1 + Math.random() * randoms[ i ] );
               }
               solutions = calculateSolutions( randoms );
-            } while ( solutions[ 0 ] < self.min || solutions[ 0 ] > self.max );
+              if ( tries++ > 100000 ) return console.log( 'Calculation of numbers failed.' );
+            }
             numbers = randoms;
           }
           solutions = calculateSolutions( numbers );
