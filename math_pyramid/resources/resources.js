@@ -55,6 +55,7 @@ ccm.files[ 'resources.js' ] = {
 
   /** demo configuration (absolute paths) */
   "demo": {
+    "captions.finish": "Restart",
     "onfinish": {
       "restart": true
     },
