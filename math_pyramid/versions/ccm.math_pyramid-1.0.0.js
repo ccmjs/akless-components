@@ -283,8 +283,8 @@
             $.remove( self.element.querySelector( '#feedback' ) );        // remove 'feedback' button
             $.remove( self.element.querySelector( '#finish' ) );          // remove 'finish' button
             self.logger && self.logger.log( 'finish', self.getValue() );  // logging of 'finish' event
-            self.feedback && feedback();                                  // give visual feedback
             $.onFinish( self );                                           // perform 'finish' actions
+            self.feedback && feedback();                                  // give visual feedback
           }
 
         }
