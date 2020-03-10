@@ -202,7 +202,7 @@
            * menu entry
            * @type {Element}
            */
-          const entry_elem = $.html( self.html.entry, { id: 'entry-' + entry_data.id, title: entry_data.id, click: onClick } );
+          const entry_elem = $.html( self.html.entry, { id: 'entry-' + entry_data.id, nr: entry_data.id, click: onClick } );
 
           // add menu entry title
           const title_elem = entry_elem.querySelector( '.title' );
