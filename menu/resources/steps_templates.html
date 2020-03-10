@@ -1,0 +1,27 @@
+<!--
+@overview default HTML templates of ccm component for rendering a menu
+@author Tea Kless <tea.kless@web.de.de> 2020
+-->
+
+<ccm-template key="main">
+  <div id="main">
+    <div id="lang"></div>
+    <div id="entries"></div>
+    <div style="flex: 2">
+      <div id="content"></div>
+      <div id="buttons">
+        <button id="prev" onclick="%onprev%">prev</button>
+        <button id="next" onclick="%onnext%">next</button>
+      </div>
+    </div>
+  </div>
+</ccm-template>
+
+<ccm-template key="entry">
+  <div id="%id%" class="entry" onclick="%click%">
+    <div>
+      <div class="step-number"> %nr% </div>
+      <div class="title step-text"></div>
+    </div>
+  </div>
+</ccm-template>

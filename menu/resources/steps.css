@@ -1,0 +1,86 @@
+/**
+ * @overview text layout of ccm component for a menu
+ * @author André Kless <tea.kless@web.de> 2020
+ * @license The MIT License (MIT)
+ */
+
+#element {
+  --color1: #00BFFF;
+  --color2: #00376B;
+  --color3: #914D00;
+  --color4: #E6F4F1;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+#main {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#entries {
+  white-space: nowrap;
+  padding-right: 3rem;
+}
+
+.entry {
+  position: relative;
+}
+
+.entry > div {
+  display: flex;
+  align-items: center;
+  padding: .5rem .5rem 3rem;
+  cursor: pointer;
+}
+
+.entry:not(:last-child) > div:after {
+  content: '';
+  width: 2px;
+  background: #ebebeb;
+  height: 5rem;
+  position: absolute;
+  top: 50px;
+  left: 32px;
+}
+
+.title {
+  color: #999;
+  font-weight: bold;
+}
+
+.step-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ebebeb;
+  color: #999;
+  font-weight: bold;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 15px;
+  border: 5px solid #fff;
+  z-index: 9;
+}
+
+.entry.active .step-number {
+  background: #4966b1;
+  color: #fff;
+}
+
+.entry.active .title {
+  color: #4966b1;
+}
+
+#content {
+  min-height: 400px;
+  background: #f8f8f8;
+  padding: 1rem 2rem;
+}
+
+#buttons {
+  margin-top: -3rem;
+  padding: 1rem 1rem;
+  display: flex;
+  justify-content: space-between;
+}
