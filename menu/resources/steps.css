@@ -86,7 +86,3 @@
   display: flex;
   justify-content: space-between;
 }
-
-*:not( #content ), ::after, ::before {
-  box-sizing: unset;
-}
