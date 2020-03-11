@@ -231,6 +231,20 @@ ccm.files[ 'configs.js' ] = {
     "selected": 1
   },
 
+  "steps": {
+    "key": "text",
+    "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/menu/resources/steps_templates.html" ],
+    "css": [ "ccm.load", "resources/steps.css" ],
+    "data": {
+      "store": [ "ccm.store", "https://ccmjs.github.io/akless-components/menu/resources/datasets.js" ],
+      "key": "steps"
+    },
+    "selected": 1,
+    "trigger_selected": true,
+    "keyboard_control": true,
+    "touch_control": true
+  },
+
   "local_slide": {
     "css.1": "../menu/resources/slide.css",
     "data": {
