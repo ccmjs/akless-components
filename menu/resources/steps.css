@@ -61,6 +61,8 @@
   margin-right: 15px;
   border: 5px solid #fff;
   z-index: 9;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
 }
 
 .entry.active .step-number {
@@ -79,8 +81,8 @@
 }
 
 #buttons {
-  margin-top: -3rem;
-  padding: 1rem 1rem;
+  margin-top: -6rem;
+  padding: 2rem 2rem;
   display: flex;
   justify-content: space-between;
 }
