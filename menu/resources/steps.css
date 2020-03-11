@@ -41,6 +41,7 @@
   position: absolute;
   top: 50px;
   left: 32px;
+  box-sizing: unset;
 }
 
 .title {
@@ -85,8 +86,4 @@
   padding: 2rem 2rem;
   display: flex;
   justify-content: space-between;
-}
-
-*, ::after, ::before {
-  box-sizing: unset;
 }
