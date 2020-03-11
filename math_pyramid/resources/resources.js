@@ -35,6 +35,7 @@ ccm.files[ 'resources.js' ] = {
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
     "max": 2000,
     "min": 1000,
+//  "numbers": [ 1, 2, 10, 8, 9, 10, 11, 12, 13 ],
 //  "oncancel": instance => console.log( instance ),
     "onchange": event => console.log( event ),
     "onfeedback": instance => console.log( instance ),
@@ -50,7 +51,7 @@ ccm.files[ 'resources.js' ] = {
     "show_results": false,
     "size": 8,
     "solutions": false,
-    "user": [ "ccm.start", "../user/ccm.user.js", [ "ccm.get", "../user/resources/configs.js", "guest" ] ]
+//  "user": [ "ccm.start", "../user/ccm.user.js", [ "ccm.get", "../user/resources/configs.js", "guest" ] ]
   },
 
   /** demo configuration (absolute paths) */
