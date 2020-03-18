@@ -1386,7 +1386,7 @@ export function progressBar( element, actual = 0, total = 100 ) {
   points.setAttribute( 'style', 'font-family: Verdana, Arial, sans-serif; font-size: 15px; font-stretch: expanded; margin-right: 0.5em; top: 2px;' );
 
   const progress_bar = main.querySelector( 'div > div:last-child' );
-  progress_bar.setAttribute( 'style', 'width: 100%; height: 20px; background-color: #ddd; border-radius: 10px; overflow: hidden;' );
+  progress_bar.setAttribute( 'style', 'width: 100%; height: 20px; background-color: #ddd; border-radius: 10px; overflow: hidden; position: relative;' );
 
   const progress = progress_bar.querySelector( 'div' );
   progress.setAttribute( 'style', 'width: 0%; height: 20px; background-color: #4CAF50; position: absolute;' );
