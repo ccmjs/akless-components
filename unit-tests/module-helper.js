@@ -677,6 +677,16 @@ ccm.files[ 'module-helper.js' ] = {
     }
   },
 
+  progressBar: {
+    tests: {
+      element: suite => {
+        const element = document.createElement( 'div' );
+        suite.modules.progressBar( element );
+        suite.assertTrue( element.innerHTML );
+      }
+    }
+  },
+
 /*----------------------------------------------------- Security -----------------------------------------------------*/
 
   privatize: {
