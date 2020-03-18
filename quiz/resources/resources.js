@@ -17,8 +17,8 @@ ccm.files[ 'resources.js' ] = {
     "html.1": "../quiz/resources/templates.html",
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
     "navigation": true,
-    "onfinish": { "restart": true },
-    "placeholder.finish": "Restart",
+    "onfinish": { "restart": false },
+//  "placeholder.finish": "Restart",
     "questions": [ "ccm.get", "../quiz/resources/resources.js", "data.questions" ],
     "show_results": false,
     "start_button": false
@@ -30,8 +30,6 @@ ccm.files[ 'resources.js' ] = {
     "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/quiz/resources/weblysleek.css", { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/weblysleekui/font.css" } ],
     "feedback": true,
     "navigation": true,
-    "onfinish": { "restart": true },
-    "placeholder.finish": "Restart",
     "questions": [ "ccm.get", "https://ccmjs.github.io/akless-components/quiz/resources/resources.js", "data.questions" ]
   },
 

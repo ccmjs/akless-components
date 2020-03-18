@@ -2,7 +2,7 @@
  * @overview ccm component for quiz
  * @author André Kless <andre.kless@web.de> 2016-2020
  * @license The MIT License (MIT)
- * @version latest (4.1.0)
+ * @version 4.1.0
  * @changes
  * version 4.1.0 (18.03.2020):
  * - added optional progress bar (set by default)
@@ -30,7 +30,7 @@
 
   const component = {
 
-    name: 'quiz',
+    name: 'quiz', version: [ 4, 1, 0 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-25.1.0.js',
 
