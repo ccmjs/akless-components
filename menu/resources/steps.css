@@ -37,11 +37,10 @@
   content: '';
   width: 2px;
   background: #ebebeb;
-  height: 5rem;
+  height: 3rem;
   position: absolute;
-  top: 50px;
-  left: 32px;
-  box-sizing: unset;
+  top: 53px;
+  left: 28px;
 }
 
 .title {
@@ -60,7 +59,7 @@
   height: 40px;
   border-radius: 50%;
   margin-right: 15px;
-  border: 5px solid #fff;
+  /*border: 5px solid #fff;*/
   z-index: 9;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 16px;
