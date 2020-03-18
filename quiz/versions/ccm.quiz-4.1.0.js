@@ -71,8 +71,9 @@
       "questions": [
         {
           "text": "First Question",
+          "input": "radio",
           "answers": [
-            { "text": "Answer A" },
+            { "text": "Answer A", "correct": true },
             { "text": "Answer B" }
           ]
         }
