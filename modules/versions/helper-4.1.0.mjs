@@ -1394,7 +1394,7 @@ export function progressBar( element, actual = 0, total = 100 ) {
   setTimeout( () => {
     const goal = actual * progress_bar.offsetWidth / total;
     let width = 1;
-    let id = setInterval( () => width >= goal ? clearInterval( id ) : progress.style.width = ++width + 'px', 8 );
+    let id = setInterval( () => width >= goal ? clearInterval( id ) || ( progress.style.width = '100%' ) : progress.style.width = ++width + 'px', 8 );
   }, 8 );
 
 }
