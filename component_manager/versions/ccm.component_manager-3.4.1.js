@@ -2,7 +2,7 @@
  * @overview ccm component for managing a component
  * @author André Kless <andre.kless@web.de> 2018-2020
  * @license MIT License
- * @version latest (3.4.1)
+ * @version 3.4.1
  * @changes
  * version 3.4.1 (19.03.2020):
  * - bug fix for fast click on create similar app in demo menu
@@ -57,7 +57,7 @@
 
   const component = {
 
-    name: 'component_manager',
+    name: 'component_manager', version: [ 3, 4, 1 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-25.1.0.js',
 
