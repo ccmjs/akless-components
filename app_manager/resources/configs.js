@@ -12,7 +12,7 @@ ccm.files[ 'configs.js' ] = {
     "css.1": "../app_manager/resources/styles.css",
     "data": {
       "store": [ "ccm.store", { "url": "https://ccm2.inf.h-brs.de", "name": "dms-apps" } ],
-      "key": "1562615085075X31075165857521436"
+      "key": "1581497368812X27378213576930843"
     },
     "default_icon": "../dms/resources/img/default.png",
     "form": [ "ccm.component", "../submit/ccm.submit.js", [ "ccm.get", "../submit/resources/configs.js", "app_meta_edit" ] ],
@@ -75,7 +75,7 @@ ccm.files[ 'configs.js' ] = {
     "app_details": [ "ccm.component", "https://ccmjs.github.io/akless-components/content/versions/ccm.content-5.3.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/content/resources/configs.js", "app_meta" ] ],
     "data": {
       "store": [ "ccm.store", { "url": "https://ccm2.inf.h-brs.de", "name": "dms-apps" } ],
-      "key": "1562615085075X31075165857521436"
+      "key": "1581497368812X27378213576930843"
     },
     "default_icon": "https://ccmjs.github.io/akless-components/dms/resources/img/default.png",
     "form": [ "ccm.component", "https://ccmjs.github.io/akless-components/submit/versions/ccm.submit-7.1.5.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/submit/resources/configs.js", "app_meta_edit" ] ],
