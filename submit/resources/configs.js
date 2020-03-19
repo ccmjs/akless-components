@@ -189,7 +189,7 @@ ccm.files[ 'configs.js' ] = {
   "component_meta_create": {
     "entries": [
       "<div class='page-header'><h3 data-lang='headline_create'>Publish Component</h3></div>",
-      "<div class='well' data-lang='intro_create'>Are you a component developer? Have you developed a useful component that you would like to offer to the world? Great! Then you can use this form to publish your component. The more information about the published component you type here, the better your component can be found and reused by others.</div>",
+      "<div class='form-group card card-body bg-light' data-lang='intro_create'>Are you a component developer? Have you developed a useful component that you would like to offer to the world? Great! Then you can use this form to publish your component. The more information about the published component you type here, the better your component can be found and reused by others.</div>",
       {
         "label": "<span style='color:red'>*</span><span data-lang='title'>Title</span>",
         "name": "title",
@@ -236,7 +236,7 @@ ccm.files[ 'configs.js' ] = {
 //      "placeholder": "Provides Components for Creating Apps.",
         "maxlength": 70
       },
-      "<div class='well' data-lang='license_info'><p>I agree that all software is released as free software under the <a href='https://en.wikipedia.org/wiki/MIT_License' target='_blank'>MIT license</a>.</p><p>I agree that all content will be released as public domain under the <a href='https://creativecommons.org/share-your-work/public-domain/cc0/' target='_blank'>CC0 license</a>.</p>I confirm that this does not violate the copyright of third parties.</div>",
+      "<div class='form-group card card-body bg-light' data-lang='license_info'><p>I agree that all software is released as free software under the <a href='https://en.wikipedia.org/wiki/MIT_License' target='_blank'>MIT license</a>.</p><p>I agree that all content will be released as public domain under the <a href='https://creativecommons.org/share-your-work/public-domain/cc0/' target='_blank'>CC0 license</a>.</p>I confirm that this does not violate the copyright of third parties.</div>",
       {
         "label": "<span style='color:red'>*</span><span data-lang='agree'>I Agree</span>",
         "type": "checkbox",
