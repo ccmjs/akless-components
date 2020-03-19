@@ -233,7 +233,7 @@ ccm.files[ 'configs.js' ] = {
 
   "steps": {
     "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/menu/resources/steps_templates.html" ],
-    "css": [ "ccm.load", "resources/steps.css" ],
+    "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/menu/resources/steps.css" ],
     "data": {
       "store": [ "ccm.store", "https://ccmjs.github.io/akless-components/menu/resources/datasets.js" ],
       "key": "steps"
