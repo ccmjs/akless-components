@@ -188,7 +188,7 @@ ccm.files[ 'configs.js' ] = {
   /** create of component metadata */
   "component_meta_create": {
     "entries": [
-      "<div class='page-header'><h3 data-lang='headline_create'>Publish Component</h3></div>",
+      "<div class='pb-2 mt-4 mb-4 border-bottom'><h3 data-lang='headline_create'>Publish Component</h3></div>",
       "<div class='form-group card card-body bg-light' data-lang='intro_create'>Are you a component developer? Have you developed a useful component that you would like to offer to the world? Great! Then you can use this form to publish your component. The more information about the published component you type here, the better your component can be found and reused by others.</div>",
       {
         "label": "<span style='color:red'>*</span><span data-lang='title'>Title</span>",
