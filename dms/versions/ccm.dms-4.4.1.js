@@ -2,7 +2,7 @@
  * @overview ccm component for Digital Makerspace
  * @author André Kless <andre.kless@web.de> 2018-2020
  * @license MIT License
- * @version latest (4.4.1)
+ * @version 4.4.1
  * @changes
  * version 4.4.1 (19.03.2020):
  * - "Create Similar App" button is renamed to "Edit App Configuration" for the creator of the app
@@ -52,7 +52,7 @@
 
   const component = {
 
-    name: 'dms',
+    name: 'dms', version: [ 4, 4, 1 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-25.1.0.js',
 
