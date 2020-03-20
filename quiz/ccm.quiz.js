@@ -6,6 +6,7 @@
  * @changes
  * version 4.1.0 (18.03.2020):
  * - added optional progress bar (set by default)
+ * - bug fix for disabled feedback
  * - uses helper.mjs v4.1.0 as default
  * - uses ccm v25.1.0
  * version 4.0.3 (12.02.2020):
@@ -595,7 +596,7 @@
             event_data.correct && results.correct++;
 
             // logging of 'feedback' event
-            self.logger && self.logger.log( 'feedback', $.clone( event_data ) );
+           self.feedback && self.logger && self.logger.log( 'feedback', $.clone( event_data ) );
 
             // remove no more needed properties in event data
             delete event_data.number_of_questions;
@@ -607,13 +608,13 @@
             [ ...question.elem.querySelectorAll( 'input' ) ].forEach( input_field => input_field.disabled = true );
 
             // show visual feedback for current question
-            showFeedback();
+            self.feedback && showFeedback();
 
             // remember that current question is evaluated
             evaluated[ question.nr ] = true;
 
             // perform 'feedback' callback
-            self.onfeedback && self.onfeedback.call( self, $.clone( event_data ) );
+            self.feedback && self.onfeedback && self.onfeedback.call( self, $.clone( event_data ) );
 
             // (re)render buttons
             updateButtons();
