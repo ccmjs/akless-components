@@ -1,8 +1,12 @@
 /**
  * @overview default layout of ccm component for rendering a menu
- * @author André Kless <andre.kless@web.de> 2019
+ * @author André Kless <andre.kless@web.de> 2019-2020
  * @license The MIT License (MIT)
  */
+
+#main {
+  margin: 1em 0;
+}
 
 #title {
   text-align: center;
