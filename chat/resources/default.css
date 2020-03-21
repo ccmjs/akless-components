@@ -1,0 +1,53 @@
+/**
+ * @overview default layout of ccm component for chat
+ * @author André Kless <andre.kless@web.de> 2020
+ * @license The MIT License (MIT)
+ */
+
+#main {
+  margin: 0.5em 0;
+}
+
+#messages {
+  font-family: WeblySleekUI, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  padding: 0.25em 0;
+}
+
+.message {
+  display: flex;
+  padding: 0.25em 0.5em 0.25em 1.5em;
+}
+
+.message:hover {
+  background-color: #eee;
+}
+
+.message .picture {
+  width: 2.5em;
+  padding: 0.4em 0.5em 0 0;
+}
+
+.message .picture img {
+  width: 2.5em;
+  border-radius: 0.3em;
+}
+
+.message .topic {
+  display: flex;
+  align-items: baseline;
+  white-space: nowrap;
+}
+
+.message .user {
+  font-weight: bold;
+}
+
+.message .timestamp {
+  margin-left: 0.5em;
+  font-size: small;
+  color: #888;
+}
+
+#input {
+  margin: 0.75em 1em 0.5em 1em;
+}

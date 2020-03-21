@@ -1,0 +1,33 @@
+<!--
+@overview HTML template of ccm component for chat
+@author André Kless <andre.kless@web.de.de> 2020
+-->
+
+<ccm-template key="main">
+  <div id="main">
+    <div id="top"></div>
+    <div id="messages"></div>
+    <div id="input"></div>
+  </div>
+</ccm-template>
+
+<ccm-template key="message">
+  <div class="message">
+    <div class="picture">
+      <img src="%picture%">
+    </div>
+    <div>
+      <div class="topic">
+        <div class="user">%user%</div>
+        <div class="timestamp">%created_at%</div>
+      </div>
+      <div>%text%</div>
+    </div>
+  </div>
+</ccm-template>
+
+<ccm-template key="button">
+  <div>
+    <button onclick="%onclick%">%caption%</button>
+  </div>
+</ccm-template>
