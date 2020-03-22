@@ -2,7 +2,7 @@
  * @overview ccm component for building image maps
  * @author André Kless <andre.kless@web.de> 2020
  * @license The MIT License (MIT)
- * @version latest (1.0.1)
+ * @version 1.0.1
  * @changes
  * version 1.0.1 (22.03.2020):
  * - uses ccm v25.1.0
@@ -14,7 +14,7 @@
 
   const component = {
 
-    name: 'image_map_builder',
+    name: 'image_map_builder', version: [ 1, 0, 1 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-25.1.0.js',
 
