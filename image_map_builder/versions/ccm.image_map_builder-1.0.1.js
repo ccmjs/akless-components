@@ -6,6 +6,7 @@
  * @changes
  * version 1.0.1 (22.03.2020):
  * - uses ccm v25.1.0
+ * - uses helper.mjs v4.1.0 as default
  * - uses ccm.submit.js v8.0.0 as default
  * version 1.0.0 (05.02.2020)
  */
@@ -22,7 +23,7 @@
       "convert": [ "ccm.load", { "url": "https://ccmjs.github.io/akless-components/modules/json2json.mjs", "import": "upload2data" } ],
       "data": {},
       "default_image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=",
-      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-4.0.1.mjs" ],
+      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-4.1.0.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/image_map_builder/resources/templates.html" ],
       "image_map": [ "ccm.component", "https://ccmjs.github.io/akless-components/image_map/versions/ccm.image_map-1.0.1.js" ],
   //  "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.2.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
