@@ -160,11 +160,14 @@
         // adjust message data
         message = $.clone( message );
         if ( !message.picture ) message.picture = this.picture;
-        if ( !message.created_at ) message.created_at = element || !this.moment || !moment ? '' : new Date();
-        if ( message.created_at && this.moment && moment ) message.created_at = moment( message.created_at ).format( 'MMMM Do YYYY, h:mm:ss a' );
 
         // update message in local datastore
         await store.set( message );
+
+        // continue adjust message data
+        if ( !element && this.moment ) message.created_at = new Date();
+        message.timestamp = message.created_at && this.moment ? moment( message.created_at ).fromNow() : '';
+        message.timestamp_tooltip = message.created_at && this.moment ? moment( message.created_at ).format( 'MMMM Do YYYY, h:mm:ss a' ) : '';
 
         // replace existing message or append new message in frontend
         if ( element )
