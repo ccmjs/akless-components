@@ -12,31 +12,6 @@ ccm.files[ 'resources.js' ] = {
     "css.2": { "url": "../resources/fonts/WeblySleekUI/font.css", "context": "head" },
     "data": {
       "store": [ "ccm.store", { "name": "chat-test", "url": "wss://ccm2.inf.h-brs.de" } ],
-//    "store": [ "ccm.store", { "name": "chat" } ],
-/*
-      "store": [ "ccm.store", [
-        {
-          "key": "1",
-          "picture": "https://akless.github.io/akless/resources/images/hedgehog.jpg",
-          "user": "Hedgehog",
-          "created_at": "11:52 Uhr",
-          "text": "Hello, World!<br>Welcome to this chat."
-        },
-        {
-          "key": "2",
-          "picture": "https://akless.github.io/akless/resources/images/snail.jpg",
-          "user": "Snail",
-          "created_at": "12:01 Uhr",
-          "text": "Hi there."
-        },
-        {
-          "key": "3",
-          "user": "Guest",
-          "created_at": "13:28 Uhr",
-          "text": "I'm only a guest user."
-        }
-      ] ],
-*/
       "key": {}
     },
     "helper.1": "../modules/helper.mjs",
@@ -48,6 +23,11 @@ ccm.files[ 'resources.js' ] = {
 
   /** demo configuration (absolute paths) */
   "demo": {
+    "data": {
+      "store": [ "ccm.store", { "name": "chat-test", "url": "wss://ccm2.inf.h-brs.de" } ],
+      "key": {}
+    },
+    "user": [ "ccm.start", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.3.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/chat/resources/resources.js", "user" ] ]
   },
 
   /** configuration for user authentication */
