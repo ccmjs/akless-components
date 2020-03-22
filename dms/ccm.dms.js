@@ -59,7 +59,7 @@
     config: {
 //    "add_version": true,
 //    "analytics": [ "ccm.component", "https://ccmjs.github.io/akless-components/dms_analytics/versions/ccm.dms_analytics-1.0.0.js" ],
-//    "app_manager": [ "ccm.component", "https://ccmjs.github.io/akless-components/app_manager/versions/ccm.app_manager-2.0.0.js" ],
+//    "app_manager": [ "ccm.component", "https://ccmjs.github.io/akless-components/app_manager/versions/ccm.app_manager-2.0.1.js" ],
 //    "apps": [ "ccm.store" ],
       "css": [ "ccm.load",
         "https://ccmjs.github.io/akless-components/dms/resources/css/dms.css",

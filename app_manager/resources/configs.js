@@ -6,7 +6,7 @@
 
 ccm.files[ 'configs.js' ] = {
 
-  /** test (relative paths) */
+  /** test configuration (relative paths) */
   "local": {
     "app_details": [ "ccm.component", "../content/ccm.content.js", [ "ccm.get", "../content/resources/configs.js", "app_meta" ] ],
     "css.1": "../app_manager/resources/styles.css",
@@ -70,20 +70,19 @@ ccm.files[ 'configs.js' ] = {
     } ]
   },
 
-  /** live (used by Digital Makerspace) */
+  /** live configuration (used by Digital Makerspace) */
   "live": {
-    "app_details": [ "ccm.component", "https://ccmjs.github.io/akless-components/content/versions/ccm.content-5.3.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/content/resources/configs.js", "app_meta" ] ],
+    "app_details": [ "ccm.component", "https://ccmjs.github.io/akless-components/content/versions/ccm.content-5.4.6.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/content/resources/configs.js", "app_meta" ] ],
     "data": {
       "store": [ "ccm.store", { "url": "https://ccm2.inf.h-brs.de", "name": "dms-apps" } ],
       "key": "1581497368812X27378213576930843"
     },
     "default_icon": "https://ccmjs.github.io/akless-components/dms/resources/img/default.png",
-    "form": [ "ccm.component", "https://ccmjs.github.io/akless-components/submit/versions/ccm.submit-7.1.5.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/submit/resources/configs.js", "app_meta_edit" ] ],
-    "handover_app": [ "ccm.component", "https://ccmjs.github.io/akless-components/handover_app/versions/ccm.handover_app-1.0.1.js", {
+    "form": [ "ccm.component", "https://ccmjs.github.io/akless-components/submit/versions/ccm.submit-8.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/submit/resources/configs.js", "app_meta_edit" ] ],
+    "handover_app": [ "ccm.component", "https://ccmjs.github.io/akless-components/handover_app/versions/ccm.handover_app-2.0.0.js", {
       "qr_code": [ "ccm.load", "https://ccmjs.github.io/akless-components/libs/qrcode-generator/qrcode.min.js" ],
 //    "window": [ "ccm.component", "https://ccmjs.github.io/akless-components/window/versions/ccm.window-1.0.0.js" ]
     } ],
-    "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/helper.mjs" ],
     "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js", {
       "translations": {
         "de": {
@@ -115,8 +114,8 @@ ccm.files[ 'configs.js' ] = {
       },
       "active": "en"
     } ],
-    "user": [ "ccm.start", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.3.0.js", {
-      "hash": [ "ccm.load", { "url": "https://ccmjs.github.io/akless-components/modules/md5.mjs", "type": "module" } ],
+    "user": [ "ccm.start", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.3.1.js", {
+      "hash": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/md5.mjs" ],
       "realm": "cloud",
       "store": "dms-user",
       "url": "https://ccm2.inf.h-brs.de"
