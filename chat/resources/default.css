@@ -8,9 +8,22 @@
   margin: 0.5em 0;
 }
 
+#top:not(:empty) {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0.5em 1em 0.25em 1em;
+}
+
 #messages {
   font-family: WeblySleekUI, 'Helvetica Neue', Helvetica, Arial, sans-serif;
   padding: 0.25em 0;
+}
+
+#messages:empty:before {
+  font-style: italic;
+  padding: 0.25em 0.5em 0.25em 1.5em;
+  content: "Nothings here yet. Let's start to write a first chat message:"
 }
 
 .message {
@@ -46,6 +59,10 @@
   margin-left: 0.5em;
   font-size: small;
   color: #888;
+}
+
+.message .text p {
+  margin: 0;
 }
 
 #input {
