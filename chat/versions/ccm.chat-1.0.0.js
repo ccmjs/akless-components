@@ -86,8 +86,8 @@
         messages.forEach( message => {
           message = $.clone( message );
           if ( !message.picture ) message.picture = this.picture;
-          if ( !message.created_at ) message.created_at = '';
-          if ( message.created_at && this.moment && moment ) message.created_at = moment( message.created_at ).format( 'MMMM Do YYYY, h:mm:ss a' );
+          message.timestamp = message.created_at && this.moment && moment ? moment( message.created_at ).fromNow() : '';
+          message.timestamp_tooltip = message.created_at && this.moment && moment ? moment( message.created_at ).format( 'MMMM Do YYYY, h:mm:ss a' ) : '';
           $.append( this.element.querySelector( '#messages' ), $.html( this.html.message, message ) )
         } );
 
