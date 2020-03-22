@@ -23,7 +23,7 @@
 #messages:empty:before {
   font-style: italic;
   padding: 0.25em 0.5em 0.25em 1.5em;
-  content: "Nothings here yet. Let's start to write a first chat message:"
+  content: "Nothings here yet. Someone should write a first chat message."
 }
 
 .message {
