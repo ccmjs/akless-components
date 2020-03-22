@@ -6,7 +6,7 @@
 
 ccm.files[ 'configs.js' ] = {
 
-  /** test configuration for local testing (relative paths) */
+  /** test configuration (relative paths) */
   "local": {
     "css.1": "../guess_picture/resources/styles.css",
     "html.1": "../guess_picture/resources/templates.html",
@@ -103,7 +103,7 @@ ccm.files[ 'configs.js' ] = {
     "user": [ "ccm.start", "../user/versions/ccm.user-9.2.0.js", [ "ccm.get", "../user/resources/configs.js", "guest" ] ]
   },
 
-  /** demo configuration for external showcase (absolute paths) */
+  /** demo configuration (absolute paths) */
   "demo": {
     "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/guess_picture/resources/configs.js", "lang" ] ],
     "onfinish": { "restart": true },
