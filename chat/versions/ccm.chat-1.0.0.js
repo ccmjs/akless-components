@@ -24,7 +24,24 @@
       "data": { "store": [ "ccm.store" ], "key": {} },
   //  "hide_lang": true,
   //  "hide_login": true,
-      "editor": [ "ccm.start", "https://ccmjs.github.io/tkless-components/editor/versions/ccm.editor-4.0.0.js" ],
+      "editor": [ "ccm.start", "https://ccmjs.github.io/tkless-components/editor/versions/ccm.editor-4.0.0.js", {
+        "editor": [ "ccm.load",
+          'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js',
+          'https://ccmjs.github.io/tkless-components/libs/quill/quill.js',
+          'https://cdn.quilljs.com/1.2.0/quill.snow.css'
+        ],
+        "settings": {
+          "modules": {
+            "toolbar": [
+              [ "bold", "italic", "strike", "link" ],
+              [ { "list": "ordered" }, { "list": "bullet" } ],
+              [ "image", "video" ]
+            ]
+          },
+          "placeholder": "",
+          "theme": "snow"
+        }
+      } ],
       "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-4.1.0.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/chat/resources/templates.html" ],
   //  "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js" ],
@@ -33,6 +50,7 @@
   //  "onchange": event => console.log( event ),
   //  "onstart": instance => console.log( instance ),
       "picture": "https://ccmjs.github.io/akless-components/user/resources/icon.svg",
+      "time_format": "Do MMMM YYYY, H:mm:ss",
   //  "user": [ "ccm.start", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.3.1.js" ]
     },
 
@@ -81,7 +99,7 @@
           if ( !message.picture ) message.picture = this.picture;
           const time = this.moment && moment && moment( message.created_at );
           message.timestamp = message.created_at ? ( time ? time.fromNow() : message.created_at ) : '';
-          message.timestamp_tooltip = message.created_at ? ( time ? time.format( 'MMMM Do YYYY, H:mm:ss' ) : message.created_at ) : '';
+          message.timestamp_tooltip = message.created_at ? ( time ? time.format( this.time_format ) : message.created_at ) : '';
 
           // append message in frontend
           $.append( this.element.querySelector( '#messages' ), $.html( this.html.message, message ) )
@@ -171,7 +189,7 @@
         const has_timestamp = !element || message.created_at;
         const time = this.moment && moment && moment( message.created_at || !element && new Date() );
         message.timestamp = has_timestamp ? ( time ? time.fromNow() : message.created_at ) : '';
-        message.timestamp_tooltip = has_timestamp ? ( time ? time.format( 'MMMM Do YYYY, H:mm:ss' ) : message.created_at ) : '';
+        message.timestamp_tooltip = has_timestamp ? ( time ? time.format( this.time_format ) : message.created_at ) : '';
 
         // replace existing message or append new message in frontend
         if ( element )
