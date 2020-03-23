@@ -26,9 +26,9 @@
   //  "hide_login": true,
       "editor": [ "ccm.start", "https://ccmjs.github.io/tkless-components/editor/versions/ccm.editor-4.0.0.js", {
         "editor": [ "ccm.load",
-          'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js',
-          'https://ccmjs.github.io/tkless-components/libs/quill/quill.js',
-          'https://cdn.quilljs.com/1.2.0/quill.snow.css'
+          "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js",
+          "https://ccmjs.github.io/tkless-components/libs/quill/quill.js",
+          "https://cdn.quilljs.com/1.2.0/quill.snow.css"
         ],
         "settings": {
           "modules": {
