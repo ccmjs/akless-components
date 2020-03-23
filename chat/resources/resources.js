@@ -18,6 +18,8 @@ ccm.files[ 'resources.js' ] = {
 //  "hide_login": true,
     "html.1": "../chat/resources/templates.html",
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
+    "onchange": event => console.log( event ),
+    "onstart": instance => console.log( instance ),
     "user": [ "ccm.start", "../user/ccm.user.js", [ "ccm.get", "../chat/resources/resources.js", "user" ] ]
   },
 

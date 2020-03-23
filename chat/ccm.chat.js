@@ -28,6 +28,8 @@
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/chat/resources/templates.html" ],
   //  "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.3.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
       "moment": [ "ccm.load", "https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js" ],
+  //  "onchange": event => console.log( event ),
+  //  "onstart": instance => console.log( instance ),
       "picture": "https://ccmjs.github.io/akless-components/user/resources/icon.svg",
   //  "user": [ "ccm.start", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.3.1.js" ]
     },
@@ -44,17 +46,10 @@
 
       this.init = async () => {
 
-        // set shortcut to help functions
-        $ = Object.assign( {}, this.ccm.helper, this.helper );
-
-        // listen to login/logout events => restart
-        if ( this.user ) this.user.onchange = this.start;
-
-        // listen to datastore changes => (re)render own content
-        this.data.store.onchange = this.refresh;
-
-        // set time format language
-        moment.locale( 'en' );
+        $ = Object.assign( {}, this.ccm.helper, this.helper );  // set shortcut to help functions
+        if ( this.user ) this.user.onchange = this.start;       // listen to login/logout events => restart
+        this.data.store.onchange = this.refresh;                // listen to datastore changes => (re)render own content
+        moment.locale( 'en' );                                  // set time format language
 
       };
 
@@ -67,26 +62,15 @@
 
       this.start = async () => {
 
-        // store all chat messages in a local datastore
-        store = await this.ccm.store( await $.dataset( this.data ) );
-
-        /**
-         * chat messages
-         * @type {{key: string, picture: string, user: string, created_at: string, text: string}[]}
-         */
-        const messages = await store.get();
-
-        // logging of 'start' event
-        this.logger && this.logger.log( 'start', $.clone( messages ) );
-
-        // render main HTML structure
-        $.setContent( this.element, $.html( this.html.main ) );
+        store = await this.ccm.store( await $.dataset( this.data ) );       // store all chat messages in a local datastore
+        this.logger && this.logger.log( 'start', $.clone( store.local ) );  // log 'start' event
+        $.setContent( this.element, $.html( this.html.main ) );             // render main HTML structure
 
         // render login/logout area
         this.user && !this.hide_login && $.append( this.element.querySelector( '#top' ), this.user.root );
 
-        // render messages
-        messages.forEach( message => {
+        // iterate all chat messages => render each message
+        ( await store.get() ).forEach( message => {
 
           // adjust message data
           message = $.clone( message );
@@ -121,7 +105,7 @@
                * @type {{name: string, realm: string, user: string, key: string, picture: string, token: string, realm: string}}}
                * @example {
                *   "key": "igel",
-               *   "user": "igel",
+               *   "user": "igel@zoo.de",
                *   "name": "Igel",
                *   "picture": "https://akless.github.io/akless/resources/images/hedgehog.jpg",
                *   "realm": "cloud",
@@ -141,9 +125,15 @@
               await this.refresh( dataset );          // update local chat messages
               this.editor.get().root.innerHTML = '';  // clear user input in text editor
 
+              this.logger && this.logger.log( 'change', $.clone( dataset ) );                  // log 'change' event
+              this.onchange && this.onchange( { instance: this, data: $.clone( dataset ) } );  // perform 'change' callback
+
             }
           } ) );
         }
+
+        // perform 'start' callback
+        this.onstart && this.onstart( this );
 
       };
 
@@ -160,23 +150,24 @@
        */
       this.refresh = async message => {
 
+        // adjust message data
+        message = $.clone( message );
+        if ( !message.picture ) message.picture = this.picture;
+
+        // create/update message in local datastore
+        await store.set( $.clone( message ) );
+
         /**
          * existing message element
          * @type {Element}
          */
         const element = this.element.querySelector( '#msg-' + message.key );
 
-        // adjust message data
-        message = $.clone( message );
-        if ( !message.picture ) message.picture = this.picture;
-
-        // create/update message in local datastore
-        await store.set( message );
-
         // continue adjust message data
-        const time = this.moment && moment && moment( message.created_at || element && new Date() );
-        message.timestamp = message.created_at ? ( time ? time.fromNow() : message.created_at ) : '';
-        message.timestamp_tooltip = message.created_at ? ( time ? time.format( 'MMMM Do YYYY, H:mm:ss' ) : message.created_at ) : '';
+        const has_timestamp = !element || message.created_at;
+        const time = this.moment && moment && moment( message.created_at || !element && new Date() );
+        message.timestamp = has_timestamp ? ( time ? time.fromNow() : message.created_at ) : '';
+        message.timestamp_tooltip = has_timestamp ? ( time ? time.format( 'MMMM Do YYYY, H:mm:ss' ) : message.created_at ) : '';
 
         // replace existing message or append new message in frontend
         if ( element )
@@ -185,6 +176,12 @@
           $.append( this.element.querySelector( '#messages' ), $.html( this.html.message, message ) )
 
       };
+
+      /**
+       * returns current result data
+       * @returns {Object} current chat messages
+       */
+      this.getValue = () => $.clone( store.local );
 
     }
 
