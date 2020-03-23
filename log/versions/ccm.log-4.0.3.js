@@ -6,6 +6,7 @@
  * @changes
  * version 4.0.3 (21.03.2020)
  * - uses ccm v25.1.0
+ * - no privatize of instance members
  * version 4.0.2 (06.02.2019)
  * - uses ccm v20.0.0
  * version 4.0.1 (03.09.2018)
@@ -59,7 +60,7 @@
     Instance: function () {
 
       const self = this;
-      let my, $;
+      let $;
 
       /**
        * global unique id of this instance
@@ -72,9 +73,6 @@
         // set shortcut to help functions
         $ = Object.assign( {}, this.ccm.helper, this.helper );
 
-        // privatize all possible instance members
-        my = $.privatize( self );
-
         // generate global unique instance id
         id = $.generateKey();
 
@@ -85,23 +83,23 @@
         function uniformData() {
 
           // accept arrays for event settings
-          if ( my.events ) {
-            $.arrToObj( my, 'events' );
-            for ( const key in my.events )
-              $.arrToObj( my.events, key );
+          if ( self.events ) {
+            $.arrToObj( self, 'events' );
+            for ( const key in self.events )
+              $.arrToObj( self.events, key );
           }
 
           // accept arrays for logging settings
-          if ( my.logging ) {
-            $.arrToObj( my, 'logging' );
-            for ( const key in my.logging )
-              $.arrToObj( my.logging, key );
+          if ( self.logging ) {
+            $.arrToObj( self, 'logging' );
+            for ( const key in self.logging )
+              $.arrToObj( self.logging, key );
           }
 
           // accept arrays for specific subset settings
-          if ( my.only )
-            for ( const key in my.only )
-              $.arrToObj( my.only, key );
+          if ( self.only )
+            for ( const key in self.only )
+              $.arrToObj( self.only, key );
 
         }
 
@@ -115,7 +113,7 @@
       this.log = ( event, data ) => {
 
         // ignored event? => abort
-        if ( my.events && !my.events[ event ] ) return;
+        if ( self.events && !self.events[ event ] ) return;
 
         /**
          * result data
@@ -162,7 +160,7 @@
             const obj = { realm: user.getRealm() };
             if ( user.isLoggedIn() ) {
               const userdata = user.data();
-              obj.user = my.hash ? ( $.isObject( my.hash ) ? my.hash.md5( userdata.user ) : md5( userdata.user ) ) : userdata.user;
+              obj.user = self.hash ? ( $.isObject( self.hash ) ? self.hash.md5( userdata.user ) : md5( userdata.user ) ) : userdata.user;
             }
             results.user = obj;
           }
@@ -173,11 +171,11 @@
           results.website = window.location.href;
 
         // log only specific subsets
-        if ( my.only )
-          for ( const kind in my.only ) {
+        if ( self.only )
+          for ( const kind in self.only ) {
             if ( typeof results[ kind ] !== 'object' ) continue;
             const specific = {};
-            for ( const key in my.only[ kind ] ) {
+            for ( const key in self.only[ kind ] ) {
               const value = $.deepValue( results[ kind ], key );
               if ( value !== undefined )
                 $.deepValue( specific, key, value );
@@ -195,10 +193,10 @@
          */
         function check( kind ) {
 
-          if ( my.events && $.isObject( my.events[ event ] ) && !my.events[ event ][ kind ] ) return false;
-          if ( my.logging ) {
-            if ( !my.logging[ kind ] ) return false;
-            if ( $.isObject( my.logging[ kind ] ) && !my.logging[ kind ][ event ] ) return false;
+          if ( self.events && $.isObject( self.events[ event ] ) && !self.events[ event ][ kind ] ) return false;
+          if ( self.logging ) {
+            if ( !self.logging[ kind ] ) return false;
+            if ( $.isObject( self.logging[ kind ] ) && !self.logging[ kind ][ event ] ) return false;
           }
           return true;
 
