@@ -2,7 +2,7 @@
  * @overview ccm component for submitting data
  * @author André Kless <andre.kless@web.de> 2018-2020
  * @license The MIT License (MIT)
- * @version latest (8.0.1)
+ * @version 8.0.1
  * @changes
  * version 8.0.1 (23.03.2020):
  * - bug fix for initial value of a checkbox
@@ -18,7 +18,7 @@
 
   const component = {
 
-    name: 'submit',
+    name: 'submit', version: [ 8, 0, 1 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-25.1.0.js',
 
