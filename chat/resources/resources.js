@@ -21,7 +21,7 @@ ccm.files[ 'resources.js' ] = {
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
     "onchange": event => console.log( event ),
     "onstart": instance => console.log( instance ),
-    "user": [ "ccm.start", "../user/ccm.user.js", [ "ccm.get", "../chat/resources/resources.js", "user" ] ]
+    "user": [ "ccm.instance", "../user/ccm.user.js", [ "ccm.get", "../chat/resources/resources.js", "user" ] ]
   },
 
   /** demo configuration (absolute paths) */
@@ -31,7 +31,7 @@ ccm.files[ 'resources.js' ] = {
       "key": {}
     },
     "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/chat/resources/resources.js", "lang" ] ],
-    "user": [ "ccm.start", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.3.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/chat/resources/resources.js", "user" ] ]
+    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.3.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/chat/resources/resources.js", "user" ] ]
   },
 
   /** configuration for multilingualism */

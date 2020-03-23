@@ -51,7 +51,7 @@
   //  "onstart": instance => console.log( instance ),
       "picture": "https://ccmjs.github.io/akless-components/user/resources/icon.svg",
       "time_format": "Do MMMM YYYY, H:mm:ss",
-  //  "user": [ "ccm.start", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.3.1.js" ]
+  //  "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.3.1.js" ]
     },
 
     Instance: function () {
@@ -88,8 +88,8 @@
         $.setContent( this.element, $.html( this.html.main ) );             // render main HTML structure
 
         // render language and login/logout area
-        if ( this.lang && !this.hide_lang ) { $.append( this.element.querySelector( '#top' ), this.lang.root ); this.lang.start(); }
-        this.user && !this.hide_login && $.append( this.element.querySelector( '#top' ), this.user.root );
+        if ( this.lang && !this.hide_lang  ) { $.append( this.element.querySelector( '#top' ), this.lang.root ); this.lang.start(); }
+        if ( this.user && !this.hide_login ) { $.append( this.element.querySelector( '#top' ), this.user.root ); this.user.start(); }
 
         // iterate all chat messages => render each message
         ( await store.get() ).forEach( message => {

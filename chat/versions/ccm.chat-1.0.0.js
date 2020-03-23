@@ -51,7 +51,7 @@
   //  "onstart": instance => console.log( instance ),
       "picture": "https://ccmjs.github.io/akless-components/user/resources/icon.svg",
       "time_format": "Do MMMM YYYY, H:mm:ss",
-  //  "user": [ "ccm.start", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.3.1.js" ]
+  //  "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.3.1.js" ]
     },
 
     Instance: function () {
