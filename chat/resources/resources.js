@@ -17,6 +17,7 @@ ccm.files[ 'resources.js' ] = {
     "helper.1": "../modules/helper.mjs",
 //  "hide_login": true,
     "html.1": "../chat/resources/templates.html",
+    "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js", [ "ccm.get", "../chat/resources/resources.js", "lang" ] ],
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
     "onchange": event => console.log( event ),
     "onstart": instance => console.log( instance ),
@@ -29,7 +30,23 @@ ccm.files[ 'resources.js' ] = {
       "store": [ "ccm.store", { "name": "chat-test", "url": "wss://ccm2.inf.h-brs.de" } ],
       "key": {}
     },
+    "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/chat/resources/resources.js", "lang" ] ],
     "user": [ "ccm.start", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.3.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/chat/resources/resources.js", "user" ] ]
+  },
+
+  /** configuration for multilingualism */
+  "lang": {
+    "translations": {
+      "de": {
+        "flag": "https://ccmjs.github.io/tkless-components/lang/resources/de.svg",
+        "send": "Senden"
+      },
+      "en": {
+        "flag": "https://ccmjs.github.io/tkless-components/lang/resources/en.svg",
+        "send": "Send"
+      }
+    },
+    "active": "en"
   },
 
   /** configuration for user authentication */

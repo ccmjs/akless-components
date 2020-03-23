@@ -22,10 +22,12 @@
         { "context": "head", "url": "https://ccmjs.github.io/akless-components/resources/fonts/WeblySleekUI/font.css" }
       ],
       "data": { "store": [ "ccm.store" ], "key": {} },
+  //  "hide_lang": true,
   //  "hide_login": true,
       "editor": [ "ccm.start", "https://ccmjs.github.io/tkless-components/editor/versions/ccm.editor-4.0.0.js" ],
       "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-4.1.0.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/chat/resources/templates.html" ],
+  //  "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js" ],
   //  "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.3.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
       "moment": [ "ccm.load", "https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js" ],
   //  "onchange": event => console.log( event ),
@@ -47,9 +49,9 @@
       this.init = async () => {
 
         $ = Object.assign( {}, this.ccm.helper, this.helper );  // set shortcut to help functions
+        if ( this.lang ) this.lang.onchange = this.start;       // listen to change language event => restart
         if ( this.user ) this.user.onchange = this.start;       // listen to login/logout events => restart
         this.data.store.onchange = this.refresh;                // listen to datastore changes => (re)render own content
-        moment.locale( 'en' );                                  // set time format language
 
       };
 
@@ -64,9 +66,11 @@
 
         store = await this.ccm.store( await $.dataset( this.data ) );       // store all chat messages in a local datastore
         this.logger && this.logger.log( 'start', $.clone( store.local ) );  // log 'start' event
+        moment.locale( this.lang && this.lang.getValue() );                 // set time format language
         $.setContent( this.element, $.html( this.html.main ) );             // render main HTML structure
 
-        // render login/logout area
+        // render language and login/logout area
+        if ( this.lang && !this.hide_lang ) { $.append( this.element.querySelector( '#top' ), this.lang.root ); this.lang.start(); }
         this.user && !this.hide_login && $.append( this.element.querySelector( '#top' ), this.user.root );
 
         // iterate all chat messages => render each message
@@ -132,8 +136,8 @@
           } ) );
         }
 
-        // perform 'start' callback
-        this.onstart && this.onstart( this );
+        this.onstart && this.onstart( this );  // perform 'start' callback
+        this.lang && this.lang.translate();    // translate content
 
       };
 
@@ -173,7 +177,10 @@
         if ( element )
           $.replace( element, $.html( this.html.message, message ) );
         else
-          $.append( this.element.querySelector( '#messages' ), $.html( this.html.message, message ) )
+          $.append( this.element.querySelector( '#messages' ), $.html( this.html.message, message ) );
+
+        // translate content
+        this.lang && this.lang.translate();
 
       };
 
