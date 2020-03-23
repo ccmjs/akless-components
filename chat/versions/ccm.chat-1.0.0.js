@@ -4,7 +4,7 @@
  * @license The MIT License (MIT)
  * @version 1.0.0
  * @changes
- * version 1.0.0 (22.03.2020)
+ * version 1.0.0 (23.03.2020)
  */
 
 ( () => {
@@ -22,12 +22,12 @@
         { "context": "head", "url": "https://ccmjs.github.io/akless-components/resources/fonts/WeblySleekUI/font.css" }
       ],
       "data": { "store": [ "ccm.store" ], "key": {} },
-//    "hide_login": true,
+  //  "hide_login": true,
       "editor": [ "ccm.start", "https://ccmjs.github.io/tkless-components/editor/versions/ccm.editor-4.0.0.js" ],
       "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-4.1.0.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/chat/resources/templates.html" ],
   //  "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.3.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
-      "moment": [ "ccm.load", "https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js" ],
+      "moment": [ "ccm.load", "https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js" ],
       "picture": "https://ccmjs.github.io/akless-components/user/resources/icon.svg",
   //  "user": [ "ccm.start", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.3.1.js" ]
     },
@@ -52,6 +52,9 @@
 
         // listen to datastore changes => (re)render own content
         this.data.store.onchange = this.refresh;
+
+        // set time format language
+        moment.locale( 'en' );
 
       };
 
@@ -84,11 +87,17 @@
 
         // render messages
         messages.forEach( message => {
+
+          // adjust message data
           message = $.clone( message );
           if ( !message.picture ) message.picture = this.picture;
-          message.timestamp = message.created_at && this.moment && moment ? moment( message.created_at ).fromNow() : '';
-          message.timestamp_tooltip = message.created_at && this.moment && moment ? moment( message.created_at ).format( 'MMMM Do YYYY, h:mm:ss a' ) : '';
+          const time = this.moment && moment && moment( message.created_at );
+          message.timestamp = message.created_at ? ( time ? time.fromNow() : message.created_at ) : '';
+          message.timestamp_tooltip = message.created_at ? ( time ? time.format( 'MMMM Do YYYY, H:mm:ss' ) : message.created_at ) : '';
+
+          // append message in frontend
           $.append( this.element.querySelector( '#messages' ), $.html( this.html.message, message ) )
+
         } );
 
         // render text editor and send button
@@ -161,13 +170,13 @@
         message = $.clone( message );
         if ( !message.picture ) message.picture = this.picture;
 
-        // update message in local datastore
+        // create/update message in local datastore
         await store.set( message );
 
         // continue adjust message data
-        if ( !element && this.moment ) message.created_at = new Date();
-        message.timestamp = message.created_at && this.moment ? moment( message.created_at ).fromNow() : '';
-        message.timestamp_tooltip = message.created_at && this.moment ? moment( message.created_at ).format( 'MMMM Do YYYY, h:mm:ss a' ) : '';
+        const time = this.moment && moment && moment( message.created_at || element && new Date() );
+        message.timestamp = message.created_at ? ( time ? time.fromNow() : message.created_at ) : '';
+        message.timestamp_tooltip = message.created_at ? ( time ? time.format( 'MMMM Do YYYY, H:mm:ss' ) : message.created_at ) : '';
 
         // replace existing message or append new message in frontend
         if ( element )
