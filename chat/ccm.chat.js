@@ -18,7 +18,7 @@
     config: {
       "button": "Send",
       "css": [ "ccm.load",
-        "https://ccmjs.github.io/akless-components/chat/resources/default.css",
+        "https://ccmjs.github.io/akless-components/chat/resources/snack.css",
         { "context": "head", "url": "https://ccmjs.github.io/akless-components/resources/fonts/WeblySleekUI/font.css" }
       ],
       "data": { "store": [ "ccm.store" ], "key": {} },

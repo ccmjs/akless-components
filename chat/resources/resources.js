@@ -8,7 +8,7 @@ ccm.files[ 'resources.js' ] = {
 
   /** test configuration (relative paths) */
   "local": {
-    "css.1": "../chat/resources/default.css",
+    "css.1": "../chat/resources/snack.css",
     "css.2": { "url": "../resources/fonts/WeblySleekUI/font.css", "context": "head" },
     "data": {
       "store": [ "ccm.store", { "name": "chat-test", "url": "wss://ccm2.inf.h-brs.de" } ],
