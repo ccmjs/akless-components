@@ -34,14 +34,12 @@ ccm.files[ 'resources.js' ] = {
 
   /** configuration for login with a Hochschule Bonn-Rhein-Sieg FB02 Computer Science account */
   "hbrsinfkaul": {
-    "realm": "hbrsinfkaul",
-    "title": "Please enter Username and Password"
+    "realm": "hbrsinfkaul"
   },
 
   /** configuraiton for pseudonym mode of login with a Hochschule Bonn-Rhein-Sieg FB02 Computer Science account */
   "hbrsinfpseudo": {
-    "realm": "hbrsinfpseudo",
-    "title": "Please enter Username and Password"
+    "realm": "hbrsinfpseudo"
   },
 
   /** configuration for adaptation of a LEA account (LEA is the learning platform of the Hochschule Bonn-Rhein-Sieg) */
