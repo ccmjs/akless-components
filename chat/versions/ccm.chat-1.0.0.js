@@ -140,7 +140,14 @@
               const dataset = {
                 picture: user.picture,
                 user: user.name || user.user || user.key,
-                text: value.inner
+                text: value.inner,
+                _: {
+                  access: {
+                    get: 'all',
+                    set: 'creator',
+                    del: 'creator'
+                  }
+                }
               };
 
               await this.data.store.set( dataset );   // create new message in remote datastore

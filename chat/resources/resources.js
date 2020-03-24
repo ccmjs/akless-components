@@ -54,6 +54,7 @@ ccm.files[ 'resources.js' ] = {
     "hash": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/md5.mjs" ],
     "realm": "cloud",
     "store": "chat-user",
+    "title": "Please enter your Username and Password",
     "url": "https://ccm2.inf.h-brs.de"
   }
 
