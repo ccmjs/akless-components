@@ -9,13 +9,9 @@ ccm.files[ 'resources.js' ] = {
   /** test configuration (relative paths) */
   "local": {
     //"app": [ "ccm.component", "https://ccmjs.github.io/akless-components/multi_blank/ccm.multi_blank.js" ],
-    "app": [ "ccm.component", "https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js" ],
+    "app": [ "ccm.component", "https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-7.0.0.js" ],
     "builder.1": "../json_builder/ccm.json_builder.js",
-    "css": [ "ccm.load",
-      "../app_builder/resources/styles.css",
-      "../libs/bootstrap-4/css/bootstrap.min.css",
-      { "context": "head", "url": "../libs/bootstrap-4/css/bootstrap.min.css" }
-    ],
+    "css.1": "../app_builder/resources/styles.css",
     //"data": { "times": 5 },
     //"data": { "store": [ "ccm.store", { "app": { "times": 5 } } ], "key": "app" },
     //"data": { "store": [ "ccm.store", { "name": "apps" } ], "key": "app" },
@@ -44,11 +40,11 @@ ccm.files[ 'resources.js' ] = {
 
   /** live configuration (used by Digital Makerspace) */
   "live": {
-    "app": [ "ccm.component", "https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js" ],
+    "app": [ "ccm.component", "https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-7.0.0.js" ],
     "data": {
       "store": [ "ccm.store", { "name": "dms-configs", "url": "https://ccm2.inf.h-brs.de" } ]
     },
-    "form": [ "ccm.component", "https://ccmjs.github.io/akless-components/submit/versions/ccm.submit-7.3.3.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/submit/resources/configs.js", "app_meta_create" ] ],
+    "form": [ "ccm.component", "https://ccmjs.github.io/akless-components/submit/versions/ccm.submit-8.0.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/submit/resources/configs.js", "app_meta_create" ] ],
     "handover_app": [ "ccm.component", "https://ccmjs.github.io/akless-components/handover_app/versions/ccm.handover_app-2.0.0.js", {
       "qr_code": [ "ccm.load", "https://ccmjs.github.io/akless-components/libs/qrcode-generator/qrcode.min.js" ],
 //    "window": [ "ccm.component", "https://ccmjs.github.io/akless-components/window/versions/ccm.window-1.0.0.js" ]
@@ -61,7 +57,7 @@ ccm.files[ 'resources.js' ] = {
         { "context": "head", "url": "https://use.fontawesome.com/releases/v5.6.3/css/all.css" }
       ]
     } ],
-    "user": [ "ccm.start", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.3.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/app_builder/resources/resources.js", "user" ] ]
+    "user": [ "ccm.start", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.3.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/app_builder/resources/resources.js", "user" ] ]
   },
 
   /** configuration for multilingualism */
@@ -79,7 +75,7 @@ ccm.files[ 'resources.js' ] = {
 
   /** configuration for user authentication */
   "user": {
-    "hash": [ "ccm.load", { "url": "https://ccmjs.github.io/akless-components/modules/md5.mjs", "type": "module" } ],
+    "hash": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/md5.mjs" ],
     "realm": "cloud",
     "store": "dms-user",
     "url": "https://ccm2.inf.h-brs.de"

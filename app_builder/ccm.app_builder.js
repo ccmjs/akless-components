@@ -2,8 +2,13 @@
  * @overview ccm component for app creation
  * @author André Kless <andre.kless@web.de> 2018-2020
  * @license The MIT License (MIT)
- * @version latest (4.1.0)
+ * @version latest (4.1.1)
  * @changes
+ * version 4.1.1 (24.03.2020):
+ * - preview is inside the ccm context
+ * - uses ccm v25.1.0
+ * - uses Bootstrap 4 from CDN as default
+ * - uses helper.mjs v4.1.1 as default
  * version 4.1.0 (09.02.2020):
  * - uses ccm v25.0.0
  * - uses module helper functions
@@ -29,28 +34,28 @@
 
     name: 'app_builder',
 
-    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-25.0.0.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-25.1.0.js',
 
     config: {
-//    "app": [ "ccm.component", "https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js" ],
+//    "app": [ "ccm.component", "https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-7.0.0.js" ],
       "builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-2.0.0.js", { "directly": true, "nosubmit": true } ],
 //    "convert": json => json,
       "css": [ "ccm.load",
         "https://ccmjs.github.io/akless-components/app_builder/resources/styles.css",
-        "https://ccmjs.github.io/akless-components/libs/bootstrap-4/css/bootstrap.min.css",
-        { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/bootstrap-4/css/bootstrap.min.css" }
+        "https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css",
+        { "url": "https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css", "context": "head" }
       ],
       "data": {},
-//    "form": [ "ccm.component", "https://ccmjs.github.io/akless-components/submit/versions/ccm.submit-7.3.3.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/submit/resources/configs.js", "app_meta_create" ] ],
+//    "form": [ "ccm.component", "https://ccmjs.github.io/akless-components/submit/versions/ccm.submit-8.0.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/submit/resources/configs.js", "app_meta_create" ] ],
 //    "handover_app": [ "ccm.component", "https://ccmjs.github.io/akless-components/handover_app/versions/ccm.handover_app-2.0.0.js" ],
-      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-4.0.1.mjs" ],
+      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-4.1.1.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/app_builder/resources/templates.html" ],
 //    "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js" ],
-//    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.2.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
+//    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.3.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
 //    "meta_store": [ "ccm.store" ],
 //    "modal_dialog": [ "ccm.component", "https://ccmjs.github.io/tkless-components/modal/versions/ccm.modal-2.0.0.js" ],
 //    "onchange": ( instance, event ) => { console.log( event, instance.getValue() ); },
-//    "user": [ "ccm.start", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.2.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "guest" ] ]
+//    "user": [ "ccm.start", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.3.1.js" ]
       "warning": "Are you sure you want to delete this App?"
     },
 
@@ -168,7 +173,7 @@
             let config = self.getValue();
             if ( self.convert ) config = await self.convert( config );
             config.root = self.element.querySelector( '#app' );
-            config.parent = null;
+            config.parent = self;
 
             // render app in preview section
             await self.app.start( config );
