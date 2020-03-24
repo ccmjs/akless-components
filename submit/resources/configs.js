@@ -52,8 +52,8 @@ ccm.files[ 'configs.js' ] = {
   /** create of app metadata */
   "app_meta_create": {
     "entries": [
-      "<div class='page-header'><h3>Publish App</h3></div>",
-      "<div class='well'>The more information about your app you type here, the better your app can be found by others.</div>",
+      "<div class='pb-2 mt-4 mb-4 border-bottom'><h3>Publish App</h3></div>",
+      "<div class='form-group card card-body bg-light'>The more information about your app you type here, the better your app can be found by others.</div>",
       {
         "label": "<span style='color:red'>*</span>Title",
         "name": "title",
@@ -78,7 +78,7 @@ ccm.files[ 'configs.js' ] = {
         "placeholder": "Provides Components for Creating Apps.",
         "maxlength": 70
       },
-      "<div class='well'><p>I agree that all software of my app is released as free software under the <a href='https://en.wikipedia.org/wiki/MIT_License' target='_blank'>MIT license</a>.</p><p>I agree that all content of my app will be released as public domain under the <a href='https://creativecommons.org/share-your-work/public-domain/cc0/' target='_blank'>CC0 license</a>.</p>I confirm that this does not violate the copyright of third parties.</div>",
+      "<div class='form-group card card-body bg-light'><p>I agree that all software of my app is released as free software under the <a href='https://en.wikipedia.org/wiki/MIT_License' target='_blank'>MIT license</a>.</p><p>I agree that all content of my app will be released as public domain under the <a href='https://creativecommons.org/share-your-work/public-domain/cc0/' target='_blank'>CC0 license</a>.</p>I confirm that this does not violate the copyright of third parties.</div>",
       {
         "label": "<span style='color:red'>*</span>I Agree",
         "type": "checkbox",

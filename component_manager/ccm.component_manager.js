@@ -62,7 +62,7 @@
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-25.1.0.js',
 
     config: {
-//    "builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/app_builder/versions/ccm.app_builder-4.1.0.js" ],
+//    "builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/app_builder/versions/ccm.app_builder-4.1.1.js" ],
 //    "component_details": [ "ccm.component", "https://ccmjs.github.io/akless-components/content/versions/ccm.content-5.4.4.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/content/resources/configs.js", "component_meta" ] ],
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/component_manager/resources/css/styles.css" ],
       "data": {},

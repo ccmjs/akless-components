@@ -42,7 +42,7 @@ ccm.files[ 'resources.js' ] = {
 
   /** live configuration (used by Digital Makerspace) */
   "live": {
-    "builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/app_builder/versions/ccm.app_builder-4.1.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/app_builder/resources/resources.js", "live" ] ],
+    "builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/app_builder/versions/ccm.app_builder-4.1.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/app_builder/resources/resources.js", "live" ] ],
     "component_details": [ "ccm.component", "https://ccmjs.github.io/akless-components/content/versions/ccm.content-5.4.4.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/content/resources/configs.js", "component_meta" ] ],
     "data": {
       "store": [ "ccm.store", { "name": "dms-components", "url": "https://ccm2.inf.h-brs.de" } ],
