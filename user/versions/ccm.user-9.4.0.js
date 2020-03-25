@@ -8,6 +8,7 @@
  * - uses ccm v25.2.0
  * - uses Bootstrap 4 from CDN as default
  * - uses helper.mjs v4.1.1 as default
+ * - added optional mapping function for username
  * - added getValue() method
  * - data() method is deprecated
  * version 9.3.1 (12.02.2020):
