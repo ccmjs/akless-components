@@ -6,7 +6,6 @@
  * @changes
  * version 9.4.0 (25.03.2020):
  * - uses ccm v25.2.0
- * - uses Bootstrap 4 from CDN as default
  * - uses helper.mjs v4.1.1 as default
  * - added optional mapping function for username
  * - added getValue() method
@@ -48,9 +47,9 @@
     config: {
 
       "css": [ "ccm.load",
-        "https://ccmjs.github.io/akless-components/user/resources/default.css",
-        "https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css",
-        { "url": "https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css", "context": "head" }
+        "https://ccmjs.github.io/akless-components/libs/bootstrap/css/bootstrap.css",
+        { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/bootstrap/css/font-face.css" },
+        "https://ccmjs.github.io/akless-components/user/resources/default.css"
       ],
 //    "guest": "guest",
 //    "hash": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/md5.mjs" ],

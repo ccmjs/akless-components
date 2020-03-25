@@ -99,7 +99,7 @@ ccm.files[ 'resources.js' ] = {
   "html": {
     "logged_in": {
       "id": "logged_in",
-      "class": "well well-sm",
+      "class": "form-group card card-body bg-light",
       "inner": [
         {
           "id": "user",
