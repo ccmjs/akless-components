@@ -13,7 +13,7 @@
 
     name: 'chat', version: [ 1, 0, 0 ],
 
-    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-25.1.0.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-25.2.0.js',
 
     config: {
       "button": "Send",
@@ -22,8 +22,8 @@
         { "context": "head", "url": "https://ccmjs.github.io/akless-components/resources/fonts/WeblySleekUI/font.css" }
       ],
       "data": { "store": [ "ccm.store" ], "key": {} },
-  //  "hide_lang": true,
-  //  "hide_login": true,
+//    "hide_lang": true,
+//    "hide_login": true,
       "editor": [ "ccm.start", "https://ccmjs.github.io/tkless-components/editor/versions/ccm.editor-4.0.0.js", {
         "editor": [ "ccm.load",
           "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js",
@@ -44,19 +44,20 @@
       } ],
       "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-4.1.0.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/chat/resources/templates.html" ],
-  //  "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js" ],
-  //  "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.3.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
+//    "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js" ],
+//    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.3.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
+//    "map": user => user.name === 'john' ? 'Teacher' : 'Student' + user.nr,
       "moment": [ "ccm.load", "https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js" ],
-  //  "onchange": event => console.log( event ),
-  //  "onstart": instance => console.log( instance ),
+//    "onchange": event => console.log( event ),
+//    "onstart": instance => console.log( instance ),
       "picture": "https://ccmjs.github.io/akless-components/user/resources/icon.svg",
       "time_format": "Do MMMM YYYY, H:mm:ss",
-  //  "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.4.0.js" ]
+//    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.4.0.js" ]
     },
 
     Instance: function () {
 
-      let $;
+      let $; const mapping = {};
 
       /**
        * local datastore that contains all chat messages
@@ -92,19 +93,7 @@
         if ( this.user && !this.hide_login ) { $.append( this.element.querySelector( '#top' ), this.user.root ); this.user.start(); }
 
         // iterate all chat messages => render each message
-        ( await store.get() ).forEach( message => {
-
-          // adjust message data
-          message = $.clone( message );
-          if ( !message.picture ) message.picture = this.picture;
-          const time = this.moment && moment && moment( message.created_at );
-          message.timestamp = message.created_at ? ( time ? time.fromNow() : message.created_at ) : '';
-          message.timestamp_tooltip = message.created_at ? ( time ? time.format( this.time_format ) : message.created_at ) : '';
-
-          // append message in frontend
-          $.append( this.element.querySelector( '#messages' ), $.html( this.html.message, message ) )
-
-        } );
+        ( await store.get() ).forEach( this.refresh );
 
         // render text editor and send button
         if ( this.user && this.user.isLoggedIn() && this.editor ) {
@@ -139,7 +128,8 @@
               // prepare data of new message
               const dataset = {
                 picture: user.picture,
-                user: this.user.getUsername(),
+                user: this.user.getValue().key,
+                name: this.user.getUsername(),
                 text: value.inner,
                 _: {
                   access: {
@@ -179,10 +169,6 @@
        */
       this.refresh = async message => {
 
-        // adjust message data
-        message = $.clone( message );
-        if ( !message.picture ) message.picture = this.picture;
-
         // create/update message in local datastore
         await store.set( $.clone( message ) );
 
@@ -192,7 +178,11 @@
          */
         const element = this.element.querySelector( '#msg-' + message.key );
 
-        // continue adjust message data
+        // adjust message data
+        message = $.clone( message );
+        if ( !message.picture ) message.picture = this.picture;
+        if ( !mapping[ message.user ] ) mapping[ message.user ] = Object.keys( mapping ).length + 1;
+        if ( this.map ) message.name = this.map( { key: message.user, name: message.name, nr: mapping[ message.user ] } );
         const has_timestamp = !element || message.created_at;
         const time = this.moment && moment && moment( message.created_at || !element && new Date() );
         message.timestamp = has_timestamp ? ( time ? time.fromNow() : message.created_at ) : '';
