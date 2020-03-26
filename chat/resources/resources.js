@@ -31,7 +31,7 @@ ccm.files[ 'resources.js' ] = {
       "key": {}
     },
     "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/chat/resources/resources.js", "lang" ] ],
-    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.3.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/chat/resources/resources.js", "user" ] ]
+    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.4.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/chat/resources/resources.js", "user" ] ]
   },
 
   /** configuration for multilingualism */
@@ -51,11 +51,11 @@ ccm.files[ 'resources.js' ] = {
 
   /** configuration for user authentication */
   "user": {
-    "hash": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/md5.mjs" ],
-    "realm": "cloud",
-    "store": "chat-user",
-    "title": "Please enter Username and Password",
-    "url": "https://ccm2.inf.h-brs.de"
+//  "hash": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/md5.mjs" ],
+//    "realm": "cloud",
+//    "store": "chat-user",
+//    "title": "Please enter Username and Password",
+//    "url": "https://ccm2.inf.h-brs.de"
   }
 
 };

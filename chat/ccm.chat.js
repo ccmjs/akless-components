@@ -51,7 +51,7 @@
   //  "onstart": instance => console.log( instance ),
       "picture": "https://ccmjs.github.io/akless-components/user/resources/icon.svg",
       "time_format": "Do MMMM YYYY, H:mm:ss",
-  //  "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.3.1.js" ]
+  //  "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.4.0.js" ]
     },
 
     Instance: function () {
@@ -139,7 +139,7 @@
               // prepare data of new message
               const dataset = {
                 picture: user.picture,
-                user: user.name || user.user || user.key,
+                user: this.user.getUsername(),
                 text: value.inner,
                 _: {
                   access: {

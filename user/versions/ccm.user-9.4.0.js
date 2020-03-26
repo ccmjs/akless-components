@@ -7,9 +7,10 @@
  * version 9.4.0 (25.03.2020):
  * - uses ccm v25.2.0
  * - uses helper.mjs v4.1.1 as default
- * - added optional mapping function for username
  * - added getValue() method
  * - data() method is deprecated
+ * - added getUsername() method
+ * - added optional mapping function for displayed username
  * version 9.3.1 (12.02.2020):
  * - uses ccm v25.0.0
  * - bug fix for user key
@@ -125,7 +126,7 @@
         if ( this.isLoggedIn() )
           $.setContent( this.element, $.html( this.html.logged_in, {
             click: this.logout,
-            user: this.getValue().user
+            user: this.getUsername()
           } ) );
         else
           $.setContent( this.element, $.html( this.html.logged_out, {
@@ -349,16 +350,20 @@
         // higher user instance with same realm exists? => redirect method call
         if ( context && context.getValue ) return context.getValue();
 
-        const user = $.clone( data );
-
-        // map username with individual mapping function
-        if ( this.map ) user.user = this.map( $.clone( user ) );
-
-        return user;
+        return $.clone( data );
       };
 
       /** @deprecated */
       this.data = this.getValue;
+
+      /**
+       * returns displayed username
+       * @returns {string}
+       */
+      this.getUsername = () => {
+        const user = $.clone( this.getValue() );
+        return this.map && this.map( user ) || user.name || user.user || user.key;
+      };
 
       /**
        * returns authentication mode
