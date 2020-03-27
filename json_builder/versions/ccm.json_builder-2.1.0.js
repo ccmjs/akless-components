@@ -2,7 +2,7 @@
  * @overview ccm component for JSON builder
  * @author André Kless <andre.kless@web.de> 2018-2020
  * @license The MIT License (MIT)
- * @version latest (2.1.0)
+ * @version 2.1.0
  * @changes
  * version 2.1.0 (27.03.2020):
  * - uses ccm v25.2.0
@@ -20,7 +20,7 @@
 
   const component = {
 
-    name: 'json_builder',
+    name: 'json_builder', version: [ 2, 1, 0 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-25.2.0.js',
 
