@@ -13,7 +13,7 @@ ccm.files[ 'resources.js' ] = {
       { "context": "head", "url": "../libs/bootstrap/css/font-face.css" },
       "../user/resources/default.css"
     ],
-    "map": user => user.user === 'john' ? 'Teacher' : 'Student',
+//  "map": user => user.user === 'john' ? 'Teacher' : 'Student',
     "helper.1": "../modules/versions/helper-4.0.1.mjs",
     "html": [ "ccm.get", "../user/resources/resources.js", "html" ],
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ]
