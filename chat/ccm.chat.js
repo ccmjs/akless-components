@@ -149,6 +149,7 @@
 
             }
           } ) );
+          setTimeout( () => this.editor.get().focus(), 500 );
         }
 
         this.onstart && this.onstart( this );  // perform 'start' callback
