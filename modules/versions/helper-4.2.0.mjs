@@ -3,7 +3,7 @@
  * <p>(namespaces are only used for categorization)</p>
  * @author André Kless <andre.kless@web.de> 2019-2020
  * @license The MIT License (MIT)
- * @version latest (4.2.0)
+ * @version 4.2.0
  * @changes
  * version 4.2.0 (28.03.2020):
  * - added helper function 'hasPermission'
