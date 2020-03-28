@@ -484,7 +484,7 @@
                             "onchange": "%change%",
                             "class": "form-control",
                             "id": "captions_submit",
-                            "name": "captions.submit",
+                            "name": "submit",
                             "placeholder": "Enter Button Label"
                           }
                         ]
@@ -911,7 +911,7 @@
               // text, number
               case 'captions.start':
               case 'captions.retry':
-              case 'captions.submit':
+              case 'submit':
               case 'captions.finish':
               case 'manually':
               case 'time':

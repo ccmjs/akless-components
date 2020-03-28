@@ -517,7 +517,7 @@
                     ]
                   },
                   {
-                    "id": "captions.submit",
+                    "id": "submit",
                     "class": "form-group",
                     "inner": [
                       {
@@ -552,7 +552,7 @@
                         "type": "text",
                         "id": "captions.submit-input",
                         "class": "form-control",
-                        "name": "captions.submit",
+                        "name": "submit",
                         "placeholder": "Enter Button Label",
                         "onchange": "%change%"
                       }
@@ -973,7 +973,7 @@
 
             getInputElementByName(                'manually' ).style.display = getInputElementByName( 'keywords' ).value === 'manually' ? 'block' : 'none';
             self.element.querySelector( '#captions\\.retry'  ).style.display = getInputElementByName( 'feedback' ).value === 'retry'    ? 'block' : 'none';
-            self.element.querySelector( '#captions\\.submit' ).style.display = getInputElementByName( 'feedback' ).value !== 'none'     ? 'block' : 'none';
+            self.element.querySelector( 'submitt' ).style.display = getInputElementByName( 'feedback' ).value !== 'none'     ? 'block' : 'none';
             self.element.querySelector( '#captions\\.start'  ).style.display = getInputElementByName( 'start_button'     ).checked      ? 'block' : 'none';
             self.element.querySelector( '#captions\\.finish' ).style.display = getInputElementByName( 'onfinish.restart' ).checked      ? 'block' : 'none';
             function getInputElementByName( name ) { return self.element.querySelector( '[name="' + name + '"]' ); }

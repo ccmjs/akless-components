@@ -786,13 +786,13 @@
         if ( typeof this.submit_button === 'string' ) this.element.querySelector( '#button-submit' ).value = this.submit_button;
 
         /** prepares initial form values */
-        function prepareValues() {
+        async function prepareValues() {
 
           // set default value for dataset key of app-specific teambuild data
           if ( !self.defaults[ 'data.key' ] ) self.defaults[ 'data.key' ] = $.generateKey();
 
           // integrate default values into initial values
-          dataset = $.integrate( self.defaults, dataset, true );
+          dataset = await $.integrate( self.defaults, dataset, true );
 
           // encode dependencies
           $.encodeDependencies( dataset );

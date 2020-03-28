@@ -483,7 +483,7 @@
                             "onchange": "%change%",
                             "class": "form-control",
                             "id": "captions_submit",
-                            "name": "captions.submit",
+                            "name": "submit",
                             "placeholder": "Enter Button Label"
                           }
                         ]
