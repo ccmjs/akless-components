@@ -1,0 +1,48 @@
+<!--
+@overview HTML template of ccm component for data storage management
+@author André Kless <andre.kless@web.de.de> 2020
+-->
+
+<ccm-template key="main">
+  <div id="main">
+    <div id="store">
+      <div id="title" class="page-header">
+        <h2>Datastore
+          <small class="text-primary">%store%</small>
+          <button class="btn btn-sm btn-success" onclick="%oncreate%">Create Data Set</button>
+          <button id="clear" class="btn btn-sm btn-secondary" onclick="%onclear%">Clear All</button>
+        </h2>
+      </div>
+      <table class="table table-striped table-hover">
+        <tbody id="entries"></tbody>
+      </table>
+      <div id="caption">List of all accessible data sets of this data storage.</div>
+    </div>
+  </div>
+</ccm-template>
+
+<ccm-template key="entry">
+  <tr>
+    <td class="font-weight-bold">%key%</td>
+    <td>
+      <button class="show btn btn-sm btn-success" onclick="%onshow%">Show</button>
+      <button class="edit btn btn-sm btn-primary" onclick="%onedit%">Edit</button>
+      <button class="del btn btn-sm btn-danger" onclick="%ondel%">Delete</button>
+    </td>
+  </tr>
+</ccm-template>
+
+<ccm-template key="dataset">
+  <div id="dataset">
+    <div id="back" class="btn btn-link" onclick="%onback%">&larr; Back to Data Storage</div>
+    <div id="title" class="page-header">
+      <h2>Data Set
+        <small class="text-primary" contenteditable="%editable%" onblur="%onrename%">%key%</small>
+        <button id="edit" class="btn btn-sm btn-primary" onclick="%onedit%">Edit</button>
+        <button id="save" class="btn btn-sm btn-success" onclick="%onsave%">Save</button>
+        <button id="del" class="btn btn-sm btn-danger" onclick="%ondel%">Delete</button>
+      </h2>
+    </div>
+    <div id="editor"></div>
+  </div>
+</ccm-template>

@@ -41,6 +41,11 @@
   text-align: right;
 }
 
+#caption {
+  padding: .75rem 0;
+  color: #6c757d;
+}
+
 #back {
   color: #6c757d;
   padding-left: 0;
@@ -50,8 +55,14 @@
   margin: -0.5em 0 !important;
 }
 
-* {
+*:not(pre) {
   white-space: nowrap;
+}
+
+pre {
+  font-size: inherit !important;
+  color: inherit !important;
+  margin: 1em 0.5em 0.5em !important;
 }
 
 table {
@@ -63,5 +74,5 @@ button {
 }
 
 button.disabled {
-  cursor: not-allowed;
+  cursor: not-allowed !important;
 }
