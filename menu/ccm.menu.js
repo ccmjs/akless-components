@@ -65,7 +65,7 @@
  * version 2.0.0 (08.09.2018):
  * - uses ccm v18.0.0
  * - supports optional deselection of active menu entry
- * (for older version changes see ccm.routing-1.2.1.js)
+ * (for older version changes see ccm.menu-1.2.1.js)
  */
 
 ( () => {
