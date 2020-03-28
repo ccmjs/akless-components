@@ -77,6 +77,7 @@
               onsave: event => save( event.target, editor.getValue() )
             } ) );
 
+            $.remove( this.element.querySelector( '#edit' ) ); // remove no needed 'Edit' button
             $.remove( this.element.querySelector( '#del' ) );  // remove no needed 'Delete' button
             const editor = await renderEditor( dataset );      // render editor
 
