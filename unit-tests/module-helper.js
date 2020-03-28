@@ -689,6 +689,31 @@ ccm.files[ 'module-helper.js' ] = {
 
 /*----------------------------------------------------- Security -----------------------------------------------------*/
 
+  hasPermission: {
+    setup: suite => {
+      suite.settings = { creator: 'john', realm: 'guest', access: 'all' };
+      suite.user = { key: 'jane', realm: 'guest' };
+    },
+    tests: {
+      public: suite => suite.assertTrue( suite.modules.hasPermission( suite.settings, suite.user, 'get' ) ),
+      realm: suite => suite.assertFalse( suite.modules.hasPermission( { creator: 'john', realm: 'guest', access: 'creator' }, { key: 'john', realm: 'cloud' }, 'get' ) ),
+      dataset: suite => suite.assertTrue( suite.modules.hasPermission( { _: { creator: 'john', realm: 'guest', access: 'all' } }, suite.user, 'get' ) ),
+      user: suite => suite.assertTrue( suite.modules.hasPermission( { creator: 'john', realm: 'guest', access: 'all' }, { getValue: () => suite.user, ccm: true, component: { Instance: true } }, 'get' ) ),
+      groupGranted: suite => suite.assertTrue( suite.modules.hasPermission( { creator: 'john', realm: 'guest', group: [ 'john', 'jane' ], access: { get: 'all', set: 'group', del: 'creator' } }, suite.user, 'set' ) ),
+      groupDenied: suite => suite.assertFalse( suite.modules.hasPermission( { creator: 'john', realm: 'guest', group: [ 'john', 'jake' ], access: { get: 'all', set: 'group', del: 'creator' } }, suite.user, 'set' ) ),
+      groupsGranted: suite => suite.assertTrue( suite.modules.hasPermission( { creator: 'john', realm: 'guest', group: { students: [ 'john', 'jane' ], teachers: [ 'jake' ] }, access: { get: 'all', set: 'students,teachers', del: 'teachers' } }, suite.user, 'set' ) ),
+      groupsDenied: suite => suite.assertFalse( suite.modules.hasPermission( { creator: 'john', realm: 'guest', group: { students: [ 'john', 'jane' ], teachers: [ 'jake' ] }, access: { get: 'all', set: 'students,teachers', del: 'teachers' } }, suite.user, 'del' ) )
+    }
+  },
+
+  isCreator: {
+    tests: {
+      john: suite => suite.assertTrue( suite.modules.isCreator( { _: { creator: 'john', realm: 'guest', access: 'all' } }, { key: 'john', realm: 'guest' } ) ),
+      jane: suite => suite.assertFalse( suite.modules.isCreator( { _: { creator: 'john', realm: 'guest', access: 'all' } }, { key: 'jane', realm: 'guest' } ) ),
+      realm: suite => suite.assertFalse( suite.modules.isCreator( { _: { creator: 'john', realm: 'guest', access: 'all' } }, { key: 'john', realm: 'cloud' } ) )
+    }
+  },
+
   privatize: {
     setup: suite => suite.obj = { foo: 'abc', bar: 'xyz', baz: 4711 },
     tests: {
