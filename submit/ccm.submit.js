@@ -2,8 +2,10 @@
  * @overview ccm component for submitting data
  * @author André Kless <andre.kless@web.de> 2018-2020
  * @license The MIT License (MIT)
- * @version latest (8.0.1)
+ * @version latest (8.0.2)
  * @changes
+ * version 8.0.2 (28.03.2020):
+ * - set submit event even if no submit button is found
  * version 8.0.1 (23.03.2020):
  * - bug fix for initial value of a checkbox
  * - uses helper.mjs v4.1.1 as default
@@ -322,9 +324,6 @@
 
         // translate content
         this.lang && this.lang.translate();
-
-        // has submit button? => abort
-        if ( !submit ) return;
 
         // set submit event
         form.onsubmit = async event => {
