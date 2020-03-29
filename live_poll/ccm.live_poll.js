@@ -5,7 +5,7 @@
  * @version latest (2.4.0)
  * @changes
  * version 2.4.0 (29.03.2020):
- * - uses ccm v25.2.1
+ * - uses ccm v25.2.0
  * - uses ccm.highchart.js v3.0.2 as default
  * - uses helper.mjs v4.2.0 as default
  * - uses ccm.user.js v9.4.0 as default
@@ -48,7 +48,7 @@
 
     name: 'live_poll',
 
-    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-25.2.1.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-25.2.0.js',
 
     config: {
 
@@ -303,7 +303,7 @@
          * poll is realtime
          * @type {boolean}
          */
-        const realtime = $.isDatastore( this.data.store ) && this.data.store.source().url && this.data.store.source().url.startsWith( 'ws' );
+        const realtime = this.data.store.source().url && this.data.store.source().url.startsWith( 'ws' );
 
         /**
          * disabled/remove editable parts
