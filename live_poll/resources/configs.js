@@ -10,11 +10,14 @@ ccm.files[ 'configs.js' ] = {
     "converter.1.url": "../modules/json2json.mjs",
     "css.1": "../live_poll/resources/default.css",
     "data.store.1": { "name": "live_poll_data", "url": "wss://ccm2.inf.h-brs.de" },
+    "editable": true,
     "helper.1": "../modules/helper.mjs",
     "html.1": "../live_poll/resources/templates.html",
+    "lock": true,
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
     "onfinish": {
       "log": true,
+      /*
       "store": {
         "settings": {
           "name": "result_data",
@@ -31,13 +34,13 @@ ccm.files[ 'configs.js' ] = {
         }
       },
       "alert": "Saved!",
-      "restart": true
+      */
     },
-    "user": [ "ccm.instance", "../user/ccm.user.js", [ "ccm.get", "../user/resources/configs.js", "local" ] ]
+    "password": "secret",
+    "user": [ "ccm.instance", "../user/ccm.user.js", [ "ccm.get", "../user/resources/resources.js", "local" ] ]
   },
 
   "demo": {
-    "key": "demo",
     "data": {
       "store": [ "ccm.store", { "name": "live_poll_data", "url": "wss://ccm2.inf.h-brs.de" } ],
       "key": "demo"
@@ -58,8 +61,7 @@ ccm.files[ 'configs.js' ] = {
           }
         }
       },
-      "alert": "Saved!",
-      "restart": true
+      "alert": "Saved!"
     }
   }
 
