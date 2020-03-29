@@ -303,7 +303,7 @@
          * poll is realtime
          * @type {boolean}
          */
-        const realtime = this.data.store.source().url && this.data.store.source().url.startsWith( 'ws' );
+        const realtime = $.isDatastore( this.data.store ) && this.data.store.source().url && this.data.store.source().url.startsWith( 'ws' );
 
         /**
          * disabled/remove editable parts
