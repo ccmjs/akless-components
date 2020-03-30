@@ -5,7 +5,7 @@
  * @version 8.1.0
  * @changes
  * version 8.1.0 (30.03.2020):
- * - added optional property 'enabled_only' (ignores values from disabled input elements)
+ * - added optional config property 'enabled_only' (ignores values from disabled input elements)
  * version 8.0.1 (23.03.2020):
  * - bug fix for initial value of a checkbox
  * - uses helper.mjs v4.1.1 as default
