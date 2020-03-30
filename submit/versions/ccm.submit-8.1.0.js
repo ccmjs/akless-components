@@ -2,7 +2,7 @@
  * @overview ccm component for submitting data
  * @author André Kless <andre.kless@web.de> 2018-2020
  * @license The MIT License (MIT)
- * @version latest (8.1.0)
+ * @version 8.1.0
  * @changes
  * version 8.1.0 (30.03.2020):
  * - added optional property 'enabled_only' (ignores values from disabled input elements)
@@ -20,7 +20,7 @@
 
   const component = {
 
-    name: 'submit',
+    name: 'submit', version: [ 8, 1, 0 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-25.2.1.js',
 
