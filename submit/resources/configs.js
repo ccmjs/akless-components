@@ -10,6 +10,7 @@ ccm.files[ 'configs.js' ] = {
   "local": {
     "css.1.1": "../submit/resources/default_b4.css",
 //  "inner": [ "ccm.load", { "url": "../submit/resources/demo.html", "type": "data" } ],
+    "enabled_only": false,
     "entries": [ "ccm.get", "../submit/resources/datasets.js", "demo.data" ],
     "data": {
       "store": [ "ccm.store", { "name": "submit_data", "url": "https://ccm2.inf.h-brs.de" } ],
@@ -22,11 +23,12 @@ ccm.files[ 'configs.js' ] = {
       "directly": true,
       "nosubmit": true
     } ],
-    "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
+//  "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
     "onchange": event => console.log( event ),
     "onfinish": {
-      "store": true,
-      "alert": "Saved!"
+      "log": true,
+//    "store": true,
+//    "alert": "Saved!"
     }
   },
 
