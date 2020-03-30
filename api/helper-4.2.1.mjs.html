@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Source: helper-4.2.0.mjs | Source: helper-4.2.0.mjs</title>
+    <title>Source: helper-4.2.1.mjs | Source: helper-4.2.1.mjs</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -26,7 +26,7 @@
         
     </div>
     <div class="title">
-        <h1><a href="index.html" class="link">Source: helper-4.2.0.mjs</a></h1>
+        <h1><a href="index.html" class="link">Source: helper-4.2.1.mjs</a></h1>
         
     </div>
     <div class="search-container" id="search-container">
@@ -51,8 +51,10 @@
  * &lt;p>(namespaces are only used for categorization)&lt;/p>
  * @author André Kless &lt;andre.kless@web.de> 2019-2020
  * @license The MIT License (MIT)
- * @version 4.2.0
+ * @version 4.2.1
  * @changes
+ * version 4.2.1 (30.03.2020):
+ * - helper function 'formData' ignores values from disabled input elements (optional via settings object)
  * version 4.2.0 (28.03.2020):
  * - added helper function 'hasPermission'
  * - added helper function 'isCreator'
@@ -947,6 +949,8 @@ export function fillForm( element, data, ccm ) {
 /**
  * gets the values of input elements
  * @param {Element} element - HTML element which contains the input elements (must not be a HTML form tag)
+ * @param {Object} [settings = {}] - optional additional settings
+ * @param {string} [settings.enabled_only] - ignore values from disabled input elements
  * @param {Object} [ccm = window.ccm] - used ccm framework version
  * @returns {Object} values of the input elements
  * @example
@@ -997,13 +1001,18 @@ export function fillForm( element, data, ccm ) {
  * // &lt;body>&lt;input type="text" name="data">&lt;/input>&lt;/body> (complex data value)
  * fillForm( document.body, { data: { number: [ 1, 2, { a: 3 } ], checked: true, value: 'Hello World!' } } );
  * console.log( formData( document.body ) ); // { data: { number: [ 1, 2, { a: 3 } ], checked: true, value: 'Hello World!' } }
+ * @example
+ * // &lt;body>&lt;input type="text" name="user">&lt;input type="password" name="secret" disabled>&lt;/body>
+ * fillForm( document.body, { user: 'JohnDoe', secret: '1aA' } );
+ * console.log( formData( document.body, { enabled_only: true } ) ); // { user: 'JohnDoe' }
  * @memberOf ModuleHelper.InputElements
  */
-export function formData( element, ccm ) {
+export function formData( element, settings = {}, ccm ) {
   ccm = framework( arguments );
 
   const data = {};
   element.querySelectorAll( '[name]' ).forEach( input => {
+    if ( settings.enabled_only &amp;&amp; input.disabled ) return;
     let name = input.getAttribute( 'name' );
     if ( input.type === 'checkbox' ) {
       const value = input.checked ? ( input.value === 'on' ? true : input.value ) : ( input.value === 'on' ? false : '' );

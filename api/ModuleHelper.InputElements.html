@@ -130,8 +130,8 @@
                 
             
             <div class="container-source members">
-                <code><a href="helper-4.2.0.mjs.html">helper-4.2.0.mjs</a></code>,
-                <code><a href="helper-4.2.0.mjs.html#line858">line 858</a></code>
+                <code><a href="helper-4.2.1.mjs.html">helper-4.2.1.mjs</a></code>,
+                <code><a href="helper-4.2.1.mjs.html#line860">line 860</a></code>
             </div>
             
         </h4>
@@ -406,12 +406,12 @@ console.log( formData( document.body ) ); // { data: { number: [ 1, 2, { a: 3 } 
     
         <h4 class="name" id=".exports.formData">
             
-                <span class="type-signature"><span class="icon green">static</span> </span>exports.formData<span class="signature">(element, ccm<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Object}</span>
+                <span class="type-signature"><span class="icon green">static</span> </span>exports.formData<span class="signature">(element, settings<span class="signature-attributes">opt</span>, ccm<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Object}</span>
                 
             
             <div class="container-source members">
-                <code><a href="helper-4.2.0.mjs.html">helper-4.2.0.mjs</a></code>,
-                <code><a href="helper-4.2.0.mjs.html#line954">line 954</a></code>
+                <code><a href="helper-4.2.1.mjs.html">helper-4.2.1.mjs</a></code>,
+                <code><a href="helper-4.2.1.mjs.html#line962">line 962</a></code>
             </div>
             
         </h4>
@@ -492,6 +492,105 @@ console.log( formData( document.body ) ); // { data: { number: [ 1, 2, { a: 3 } 
             
 
             <td class="description last">HTML element which contains the input elements (must not be a HTML form tag)</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>settings</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    {}
+                
+                </td>
+            
+
+            <td class="description last">optional additional settings
+                <h6>Properties</h6>
+                
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>enabled_only</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">ignore values from disabled input elements</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
         </tr>
 
     
@@ -660,6 +759,10 @@ console.log( formData( document.body ) ); // { deep: { property: { key: 'value' 
     <pre class="prettyprint"><code>// &lt;body>&lt;input type="text" name="data">&lt;/input>&lt;/body> (complex data value)
 fillForm( document.body, { data: { number: [ 1, 2, { a: 3 } ], checked: true, value: 'Hello World!' } } );
 console.log( formData( document.body ) ); // { data: { number: [ 1, 2, { a: 3 } ], checked: true, value: 'Hello World!' } }</code></pre>
+
+    <pre class="prettyprint"><code>// &lt;body>&lt;input type="text" name="user">&lt;input type="password" name="secret" disabled>&lt;/body>
+fillForm( document.body, { user: 'JohnDoe', secret: '1aA' } );
+console.log( formData( document.body, { enabled_only: true } ) ); // { user: 'JohnDoe' }</code></pre>
 
     
 
