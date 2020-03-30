@@ -3,7 +3,7 @@
  * <p>(namespaces are only used for categorization)</p>
  * @author André Kless <andre.kless@web.de> 2019-2020
  * @license The MIT License (MIT)
- * @version latest (4.2.1)
+ * @version 4.2.1
  * @changes
  * version 4.2.1 (30.03.2020):
  * - helper function 'formData' ignores values from disabled input elements (optional via settings object)
