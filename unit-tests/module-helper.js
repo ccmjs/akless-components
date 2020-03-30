@@ -615,7 +615,15 @@ ccm.files[ 'module-helper.js' ] = {
       contenteditable: suite => suite.test( "<div contenteditable name='%key%'>" ),
       deeperProperty:  suite => suite.test( "<input type='text' name='%key%'>", 'value', 'deep.property.key' ),
       complexData:     suite => suite.test( "<input type='text' name='%key%'>", { number: [ 1, 2, { a: 3 } ], checked: true, value: 'Hello World!' } ),
-      protect:         suite => suite.test( "<div contenteditable name='%key%'>", "Hello <script>alert('XSS');</script>World!", undefined, 'Hello World!' )
+      protect:         suite => suite.test( "<div contenteditable name='%key%'>", "Hello <script>alert('XSS');</script>World!", undefined, 'Hello World!' ),
+      enabledOnlyTrue: suite => {
+        suite.element.innerHTML = '<input type="text" name="user" value="John"><input type="password" name="secret" value="abc" disabled>';
+        suite.assertEquals( { user: 'John' }, suite.modules.formData( suite.element, { enabled_only: true } ) );
+      },
+      enabledOnlyFalse: suite => {
+        suite.element.innerHTML = '<input type="text" name="user" value="John"><input type="password" name="secret" value="abc" disabled>';
+        suite.assertEquals( { user: 'John', secret: 'abc' }, suite.modules.formData( suite.element, { enabled_only: false } ) );
+      }
     }
   },
 
