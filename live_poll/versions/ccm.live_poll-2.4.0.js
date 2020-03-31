@@ -52,7 +52,7 @@
 
     config: {
 
-      "admin": "guest",
+//    "admin": "leader",
       "chart": [ "ccm.component", "https://ccmjs.github.io/akless-components/highchart/versions/ccm.highchart-3.0.2.js" ],
       "converter": [ "ccm.load", { "url": "https://ccmjs.github.io/akless-components/modules/json2json.mjs", "type": "module", "import": "poll_to_highchart" } ],
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/live_poll/resources/styles.css" ],
@@ -71,7 +71,7 @@
         "locked": "🔒 <span>Locked</span>",
         "unlocked": "🔓"
       },
-      "prompt": "Enter Password to Finish the Live Poll",
+      "prompt": "Enter Password to Finish the Survey",
 //    "show_results": true,
       "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.4.0.js" ]
 
