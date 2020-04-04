@@ -1,0 +1,24 @@
+<!--
+@overview HTML template of ccm component for kanban boards
+@author André Kless <andre.kless@web.de.de> 2020
+-->
+
+<ccm-template key="main">
+  <div id="main">
+    <div id="top">
+      <div id="reload" onclick="%onreload%" title="Reload">↻</div>
+    </div>
+    <div id="lanes"></div>
+  </div>
+</ccm-template>
+
+<ccm-template key="lane">
+  <div class="lane">
+    <div class="title">%%</div>
+    <div class="cards"></div>
+  </div>
+</ccm-template>
+
+<ccm-template key="add">
+  <div id="add" onclick="%%"></div>
+</ccm-template>

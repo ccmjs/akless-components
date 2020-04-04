@@ -7,6 +7,20 @@
 #element {
   overflow-x: auto;
   font-family: Arial, sans-serif;
+  background-color: white;
+}
+
+#top:not(:empty) {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0.5em 1em 0.25em 1em;
+}
+
+#reload {
+  font-size: xx-large;
+  padding: 0 0.3em;
+  cursor: pointer;
 }
 
 #lanes {

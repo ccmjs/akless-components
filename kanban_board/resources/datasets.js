@@ -7,7 +7,6 @@
 ccm.files[ 'datasets.js' ] = {
 
   "test": {
-    "key": "local",
     "lanes": [
       {
         "cards": [
@@ -25,7 +24,6 @@ ccm.files[ 'datasets.js' ] = {
   },
 
   "experimental": {
-    "key": "experimental",
     "lanes": [
       {
         "cards": [

@@ -1,20 +1,21 @@
 /**
  * @overview configurations of ccm component for kanban board
- * @author André Kless <andre.kless@web.de> 2017-2018
+ * @author André Kless <andre.kless@web.de> 2017-2018, 2020
  * @license The MIT License (MIT)
  */
 
 ccm.files[ 'configs.js' ] = {
 
   "local": {
-    "key": "local",
     "css.1": "../kanban_board/resources/default.css",
     "data": {
       "store": [ "ccm.store", "../kanban_board/resources/datasets.js" ],
       "key": "test"
     },
-    "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
-    "onchange": function ( event ) { console.log( this.index, 'onchange', this.getValue(), event ) },
+    "helper.1": "../modules/helper.mjs",
+    "html.1": "../kanban_board/resources/templates.html",
+//  "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
+    "onchange": event => console.log( event ),
     "ignore": {
       "card": {
         "component": "../kanban_card/ccm.kanban_card.js",
@@ -29,36 +30,11 @@ ccm.files[ 'configs.js' ] = {
           }
         }
       }
-    }
-  },
-
-  "localhost": {
-    "key": "localhost",
-    "css.1": "../kanban_board/resources/default.css",
-    "data": {
-      "store": [ "ccm.store", { "name": "kanban_board", "url": "http://localhost:8080" } ],
-      "key": "demo"
     },
-    "onchange": function ( event ) { console.log( this.index, 'onchange', this.getValue(), event ) },
-    "ignore": {
-      "card": {
-        "component": "../kanban_card/ccm.kanban_card.js",
-        "config": {
-          "css.1": "../kanban_card/resources/default.css",
-          "data": {
-            "store": [ "ccm.store" ]
-          },
-          "icon": {
-            "owner": "../kanban_card/resources/owner.svg",
-            "deadline": "../kanban_card/resources/deadline.svg"
-          }
-        }
-      }
-    }
+    "user": [ "ccm.instance", "../user/ccm.user.js", [ "ccm.get", "../user/resources/resources.js", "local" ] ]
   },
 
   "demo": {
-    "key": "demo",
     "data": {
       "store": [ "ccm.store", { "name": "kanban_board", "url": "https://ccm2.inf.h-brs.de" } ],
       "key": "demo"
@@ -77,7 +53,6 @@ ccm.files[ 'configs.js' ] = {
   },
 
   "offline": {
-    "key": "offline",
     "data": {
       "store": [ "ccm.store", { "name": "kanban_board" } ],
       "key": "demo"
@@ -96,7 +71,6 @@ ccm.files[ 'configs.js' ] = {
   },
 
   "realtime": {
-    "key": "realtime",
     "data": {
       "store": [ "ccm.store", { "name": "kanban_board", "url": "wss://ccm2.inf.h-brs.de" } ],
       "key": "realtime"
@@ -115,7 +89,6 @@ ccm.files[ 'configs.js' ] = {
   },
 
   "experimental": {
-    "key": "experimental",
     "data": {
       "store": [ "ccm.store", "../kanban_board/resources/datasets.js" ],
       "key": "experimental"
