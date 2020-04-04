@@ -44,7 +44,7 @@
 
         $ = Object.assign( {}, this.ccm.helper, this.helper );                 // set shortcut to help functions
         this.data.store.onchange = this.refresh;                               // listen to datastore changes for realtime update
-        this.logger && this.logger.log( 'ready', $.privatize( this, true ) );  // log 'ready' event
+        this.logger && this.logger.log( 'ready', $.privatize( this, true ) );  // logging of 'ready' event
 
       };
 
