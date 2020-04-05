@@ -19,18 +19,10 @@ ccm.files[ 'configs.js' ] = {
     "ignore": {
       "card": {
         "component": "../kanban_card/ccm.kanban_card.js",
-        "config": {
-          "css.1": "../kanban_card/resources/default.css",
-          "data": {
-            "store": [ "ccm.store" ]
-          },
-          "icon": {
-            "owner": "../kanban_card/resources/owner.svg",
-            "deadline": "../kanban_card/resources/deadline.svg"
-          }
-        }
+        "config": [ "ccm.get", "../kanban_card/resources/configs.js", "local_white" ]
       }
     },
+    "reload": true,
     "user": [ "ccm.instance", "../user/ccm.user.js", [ "ccm.get", "../user/resources/resources.js", "local" ] ]
   },
 

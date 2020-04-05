@@ -4,13 +4,14 @@
  * @license The MIT License (MIT)
  * @version latest (3.0.0)
  * @changes
- * version 3.0.0 (04.04.2020):
+ * version 3.0.0 (05.04.2020):
  * - uses ccm v25.2.1
  * - uses helper.mjs v4.2.1 as default
  * - uses HTML templates via templates.html
  * - improved realtime update
  * - changed for logging and 'onchange' callback
  * - added public instance methods for get, add, delete and move a card
+ * - added optional reload button
  * (for older version changes see ccm.kanban_board-2.0.2.js)
  */
 
@@ -33,6 +34,7 @@
       "lanes": [ "ToDo", "Doing", "Done" ],
 //    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.3.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
 //    "onchange": event => console.log( event ),
+//    "reload": true,
 //    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.4.0.js" ]
     },
 
@@ -50,8 +52,8 @@
 
       this.start = async () => {
 
-        // get user-dependent app data
-        dataset = await $.dataset( this.data );
+        dataset = await $.dataset( this.data );                   // get user-dependent app data
+        if ( !dataset ) return $.setContent( this.element, '' );  // no data? => empty content
 
         // set initial lanes
         if ( !dataset.lanes ) dataset.lanes = [];
@@ -61,10 +63,7 @@
 
         this.logger && this.logger.log( 'start', this.getValue() );                        // logging of 'start' event
         $.setContent( this.element, $.html( this.html.main, { onreload: this.start } ) );  // render main HTML structure
-
-        // realtime kanban board? => remove refresh button
-        if ( this.data.store.source().url && this.data.store.source().url.startsWith( 'ws' ) )
-          $.remove( this.element.querySelector( '#reload' ) );
+        if ( !this.reload ) $.remove( this.element.querySelector( '#reload' ) );           // no refresh button wanted? => remove refresh button
 
         // render login/logout area
         if ( this.user ) {
@@ -86,14 +85,21 @@
 
           // create and append HTML structure for each card
           for ( let j = 0; j < dataset.lanes[ i ].cards.length; j++ )
-            await this.addCardElement( i, this.getCardData( i, j ) );
+            await addCardElement( i, this.getCardData( i, j ) );
 
           // append button for create a new card to first lane
-          if ( this.ignore && this.ignore.card && i === 0 ) lane_elem.appendChild( $.html( this.html.add, this.addCard ) );
+          if ( this.ignore && this.ignore.card && i === 0 && $.hasPermission( dataset, this.user, 'set' ) )
+            lane_elem.appendChild( $.html( this.html.add, this.addCard ) );
 
         }
 
       };
+
+      /**
+       * returns current result data
+       * @returns {Object}
+       */
+      this.getValue = () => $.clone( dataset );
 
       /**
        * updates frontend and local data after a card change
@@ -111,22 +117,22 @@
           case 'add':
             const cards = dataset.lanes[ 0 ].cards.length;           // get number of cards in the first lane
             if ( cards !== last_change.cards ) return this.start();  // wrong number of cards? => restart
-            this.addCardElement( 0, last_change.app );               // add card in first lane in frontend
-            this.addCardData( last_change.app );                     // add card in first lane local data
+            await addCardElement( 0, last_change.app );              // add card in first lane in frontend
+            addCardData( last_change.app );                          // add card in first lane local data
             break;
 
           case 'move':
             card = this.getCardData( last_change.from[ 0 ], last_change.from[ 1 ] );            // get card data
             if ( $.stringify( card ) !== $.stringify( last_change.app ) ) return this.start();  // wrong card at this position? => restart
-            this.moveCardElement( last_change.from, last_change.to );                           // move card in frontend
-            this.moveCardData( last_change.from, last_change.to );                              // move card in local data
+            moveCardElement( last_change.from, last_change.to );                                // move card in frontend
+            moveCardData( last_change.from, last_change.to );                                   // move card in local data
             break;
 
           case 'del':
             card = this.getCardData( last_change.lane, last_change.card );                      // get card data
             if ( $.stringify( card ) !== $.stringify( last_change.app ) ) return this.start();  // wrong card at this position? => restart
-            this.deleteCardElement( last_change.lane, last_change.card );                       // remove card in frontend
-            this.deleteCardData( last_change.lane, last_change.card );                          // delete card in local data
+            deleteCardElement( last_change.lane, last_change.card );                            // remove card in frontend
+            deleteCardData( last_change.lane, last_change.card );                               // delete card in local data
             break;
 
           default:
@@ -136,38 +142,114 @@
       };
 
       /**
-       * returns current result data
-       * @returns {Object}
-       */
-      this.getValue = () => $.clone( dataset );
-
-      /**
        * adds a new card in the first lane
        * @returns {Promise<void>}
        */
       this.addCard = async () => {
 
-        // prepare app configuration for new card
-        const config = $.clone( this.ignore.card.config || {} );
-        if ( $.isObject( config.data ) && config.data.store ) config.data.key = $.generateKey();
+        // prepare app dependency for new card
+        let app = $.clone( this.ignore.card.config || {} );
+        if ( $.isObject( app.data ) && app.data.store ) app.data.key = $.generateKey();
+        app = [ 'ccm.instance', this.ignore.card.component, app ];
 
         // create card
-        dataset.last_change = { event: 'add', cards: dataset.lanes[ 0 ].cards.length, app: [ 'ccm.instance', this.ignore.card.component, config ] };
+        dataset.last_change = { event: 'add', cards: dataset.lanes[ 0 ].cards.length, app: $.clone( app ) };
         await this.refresh();
         this.data.store && await this.data.store.set( dataset );
 
         // logging of 'add' event and trigger of 'onchange' callback
         this.logger && this.logger.log( 'add' );
-        this.onchange && this.onchange.call( this );
+        this.onchange && this.onchange( { event: 'add', app: $.clone( app ), instance: this } );
+
+      };
+
+      /**
+       * gets the local data of a card of a lane
+       * @param {number} lane - lane index
+       * @param {number} card - card index
+       * @returns {Array} card data (app dependency)
+       */
+      this.getCardData = ( lane, card ) => $.clone( dataset.lanes[ lane ].cards[ card ] );
+
+      /**
+       * gets the element of a card of a lane
+       * @param {number} lane - lane index
+       * @param {number} card - card index
+       * @returns {Element}
+       */
+      this.getCardElement = ( lane, card ) => this.element.querySelectorAll( '.lane' )[ lane ].querySelectorAll( '.card' )[ card ];
+
+      /**
+       * gets the position of a card
+       * @param {Element} card - card element
+       * @returns {number[]}
+       * @example [ 1, 3 ]
+       */
+      this.getCardPosition = card => {
+
+        /**
+         * lane that contains the card
+         * @param {Element}
+         */
+        const lane = card.closest( '.lane' );
+
+        return [ [ ...lane.parentNode.children ].indexOf( lane ), [ ...card.parentNode.children ].indexOf( card ) ];
+      };
+
+      /**
+       * moves a card to another position
+       * @param {number[]} from - card position
+       * @param {number[]} to - destination position
+       */
+      this.moveCard = async ( from, to ) => {
+
+        /**
+         * card data
+         * @type {Object}
+         */
+        const card = this.getCardData( from[ 0 ], from[ 1 ] );
+
+        // move card
+        dataset.last_change = { event: 'move', from: from, to: to, app: card };
+        await this.refresh();
+        await this.data.store.set( dataset );
+
+        // logging of 'move' event and trigger of 'onchange' callback
+        this.logger && this.logger.log( 'move', { from: from, to: to, data: $.clone( card ) } );
+        this.onchange && this.onchange( { event: 'move', from: from, to: to, data: $.clone( card ), instance: this } );
+
+      };
+
+      /**
+       * deletes a card in a lane
+       * @param {number} lane - lane index
+       * @param {number} card - card index
+       * @returns {Promise<void>}
+       */
+      this.deleteCard = async ( lane, card ) => {
+
+        /**
+         * card data (app dependency)
+         * @type {Array}
+         */
+        const app = this.getCardData( lane, card );
+
+        // delete card
+        dataset.last_change = { event: 'del', lane: lane, card: card, app: app };
+        await this.refresh();
+        this.data.store && await this.data.store.set( dataset );
+
+        // logging of 'del' event and trigger of 'onchange' callback
+        this.logger && this.logger.log( 'del', { lane: lane, card: card, app: $.clone( app ) } );
+        this.onchange && this.onchange( { event: 'del', lane: lane, card: card, app: $.clone( app ), instance: this } );
 
       };
 
       /**
        * adds a card in the first lane in local data
        * @param {Array} card - app dependency of the card
-       * @returns {Promise<void>}
        */
-      this.addCardData = async card => dataset.lanes[ 0 ].cards.push( $.clone( card ) );
+      const addCardData = card => dataset.lanes[ 0 ].cards.push( $.clone( card ) );
 
       /**
        * adds a card in the first lane in frontend
@@ -175,7 +257,7 @@
        * @param {Array} card - app dependency of the card
        * @returns {Promise<void>}
        */
-      this.addCardElement = async ( lane, card ) => {
+      const addCardElement = async ( lane, card ) => {
 
         // adjust instance configuration in app dependency
         card = $.clone( card );
@@ -191,11 +273,13 @@
         this.element.querySelectorAll( '.cards' )[ lane ].appendChild( card );
 
         // set drag'n'drop functionality of the card
-        makeDraggable.call( this, card );
-        makeDroppable.call( this, card );
+        if ( $.hasPermission( dataset, this.user, 'set' ) ) {
+          makeDraggable.call( this, card );
+          makeDroppable.call( this, card );
+        }
 
         // set functionality for removing a card via double click
-        card.addEventListener( 'dblclick', async event => {
+        $.hasPermission( dataset, this.user, 'set' ) && card.addEventListener( 'dblclick', async event => {
 
           if ( !confirm( this.del ) ) return;                // run confirm dialog
           const pos = this.getCardPosition( event.target );  // get card position
@@ -277,107 +361,11 @@
       };
 
       /**
-       * deletes a card in a lane
-       * @param {number} lane - lane index
-       * @param {number} card - card index
-       * @returns {Promise<void>}
-       */
-      this.deleteCard = async ( lane, card ) => {
-
-        /**
-         * card data (app dependency)
-         * @type {Array}
-         */
-        const app = this.getCardData( lane, card );
-
-        // delete card
-        dataset.last_change = { event: 'del', lane: lane, card: card, app: app };
-        await this.refresh();
-        this.data.store && await this.data.store.set( dataset );
-
-        // logging of 'del' event and trigger of 'onchange' callback
-        this.logger && this.logger.log( 'del', { lane: lane, card: card, app: $.clone( app ) } );
-        this.onchange && this.onchange( { event: 'del', lane: lane, card: card, app: $.clone( app ), instance: this } );
-
-      };
-
-      /**
-       * deletes a card in a lane in local data
-       * @param {number} lane - lane index
-       * @param {number} card - card index
-       */
-      this.deleteCardData = ( lane, card ) => dataset.lanes[ lane ].cards.splice( card, 1 );
-
-      /**
-       * deletes a card in a lane in frontend
-       * @param {number} lane - lane index
-       * @param {number} card - card index
-       */
-      this.deleteCardElement = ( lane, card ) => $.remove( this.getCardElement( lane, card ) );
-
-      /**
-       * gets the data of a card of a lane
-       * @param {number} lane - lane index
-       * @param {number} card - card index
-       * @returns {Array} card data (app dependency)
-       */
-      this.getCardData = ( lane, card ) => $.clone( dataset.lanes[ lane ].cards[ card ] );
-
-      /**
-       * gets the element of a card of a lane
-       * @param {number} lane - lane index
-       * @param {number} card - card index
-       * @returns {Element}
-       */
-      this.getCardElement = ( lane, card ) => this.element.querySelectorAll( '.lane' )[ lane ].querySelectorAll( '.card' )[ card ];
-
-      /**
-       * gets the position of a card
-       * @param {Element} card - card element
-       * @returns {number[]}
-       * @example [ 1, 3 ]
-       */
-      this.getCardPosition = card => {
-
-        /**
-         * lane that contains the card
-         * @param {Element}
-         */
-        const lane = card.closest( '.lane' );
-
-        return [ [ ...lane.parentNode.children ].indexOf( lane ), [ ...card.parentNode.children ].indexOf( card ) ];
-      };
-
-      /**
-       * moves a card to another position
-       * @param {number[]} from - card position
-       * @param {number[]} to - destination position
-       */
-      this.moveCard = async ( from, to ) => {
-
-        /**
-         * card data
-         * @type {Object}
-         */
-        const card = this.getCardData( from[ 0 ], from[ 1 ] );
-
-        // move card
-        dataset.last_change = { event: 'move', from: from, to: to, app: card };
-        await this.refresh();
-        await this.data.store.set( dataset );
-
-        // logging of 'move' event and trigger of 'onchange' callback
-        this.logger && this.logger.log( 'move', { from: from, to: to, data: $.clone( card ) } );
-        this.onchange && this.onchange( { event: 'move', from: from, to: to, data: $.clone( card ), instance: this } );
-
-      };
-
-      /**
        * moves a card to another position in local data
        * @param {number[]} from - card position
        * @param {number[]} to - destination position
        */
-      this.moveCardData = ( from, to ) => {
+      const moveCardData = ( from, to ) => {
 
         const card = this.getCardData( from[ 0 ], from[ 1 ] );        // get card data
         dataset.lanes[ from[ 0 ] ].cards[ from[ 1 ] ] = null;         // mark original position as removed
@@ -392,7 +380,7 @@
        * @param {number[]} from - card position
        * @param {number[]} to - destination position
        */
-      this.moveCardElement = ( from, to ) => {
+      const moveCardElement = ( from, to ) => {
 
         from = this.getCardElement( from[ 0 ], from[ 1 ] );        // get card element
         const dest = this.getCardElement( to[ 0 ], to[ 1 ] - 1 );  // get destination
@@ -402,6 +390,20 @@
           $.prepend( this.element.querySelectorAll( '.cards' )[ to[ 0 ] ], from );
 
       };
+
+      /**
+       * deletes a card in a lane in local data
+       * @param {number} lane - lane index
+       * @param {number} card - card index
+       */
+      const deleteCardData = ( lane, card ) => dataset.lanes[ lane ].cards.splice( card, 1 );
+
+      /**
+       * deletes a card in a lane in frontend
+       * @param {number} lane - lane index
+       * @param {number} card - card index
+       */
+      const deleteCardElement = ( lane, card ) => $.remove( this.getCardElement( lane, card ) );
 
     }
 
