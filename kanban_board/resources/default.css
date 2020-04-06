@@ -7,7 +7,6 @@
 #element {
   overflow-x: auto;
   font-family: Arial, sans-serif;
-  background-color: white;
 }
 
 #top:not(:empty) {
@@ -25,7 +24,7 @@
 
 #lanes {
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   justify-content: space-around;
 }
 
