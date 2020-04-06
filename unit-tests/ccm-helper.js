@@ -37,6 +37,23 @@ ccm.files[ 'ccm-helper.js' ] = {
         }
       }
     }
+  },
+
+/*------------------------------------------------------ Others ------------------------------------------------------*/
+
+  loading: {
+    tests: {
+      element: suite => suite.assertTrue( suite.ccm.helper.isElement( suite.ccm.helper.loading() ) ),
+      keyframeHead: suite => {
+        suite.ccm.helper.loading();
+        suite.assertTrue( document.head.querySelector( 'style#ccm_keyframe' ) );
+      },
+      keyframeShadow: async suite => {
+        const instance = await suite.ccm.instance( { Instance: function () {}, ccm: suite.ccm } );
+        suite.ccm.helper.loading( instance );
+        suite.assertTrue( instance.element.parentNode.querySelector( 'style#ccm_keyframe' ) );
+      }
+    }
   }
 
 };

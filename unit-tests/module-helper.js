@@ -353,12 +353,12 @@ ccm.files[ 'module-helper.js' ] = {
         suite.instance.root = div;
         suite.instance.onfinish = { render: { component: { name: 'test', ccm: suite.ccm, Instance: function () { this.start = () => { this.element.innerHTML = 'foo' }; } }, config: { shadow: 'none' } } };
         await suite.modules.onFinish( suite.instance );
-        suite.assertSame( 'foo', div.textContent );
+        suite.assertSame( 'foo', div.querySelector( '#element' ).textContent );
       },
       renderWithoutInstance: async suite => {
         const div = suite.ccm.helper.html( { inner: 'Hello World!' } );
         await suite.modules.onFinish( { render: { component: { name: 'test', ccm: suite.ccm, Instance: function () { this.start = () => { this.element.innerHTML = 'foo' }; } }, config: { shadow: 'none', root: div } } } );
-        suite.assertSame( 'foo', div.textContent );
+        suite.assertSame( 'foo', div.querySelector( '#element' ).textContent );
       },
       renderHTML: async suite => {
         const div = suite.ccm.helper.html( { inner: 'Hello World!' } );
@@ -669,21 +669,6 @@ ccm.files[ 'module-helper.js' ] = {
   },
 
 /*------------------------------------------------------ Others ------------------------------------------------------*/
-
-  loading: {
-    tests: {
-      element: suite => suite.assertTrue( suite.ccm.helper.isElement( suite.modules.loading() ) ),
-      keyframeHead: suite => {
-        suite.modules.loading();
-        suite.assertTrue( document.head.querySelector( 'style#ccm_keyframe' ) );
-      },
-      keyframeShadow: async suite => {
-        const instance = await suite.ccm.instance( { Instance: function () {}, ccm: suite.ccm } );
-        suite.modules.loading( instance );
-        suite.assertTrue( instance.element.parentNode.querySelector( 'style#ccm_keyframe' ) );
-      }
-    }
-  },
 
   progressBar: {
     tests: {
