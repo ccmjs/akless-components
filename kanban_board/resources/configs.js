@@ -15,7 +15,7 @@ ccm.files[ 'configs.js' ] = {
     "helper.1": "../modules/helper.mjs",
     "html.1": "../kanban_board/resources/templates.html",
 //  "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
-    "onchange": event => console.log( event ),
+//  "onchange": event => console.log( event ),
     "ignore": {
       "card": {
         "component": "../kanban_card/ccm.kanban_card.js",

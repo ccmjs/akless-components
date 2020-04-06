@@ -158,8 +158,9 @@
         this.data.store && await this.data.store.set( dataset );
 
         // logging of 'add' event and trigger of 'onchange' callback
-        this.logger && this.logger.log( 'add' );
-        this.onchange && this.onchange( { event: 'add', app: $.clone( app ), instance: this } );
+        const pos = [ 0, dataset.lanes[ 0 ].cards.length - 1 ];
+        this.logger && this.logger.log( 'add', { lane: pos[ 0 ], card: pos[ 1 ], app: $.clone( app ) } );
+        this.onchange && this.onchange( { event: 'add', lane: pos[ 0 ], card: pos[ 1 ], app: $.clone( app ), element: this.getCardElement( pos[ 0 ], pos[ 1 ] ), instance: this } );
 
       };
 
@@ -203,20 +204,19 @@
        */
       this.moveCard = async ( from, to ) => {
 
-        /**
-         * card data
-         * @type {Object}
-         */
-        const card = this.getCardData( from[ 0 ], from[ 1 ] );
+        // get local card data and card element
+        const card_data = this.getCardData( from[ 0 ], from[ 1 ] );
+        const card_elem = this.getCardElement( from[ 0 ], from[ 1 ] );
 
         // move card
-        dataset.last_change = { event: 'move', from: from, to: to, app: card };
+        dataset.last_change = { event: 'move', from: from, to: to, app: $.clone( card_data ) };
         await this.refresh();
-        await this.data.store.set( dataset );
+        await this.data.store.set( $.clone( dataset ) );
 
         // logging of 'move' event and trigger of 'onchange' callback
-        this.logger && this.logger.log( 'move', { from: from, to: to, data: $.clone( card ) } );
-        this.onchange && this.onchange( { event: 'move', from: from, to: to, data: $.clone( card ), instance: this } );
+        to = this.getCardPosition( card_elem );
+        this.logger && this.logger.log( 'move', { from: from, to: to, app: $.clone( card_data ) } );
+        this.onchange && this.onchange( { event: 'move', from: from, to: to, app: $.clone( card_data ), element: card_elem, instance: this } );
 
       };
 
@@ -228,20 +228,18 @@
        */
       this.deleteCard = async ( lane, card ) => {
 
-        /**
-         * card data (app dependency)
-         * @type {Array}
-         */
-        const app = this.getCardData( lane, card );
+        // get local card data and card element
+        const card_data = this.getCardData( lane, card );
+        const card_elem = this.getCardElement( lane, card );
 
         // delete card
-        dataset.last_change = { event: 'del', lane: lane, card: card, app: app };
+        dataset.last_change = { event: 'del', lane: lane, card: card, app: card_data };
         await this.refresh();
         this.data.store && await this.data.store.set( dataset );
 
         // logging of 'del' event and trigger of 'onchange' callback
-        this.logger && this.logger.log( 'del', { lane: lane, card: card, app: $.clone( app ) } );
-        this.onchange && this.onchange( { event: 'del', lane: lane, card: card, app: $.clone( app ), instance: this } );
+        this.logger && this.logger.log( 'del', { lane: lane, card: card, app: $.clone( card_data ) } );
+        this.onchange && this.onchange( { event: 'del', lane: lane, card: card, app: $.clone( card_data ), element: card_elem, instance: this } );
 
       };
 
