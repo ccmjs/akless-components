@@ -17,7 +17,7 @@
 
     name: 'testsuite',
 
-    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-25.0.0.js',
+    ccm: '../../ccm/ccm.js',
 
     config: {
 
@@ -56,7 +56,7 @@
       this.ready = async () => {
 
         // set shortcut to help functions
-        $ = this.ccm.helper;
+        $ = Object.assign( {}, this.ccm.helper, this.helper );
 
         // no package path? => abort
         if ( !this.package ) return;
@@ -92,14 +92,14 @@
         if ( self.element ) {
           main_elem = $.html( self.html.main );
           packages_elem = main_elem.querySelector( '#packages' );
-          self.helper.setContent( self.element, main_elem );
+          $.setContent( self.element, main_elem );
         }
 
         // process relevant test package (including all subpackages)
         await processPackage( self.package || '', self.tests || {}, setups, finallies );
 
         // perform finish actions
-        await this.helper.onFinish( self );
+        await $.onFinish( self );
 
         /**
          * processes the current unit test package (recursive)
@@ -145,13 +145,13 @@
             }
 
             // run unit tests
-            await self.helper.asyncForEach( Object.keys( tests ).map( key => tests[ key ] ), async test => {
+            await $.asyncForEach( Object.keys( tests ).map( key => tests[ key ] ), async test => {
 
               // has website area?
               if ( self.element ) {
 
                 // show that another test will be executed
-                main_elem.querySelector( '#executed' ).appendChild( self.helper.loading( self ) );
+                main_elem.querySelector( '#executed' ).appendChild( $.loading( self ) );
 
                 // render table row for current test
                 test_elem = $.html( self.html.test, test.name );
@@ -159,7 +159,7 @@
 
                 // for the moment render loading as result
                 result_elem = test_elem.querySelector( '.result' );
-                result_elem.appendChild( self.helper.loading( self ) );
+                result_elem.appendChild( $.loading( self ) );
 
               }
 
@@ -239,7 +239,7 @@
 
               };
 
-              await self.helper.asyncForEach( setups, async setup => setup( suite ) );  // run setup functions
+              await $.asyncForEach( setups, async setup => setup( suite ) );  // run setup functions
               results.executed++;                                             // increase counters for executed tests
 
               // run current unit test (with error handling)
@@ -259,13 +259,13 @@
               }
 
               // run all relevant finally functions
-              await self.helper.asyncForEach( finallies, final => final( suite ) );
+              await $.asyncForEach( finallies, final => final( suite ) );
 
               /** replaces loading icon with test result and increases passed or failed counter */
               function addResult( result ) {
                 const value = result ? 'passed' : 'failed';
                 if ( result ) results.passed++; else results.failed++;
-                if ( self.element ) self.helper.setContent( result_elem, $.html( self.html.result, { value: value } ) );
+                if ( self.element ) $.setContent( result_elem, $.html( self.html.result, { value: value } ) );
                 results.details[ package_path + '.' + test.name ] = result;
               }
 
@@ -279,9 +279,9 @@
               function addComparison( expected, actual ) {
                 if ( self.element ) {
                   if ( typeof expected === 'object' ) expected = $.stringify( expected );
-                  expected = self.helper.escapeHTML( expected );
+                  expected = $.escapeHTML( expected );
                   if ( typeof actual === 'object' ) actual = $.stringify( actual );
-                  actual = self.helper.escapeHTML( actual );
+                  actual = $.escapeHTML( actual );
                   test_elem.appendChild( $.html( self.html.comparison, expected, actual ) );
                 }
                 results.details[ package_path + '.' + test.name ] = { expected: expected, actual: actual };

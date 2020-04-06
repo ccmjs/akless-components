@@ -17,7 +17,7 @@
 
     name: 'testsuite', version: [ 3, 0, 0 ],
 
-    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-25.0.0.js',
+    ccm: '../../ccm/ccm.js',
 
     config: {
 
@@ -56,7 +56,7 @@
       this.ready = async () => {
 
         // set shortcut to help functions
-        $ = this.ccm.helper;
+        $ = Object.assign( {}, this.ccm.helper, this.helper );
 
         // no package path? => abort
         if ( !this.package ) return;
