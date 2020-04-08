@@ -51,7 +51,7 @@
 
     name: 'cloze_builder',
 
-    ccm: 'https://ccmjs.github.io/ccm/ccm.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-20.0.0.js',
 
     config: {
 
@@ -527,7 +527,7 @@
                     ]
                   },
                   {
-                    "id": "submit",
+                    "id": "captions.submit",
                     "class": "form-group",
                     "inner": [
                       {
@@ -562,7 +562,7 @@
                         "type": "text",
                         "id": "captions.submit-input",
                         "class": "form-control",
-                        "name": "submit",
+                        "name": "captions.submit",
                         "placeholder": "Enter Button Label",
                         "onchange": "%change%"
                       }
@@ -874,13 +874,13 @@
         if ( typeof this.submit_button === 'string' ) this.element.querySelector( '#button-submit' ).value = this.submit_button;
 
         /** prepares initial form values */
-        async function prepareValues() {
+        function prepareValues() {
 
           // set default value for dataset key of app-specific data
           if ( !$.deepValue( dataset, 'data.key' ) ) $.deepValue( self.ignore.defaults, 'data.key', $.generateKey() );
 
           // given default values? => integrate them as defaults into initial values
-          dataset = await $.integrate( self.ignore.defaults, dataset, true );
+          dataset = $.integrate( self.ignore.defaults, dataset, true );
 
           // stringify complex initial values
           dataset.data = $.stringify( dataset.data );
@@ -971,9 +971,9 @@
 
           getInputElementByName(                'manually' ).style.display = getInputElementByName( 'keywords' ).value === 'manually' ? 'block' : 'none';
           self.element.querySelector( '#captions\\.retry'  ).style.display = getInputElementByName( 'feedback' ).value === 'retry'    ? 'block' : 'none';
-          self.element.querySelector( 'submit'             ).style.display = getInputElementByName( 'feedback' ).value !== 'none'     ? 'block' : 'none';
+          self.element.querySelector( '#captions\\.submit' ).style.display = getInputElementByName( 'feedback' ).value !== 'none'     ? 'block' : 'none';
           self.element.querySelector( '#captions\\.start'  ).style.display = getInputElementByName( 'start_button'     ).checked      ? 'block' : 'none';
-      //  self.element.querySelector( '#captions\\.finish' ).style.display = getInputElementByName( 'onfinish.restart' ).checked      ? 'block' : 'none';
+          self.element.querySelector( '#captions\\.finish' ).style.display = getInputElementByName( 'onfinish.restart' ).checked      ? 'block' : 'none';
           function getInputElementByName( name ) { return self.element.querySelector( '[name="' + name + '"]' ); }
 
         }
