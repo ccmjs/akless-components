@@ -4,9 +4,9 @@
  * @license The MIT License (MIT)
  * @version latest (3.0.0)
  * @changes
- * version 3.0.0 (05.04.2020):
- * - uses ccm v25.2.1
- * - uses helper.mjs v4.2.1 as default
+ * version 3.0.0 (08.04.2020):
+ * - uses ccm v25.4.0
+ * - uses helper.mjs v5.0.0 as default
  * - uses HTML templates via templates.html
  * - improved realtime update
  * - changed for logging and 'onchange' callback
@@ -21,14 +21,14 @@
 
     name: 'kanban_board',
 
-    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-25.2.1.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-25.4.0.js',
 
     config: {
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/kanban_board/resources/default.css" ],
       "permissions": { "access": "all" },
       "data": { "store": [ "ccm.store" ], "key": "test" },
       "del": "Do you really want to delete this card?",
-      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-4.2.1.mjs" ],
+      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-5.0.0.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/kanban_board/resources/templates.html" ],
 //    "ignore": { "card": { "component": "https://ccmjs.github.io/akless-components/kanban_card/ccm.kanban_card.js", "config": {} } },
       "lanes": [ "ToDo", "Doing", "Done" ],
