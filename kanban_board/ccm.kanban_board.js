@@ -26,7 +26,7 @@
     config: {
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/kanban_board/resources/default.css" ],
       "permissions": { "access": "all" },
-      "data": { "store": [ "ccm.store" ], "key": "test" },
+      "data": { "store": [ "ccm.store" ] },
       "del": "Do you really want to delete this card?",
       "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-5.0.0.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/kanban_board/resources/templates.html" ],
