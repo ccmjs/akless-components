@@ -14,8 +14,8 @@ ccm.files[ 'configs.js' ] = {
       "key": "demo"
     },
     "helper.1": "../modules/helper.mjs",
-    "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
-    "onchange": event => console.log( event ),
+//  "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
+//  "onchange": event => console.log( event ),
   },
 
   "proxy": {
