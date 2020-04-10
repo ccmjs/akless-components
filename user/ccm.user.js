@@ -7,6 +7,7 @@
  * version 9.4.1 (10.04.2020):
  * - uses ccm v25.4.0
  * - uses helper.mjs v5.0.0 as default
+ * - bug fix for immediate login without trigger of 'onchange' callback
  * version 9.4.0 (25.03.2020):
  * - uses ccm v25.2.0
  * - uses helper.mjs v4.1.1 as default
@@ -146,7 +147,7 @@
       this.login = async not => {
 
         // higher user instance with same realm exists? => redirect method call
-        if ( context ) return context.login( this.onchange );
+        if ( context ) return context.login( not || this.onchange );
 
         // user already logged in? => abort
         if ( this.isLoggedIn() ) return this.getValue();
