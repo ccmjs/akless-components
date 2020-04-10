@@ -1,5 +1,5 @@
 /**
- * @overview default layout of ccm component for rendering a menu
+ * @overview default layout of ccm component for menus
  * @author André Kless <andre.kless@web.de> 2019-2020
  * @license The MIT License (MIT)
  */
@@ -64,12 +64,12 @@
   height: auto;
 }
 
-.fade {
-  animation-name: fade;
+.fading {
+  animation-name: fading;
   animation-duration: 1.5s;
 }
 
-@keyframes fade {
+@keyframes fading {
   from { opacity: .4 }
   to { opacity: 1 }
 }

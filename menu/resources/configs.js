@@ -1,5 +1,5 @@
 /**
- * @overview configurations of ccm component for rendering a menu
+ * @overview configurations of ccm component for menus
  * @author André Kless <andre.kless@web.de> 2018-2020
  * @license The MIT License (MIT)
  */
@@ -14,7 +14,8 @@ ccm.files[ 'configs.js' ] = {
       "key": "demo"
     },
     "helper.1": "../modules/helper.mjs",
-    "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ]
+    "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
+    "onchange": event => console.log( event ),
   },
 
   "proxy": {
@@ -106,6 +107,19 @@ ccm.files[ 'configs.js' ] = {
     }
   },
 
+  "top_tabs": {
+    "css": [ "ccm.load",
+      "https://ccmjs.github.io/akless-components/menu/resources/top_tabs.css",
+      "https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css",
+      { "context": "head", "url": "https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" }
+    ],
+    "data": {
+      "store": [ "ccm.store", "https://ccmjs.github.io/akless-components/menu/resources/datasets.js" ],
+      "key": "demo"
+    },
+    "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/menu/resources/top_tabs.html" ]
+  },
+
   "tabs": {
     "main": {
       "id": "main",
@@ -129,6 +143,10 @@ ccm.files[ 'configs.js' ] = {
         "tag": "a",
         "class": "title nav-link"
       }
+    },
+    "data": {
+      "store": [ "ccm.store", "https://ccmjs.github.io/akless-components/menu/resources/datasets.js" ],
+      "key": "demo"
     }
   },
 
