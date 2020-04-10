@@ -16,7 +16,7 @@ ccm.files[ 'resources.js' ] = {
 //  "map": user => user.user === 'john' ? 'Teacher' : 'Student',
     "helper.1": "../modules/versions/helper-4.0.1.mjs",
     "html": [ "ccm.get", "../user/resources/resources.js", "html" ],
-    "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ]
+//  "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ]
   },
 
   /** one-time pseudonym configuration */
