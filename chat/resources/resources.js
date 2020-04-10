@@ -17,8 +17,8 @@ ccm.files[ 'resources.js' ] = {
     "helper.1": "../modules/helper.mjs",
 //  "hide_login": true,
     "html.1": "../chat/resources/templates.html",
-    "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js", [ "ccm.get", "../chat/resources/resources.js", "lang" ] ],
-    "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
+//  "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js", [ "ccm.get", "../chat/resources/resources.js", "lang" ] ],
+//  "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
     "onchange": event => console.log( event ),
     "onstart": instance => console.log( instance ),
     "user": [ "ccm.instance", "../user/ccm.user.js", [ "ccm.get", "../chat/resources/resources.js", "user" ] ]
