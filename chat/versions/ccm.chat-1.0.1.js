@@ -2,7 +2,7 @@
  * @overview ccm component for chat
  * @author André Kless <andre.kless@web.de> 2020
  * @license The MIT License (MIT)
- * @version latest (1.0.1)
+ * @version 1.0.1
  * @changes
  * version 1.0.1 (10.04.2020):
  * - uses ccm v25.4.0
@@ -14,7 +14,7 @@
 
   const component = {
 
-    name: 'chat',
+    name: 'chat', version: [ 1, 0, 1 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-25.4.0.js',
 
