@@ -2,7 +2,7 @@
  * @overview ccm component for data logging
  * @author André Kless <andre.kless@web.de> 2016-2020
  * @license The MIT License (MIT)
- * @version latest (4.0.4)
+ * @version 4.0.4
  * @changes
  * version 4.0.4 (10.04.2020)
  * - uses ccm v25.4.0
@@ -38,7 +38,7 @@
 
   const component = {
 
-    name: 'log',
+    name: 'log', version: [ 4, 0, 4 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-25.4.0.js',
 
