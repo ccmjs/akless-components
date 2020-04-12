@@ -8,6 +8,7 @@
  * - uses ccm v25.4.0
  * - uses helper.mjs v5.0.0 as default
  * - bug fix for immediate login without trigger of 'onchange' callback
+ * - bug fix for missing realm in user data
  * version 9.4.0 (25.03.2020):
  * - uses ccm v25.2.0
  * - uses helper.mjs v4.1.1 as default
@@ -203,6 +204,7 @@
 
         // remember user data
         data = $.clone( result );
+        data.realm = my.realm;
 
         sessionStorage.setItem( 'ccm-user-' + my.realm, $.stringify( data ) );
 
