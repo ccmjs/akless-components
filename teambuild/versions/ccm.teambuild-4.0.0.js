@@ -304,7 +304,7 @@
 
         // set team name
         const team_nr = i + 1;
-        if ( !team_data.name )
+        if ( !team_data.name || /^\w+ \d+$/.test( team_data.name ) )
           team_data.name = this.names && this.names[ i ] ? this.names[ i ] : this.text.team + ' ' + team_nr;
 
         const team_elem = $.html( this.html.team, { icon: this.icon.team, name: team_data.name } );  // team container
