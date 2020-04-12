@@ -2,25 +2,31 @@
  * @overview ccm component for team building
  * @author André Kless <andre.kless@web.de> 2017-2020
  * @license The MIT License (MIT)
- * @version latest (3.1.2)
+ * @version latest (4.0.0)
  * @changes
- * version 3.1.2 (24.02.2020)
- * - uses ccm v25.0.0
- * - uses HTML template file as default
- * version 3.1.1 (10.10.2019)
- * - uses ccm v24.0.1
- * version 3.1.0 (06.02.2019)
- * - main HTML structure replaces own website area
- * - team dataset has always team name
- * - bug fix for directly logged in
- * version 3.0.1 (30.12.2018)
- * - uses ccm v20.0.0
- * version 3.0.0 (07.11.2018)
- * - uses ccm v18.4.0
- * - removed privatization of instance members
- * - correct logging of join event
- * (for older version changes see ccm.teambuild-2.0.0.js)
- * TODO: lock and unlock for team joining
+ * version 4.0.0 (10.04.2020)
+ * - uses ccm v25.4.0
+ * - uses helper.mjs v5.0.0 as default
+ * - reduced amount of realtime messages
+ * - checks permissions for better usability
+ * - added optional reload button
+ * - changed parameters in logged data
+ * - changed parameters of onchange callback
+ * - added public method: checkAction(team_nr,action):boolean
+ * - added public method: getMember(team_nr,user_key):username
+ * - added public method: getTeamData(team_nr):team_data
+ * - added public method: getTeamElement(team_nr):team_elem
+ * - added public method: getUserTeam(user_key):team_nr
+ * - added public method: getValue():teams_data
+ * - added public method: isEmptyTeam(team_nr):boolean
+ * - added public method: isJoinable(team_nr,user_key):boolean
+ * - added public method: isOnlyMember(team_nr,user_key):boolean
+ * - added public method: joinableTeams():boolean
+ * - added public method: joinTeam(team_nr):void
+ * - added public method: leaveTeam(team_nr):void
+ * - added public method: refresh(app_data):void
+ * - added public method: renameTeam(team_nr,name):void
+ * (for older version changes see ccm.teambuild-3.1.2.js)
  */
 
 ( () => {
@@ -29,21 +35,28 @@
 
     name: 'teambuild',
 
-    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-25.0.0.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-25.4.0.js',
 
     config: {
-
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/teambuild/resources/default.css" ],
       "data": { "store": [ "ccm.store" ] },
       "editable": true,
-      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-4.0.2.mjs" ],
+      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-5.0.0.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/teambuild/resources/templates.html" ],
-      "icon": {},
-  //  "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.2.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
+      "icon": {
+        /*
+        "join": "",
+        "leave": "",
+        "member": "https://ccmjs.github.io/akless-components/teambuild/resources/icon.svg",
+        "team": ""
+         */
+      },
+  //  "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.4.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
   //  "max_members": 3,
   //  "max_teams": 5,
   //  "names": [ "Team Red", "Team Blue" ],
-  //  "onchange": event => console.log( event_data ),
+  //  "onchange": event => console.log( event ),
+  //  "reload": true,
       "text": {
         "team": "Team",
         "leave": "leave",
@@ -51,431 +64,318 @@
         "free": "free",
         "message": "Nothing to display."
       },
-  //  "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.3.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "demo" ] ]
-
+  //  "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.4.1.js" ]
     },
 
     Instance: function () {
 
-      let $;
+      let $, app_data, user_key;
 
       this.init = async () => {
-
-        // set shortcut to help functions
-        $ = Object.assign( {}, this.ccm.helper, this.helper );
-
-        // listen to login/logout events => restart
-        if ( this.user ) this.user.onchange = this.start;
-
+        $ = Object.assign( {}, this.ccm.helper, this.helper );  // set shortcut to help functions
+        if ( this.user ) this.user.onchange = this.start;       // listen to login/logout events => restart
+        this.data.store.onchange = this.refresh;                // listen to datastore changes => (re)render own content
       };
 
       this.ready = async () => {
-
-        // logging of 'ready' event
-        this.logger && this.logger.log( 'ready', $.privatize( this, true ) );
-
+        this.logger && this.logger.log( 'ready', $.privatize( this, true ) );  // logging of 'ready' event
       };
 
       this.start = async () => {
 
+        $.setContent( this.element, $.loading( this ) );                                 // render loading icon
+        app_data = await $.dataset( this.data );                                         // get existing app data
+        user_key = this.user && this.user.isLoggedIn() && this.user.getValue().key;      // get unique key of logged in user
+        this.logger && this.logger.log( 'start', $.clone( app_data ) );                  // logging of 'start' event
+        if ( !app_data.teams ) app_data.teams = [];                                      // no teams data? => set default value
+        $.replace( this.element, this.element = $.html( this.html.main, this.start ) );  // render main HTML structure
+        if ( !this.reload ) $.remove( this.element.querySelector( '#reload' ) );         // no refresh button wanted? => remove refresh button
+        this.refresh();                                                                  // update own content
+
+        if ( app_data.teams.length === 0 ) $.setContent( this.element.querySelector( '#teams' ), this.text.message );  // no teams? => show message
+        if ( this.user ) { $.append( this.element.querySelector( '#top' ), this.user.root ); this.user.start(); }      // render login/logout area
+
+      };
+
+      /**
+       * checks whether a specific action is allowed for a specific team
+       * @param {number} team_nr - team number
+       * @param {string} action - 'join', 'leave' or 'rename'
+       * @returns {boolean}
+       */
+      this.checkAction = ( team_nr, action ) => {
+        let team_data = getTeam( team_nr );
+        team_data = team_data.editable === undefined ? this : team_data;
+        return !( team_data.editable === false || $.isObject( team_data.editable ) && team_data.editable[ action ] === false );
+      };
+
+      /**
+       * returns the username of a specific team member
+       * @param {number} team_nr - team number
+       * @param {string} [user] - unique user key (default: current user)
+       * @returns {string} displayed username (falsy if the user is not a member of the team)
+       */
+      this.getMember = ( team_nr, user = user_key ) => getTeam( team_nr ).members[ user ];
+
+      /**
+       * returns the data of a specific team
+       * @param {number} team_nr - team number
+       * @returns {Object} team data
+       */
+      this.getTeamData = team_nr => $.clone( getTeam( team_nr ) );
+
+      /**
+       * returns the container of a specific team
+       * @param {number} team_nr - team number
+       * @returns {Element} team container
+       */
+      this.getTeamElement = team_nr => this.element.querySelectorAll( '.team' )[ team_nr - 1 ];
+
+      /**
+       * returns the number of the team to which a specific user currently belongs
+       * @param {string} [user] - unique user key (default: current user)
+       * @returns {number} team number
+       */
+      this.getUserTeam = ( user = user_key ) => {
+        for ( let i = 0; i < app_data.teams.length; i++ )
+          if ( this.getMember( i + 1, user ) ) return i + 1;
+      };
+
+      /**
+       * returns current result data
+       * @returns {Object} app data (contains the data of all teams)
+       */
+      this.getValue = () => $.clone( app_data );
+
+      /**
+       * checks if a specific team has no members
+       * @param {number} team_nr - team number
+       * @returns {boolean}
+       */
+      this.isEmptyTeam = team_nr => !Object.keys( getTeam( team_nr ).members ).length;
+
+      /**
+       * checks if a specific user can join a specific team
+       * @param {number} team_nr - team number
+       * @param {string} [user] - unique user key (default: current user)
+       * @returns {boolean}
+       */
+      this.isJoinable = ( team_nr, user = user_key ) => {
+
+        if ( !$.isDatastore( this.data.store ) || !user ) return false;             // no datastore or no user? => false
+        if ( !$.hasPermission( app_data, this.user, 'set' ) ) return false;         // user has no permission for updates? => false
+        if ( this.getMember( team_nr, user ) ) return false;                        // user is already a member of the team? => false
+        if ( !this.checkAction( team_nr, 'join' ) ) return false;                   // is the team not joinable? => false
+        const user_team = this.getUserTeam( user );                                 // get the data of the team the user already belongs to
+        if ( user_team && !this.checkAction( user_team, 'leave' ) ) return false;   // is the user a member of a team that can not be left? => false
+        if ( !this.max_teams && team_nr === app_data.teams.length && team_nr > 1 )  // unlimited number of teams and this team is last (always empty) team and not the only one?
+          if ( this.isOnlyMember( team_nr - 1, user ) ) return false;               // => the user is the only member in the last not empty team? => false
+
+        // the team can be joined if the allowed number of team members is unlimited or is not exceeded by joining
+        return !this.max_members || Object.keys( getTeam( team_nr ).members ).length < this.max_members;
+
+      };
+
+      /**
+       * checks if a specific user can leave a specific team
+       * @param {number} team_nr - team number
+       * @param {string} [user] - unique user key (default: current user)
+       * @returns {boolean}
+       */
+      this.isLeavable = ( team_nr, user = user_key ) => $.isDatastore( this.data.store ) && user && $.hasPermission( app_data, this.user, 'set' ) && this.getMember( team_nr, user ) && this.checkAction( team_nr, 'leave' );
+
+      /**
+       * checks if a specific user can rename the name of a specific team
+       * @param {number} team_nr - team number
+       * @param {string} [user] - unique user key (default: current user)
+       * @returns {boolean}
+       */
+      this.isRenamable = ( team_nr, user = user_key ) => $.isDatastore( this.data.store ) && user && $.hasPermission( app_data, this.user, 'set' ) && this.getMember( team_nr, user ) && this.checkAction( team_nr, 'rename' );
+
+      /**
+       * checks if an user is the only member in a specific team
+       * @param {number} team_nr - team number
+       * @param {string} [user] - unique user key (default: current user)
+       * @returns {boolean}
+       */
+      this.isOnlyMember = ( team_nr, user = user_key ) => this.getMember( team_nr, user ) && Object.keys( getTeam( team_nr ).members ).length === 1;
+
+      /**
+       * checks if teams are joinable
+       * @returns {boolean}
+       */
+      this.joinableTeams = () => !( this.editable === false || this.editable && this.editable.join === false );
+
+      /**
+       * lets the current user join a team
+       * @param {number} team_nr - team number
+       * @returns {Promise<void>}
+       */
+      this.joinTeam = async team_nr => {
+
+        if ( !this.isJoinable( team_nr ) ) return;      // team is not joinable? => abort
+        const joined_team = getTeam( team_nr );         // get team data of joined team
+        const leaved_team_nr = this.getUserTeam();      // get team number of leaved team
+        const leaved_team = getTeam( leaved_team_nr );  // get team data of leaved team
+        if ( leaved_team_nr ) {                         // is user already a member of another team?
+          await this.leaveTeam( leaved_team_nr );       // => remove user from member list of leaved team
+          // unlimited number of teams and leaved team is now empty? => remove leaved team
+          if ( !this.max_teams && this.isEmptyTeam( leaved_team_nr ) ) app_data.teams.splice( leaved_team_nr - 1, 1 );
+        }
+
+        joined_team.members[ user_key ] = this.user.getUsername();  // add user to member list of joined team
+        await this.data.store.set( app_data ); this.refresh();      // update app data and own content
+
+        // log 'join' event and trigger 'onchange' callback
+        this.logger && this.logger.log( 'join', { team: $.clone( joined_team ), nr: team_nr, leaved: leaved_team_nr } );
+        this.onchange && this.onchange( { event: 'join', team: $.clone( joined_team ), nr: team_nr, leaved: leaved_team_nr, element: this.getTeamElement( team_nr ), instance: this } );
+
+      };
+
+      /**
+       * lets the current user leave a team
+       * @param {number} team_nr - team number
+       * @returns {Promise<void>}
+       */
+      this.leaveTeam = async team_nr => {
+
+        if ( !this.isLeavable( team_nr ) ) return;             // team can not be left? => abort
+        const team_data = getTeam( team_nr );                  // get team data
+        delete team_data.members[ user_key ];                  // remove user from member list
+        if ( !this.max_teams && this.isEmptyTeam( team_nr ) )  // unlimited number of teams and leaved team is now empty?
+          app_data.teams.splice( team_nr - 1 , 1 );            // => remove leaved team
+        await this.data.store.set( app_data );                 // update app data
+        this.refresh();                                        // update own content
+
+        // log 'leave' event and trigger 'onchange' callback
+        this.logger && this.logger.log( 'leave', { team: $.clone( team_data ), nr: team_nr } );
+        this.onchange && this.onchange( { event: 'leave', team: $.clone( team_data ), nr: team_nr, element: this.getTeamElement( team_nr ), instance: this } );
+
+      };
+
+      /**
+       * updates own content and local app data after app data has changed
+       * @param {Object} [dataset] - updated app data (local app data)
+       */
+      this.refresh = ( dataset = app_data ) => renderTeams( app_data = dataset );
+
+      /**
+       * renames the name of the team to which the current user belongs
+       * @param {number} team_nr - team number
+       * @param {string} name - new team name
+       * @returns {Promise<void>}
+       */
+      this.renameTeam = async ( team_nr, name ) => {
+
+        if ( !this.isRenamable( team_nr ) ) return;  // team can not be left? => abort
+        const team_data = getTeam( team_nr );        // get team data
+        team_data.name = $.protect( name.trim() );   // update team name in team data
+        await this.data.store.set( app_data );       // save team data
+
+        // log 'rename' event and trigger 'onchange' callback
+        this.logger && this.logger.log( 'rename', { team: $.clone( team_data ) } );
+        this.onchange && this.onchange( { event: 'rename', team: $.clone( team_data ), nr: team_nr, instance: this } );
+
+      };
+
+      /** renders the team containers */
+      const renderTeams = () => {
+
+        $.setContent( this.element.querySelector( '#teams' ), '' );  // clear teams container
+        app_data.teams.forEach( appendTeam );                        // render existing teams
+
+        // limited number of teams? => add empty teams
+        if ( this.max_teams ) {
+          const needed = this.max_teams - app_data.teams.length;
+          for ( let i = 0; i < needed; i++ )
+            appendEmptyTeam();
+        }
+        // unlimited number of teams, last team is not empty and teams are joinable? => add empty team
+        else if ( ( app_data.teams.length === 0 || !this.isEmptyTeam( app_data.teams.length ) ) && this.joinableTeams() ) appendEmptyTeam();
+
+      }
+
+      /**
+       * adds a team in the teams container
+       * @param {Object} team_data - team data
+       * @param {number} [i] - team index (default: adds an empty team)
+       */
+      const appendTeam = ( team_data, i = app_data.teams.length - 1 ) => {
+
+        // set team name
+        const team_nr = i + 1;
+        if ( !team_data.name )
+          team_data.name = this.names && this.names[ i ] ? this.names[ i ] : this.text.team + ' ' + team_nr;
+
+        const team_elem = $.html( this.html.team, { icon: this.icon.team, name: team_data.name } );  // team container
+        this.element.querySelector( '#teams' ).appendChild( team_elem );                             // add team container to main HTML structure
+        renderMembers( team_nr );                                                                    // add team members in the members container
+
+        // add join button
+        this.isJoinable( team_nr ) && $.setContent( this.getTeamElement( team_nr ).querySelector( '.button' ), $.html( this.html.button, {
+          icon: this.icon.join,
+          caption: this.text.join,
+          onclick: () => this.joinTeam( team_nr )
+        } ) );
+
+        // add leave button
+        this.isLeavable( team_nr ) && $.setContent( this.getTeamElement( team_nr ).querySelector( '.button' ), $.html( this.html.button, {
+          icon: this.icon.leave,
+          caption: this.text.leave,
+          onclick: () => this.leaveTeam( team_nr )
+        } ) );
+
+        // make the team name editable
+        if ( !this.isRenamable( team_nr ) ) return;
+        const name_elem = this.getTeamElement( team_nr ).querySelector( '.name' );
+        name_elem.setAttribute( 'contenteditable', true );
+        name_elem.addEventListener( 'input', async () => this.renameTeam( team_nr, name_elem.textContent ) );
+
+      };
+
+      /** adds an empty team in the teams container */
+      const appendEmptyTeam = () => {
+        const team = { key: $.generateKey(), members: {} };  // initial team data (empty team without members)
+        app_data.teams.push( team );                         // add empty team data to existing teams
+        appendTeam( team );                                  // add empty team to main HTML structure
+      };
+
+      /**
+       * returns the data of a specific team
+       * @param {number} team_nr - team number
+       */
+      const getTeam = team_nr => app_data.teams[ team_nr - 1 ];
+
+      /**
+       * renders member entries in the container of a team
+       * @param {number} team_nr - team number
+       */
+      const renderMembers = team_nr => {
+        const team_data = getTeam( team_nr ), team_elem = this.getTeamElement( team_nr );               // get data and container of the team
+        $.setContent( team_elem.querySelector( '.members' ), '' );                                      // clear container for team members
+        for ( const key in team_data.members ) appendMember( team_nr, key, team_data.members[ key ] );  // add team members in team container
+        const free_slots = this.max_members - Object.keys( team_data.members ).length;                  // amount of free member slot in the team
+        for ( let i = 0; i < free_slots; i++ ) appendMember( team_nr );                                 // add free member slots in the team container
+      };
+
+      /**
+       * adds a single member entry in the container of a team
+       * @param {number} team_nr - team number
+       * @param {string} [user] - unique user key of the new member (default: free member slot)
+       * @param {string} [username] - displayed username of the new member (default: unique user key)
+       */
+      const appendMember = ( team_nr, user, username = user ) => {
+
         /**
-         * start state of team building
-         * @type {Object}
-         */
-        const dataset = await $.dataset( this.data );
-
-        // logging of 'start' event
-        this.logger && this.logger.log( 'start', $.clone( dataset ) );
-
-        // no start state exists? => set default start state
-        if ( !dataset.teams ) dataset.teams = [];
-
-        // render main HTML structure
-        $.replace( this.element, this.element = $.html( this.html.main ) );
-
-        /**
-         * contains teams
+         * HTML structure of team member
          * @type {Element}
          */
-        const teams_elem = this.element.querySelector( '#teams' );
-
-        // render login/logout area
-        if ( this.user ) { $.setContent( this.element.querySelector( '#user' ), this.user.root ); await this.user.start(); }
-
-        // add HTML structure for each team
-        const self = this; addTeams();
-
-        /** adds teams to main HTML structure */
-        function addTeams() {
-
-          // add existing teams
-          dataset.teams.forEach( addTeam );
-
-          // limited number of teams? => add empty teams
-          if ( self.max_teams ) {
-            const needed = self.max_teams - dataset.teams.length;
-            for ( let i = 0; i < needed; i++ )
-              addEmptyTeam();
-          }
-
-          // unlimited number of teams, last team is not empty and teams are joinable? => add empty team
-          else if ( ( dataset.teams.length === 0 || !isEmptyTeam( dataset.teams[ dataset.teams.length - 1 ] ) ) && joinableTeams() ) addEmptyTeam();
-
-          // no teams? => show message
-          if ( dataset.teams.length === 0 ) $.setContent( teams_elem, self.text.message );
-
-          /**
-           * adds a team to the main HTML structure
-           * @param {Object} team - team data
-           * @param {number} [i] - team index (default is: number of existing teams - 1)
-           */
-          function addTeam( team, i ) {
-
-            // no team index? => use default value (when rendering a empty team)
-            if ( i === undefined ) i = dataset.teams.length - 1;
-
-            // set team name
-            if ( !team.name || team.name.startsWith( self.text.team + ' ' ) ) team.name = self.names && self.names[ i ] ? self.names[ i ] : self.text.team + ' ' + ( i + 1 );
-
-            /**
-             * HTML structure of team
-             * @type {Element}
-             */
-            const team_elem = $.html( self.html.team, {
-              icon: self.icon.team,
-              name: team.name
-            } );
-
-            /**
-             * maximum number of team members
-             * @type {number}
-             */
-            const max_members = team.max_members || self.max_members;
-
-            /**
-             * logged in user
-             * @type {string}
-             */
-            const user = self.user && self.user.isLoggedIn() && self.user.data().user;
-
-            // has datastore and logged in user? (than user can make changes)
-            if ( $.isObject( self.data ) && $.isDatastore( self.data.store ) && user ) {
-
-              /**
-               * number of the team to which the user currently belongs
-               * @type {number}
-               */
-              const user_team = user && getUserTeam();
-
-              // user is member of this team?
-              if ( isMember( team ) ) {
-
-                // should team name be editable? => make team name editable
-                if ( isEditable( i, 'rename' ) ) makeEditable();
-
-                // should the user have the possibility to leave the team? => add leave button
-                if ( isEditable( i, 'leave' ) ) addLeaveButton();
-
-              }
-
-              // user is no member and team is joinable? => add join button
-              else if ( isJoinable() ) addJoinButton();
-
-              /**
-               * checks whether user is a member of a particular team
-               * @param {Object} team - team data
-               * @returns {boolean}
-               */
-              function isMember( team ) {
-
-                return !!team.members[ user ];
-
-              }
-
-              /**
-               * checks whether a particular action is allowed for a particular team
-               * @param {number} team - team index
-               * @param {string} action - 'join', 'leave' or 'rename'
-               * @returns {boolean}
-               */
-              function isEditable( team, action ) {
-
-                if ( team.editable === undefined )
-                  return !( self.editable === false || $.isObject( self.editable ) && self.editable[ action ] === false );
-                else
-                  return !( team.editable === false || $.isObject( team.editable ) && team.editable[ action ] === false );
-
-              }
-
-              /** makes team name editable */
-              function makeEditable() {
-
-                /**
-                 * contains team name
-                 * @type {Element}
-                 */
-                const name_elem = team_elem.querySelector( '.name' );
-
-                // make team name ediatable
-                name_elem.setAttribute( 'contenteditable', true );
-                name_elem.addEventListener( 'input', async () => {
-
-                  /**
-                   * renamed team name
-                   * @type {string}
-                   */
-                  const value = name_elem.textContent.trim();
-
-                  // update team name in team data
-                  team.name = $.protect( value );
-
-                  // logging of 'rename' event
-                  self.logger && self.logger.log( 'rename', $.clone( { team: team.key, name: team.name } ) );
-
-                  // update team building dataset in datastore
-                  await self.data.store.set( dataset );
-
-                } );
-
-              }
-
-              /** adds button that allows user to leave team */
-              function addLeaveButton() {
-
-                // use template for team button
-                $.setContent( team_elem.querySelector( '.button' ), $.html( self.html.button, {
-                  icon: self.icon.leave,
-                  caption: self.text.leave,
-                  onclick: async () => {
-
-                    // remove user from member list
-                    delete team.members[ user ];
-
-                    // unlimited number of teams and leaved team is now empty? => remove leaved team
-                    if ( !self.max_teams && isEmptyTeam( team ) ) dataset.teams.splice( i , 1 );
-
-                    // update team building dataset in datastore
-                    await self.data.store.set( dataset );
-
-                    /**
-                     * event data of 'leave' event
-                     * @type {Object}
-                     */
-                    const event_data = { leaved: team.key };
-
-                    // logging of 'leave' event
-                    self.logger && self.logger.log( 'leave', $.clone( event_data ) );
-
-                    // perform 'onchange' callback
-                    self.onchange && self.onchange( self, $.clone( event_data ) );
-
-                    // restart (updates own content)
-                    await self.start();
-
-                  }
-                } ) );
-
-              }
-
-              /**
-               * checks if user can join this team
-               * @returns {boolean}
-               */
-              function isJoinable() {
-
-                // join action for this team is not allowed? => negative result
-                if ( !isEditable( i, 'join' ) ) return false;
-
-                // is user a member of a team that can not be left? => negative result
-                if ( user_team && !isEditable( user_team - 1, 'leave' ) ) return false;
-
-                // unlimited number of teams and this team is last (always empty) team and not the only one?
-                if ( !self.max_teams && i === dataset.teams.length - 1 && i > 0 ) {
-
-                  // user is only member in last not empty team? => team is not joinable
-                  if ( isOnlyMember( dataset.teams[ i - 1 ] ) ) return false;
-
-                  /**
-                   * checks if user is only member in a particular team
-                   * @param {Object} team - team data
-                   * @returns {boolean}
-                   */
-                  function isOnlyMember( team ) {
-
-                    return team.members[ user ] && Object.keys( team.members ).length === 1;
-
-                  }
-
-                }
-
-                // the team can be joined if the allowed number of team members is unlimited or is not exceeded by joining
-                return !max_members || Object.keys( team.members ).length < max_members;
-
-              }
-
-              /** adds button that allows user to join team */
-              function addJoinButton() {
-
-                // use template for team button
-                $.setContent( team_elem.querySelector( '.button' ), $.html( self.html.button, {
-                  icon: self.icon.join,
-                  caption: self.text.join,
-                  onclick: async () => {
-
-                    /**
-                     * data of team that user must leave
-                     * @type {Object}
-                     */
-                    const leaving_team = user_team && dataset.teams[ user_team - 1 ];
-
-                    // is user already a member of another team? => user must leave that team
-                    if ( user_team ) {
-
-                      // remove user from member list
-                      delete leaving_team.members[ user ];
-
-                      // unlimited number of teams and leaved team is now empty? => remove leaved team
-                      if ( !self.max_teams && isEmptyTeam( leaving_team ) ) dataset.teams.splice( user_team - 1, 1 );
-
-                    }
-
-                    // add user to member list
-                    team.members[ user ] = true;
-
-                    // update team building dataset in datastore
-                    await self.data.store.set( dataset );
-
-                    /**
-                     * event data of 'join' event
-                     * @type {Object}
-                     */
-                    const event_data = { joined: team.key, leaved: leaving_team && leaving_team.key };
-
-                    // logging of 'join' event
-                    self.logger && self.logger.log( 'join', $.clone( event_data ) );
-
-                    // perform 'onchange' callback
-                    self.onchange && self.onchange( self, $.clone( event_data ) );
-
-                    // restart (updates own content)
-                    await self.start();
-
-                  }
-                } ) );
-
-              }
-
-            }
-
-            // add HTML structure for each member
-            addMembers();
-
-            // add team to main HTML structure
-            teams_elem.appendChild( team_elem );
-
-            /**
-             * returns number of team to which user currently belongs
-             * @returns {number}
-             */
-            function getUserTeam() {
-
-              // is user a team member? => return team number
-              for ( let i = 0; i < dataset.teams.length; i++ )
-                if ( dataset.teams[ i ].members[ user ] ) return i + 1;
-
-              // user is no team member => return undefined
-            }
-
-            /** adds members to HTML structure of team */
-            function addMembers() {
-
-              /**
-               * contains team members
-               * @type {Element}
-               */
-              const members_elem = team_elem.querySelector( '.members' );
-
-              // add team members
-              for ( const member in team.members ) addMember( member );
-
-              // is there a maximum number of team members? => add free member slots
-              for ( let i = 0; i < max_members - Object.keys( team.members ).length; i++ ) addMember();
-
-              /**
-               * adds a member to HTML structure of team
-               * @param {Object} [member] - member name
-               */
-              function addMember( member ) {
-
-                /**
-                 * HTML structure of team member
-                 * @type {Element}
-                 */
-                const member_elem = $.html( self.html.member, {
-                  icon: self.icon.member,
-                  name: member ? member : self.text.free
-                } );
-
-                /**
-                 * contains name of team member
-                 * @type {Element}
-                 */
-                const name_elem = member_elem.querySelector( '.name' );
-
-                // member is logged in user? => mark it as user
-                if ( user && member && user === member ) name_elem.classList.add( 'user' );
-
-                // is a free member slot? => mark it as free
-                if ( !member ) name_elem.classList.add( 'free' );
-
-                // add member to HTML structure of team
-                members_elem.appendChild( member_elem );
-
-              }
-
-            }
-
-          }
-
-          /**
-           * checks if a particular team has no members
-           * @param {Object} team - team data
-           * @returns {boolean}
-           */
-          function isEmptyTeam( team ) {
-
-            return Object.keys( team.members ).length === 0;
-
-          }
-
-          /** adds a empty team slot */
-          function addEmptyTeam() {
-
-            /**
-             * initial team data (empty team without members)
-             * @type {Object}
-             */
-            const team = { key: $.generateKey(), members: {} };
-
-            // add empty team data to existing teams
-            dataset.teams.push( team );
-
-            // add empty team to main HTML structure
-            addTeam( team );
-
-          }
-
-          /**
-           * checks if teams are joinable
-           * @returns {boolean}
-           */
-          function joinableTeams() {
-
-            return !( self.editable === false || self.editable && self.editable.join === false );
-
-          }
-
-        }
+        const member_elem = $.html( this.html.member, { icon: this.icon.member, name: user ? username : this.text.free } );
+
+        const name_elem = member_elem.querySelector( '.name' );                                 // container that contains the username of the team member
+        user && user_key && user === user_key && name_elem.classList.add( 'user' );             // member is a logged in user? => mark it as own username
+        !user && name_elem.classList.add( 'free' );                                             // is a free member slot? => mark it as free
+        this.getTeamElement( team_nr ).querySelector( '.members' ).appendChild( member_elem );  // add the member in the team container
 
       };
 

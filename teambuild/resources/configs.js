@@ -10,20 +10,21 @@ ccm.files[ 'configs.js' ] = {
     "css": [ "ccm.load", "../teambuild/resources/default.css" ],
     "data": {
       "store": [ "ccm.store", { "name": "teambuild_data", "url": "wss://ccm2.inf.h-brs.de" } ],
-      "key": "test",
-      "permissions": {
-        "creator": "akless",
-        "realm": "guest",
-        "access": {
-          "get": "all",
-          "set": "all",
-          "del": "creator"
-        }
-      }
+      "key": "test"
+    },
+    "editable": {
+      "join": true,
+      "leave": true,
+      "rename": true,
     },
     "helper.1": "../modules/helper.mjs",
     "html.1": "../teambuild/resources/templates.html",
 //  "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
+//  "max_members": 2,
+//  "max_teams": 3,
+//  "names": [ "Team Red", "Team Blue" ],
+//  "onchange": event => console.log( event ),
+    "reload": true,
     "user": [ "ccm.instance", "../user/ccm.user.js", [ "ccm.get", "../user/resources/resources.js", "local" ] ]
   },
 
@@ -31,18 +32,9 @@ ccm.files[ 'configs.js' ] = {
     "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/teambuild/resources/default.css" ],
     "data": {
       "store": [ "ccm.store", { "name": "teambuild_data", "url": "wss://ccm2.inf.h-brs.de" } ],
-      "key": "demo",
-      "permissions": {
-        "creator": "akless",
-        "realm": "guest",
-        "access": {
-          "get": "all",
-          "set": "all",
-          "del": "creator"
-        }
-      }
+      "key": "demo"
     },
-    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.3.1.js" ]
+    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.4.1.js" ]
   },
 
   "clicker": {

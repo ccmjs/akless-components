@@ -1,6 +1,6 @@
 /**
  * @overview default layout of ccm component for team building
- * @author André Kless <andre.kless@web.de.de> 2016-2018
+ * @author André Kless <andre.kless@web.de.de> 2016-2018, 2020
  * @license The MIT License (MIT)
  */
 
@@ -9,11 +9,24 @@ button {
 }
 
 *[contenteditable] {
-  cursor: text;
+  cursor: text !important;
 }
 
 #element {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+#top:not(:empty) {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0.5em 1em 0.25em 1em;
+}
+
+#reload {
+  font-size: xx-large;
+  padding: 0 0.3em;
+  cursor: pointer;
 }
 
 #teams {
@@ -24,17 +37,15 @@ button {
 
 .team {
   margin: 0.5em;
-  border: 0.1em solid black;
-  border-radius: 0.5em;
 }
 
 .team .header {
   display: flex;
   align-items: center;
   overflow-x: auto;
-  border-bottom: 0.1em solid black;
-  border-radius: 0.4em 0.4em 0 0;
-  background-color: silver;
+  border: 0.1em solid #009EE0;
+  border-radius: 0.5em 0.5em 0 0;
+  background-color: rgb(161,222,255);
   padding: 0.5em;
 }
 
@@ -44,7 +55,15 @@ button {
   cursor: default;
 }
 
+.team .header .button {
+  display: flex;
+  align-items: center;
+}
+
 .team .members {
+  border: 0.1em solid #009EE0;
+  border-top: 0;
+  border-radius: 0 0 0.5em 0.5em;
   overflow-x: auto;
   padding: 0.2em;
 }
