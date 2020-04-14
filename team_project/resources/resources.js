@@ -63,17 +63,7 @@ ccm.files[ 'resources.js' ] = {
         }
       }
     },
-//  "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
-    "menu": [ "ccm.component", "../menu/ccm.menu.js", [ "ccm.get", "../menu/resources/configs.js", "top_tabs" ] ],
-//  "onchange": event => console.log( event ),
-    "teambuild": [ "ccm.component", "../teambuild/ccm.teambuild.js", {
-      "css": [ "ccm.load", "../teambuild/resources/default.css" ],
-      "data": {
-        "store": [ "ccm.store", { "name": "team_project", "url": "wss://ccm2.inf.h-brs.de" } ]
-      },
-      "reload": false
-    } ],
-    "user": [ "ccm.instance", "../user/ccm.user.js", [ "ccm.get", "../user/resources/resources.js", "local" ] ]
+    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.4.1.js" ]
   },
 
   "realtime": {
