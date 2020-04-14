@@ -2,7 +2,7 @@
  * @overview ccm component for team projects
  * @author André Kless <andre.kless@web.de> 2020
  * @license The MIT License (MIT)
- * @version latest (1.0.0)
+ * @version 1.0.0
  * @changes
  * version 1.0.0 (14.04.2020)
  * TODO: create permissions
@@ -13,7 +13,7 @@
 
   const component = {
 
-    name: 'team_project',
+    name: 'team_project', version: [ 1, 0, 0 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-25.4.0.js',
 
