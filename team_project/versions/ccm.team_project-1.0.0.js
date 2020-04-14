@@ -122,8 +122,8 @@
             key: this.data.key + '-board-' + team_data.key
           },
           'ignore.card.config.data.store': [ 'ccm.store', Object.assign( this.data.store.source(), { name: 'team_project-' + this.data.key + '-cards' } ) ],
-          'ignore.card.config.members': Object.keys( team_data.members ).sort(),
           'ignore.card.config.user': [ 'ccm.instance', this.user.component.url, JSON.parse( this.user.config ) ],
+          members: Object.keys( team_data.members ).sort(),
           user: [ 'ccm.instance', this.user.component.url, JSON.parse( this.user.config ) ]
         } );
       };
