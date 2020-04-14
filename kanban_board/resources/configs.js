@@ -14,14 +14,15 @@ ccm.files[ 'configs.js' ] = {
     },
     "helper.1": "../modules/helper.mjs",
     "html.1": "../kanban_board/resources/templates.html",
-//  "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
-//  "onchange": event => console.log( event ),
     "ignore": {
       "card": {
         "component": "../kanban_card/ccm.kanban_card.js",
         "config": [ "ccm.get", "../kanban_card/resources/configs.js", "local_white" ]
       }
     },
+//  "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
+    "members": [ "John", "Jane", "Jake" ],
+//  "onchange": event => console.log( event ),
     "reload": true,
     "user": [ "ccm.instance", "../user/ccm.user.js", [ "ccm.get", "../user/resources/resources.js", "local" ] ]
   },

@@ -2,7 +2,7 @@
  * @overview ccm component for kanban boards
  * @author André Kless <andre.kless@web.de> 2016-2018, 2020
  * @license The MIT License (MIT)
- * @version 3.0.0
+ * @version latest (3.0.0)
  * @changes
  * version 3.0.0 (08.04.2020):
  * - uses ccm v25.4.0
@@ -19,7 +19,7 @@
 
   const component = {
 
-    name: 'kanban_board', version: [ 3, 0, 0 ],
+    name: 'kanban_board',
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-25.4.0.js',
 
@@ -33,6 +33,7 @@
 //    "ignore": { "card": { "component": "https://ccmjs.github.io/akless-components/kanban_card/ccm.kanban_card.js", "config": {} } },
       "lanes": [ "ToDo", "Doing", "Done" ],
 //    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.3.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
+//    "members": [ "John", "Jane", "Jake" ],
 //    "onchange": event => console.log( event ),
 //    "reload": true,
 //    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.4.0.js" ]
@@ -262,6 +263,7 @@
         card[ 2 ] = await $.solveDependency( card[ 2 ] );
         card[ 2 ] = $.clone( card[ 2 ] || {} );
         card[ 2 ].parent = this;
+        if ( this.members ) card[ 2 ].members = this.members;
 
         // render card (root element of the card instance is the card element and the drop zone)
         card = await $.solveDependency( card );
