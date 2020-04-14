@@ -64,13 +64,6 @@ ccm.files[ 'resources.js' ] = {
       }
     },
     "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.4.1.js" ]
-  },
-
-  "realtime": {
-    "data": {
-      "store": [ "ccm.store", { "name": "team_project", "url": "wss://ccm2.inf.h-brs.de" } ],
-      "key": "demo"
-    }
   }
 
 };
