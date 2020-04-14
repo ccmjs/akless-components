@@ -6,13 +6,14 @@
 
 <ccm-template key="main">
   <div id="main">
-    <ul id="entries" class="nav nav-tabs"></ul>
+    <div id="top"></div>
+    <div id="entries" class="nav nav-tabs"></div>
     <div id="content"></div>
   </div>
 </ccm-template>
 
 <ccm-template key="entry">
-  <li id="%id%" class="entry nav-item" onclick="%click%">
+  <li id="entry-%id%" data-id="%id%" class="entry nav-item" onclick="%click%">
     <a class="title nav-link"></a>
   </li>
 </ccm-template>

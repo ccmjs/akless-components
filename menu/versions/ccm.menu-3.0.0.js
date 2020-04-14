@@ -2,7 +2,7 @@
  * @overview ccm component for menus
  * @author André Kless <andre.kless@web.de> 2015-2016, 2018-2020
  * @license The MIT License (MIT)
- * @version latest (3.0.0)
+ * @version 3.0.0
  * @changes
  * version 3.0.0 (14.04.2020):
  * - changed parameters in logged data
@@ -26,7 +26,7 @@
 
   const component = {
 
-    name: 'menu',
+    name: 'menu', version: [ 3, 0, 0 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-25.4.0.js',
 
