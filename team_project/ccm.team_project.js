@@ -38,6 +38,7 @@
 
       this.ready = async () => {
         $ = Object.assign( {}, this.ccm.helper, this.helper );                 // shortcut to help functions
+        if ( this.user ) this.user.onchange = this.start;                      // listen to login/logout events => restart
         this.data.store.onchange = this.refresh;                               // listen to datastore changes for realtime update
         this.logger && this.logger.log( 'ready', $.privatize( this, true ) );  // logging of 'ready' event
       };
