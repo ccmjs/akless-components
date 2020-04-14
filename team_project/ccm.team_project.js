@@ -34,7 +34,7 @@
 
     Instance: function () {
 
-      let $, app_data, chat, kanban_board, menu, team_data, team_nr, teambuild;
+      let $, app_data, chat, kanban_board, main_elem, menu, team_data, team_nr, teambuild;
 
       this.init = async () => {
         $ = Object.assign( {}, this.ccm.helper, this.helper );  // shortcut to help functions
@@ -51,7 +51,7 @@
         app_data = await $.dataset( this.data );                     // get existing app data
         if ( !app_data ) return $.setContent( this.element, '' );    // no data? => empty content
         this.logger && this.logger.log( 'start', this.getValue() );  // logging of 'start' event
-        const main_elem = $.html( this.html.main );                  // prepare main HTML structure
+        main_elem = $.html( this.html.main );                        // prepare main HTML structure
 
         // render login/logout area
         if ( this.user ) { $.append( main_elem.querySelector( '#top' ), this.user.root ); this.user.start(); }
@@ -94,14 +94,14 @@
       /** renders the main menu */
       const renderMenu = async () => {
         menu = await this.menu.start( {
-          root: this.element.querySelector( '#menu' ),
+          root: main_elem.querySelector( '#menu' ),
           data: { entries: this.entries.map( ( title, i ) => { return { title: title, disabled: !( !i || team_nr ) } } ) },
           selected: 1,
           onchange: async event => {
             switch ( event.id ) {
-              case 1: $.setContent( this.element.querySelector( '#content' ),    teambuild.root ); break;
-              case 2: $.setContent( this.element.querySelector( '#content' ), kanban_board.root ); break;
-              case 3: $.setContent( this.element.querySelector( '#content' ),         chat.root ); break;
+              case 1: $.setContent( main_elem.querySelector( '#content' ),    teambuild.root ); break;
+              case 2: $.setContent( main_elem.querySelector( '#content' ), kanban_board.root ); break;
+              case 3: $.setContent( main_elem.querySelector( '#content' ),         chat.root ); break;
             }
           }
         } );
