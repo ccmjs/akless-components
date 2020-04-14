@@ -255,7 +255,7 @@
 
       /**
        * updates own content and local app data after app data has changed
-       * @param {Object} [dataset] - updated app data (local app data)
+       * @param {Object} [dataset] - updated app data (default: local app data)
        */
       this.refresh = ( dataset = app_data ) => renderTeams( app_data = dataset );
 
