@@ -116,10 +116,8 @@
             store: [ 'ccm.store', Object.assign( this.data.store.source(), { dataset: this.data.key + '-board-' + team_data.key } ) ],
             key: this.data.key + '-board-' + team_data.key
           },
-          'ignore.card.config': {
-            store: [ 'ccm.store', Object.assign( this.data.store.source(), { name: 'team_project-' + this.data.key + '-cards' } ) ],
-            user: [ 'ccm.instance', this.user.component.index, JSON.parse( this.user.config ) ]
-          },
+          'ignore.card.config.store': [ 'ccm.store', Object.assign( this.data.store.source(), { name: 'team_project-' + this.data.key + '-cards' } ) ],
+          'ignore.card.config.user': [ 'ccm.instance', this.user.component.index, JSON.parse( this.user.config ) ],
           user: [ 'ccm.instance', this.user.component.index, JSON.parse( this.user.config ) ]
         } );
       };

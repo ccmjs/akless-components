@@ -2,7 +2,7 @@
  * @overview ccm component for team projects
  * @author André Kless <andre.kless@web.de> 2020
  * @license The MIT License (MIT)
- * @version 1.0.0
+ * @version latest (1.0.0)
  * @changes
  * version 1.0.0 (14.04.2020)
  * TODO: create permissions
@@ -13,7 +13,7 @@
 
   const component = {
 
-    name: 'team_project', version: [ 1, 0, 0 ],
+    name: 'team_project',
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-25.4.0.js',
 
@@ -116,10 +116,8 @@
             store: [ 'ccm.store', Object.assign( this.data.store.source(), { dataset: this.data.key + '-board-' + team_data.key } ) ],
             key: this.data.key + '-board-' + team_data.key
           },
-          'ignore.card.config': {
-            store: [ 'ccm.store', Object.assign( this.data.store.source(), { name: 'team_project-' + this.data.key + '-cards' } ) ],
-            user: [ 'ccm.instance', this.user.component.index, JSON.parse( this.user.config ) ]
-          },
+          'ignore.card.config.store': [ 'ccm.store', Object.assign( this.data.store.source(), { name: 'team_project-' + this.data.key + '-cards' } ) ],
+          'ignore.card.config.user': [ 'ccm.instance', this.user.component.index, JSON.parse( this.user.config ) ],
           user: [ 'ccm.instance', this.user.component.index, JSON.parse( this.user.config ) ]
         } );
       };
