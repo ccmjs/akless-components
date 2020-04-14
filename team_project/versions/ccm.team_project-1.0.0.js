@@ -54,7 +54,7 @@
         const main_elem = $.html( this.html.main );                  // prepare main HTML structure
 
         // render login/logout area
-        if ( this.user ) { $.append( this.element.querySelector( '#top' ), this.user.root ); this.user.start(); }
+        if ( this.user ) { $.append( main_elem.querySelector( '#top' ), this.user.root ); this.user.start(); }
 
         // prepare team building
         teambuild = await this.teambuild.start( {
