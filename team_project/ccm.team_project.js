@@ -55,7 +55,7 @@
         // prepare team building
         teambuild = await this.teambuild.start( {
           data: {
-            store: [ 'ccm.store', this.data.store.source() ],
+            store: [ 'ccm.store', Object.assign( this.data.store.source(), { dataset: this.data.key + '-teams' } ) ],
             key: this.data.key + '-teams'
           },
           onchange: async event => {
@@ -113,7 +113,7 @@
         if ( !team_nr ) return kanban_board = null;
         kanban_board = await this.kanban_board.start( {
           data: {
-            store: [ 'ccm.store', this.data.store.source() ],
+            store: [ 'ccm.store', Object.assign( this.data.store.source(), { dataset: this.data.key + '-board-' + team_data.key } ) ],
             key: this.data.key + '-board-' + team_data.key
           },
           'ignore.card.config': {
