@@ -48,10 +48,10 @@
 
       this.start = async () => {
 
-        app_data = await $.dataset( this.data );                    // get existing app data
-        if ( !app_data ) return $.setContent( this.element, '' );   // no data? => empty content
-        this.logger && this.logger.log( 'start', this.getValue() ); // logging of 'start' event
-        $.setContent( this.element, $.html( this.html.main ) );     // render main HTML structure
+        app_data = await $.dataset( this.data );                     // get existing app data
+        if ( !app_data ) return $.setContent( this.element, '' );    // no data? => empty content
+        this.logger && this.logger.log( 'start', this.getValue() );  // logging of 'start' event
+        const main_elem = $.html( this.html.main );                  // prepare main HTML structure
 
         // render login/logout area
         if ( this.user ) { $.append( this.element.querySelector( '#top' ), this.user.root ); this.user.start(); }
@@ -79,9 +79,10 @@
         team_nr = teambuild.getUserTeam();
         team_data = teambuild.getTeamData( team_nr );
 
-        team_nr && await updateKanbanBoard();  // has a team? => prepare team-specific kanban board
-        team_nr && await updateChat();         // has a team? => prepare team-specific chat
-        await renderMenu();                    // render main menu
+        team_nr && await updateKanbanBoard();     // has a team? => prepare team-specific kanban board
+        team_nr && await updateChat();            // has a team? => prepare team-specific chat
+        await renderMenu();                       // render main menu
+        $.setContent( this.element, main_elem );  // show prepared main HTML structure (removes loading icon)
       };
 
       /**
