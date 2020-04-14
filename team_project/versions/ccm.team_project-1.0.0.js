@@ -70,7 +70,7 @@
                 break;
             }
           },
-          user: [ 'ccm.instance', this.user.component.index, JSON.parse( this.user.config ) ]
+          user: [ 'ccm.instance', this.user.component.url, JSON.parse( this.user.config ) ]
         } );
         team_nr = teambuild.getUserTeam();
         team_data = teambuild.getTeamData( team_nr );
@@ -117,8 +117,8 @@
             key: this.data.key + '-board-' + team_data.key
           },
           'ignore.card.config.store': [ 'ccm.store', Object.assign( this.data.store.source(), { name: 'team_project-' + this.data.key + '-cards' } ) ],
-          'ignore.card.config.user': [ 'ccm.instance', this.user.component.index, JSON.parse( this.user.config ) ],
-          user: [ 'ccm.instance', this.user.component.index, JSON.parse( this.user.config ) ]
+          'ignore.card.config.user': [ 'ccm.instance', this.user.component.url, JSON.parse( this.user.config ) ],
+          user: [ 'ccm.instance', this.user.component.url, JSON.parse( this.user.config ) ]
         } );
       };
 
@@ -130,7 +130,7 @@
             store: [ 'ccm.store', Object.assign( this.data.store.source(), { name: 'team_project-' + this.data.key + '-chat-' + team_data.key } ) ],
             key: {}
           },
-          user: [ 'ccm.instance', this.user.component.index, JSON.parse( this.user.config ) ]
+          user: [ 'ccm.instance', this.user.component.url, JSON.parse( this.user.config ) ]
         } );
       };
 
