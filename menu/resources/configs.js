@@ -13,9 +13,13 @@ ccm.files[ 'configs.js' ] = {
       "store": [ "ccm.store", "../menu/resources/datasets.js" ],
       "key": "demo"
     },
+    "deselectable": true,
     "helper.1": "../modules/helper.mjs",
+    "keyboard_control": true,
 //  "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
 //  "onchange": event => console.log( event ),
+    "selected": 1,
+    "touch_control": true
   },
 
   "proxy": {
