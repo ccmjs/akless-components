@@ -26,10 +26,9 @@ ccm.files[ 'resources.js' ] = {
       "html.1": "../kanban_board/resources/templates.html",
       "ignore": {
         "card": {
-          "component": "../kanban_card/ccm.kanban_card.js",
+          "component": "https://ccmjs.github.io/akless-components/kanban_card/versions/ccm.kanban_card-2.0.2.js",
           "config": {
-            "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/kanban_card/resources/blue.css", { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/weblysleekui/font.css" } ],
-            "store": [ "ccm.store", { "name": "kanban_card", "url": "wss://ccm2.inf.h-brs.de" } ]
+            "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/kanban_card/resources/blue.css", { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/weblysleekui/font.css" } ]
           }
         }
       },
