@@ -83,14 +83,14 @@
 
       this.start = async () => {
 
-        $.setContent( this.element, $.loading( this ) );                                 // render loading icon
-        app_data = await $.dataset( this.data );                                         // get existing app data
-        user_key = this.user && this.user.isLoggedIn() && this.user.getValue().key;      // get unique key of logged in user
-        this.logger && this.logger.log( 'start', $.clone( app_data ) );                  // logging of 'start' event
-        if ( !app_data.teams ) app_data.teams = [];                                      // no teams data? => set default value
-        $.replace( this.element, this.element = $.html( this.html.main, this.start ) );  // render main HTML structure
-        if ( !this.reload ) $.remove( this.element.querySelector( '#reload' ) );         // no refresh button wanted? => remove refresh button
-        this.refresh();                                                                  // update own content
+        $.setContent( this.element, $.loading( this ) );                             // render loading icon
+        app_data = await $.dataset( this.data );                                     // get existing app data
+        user_key = this.user && this.user.isLoggedIn() && this.user.getValue().key;  // get unique key of logged in user
+        this.logger && this.logger.log( 'start', $.clone( app_data ) );              // logging of 'start' event
+        if ( !app_data.teams ) app_data.teams = [];                                  // no teams data? => set default value
+        $.setContent( this.element, $.html( this.html.main, this.start ) );          // render main HTML structure
+        if ( !this.reload ) $.remove( this.element.querySelector( '#reload' ) );     // no refresh button wanted? => remove refresh button
+        this.refresh();                                                              // update own content
 
         if ( app_data.teams.length === 0 ) $.setContent( this.element.querySelector( '#teams' ), this.text.message );  // no teams? => show message
         if ( this.user ) { $.append( this.element.querySelector( '#top' ), this.user.root ); this.user.start(); }      // render login/logout area
