@@ -65,8 +65,7 @@
         "team": "Team",
         "leave": "leave",
         "join": "join",
-        "free": "free",
-        "message": "Nothing to display."
+        "free": "free"
       },
   //  "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.4.1.js" ]
     },
@@ -95,7 +94,6 @@
         main_elem = $.html( this.html.main, this.start );                            // get main HTML structure
         if ( !this.reload ) $.remove( main_elem.querySelector( '#reload' ) );        // no refresh button wanted? => remove refresh button
         this.refresh();                                                              // update own content
-        if ( app_data.teams.length === 0 ) $.setContent( main_elem.querySelector( '#teams' ), this.text.message );  // no teams? => show message
         if ( this.user ) { $.append( main_elem.querySelector( '#top' ), this.user.root ); this.user.start(); }      // render login/logout area
         $.setContent( this.element, main_elem );                                     // show prepared main HTML structure (removes loading icon)
 
@@ -295,7 +293,7 @@
             appendEmptyTeam();
         }
         // unlimited number of teams, last team is not empty and teams are joinable? => add empty team
-        else if ( ( app_data.teams.length === 0 || !this.isEmptyTeam( app_data.teams.length ) ) && this.joinableTeams() ) appendEmptyTeam();
+        else if ( app_data.teams.length === 0 || !this.isEmptyTeam( app_data.teams.length ) && this.joinableTeams() ) appendEmptyTeam();
 
       }
 
