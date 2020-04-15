@@ -40,7 +40,11 @@
     config: {
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/teambuild/resources/default.css" ],
       "data": { "store": [ "ccm.store" ] },
-      "editable": true,
+      "editable": {
+        "join": true,
+        "leave": true,
+        "rename": true
+      },
       "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-5.0.0.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/teambuild/resources/templates.html" ],
       "icon": {
