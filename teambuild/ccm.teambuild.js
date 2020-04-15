@@ -69,7 +69,7 @@
 
     Instance: function () {
 
-      let $, app_data, user_key;
+      let $, app_data, main_elem, user_key;
 
       this.init = async () => {
         $ = Object.assign( {}, this.ccm.helper, this.helper );  // set shortcut to help functions
@@ -88,12 +88,12 @@
         user_key = this.user && this.user.isLoggedIn() && this.user.getValue().key;  // get unique key of logged in user
         this.logger && this.logger.log( 'start', $.clone( app_data ) );              // logging of 'start' event
         if ( !app_data.teams ) app_data.teams = [];                                  // no teams data? => set default value
-        $.setContent( this.element, $.html( this.html.main, this.start ) );          // render main HTML structure
-        if ( !this.reload ) $.remove( this.element.querySelector( '#reload' ) );     // no refresh button wanted? => remove refresh button
+        main_elem = $.html( this.html.main, this.start );                            // get main HTML structure
+        if ( !this.reload ) $.remove( main_elem.querySelector( '#reload' ) );        // no refresh button wanted? => remove refresh button
         this.refresh();                                                              // update own content
-
-        if ( app_data.teams.length === 0 ) $.setContent( this.element.querySelector( '#teams' ), this.text.message );  // no teams? => show message
-        if ( this.user ) { $.append( this.element.querySelector( '#top' ), this.user.root ); this.user.start(); }      // render login/logout area
+        if ( app_data.teams.length === 0 ) $.setContent( main_elem.querySelector( '#teams' ), this.text.message );  // no teams? => show message
+        if ( this.user ) { $.append( main_elem.querySelector( '#top' ), this.user.root ); this.user.start(); }      // render login/logout area
+        $.setContent( this.element, main_elem );                                     // show prepared main HTML structure (removes loading icon)
 
       };
 
@@ -129,7 +129,7 @@
        * @param {number} team_nr - team number
        * @returns {Element} team container
        */
-      this.getTeamElement = team_nr => this.element.querySelectorAll( '.team' )[ team_nr - 1 ];
+      this.getTeamElement = team_nr => main_elem.querySelectorAll( '.team' )[ team_nr - 1 ];
 
       /**
        * returns the number of the team to which a specific user currently belongs
@@ -281,8 +281,8 @@
       /** renders the team containers */
       const renderTeams = () => {
 
-        $.setContent( this.element.querySelector( '#teams' ), '' );  // clear teams container
-        app_data.teams.forEach( appendTeam );                        // render existing teams
+        $.setContent( main_elem.querySelector( '#teams' ), '' );  // clear teams container
+        app_data.teams.forEach( appendTeam );                     // render existing teams
 
         // limited number of teams? => add empty teams
         if ( this.max_teams ) {
@@ -308,7 +308,7 @@
           team_data.name = this.names && this.names[ i ] ? this.names[ i ] : this.text.team + ' ' + team_nr;
 
         const team_elem = $.html( this.html.team, { icon: this.icon.team, name: team_data.name } );  // team container
-        this.element.querySelector( '#teams' ).appendChild( team_elem );                             // add team container to main HTML structure
+        main_elem.querySelector( '#teams' ).appendChild( team_elem );                                // add team container to main HTML structure
         renderMembers( team_nr );                                                                    // add team members in the members container
 
         // add join button
