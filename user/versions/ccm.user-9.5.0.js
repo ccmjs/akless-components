@@ -2,7 +2,7 @@
  * @overview ccm component for user authentication
  * @author André Kless <andre.kless@web.de> 2017-2020
  * @license The MIT License (MIT)
- * @version latest (9.5.0)
+ * @version 9.5.0
  * @changes
  * version 9.5.0 (15.04.2020):
  * - added optional default user picture via config
@@ -48,7 +48,7 @@
 
   const component = {
 
-    name: 'user',
+    name: 'user', version: [ 9, 5, 0 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-25.4.0.js',
 
