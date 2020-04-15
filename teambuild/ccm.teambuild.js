@@ -370,7 +370,7 @@
          * HTML structure of team member
          * @type {Element}
          */
-        const member_elem = $.html( this.html.member, { icon: this.icon.member, name: user ? username : this.text.free } );
+        const member_elem = $.html( this.html.member, { icon: this.icon.member, name: user ? ( username === true ? user : username ) : this.text.free } );
 
         const name_elem = member_elem.querySelector( '.name' );                                 // container that contains the username of the team member
         user && user_key && user === user_key && name_elem.classList.add( 'user' );             // member is a logged in user? => mark it as own username
