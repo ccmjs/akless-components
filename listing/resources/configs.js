@@ -74,7 +74,7 @@ ccm.files[ 'configs.js' ] = {
     },
     "defaults": { "color": "black", "title": "Color: Black", "subtitle": "This is the default color" },
     "html.1": "https://ccmjs.github.io/akless-components/listing/resources/demo.html",
-    "onclick": event => alert( 'You have clicked on ' + event.data.title )
+    "onchange": event => alert( 'You have clicked on ' + event.data.title )
   }
 
 };
