@@ -35,7 +35,7 @@
       "data": {},
   //  "defaults": {},
       "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-5.0.0.mjs" ],
-      "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/listing/resources/templates.html" ],
+      "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/listing/resources/default.html" ],
   //  "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js" ],
   //  "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.4.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
   //  "onchange": event => console.log( event ),
