@@ -52,25 +52,27 @@ ccm.files[ 'configs.js' ] = {
 
   "demo": {
     "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/listing/resources/demo.css" ],
-    "data": [
-      {
-        "color": "red",
-        "title": "Color: Red",
-        "subtitle": "First RGB part"
-      },
-      {
-        "color": "green",
-        "title": "Color: Green",
-        "subtitle": "Second RGB part"
-      },
-      {
-        "color": "blue",
-        "title": "Color: Blue",
-        "subtitle": "Third RGB part"
-      },
-      {}
-    ],
-    "defaults": { "color": "black", "title": "Color: Black", "subtitle": "This is a default subtitle" },
+    "data": {
+      "entries": [
+        {
+          "color": "red",
+          "title": "Color: Red",
+          "subtitle": "First RGB part"
+        },
+        {
+          "color": "green",
+          "title": "Color: Green",
+          "subtitle": "Second RGB part"
+        },
+        {
+          "color": "blue",
+          "title": "Color: Blue",
+          "subtitle": "Third RGB part"
+        },
+        {}
+      ]
+    },
+    "defaults": { "color": "black", "title": "Color: Black", "subtitle": "This is the default color" },
     "html.1": "https://ccmjs.github.io/akless-components/listing/resources/demo.html",
     "onclick": event => alert( 'You have clicked on ' + event.data.title )
   }
