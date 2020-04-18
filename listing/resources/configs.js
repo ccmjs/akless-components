@@ -31,19 +31,6 @@ ccm.files[ 'configs.js' ] = {
     "defaults": { "color": "black", "title": "Color: Black", "subtitle": "This is the default color" },
     "helper.1": "../modules/helper.mjs",
     "html.1": "../listing/resources/demo.html",
-    "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js", {
-      "active": "en",
-      "translations": {
-        "de": {
-          "flag": "https://ccmjs.github.io/tkless-components/lang/resources/de.svg",
-          "topic": "Demo-Auflistung"
-        },
-        "en": {
-          "flag": "https://ccmjs.github.io/tkless-components/lang/resources/en.svg",
-          "topic": "Demo Listing"
-        }
-      }
-    } ],
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
     "onchange": event => alert( 'You have clicked on ' + event.data.title ),
     "reload": true,
