@@ -1,67 +1,38 @@
 /**
  * @overview configurations of ccm component for a listing
- * @author André Kless <andre.kless@web.de> 2018-2019
+ * @author André Kless <andre.kless@web.de> 2018-2020
  * @license The MIT License (MIT)
  */
 
 ccm.files[ 'configs.js' ] = {
 
   "local": {
-    "html": {
-      "main": {
-        "inner": [
-          { "id": "lang" },
-          {
-            "tag": "h3",
-            "data-lang": "topic",
-            "inner": "Demo Listing"
-          },
-          { "id": "entries" }
-        ]
-      },
-      "entry": {
-        "class": "entry",
-        "inner": [
-          {
-            "class": "left",
-            "style": "background-color:%color%"
-          },
-          {
-            "class": "right",
-            "inner": [
-              {
-                "class": "title",
-                "inner": "%title%"
-              },
-              {
-                "class": "subtitle",
-                "inner": "%subtitle%"
-              }
-            ]
-          }
-        ]
-      }
+    "css.1": "../listing/resources/demo.css",
+    "data": {
+      "entries": [
+        {
+          "color": "red",
+          "title": "Color: Red",
+          "subtitle": "First RGB part"
+        },
+        {
+          "color": "green",
+          "title": "Color: Green",
+          "subtitle": "Second RGB part"
+        },
+        {
+          "color": "blue",
+          "title": "Color: Blue",
+          "subtitle": "Third RGB part"
+        },
+        {}
+      ]
     },
-    "css": [ "ccm.load", "../listing/resources/demo.css" ],
-    "data": [
-      {
-        "color": "red",
-        "title": "Color: Red",
-        "subtitle": "First RGB part"
-      },
-      {
-        "color": "green",
-        "title": "Color: Green",
-        "subtitle": "Second RGB part"
-      },
-      {
-        "color": "blue",
-        "title": "Color: Blue",
-        "subtitle": "Third RGB part"
-      }
-    ],
+    "defaults": { "color": "black", "title": "Color: Black", "subtitle": "This is the default color" },
+    "helper.1": "../modules/helper.mjs",
+    "html.1": "../listing/resources/demo.html",
     "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js", {
-      "active": "de",
+      "active": "en",
       "translations": {
         "de": {
           "flag": "https://ccmjs.github.io/tkless-components/lang/resources/de.svg",
@@ -74,45 +45,12 @@ ccm.files[ 'configs.js' ] = {
       }
     } ],
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
-    "defaults": { "color": "black", "title": "Color: Black", "subtitle": "This is a default subtitle" },
-    "onclick": event => alert( 'You have clicked on ' + event.data.title )
+    "onchange": event => alert( 'You have clicked on ' + event.data.title ),
+    "reload": true,
+    "user": [ "ccm.instance", "../user/ccm.user.js", [ "ccm.get", "../user/resources/resources.js", "local" ] ]
   },
 
   "demo": {
-    "key": "demo",
-    "html": {
-      "main": {
-        "inner": [
-          {
-            "tag": "h3",
-            "inner": "Demo Listing"
-          },
-          { "id": "entries" }
-        ]
-      },
-      "entry": {
-        "class": "entry",
-        "inner": [
-          {
-            "class": "left",
-            "style": "background-color:%color%"
-          },
-          {
-            "class": "right",
-            "inner": [
-              {
-                "class": "title",
-                "inner": "%title%"
-              },
-              {
-                "class": "subtitle",
-                "inner": "%subtitle%"
-              }
-            ]
-          }
-        ]
-      }
-    },
     "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/listing/resources/demo.css" ],
     "data": [
       {
@@ -133,6 +71,7 @@ ccm.files[ 'configs.js' ] = {
       {}
     ],
     "defaults": { "color": "black", "title": "Color: Black", "subtitle": "This is a default subtitle" },
+    "html.1": "https://ccmjs.github.io/akless-components/listing/resources/demo.html",
     "onclick": event => alert( 'You have clicked on ' + event.data.title )
   }
 
