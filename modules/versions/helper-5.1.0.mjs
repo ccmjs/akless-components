@@ -337,8 +337,8 @@ export function escapeHTML( value ) {
  * @param {Object} [ccm = window.ccm] - used ccm framework version
  * @returns {Object} subset of complex data
  * @example filterData( { a: 'x', b: 'y', c: 'c' }, { a: true, b: true } )  // => { a: 'x', b: 'y' }
- * @example filterData( { a: [ 1, 2, 3 ] }, { 'a.1': true, 'a.2': true } )  // => { a: [ 2, 3 ] }
- * @example filterData( { a: [ 1, 2, 3 ] }, { a: true, 'a.2': false } )  // => { a: [ 1, 2 ] }
+ * @example filterData( { a: [ 1, 2, 3 ] }, { 'a.1': true, 'a.2': true } )  // => { a: [ null, 2, 3 ] }
+ * @example filterData( { a: [ 1, 2, 3 ] }, { a: true, 'a.2': false } )  // => { a: [ 1, 2, '' ] }
  * @example filterData( { a: { x: 1, y: 2, z: 3 } }, { 'a.x': true, 'a.y': true } )  // => { a: { x: 1, y: 2 } }
  * @memberOf ModuleHelper.DataHandling
  */
