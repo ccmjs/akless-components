@@ -2,7 +2,7 @@
  * @overview ccm component for unit tests
  * @author André Kless <andre.kless@web.de> 2016-2017, 2019-2020
  * @license The MIT License (MIT)
- * @version latest (3.0.1)
+ * @version 3.0.1
  * @changes
  * version 3.0.1 (19.04.2020)
  * - uses ccm v25.4.0
@@ -19,7 +19,7 @@
 
   const component = {
 
-    name: 'testsuite',
+    name: 'testsuite', version: [ 3, 0, 1 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-25.4.0.js',
 
