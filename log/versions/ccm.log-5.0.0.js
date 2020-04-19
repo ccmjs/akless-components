@@ -2,7 +2,7 @@
  * @overview ccm component for data logging
  * @author André Kless <andre.kless@web.de> 2016-2020
  * @license The MIT License (MIT)
- * @version latest (5.0.0)
+ * @version 5.0.0
  * @changes
  * version 5.0.0 (19.04.2020)
  * - changed config parameters
@@ -14,7 +14,7 @@
 
   const component = {
 
-    name: 'log',
+    name: 'log', version: [ 5, 0, 0 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-25.4.0.js',
 

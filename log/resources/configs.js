@@ -1,20 +1,86 @@
 /**
  * @overview configurations of ccm component for data logging
- * @author André Kless <andre.kless@web.de> 2017
+ * @author André Kless <andre.kless@web.de> 2017, 2020
  * @license The MIT License (MIT)
  */
 
 ccm.files[ 'configs.js' ] = {
 
   "greedy": {
-    "key": "greedy",
-    "logging": {
-      "data": true,
+    "mask": {
       "browser": true,
+      "data": true,
+      "event": true,
       "parent": true,
       "root": true,
+      "session": true,
       "user": true,
       "website": true
+    },
+    "onfinish": { "log": true }
+  },
+
+  "full": {
+    "mask": {
+      "browser": {
+        "appCodeName": true,
+        "appName": true,
+        "appVersion": true,
+        "language": false,
+        "oscpu": true,
+        "platform": true,
+        "userAgent": true
+      },
+      "data": true,
+      "event": true,
+      "parent": {
+        "index": true,
+        "name": true,
+        "version": true
+      },
+      "root": {
+        "index": true,
+        "name": true,
+        "version": true
+      },
+      "session": true,
+      "user": {
+        "key": true,
+        "realm": true
+      },
+      "website": true
+    },
+    "onfinish": { "log": true }
+  },
+
+  "kanban_board": {
+    "events": {
+      "ready": {
+        "browser.userAgent": true,
+        "data.data": true,
+        "event": true,
+        "root.name": true,
+        "root.version": true,
+        "session": true,
+        "user.key": true,
+        "website": true
+      },
+      "start": false,
+      "add": {
+        "event": true,
+        "session": true,
+        "user.key": true
+      },
+      "move": {
+        "event": true,
+        "session": true,
+        "user.key": true
+      },
+      "del": {
+        "event": true,
+        "session": true,
+        "user.key": true
+      }
     },
     "onfinish": { "log": true }
   },
