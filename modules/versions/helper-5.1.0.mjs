@@ -3,7 +3,7 @@
  * <p>(namespaces are only used for categorization)</p>
  * @author André Kless <andre.kless@web.de> 2019-2020
  * @license The MIT License (MIT)
- * @version latest (5.1.0)
+ * @version 5.1.0
  * @changes
  * version 5.1.0 (19.04.2020):
  * - added helper function: filterData(data,mask):data
