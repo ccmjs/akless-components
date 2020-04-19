@@ -7,6 +7,8 @@
  * version 5.0.0 (19.04.2020)
  * - changed config parameters
  * - uses object mask to define specific subset of event data
+ * - added optional logging of document.referrer
+ * - uses helper.mjs v5.1.0 as default
  * (for older version changes see ccm.log-4.0.4.js)
  */
 
@@ -21,7 +23,7 @@
     config: {
       "events": [ "ready", "start", "change" ],
 //    "hash": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/md5.mjs" ],
-      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-5.0.0.mjs" ],
+      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-5.1.0.mjs" ],
 //    "mask": {},
 //    "onfinish": { "log": true }
     },
@@ -68,32 +70,17 @@
           }
         }
 
-        // add website information
+        // add website and referrer information
         event_data.website = window.location.href;
+        event_data.referrer = document.referrer;
 
         // trigger finish actions with final prepared and filtered event data
-        $.onFinish( this, prepareData( filterData( event_data, this.events && $.isObject( this.events[ event ] ) ? this.events[ event ] : this.mask ) ) );
+        $.onFinish( this, prepareData( $.filterData( event_data, this.events && $.isObject( this.events[ event ] ) ? this.events[ event ] : this.mask ) ) );
 
       };
 
       /**
-       * filters a specific subset of complex data
-       * @param {Object} data - complex data
-       * @param {Object} mask - defines specific subset
-       * @returns {Object}
-       */
-      const filterData = ( data, mask ) => {
-        if ( !mask ) return $.clone( data );
-        data = $.toDotNotation( data, true );
-        mask = $.toDotNotation( mask );
-        const result = {};
-        for ( const key in mask )
-          $.deepValue( result, key, mask[ key ] ? data[ key ] : '' );
-        return result;
-      };
-
-      /**
-       * prevents logging of complex objects and undefined properties
+       * prevents logging of special objects and undefined properties
        * @param {*} data
        * @returns {*}
        */

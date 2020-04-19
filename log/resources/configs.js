@@ -12,6 +12,7 @@ ccm.files[ 'configs.js' ] = {
       "data": true,
       "event": true,
       "parent": true,
+      "referrer": true,
       "root": true,
       "session": true,
       "user": true,
@@ -38,6 +39,7 @@ ccm.files[ 'configs.js' ] = {
         "name": true,
         "version": true
       },
+      "referrer": true,
       "root": {
         "index": true,
         "name": true,
@@ -59,6 +61,7 @@ ccm.files[ 'configs.js' ] = {
         "browser.userAgent": true,
         "data.data": true,
         "event": true,
+        "referrer": true,
         "root.name": true,
         "root.version": true,
         "session": true,
