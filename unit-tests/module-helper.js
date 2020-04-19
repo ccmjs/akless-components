@@ -188,6 +188,14 @@ ccm.files[ 'module-helper.js' ] = {
       string: suite => suite.assertSame( 'Hello &lt;b&gt;World&lt;/b&gt;!', suite.modules.escapeHTML( 'Hello <b>World</b>!' ) )
     }
   },
+  filterData: {
+    tests: {
+      object: suite => suite.assertEquals( { a: 'x', b: 'y' }, suite.modules.filterData( { a: 'x', b: 'y', c: 'c' }, { a: true, b: true } ) ),
+      deepArray: suite => suite.assertEquals( { a: [ null, 2, 3 ] }, suite.modules.filterData( { a: [ 1, 2, 3 ] }, { 'a.1': true, 'a.2': true } ) ),
+      allButOne: suite => suite.assertEquals( { a: [ 1, 2, '' ] }, suite.modules.filterData( { a: [ 1, 2, 3 ] }, { a: true, 'a.2': false } ) ),
+      deepObject: suite => suite.assertEquals( { a: { x: 1, y: 2 } }, suite.modules.filterData( { a: { x: 1, y: 2, z: 3 } }, { 'a.x': true, 'a.y': true } ) )
+    }
+  },
   filterProperties: {
     tests: {
       object: suite => suite.assertEquals( { a: 'x', b: 'y' }, suite.modules.filterProperties( { a: 'x', b: 'y', c: 'z' }, 'a', 'b' ) )
