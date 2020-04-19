@@ -6,6 +6,7 @@
  * @changes
  * version 5.4.7 (19.04.2020):
  * - uses ccm v25.4.0
+ * - uses helper.mjs v5.0.0 as default
  * version 5.4.6 (20.03.2020):
  * - uses ccm v25.1.0
  * - uses helper.mjs v4.1.0 as default
@@ -61,7 +62,7 @@
   //  "afterstart": function () {},    // callback after instances has started ('this' is the instance)
       "components": [],                // contains the components that are reused in the predefined content
       "dependencies": [],              // contains the dependencies on the apps reused in the predefined content
-      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-4.1.0.mjs" ],
+      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-5.0.0.mjs" ],
   //  "inner": "Hello, World!",        // predefined content (could be given as HTML string, DOM Element Nodes or ccm HTML data)
   //  "json2json": json => json,       // converts placeholders to different data structure (placeholders are passed as first parameter)
   //  "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js" ],
