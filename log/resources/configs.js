@@ -65,7 +65,6 @@ ccm.files[ 'configs.js' ] = {
         "user.key": true,
         "website": true
       },
-      "start": false,
       "add": {
         "event": true,
         "session": true,
