@@ -21,7 +21,7 @@
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-25.4.0.js',
 
     config: {
-      "events": [ "ready", "start", "change" ],
+//    "events": [ "ready", "start", "change" ],
 //    "hash": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/md5.mjs" ],
       "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-5.1.0.mjs" ],
 //    "mask": {},
