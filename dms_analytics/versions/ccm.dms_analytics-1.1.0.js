@@ -2,7 +2,7 @@
  * @overview ccm component for render Digital Makerspace analytics
  * @author André Kless <andre.kless@web.de> 2019-2020
  * @license The MIT License (MIT)
- * @version latest (1.1.0)
+ * @version 1.1.0
  * @changes
  * version 1.1.0 (20.04.2020):
  * - uses ccm v25.4.0
@@ -17,7 +17,7 @@
 
   const component = {
 
-    name: 'dms_analytics',
+    name: 'dms_analytics', version: [ 1, 1, 0 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-25.4.0.js',
 

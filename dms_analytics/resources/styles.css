@@ -1,6 +1,6 @@
 /**
  * @overview default layout of ccm component for render Digital Makerspace analytics
- * @author André Kless <andre.kless@web.de> 2018-2019
+ * @author André Kless <andre.kless@web.de> 2018-2020
  * @license The MIT License (MIT)
  */
 
@@ -9,11 +9,17 @@
   font-family: Helvetica, Arial, sans-serif;
 }
 
-#top {
+#top:not(:empty) {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  padding: 1em 1em 0.5em;
+  padding: 0.5em 1em 0.25em 1em;
+}
+
+#reload {
+  font-size: xx-large;
+  padding: 0 0.3em;
+  cursor: pointer;
 }
 
 #content {

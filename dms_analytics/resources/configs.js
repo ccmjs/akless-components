@@ -1,6 +1,6 @@
 /**
  * @overview configurations of ccm component for render Digital Makerspace analytics
- * @author André Kless <andre.kless@web.de> 2019
+ * @author André Kless <andre.kless@web.de> 2019-2020
  * @license The MIT License (MIT)
  */
 
@@ -12,11 +12,14 @@ ccm.files[ 'configs.js' ] = {
     "chart": [ "ccm.component", "../highchart/ccm.highchart.js" ],
     "components": [ "ccm.store", { "name": "dms-components", "url": "wss://ccm2.inf.h-brs.de" } ],
     "css.1": "../dms_analytics/resources/styles.css",
+    "helper.1": "../modules/helper.mjs",
     "html.1": "../dms_analytics/resources/templates.html",
     "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js", [ "ccm.get", "../dms_analytics/resources/configs.js", "lang" ] ],
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
     "menu": [ "ccm.component", "../menu/ccm.menu.js", [ "ccm.get", "../dms_analytics/resources/configs.js", "menu" ] ],
-    "routing": [ "ccm.instance", "../routing/ccm.routing.js", { "app": "dms_analytics" } ]
+    "reload": true,
+    "routing": [ "ccm.instance", "../routing/ccm.routing.js", { "app": "dms_analytics" } ],
+    "user": [ "ccm.instance", "../user/ccm.user.js", [ "ccm.get", "../user/resources/resources.js", "local" ] ]
   },
 
   /** live configuration (absolute paths) */
@@ -25,7 +28,7 @@ ccm.files[ 'configs.js' ] = {
     "chart": [ "ccm.component", "https://ccmjs.github.io/akless-components/highchart/versions/ccm.highchart-3.0.2.js" ],
     "components": [ "ccm.store", { "name": "dms-components", "url": "wss://ccm2.inf.h-brs.de" } ],
     "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/dms_analytics/resources/configs.js", "lang" ] ],
-    "routing": [ "ccm.instance", "https://ccmjs.github.io/akless-components/routing/versions/ccm.routing-2.0.4.js", { "app": "dms_analytics" } ]
+    "routing": [ "ccm.instance", "https://ccmjs.github.io/akless-components/routing/versions/ccm.routing-2.0.5.js", { "app": "dms_analytics" } ]
   },
 
   /** configuration for multilingualism */
@@ -44,8 +47,8 @@ ccm.files[ 'configs.js' ] = {
   /** configuration for menu */
   "menu": {
     "css": [ "ccm.load",
-      "https://ccmjs.github.io/akless-components/menu/resources/tab_menu.css",
-      "https://ccmjs.github.io/akless-components/libs/bootstrap-4/css/bootstrap.min.css"
+      "https://ccmjs.github.io/akless-components/menu/resources/top_tabs.css",
+      "https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     ],
     "data": { "entries": [
       { "id": "apps",                 "title": "apps"                 },
@@ -53,7 +56,7 @@ ccm.files[ 'configs.js' ] = {
       { "id": "app_creators",         "title": "app_creators"         },
       { "id": "component_developers", "title": "component_developers" }
     ] },
-    "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/menu/resources/tab_menu.html" ],
+    "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/menu/resources/top_tabs.html" ],
     "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js", {
       "translations": {
         "de": {
