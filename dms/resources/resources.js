@@ -120,7 +120,16 @@ ccm.files[ 'resources.js' ] = {
       },
       "onfinish": {
         "store": {
-          "settings": { "name": "dms-log", "url": "https://ccm2.inf.h-brs.de" }
+          "settings": { "name": "dms-log", "url": "https://ccm2.inf.h-brs.de" },
+          "permissions": {
+            "creator": "akless",
+            "realm": "cloud",
+            "access": {
+              "get": "all",
+              "set": "creator",
+              "del": "creator"
+            }
+          }
         }
       }
     } ],
