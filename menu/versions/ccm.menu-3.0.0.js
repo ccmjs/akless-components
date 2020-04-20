@@ -216,7 +216,7 @@
 
         await renderContent( entry_id );  // render menu entry content
 
-        // render menu content, log 'click' event and trigger 'onchange' callback
+        // log 'click' event and trigger 'onchange' callback
         this.logger && this.logger.log( 'click', { id: entry_id, entry: $.clone( entry_data ) } );
         this.onchange && this.onchange( { id: entry_id, entry: $.clone( entry_data ), element: entry_elem, instance: this } );
 
