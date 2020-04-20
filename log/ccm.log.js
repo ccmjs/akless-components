@@ -61,7 +61,7 @@
         if ( this.parent ) event_data.root = $.filterProperties( this.ccm.context.root( this ).component, 'index', 'name', 'version' );
 
         // add user information's
-        const user = this.ccm.context.highestByProperty( this, 'user' ).user;
+        const user = ( this.ccm.context.highestByProperty( this, 'user' ) || {} ).user;
         if ( user ) {
           event_data.user = { realm: user.getRealm() };
           if ( user.isLoggedIn() ) {
