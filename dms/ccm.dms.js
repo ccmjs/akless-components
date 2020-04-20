@@ -2,8 +2,11 @@
  * @overview ccm component for Digital Makerspace
  * @author André Kless <andre.kless@web.de> 2018-2020
  * @license MIT License
- * @version latest (4.4.1)
+ * @version latest (4.4.2)
  * @changes
+ * version 4.4.2 (20.04.2020):
+ * - uses ccm v25.4.0
+ * - uses helper.mjs v5.0.0 as default
  * version 4.4.1 (19.03.2020):
  * - "Create Similar App" button is renamed to "Edit App Configuration" for the creator of the app
  * - uses ccm v25.1.0
@@ -54,11 +57,11 @@
 
     name: 'dms',
 
-    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-25.1.0.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-25.4.0.js',
 
     config: {
 //    "add_version": true,
-//    "analytics": [ "ccm.component", "https://ccmjs.github.io/akless-components/dms_analytics/versions/ccm.dms_analytics-1.0.0.js" ],
+//    "analytics": [ "ccm.component", "https://ccmjs.github.io/akless-components/dms_analytics/versions/ccm.dms_analytics-1.1.0.js" ],
 //    "app_manager": [ "ccm.component", "https://ccmjs.github.io/akless-components/app_manager/versions/ccm.app_manager-2.0.1.js" ],
 //    "apps": [ "ccm.store" ],
       "css": [ "ccm.load",
@@ -69,18 +72,18 @@
 //    "component_manager": [ "ccm.component", "https://ccmjs.github.io/akless-components/component_manager/versions/ccm.component_manager-3.4.1.js" ],
 //    "components": [ "ccm.store" ],
 //    "default_icon": "https://ccmjs.github.io/akless-components/dms/resources/img/default.png",
-//    "form": [ "ccm.component", "https://ccmjs.github.io/akless-components/submit/versions/ccm.submit-8.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/submit/resources/configs.js", "component_meta" ] ],
-      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-4.1.0.mjs" ],
+//    "form": [ "ccm.component", "https://ccmjs.github.io/akless-components/submit/versions/ccm.submit-8.1.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/submit/resources/configs.js", "component_meta" ] ],
+      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-5.0.0.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/dms/resources/html/dms.html" ],
 //    "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js" ],
 //    "listing": { "apps": [ "ccm.component", ... ], "components": [ "ccm.component", ... ] },
-//    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.2.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
+//    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-5.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
 //    "logo": "https://ccmjs.github.io/akless-components/dms/resources/img/component.png",
-      "menu": [ "ccm.component", "https://ccmjs.github.io/akless-components/menu/versions/ccm.menu-2.10.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/dms/resources/resources.js", "menu" ] ],
+      "menu": [ "ccm.component", "https://ccmjs.github.io/akless-components/menu/versions/ccm.menu-3.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/dms/resources/resources.js", "menu" ] ],
 //    "rating": { "apps": { "component": [ "ccm.component", ... ], "store": [ "ccm.store", ... ] }, { "components": { "component": [ "ccm.component", ... ], "store": [ "ccm.store", ... ] } },
-//    "routing": [ "ccm.instance", "https://ccmjs.github.io/akless-components/routing/versions/ccm.routing-2.0.4.js" ],
+//    "routing": [ "ccm.instance", "https://ccmjs.github.io/akless-components/routing/versions/ccm.routing-2.0.5.js" ],
       "title": "Digital Makerspace"
-//    "user": [ "ccm.start", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.3.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/dms/resources/resources.js", "user" ] ]
+//    "user": [ "ccm.start", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.5.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/dms/resources/resources.js", "user" ] ]
     },
 
     Instance: function () {
@@ -116,10 +119,10 @@
          * render functions for each frontend view
          * @type {Function[]}
          */
-        const view = [
+        const view = {
 
           // Home
-          async () => {
+          home: async () => {
 
             // update route
             this.routing && this.routing.set( 'home' );
@@ -136,7 +139,7 @@
           },
 
           // Apps
-          async () => {
+          apps: async () => {
 
             // update route
             this.routing && this.routing.set( 'apps' );
@@ -226,7 +229,7 @@
                   app_meta.version = component_meta.version;
                   return app_meta;
                 },
-                data: filtered_apps,
+                data: { entries: filtered_apps },
                 defaults: { icon: '' },
                 sort: ( a, b ) => {
                   const title_x = a.title.toLowerCase();
@@ -242,19 +245,19 @@
                 onrender: async event => {
 
                   // app has no own icon => use component icon or default icon
-                  const icon = event.entry.querySelector( '.icon' );
+                  const icon = event.elem.querySelector( '.icon' );
                   if ( !icon.getAttribute( 'src' ) ) {
                     const component = await components.get( $.convertComponentURL( event.data.path ).index );
                     icon.setAttribute( 'src', component && component.icon || this.default_icon|| '' );
                   }
-                  if ( !icon.getAttribute( 'src' ) ) $.remove( event.entry.querySelector( '.icon-area' ) );
+                  if ( !icon.getAttribute( 'src' ) ) $.remove( event.elem.querySelector( '.icon-area' ) );
 
                   // no component information? => remove element for component information
-                  if ( !event.data.component || !event.data.version ) $.remove( event.entry.querySelector( '.component' ) );
+                  if ( !event.data.component || !event.data.version ) $.remove( event.elem.querySelector( '.component' ) );
 
                   // render rating
                   this.rating && this.rating.apps && this.rating.apps.component.start( {
-                    root: event.entry.querySelector( '.rating' ),
+                    root: event.elem.querySelector( '.rating' ),
                     'data.store': ratings,
                     'data.key': event.data.key
                   } );
@@ -274,7 +277,7 @@
           },
 
           // Components
-          async () =>  {
+          components: async () =>  {
 
             // update route
             this.routing && this.routing.set( 'components' );
@@ -357,7 +360,7 @@
               // render listing of all components
               await this.listing.components.start( {
                 root: content.querySelector( '#listing' ),
-                data: components,
+                data: { entries: components },
                 defaults: {
                   icon: this.default_icon,
                   subject: ''
@@ -376,11 +379,11 @@
                 onrender: event => {
 
                   // no component icon? => remove header
-                  if ( !event.data.icon && !this.default_icon ) $.remove( event.entry.querySelector( '.header' ) );
+                  if ( !event.data.icon && !this.default_icon ) $.remove( event.elem.querySelector( '.header' ) );
 
                   // render rating
                   this.rating && this.rating.components && this.rating.components.component.start( {
-                    root: event.entry.querySelector( '.rating' ),
+                    root: event.elem.querySelector( '.rating' ),
                     'data.store': ratings,
                     'data.key': event.data.key
                   } );
@@ -400,7 +403,7 @@
           },
 
           // Publish
-          () => {
+          publish: () => {
 
             // update route
             this.routing && this.routing.set( 'publish' );
@@ -473,7 +476,7 @@
 
           }
 
-        ];
+        };
 
         /**
          * shows an app
@@ -608,7 +611,7 @@
         // render header menu
         const menu = await this.menu.start( {
           root: this.element.querySelector( '#menu' ),
-          onclick: event => view[ event.nr - 1 ](),
+          onchange: event => view[ event.id ](),
           selected: this.routing && this.routing.get() ? null : undefined
         } );
 
