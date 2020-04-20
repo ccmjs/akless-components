@@ -218,7 +218,7 @@
 
         // log 'click' event and trigger 'onchange' callback
         this.logger && this.logger.log( 'click', { id: entry_id, entry: $.clone( entry_data ) } );
-        this.onchange && this.onchange( { id: entry_id, entry: $.clone( entry_data ), element: entry_elem, instance: this } );
+        this.onchange && this.onchange( { id: this.getSelectedEntry(), entry: $.clone( entry_data ), element: entry_elem, instance: this } );
 
       };
 
