@@ -4,9 +4,9 @@
  * @license MIT License
  * @version latest (4.0.0)
  * @changes
- * version 4.0.0 (18.04.2020):
- * - uses ccm v25.4.0
- * - uses helper.mjs v5.0.0 as default
+ * version 4.0.0 (21.04.2020):
+ * - uses ccm v25.5.0
+ * - uses helper.mjs v5.1.0 as default
  * - changed structure of app data
  * - added 'onchange' callback
  * - removed 'onclick' callback (use 'onchange' instead)
@@ -27,17 +27,17 @@
 
     name: 'listing',
 
-    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-25.4.0.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-25.5.0.js',
 
     config: {
   //  "convert": async json => json,
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/listing/resources/default.css" ],
       "data": {},
   //  "defaults": {},
-      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-5.0.0.mjs" ],
+      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-5.1.0.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/listing/resources/default.html" ],
   //  "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js" ],
-  //  "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.4.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
+  //  "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-5.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
   //  "onchange": event => console.log( event ),
   //  "onrender": event => console.log( event ),
   //  "reload": true,
