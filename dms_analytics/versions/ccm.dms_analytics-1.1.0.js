@@ -389,7 +389,7 @@
             $.setContent( content, $.loading() );            // clear content area and show loading icon
 
             // set initial series data for line chart
-            const series = [ { type: 'line', name: 'Visitors per Day', data: [] } ];
+            const series = [ { type: 'line', name: 'Visits a Day', data: [] } ];
 
             // prepare line chart data
             const results = await this.logs.get( { event: 'ready' } );
@@ -430,10 +430,10 @@
               settings: {
                 chart: { zoomType: 'x' },
                 title: {
-                  text: `Total: ${sum} Visitors`
+                  text: `Total: ${sum} Visits`
                 },
                 subtitle: {
-                  text: `On Average ${Math.round(sum/n)} Visitors a Day`
+                  text: `On Average ${Math.round(sum/n)} Visits a Day`
                 },
                 time: {
                   timezoneOffset: new Date().getTimezoneOffset()
