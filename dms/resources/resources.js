@@ -34,7 +34,7 @@ ccm.files[ 'resources.js' ] = {
         ]
       } ]
     },
-    "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
+//  "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
     "logo": "../dms/resources/img/component.png",
     "menu": [ "ccm.component", "../menu/ccm.menu.js", [ "ccm.get", "../dms/resources/resources.js", "menu" ] ],
     "rating": {
@@ -67,13 +67,13 @@ ccm.files[ 'resources.js' ] = {
     "analytics": [ "ccm.component", "https://ccmjs.github.io/akless-components/dms_analytics/versions/ccm.dms_analytics-1.1.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/dms_analytics/resources/configs.js", "live" ] ],
     "app_manager": [ "ccm.component", "https://ccmjs.github.io/akless-components/app_manager/versions/ccm.app_manager-2.0.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/app_manager/resources/configs.js", "live" ] ],
     "apps": [ "ccm.store", { "name": "dms-apps", "url": "https://ccm2.inf.h-brs.de" } ],
-    "component_manager": [ "ccm.component", "https://ccmjs.github.io/akless-components/component_manager/versions/ccm.component_manager-3.4.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/component_manager/resources/resources.js", "live" ] ],
+    "component_manager": [ "ccm.component", "https://ccmjs.github.io/akless-components/component_manager/versions/ccm.component_manager-4.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/component_manager/resources/resources.js", "live" ] ],
     "components": [ "ccm.store", { "name": "dms-components", "url": "https://ccm2.inf.h-brs.de" } ],
     "default_icon": "https://ccmjs.github.io/akless-components/dms/resources/img/default.png",
     "form": [ "ccm.component", "https://ccmjs.github.io/akless-components/submit/versions/ccm.submit-8.1.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/submit/resources/configs.js", "component_meta_create" ] ],
     "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/dms/resources/resources.js", "lang" ] ],
     "listing": {
-      "apps": [ "ccm.component", "https://ccmjs.github.io/akless-components/listing/versions/ccm.listing-3.3.0.js", {
+      "apps": [ "ccm.component", "https://ccmjs.github.io/akless-components/listing/versions/ccm.listing-4.0.0.js", {
         "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/dms/resources/html/listing_apps.html" ],
         "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/dms/resources/css/listing_apps.css" ]
       } ],
@@ -86,6 +86,53 @@ ccm.files[ 'resources.js' ] = {
         ]
       } ]
     },
+    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-5.0.0.js", {
+      "events": {
+        "ready": {
+          "browser": true,
+          "event": true,
+          "referrer": true,
+          "session": true,
+          "user.key": true,
+          "website": true
+        },
+        "app": {
+          "data.key": true,
+          "data.path": true,
+          "event": true,
+          "session": true
+        },
+        "component": {
+          "data.path": true,
+          "event": true,
+          "session": true
+        },
+        "publish": {
+          "data.path": true,
+          "event": true,
+          "session": true
+        },
+        "menu": {
+          "data": true,
+          "event": true,
+          "session": true
+        }
+      },
+      "onfinish": {
+        "store": {
+          "settings": { "name": "dms-log", "url": "https://ccm2.inf.h-brs.de" },
+          "permissions": {
+            "creator": "akless",
+            "realm": "cloud",
+            "access": {
+              "get": "all",
+              "set": "creator",
+              "del": "creator"
+            }
+          }
+        }
+      }
+    } ],
     "logo": "https://ccmjs.github.io/akless-components/dms/resources/img/component.png",
     "rating": {
       "apps": {

@@ -102,7 +102,7 @@
         // render language chooser, menu entries and setup routing
         if ( this.lang ) { $.append( this.element.querySelector( '#top' ), this.lang.root ); this.lang.start(); }
         await renderEntries( this.selected );
-        this.routing && this.routing.define( { entry: id => this.select( id ) } );
+        this.routing && this.routing.define( { entry: id => this.select( parseInt( id ) || id ) } );
 
       };
 

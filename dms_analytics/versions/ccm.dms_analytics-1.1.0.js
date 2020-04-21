@@ -10,6 +10,7 @@
  * - uses ccm.menu.js v3.0.0 as default
  * - added optional refresh button
  * - added optional user authentication
+ * - added line chart that shows visitors per day
  * version 1.0.0 (17.10.2019)
  */
 
@@ -30,6 +31,7 @@
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/dms_analytics/resources/templates.html" ],
 //    "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js" ],
 //    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-5.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
+//    "logs": [ "ccm.store" ],
       "menu": [ "ccm.component", "https://ccmjs.github.io/akless-components/menu/versions/ccm.menu-3.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/dms_analytics/resources/configs.js", "menu" ] ],
 //    "reload": true,
 //    "routing": [ "ccm.instance", "https://ccmjs.github.io/akless-components/routing/versions/ccm.routing-2.0.5.js" ],
@@ -377,6 +379,78 @@
               }
             } );
 
+          },
+
+          // Line Chart: Visitors per Day
+          visitors: async () => {
+
+            if ( !this.chart || !this.logs ) return;         // no chart component or datastore for logs? => abort
+            this.routing && this.routing.set( 'visitors' );  // update route
+            $.setContent( content, $.loading() );            // clear content area and show loading icon
+
+            // set initial series data for line chart
+            const series = [ { type: 'line', name: 'Visits a Day', data: [] } ];
+
+            // prepare line chart data
+            const results = await this.logs.get( { event: 'ready' } );
+            const visitors = {};
+            const add = ( time, obj ) => {
+
+              time = new Date( time );
+              time.setHours( 0 );
+              time.setMinutes( 0 );
+              time.setSeconds( 0 );
+              time.setMilliseconds( 0 );
+              time = time.getTime();
+
+              obj[ time ] ? obj[ time ]++ : obj[ time ] = 1;
+
+              if ( obj[ time ] !== 1 ) return;
+
+              const before = time - ( 24 * 60 * 60 * 1000 );
+              const after  = time + ( 24 * 60 * 60 * 1000 );
+
+              if ( !obj[ before ] ) obj[ before ] = 0;
+              if ( !obj[ after  ] ) obj[ after  ] = 0;
+
+            };
+            results.forEach( result => add( result.created_at, visitors ) );
+            let n = -2, sum = 0;
+            for ( const time in visitors ) {
+              n++;
+              sum += visitors[ time ];
+              series[ 0 ].data.push( [ parseInt( time ), visitors[ time ] ] );
+            }
+            series[ 0 ].data.sort( ( a, b ) => b[ 0 ] - a[ 0 ] );
+            series[ 0 ].data.shift(); series[ 0 ].data.pop();
+
+            // render chart
+            await this.chart.start( {
+              root: content,
+              settings: {
+                chart: { zoomType: 'x' },
+                title: {
+                  text: `Total: ${sum} Visits`
+                },
+                subtitle: {
+                  text: `On Average ${Math.round(sum/n)} Visits a Day`
+                },
+                time: {
+                  timezoneOffset: new Date().getTimezoneOffset()
+                },
+                xAxis: { type: 'datetime' },
+                yAxis: {
+                  title: { text: 'Results' },
+                  tickInterval: 1
+                },
+                tooltip: {
+                  pointFormat: 'The Digital Makerspace was visited <b>{point.y}</b> time(s) that day.'
+                },
+                legend: { enabled: true },
+                series: series
+              }
+            } );
+
           }
 
         };
@@ -401,7 +475,8 @@
           apps:                 () => menu.select( 'apps'                 ),
           components:           () => menu.select( 'components'           ),
           app_creators:         () => menu.select( 'app_creators'         ),
-          component_developers: () => menu.select( 'component_developers' )
+          component_developers: () => menu.select( 'component_developers' ),
+          visitors:             () => menu.select( 'visitors'             )
         } );
 
       };

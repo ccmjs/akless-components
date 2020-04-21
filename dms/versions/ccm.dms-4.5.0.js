@@ -2,7 +2,7 @@
  * @overview ccm component for Digital Makerspace
  * @author André Kless <andre.kless@web.de> 2018-2020
  * @license MIT License
- * @version latest (4.5.0)
+ * @version 4.5.0
  * @changes
  * version 4.5.0 (20.04.2020):
  * - uses ccm v25.4.0
@@ -57,7 +57,7 @@
 
   const component = {
 
-    name: 'dms',
+    name: 'dms', version: [ 4, 5, 0 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-25.4.0.js',
 
