@@ -4,9 +4,9 @@
  * @license The MIT License (MIT)
  * @version 8.1.1
  * @changes
- * version 8.1.1 (19.04.2020):
- * - uses ccm v25.4.0
- * - uses helper.mjs v5.0.0 as default
+ * version 8.1.1 (21.04.2020):
+ * - uses ccm v25.5.0
+ * - uses helper.mjs v5.1.0 as default
  * version 8.1.0 (30.03.2020):
  * - added optional config property 'enabled_only' (ignores values from disabled input elements)
  * version 8.0.1 (23.03.2020):
@@ -25,7 +25,7 @@
 
     name: 'submit', version: [ 8, 1, 1 ],
 
-    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-25.4.0.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-25.5.0.js',
 
     config: {
 
@@ -43,7 +43,7 @@
   //  "disabled": true,
   //  "enabled_only": true,
   //  "entries": [ "ccm.get", "https://ccmjs.github.io/akless-components/submit/resources/datasets.js", "demo.data" ],
-      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-5.0.0.mjs" ],
+      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-5.1.0.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/submit/resources/templates_b4.html" ],
   //  "ignore": { "defaults": { "name": "value" } },
   //  "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js" ],
