@@ -792,11 +792,11 @@
             "submit": "Submit",
             "retry": "Retry",
             "finish": "Restart"
-          }
+          },
+          "katex": [ "ccm.load", "https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css",
+            "https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" ]
         }
-      },
-      "katex": [ "ccm.load", "https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css",
-        "https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" ]
+      }
 
   //  "data": { "store": [ "ccm.store", { "test": { ... } } ], "key": "test" },
   //  "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
