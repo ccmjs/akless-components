@@ -422,6 +422,7 @@
               series[ 0 ].data.push( [ parseInt( time ), visitors[ time ] ] );
             }
             series[ 0 ].data.sort( ( a, b ) => b[ 0 ] - a[ 0 ] );
+            series[ 0 ].data.shift(); series[ 0 ].data.pop();
 
             // render chart
             await this.chart.start( {
