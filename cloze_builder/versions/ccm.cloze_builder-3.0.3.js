@@ -83,6 +83,7 @@
                 "name": "data"
               },
               {
+                "tag": "input",
                 "type": "hidden",
                 "name": "katex"
               },
