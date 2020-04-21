@@ -83,7 +83,7 @@
                 "name": "data"
               },
               {
-                "tape": "hidden",
+                "type": "hidden",
                 "name": "katex"
               },
               {
