@@ -2,7 +2,7 @@
  * @overview ccm component for app creation
  * @author André Kless <andre.kless@web.de> 2018-2020
  * @license The MIT License (MIT)
- * @version latest (4.2.0)
+ * @version 4.2.0
  * @changes
  * version 4.2.0 (21.04.2020):
  * - uses ccm v25.4.0
@@ -37,7 +37,7 @@
 
   const component = {
 
-    name: 'app_builder',
+    name: 'app_builder', version: [ 4, 2, 0 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-25.4.0.js',
 
