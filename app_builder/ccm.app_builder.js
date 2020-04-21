@@ -160,7 +160,7 @@
               store: [ 'ccm.store', { app: $.clone( dataset ) } ],
               key: 'app'
             },
-            'ignore.defaults': self.ignore.defaults,
+            'ignore.defaults': $.integrate( $.deepValue( self.builder.config, 'ignore.defaults' ), self.ignore.defaults ),
             onchange: async () => {
               self.onchange && self.onchange( self, 'change' );   // perform 'onchange' callback
               await updatePreview();                              // update preview section
