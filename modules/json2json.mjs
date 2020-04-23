@@ -92,3 +92,12 @@ export function poll_to_highchart( poll, answers ) {
 export function upload2data( json ) {
   return json.slides ? json.slides[ 0 ].data : undefined;
 }
+
+/**
+ * converts user data to username with email as tooltip
+ * @param {Object} user - user data
+ * @returns {string}
+ */
+export function userWithEmail( user ) {
+  return `<span title="${user.mail}">${user.name}</span>`;
+}
