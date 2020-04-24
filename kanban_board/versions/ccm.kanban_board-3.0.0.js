@@ -41,7 +41,7 @@
 
     Instance: function () {
 
-      let $, dataset;
+      let $, dataset, pos;
 
       this.ready = async () => {
 
@@ -299,14 +299,8 @@
           // set draggable start event
           card_elem.addEventListener( 'dragstart', event => {
 
-            /**
-             * card position
-             * @type {Array}
-             */
-            const pos = this.getCardPosition( event.target );
-
             // remember original position of card
-            event.dataTransfer.setData( 'text', pos.join( ',' ) );
+            pos = this.getCardPosition( event.target );
 
             // add a drop zone under the last card of each lane as additional droppable area
             this.element.querySelectorAll( '.cards' ).forEach( cards_elem => {
@@ -340,7 +334,7 @@
              * original position of dropped card
              * @type {number[]}
              */
-            const from = event.dataTransfer.getData( 'text' ).split( ',' ).map( value => parseInt( value ) );
+            const from = pos;
 
             /**
              * target card position
