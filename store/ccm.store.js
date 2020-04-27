@@ -12,6 +12,7 @@
  * - getValue() returns data sets as associative array
  * - added 'Show' buttons in table for display a data set completely
  * - added permission checks to remove no needed buttons
+ * - no global loading of bootstrap 4 as default
  * (for older version changes see ccm.store-1.0.1.js)
  */
 
@@ -27,8 +28,7 @@
       "builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/json_builder/versions/ccm.json_builder-2.1.0.js", { "directly": true, "height": "100px" } ],
       "css": [ "ccm.load",
         "https://ccmjs.github.io/akless-components/store/resources/default.css",
-        "https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css",
-        { "url": "https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css", "context": "head" }
+        "https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
       ],
       "data": {
         "store": [ "ccm.store" ],
