@@ -34,7 +34,7 @@ ccm.files[ 'configs.js' ] = {
     },
     "ignore": {
       "card": {
-        "component": "https://ccmjs.github.io/akless-components/kanban_card/ccm.kanban_card.js",
+        "component": "https://ccmjs.github.io/akless-components/kanban_card/versions/ccm.kanban_card-3.0.0.js",
         "config": {
           "data": {
             "store": [ "ccm.store", { "name": "kanban_card", "url": "https://ccm2.inf.h-brs.de" } ]
