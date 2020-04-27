@@ -9,6 +9,7 @@
  * - uses helper.mjs v5.1.0 as default
  * - uses ccm.json_builder.js v2.1.0 as default
  * - added optional defaults for app configuration
+ * - no global loading of bootstrap 4 as default
  * version 4.1.1 (24.03.2020):
  * - preview is inside the ccm context
  * - uses ccm v25.1.0
@@ -47,8 +48,7 @@
 //    "convert": json => json,
       "css": [ "ccm.load",
         "https://ccmjs.github.io/akless-components/app_builder/resources/styles.css",
-        "https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css",
-        { "url": "https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css", "context": "head" }
+        "https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
       ],
       "data": {},
 //    "form": [ "ccm.component", "https://ccmjs.github.io/akless-components/submit/versions/ccm.submit-8.1.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/submit/resources/configs.js", "app_meta_create" ] ],
