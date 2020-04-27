@@ -1,13 +1,21 @@
 /**
- * @overview demo layout of ccm component for kanban card
- * @author André Kless <andre.kless@web.de> 2017
+ * @overview gold layout of ccm component for kanban cards
+ * @author André Kless <andre.kless@web.de> 2017, 2020
  * @license The MIT License (MIT)
  */
+
+#element {
+  --headfoot: gold;
+  --border: silver;
+  --body: white;
+  --prio: black;
+  --priobg: white;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+}
 
 #main {
   width: 18em;
   margin: 0.5em;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 #header,
@@ -18,27 +26,25 @@
   flex-wrap: wrap;
   min-height: 1.85em;
   padding: 0.25em;
-  background-color: gold;
-  border: 0.1em solid silver;
+  background-color: var(--headfoot);
+  border: 0.1em solid var(--border);
 }
 
 #header {
   border-bottom: 0;
   border-top-left-radius: 0.5em;
   border-top-right-radius: 0.5em;
-  padding-bottom: 0.15em;
 }
 
 #footer {
   border-top: 0;
   border-bottom-left-radius: 0.5em;
   border-bottom-right-radius: 0.5em;
-  padding-top: 0.15em;
 }
 
 #body {
-  border: 0.1em solid silver;
-  background-color: white;
+  border: 0.1em solid var(--border);
+  background-color: var(--body);
 }
 
 .entry {
@@ -66,6 +72,7 @@
 
 .value {
   cursor: text;
+  margin-top: 0.1em;
 }
 
 #summary .value {
@@ -78,9 +85,10 @@
   max-width: 6em;
   overflow: hidden;
   border-radius: 1em;
-  padding: 0 0.4em;
-  color: black;
-  background-color: white;
+  padding: 0 0.5em 0.1em 0.5em;
+  font-size: 90%;
+  color: var(--prio);
+  background-color: var(--priobg);
 }
 
 *[contenteditable='true'] {
@@ -123,4 +131,5 @@ select {
 
 img {
   height: 1em;
+  padding-right: 0.2em;
 }

@@ -1,13 +1,21 @@
 /**
- * @overview WeblySleek layout of ccm component for rendering a kanban card
- * @author André Kless <andre.kless@web.de> 2017
+ * @overview blue layout of ccm component for kanban cards
+ * @author André Kless <andre.kless@web.de> 2017, 2020
  * @license The MIT License (MIT)
  */
+
+#element {
+  --headfoot: #cfeaf6;
+  --border: #008eca;
+  --body: white;
+  --prio: white;
+  --priobg: #008eca;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+}
 
 #main {
   width: 18em;
   margin: 0.5em;
-  font-family: WeblySleekUI, sans-serif;
 }
 
 #header,
@@ -18,8 +26,8 @@
   flex-wrap: wrap;
   min-height: 1.85em;
   padding: 0.25em;
-  background-color: #cfeaf6;
-  border: 0.1em solid #008eca;
+  background-color: var(--headfoot);
+  border: 0.1em solid var(--border);
 }
 
 #header {
@@ -35,8 +43,8 @@
 }
 
 #body {
-  border: 0.1em solid #008eca;
-  background-color: white;
+  border: 0.1em solid var(--border);
+  background-color: var(--body);
 }
 
 .entry {
@@ -64,7 +72,7 @@
 
 .value {
   cursor: text;
-  margin-bottom: 0.1em;
+  margin-top: 0.1em;
 }
 
 #summary .value {
@@ -79,8 +87,8 @@
   border-radius: 1em;
   padding: 0 0.5em 0.1em 0.5em;
   font-size: 90%;
-  color: white;
-  background-color: #008eca;
+  color: var(--prio);
+  background-color: var(--priobg);
 }
 
 *[contenteditable='true'] {
@@ -122,6 +130,6 @@ select {
 }
 
 img {
-  margin-top: 0.1em;
   height: 1em;
+  padding-right: 0.2em;
 }
