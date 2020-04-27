@@ -6,7 +6,7 @@
  * @changes
  * version 3.0.0 (27.04.2020)
  * - uses ccm v25.5.0
- * - uses helper.mjs v5.0.0 as default
+ * - uses helper.mjs v5.1.0 as default
  * - HTML template via HTML file
  * - changed logging parameters
  * - changed parameters of 'onchange' callback
@@ -41,7 +41,7 @@
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/kanban_card/resources/default.css" ],
       "data": { "store": [ "ccm.store" ] },
       "editable": true,
-      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-5.0.0.mjs" ],
+      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-5.1.0.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/kanban_card/resources/templates.html" ],
       "icon": {
         "owner": "https://ccmjs.github.io/akless-components/kanban_card/resources/owner.svg",
@@ -82,7 +82,7 @@
           icon_owner: this.icon.owner,
           icon_deadline: this.icon.deadline,
 
-          editable: !!this.editable && this.user && $.hasPermission( card_data, this.user, 'set' ),
+          editable: !!this.editable && $.hasPermission( card_data, this.user, 'set' ),
 
           oninput_title:    event => this.updateCardProperty( 'title', event.target.innerText.replace( /\n/g, '' ), false, true ),
           onblur_title:     event => event.target.innerHTML = card_data.title || '',
