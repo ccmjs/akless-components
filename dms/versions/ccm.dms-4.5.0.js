@@ -68,8 +68,7 @@
 //    "apps": [ "ccm.store" ],
       "css": [ "ccm.load",
         "https://ccmjs.github.io/akless-components/dms/resources/css/dms.css",
-        "https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css",
-        { "url": "https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css", "context": "head" }
+        "https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
       ],
 //    "component_manager": [ "ccm.component", "https://ccmjs.github.io/akless-components/component_manager/versions/ccm.component_manager-3.4.1.js" ],
 //    "components": [ "ccm.store" ],
