@@ -29,8 +29,7 @@ ccm.files[ 'resources.js' ] = {
         "html": [ "ccm.load", "../dms/resources/html/listing_components.html" ],
         "css": [ "ccm.load",
           "../dms/resources/css/listing_components.css",
-          "https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css",
-          { "url": "https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css", "context": "head" }
+          "https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         ]
       } ]
     },
