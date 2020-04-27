@@ -114,8 +114,7 @@ ccm.files[ 'configs.js' ] = {
   "top_tabs": {
     "css": [ "ccm.load",
       "https://ccmjs.github.io/akless-components/menu/resources/top_tabs.css",
-      "https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css",
-      { "context": "head", "url": "https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" }
+      "https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     ],
     "data": {
       "store": [ "ccm.store", "https://ccmjs.github.io/akless-components/menu/resources/datasets.js" ],
