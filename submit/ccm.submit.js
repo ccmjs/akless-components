@@ -7,6 +7,7 @@
  * version 8.1.1 (21.04.2020):
  * - uses ccm v25.5.0
  * - uses helper.mjs v5.1.0 as default
+ * - no global loading of bootstrap 4 as default
  * version 8.1.0 (30.03.2020):
  * - added optional config property 'enabled_only' (ignores values from disabled input elements)
  * version 8.0.1 (23.03.2020):
@@ -33,7 +34,6 @@
       "css": [ "ccm.load", [
         [
           "https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css",
-          { "url": "https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css", "context": "head" },
           { "url": "https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp", "type": "css" },
           { "url": "https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp", "type": "css", "context": "head" }
         ],
