@@ -264,6 +264,7 @@
         card[ 2 ] = $.clone( card[ 2 ] || {} );
         card[ 2 ].parent = this;
         if ( this.members ) card[ 2 ].members = this.members;
+        if ( this.priorities ) card[ 2 ].priorities = this.priorities;
 
         // render card (root element of the card instance is the card element and the drop zone)
         card = await $.solveDependency( card );
