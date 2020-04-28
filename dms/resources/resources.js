@@ -98,22 +98,26 @@ ccm.files[ 'resources.js' ] = {
           "data.key": true,
           "data.path": true,
           "event": true,
-          "session": true
+          "session": true,
+          "user.key": true
         },
         "component": {
           "data.path": true,
           "event": true,
-          "session": true
+          "session": true,
+          "user.key": true
         },
         "publish": {
           "data.path": true,
           "event": true,
-          "session": true
+          "session": true,
+          "user.key": true
         },
         "menu": {
           "data": true,
           "event": true,
-          "session": true
+          "session": true,
+          "user.key": true
         }
       },
       "onfinish": {
