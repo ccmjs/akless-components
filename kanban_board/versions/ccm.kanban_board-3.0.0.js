@@ -58,9 +58,11 @@
 
         // set initial lanes
         if ( !dataset.lanes ) dataset.lanes = [];
-        for ( let i = 0; i < this.lanes.length; i++ )
+        for ( let i = 0; i < this.lanes.length; i++ ) {
           if ( !dataset.lanes[ i ] )
             dataset.lanes[ i ] = { cards: [] };
+          dataset.lanes[ i ].cards = $.cleanObject( dataset.lanes[ i ].cards );
+        }
 
         this.logger && this.logger.log( 'start', this.getValue() );                        // logging of 'start' event
         $.setContent( this.element, $.html( this.html.main, { onreload: this.start } ) );  // render main HTML structure
