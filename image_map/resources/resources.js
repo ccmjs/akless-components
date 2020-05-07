@@ -13,11 +13,11 @@ ccm.files[ 'resources.js' ] = {
     "data": [ "ccm.get", "../image_map/resources/resources.js", "data" ],
     "helper.1": "../modules/helper.mjs",
     "html.1": "../image_map/resources/templates.html",
-    "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
-    "onchange": event => console.log( event ),
-    "onmouseout": event => console.log( event ),
-    "onmouseover": event => console.log( event ),
-    "onstart": event => console.log( event )
+//  "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
+//  "onchange": event => console.log( event ),
+//  "onmouseout": event => console.log( event ),
+//  "onmouseover": event => console.log( event ),
+//  "onstart": event => console.log( event )
   },
 
   /** demo configuration (absolute paths) */
@@ -37,7 +37,7 @@ ccm.files[ 'resources.js' ] = {
         "y": 46,
         "size": 3,
         "info": "<h3>Quiz 1: Was ist HTML?</h3><p>Klicke auf den Schatz um den Quiz zu starten.</p>",
-        "action": [ "ccm.instance", "https://ccmjs.github.io/akless-components/quiz/versions/ccm.quiz-4.0.1.js", [ "ccm.get", { "name": "dms-configs", "url": "https://ccm2.inf.h-brs.de" }, "1570717629079X27916670596014836" ] ]
+        "action": [ "ccm.instance", "https://ccmjs.github.io/akless-components/quiz/versions/ccm.quiz-4.0.1.js", [ "ccm.get", { "name": "dms-configs", "url": "https://ccm2.inf.h-brs.de" }, "1581493641370X2326643631210834" ] ]
       },
       {
         "image": "https://akless.github.io/akless/resources/images/treasure.png",

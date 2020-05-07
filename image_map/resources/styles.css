@@ -1,6 +1,6 @@
 /**
  * @overview default layout of ccm component for an image map
- * @author André Kless <andre.kless@web.de> 2019
+ * @author André Kless <andre.kless@web.de> 2019-2020
  * @license The MIT License (MIT)
  */
 
@@ -17,6 +17,11 @@
 .area {
   position: absolute;
   cursor: pointer;
+}
+
+.area.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 #info {
