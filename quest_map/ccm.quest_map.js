@@ -51,8 +51,14 @@
         for ( let i = app_data.areas.length - 1; i >= 0; i-- ) {
           const area = app_data.areas[ i ];
           if ( area.action && area.postcondition )
-            area.action[ 2 ] = { key: area.action[ 2 ], onfinish: async () => {
-              await performPostcondition( area.postcondition );
+            area.action[ 2 ] = { key: area.action[ 2 ], onfinish: async result => {
+              result = result.getValue().correct / result.getValue().total * 100;
+              if ( result >= 50 ) {
+                alert( "Glückwunsch! Dein Ergebnis ist " + result + '%.' );
+                await performPostcondition( area.postcondition );
+              }
+              else
+                alert( "Das hat noch nicht gereicht. Dein Ergebnis: " + result + '%' );
               await this.start();
             } };
           area.disabled = !( await checkPrecondition( area.precondition_enabled ) );

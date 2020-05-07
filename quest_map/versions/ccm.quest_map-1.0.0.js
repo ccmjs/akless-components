@@ -2,7 +2,7 @@
  * @overview ccm component for quest maps
  * @author André Kless <andre.kless@web.de> 2020
  * @license The MIT License (MIT)
- * @version 1.0.0
+ * @version latest (1.0.0)
  * @changes
  * version 1.0.0 (06.05.2020)
  */
@@ -11,7 +11,7 @@
 
   const component = {
 
-    name: 'quest_map', version: [ 1, 0, 0 ],
+    name: 'quest_map',
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-25.5.2.js',
 
@@ -51,8 +51,14 @@
         for ( let i = app_data.areas.length - 1; i >= 0; i-- ) {
           const area = app_data.areas[ i ];
           if ( area.action && area.postcondition )
-            area.action[ 2 ] = { key: area.action[ 2 ], onfinish: async () => {
-              await performPostcondition( area.postcondition );
+            area.action[ 2 ] = { key: area.action[ 2 ], onfinish: async result => {
+              result = result.getValue().correct / result.getValue().total * 100;
+              if ( result >= 50 ) {
+                alert( "Glückwunsch! Dein Ergebnis ist " + result + '%.' );
+                await performPostcondition( area.postcondition );
+              }
+              else
+                alert( "Das hat noch nicht gereicht. Dein Ergebnis: " + result + '%' );
               await this.start();
             } };
           area.disabled = !( await checkPrecondition( area.precondition_enabled ) );
