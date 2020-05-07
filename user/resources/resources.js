@@ -14,9 +14,15 @@ ccm.files[ 'resources.js' ] = {
       "../user/resources/default.css"
     ],
 //  "map": user => user.user === 'john' ? 'Teacher' : 'Student',
-    "helper.1": "../modules/versions/helper-4.0.1.mjs",
+    "helper.1": "../modules/helper.mjs",
     "html": [ "ccm.get", "../user/resources/resources.js", "html" ],
 //  "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ]
+  },
+
+  "guest": {
+    "store": "guest-user",
+    "title": "Guest Mode: Please enter any username",
+    "url": "https://ccm2.inf.h-brs.de"
   },
 
   /** one-time pseudonym configuration */
