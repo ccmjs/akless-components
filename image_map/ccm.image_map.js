@@ -82,6 +82,9 @@
            */
           const $area = $.html( this.html.area, $.clone( area ) );
 
+          // disabled area? => mark area as disabled in frontend
+          if ( area.disabled ) $area.classList.add( 'disabled' );
+
           // render HTML structure of an area
           $.append( this.element.querySelector( '#map' ), $area );
 

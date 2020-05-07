@@ -2,7 +2,7 @@
  * @overview ccm component for an image map
  * @author André Kless <andre.kless@web.de> 2019-2020
  * @license The MIT License (MIT)
- * @version 1.1.0
+ * @version latest (1.1.0)
  * @changes
  * version 1.1.0 (02.02.2020):
  * - uses ccm v25.5.2
@@ -19,7 +19,7 @@
 
   const component = {
 
-    name: 'image_map', version: [ 1, 1, 0 ],
+    name: 'image_map',
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-25.5.2.js',
 
@@ -81,6 +81,9 @@
            * @type {Element}
            */
           const $area = $.html( this.html.area, $.clone( area ) );
+
+          // disabled area? => mark area as disabled in frontend
+          if ( area.disabled ) $area.classList.add( 'disabled' );
 
           // render HTML structure of an area
           $.append( this.element.querySelector( '#map' ), $area );
