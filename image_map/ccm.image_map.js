@@ -114,6 +114,10 @@
             if ( this.preclick && !( await this.preclick( { data: $.clone( area ), elem: $area, instance: this } ) ) ) return;
 
             // perform action
+            if ( $.isDependency( area.action ) ) {
+              area.action[ 2 ] = await $.solveDependency( area.action[ 2 ] );
+              area.action[ 2 ].parent = this;
+            }
             const action = await $.solveDependency( area.action );
             if ( $.isInstance( action ) ) {
               $.setContent( this.element, $.html( this.html.app, { caption: this.back, onclick: this.start } ) );
