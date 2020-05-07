@@ -35,7 +35,7 @@ ccm.files[ 'resources.js' ] = {
   "demo": {
     "app_key": "quest_map_demo",
     "data": [ "ccm.get", "https://ccmjs.github.io/akless-components/quest_map/resources/resources.js", "data" ],
-    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.5.0.js", {
+    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.6.0.js", {
       "realm": "guest",
       "store": "guest-user",
       "url": "https://ccm2.inf.h-brs.de"
