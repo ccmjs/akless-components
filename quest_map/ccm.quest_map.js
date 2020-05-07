@@ -43,6 +43,7 @@
       this.start = async () => {
 
         $.setContent( this.element, $.loading( this ) );  // render loading icon
+        this.user && await this.user.login();
         app_data = await $.dataset( this.data );          // get app data
         user_app_data = this.user && await this.user.getAppData( this.app_key );
         if ( !app_data.areas ) app_data.areas = [];       // set default values
@@ -51,7 +52,6 @@
           const area = app_data.areas[ i ];
           if ( area.action && area.postcondition )
             area.action[ 2 ] = { key: area.action[ 2 ], onfinish: async () => {
-              this.user && await this.user.login();
               await performPostcondition( area.postcondition );
               await this.start();
             } };
