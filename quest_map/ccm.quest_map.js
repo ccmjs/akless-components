@@ -42,9 +42,10 @@
 
       this.start = async () => {
 
+        this.user && await this.user.login();
         $.setContent( this.element, $.loading( this ) );  // render loading icon
         app_data = await $.dataset( this.data );          // get app data
-        user_app_data = this.user && this.user.isLoggedIn() && await this.user.getAppData( this.app_key );
+        user_app_data = this.user && await this.user.getAppData( this.app_key );
         if ( !app_data.areas ) app_data.areas = [];       // set default values
 
         for ( let i = app_data.areas.length - 1; i >= 0; i-- ) {
