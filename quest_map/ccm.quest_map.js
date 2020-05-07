@@ -31,9 +31,12 @@
 
       let $, app_data, user_app_data;
 
+      this.init = async () => {
+        $ = Object.assign( {}, this.ccm.helper, this.helper );  // set shortcut to help functions
+        if ( this.user ) this.user.onchange = this.start;       // listen to login/logout events => restart
+      };
+
       this.ready = async () => {
-        $ = Object.assign( {}, this.ccm.helper, this.helper );                 // set shortcut to help functions
-        if ( this.user ) this.user.onchange = this.start;                      // listen to login/logout events => restart
         this.logger && this.logger.log( 'ready', $.privatize( this, true ) );  // logging of 'ready' event
       };
 

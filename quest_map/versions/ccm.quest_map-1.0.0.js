@@ -24,16 +24,19 @@
 //    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-5.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
 //    "onchange": event => console.log( event ),
 //    "onstart": event => console.log( event ),
-//    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.5.0.js" ]
+//    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.6.0.js" ]
     },
 
     Instance: function () {
 
       let $, app_data, user_app_data;
 
+      this.init = async () => {
+        $ = Object.assign( {}, this.ccm.helper, this.helper );  // set shortcut to help functions
+        if ( this.user ) this.user.onchange = this.start;       // listen to login/logout events => restart
+      };
+
       this.ready = async () => {
-        $ = Object.assign( {}, this.ccm.helper, this.helper );                 // set shortcut to help functions
-        if ( this.user ) this.user.onchange = this.start;                      // listen to login/logout events => restart
         this.logger && this.logger.log( 'ready', $.privatize( this, true ) );  // logging of 'ready' event
       };
 
