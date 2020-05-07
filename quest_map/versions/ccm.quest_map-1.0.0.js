@@ -16,7 +16,6 @@
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-25.5.2.js',
 
     config: {
-      "back": "← Back to Map",
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/quest_map/resources/styles.css" ],
       "data": { "store": [ "ccm.store" ] },
       "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-5.1.0.mjs" ],

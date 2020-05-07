@@ -4,19 +4,9 @@
  * @license The MIT License (MIT)
  */
 
-#element {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-
 #top:not(:empty) {
   display: flex;
   justify-content: flex-end;
   align-items: center;
   padding: 0.5em;
-}
-
-#reload {
-  font-size: xx-large;
-  padding: 0 0.3em;
-  cursor: pointer;
 }
