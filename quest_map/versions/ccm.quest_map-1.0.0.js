@@ -2,7 +2,7 @@
  * @overview ccm component for quest maps
  * @author André Kless <andre.kless@web.de> 2020
  * @license The MIT License (MIT)
- * @version latest (1.0.0)
+ * @version 1.0.0
  * @changes
  * version 1.0.0 (06.05.2020)
  */
@@ -11,7 +11,7 @@
 
   const component = {
 
-    name: 'quest_map',
+    name: 'quest_map', version: [ 1, 0, 0 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-25.5.2.js',
 
