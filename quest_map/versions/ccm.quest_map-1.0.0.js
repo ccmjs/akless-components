@@ -42,7 +42,6 @@
 
       this.start = async () => {
 
-        this.user && await this.user.login();
         $.setContent( this.element, $.loading( this ) );  // render loading icon
         app_data = await $.dataset( this.data );          // get app data
         user_app_data = this.user && await this.user.getAppData( this.app_key );
@@ -52,6 +51,7 @@
           const area = app_data.areas[ i ];
           if ( area.action && area.postcondition )
             area.action[ 2 ] = { key: area.action[ 2 ], onfinish: async () => {
+              this.user && await this.user.login();
               await performPostcondition( area.postcondition );
               await this.start();
             } };
