@@ -114,7 +114,7 @@
           if ( regex_reference.test( keyword ) ) return keywords.push( keywords[ keyword.substr( 1 ) - 1 ] );
 
           const entry = [];
-          keyword.split( /(?<!<)\// ).forEach( keyword => entry.push( determineKeywordData( keyword.trim() ) ) );
+          keyword.split( '/(?<!<)\//' ).forEach( keyword => entry.push( determineKeywordData( keyword.trim() ) ) );
           keywords.push( entry );
 
           function determineKeywordData( keyword ) {
