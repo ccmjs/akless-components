@@ -128,7 +128,7 @@
         // load initial app configuration
         config = await $.dataset( this.data );
         config.data = await $.dataset( config.data );
-        config = await $.integrate( config, { data: { areas: [] } } );
+        if ( !config.data.areas ) config.data.areas = [];
 
         // no image for map or area? => use default image
         if ( !config.data.image ) config.data.image = this.default_image;
