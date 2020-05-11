@@ -5,7 +5,7 @@
  * @version 2.0.0
  * @changes
  * version 2.0.0 (12.05.2020):
- * - removed default image
+ * - removed default image from config
  * - uses ccm.image_map.js v2.0.0 as default
  * (for older version changes see ccm.image_map-1.0.2.js)
  */
