@@ -25,8 +25,8 @@
       "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-5.1.0.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/image_map/resources/templates.html" ],
       "ignore": { "areas": [] },
-      "image": "",
-      "info": "",
+      "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=",
+  //  "info": "",
   //  "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-5.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
   //  "onchange": event => console.log( event ),
   //  "onmouseout": event => console.log( event ),
@@ -63,6 +63,9 @@
        * @param {Object} area_data - area data
        */
       this.renderArea = async area_data => {
+
+        // no image? => use transparent image
+        if ( !area_data.image ) area_data.image = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=';
 
         const $area = $.html( this.html.area, $.clone( area_data ) );  // prepare area HTML structure
         if ( area_data.disabled ) $area.classList.add( 'disabled' );   // disabled area? => mark area as disabled in frontend
