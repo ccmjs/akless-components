@@ -7,6 +7,7 @@
  * version 2.0.0 (11.05.2020):
  * - changed configuration properties
  * - changes parameters of callbacks
+ * - added optional logging of click event
  * (for older version changes see ccm.image_map-1.1.0.js)
  */
 
@@ -19,13 +20,11 @@
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-25.5.2.js',
 
     config: {
-      "areas": [],
       "back": "← Back to Map",
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/image_map/resources/styles.css" ],
-      "data": { "areas": [] },
       "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-5.1.0.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/image_map/resources/templates.html" ],
-      "ignore": { "apps": [] },
+      "ignore": { "areas": [] },
       "image": "",
       "info": "",
   //  "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-5.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
@@ -50,8 +49,7 @@
 
         this.logger && this.logger.log( 'start' );                                      // logging of 'start' event
         $.setContent( this.element, $.html( this.html.main, { image: this.image } ) );  // render main HTML structure
-        for ( let i = 0; i < this.areas.length; i++ )                                   // add areas in the image map
-          await this.renderArea( this.areas[ i ], this.ignore.apps[ i ] );
+        await $.asyncForEach( this.ignore.areas, this.renderArea );                     // add areas in the image map
         this.renderInfo( this.info );                                                   // render map information's in info section
         this.onstart && await this.onstart( { instance: this } );                       // trigger 'onstart' callback
 
@@ -63,43 +61,43 @@
       /**
        * renders an area of the image map
        * @param {Object} area_data - area data
-       * @param {Array} [app_dependency] - instance dependency of the app that is rendered when area will be clicked
        */
-      this.renderArea = async ( area_data, app_dependency ) => {
+      this.renderArea = async area_data => {
 
         const $area = $.html( this.html.area, $.clone( area_data ) );  // prepare area HTML structure
         if ( area_data.disabled ) $area.classList.add( 'disabled' );   // disabled area? => mark area as disabled in frontend
         $.append( this.element.querySelector( '#map' ), $area );       // put prepared HTML structure into frontend map
 
         // trigger 'mouseout' callback on mouseout event and set 'mouseover' event
-        $area.addEventListener( 'mouseout', () => this.onmouseout && this.onmouseout( { area_data: $.clone( area_data ), app: $.clone( app_dependency ), element: $area, instance: this } ) );
+        $area.addEventListener( 'mouseout', () => this.onmouseout && this.onmouseout( { area_data: $.clone( area_data ), element: $area, instance: this } ) );
         $area.addEventListener( 'mouseover', event => {
-          this.onmouseover && this.onmouseover( { area_data: $.clone( area_data ), app: $.clone( app_dependency ), instance: this } );  // trigger mouseover callback
+          this.onmouseover && this.onmouseover( { area_data: $.clone( area_data ), element: $area, instance: this } );  // trigger mouseover callback
           this.renderInfo( area_data.info );  // render area information's in info section
           event.stopPropagation();            // prevents trigger of 'mouseover' event of the map
         } );
 
         // trigger 'onrender' callback and set click event
-        this.onrender && this.onrender( { area_data: $.clone( area_data ), app: $.clone( app_dependency ), element: $area, instance: this } );
-        app_dependency && $area.addEventListener( 'click', async () => {
+        this.onrender && this.onrender( { area_data: $.clone( area_data ), element: $area, instance: this } );
+        area_data.action && $area.addEventListener( 'click', async () => {
 
           // disabled area? => abort
           if ( area_data.disabled ) return;
 
           // trigger 'preclick' callback
-          if ( this.preclick && !( await this.preclick( { area_data: $.clone( area_data ), app: $.clone( app_dependency ), element: $area, instance: this } ) ) ) return;
+          if ( this.preclick && !( await this.preclick( { area_data: $.clone( area_data ), element: $area, instance: this } ) ) ) return;
 
           // show app
-          app_dependency[ 2 ] = await $.solveDependency( app_dependency[ 2 ] );
-          app_dependency[ 2 ].parent = this;
-          const app_instance = await $.solveDependency( app_dependency );
-          delete app_dependency[ 2 ].parent;
+          area_data.action[ 2 ] = await $.solveDependency( area_data.action[ 2 ] );
+          area_data.action[ 2 ].parent = this;
+          const app_instance = await $.solveDependency( area_data.action );
+          delete area_data.action[ 2 ].parent;
           $.setContent( this.element, $.html( this.html.app, { caption: this.back, onclick: this.start } ) );
           $.setContent( this.element.querySelector( '#app' ), app_instance.root );
           await app_instance.start();
 
-          // trigger 'onchange' callback
-          this.onchange && await this.onchange( { area_data: $.clone( area_data ), app: $.clone( app_dependency ), instance: this } );
+          // log 'click' event and trigger 'onchange' callback
+          this.logger && this.logger.log( 'click', { area_data: $.clone( area_data ) } );
+          this.onchange && await this.onchange( { area_data: $.clone( area_data ), instance: this } );
 
         } );
 
