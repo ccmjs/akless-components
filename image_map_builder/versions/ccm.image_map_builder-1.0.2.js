@@ -127,6 +127,7 @@
 
         // load initial app configuration
         config = await $.dataset( this.data );
+        if ( config.data.store ) config.data.store = await $.solveDependency( config.data.store );
         config.data = await $.dataset( config.data );
         if ( !config.data.areas ) config.data.areas = [];
 
