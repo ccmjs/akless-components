@@ -91,7 +91,7 @@
       };
 
       const checkPrecondition = async condition => {
-        if ( !condition ) return true;
+        if ( !condition || !Object.keys( condition ).length ) return true;
         if ( !user_app_data ) return false;
         const check = ( key, value ) => {
           const user_value = $.deepValue( user_app_data, key );
@@ -107,7 +107,7 @@
         return true;
       };
       const performPostcondition = async condition => {
-        if ( !this.user || !this.user.isLoggedIn() ) return;
+        if ( !condition || !this.user || !this.user.isLoggedIn() ) return;
         if ( !user_app_data ) user_app_data = {};
         for ( const key in condition ) {
           const value = condition[ key ];
