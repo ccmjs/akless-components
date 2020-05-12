@@ -123,8 +123,8 @@
             results.image = this.convert( results.image ) || config.image;
             results.ignore.areas.forEach( ( area, i ) => {
               area.image = this.convert( area.image ) || area.image;
-              area.x = config.data.areas[ i ] && config.data.areas[ i ].x || 0;
-              area.y = config.data.areas[ i ] && config.data.areas[ i ].y || 0;
+              area.x = config.ignore.areas[ i ] && config.ignore.areas[ i ].x || 0;
+              area.y = config.ignore.areas[ i ] && config.ignore.areas[ i ].y || 0;
               if ( !area.size ) area.size = 5; if ( !area.x ) area.x = 0; if ( !area.y ) area.y = 0;
             } );
             config = await $.integrate( results, config );
