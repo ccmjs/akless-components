@@ -115,6 +115,8 @@ ccm.files[ 'resources.js' ] = {
   /** demo configuration (absolute paths) */
   "demo": {
     "app_key": "quest_map_test",
+    "failed_msg": "Das hat noch nicht gereicht. Dein Ergebnis: %%",
+    "goal": 50,
     "ignore": {
       "areas": [
         {
@@ -195,6 +197,7 @@ ccm.files[ 'resources.js' ] = {
       "image": "https://akless.github.io/akless/resources/images/goldgrotte.png",
       "info": "<h3>Expedition Goldgrotte</h3><p>Der Forschungsdrang hat dich zu einer Goldgrotte geführt, in der es 6 Schätze zu entdecken gibt. Jeder Schatz enthält ein Quiz.</p>"
     } ],
+    "success_msg": "Glückwunsch! Dein Ergebnis ist %%.",
     "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.6.0.js", {
       "realm": "guest",
       "store": "guest-user",
