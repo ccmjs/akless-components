@@ -8,6 +8,7 @@
  * - uses ccm.image_map.js v2.0.0 as default
  * - changes config properties (added: goal, success_msg, failed_msg, ignore.areas, removed: data)
  * - added public method 'getImageMap():Object'
+ * - uses ccm.user.js v9.6.0 as default
  * version 1.0.0 (06.05.2020)
  */
 
@@ -31,7 +32,11 @@
 //    "onchange": event => console.log( event ),
 //    "onstart": event => console.log( event ),
 //    "success_msg": "",
-//    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.6.0.js" ]
+      "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.6.0.js", {
+        "realm": "guest",
+        "store": "guest-user",
+        "url": "https://ccm2.inf.h-brs.de"
+      } ]
     },
 
     Instance: function () {
