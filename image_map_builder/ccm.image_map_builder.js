@@ -170,8 +170,8 @@
               image_map.element.onmouseup = () => {
                 image_map.element.onmouseup = null;
                 image_map.element.onmousemove = null;
-                config.ignore.areas[ i ].x = Math.round( left / width  * 100 );
-                config.ignore.areas[ i ].y = Math.round( top  / height * 100 );
+                config.ignore.areas[ i ].x = Math.round( left / width  * 1000 );
+                config.ignore.areas[ i ].y = Math.round( top  / height * 1000 );
                 element.style.left = config.ignore.areas[ i ].x + "%";
                 element.style.top  = config.ignore.areas[ i ].y + "%";
                 this.onchange && this.onchange( this );
