@@ -140,7 +140,8 @@
             if ( area.x === undefined ) area.x = area.y = 1;
             delete area.action;
           } );
-          const image_map = await this.image_map.start( Object.assign( {}, copy, { root: this.element.querySelector( '#placement' ) } ) );
+          let image_map = await this.image_map.start( Object.assign( {}, copy, { root: this.element.querySelector( '#placement' ) } ) );
+          if ( image_map.getImageMap ) image_map = image_map.getImageMap();
           const draggable = ( element, i ) => {
             let x = 0, y = 0, left, top;
             element.onmousedown = event => {
