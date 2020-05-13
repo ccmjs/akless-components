@@ -8,6 +8,7 @@
  * - changed configuration properties
  * - changes parameters of callbacks
  * - added optional logging of click event
+ * - more precise positioning of areas
  * (for older version changes see ccm.image_map-1.1.0.js)
  */
 
@@ -64,8 +65,9 @@
        */
       this.renderArea = async area_data => {
 
-        // no image? => use transparent image
+        // adjust area data
         if ( !area_data.image ) area_data.image = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=';
+        area_data.x /= 10; area_data.y /= 10;
 
         const $area = $.html( this.html.area, $.clone( area_data ) );  // prepare area HTML structure
         if ( area_data.disabled ) $area.classList.add( 'disabled' );   // disabled area? => mark area as disabled in frontend
