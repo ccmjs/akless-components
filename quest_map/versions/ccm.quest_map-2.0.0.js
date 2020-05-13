@@ -57,18 +57,18 @@
         for ( let i = areas.length - 1; i >= 0; i-- ) {
           const area = areas[ i ];
           if ( area.action && area.postcondition && !area.action[ 2 ].key )
-            area.action[ 2 ] = { key: area.action[ 2 ], onfinish: async ( instance, result ) => {
-              if ( !result.total )
+            area.action[ 2 ] = { key: area.action[ 2 ], onfinish: async results => {
+              if ( !results.total )
                 await performPostcondition( area.postcondition );
               else {
-                result = result.correct / result.total * 100;
-                if ( result >= ( area.goal || this.goal ) ) {
+                results = results.correct / results.total * 100;
+                if ( results >= ( area.goal || this.goal ) ) {
                   if ( area.success_msg || this.success_msg )
-                    alert( ( area.success_msg || this.success_msg ).replace( '%%', result + '%' ) );
+                    alert( ( area.success_msg || this.success_msg ).replace( '%%', results + '%' ) );
                   await performPostcondition( area.postcondition );
                 }
                 else if ( area.failed_msg || this.failed_msg )
-                  alert( ( area.failed_msg || this.failed_msg ).replace( '%%', result + '%' ) );
+                  alert( ( area.failed_msg || this.failed_msg ).replace( '%%', results + '%' ) );
               }
               await this.start();
             } };
