@@ -120,7 +120,7 @@
           },
           onchange: async () => {
             const results = submit.getValue();
-            results.image = this.convert( results.image ) || config.image;
+            results.image = this.convert( results.image || results.image_map && results.image_map[ 2 ].image ) || config.image;
             results.ignore.areas.forEach( ( area, i ) => {
               area.image = this.convert( area.image ) || config.ignore.areas[ i ].image;
               area.x = config.ignore.areas[ i ] && config.ignore.areas[ i ].x || 0;
