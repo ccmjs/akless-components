@@ -119,6 +119,7 @@
             store: [ 'ccm.store', { app: $.clone( config ) } ],
             key: 'app'
           },
+          'ignore.defaults': this.ignore && this.ignore.defaults,
           onchange: async () => {
             const results = submit.getValue();
             results.image = this.convert( results.image || results.image_map && results.image_map[ 2 ].image ) || config.image;
