@@ -139,6 +139,9 @@
           const copy = $.clone( config );
           copy.ignore.areas.forEach( area => {
             if ( area.x === undefined ) area.x = area.y = 1;
+            delete area.precondition_visible;
+            delete area.precondition_enabled;
+            delete area.postcondition;
             delete area.action;
           } );
           let image_map = await this.image_map.start( Object.assign( {}, copy, { root: this.element.querySelector( '#placement' ), user: null } ) );
