@@ -7,6 +7,7 @@
  * version 2.0.0 (12.05.2020)
  * - uses ccm.image_map.js v2.0.0 as default
  * - changes config properties (added: goal, success_msg, failed_msg, ignore.areas, removed: data)
+ * - added public method 'getImageMap():Object'
  * version 1.0.0 (06.05.2020)
  */
 
@@ -35,7 +36,7 @@
 
     Instance: function () {
 
-      let $, user_app_data;
+      let $, image_map, user_app_data;
 
       this.init = async () => {
         $ = Object.assign( {}, this.ccm.helper, this.helper );  // set shortcut to help functions
@@ -81,7 +82,7 @@
 
         // render login/logout area and image map
         if ( this.user ) { $.append( this.element.querySelector( '#top' ), this.user.root ); this.user.start(); }
-        await this.image_map.start( {
+        image_map = await this.image_map.start( {
           'ignore.areas': areas,
           onchange: this.onchange,
           onstart: this.onstart,
@@ -89,6 +90,8 @@
         } );
 
       };
+
+      this.getImageMap = () => image_map;
 
       const checkPrecondition = async condition => {
         if ( !condition || !Object.keys( condition ).length ) return true;
