@@ -8,6 +8,7 @@
  * - removed default image from config
  * - uses ccm.image_map.js v2.0.0 as default
  * - component can also be used as app builder for quest maps
+ * - added input field to set order number of an area
  * (for older version changes see ccm.image_map-1.0.2.js)
  */
 
@@ -60,6 +61,13 @@
                 "type": "number",
                 "min": 1,
                 "info": "Image size of the area."
+              },
+              {
+                "label": "Order",
+                "name": "order",
+                "type": "number",
+                "min": 0,
+                "info": "Here you can specify which areas are shown in the foreground and which in the background. An area with a higher order number is shown in front of an area with a lower order number."
               },
               {
                 "label": "Info",
