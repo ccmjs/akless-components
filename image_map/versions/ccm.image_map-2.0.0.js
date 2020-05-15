@@ -9,6 +9,7 @@
  * - changes parameters of callbacks
  * - added optional logging of click event
  * - more precise positioning of areas
+ * - added optional property 'order' in area data to set CSS z-index of an area
  * (for older version changes see ccm.image_map-1.1.0.js)
  */
 
@@ -69,6 +70,7 @@
         area_data = $.clone( area_data );
         if ( !area_data.image ) area_data.image = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=';
         area_data.x /= 10; area_data.y /= 10;
+        if ( !area_data.order ) area_data.order = 0;
 
         const $area = $.html( this.html.area, $.clone( area_data ) );  // prepare area HTML structure
         if ( area_data.disabled ) $area.classList.add( 'disabled' );   // disabled area? => mark area as disabled in frontend
