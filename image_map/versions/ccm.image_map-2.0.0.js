@@ -16,7 +16,7 @@
 
   const component = {
 
-    name: 'image_map',
+    name: 'image_map', version: [ 2, 0, 0 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-25.5.2.js',
 
