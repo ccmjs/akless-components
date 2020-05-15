@@ -142,7 +142,7 @@
             } );
             config = await $.integrate( results, config );
             await placement();
-            this.onchange && this.onchange( { instance: this } );
+            this.onchange && this.onchange( this );
           }
         } );
 
@@ -160,6 +160,7 @@
           if ( image_map.getImageMap ) image_map = image_map.getImageMap();
           const draggable = ( element, i ) => {
             let x = 0, y = 0, left, top;
+            element.style.backgroundColor = 'rgba( 255, 255, 255, 0.5 )';
             element.onmousedown = event => {
               event.preventDefault();
               x = event.clientX;
