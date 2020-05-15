@@ -18,8 +18,8 @@ ccm.files[ 'resources.js' ] = {
       "areas": [
         {
           "image": "https://akless.github.io/akless/resources/images/treasure.png",
-          "x": 24,
-          "y": 46,
+          "x": 240,
+          "y": 460,
           "size": 3,
           "info": "<h3>Quiz 1: Was ist HTML?</h3><p>Klicke auf den Schatz um den Quiz zu starten.</p>",
           "dialog": "<h3>Quiz 1: Was ist HTML?</h3><p>Klicke auf den Schatz um den Quiz zu starten.</p>",
@@ -30,8 +30,8 @@ ccm.files[ 'resources.js' ] = {
         },
         {
           "image": "https://akless.github.io/akless/resources/images/treasure.png",
-          "x": 94,
-          "y": 27,
+          "x": 940,
+          "y": 270,
           "size": 3,
           "info": "<h3>Quiz 2: Erste 'Hallo Welt!'-Webseite</h3><p>Klicke auf den Schatz um den Quiz zu starten.</p>",
           "dialog": "<h3>Quiz 2: Erste 'Hallo Welt!'-Webseite</h3><p>Klicke auf den Schatz um den Quiz zu starten.</p>",
@@ -46,8 +46,8 @@ ccm.files[ 'resources.js' ] = {
         },
         {
           "image": "https://akless.github.io/akless/resources/images/treasure.png",
-          "x": 41,
-          "y": 88,
+          "x": 410,
+          "y": 880,
           "size": 3,
           "info": "<h3>Quiz 3: Was ist ein HTML-Tag?</h3><p>Klicke auf den Schatz um den Quiz zu starten.</p>",
           "dialog": "<h3>Quiz 3: Was ist ein HTML-Tag?</h3><p>Klicke auf den Schatz um den Quiz zu starten.</p>",
@@ -64,8 +64,8 @@ ccm.files[ 'resources.js' ] = {
         },
         {
           "image": "https://akless.github.io/akless/resources/images/treasure.png",
-          "x": 10,
-          "y": 82,
+          "x": 100,
+          "y": 820,
           "size": 3,
           "dialog": "<h3>Gewonnen!</h3><p>Herausforderungen erfolgreich gemeistert.</p>",
           "precondition_visible": {
@@ -80,8 +80,8 @@ ccm.files[ 'resources.js' ] = {
         },
         {
           "image": "https://ccmjs.github.io/akless-components/dms/resources/img/component.png",
-          "x": 74,
-          "y": 77,
+          "x": 740,
+          "y": 770,
           "size": 3,
           "dialog": "<h3>Lerneinheit: Was ist HTML?</h3><p>Klicke auf den Schatz um die Lerneinheit zu starten.</p>",
           "precondition_visible": {
@@ -98,6 +98,7 @@ ccm.files[ 'resources.js' ] = {
 //  "onchange": event => console.log( event ),
 //  "onstart": event => console.log( event ),
     "success_msg": "Glückwunsch! Dein Ergebnis ist %%.",
+    /*
     "user": [ "ccm.instance", "../user/ccm.user.js", {
       "css": [ "ccm.load",
         "../libs/bootstrap/css/bootstrap.css",
@@ -110,6 +111,7 @@ ccm.files[ 'resources.js' ] = {
       "store": "guest-user",
       "url": "https://ccm2.inf.h-brs.de"
     } ]
+    */
   },
 
   /** demo configuration (absolute paths) */
@@ -121,8 +123,8 @@ ccm.files[ 'resources.js' ] = {
       "areas": [
         {
           "image": "https://akless.github.io/akless/resources/images/treasure.png",
-          "x": 24,
-          "y": 46,
+          "x": 240,
+          "y": 460,
           "size": 3,
           "info": "<h3>Quiz 1: Was ist HTML?</h3><p>Klicke auf den Schatz um den Quiz zu starten.</p>",
           "dialog": "<h3>Quiz 1: Was ist HTML?</h3><p>Klicke auf den Schatz um den Quiz zu starten.</p>",
@@ -133,8 +135,8 @@ ccm.files[ 'resources.js' ] = {
         },
         {
           "image": "https://akless.github.io/akless/resources/images/treasure.png",
-          "x": 94,
-          "y": 27,
+          "x": 940,
+          "y": 270,
           "size": 3,
           "info": "<h3>Quiz 2: Erste 'Hallo Welt!'-Webseite</h3><p>Klicke auf den Schatz um den Quiz zu starten.</p>",
           "dialog": "<h3>Quiz 2: Erste 'Hallo Welt!'-Webseite</h3><p>Klicke auf den Schatz um den Quiz zu starten.</p>",
@@ -149,8 +151,8 @@ ccm.files[ 'resources.js' ] = {
         },
         {
           "image": "https://akless.github.io/akless/resources/images/treasure.png",
-          "x": 41,
-          "y": 88,
+          "x": 410,
+          "y": 880,
           "size": 3,
           "info": "<h3>Quiz 3: Was ist ein HTML-Tag?</h3><p>Klicke auf den Schatz um den Quiz zu starten.</p>",
           "dialog": "<h3>Quiz 3: Was ist ein HTML-Tag?</h3><p>Klicke auf den Schatz um den Quiz zu starten.</p>",
@@ -167,8 +169,8 @@ ccm.files[ 'resources.js' ] = {
         },
         {
           "image": "https://akless.github.io/akless/resources/images/treasure.png",
-          "x": 10,
-          "y": 82,
+          "x": 100,
+          "y": 820,
           "size": 3,
           "dialog": "<h3>Gewonnen!</h3><p>Herausforderungen erfolgreich gemeistert.</p>",
           "precondition_visible": {
@@ -183,8 +185,8 @@ ccm.files[ 'resources.js' ] = {
         },
         {
           "image": "https://ccmjs.github.io/akless-components/dms/resources/img/component.png",
-          "x": 74,
-          "y": 77,
+          "x": 740,
+          "y": 770,
           "size": 3,
           "dialog": "<h3>Lerneinheit: Was ist HTML?</h3><p>Klicke auf den Schatz um die Lerneinheit zu starten.</p>",
           "precondition_visible": {
