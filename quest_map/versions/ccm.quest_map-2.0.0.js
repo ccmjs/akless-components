@@ -8,6 +8,8 @@
  * - uses ccm.image_map.js v2.0.0 as default
  * - changes config properties (added: goal, success_msg, failed_msg, ignore.areas, removed: data)
  * - added public method 'getImageMap():Object'
+ * - added '<' in preconditions
+ * - added '-' in postconditions
  * version 1.0.0 (06.05.2020)
  */
 
@@ -98,8 +100,10 @@
         if ( !user_app_data ) return false;
         const check = ( key, value ) => {
           const user_value = $.deepValue( user_app_data, key );
-          if ( typeof value === 'string' )
-            return value.startsWith( '>' ) && user_value > parseInt( value.substr( 1 ) );
+          if ( typeof value === 'string' && value.startsWith( '>' ) )
+            return user_value > parseInt( value.substr( 1 ) );
+          if ( typeof value === 'string' && value.startsWith( '<' ) )
+            return user_value < parseInt( value.substr( 1 ) );
           if ( typeof value === 'boolean' )
             return user_value;
           return user_value == value;
@@ -117,6 +121,8 @@
           const user_value = $.deepValue( user_app_data, key );
           if ( typeof value === 'string' && value.startsWith( '+' ) )
             $.deepValue( user_app_data, key, parseInt( user_value || 0 ) + parseInt( value.substr( 1 ) ) );
+          else if ( typeof value === 'string' && value.startsWith( '-' ) )
+            $.deepValue( user_app_data, key, parseInt( user_value || 0 ) - parseInt( value.substr( 1 ) ) );
           else
             $.deepValue( user_app_data, key, value );
         }

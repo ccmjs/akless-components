@@ -20,29 +20,20 @@ ccm.files[ 'resources.js' ] = {
           "image": "https://akless.github.io/akless/resources/images/treasure.png",
           "x": 240,
           "y": 460,
-          "size": 3,
+          "size": 5,
+          "z-index": 2,
           "info": "<h3>Quiz 1: Was ist HTML?</h3><p>Klicke auf den Schatz um den Quiz zu starten.</p>",
           "dialog": "<h3>Quiz 1: Was ist HTML?</h3><p>Klicke auf den Schatz um den Quiz zu starten.</p>",
-          "action": [ "ccm.instance", "https://ccmjs.github.io/akless-components/quiz/versions/ccm.quiz-4.0.1.js", [ "ccm.get", { "name": "dms-configs", "url": "https://ccm2.inf.h-brs.de" }, "1581493641370X2326643631210834" ] ],
-          "postcondition": {
-            "w1.score": "+1"
-          }
+          "action": [ "ccm.instance", "https://ccmjs.github.io/akless-components/quiz/versions/ccm.quiz-4.0.1.js", [ "ccm.get", { "name": "dms-configs", "url": "https://ccm2.inf.h-brs.de" }, "1581493641370X2326643631210834" ] ]
         },
         {
           "image": "https://akless.github.io/akless/resources/images/treasure.png",
-          "x": 940,
-          "y": 270,
-          "size": 3,
+          "x": 250,
+          "y": 470,
+          "size": 5,
+          "z-index": 1,
           "info": "<h3>Quiz 2: Erste 'Hallo Welt!'-Webseite</h3><p>Klicke auf den Schatz um den Quiz zu starten.</p>",
-          "dialog": "<h3>Quiz 2: Erste 'Hallo Welt!'-Webseite</h3><p>Klicke auf den Schatz um den Quiz zu starten.</p>",
-          "action": [ "ccm.instance", "https://ccmjs.github.io/akless-components/quiz/versions/ccm.quiz-4.0.1.js", [ "ccm.get", { "name": "dms-configs", "url": "https://ccm2.inf.h-brs.de" }, "1570790042637X16404434157729564" ] ],
-          "precondition_visible": {
-            "w1.score": ">0"
-          },
-          "postcondition": {
-            "w1.score": "+1",
-            "w1.item": "magic_key"
-          }
+          "dialog": "<h3>Quiz 2: Erste 'Hallo Welt!'-Webseite</h3><p>Klicke auf den Schatz um den Quiz zu starten.</p>"
         },
         {
           "image": "https://akless.github.io/akless/resources/images/treasure.png",
