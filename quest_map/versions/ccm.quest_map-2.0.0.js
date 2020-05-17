@@ -107,7 +107,7 @@
             return user_value < parseInt( value.substr( 1 ) );
           if ( typeof value === 'boolean' )
             return user_value;
-          return user_value == value;
+          return ( user_value || '' ) == value;
         };
         for ( const key in condition )
           if ( !check( key, condition[ key ] ) )
