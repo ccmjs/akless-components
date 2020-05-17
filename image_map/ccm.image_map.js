@@ -69,7 +69,7 @@
         // adjust area data
         area_data = $.clone( area_data );
         if ( !area_data.image ) area_data.image = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=';
-        area_data.x /= 10; area_data.y /= 10;
+        area_data.x /= 10; area_data.y /= 10; area_data.size /= 10;
         if ( !area_data.order ) area_data.order = 0;
 
         const $area = $.html( this.html.area, $.clone( area_data ) );  // prepare area HTML structure
