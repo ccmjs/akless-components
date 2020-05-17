@@ -1,6 +1,6 @@
 /**
  * @overview configurations of ccm component for a guess picture game
- * @author André Kless <andre.kless@web.de> 2019
+ * @author André Kless <andre.kless@web.de> 2019-2020
  * @license The MIT License (MIT)
  */
 
@@ -9,6 +9,7 @@ ccm.files[ 'configs.js' ] = {
   /** test configuration (relative paths) */
   "local": {
     "css.1": "../guess_picture/resources/styles.css",
+    "helper.1": "../modules/helper.mjs",
     "html.1": "../guess_picture/resources/templates.html",
     "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js", [ "ccm.get", "../guess_picture/resources/configs.js", "lang" ] ],
     "onfinish": { "log": true, "restart": true },
@@ -100,7 +101,7 @@ ccm.files[ 'configs.js' ] = {
     ],
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
     "size": 5,
-    "user": [ "ccm.start", "../user/versions/ccm.user-9.2.0.js", [ "ccm.get", "../user/resources/configs.js", "guest" ] ]
+    "user": [ "ccm.start", "../user/ccm.user.js", [ "ccm.get", "../user/resources/resources.js", "guest" ] ]
   },
 
   /** demo configuration (absolute paths) */
