@@ -22,6 +22,7 @@
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-25.5.2.js',
 
     config: {
+//    "app_key": "quest_map_test",
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/quest_map/resources/styles.css" ],
       "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-5.1.0.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/quest_map/resources/templates.html" ],
@@ -54,6 +55,7 @@
         $.setContent( this.element, $.loading( this ) );                          // render loading icon
         try { this.user && await this.user.login(); } catch ( e ) { return; }     // app can only be used by logged in users
         user_app_data = this.user && await this.user.getAppData( this.app_key );  // get app-specific user data
+        !user_app_data && await this.user.setAppData( this.app_key, {} );         // set initial app-specific user data
         const areas = $.clone( this.ignore.areas );                               // prevent change of original areas data
 
         // set 'onfinish' events for apps behind image map areas and check area preconditions (disabled or hidden areas)
