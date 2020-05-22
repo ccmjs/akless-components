@@ -9,6 +9,21 @@ export function example( json ) {
   return json;
 }
 
+export function listing_onchange_magic_card( event ) {
+  if ( event.data.back.title )
+    if ( event.elem.querySelector( '.flip' ).style.transform === 'rotateY(0deg)' )
+      event.elem.querySelector( '.flip' ).style.transform = 'rotateY(180deg)';
+    else
+      event.elem.querySelector( '.flip' ).style.transform = 'rotateY(0deg)';
+}
+
+export function listing_onrender_magic_card( event ) {
+  if ( !event.data.back.title )
+    event.elem.querySelector( '.back' ).parentElement.removeChild( event.elem.querySelector( '.back' ) );
+  else
+    event.elem.style.cursor = 'pointer';
+}
+
 /**
  * converts member votes of a live poll to a plotly bar chart configuration
  * @param {Object} poll - member votings of a live poll
