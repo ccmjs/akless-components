@@ -11,10 +11,10 @@ export function example( json ) {
 
 export function listing_onchange_magic_cards( event ) {
   if ( event.data.back.title )
-    if ( event.elem.querySelector( '.flip' ).style.transform === 'rotateY(0deg)' )
-      event.elem.querySelector( '.flip' ).style.transform = 'rotateY(180deg)';
-    else
+    if ( event.elem.querySelector( '.flip' ).style.transform === 'rotateY(180deg)' )
       event.elem.querySelector( '.flip' ).style.transform = 'rotateY(0deg)';
+    else
+      event.elem.querySelector( '.flip' ).style.transform = 'rotateY(180deg)';
 }
 
 export function listing_onrender_magic_cards( event ) {
