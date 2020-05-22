@@ -9,7 +9,7 @@ export function example( json ) {
   return json;
 }
 
-export function listing_onchange_magic_card( event ) {
+export function listing_onchange_magic_cards( event ) {
   if ( event.data.back.title )
     if ( event.elem.querySelector( '.flip' ).style.transform === 'rotateY(0deg)' )
       event.elem.querySelector( '.flip' ).style.transform = 'rotateY(180deg)';
@@ -17,7 +17,7 @@ export function listing_onchange_magic_card( event ) {
       event.elem.querySelector( '.flip' ).style.transform = 'rotateY(0deg)';
 }
 
-export function listing_onrender_magic_card( event ) {
+export function listing_onrender_magic_cards( event ) {
   if ( !event.data.back.title )
     event.elem.querySelector( '.back' ).parentElement.removeChild( event.elem.querySelector( '.back' ) );
   else
