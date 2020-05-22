@@ -129,7 +129,7 @@
         const entry_elem = $.html( this.html.entry, $.toDotNotation( entry_data ) );  // create entry container
 
         // replace placeholder and trigger 'onrender' callback
-        this.replace.forEach( replace => entry_elem.innerHTML = entry_elem.innerHTML.split( replace[ 0 ] ).join( replace[ 1 ] ) );
+        this.replace && this.replace.forEach( replace => entry_elem.innerHTML = entry_elem.innerHTML.split( replace[ 0 ] ).join( replace[ 1 ] ) );
         this.onrender && this.onrender( { nr: entry_nr, data: $.clone( entry_data ), elem: entry_elem, instance: this } );
 
         // set click event: trigger 'onchange' callback and log 'click' event
