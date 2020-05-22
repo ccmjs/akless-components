@@ -2,7 +2,7 @@
  * @overview ccm component for a listing
  * @author André Kless <andre.kless@web.de> 2018-2020
  * @license MIT License
- * @version latest (4.1.0)
+ * @version 4.1.0
  * @changes
  * version 4.1.0 (22.05.2020):
  * - uses ccm v25.5.2
@@ -29,7 +29,7 @@
 
   const component = {
 
-    name: 'listing',
+    name: 'listing', version: [ 4, 1, 0 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-25.5.2.js',
 
