@@ -2,7 +2,7 @@
  * @overview ccm component for building image maps
  * @author André Kless <andre.kless@web.de> 2020
  * @license The MIT License (MIT)
- * @version latest (2.1.0)
+ * @version 2.1.0
  * @changes
  * version 2.1.0 (24.05.2020):
  * - added grid positioning
@@ -18,7 +18,7 @@
 
   const component = {
 
-    name: 'image_map_builder',
+    name: 'image_map_builder', version: [ 2, 1, 0 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-25.5.2.js',
 
