@@ -2,7 +2,7 @@
  * @overview ccm component for submitting data
  * @author André Kless <andre.kless@web.de> 2018-2020
  * @license The MIT License (MIT)
- * @version latest (8.1.2)
+ * @version 8.1.2
  * @changes
  * version 8.1.2 (24.05.2020):
  * - uses ccm v25.5.2
@@ -27,7 +27,7 @@
 
   const component = {
 
-    name: 'submit',
+    name: 'submit', version: [ 8, 1, 2 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-25.5.2.js',
 
