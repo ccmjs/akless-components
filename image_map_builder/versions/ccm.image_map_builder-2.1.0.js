@@ -119,6 +119,7 @@
         config = await $.dataset( this.data );
         if ( !config.ignore ) config.ignore = {};
         if ( !config.ignore.areas ) config.ignore.areas = [];
+        if ( !config.ignore.image ) config.ignore.image = 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==';
 
         this.logger && this.logger.log( 'start', $.clone( config ) );  // logging of 'start' event
         $.setContent( this.element, $.html( this.html.main ) );        // render main HTML structure
