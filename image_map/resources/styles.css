@@ -12,6 +12,7 @@
   border: 1px solid lightgrey;
   border-bottom: none;
   position: relative;
+  overflow: hidden;
 }
 
 .area {
