@@ -6,6 +6,7 @@
  * @changes
  * version 2.1.0 (24.05.2020):
  * - added grid positioning
+ * - transparent pixel as default map image
  * version 2.0.0 (12.05.2020):
  * - removed default image from config
  * - uses ccm.image_map.js v2.0.0 as default
@@ -28,6 +29,11 @@
       "data": {},
       "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-5.1.0.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/image_map_builder/resources/templates.html" ],
+      "ignore": {
+        "defaults": {
+          "image": "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+        }
+      },
       "image_map": [ "ccm.component", "https://ccmjs.github.io/akless-components/image_map/versions/ccm.image_map-2.0.0.js" ],
   //  "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-5.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
   //  "onchange": instance => console.log( instance.getValue() ),
@@ -119,7 +125,6 @@
         config = await $.dataset( this.data );
         if ( !config.ignore ) config.ignore = {};
         if ( !config.ignore.areas ) config.ignore.areas = [];
-        if ( !config.ignore.image ) config.ignore.image = 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==';
 
         this.logger && this.logger.log( 'start', $.clone( config ) );  // logging of 'start' event
         $.setContent( this.element, $.html( this.html.main ) );        // render main HTML structure
