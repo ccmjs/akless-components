@@ -135,7 +135,7 @@
           onchange: async () => {
             const results = submit.getValue();
             if ( results.image_map )
-              results.image_map[ 2 ].image = this.convert( results.image_map[ 2 ].image ) || config.image_map[ 2 ].image;
+              results.image_map[ 2 ].image = this.convert( results.image_map[ 2 ].image ) || config.image_map && config.image_map[ 2 ].image || '';
             else
               results.image = this.convert( results.image ) || config.image;
             results.ignore.areas.forEach( ( area, i ) => {
