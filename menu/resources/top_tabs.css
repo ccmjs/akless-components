@@ -33,6 +33,10 @@
   cursor: pointer;
 }
 
+.entry.disabled {
+  cursor: not-allowed;
+}
+
 #content {
   padding: 0.5em;
 }
