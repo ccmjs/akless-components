@@ -26,7 +26,7 @@ ccm.files[ 'resources.js' ] = {
       "html.1": "../kanban_board/resources/templates.html",
       "ignore": {
         "card": {
-          "component": "https://ccmjs.github.io/akless-components/kanban_card/versions/ccm.kanban_card-2.0.2.js",
+          "component": "https://ccmjs.github.io/akless-components/kanban_card/versions/ccm.kanban_card-3.0.0.js",
           "config": {
             "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/kanban_card/resources/blue.css", { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/weblysleekui/font.css" } ]
           }
@@ -55,14 +55,14 @@ ccm.files[ 'resources.js' ] = {
     "kanban_board.2": {
       "ignore": {
         "card": {
-          "component": "https://ccmjs.github.io/akless-components/kanban_card/versions/ccm.kanban_card-2.0.2.js",
+          "component": "https://ccmjs.github.io/akless-components/kanban_card/versions/ccm.kanban_card-3.0.0.js",
           "config": {
             "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/kanban_card/resources/blue.css", { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/weblysleekui/font.css" } ]
           }
         }
       }
     },
-    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.4.1.js" ]
+    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.6.0.js" ]
   }
 
 };

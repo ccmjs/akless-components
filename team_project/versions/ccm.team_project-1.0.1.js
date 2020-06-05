@@ -2,7 +2,7 @@
  * @overview ccm component for team projects
  * @author André Kless <andre.kless@web.de> 2020
  * @license The MIT License (MIT)
- * @version latest (1.0.1)
+ * @version 1.0.1
  * @changes
  * version 1.0.1 (05.06.2020)
  * - uses ccm v25.5.3
@@ -14,7 +14,7 @@
 ( () => {
   const component = {
 
-    name: 'team_project',
+    name: 'team_project', version: [ 1, 0, 1 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-25.5.3.js',
 
