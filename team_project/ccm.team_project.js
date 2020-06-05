@@ -75,7 +75,7 @@
                 break;
             }
           },
-          user: [ 'ccm.instance', this.user.component.url, JSON.parse( this.user.config ) ]
+          user: this.user ? [ 'ccm.instance', this.user.component.url, JSON.parse( this.user.config ) ] : ''
         } );
         team_nr = teambuild.getUserTeam();
         team_data = teambuild.getTeamData( team_nr );
