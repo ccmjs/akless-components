@@ -18,7 +18,7 @@ ccm.files[ 'resources.js' ] = {
     "html.1": "../image_map_builder/resources/templates.html",
     "image_map.1": "../quest_map/ccm.quest_map.js",
     "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
-    "onchange": event => console.log( event.getValue() ),
+//  "onchange": event => console.log( event.getValue() ),
     "submit.1": "../submit/ccm.submit.js"
   }
 
