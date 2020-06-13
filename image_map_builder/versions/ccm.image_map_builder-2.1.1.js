@@ -178,16 +178,14 @@
               image_map.element.onmousemove = event => {
                 event.preventDefault();
                 [ x, y ] = calc( event.clientX, event.clientY );
-                if ( x >= 0 && x <= 100 ) element.style.left = x = ( x - x % grid_x ) + '%';
-                if ( y >= 0 && y <= 100 ) element.style.top  = y = ( y - y % grid_y ) + '%';
+                if ( x >= 0 && x <= 100 ) element.style.left = ( x = ( x - x % grid_x ) ) + '%';
+                if ( y >= 0 && y <= 100 ) element.style.top  = ( y = ( y - y % grid_y ) ) + '%';
               };
               this.element.onmouseup = () => {
                 this.element.onmouseup = null;
                 image_map.element.onmousemove = null;
                 config.ignore.areas[ i ].x = x;
                 config.ignore.areas[ i ].y = y;
-                element.style.left = ( x / 10 ) + "%";
-                element.style.top = ( y / 10 ) + "%";
                 element.style.width = ( config.ignore.areas[ i ].width / 10 ) + "%";
                 this.onchange && this.onchange( this );
               };
