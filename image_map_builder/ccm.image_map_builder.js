@@ -184,8 +184,8 @@
               this.element.onmouseup = () => {
                 this.element.onmouseup = null;
                 image_map.element.onmousemove = null;
-                config.ignore.areas[ i ].x = x;
-                config.ignore.areas[ i ].y = y;
+                config.ignore.areas[ i ].x = x * 10;
+                config.ignore.areas[ i ].y = y * 10;
                 element.style.width = ( config.ignore.areas[ i ].width / 10 ) + "%";
                 this.onchange && this.onchange( this );
               };
