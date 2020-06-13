@@ -186,6 +186,8 @@
                 image_map.element.onmousemove = null;
                 config.ignore.areas[ i ].x = x;
                 config.ignore.areas[ i ].y = y;
+                element.style.left = ( x / 10 ) + "%";
+                element.style.top = ( y / 10 ) + "%";
                 element.style.width = ( config.ignore.areas[ i ].width / 10 ) + "%";
                 this.onchange && this.onchange( this );
               };
