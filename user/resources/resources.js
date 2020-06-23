@@ -34,6 +34,7 @@ ccm.files[ 'resources.js' ] = {
   /** cloud mode configuration */
   "cloud": {
     "realm": "cloud",
+    "store": "dms-user",
     "url": "https://ccm2.inf.h-brs.de",
     "title": "Please enter Username and Password",
     "hash": [ "ccm.load", { "url": "https://ccmjs.github.io/akless-components/modules/md5.mjs", "type": "module" } ]
