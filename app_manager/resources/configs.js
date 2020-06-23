@@ -114,7 +114,7 @@ ccm.files[ 'configs.js' ] = {
       },
       "active": "en"
     } ],
-    "user": [ "ccm.start", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.3.1.js", {
+    "user": [ "ccm.start", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.0.js", {
       "hash": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/md5.mjs" ],
       "realm": "cloud",
       "store": "dms-user",
