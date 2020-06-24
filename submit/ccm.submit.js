@@ -527,7 +527,7 @@
               // convert instance dependency to app URL
               const app = dataset[ input.name ];
               if ( !app ) return;
-              input.value = $.appURL( app[ 1 ], Array.isArray( app[ 2 ] ) ? { store: app[ 2 ][ 1 ], key: app[ 2 ][ 2 ] } : app[ 2 ] || {}, this.ccm );
+              input.value = $.appURL( app[ 1 ], Array.isArray( app[ 2 ] ) ? { store: app[ 2 ][ 1 ], key: app[ 2 ][ 2 ] } : app[ 2 ] || {}, undefined, this.ccm );
               break;
 
             case 'key':
