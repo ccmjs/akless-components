@@ -28,7 +28,7 @@
 <p><span>There are no settings that you have to make.</span><br><span>You can click directly on 'Create as New' below.</span></p>
       `;
       this.getValue = () => {
-        const key = $.generateKey();
+        const key = this.ccm.helper.generateKey();
         return {
           "live_poll": {
             "url": "https://ccmjs.github.io/akless-components/live_poll/versions/ccm.live_poll-2.4.0.js",
