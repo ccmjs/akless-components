@@ -182,7 +182,7 @@
                   */
                   result = await this.ccm.load( {
                     url: 'https://kaul.inf.h-brs.de/cors/login.php',
-                    method: 'POST',
+                    method: 'GET',
                     params: { realm: 'hbrsinfkaul' },
                     headers: {
                       'Authorization': 'Basic ' + btoa( result.user + ':' + result.token )
