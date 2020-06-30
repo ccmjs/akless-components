@@ -1,0 +1,12 @@
+/**
+ * @overview default layout of ccm component for importance of questions
+ * @author André Kless <andre.kless@web.de> 2020
+ * @license The MIT License (MIT)
+ */
+
+#top:not(:empty) {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0.5em;
+}
