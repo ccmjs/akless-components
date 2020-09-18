@@ -1,0 +1,49 @@
+/**
+ * @overview default layout of ccm component for visualization of a ccm context
+ * @author André Kless <andre.kless@web.de> 2020
+ * @license The MIT License (MIT)
+ */
+
+.level {
+  padding: 0.5em;
+}
+
+.instance {
+  display: flex;
+  justify-content: center;
+  padding: 0.5em;
+}
+
+.instance > div {
+  display: table;
+  border: 1px solid black;
+  border-radius: 0.3em;
+}
+
+.instance > div > div {
+  display: table-row;
+}
+
+.instance > div > div > div {
+  display: table-cell;
+  padding: 0.2em;
+  white-space: nowrap;
+}
+
+.children {
+  display: flex;
+  justify-content: safe space-evenly;
+}
+
+#element > .level > .instance {
+  display: none;
+}
+
+.instance:hover > div {
+  cursor: pointer;
+}
+
+.instance:hover,
+.instance:hover + .children {
+  background-color: lightskyblue;
+}
