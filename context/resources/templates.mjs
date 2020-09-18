@@ -10,7 +10,7 @@ import { repeat } from 'https://unpkg.com/lit-html/directives/repeat.js'
 export const main = instance => html`
   <div class="level">
     <div class="instance">
-      <div>
+      <div title="${instance.config}">
         <div>
           <div><i>ccmjs</i> Version:</div>
           <div>${instance.ccm.version()}</div>
