@@ -4,6 +4,10 @@
  * @license The MIT License (MIT)
  */
 
+#element {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
 .level {
   padding: 0.5em;
 }
@@ -16,8 +20,9 @@
 
 .instance > div {
   display: table;
-  border: 1px solid black;
+  border: 2px solid black;
   border-radius: 0.3em;
+  padding: 0.2em;
 }
 
 .instance > div > div {
