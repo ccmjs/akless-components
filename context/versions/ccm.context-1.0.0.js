@@ -18,14 +18,9 @@
     },
     Instance: function () {
       let $;
-      this.init = async () => {
-        $ = Object.assign( {}, this.ccm.helper, this.helper );  // set shortcut to help functions
-      };
-      this.ready = async () => {};
       this.start = async () => {
-        let instance = this.ccm.context.root( this.instance );
-        const template = $.html( this.html.main, instance );
-        $.render( template, this.element );
+        this.init = async () => $ = Object.assign( {}, this.ccm.helper, this.helper );
+        this.start = async () => $.render( this.html.main( this.ccm.context.root( this.instance ) ), this.element );
       };
     }
   };
