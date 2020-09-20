@@ -13,7 +13,7 @@
     config: {
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/context/resources/styles.css" ],
       "dark": true,
-      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-5.2.0.mjs" ],
+      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-6.0.0.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/context/resources/templates.mjs" ],
       "instance": [ "ccm.instance", "https://ccmjs.github.io/akless-components/blank_blank/ccm.blank_blank.js" ]
     },
