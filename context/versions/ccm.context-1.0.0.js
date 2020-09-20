@@ -13,7 +13,7 @@
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.0.0.js',
     config: {
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/context/resources/styles.css" ],
-      "dark": true,
+      "dark": false,
       "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-6.0.0.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/context/resources/templates.mjs" ],
       "instance": [ "ccm.instance", "https://ccmjs.github.io/akless-components/blank_blank/ccm.blank_blank.js" ]
