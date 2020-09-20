@@ -4,7 +4,7 @@
  * @license The MIT License (MIT)
  * @version latest (1.0.0)
  * @changes
- * version 1.0.0 (18.09.2020)
+ * version 1.0.0 (20.09.2020)
  */
 
 ( () => {
