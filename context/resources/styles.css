@@ -6,6 +6,11 @@
 
 #element {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: white;
+}
+
+[dark] {
+  filter: invert(100%);
 }
 
 .level {
