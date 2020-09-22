@@ -1,0 +1,106 @@
+/**
+ * @overview default layout of ccm component for quick questions
+ * @author André Kless <andre.kless@web.de> 2020
+ * @license The MIT License (MIT)
+ */
+
+#element {
+  height: 100%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(90deg, black 0%, red 50%, gold 100%);
+  color: snow;
+  border-bottom: 1px solid lightgray;
+  font-family: Courgette, sans-serif;
+}
+
+header h1 {
+  margin: 0.3em;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+section#prev {
+  max-width: 60%;
+  max-height: 200px;
+  margin: 3em 0;
+}
+
+section#prev article {
+  border: 1px solid silver;
+  border-radius: 1em;
+  padding: 0.5em;
+}
+
+section#next {
+  flex: 1;
+  padding-bottom: 4em;
+}
+
+section#next h1 {
+  font-size: x-small !important;
+}
+
+section#next p {
+  font-weight: bold;
+  text-align: center;
+}
+
+section#next nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1em 0;
+}
+
+section#next button,
+section#next div {
+  margin: 0.5em;
+}
+
+article {
+  margin: 0 2em;
+}
+
+footer nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1em 0;
+}
+
+footer button {
+  margin: 0.5em;
+}
+
+[data-hidden] {
+  display: none;
+}
+
+button, svg {
+  cursor: pointer;
+}
+
+button[disabled] {
+  cursor: not-allowed;
+}
