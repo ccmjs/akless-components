@@ -36,7 +36,9 @@ export const main = ( instance, event, next, prev, add ) => html`
       </article>
       <article>
         <nav>
-          <button title="${instance.text.like}" @click=${event.like}>${instance.icon.like}</button>
+          <div title="${instance.text.like}" @click=${event.like}>
+            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="64" height="64" viewBox="0 0 50 50" style=" fill:#000000;"><path d="M25,2C12.318,2,2,12.318,2,25c0,12.683,10.318,23,23,23c12.683,0,23-10.317,23-23C48,12.318,37.683,2,25,2z M32.7,36.4\tl-7.7-5l-7.7,5l2.3-8.9l-7.1-5.8l9.2-0.5l3.3-8.6l3.3,8.6l9.2,0.5l-7.1,5.8L32.7,36.4z"></path></svg>
+          </div>
         </nav>
       </article>
     </section>
