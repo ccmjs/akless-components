@@ -84,6 +84,13 @@ export const quick_question2highchart = json => {
     "tooltip": {
       "enabled": false
     },
+    "plotOptions": {
+      "bar": {
+        "dataLabels": {
+          "enabled": true
+        }
+      }
+    },
     "legend": {
       "enabled": false
     },
