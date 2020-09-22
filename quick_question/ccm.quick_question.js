@@ -16,11 +16,11 @@
     ccm: './resources/ccm.js',
 
     config: {
+      "convert": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/json2json.mjs#quick_question2highchart" ],
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/quick_question/resources/styles.css" ],
+      "diagram": [ "ccm.component", "https://ccmjs.github.io/akless-components/highchart/versions/ccm.highchart-3.0.2.js" ],
       "store": { "store": [ "ccm.store" ] },
       "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-6.0.0.mjs" ],
-      "diagram": [ "ccm.component", "https://ccmjs.github.io/akless-components/highchart/versions/ccm.highchart-3.0.2.js" ],
-      "convert": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/json2json.mjs#quick_question2highchart" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/quick_question/resources/templates.mjs" ],
       "icon": {
         "yes": "YES",
