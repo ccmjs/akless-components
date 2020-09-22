@@ -40,6 +40,10 @@ section {
   align-items: center;
 }
 
+section#add {
+  flex: 1;
+}
+
 section#prev {
   max-width: 60%;
   max-height: 200px;
