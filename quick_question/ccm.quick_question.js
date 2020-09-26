@@ -68,7 +68,7 @@
         const user = this.user.getValue().key;
 
         // random selection of next question
-        next = await this.store.get( ( 1 + Math.floor( Math.random() * await this.store.count() ) ).toString() );
+        if ( !next ) next = await this.store.get( ( 1 + Math.floor( Math.random() * await this.store.count() ) ).toString() );
 
         /**
          * when the question is answered by the user
@@ -78,6 +78,7 @@
         const finish = async () => {
           await this.store.set( next );  // update data of answered question
           prev = next;                   // current question is now previous question
+          next = null;                   // next question is chosen at random
           this.start();                  // restart => shows next question
         };
 
@@ -112,13 +113,34 @@
             add = true;
             this.start();
           },
-          confirm: () => console.log( 'TODO' ),
+          confirm: async () => {
+            add = false;
+            prev = null;
+            next = {
+              "key": ( await this.store.count() + 1 ).toString(),
+              "text": this.element.querySelector( '[contenteditable]' ).innerText.trim(),
+              "voting": {
+                "yes": {},
+                "no": {},
+                "neither": {}
+              },
+              "likes": {}
+            };
+            await this.store.set( next );
+            alert( 'Question saved!' );
+            this.start();
+          },
           share: () => console.log( 'TODO' ),
           cancel: () => {
             add = false;
             this.start();
           },
-          report: () => console.log( 'TODO' )
+          report: async () => {
+            await this.store.del( next.key );
+            next = null;
+            alert( 'Question deleted!' );
+            this.start();
+          }
         };
 
         // render content in webpage area via lit-html template

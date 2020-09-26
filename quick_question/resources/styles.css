@@ -88,7 +88,7 @@ article {
 
 footer nav {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
   padding: 1em 0;
 }
@@ -97,14 +97,37 @@ footer button {
   margin: 0.5em;
 }
 
-[data-hidden] {
-  display: none;
-}
-
 button, svg {
   cursor: pointer;
 }
 
 button[disabled] {
   cursor: not-allowed;
+}
+
+svg:not(:hover) {
+  opacity: 0.7;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  font-size: large;
+  cursor: pointer;
+  padding: 0 0.5em;
+}
+
+.button:hover {
+  background-color: lightgray;
+  border-radius: 0.5em;
+}
+
+.button svg {
+  padding-top: 0.3em;
+  padding-right: 0.3em;
+  opacity: 1;
+}
+
+[data-hidden] {
+  display: none;
 }
