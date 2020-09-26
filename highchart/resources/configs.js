@@ -8,7 +8,7 @@ ccm.files[ 'configs.js' ] = {
 
   "local": {
     "key": "local",
-    "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
+//  "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
     "settings": {
       "title": {
         "text": "Solar Employment Growth by Sector, 2010-2016"
