@@ -46,7 +46,7 @@ export const main = ( instance, event, next, prev, add ) => html`
         <nav>
         
           <!-- button: like question -->
-          <div title="${instance.text.like}" @click=${event.like}>${unsafeSVG(instance.icon.like)}</div>
+          <div class="icon" title="${instance.text.like}" @click=${event.like}>${unsafeSVG(instance.icon[next.likes[instance.user.getValue().key]?'like_on':'like_off'])}</div>
           
         </nav>
       </article>
@@ -68,7 +68,7 @@ export const main = ( instance, event, next, prev, add ) => html`
       </div>
       
       <!-- button: share question -->
-      <div title="${instance.text.share}" @click=${event.share} ?data-hidden=${add}>${unsafeSVG(instance.icon.share)}</div>
+      <div title="${instance.text.share}" @click=${event.share} ?data-hidden=${add||true}>${unsafeSVG(instance.icon.share)}</div>
       
       <!-- button: cancel new question -->
       <div class="button" title="${instance.text.cancel}" @click=${event.cancel} ?data-hidden=${!add}>

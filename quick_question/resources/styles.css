@@ -69,18 +69,14 @@ section#next nav {
   align-items: center;
 }
 
-section#next button,
-section#next div {
-  margin: 0.5em;
-}
-
 footer {
   padding: 0.5em 0;
 }
 
 footer nav {
+  margin: 0 1em;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -89,6 +85,7 @@ footer button {
 }
 
 .icon {
+  margin: 0.5em;
   cursor: pointer;
 }
 
