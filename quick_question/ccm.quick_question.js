@@ -63,7 +63,7 @@
 
     Instance: function () {
 
-      let $, prev, next, add = false;
+      let $, prev, next, add = false, numbers = [];
 
       this.start = async () => {
 
@@ -77,7 +77,15 @@
         const user = this.user.getValue().key;
 
         // random selection of next question
-        if ( !next ) next = await this.store.get( ( 1 + Math.floor( Math.random() * await this.store.count() ) ).toString() );
+        if ( !next ) {
+          if ( !numbers.length ) {
+            const n = await this.store.count();
+            for ( let i = 1; i <= n; i++ )
+              numbers.push( i );
+            $.shuffleArray( numbers );
+          }
+          next = await this.store.get( numbers.pop().toString() );
+        }
 
         /**
          * when the question is answered by the user

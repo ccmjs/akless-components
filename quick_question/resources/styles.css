@@ -115,3 +115,10 @@ footer button {
 [data-hidden] {
   display: none;
 }
+
+[contenteditable] {
+  border: 1px solid black;
+  border-radius: 0.3em;
+  background-color: snow;
+  padding: 0.5em;
+}
