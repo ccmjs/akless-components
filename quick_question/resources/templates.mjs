@@ -43,8 +43,6 @@ export const main = ( instance, event, next, prev, add ) => html`
           <div class="icon" title="${instance.text.no}" @click=${event.no}>${unsafeSVG(instance.icon.no)}</div>
           
         </nav>
-      </article>
-      <article>
         <nav>
         
           <!-- button: like question -->
