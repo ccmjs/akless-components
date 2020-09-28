@@ -63,7 +63,7 @@
 
     Instance: function () {
 
-      let $, prev, next, add = false, numbers = [];
+      let $, prev, next, add = false, keys = [];
 
       this.start = async () => {
 
@@ -78,13 +78,12 @@
 
         // random selection of next question
         if ( !next ) {
-          if ( !numbers.length ) {
-            const n = await this.store.count();
-            for ( let i = 1; i <= n; i++ )
-              numbers.push( i );
-            $.shuffleArray( numbers );
+          if ( !keys.length ) {
+            const questions = await this.store.get();
+            questions.forEach( question => keys.push( question.key ) )
+            $.shuffleArray( keys );
           }
-          next = await this.store.get( numbers.pop().toString() );
+          next = await this.store.get( keys.pop().toString() );
         }
 
         /**
@@ -133,7 +132,6 @@
           },
           confirm: async () => {
             next = {
-              "key": ( await this.store.count() + 1 ).toString(),
               "text": this.element.querySelector( '[contenteditable]' ).innerText.trim(),
               "voting": {
                 "yes": {},
@@ -146,7 +144,7 @@
             try {
               add = false;
               prev = null;
-              await this.store.set( next );
+              next.key = await this.store.set( next );
               alert( 'Question saved!' );
             }
             catch ( e ) {}
