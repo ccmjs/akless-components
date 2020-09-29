@@ -77,7 +77,7 @@
             let questions = await this.store.get();
             questions = questions.filter( question => !question.reported );
             $.shuffleArray( questions );
-            questions.sort( ( a, b ) => Object.keys( a.likes ).length - Object.keys( b.likes ).length );
+            questions.sort( ( a, b ) => Object.values( a.likes ).filter( like => like ).length - Object.values( b.likes ).filter( like => like ).length );
             keys = questions.map( question => question.key );
           }
           if ( keys.length )
