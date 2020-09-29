@@ -19,7 +19,7 @@
       "convert": [ "ccm.load", "https://ccmjs.github.io/akless-components/quick_question/resources/json2json.mjs#quick_question2highchart" ],
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/quick_question/resources/styles.css" ],
       "diagram": [ "ccm.component", "https://ccmjs.github.io/akless-components/highchart/versions/ccm.highchart-3.0.2.js" ],
-//    "feedback": [ "ccm.start", "https://ccmjs.github.io/tkless-components/feedback/versions/ccm.feedback-5.0.0.js" ],
+//    "feedback": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/feedback/versions/ccm.feedback-5.0.0.js" ],
       "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/quick_question/resources/helper.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/quick_question/resources/templates.mjs" ],
       "icon": {
@@ -167,7 +167,8 @@
         // render content in webpage area via lit-html template
         $.render( $.html( this.html.main, this, event, next, prev, add ), this.element );
 
-        this.feedback
+        // render feedback aside
+        this.feedback.start();
 
         // render diagram for results of previous question
         prev && await this.diagram.start( {
