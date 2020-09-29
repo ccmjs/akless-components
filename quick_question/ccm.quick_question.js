@@ -19,7 +19,7 @@
       "convert": [ "ccm.load", "https://ccmjs.github.io/akless-components/quick_question/resources/json2json.mjs#quick_question2highchart" ],
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/quick_question/resources/styles.css" ],
       "diagram": [ "ccm.component", "https://ccmjs.github.io/akless-components/highchart/versions/ccm.highchart-3.0.2.js" ],
-      "store": { "store": [ "ccm.store" ] },
+//    "feedback": [ "ccm.start", "https://ccmjs.github.io/tkless-components/feedback/versions/ccm.feedback-5.0.0.js" ],
       "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/quick_question/resources/helper.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/quick_question/resources/templates.mjs" ],
       "icon": {
@@ -34,31 +34,25 @@
         "cancel": "<svg xmlns=\"http://www.w3.org/2000/svg\" x=\"0px\" y=\"0px\" width=\"48\" height=\"48\" viewBox=\"0 0 172 172\" style=\" fill:#000000;\"><defs><linearGradient x1=\"35.15967\" y1=\"35.15967\" x2=\"137.46025\" y2=\"137.46025\" gradientUnits=\"userSpaceOnUse\" id=\"color-1_hRIvjOSQ8I0i_gr1\"><stop offset=\"0\" stop-color=\"#f44f5a\"></stop><stop offset=\"0.443\" stop-color=\"#ee3d4a\"></stop><stop offset=\"1\" stop-color=\"#e52030\"></stop></linearGradient><linearGradient x1=\"23.91875\" y1=\"23.91875\" x2=\"146.68017\" y2=\"146.68017\" gradientUnits=\"userSpaceOnUse\" id=\"color-2_hRIvjOSQ8I0i_gr2\"><stop offset=\"0\" stop-color=\"#f44f5a\"></stop><stop offset=\"0.443\" stop-color=\"#ee3d4a\"></stop><stop offset=\"1\" stop-color=\"#e52030\"></stop></linearGradient></defs><g fill=\"none\" fill-rule=\"nonzero\" stroke=\"none\" stroke-width=\"1\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke-miterlimit=\"10\" stroke-dasharray=\"\" stroke-dashoffset=\"0\" font-family=\"none\" font-weight=\"none\" font-size=\"none\" text-anchor=\"none\" style=\"mix-blend-mode: normal\"><path d=\"M0,172v-172h172v172z\" fill=\"none\"></path><g><path d=\"M86,14.33333c-39.57792,0 -71.66667,32.08875 -71.66667,71.66667c0,39.57792 32.08875,71.66667 71.66667,71.66667c39.57792,0 71.66667,-32.08875 71.66667,-71.66667c0,-39.57792 -32.08875,-71.66667 -71.66667,-71.66667zM86,136.16667c-27.70633,0 -50.16667,-22.46033 -50.16667,-50.16667c0,-27.70633 22.46033,-50.16667 50.16667,-50.16667c27.70633,0 50.16667,22.46033 50.16667,50.16667c0,27.70633 -22.46033,50.16667 -50.16667,50.16667z\" fill=\"url(#color-1_hRIvjOSQ8I0i_gr1)\"></path><path d=\"M47.91275,139.28775l-15.2005,-15.2005l91.375,-91.375l15.2005,15.2005z\" fill=\"url(#color-2_hRIvjOSQ8I0i_gr2)\"></path></g></g></svg>",
         "report": "<svg xmlns=\"http://www.w3.org/2000/svg\" x=\"0px\" y=\"0px\" width=\"24\" height=\"24\" viewBox=\"0 0 172 172\" style=\" fill:#000000;\"><g fill=\"none\" fill-rule=\"nonzero\" stroke=\"none\" stroke-width=\"1\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke-miterlimit=\"10\" stroke-dasharray=\"\" stroke-dashoffset=\"0\" font-family=\"none\" font-weight=\"none\" font-size=\"none\" text-anchor=\"none\" style=\"mix-blend-mode: normal\"><path d=\"M0,172v-172h172v172z\" fill=\"none\"></path><g><path d=\"M169.34609,86c0,-46.02344 -37.32266,-83.34609 -83.34609,-83.34609c-46.02344,0 -83.34609,37.32266 -83.34609,83.34609c0,46.02344 37.32266,83.34609 83.34609,83.34609c46.02344,0 83.34609,-37.32266 83.34609,-83.34609z\" fill=\"#666666\"></path><path d=\"M49.08047,60.97266c0,-4.66953 1.51172,-9.40625 4.50156,-14.21016c2.98984,-4.80391 7.39063,-8.76797 13.13516,-11.92578c5.74453,-3.15781 12.46328,-4.73672 20.15625,-4.73672c7.12187,0 13.4375,1.31016 18.87969,3.96406c5.47578,2.62031 9.675,6.21484 12.66484,10.75c2.98984,4.53516 4.46797,9.43984 4.46797,14.74766c0,4.19922 -0.83984,7.86094 -2.55312,10.98516c-1.71328,3.15781 -3.72891,5.87891 -6.04687,8.16328c-2.35156,2.28438 -6.51719,6.14766 -12.59766,11.55625c-1.67969,1.51172 -3.02344,2.85547 -4.03125,4.03125c-1.00781,1.14219 -1.74688,2.21719 -2.25078,3.15781c-0.50391,0.97422 -0.87344,1.91484 -1.14219,2.88906c-0.26875,0.97422 -0.67187,2.65391 -1.20938,5.07266c-0.94062,5.10625 -3.86328,7.69297 -8.76797,7.69297c-2.55313,0 -4.70312,-0.83984 -6.45,-2.51953c-1.74687,-1.67969 -2.62031,-4.16563 -2.62031,-7.45781c0,-4.13203 0.63828,-7.72656 1.91484,-10.75c1.27656,-3.02344 2.98984,-5.67734 5.10625,-7.96172c2.11641,-2.28437 4.97187,-5.00547 8.56641,-8.16328c3.15781,-2.75469 5.40859,-4.8375 6.81953,-6.24844c1.41094,-1.41094 2.58672,-2.95625 3.52734,-4.70312c0.97422,-1.71328 1.44453,-3.59453 1.44453,-5.61016c0,-3.93047 -1.47812,-7.25625 -4.40078,-9.97734c-2.92266,-2.72109 -6.71875,-4.06484 -11.32109,-4.06484c-5.40859,0 -9.40625,1.37734 -11.95938,4.09844c-2.55312,2.72109 -4.73672,6.75234 -6.48359,12.06016c-1.67969,5.57656 -4.8375,8.33125 -9.50703,8.33125c-2.75469,0 -5.07266,-0.97422 -6.9875,-2.92266c-1.88125,-1.88125 -2.85547,-3.96406 -2.85547,-6.24844zM85.12656,141.86641c-2.98984,0 -5.61016,-0.97422 -7.86094,-2.92266c-2.25078,-1.94844 -3.35937,-4.66953 -3.35937,-8.16328c0,-3.09063 1.075,-5.71094 3.25859,-7.82734c2.15,-2.11641 4.8375,-3.15781 7.96172,-3.15781c3.09063,0 5.71094,1.075 7.82734,3.15781c2.11641,2.11641 3.15781,4.73672 3.15781,7.82734c0,3.46016 -1.10859,6.14766 -3.32578,8.12969c-2.21719,1.98203 -4.77031,2.95625 -7.65937,2.95625z\" fill=\"#ffffff\"></path></g><g><g id=\"Layer_1\"><path d=\"M168.85151,153.64877l-43.00028,-43.00028c-2.11506,-2.11506 -4.89192,-3.16419 -7.66407,-3.14807c-2.73016,0.01579 -5.45562,1.06526 -7.53876,3.14807c-2.12547,2.12581 -3.17494,4.92047 -3.14773,7.70673c0.02654,2.71605 1.07567,5.42404 3.14773,7.4961l43.00028,43.00028c2.0986,2.0986 4.84892,3.14807 7.5999,3.1484c2.75166,0.00034 5.50366,-1.04913 7.60293,-3.1484c2.11002,-2.11002 3.15949,-4.87915 3.1484,-7.64492c-0.01109,-2.73688 -1.06055,-5.47006 -3.1484,-7.55791z\" fill=\"#404041\"></path><path d=\"M153.64868,110.64849l-43.00028,43.00028c-2.11506,2.11506 -3.16419,4.89192 -3.14807,7.66407c0.01579,2.73016 1.06526,5.45562 3.14807,7.53876c2.12581,2.12581 4.92047,3.17494 7.70673,3.14773c2.71605,-0.02654 5.42404,-1.07567 7.4961,-3.14773l43.00028,-43.00028c2.0986,-2.0986 3.14807,-4.84892 3.1484,-7.5999c0.00034,-2.75166 -1.04913,-5.50366 -3.1484,-7.60293c-2.11002,-2.11002 -4.87915,-3.15949 -7.64492,-3.1484c-2.73688,0.01109 -5.47006,1.06055 -7.55791,3.1484z\" fill=\"#404041\"></path><path d=\"M114.44919,165.05081v0c-2.09994,-2.09994 -2.09994,-5.50164 0,-7.60125l43.00028,-43.00028c2.09994,-2.09994 5.50164,-2.09994 7.60125,0v0c2.09994,2.09994 2.09994,5.50164 0,7.60125l-43.00028,43.00028c-2.09994,2.09994 -5.50131,2.09994 -7.60125,0z\" fill=\"#e84849\"></path><path d=\"M114.44919,114.44928v0c2.09994,-2.09994 5.50164,-2.09994 7.60125,0l43.00028,43.00028c2.09994,2.09994 2.09994,5.50164 0,7.60125v0c-2.09994,2.09994 -5.50164,2.09994 -7.60125,0l-43.00028,-43.00028c-2.09994,-2.09994 -2.09994,-5.50131 0,-7.60125z\" fill=\"#e84849\"></path></g></g></g></svg>"
       },
-      "permissions": {
-        "access": {
-          "get": "all",
-          "set": "all",
-          "del": "group"
-        },
-        "group": [ "admin" ]
-      },
+//    "permissions": { "access": "all" },
+      "store": { "store": [ "ccm.store" ] },
       "text": {
-        "title": "Bürgervotum",
-        "add_title": "Hier kannst du eine neue Frage stellen:",
-        "add_placeholder": "...was möchtest du wissen?",
-        "prev": "Vorherige Frage:",
-        "next": "Nächste Frage:",
-        "yes": "Ja",
-        "neither": "Weiß nicht",
-        "no": "Nein",
-        "like": "Wichtige Frage",
-        "add": "Frage stellen",
-        "confirm": "Bestätigen",
-        "share": "Frage teilen",
-        "cancel": "Abbrechen",
-        "report": "Frage melden"
+        "title": "Quick Questions",
+        "add_title": "Here you can ask a new question:",
+        "add_placeholder": "...what do you want to know?",
+        "prev": "Previous Question:",
+        "next": "Next Question:",
+        "yes": "Yes",
+        "neither": "Don't know",
+        "no": "No",
+        "like": "Important Question",
+        "add": "Add question",
+        "confirm": "Comfirm",
+        "share": "Share question",
+        "cancel": "Cancel",
+        "report": "Report question"
       },
-      "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.0.js" ]
+      "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.0.js", { "guest": true, "logged_in": true } ]
     },
 
     Instance: function () {
@@ -83,7 +77,10 @@
             questions.forEach( question => !question.reported && keys.push( question.key ) );
             $.shuffleArray( keys );
           }
-          next = await this.store.get( keys.pop().toString() );
+          if ( keys.length )
+            next = await this.store.get( keys.pop().toString() );
+          else
+            add = true;
         }
 
         /**
@@ -169,6 +166,8 @@
 
         // render content in webpage area via lit-html template
         $.render( $.html( this.html.main, this, event, next, prev, add ), this.element );
+
+        this.feedback
 
         // render diagram for results of previous question
         prev && await this.diagram.start( {
