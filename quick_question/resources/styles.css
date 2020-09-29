@@ -17,10 +17,7 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: linear-gradient(90deg, black 0%, red 50%, gold 100%);
-  color: snow;
   border-bottom: 1px solid lightgray;
-  font-family: Courgette, sans-serif;
 }
 
 header h1 {

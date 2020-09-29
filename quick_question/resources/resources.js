@@ -10,7 +10,6 @@ ccm.files[ 'resources.js' ] = {
   "local": {
     "convert.1": "./../modules/json2json.mjs#question2highchart",
     "css.1": "./resources/styles.css",
-    "font": [ "ccm.load", { "url": "https://fonts.googleapis.com/css?family=Courgette", "context": "head", "type": "css" } ],
     "diagram": [ "ccm.component", "./../highchart/ccm.highchart.js", [ "ccm.get", "./../highchart/resources/configs.js", "local" ] ],
     "helper.1": "./resources/helper.mjs",
     "html.1": "./resources/templates.mjs",
@@ -25,7 +24,6 @@ ccm.files[ 'resources.js' ] = {
 
   /** demo configuration (absolute paths) */
   "demo": {
-    "font": [ "ccm.load", { "url": "https://fonts.googleapis.com/css?family=Courgette", "context": "head", "type": "css" } ],
     "store": [ "ccm.store", { "url": "https://ccm2.inf.h-brs.de", "name": "quick_question" } ]
   }
 
