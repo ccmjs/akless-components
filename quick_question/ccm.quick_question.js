@@ -74,9 +74,11 @@
         // random selection of next question
         if ( !next ) {
           if ( !keys.length ) {
-            const questions = await this.store.get();
-            questions.forEach( question => !question.reported && keys.push( question.key ) );
-            $.shuffleArray( keys );
+            let questions = await this.store.get();
+            questions = questions.filter( question => !question.reported );
+            $.shuffleArray( questions );
+            questions.sort( ( a, b ) => Object.keys( a.likes ).length - Object.keys( b.likes ).length );
+            keys = questions.map( question => question.key );
           }
           if ( keys.length )
             next = await this.store.get( keys.pop().toString() );
@@ -170,7 +172,7 @@
 
         // render diagram for results of previous question
         prev && await this.diagram.start( {
-          root: this.element.querySelector( '#diagram' ),
+          root: this.element.querySelector( '#chart' ),
           style: '',
           settings: this.convert( {
             title: this.text.prev,
