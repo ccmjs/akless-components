@@ -23,7 +23,11 @@ export const main = ( instance, event, next, prev, add ) => html`
     
     <!-- section: results for previous question -->
     <section id="prev" ?data-hidden=${add||!prev}>
-      <article></article>
+      <article id="diagram"></article>
+      <aside title="${instance.text.likes}">
+        <div>${unsafeSVG(instance.icon.likes)}</div>
+        <div id="likes">${prev&&Object.keys(prev.likes).length}</div>
+      </aside>
     </section>
     
     <!-- section: current question -->
