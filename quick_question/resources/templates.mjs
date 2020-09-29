@@ -46,7 +46,7 @@ export const main = ( instance, event, next, prev, add ) => html`
         <nav>
         
           <!-- button: like question -->
-          <div class="icon" title="${instance.text.like}" @click=${event.like}>${unsafeSVG(instance.icon[next.likes[instance.user.getValue().key]?'like_on':'like_off'])}</div>
+          <div class="icon" title="${instance.text.like}" @click=${event.like}>${unsafeSVG(next&&instance.icon[next.likes[instance.user.getValue().key]?'like_on':'like_off'])}</div>
           
         </nav>
       </article>
