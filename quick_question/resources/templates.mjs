@@ -1,5 +1,5 @@
 /**
- * @overview HTML templates of ccm component for quick questions
+ * @overview HTML templates of component for quick questions
  * @author André Kless <andre.kless@web.de> 2020
  * @license The MIT License (MIT)
  */
