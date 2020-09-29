@@ -52,51 +52,62 @@ export function poll_to_plotly( poll ) {
 }
 
 /**
- * converts member votes of a live poll to a Highchart.js bar chart configuration
- * @param {Object} poll - member votings of a live poll
- * @param {String[]} poll - available answers
- * @returns {Object} Highchart.js bar chart configuration
+ * transforms question data to highchart configuration
+ * @param {Object} json - question data
+ * @returns {Object} highchart configuration
  */
-export function poll_to_highchart( poll, answers ) {
-
-  const data = Array( answers.length ).fill( 0 );
-  Object.values( poll ).forEach( value => data[ value - 1 ]++ );
-
-  const categories = [];
-  for ( let i = 0; i < answers.length; i++ )
-    categories[ i ] = String.fromCharCode( 65 + i );
-
+export const question2highchart = json => {
   return {
-    settings: {
-      chart: {
-        type: 'column'
+    "chart": {
+      "type": "bar",
+      "width": "300",
+      "height": "200"
+    },
+    "title": {
+      "text": json.title
+    },
+    "subtitle": {
+      "text": json.subtitle
+    },
+    "xAxis": {
+      "tickLength": 0,
+      "lineWidth": 0,
+      "categories": json.categories,
+      "title": {
+        "text": null
+      }
+    },
+    "yAxis": {
+      "gridLineWidth": 0,
+      "title": {
+        "text": null
       },
-      title: {
-        text: ''
-      },
-      xAxis: {
-        categories: categories,
-        crosshair: true
-      },
-      yAxis: {
-        min: 0,
-        title: {
-          text: 'Votes'
-        },
-        tickInterval: 1
-      },
-      plotOptions: {
-        column: {
-          pointPadding: 0.2,
-          borderWidth: 0
+      "labels": {
+        "enabled": false
+      }
+    },
+    "tooltip": {
+      "enabled": false
+    },
+    "plotOptions": {
+      "bar": {
+        "dataLabels": {
+          "enabled": true
         }
-      },
-      legend: false,
-      tooltip: false,
-      series: [ { data: data } ]
-    }
+      }
+    },
+    "legend": {
+      "enabled": false
+    },
+    "credits": {
+      "enabled": false
+    },
+    "series": [
+      {
+        "data": json.data
+      }
+    ]
   };
-
 }
 
 /**
