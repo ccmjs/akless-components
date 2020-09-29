@@ -80,7 +80,7 @@
         if ( !next ) {
           if ( !keys.length ) {
             const questions = await this.store.get();
-            questions.forEach( question => keys.push( question.key ) )
+            questions.forEach( question => !question.reported && keys.push( question.key ) );
             $.shuffleArray( keys );
           }
           next = await this.store.get( keys.pop().toString() );
@@ -157,9 +157,10 @@
           },
           report: async () => {
             try {
-              await this.store.del( next.key );
+              next.reported = true;
+              await this.store.set( next );
               next = null;
-              alert( 'Question deleted!' );
+              alert( 'Question reported!' );
               this.start();
             }
             catch ( e ) {}
