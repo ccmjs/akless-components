@@ -145,7 +145,7 @@
               add = false;
               prev = null;
               next.key = await this.store.set( next );
-              this.element.querySelector( '[contenteditable]' ).innerHTML = '';
+              this.element.querySelector( '[contenteditable]' ).innerHTML = this.text.add_placeholder;
               alert( 'Question saved!' );
             }
             catch ( e ) {}
