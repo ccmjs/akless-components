@@ -4,8 +4,8 @@
  * @license The MIT License (MIT)
  */
 
-import { html } from 'https://unpkg.com/lit-html'
-import { repeat } from 'https://unpkg.com/lit-html/directives/repeat.js'
+import { html } from 'https://unpkg.com/lit-html';
+import { repeat } from 'https://unpkg.com/lit-html/directives/repeat.js';
 
 export const main = instance => html`
   <div class="level">
