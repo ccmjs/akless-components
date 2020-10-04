@@ -11,7 +11,7 @@ ccm.files[ 'resources.js' ] = {
     "convert.1": "./../modules/json2json.mjs#question2highchart",
     "css.1": "./resources/styles.css",
     "diagram": [ "ccm.component", "./../highchart/ccm.highchart.js", [ "ccm.get", "./../highchart/resources/configs.js", "local" ] ],
-    "helper.1": "./resources/helper.mjs",
+    "helper.1": "./../modules/helper.mjs",
     "html.1": "./resources/templates.mjs",
     "store": [ "ccm.store", { "url": "https://ccm2.inf.h-brs.de", "name": "quick_question" } ],
     "user": [ "ccm.instance", "./../user/ccm.user.js", {
