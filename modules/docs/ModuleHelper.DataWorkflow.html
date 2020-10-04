@@ -1,0 +1,1641 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>helper.mjs Namespace: DataWorkflow</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.cerulean.css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+<div class="container">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="index.html">helper.mjs</a>
+		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+        </button>
+	</div>
+	<div class="navbar-collapse collapse" id="topNavigation">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b class="caret"></b></a>
+				<ul class="dropdown-menu inline">
+					<li><a href="ModuleHelper.html">ModuleHelper</a></li><li><a href="ModuleHelper.ActionData.html">ModuleHelper.ActionData</a></li><li><a href="ModuleHelper.AsynchronousProgramming.html">ModuleHelper.AsynchronousProgramming</a></li><li><a href="ModuleHelper.BackwardsCompatibility.html">ModuleHelper.BackwardsCompatibility</a></li><li><a href="ModuleHelper.Checker.html">ModuleHelper.Checker</a></li><li><a href="ModuleHelper.DataHandling.html">ModuleHelper.DataHandling</a></li><li><a href="ModuleHelper.DataWorkflow.html">ModuleHelper.DataWorkflow</a></li><li><a href="ModuleHelper.DomManipulation.html">ModuleHelper.DomManipulation</a></li><li><a href="ModuleHelper.HandoverApp.html">ModuleHelper.HandoverApp</a></li><li><a href="ModuleHelper.InputElements.html">ModuleHelper.InputElements</a></li><li><a href="ModuleHelper.Others.html">ModuleHelper.Others</a></li><li><a href="ModuleHelper.Security.html">ModuleHelper.Security</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+        
+            <div class="col-sm-3 col-md-3">
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" name="q" id="search-input">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" id="search-submit"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        
+	</div>
+
+</div>
+</div>
+
+
+<div class="container" id="toc-content">
+<div class="row">
+
+	
+	<div class="col-md-8">
+	
+		<div id="main">
+			
+
+	<h1 class="page-title">Namespace: DataWorkflow</h1>
+<section>
+
+<header>
+    
+        <h2>
+            <span class="ancestors"><a href="ModuleHelper.html">ModuleHelper</a>.</span>
+        
+        DataWorkflow
+        </h2>
+        
+    
+</header>
+
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description"><p>help functions for data workflow handling</p></div>
+        
+
+        
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="helper.mjs.html">helper.mjs</a>,
+				 <a href="helper.mjs.html#sunlight-1-line-440">line 440</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        <dl>
+            
+<hr>
+<dt>
+    <h4 class="name" id=".exports.dataset"><span class="type-signature">&lt;async, static> </span>exports.dataset( [settings])</h4>
+    
+    
+    <p class="summary"><p>gets a dataset from a datastore via given settings</p></p>
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>The original settings given are not changed (they are cloned).<br>
+If the settings do not contain a dataset key, a unique key is generated.<br>
+If the dataset does not exist in the datastore, an empty dataset is returned. This dataset is not newly created in the datastore and is only returned locally.<br>
+Instead of the settings, a dataset can be given directly. This dataset is then returned as result.<br>
+If the dataset key is specified in the settings directly as the dataset, this dataset is returned as the result.<br>
+An instance for user authentication that can be reached from the datastore is automatically detected.</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Argument</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>settings</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    {}
+                
+                </td>
+            
+
+            <td class="description last"><p>contains the required data to determine the dataset (or is directly the dataset)</p>
+                <h6 class="method-params-label method-subparams-label">Properties</h6>
+                
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Argument</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>store</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>the datastore that contains the dataset</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>key</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">*</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>the key of the dataset in the datastore (or initial dataset)</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>login</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The user must log in if he is not already logged in to receive the dataset (only if an instance for user authentication could be determined automatically).</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>user</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The dataset key given in the settings is expanded to a user-specific key: <code>[ dataset_key, user_key ]</code> (only if user is detected and logged in)</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>permissions</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>If the dataset does not exist, the empty dataset then returned will contain these permission settings.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>convert</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>With this function, the data contained in the result dataset can be adjusted.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="helper.mjs.html">helper.mjs</a>,
+				 <a href="helper.mjs.html#sunlight-1-line-503">line 503</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Throws:</h5>
+    
+            
+
+<dl>
+    <dt>
+        <div class="param-desc">
+        <p>if user must log in and login is canceled</p>
+        </div>
+    </dt>
+    <dt>
+        <dl>
+            <dt>
+                Type
+            </dt>
+            <dd>
+                
+<span class="param-type">Error</span>
+
+
+
+            </dd>
+        </dl>
+    </dt>
+</dl>
+
+
+        
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;Object></span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+        <h5>Examples</h5>
+        
+    <pre class="sunlight-highlight-javascript">// load dataset by datastore and key
+const dataset = await dataset( { store: datastore, key: dataset_key } );
+console.log( dataset );  // =&gt; { key: dataset_key, ... }</pre>
+
+    <pre class="sunlight-highlight-javascript">// passed dataset is directly returned as the result
+const dataset = await dataset( { key: dataset_key, ... } );
+console.log( dataset );  // =&gt; { key: dataset_key, ... }</pre>
+
+    <pre class="sunlight-highlight-javascript">// passed dataset as key is directly returned as the result
+const dataset = await dataset( { store: datastore, key: { key: dataset_key, ... } } );
+console.log( dataset );  // =&gt; { key: dataset_key, ... }</pre>
+
+    <pre class="sunlight-highlight-javascript">// load of an user-specific dataset
+const dataset = await dataset( {
+  store: datastore,
+  key: dataset_key,
+  login: true,       // user must log in if not already logged in
+  user: true         // dataset key and user key will be combined
+} );
+console.log( dataset );  // =&gt; { key: [ dataset_key, user_key ], ... }</pre>
+
+    <pre class="sunlight-highlight-javascript">// get new empty dataset with generated key that contains only given permission settings
+const dataset = await dataset( {
+  store: datastore,
+  permissions: { creator: &#x27;john&#x27;, realm: &#x27;guest&#x27;, access: &#x27;creator&#x27; }
+} );
+console.log( dataset );  // =&gt; { key: generated_key, _: { creator: &#x27;john&#x27;, realm: &#x27;guest&#x27;, access: &#x27;creator&#x27; } }</pre>
+
+    <pre class="sunlight-highlight-javascript">// adaptation of the data structure of the loaded dataset using a convert function
+const dataset = await dataset( {
+  store: datastore,
+  key: dataset_key,
+  convert: dataset =&gt; { dataset.lang = dataset.lang.toUpperCase(); return dataset; }
+} );
+console.log( dataset );  // =&gt; { key: dataset_key, lang: &#x27;EN&#x27;, ... }</pre>
+
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id=".exports.onFinish"><span class="type-signature">&lt;async, static> </span>exports.onFinish(settings [, results])</h4>
+    
+    
+    <p class="summary"><p>allows a declarative way to perform common finish actions</p></p>
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>The original parameters given are not changed (they are cloned).<br>
+If an instance is passed for <code>settings</code>, the finish actions defined via the <code>instance.onfinish</code> property are used.<br>
+If a function is passed for <code>settings</code>, the function is called with the result data.<br>
+If an instance is passed for <code>settings</code>, the result data are automatically determined via <code>instance.getValue()</code>. To do this, the instance must have a <code>getValue</code> method.<br>
+If an instance is passed for <code>settings</code>, the nearest instance for user authentication is automatically determined.</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Argument</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>settings</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+|
+
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>declarative settings for usual finish actions (or 'onfinish' callback or finished instance)</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>results</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>result data of the finished instance</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>settings.confirm</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>show confirm box (no finish actions will be performed if user chooses abort)</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>settings.condition</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>no finish actions will be performed if this function returns a falsy value (result data and possibly the instance is passed as parameters)</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>settings.login</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>user will be logged in if not already logged in (only works if an instance for user authentication could be determined)</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>settings.convert</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>for dynamic adjustment of the results data (result data is passed as parameter, must return adjusted result data)</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>settings.log</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>log result data in the developer console of the web browser</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>settings.clear</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>clear webpage area of the finished instance</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>settings.store</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+|
+
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>use this to store the result data in a data store (use boolean true to apply the settings of <code>instance.data</code>&quot;)</p>
+                <h6 class="method-params-label method-subparams-label">Properties</h6>
+                
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Argument</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>settings</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>datastore accessor configuration for a datastore (result data will be set in this datastore)</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>key</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">*</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>dataset key for result data in the datastore (default is generated key)</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>user</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The dataset key is expanded to an user-specific key: <code>[ dataset_key, user_key ]</code> (only if instance for user authentication is detected and user is logged in)</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>unique</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The dataset key is expanded with an generated unique hash: <code>[ dataset_key, user_key, unique_hash ]</code></p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>permissions</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>If the dataset does not exist, the dataset then will created with these permission settings.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>settings.alert</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>show alert message</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>settings.restart</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>restart finished instance</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>settings.render</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+|
+
+<span class="param-type">*</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>render other content (<i>ccmjs</i>-based app or HTML content, as default the content is rendered in the root element of the instance)</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>settings.callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">callback</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>additional finish callback which will be called after the other finish actions (result data and possibly the instance is passed as parameter)</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="helper.mjs.html">helper.mjs</a>,
+				 <a href="helper.mjs.html#sunlight-1-line-636">line 636</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;void></span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+        <h5>Examples</h5>
+        
+    <pre class="sunlight-highlight-javascript">instance.onfinish = {
+  confirm: &#x27;Are you sure?&#x27;,
+  condition: ( results, instance ) =&gt; true,
+  login: true,
+  convert: json =&gt; json,
+  log: true,
+  clear: true,
+  store: {
+    settings: { name: &#x27;store_name&#x27;, url: &#x27;path/to/server/interface.php&#x27; },
+    key: &#x27;dataset_key&#x27;,
+    user: true,
+    unique: true,
+    permissions: {
+      creator: &#x27;john&#x27;,
+      group: {
+        john: true,
+        jane: true
+      },
+      access: {
+        get: &#x27;all&#x27;,
+        set: &#x27;group&#x27;,
+        del: &#x27;creator&#x27;
+      }
+    }
+  },
+  alert: &#x27;Finished!&#x27;,
+  restart: true,
+  render: {
+    component: &#x27;component_url&#x27;,
+    config: {...}
+  },
+  callback: ( results, instance ) =&gt; console.log( results, instance )
+};
+onFinish( instance );</pre>
+
+    <pre class="sunlight-highlight-javascript">instance.data = {
+  store: { name: &#x27;store_name&#x27;, url: &#x27;path/to/server/interface.php&#x27; }
+  key: &#x27;dataset_key&#x27;,
+  user: true,
+  unique: true,
+  permissions: {...}
+};
+instance.onfinish = {
+  store: true
+};
+onFinish( instance );</pre>
+
+    <pre class="sunlight-highlight-javascript">onFinish( { render: {
+  component: &#x27;component_url&#x27;,
+  config: {
+    root: document.body,
+    ...
+  }
+} } );</pre>
+
+    <pre class="sunlight-highlight-javascript">instance.onfinish = { render: &#x27;Hello &lt;b&gt;World&lt;/b&gt;!&#x27; };
+onFinish( instance );</pre>
+
+    <pre class="sunlight-highlight-javascript">instance.onfinish = { render: { inner: &#x27;Hello World!&#x27; } } };
+onFinish( instance );</pre>
+
+
+    
+</dd>
+
+        </dl>
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	
+		<div class="col-md-3">
+			<div id="toc" class="col-md-3 hidden-xs hidden-sm hidden-md"></div>
+		</div>
+	
+
+</div>
+</div>
+
+
+    <div class="modal fade" id="searchResults">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Search results</h4>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+
+
+<footer>
+
+	<p style='text-align:center'>This Documentation is written by the Developer of <i>ccmjs</i>: <a href='mailto:andre.kless@web.de'>André Kless</a></p>
+
+
+	<span class="copyright">
+	<a href='https://en.wikipedia.org/wiki/MIT_License'>MIT Licence</a>
+	</span>
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a>
+	
+		on 2020-10-04T08:45:45+02:00
+	
+	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/toc.js"></script>
+
+    <script type="text/javascript" src="scripts/fulltext-search-ui.js"></script>
+
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( ".tutorial-section pre, .readme-section pre, pre.prettyprint.source" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			var langClassMatch = example.parent()[0].className.match(/lang\-(\S+)/);
+			lang = langClassMatch ? langClassMatch[1] : "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : true,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+
+	$.catchAnchorLinks( {
+        navbarOffset: 10
+	} );
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			return $( heading ).attr( "id" ) || ( prefix + i );
+		},
+		selectors   : "#toc-content h1,#toc-content h2,#toc-content h3,#toc-content h4",
+		showAndHide : false,
+		smoothScrolling: true
+	} );
+
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+
+    $( "table" ).each( function () {
+      var $this = $( this );
+      $this.addClass('table');
+    } );
+
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+
+<!--Google Analytics-->
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            SearcherDisplay.init();
+        });
+    </script>
+
+
+</body>
+</html>

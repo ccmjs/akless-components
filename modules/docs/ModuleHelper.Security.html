@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>helper.mjs Namespace: Security</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.cerulean.css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+<div class="container">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="index.html">helper.mjs</a>
+		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+        </button>
+	</div>
+	<div class="navbar-collapse collapse" id="topNavigation">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b class="caret"></b></a>
+				<ul class="dropdown-menu inline">
+					<li><a href="ModuleHelper.html">ModuleHelper</a></li><li><a href="ModuleHelper.ActionData.html">ModuleHelper.ActionData</a></li><li><a href="ModuleHelper.AsynchronousProgramming.html">ModuleHelper.AsynchronousProgramming</a></li><li><a href="ModuleHelper.BackwardsCompatibility.html">ModuleHelper.BackwardsCompatibility</a></li><li><a href="ModuleHelper.Checker.html">ModuleHelper.Checker</a></li><li><a href="ModuleHelper.DataHandling.html">ModuleHelper.DataHandling</a></li><li><a href="ModuleHelper.DataWorkflow.html">ModuleHelper.DataWorkflow</a></li><li><a href="ModuleHelper.DomManipulation.html">ModuleHelper.DomManipulation</a></li><li><a href="ModuleHelper.HandoverApp.html">ModuleHelper.HandoverApp</a></li><li><a href="ModuleHelper.InputElements.html">ModuleHelper.InputElements</a></li><li><a href="ModuleHelper.Others.html">ModuleHelper.Others</a></li><li><a href="ModuleHelper.Security.html">ModuleHelper.Security</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+        
+            <div class="col-sm-3 col-md-3">
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" name="q" id="search-input">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" id="search-submit"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        
+	</div>
+
+</div>
+</div>
+
+
+<div class="container" id="toc-content">
+<div class="row">
+
+	
+	<div class="col-md-8">
+	
+		<div id="main">
+			
+
+	<h1 class="page-title">Namespace: Security</h1>
+<section>
+
+<header>
+    
+        <h2>
+            <span class="ancestors"><a href="ModuleHelper.html">ModuleHelper</a>.</span>
+        
+        Security
+        </h2>
+        
+    
+</header>
+
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description"><p>helper functions for security handling</p></div>
+        
+
+        
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="helper.mjs.html">helper.mjs</a>,
+				 <a href="helper.mjs.html#sunlight-1-line-1449">line 1449</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        <dl>
+            
+<hr>
+<dt>
+    <h4 class="name" id=".exports.hasPermission"><span class="type-signature">&lt;static> </span>exports.hasPermission( [settings] [, user], operation)</h4>
+    
+    
+    <p class="summary"><p>checks user permissions</p></p>
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>A dataset without permission settings is public data =&gt; access granted.<br>
+Time-dependent permissions are not checked on client-side =&gt; access granted.<br>
+The realm of user and of the permission settings must be the same.<br>
+The creator has always all access right =&gt; access granted.<br></p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Argument</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>settings</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>permission settings or dataset with contained permission settings</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>user</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>user data or user instance that holds the user data</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>operation</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>data operation that has to check: &quot;get&quot; (read), &quot;set&quot; (update) or &quot;del&quot; (delete)</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="helper.mjs.html">helper.mjs</a>,
+				 <a href="helper.mjs.html#sunlight-1-line-1493">line 1493</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>true: access granted, false: access denied</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+        <h5>Examples</h5>
+        
+    <pre class="sunlight-highlight-javascript">const settings = { creator: &#x27;john&#x27;, realm: &#x27;guest&#x27;, access: &#x27;all&#x27; };
+const user = { key: &#x27;jane&#x27;, realm: &#x27;guest&#x27; };
+hasPermission( settings, user, &#x27;get&#x27; );  // =&gt; true: access granted</pre>
+
+    <pre class="sunlight-highlight-javascript">const dataset = { _: {
+  creator: &#x27;john&#x27;,
+  realm: &#x27;guest&#x27;,
+  group: [ &#x27;john&#x27;, &#x27;jane&#x27; ],
+  access: { get: &#x27;all&#x27;, set: &#x27;group&#x27;, del: &#x27;creator&#x27; }
+} };
+const user = { key: &#x27;jane&#x27;, realm: &#x27;guest&#x27; };
+hasPermission( dataset, user, &#x27;set&#x27; );  // =&gt; true: access granted</pre>
+
+    <pre class="sunlight-highlight-javascript">const dataset = { _: {
+  creator: &#x27;john&#x27;,
+  realm: &#x27;guest&#x27;,
+  group: {
+    students: [ &#x27;john&#x27;, &#x27;jane&#x27; ],
+    teachers: [ &#x27;jake&#x27; ]
+  },
+  access: { get: &#x27;all&#x27;, set: &#x27;students,teachers&#x27;, del: &#x27;teachers&#x27; }
+} };
+const user = { key: &#x27;jane&#x27;, realm: &#x27;guest&#x27; };
+hasPermission( dataset, user, &#x27;del&#x27; );  // =&gt; false: access denied</pre>
+
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id=".exports.isCreator"><span class="type-signature">&lt;static> </span>exports.isCreator(dataset, user)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>checks if a user is the creator of a dataset</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>dataset</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>dataset with contained permission settings</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>user</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>user data or user instance that holds the user data</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="helper.mjs.html">helper.mjs</a>,
+				 <a href="helper.mjs.html#sunlight-1-line-1536">line 1536</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">const dataset = { _: { creator: &#x27;john&#x27;, realm: &#x27;guest&#x27;, access: &#x27;all&#x27; } };
+const user = { key: &#x27;john&#x27;, realm: &#x27;guest&#x27; };
+isCreator( dataset, user );  // =&gt; true</pre>
+
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id=".exports.privatize"><span class="type-signature">&lt;static> </span>exports.privatize(instance [, keys])</h4>
+    
+    
+    <p class="summary"><p>privatizes public members of an instance</p></p>
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Deletes all given properties in an object and returns another object with the deleted properties and there values.<br>
+If no properties are given, then all not <i>ccmjs</i> relevant instance members will be privatized.<br>
+List of <i>ccmjs</i> relevant properties that will not be privatized:</p>
+<ul>
+  <li><code>ccm</code></li>
+  <li><code>component</code></li>
+  <li><code>config</code></li>
+  <li><code>element</code></li>
+  <li><code>id</code></li>
+  <li><code>index</code></li>
+  <li><code>inner</code></li>
+  <li><code>parent</code></li>
+  <li><code>root</code></li>
+  <li><code>shadow</code></li>
+</ul>
+In addition to this: All functions and depending <i>ccmjs</i> context relevant instances will also not be privatized.
+If the first passed property is boolean 'true', than the privatized properties will not be deleted in the passed instance.
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Argument</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>instance</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>instance created from a component</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>keys</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>properties that have to privatized</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="helper.mjs.html">helper.mjs</a>,
+				 <a href="helper.mjs.html#sunlight-1-line-1614">line 1614</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>object that contains the privatized properties and there values</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Object</span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+        <h5>Examples</h5>
+        
+    <pre class="sunlight-highlight-javascript">// privatize two public instance members
+ccm.component( {
+  name: &#x27;dummy1&#x27;,
+  ccm: ccm,
+  config: { foo: &#x27;abc&#x27;, bar: &#x27;xyz&#x27;, baz: 4711 },
+  Instance: function () {
+    let my;
+    this.ready = async () =&gt; {
+      my = ccm.helper.privatize( this, &#x27;foo&#x27;, &#x27;bar&#x27; );
+      console.log( my );                // =&gt; { foo: &#x27;abc&#x27;, bar: &#x27;xyz&#x27; }
+      console.log( my.foo, this.foo );  // =&gt; abc undefined
+      console.log( my.bar, this.bar );  // =&gt; xyz undefined
+      console.log( my.baz, this.baz );  // =&gt; undefined 4711
+    };
+  }
+} );</pre>
+
+    <pre class="sunlight-highlight-javascript">// privatize all possible public instance members
+ccm.component( {
+  name: &#x27;dummy2&#x27;,
+  ccm: ccm,
+  config: { foo: &#x27;abc&#x27;, bar: &#x27;xyz&#x27;, baz: 4711 },
+  Instance: function () {
+    let my;
+    this.ready = async () =&gt; {
+      my = ccm.helper.privatize( this );
+      console.log( my );                // =&gt; { foo: &#x27;abc&#x27;, bar: &#x27;xyz&#x27;, baz: 4711 }
+      console.log( my.foo, this.foo );  // =&gt; abc undefined
+      console.log( my.bar, this.bar );  // =&gt; xyz undefined
+      console.log( my.baz, this.baz );  // =&gt; 4711 undefined
+    };
+  }
+} );</pre>
+
+    <pre class="sunlight-highlight-javascript">// log all non-ccmjs specific instance members
+ccm.component( {
+  name: &#x27;dummy3&#x27;,
+  ccm: ccm,
+  config: { foo: &#x27;abc&#x27;, bar: &#x27;xyz&#x27;, baz: 4711, logger: [ &#x27;ccm.instance&#x27;, logger_component_url, logger_config ] },
+  Instance: function () {
+    this.ready = async () =&gt; {
+      this.logger &amp;&amp; this.logger.log( &#x27;ready&#x27;, $.privatize( this, true ) );
+      console.log( this.foo, this.bar, this.foo );  // =&gt; abc xyz 4711
+    };
+  }
+} );</pre>
+
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id=".exports.protect"><span class="type-signature">&lt;static> </span>exports.protect(html)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>filters script elements out of given HTML</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>html</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">Element</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>HTML string or HTML element</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
+	<dd class="tag-source">
+		<ul class="dummy">
+			<li>
+				<a href="helper.mjs.html">helper.mjs</a>,
+				 <a href="helper.mjs.html#sunlight-1-line-1660">line 1660</a>
+			</li>
+		</ul>
+	</dd>
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>cleaned HTML</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+|
+
+<span class="param-type">Element</span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+        <h5>Examples</h5>
+        
+    <pre class="sunlight-highlight-javascript">protect( &quot;Hello &lt;script&gt;alert(&#x27;XSS&#x27;);&lt;/script&gt;World!&quot; ) // =&gt; &#x27;Hello World!&#x27;</pre>
+
+    <pre class="sunlight-highlight-javascript">// &lt;div&gt;Hello &lt;script&gt;alert(&#x27;XSS&#x27;);&lt;/script&gt;World!&lt;/div&gt;
+div = protect( div ); // =&gt; &lt;div&gt;Hello, World!&lt;/div&gt;</pre>
+
+
+    
+</dd>
+
+        </dl>
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	
+		<div class="col-md-3">
+			<div id="toc" class="col-md-3 hidden-xs hidden-sm hidden-md"></div>
+		</div>
+	
+
+</div>
+</div>
+
+
+    <div class="modal fade" id="searchResults">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Search results</h4>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+
+
+<footer>
+
+	<p style='text-align:center'>This Documentation is written by the Developer of <i>ccmjs</i>: <a href='mailto:andre.kless@web.de'>André Kless</a></p>
+
+
+	<span class="copyright">
+	<a href='https://en.wikipedia.org/wiki/MIT_License'>MIT Licence</a>
+	</span>
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a>
+	
+		on 2020-10-04T08:45:45+02:00
+	
+	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/toc.js"></script>
+
+    <script type="text/javascript" src="scripts/fulltext-search-ui.js"></script>
+
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( ".tutorial-section pre, .readme-section pre, pre.prettyprint.source" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			var langClassMatch = example.parent()[0].className.match(/lang\-(\S+)/);
+			lang = langClassMatch ? langClassMatch[1] : "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : true,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+
+	$.catchAnchorLinks( {
+        navbarOffset: 10
+	} );
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			return $( heading ).attr( "id" ) || ( prefix + i );
+		},
+		selectors   : "#toc-content h1,#toc-content h2,#toc-content h3,#toc-content h4",
+		showAndHide : false,
+		smoothScrolling: true
+	} );
+
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+
+    $( "table" ).each( function () {
+      var $this = $( this );
+      $this.addClass('table');
+    } );
+
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+
+<!--Google Analytics-->
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            SearcherDisplay.init();
+        });
+    </script>
+
+
+</body>
+</html>
