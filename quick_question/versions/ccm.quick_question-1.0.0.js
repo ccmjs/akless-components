@@ -11,10 +11,8 @@
 
   const component = {
 
-    name: 'quick_question',
-
+    name: 'quick_question', version: [ 1, 0, 0 ],
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.0.0.js',
-
     config: {
       "convert": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/json2json.mjs#question2highchart" ],
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/quick_question/resources/styles.css" ],
