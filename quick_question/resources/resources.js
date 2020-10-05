@@ -18,7 +18,8 @@ ccm.files[ 'resources.js' ] = {
       "guest": true,
       "helper.1": "./../modules/helper.mjs",
       "html.1": "./../user/resources/resources.js",
-      "logged_in": true
+      "logged_in": true,
+      "norender": true
     } ]
   },
 

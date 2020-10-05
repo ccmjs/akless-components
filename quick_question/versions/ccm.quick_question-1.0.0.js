@@ -2,7 +2,7 @@
  * @overview <i>ccmjs</i>-based component for quick questions
  * @author André Kless <andre.kless@web.de> 2020
  * @license The MIT License (MIT)
- * @version latest (1.0.0)
+ * @version 1.0.0
  * @changes
  * version 1.0.0 (22.09.2020)
  */
@@ -11,8 +11,10 @@
 
   const component = {
 
-    name: 'quick_question', version: [ 1, 0, 0 ],
+    name: 'quick_question',
+
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.0.0.js',
+
     config: {
       "convert": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/json2json.mjs#question2highchart" ],
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/quick_question/resources/styles.css" ],
@@ -51,7 +53,7 @@
         "cancel": "Cancel",
         "report": "Report question"
       },
-      "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.0.js", { "guest": true, "logged_in": true } ]
+      "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.0.js", { "guest": true, "logged_in": true, "norender": true } ]
     },
 
     Instance: function () {

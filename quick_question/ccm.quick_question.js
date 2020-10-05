@@ -53,7 +53,7 @@
         "cancel": "Cancel",
         "report": "Report question"
       },
-      "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.0.js", { "guest": true, "logged_in": true } ]
+      "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.0.js", { "guest": true, "logged_in": true, "norender": true } ]
     },
 
     Instance: function () {
