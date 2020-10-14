@@ -74,7 +74,7 @@
         // random selection of next question
         if ( !next ) {
           if ( !keys.length )
-            keys = this.selection( ( await this.store.get() ).filter( question => !question.reported ) ).map( question => question.key );
+            keys = this.selection( ( await this.store.get() ).filter( question => !question.reported ), user ).map( question => question.key );
           if ( keys.length )
             next = await this.store.get( keys.pop().toString() );
           else
