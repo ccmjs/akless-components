@@ -76,7 +76,7 @@
           if ( !keys.length )
             keys = this.selection( ( await this.store.get() ).filter( question => !question.reported ), user ).map( question => question.key );
           if ( keys.length )
-            next = await this.store.get( keys.pop().toString() );
+            next = await this.store.get( keys.shift().toString() );
           else
             add = true;
         }
