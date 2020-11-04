@@ -2,7 +2,7 @@
  * @overview ccm component for an image map
  * @author André Kless <andre.kless@web.de> 2019-2020
  * @license The MIT License (MIT)
- * @version latest (2.1.0)
+ * @version 2.1.0
  * @changes
  * version 2.1.0 (04.11.2020):
  * - added optional maximum width for the image map
@@ -19,7 +19,7 @@
 
   const component = {
 
-    name: 'image_map',
+    name: 'image_map', version: [ 2, 1, 0 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-25.5.2.js',
 
