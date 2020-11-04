@@ -52,12 +52,12 @@
 
       this.start = async () => {
 
-        this.logger && this.logger.log( 'start' );                                                // logging of 'start' event
-        $.setContent( this.element, $.html( this.html.main, { image: this.image } ) );            // render main HTML structure
-        if ( this.max_width ) this.element.querySelector( 'main' ).style.width = this.max_width;  // set maximum width for the image map
-        await $.asyncForEach( this.ignore.areas, this.renderArea );                               // add areas in the image map
-        this.renderInfo( this.info );                                                             // render map information's in info section
-        this.onstart && await this.onstart( { instance: this } );                                 // trigger 'onstart' callback
+        this.logger && this.logger.log( 'start' );                                                 // logging of 'start' event
+        $.setContent( this.element, $.html( this.html.main, { image: this.image } ) );             // render main HTML structure
+        if ( this.max_width ) this.element.querySelector( '#main' ).style.width = this.max_width;  // set maximum width for the image map
+        await $.asyncForEach( this.ignore.areas, this.renderArea );                                // add areas in the image map
+        this.renderInfo( this.info );                                                              // render map information's in info section
+        this.onstart && await this.onstart( { instance: this } );                                  // trigger 'onstart' callback
 
         // show map information's when map is hovered
         this.element.querySelector( '#map' ).addEventListener( 'mouseover', () => this.renderInfo( this.info ) );
