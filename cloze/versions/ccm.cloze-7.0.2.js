@@ -2,7 +2,7 @@
  * @overview ccm component for fill-in-the-blank texts
  * @author André Kless <andre.kless@web.de> 2017-2020
  * @license The MIT License (MIT)
- * @version latest (7.0.2)
+ * @version 7.0.2
  * @changes
  * version 7.0.2 (11.11.2020):
  * - bug fix when text is given via object
@@ -25,7 +25,7 @@
 
   const component = {
 
-    name: 'cloze',
+    name: 'cloze', version: [ 7, 0, 2 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-25.5.2.js',
 
