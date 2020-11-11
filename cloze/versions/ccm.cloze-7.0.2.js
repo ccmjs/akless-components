@@ -83,6 +83,9 @@
 
       this.init = async () => {
 
+        // set shortcut to help functions
+        $ = Object.assign( {}, self.ccm.helper, self.helper );
+
         // fill-in-the-blank text is given via inner HTML of own Custom Element? => use it with higher priority
         if ( self.inner && self.inner.innerHTML.trim() ) self.text = self.inner.innerHTML;
 
@@ -101,9 +104,6 @@
       };
 
       this.ready = async () => {
-
-        // set shortcut to help functions
-        $ = Object.assign( {}, self.ccm.helper, self.helper );
 
         const regex_keyword   = new RegExp( '\\' + self.mark + '.+?\\' + self.mark, 'g' );  // regular expression for finding all gaps/keywords in the text
         const regex_given     = /\(.+?\)/g;                                                 // regular expression for finding all given characters of a keyword
