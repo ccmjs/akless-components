@@ -147,9 +147,9 @@
                 }
               };
 
-              await this.data.store.set( dataset );   // create new message in remote datastore
-              await this.refresh( dataset );          // update local chat messages
-              this.editor.get().root.innerHTML = '';  // clear user input in text editor
+              dataset.key = await this.data.store.set( dataset );  // create new message in remote datastore
+              await this.refresh( dataset );                       // update local chat messages
+              this.editor.get().root.innerHTML = '';               // clear user input in text editor
 
               this.logger && this.logger.log( 'change', $.clone( dataset ) );                  // log 'change' event
               this.onchange && this.onchange( { instance: this, data: $.clone( dataset ) } );  // perform 'change' callback
@@ -166,7 +166,7 @@
 
       /**
        * updates chat messages after a message has changed
-       * @param {{key: string, picture: string, user: string, created_at: string, text: string}} message - changed or new message
+       * @param {Object} message - changed or new message
        * @example refresh( {
        *   "key": "1584906097862X7971332042469572",
        *   "picture": "https://akless.github.io/akless/resources/images/hedgehog.jpg",
