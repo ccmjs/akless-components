@@ -54,7 +54,7 @@
 
         $.setContent( this.element, $.loading( this ) );                          // render loading icon
         try { this.user && await this.user.login(); } catch ( e ) { return; }     // app can only be used by logged in users
-        user_app_data = this.user && await this.user.getAppData( this.app_key );  // get app-specific user data
+        user_app_data = this.user && await this.user.getAppData( this.app_key ) || {};  // get app-specific user data
         const areas = $.clone( this.ignore.areas );                               // prevent change of original areas data
 
         // set 'onfinish' events for apps behind image map areas and check area preconditions (disabled or hidden areas)
@@ -100,6 +100,9 @@
         if ( !condition || !Object.keys( condition ).length ) return true;
         if ( !this.user ) return false;
         const check = ( key, value ) => {
+          if ( parseInt( value ) !== NaN ) value = parseInt( value );
+          if ( value === 'true' ) value = true;
+          if ( value === 'false' ) value = false;
           const user_value = $.deepValue( user_app_data, key );
           if ( typeof value === 'string' && value.startsWith( '>' ) )
             return user_value > parseInt( value.substr( 1 ) );
