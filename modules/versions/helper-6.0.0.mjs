@@ -684,9 +684,9 @@ export const onFinish = async ( settings, results ) => {
     settings.store.unique && dataset.key.push( ccm.helper.generateKey() );
     if ( dataset.key.length === 1 ) dataset.key = dataset.key[ 0 ];
 
-    if ( settings.store.permissions ) dataset._ = settings.store.permissions;  // prepare permission settings
-    if ( user ) settings.store.settings.user = user;                           // set user instance for datastore
-    await ccm.set( settings.store.settings, dataset );                         // store result data in datastore
+    if ( settings.store.permissions ) dataset._ = settings.store.permissions;          // prepare permission settings
+    if ( user ) settings.store.settings.user = user;                                   // set user instance for datastore
+    await ccm.store( settings.store.settings ).then( store => store.set( dataset ) );  // store result data in datastore
 
   }
 
