@@ -31,7 +31,7 @@
 ( () => {
 
   const component = {
-    name: 'cloze',
+    name: 'cloze', version: [ 8, 0, 0 ],
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.1.0.js',
     config: {
   //  "blank": true,
