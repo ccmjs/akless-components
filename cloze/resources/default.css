@@ -58,7 +58,8 @@ button:disabled {
   cursor: pointer;
 }
 
-.keyword.marked span {
+.keyword.marked span,
+.keyword span.marked {
   text-decoration: line-through;
 }
 
@@ -121,33 +122,49 @@ button:disabled {
   padding: 0.25em;
 }
 
+[data-hidden] {
+  display: none;
+}
+
 #conclusion {
-  padding: 0 0.5em;
+  padding: 0.5em;
 }
 
-#conclusion > div {
-  width: 25rem;
-  margin: 2em 0;
-  padding: 0.5em 1em;
-  display: flex;
-  align-items: center;
-  border: 1px solid lightgray;
-  border-radius: 20px;
+#conclusion > div:not(.meter) {
+  display: none;
 }
 
-#points {
-  margin-right: 0.5em;
-  top: 2px;
+.meter {
+  height: 20px;  /* Can be anything */
+  position: relative;
+  background: #555;
+  border-radius: 25px;
+  padding: 10px;
+  box-shadow: inset 0 -1px 1px rgba(255,255,255,0.3);
+  max-width: 350px;
 }
 
-#feedback {
+.meter > div {
   width: 100%;
-  background-color: #ddd;
-  border-radius: 10px;
+  position: absolute;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  z-index: 1;
 }
 
-#progress-bar {
-  width: 0;
-  height: 20px;
-  background-color: #4CAF50;
+.meter > span {
+  display: block;
+  height: 100%;
+  border-radius: 5px;
+  background-color: rgb(43,194,83);
+  box-shadow: inset 0 2px 9px  rgba(255,255,255,0.3), inset 0 -2px 6px rgba(0,0,0,0.4);
+  position: relative;
+  overflow: hidden;
+  animation-name: expandWidth;
+  animation-duration: 1s;
+}
+
+@keyframes expandWidth {
+  0% { width: 0; }
 }

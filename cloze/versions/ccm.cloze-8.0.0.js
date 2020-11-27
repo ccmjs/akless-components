@@ -2,7 +2,7 @@
  * @overview ccm component for fill-in-the-blank texts
  * @author André Kless <andre.kless@web.de> 2017-2020
  * @license The MIT License (MIT)
- * @version latest (8.0.0)
+ * @version 8.0.0
  * @changes
  * version 8.0.0 (27.11.2020)
  * - uses ccm.js v26.1.0
