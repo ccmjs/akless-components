@@ -8,14 +8,14 @@ ccm.files[ 'resources.js' ] = {
 
   "local": {
     "blank": false,
-    "css": [ "ccm.load", "./resources/default.css" ],
+    "css": [ "ccm.load", "./../cloze/resources/default.css" ],
     "data": {
       "store": [ "ccm.store", { "name": "cloze_results", "url": "https://ccm2.inf.h-brs.de" } ],
       "key": "demo"
     },
     "feedback": true,
     "helper.1": "./../modules/helper.mjs",
-    "html.1": "./resources/templates.mjs",
+    "html.1": "./../cloze/resources/templates.mjs",
     "keywords": true,
 //  "keywords": [ "convenience", "conducting", "objectives", "durable", "competitive", "breakdown", "reasons", "evaluate", "adding", "breakthroughs", "withdraw", "patterns", "non-durable", "deleting", "feasible", "making", "sources", "niche" ],
 //  "logger": [ "ccm.instance", "./../log/ccm.log.js", [ "ccm.get", "./../log/resources/configs.js", "greedy" ] ],
