@@ -9,6 +9,8 @@
  * - uses helper.mjs v6.0.0
  * - HTML templates based on lit-html
  * - input fields no more resizes on paste
+ * - cancel button is now a reset button
+ * - submit button is now a feedback button
  * - changed progress bar in conclusion area
  * - updated minified component line
  * version 7.0.2 (11.11.2020):
@@ -38,7 +40,7 @@
       "captions": {
         "start": "Start",
         "reset": "Reset",
-        "submit": "Submit",
+        "feedback": "Feedback",
         "retry": "Retry",
         "finish": "Finish"
       },

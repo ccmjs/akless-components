@@ -60,20 +60,20 @@ export function inputField( value = '', placeholder = '', resize, onInput, onCha
 /**
  * returns the HTML template for the buttons
  * @param {Function} [onReset] - when 'Reset' button is clicked
- * @param {Function} [onSubmit] - when 'Submit' button is clicked
+ * @param {Function} [onFeedback] - when 'Feedback' button is clicked
  * @param {Function} [onRetry] - when 'Retry' button is clicked
  * @param {Function} [onFinish] - when 'Finish' button is clicked
  * @returns {TemplateResult} HTML template for the buttons
  */
-export function buttons( instance, onReset, onSubmit, onRetry, onFinish ) {
+export function buttons( instance, onReset, onFeedback, onRetry, onFinish ) {
   return html`
     <div id="reset" ?data-hidden=${!onReset}>
       <button @click="${onReset}">${instance.captions.reset}</button>
     </div>
-    <div id="submit" ?data-hidden=${!onSubmit}>
-      <button @click="${onSubmit}">${instance.captions.submit}</button>
+    <div id="feedback" ?data-hidden=${!onFeedback}>
+      <button @click="${onFeedback}">${instance.captions.feedback}</button>
     </div>
-    <div id="submit" ?data-hidden=${!onRetry}>
+    <div id="retry" ?data-hidden=${!onRetry}>
       <button @click="${onRetry}">${instance.captions.retry}</button>
     </div>
     <div id="finish" ?data-hidden=${!onFinish}>
