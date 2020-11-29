@@ -340,11 +340,12 @@
           /** finishes the fill-in-the-blank text */
           async function onFinish() {
 
+            results.sections.length === 0 && evaluate();                     // no evaluation results? => evaluate now
+            results.total = results.sections.length;                         // add total number of gaps in result data
+
             // update buttons
             $.render( $.html( self.html.buttons, self, onReset ), self.element.querySelector( '#buttons' ) );
 
-            results.sections.length === 0 && evaluate();                     // no evaluation results? => evaluate now
-            results.total = results.sections.length;                         // add total number of gaps in result data
             self.logger && self.logger.log( 'finish', $.clone( results ) );  // logging of 'finish' event
             $.onFinish( self );                                              // trigger finish actions
 
