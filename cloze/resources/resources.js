@@ -19,7 +19,10 @@ ccm.files[ 'resources.js' ] = {
     "keywords": true,
 //  "keywords": [ "convenience", "conducting", "objectives", "durable", "competitive", "breakdown", "reasons", "evaluate", "adding", "breakthroughs", "withdraw", "patterns", "non-durable", "deleting", "feasible", "making", "sources", "niche" ],
 //  "logger": [ "ccm.instance", "./../log/ccm.log.js", [ "ccm.get", "./../log/resources/configs.js", "greedy" ] ],
-    "onfinish": { "log": true, "restart": true, "alert": 'Finish!' },
+    "onfinish": {
+      "log": true,
+      "restart": true
+    },
 //  "onreset": false,
     "progress_bar": true,
     "retry": true,

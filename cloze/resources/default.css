@@ -135,7 +135,7 @@ button:disabled {
 }
 
 .meter {
-  height: 20px;  /* Can be anything */
+  height: 20px;
   position: relative;
   background: #555;
   border-radius: 25px;

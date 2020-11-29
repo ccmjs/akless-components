@@ -234,7 +234,7 @@
           } );
 
           // render buttons
-          $.render( $.html( self.html.buttons, self, self.onreset !== false && onReset, self.feedback && evaluate, null, onFinish ), self.element.querySelector( '#buttons' ) );
+          $.render( $.html( self.html.buttons, self, self.onreset !== false && onReset, self.feedback && evaluate, null, self.onfinish && onFinish ), self.element.querySelector( '#buttons' ) );
 
           self.time && renderTimer();            // render countdown timer
           self.show_results && evaluate();       // enabled result mode? => show results directly
@@ -242,7 +242,9 @@
 
           /** callback when 'Reset' button is clicked */
           function onReset() {
-            self.onreset ? self.onreset( self ) : self.start();
+            if ( self.onreset ) return self.onreset( self );
+            $.render( $.html( self.html.conclusion ), self.element.querySelector( '#conclusion' ) );
+            self.start();
           }
 
           /** evaluates the fill-in-the-blank text and shows feedback */
@@ -307,7 +309,7 @@
             self.onfeedback && self.onfeedback( self, $.clone( results ) );    // trigger individual 'feedback' callback
 
             // update buttons
-            $.render( $.html( self.html.buttons, self, self.onreset !== false && onReset, null, self.retry && retry, onFinish ), self.element.querySelector( '#buttons' ) );
+            $.render( $.html( self.html.buttons, self, self.onreset !== false && onReset, null, self.retry && retry, self.onfinish && onFinish ), self.element.querySelector( '#buttons' ) );
 
             // render progress bar in conclusion area
             self.progress_bar && self.feedback && $.render( $.html( self.html.conclusion, results.correct, keywords_data.length ), self.element.querySelector( '#conclusion' ) );
@@ -328,7 +330,7 @@
             } );
 
             // update buttons
-            $.render( $.html( self.html.buttons, self, self.onreset !== false && onReset, evaluate, null, onFinish ), self.element.querySelector( '#buttons' ) );
+            $.render( $.html( self.html.buttons, self, self.onreset !== false && onReset, evaluate, null, self.onfinish && onFinish ), self.element.querySelector( '#buttons' ) );
 
             // hide conclusion area
             $.render( $.html( self.html.conclusion ), self.element.querySelector( '#conclusion' ) );
@@ -339,7 +341,7 @@
           async function onFinish() {
 
             // update buttons
-            $.render( $.html( self.html.buttons, self, onReset, evaluate ), self.element.querySelector( '#buttons' ) );
+            $.render( $.html( self.html.buttons, self, onReset ), self.element.querySelector( '#buttons' ) );
 
             results.sections.length === 0 && evaluate();                     // no evaluation results? => evaluate now
             results.total = results.sections.length;                         // add total number of gaps in result data
