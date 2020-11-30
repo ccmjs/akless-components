@@ -20,19 +20,20 @@ ccm.files[ 'resources.js' ] = {
     "helper.1": "./../modules/helper.mjs",
     "html.1": "./resources/templates.mjs",
     "libs": [ "ccm.load",
+      // parallel
       "./../libs/quill-1/quill.min.js",
-      "./../libs/quill-1/quill.snow.css",
-      [
+      [  // serial
         "./../libs/jquery/jquery-3.5.1.slim.js",
-        [
+        [  // parallel
           "./../libs/bootstrap-4/js/bootstrap.bundle.js",
-          [
+          [  // serial
             "./../libs/selectize-0/selectize.min.js",
             "./../libs/selectize-0/selectize-plugin.js"
           ]
         ]
       ],
-      "./../libs/selectize-0/selectize.css",
+      "./../libs/quill-1/quill.snow.css",
+      "./../libs/selectize-0/selectize.css"
     ],
 //  "logger": [ "ccm.instance", "./../log/ccm.log.js", [ "ccm.get", "./../log/resources/configs.js", "greedy" ] ],
     "onfinish": { "log": true },
