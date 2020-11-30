@@ -41,6 +41,7 @@ ccm.files[ 'resources.js' ] = {
   },
 
   "dms": {
+    "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/cloze_builder/resources/default-1.css" ],
     "libs": [ "ccm.load",
       "https://ccmjs.github.io/akless-components/libs/quill-1/quill.snow.css",
       "https://ccmjs.github.io/akless-components/libs/quill-1/quill.min.js",
