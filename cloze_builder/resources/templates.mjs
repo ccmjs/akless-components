@@ -16,12 +16,12 @@ export function main( config, builder ) {
     <form>
       <div class="accordion" id="cb-accordion">
 
-        <!-- Text Editor -->
+        <!-- Gap Text -->
         <div class="card">
           <div class="card-header p-1" id="cb-editor-heading">
             <h2 class="mb-0">
               <button class="btn btn-lg btn-block text-left" type="button" data-toggle="collapse" data-target="#cb-editor-collapse" aria-expanded="true" aria-controls="cb-editor-collapse">
-                Text Editor
+                Gap Text
               </button>
             </h2>
           </div>
