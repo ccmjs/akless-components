@@ -41,6 +41,10 @@ ccm.files[ 'resources.js' ] = {
   },
 
   "dms": {
+    "libs": [ "ccm.load",
+      "https://ccmjs.github.io/akless-components/libs/quill-1/quill.snow.css",
+      "https://ccmjs.github.io/akless-components/libs/quill-1/quill.min.js",
+    ],
     "preview": null,
     "results": { "store": { "name": "cloze_results", "url": "https://ccm2.inf.h-brs.de" }, "permissions": { "access": { "get": "all", "set": "creator", "del": "creator" } } },
     "submit": null
