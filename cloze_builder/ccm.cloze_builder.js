@@ -35,19 +35,19 @@
       },
       "libs": [ "ccm.load",
         // parallel
-        "https://ccmjs.github.io/akless-components/libs/quill-1/quill.min.js",
+        "https://ccmjs.github.io/akless-components/libs/quill-1/quill.snow.css",
+        "https://ccmjs.github.io/akless-components/libs/selectize-0/selectize.css",
         [  // serial
           "https://ccmjs.github.io/akless-components/libs/jquery/jquery-3.5.1.slim.js",
           [  // parallel
+            "https://ccmjs.github.io/akless-components/libs/quill-1/quill.min.js",
             "https://ccmjs.github.io/akless-components/libs/bootstrap-4/js/bootstrap.bundle.js",
             [  // serial
               "https://ccmjs.github.io/akless-components/libs/selectize-0/selectize.min.js",
               "https://ccmjs.github.io/akless-components/libs/selectize-0/selectize-plugin.js"
             ]
           ]
-        ],
-        "./../libs/quill-1/quill.snow.css",
-        "./../libs/selectize-0/selectize.css"
+        ]
       ],
   //  "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-5.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
       "preview": "Preview",
