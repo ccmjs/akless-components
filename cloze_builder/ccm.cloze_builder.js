@@ -72,7 +72,7 @@
         this.logger && this.logger.log( 'start', $.clone( dataset ) );                        // logging of 'start' event
         this.render( dataset );                                                               // render main HTML template
         this.element.querySelector( '#editor' ).innerHTML = dataset.text || '';               // set initial content for text editor
-        editor = new Quill( '#editor', { placeholder: 'Write here...', theme: 'snow' } );     // render text editor
+        editor = new Quill( this.element.querySelector( '#editor' ), { placeholder: 'Write here...', theme: 'snow' } );     // render text editor
 
         // prepare input field for individual list of provided answers
         jQuery( this.element.querySelector( '#cb-tags' ) ).selectize( { create: true, placeholder: 'Individual List of Provided Answers', plugins: [ 'remove_button' ] } );
