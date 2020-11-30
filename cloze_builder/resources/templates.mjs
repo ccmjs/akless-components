@@ -212,24 +212,24 @@ export function main( config, builder ) {
                 </select>
               </div>
 
+              <!-- Confirmation Dialog -->
+              <div class="form-group" ?hidden=${!config.onfinish || !config.onfinish.store}>
+                <label for="cb-confirm">Confirmation Dialog</label>
+                <input type="text" name="onfinish.confirm" placeholder="optional" class="form-control" id="cb-confirm" value="${config.onfinish && config.onfinish.confirm || ''}">
+              </div>
+
+              <!-- Success Message -->
+              <div class="form-group" ?hidden=${!config.onfinish || !config.onfinish.store}>
+                <label for="cb-success">Success Message</label>
+                <input type="text" name="onfinish.alert" placeholder="optional" class="form-control" id="cb-success" value="${config.onfinish && config.onfinish.alert || ''}">
+              </div>
+
               <!-- User Authentication -->
               <div class="form-group" ?hidden=${!config.onfinish || !config.onfinish.store || ( !config.data || !config.data.user ) && ( !builder.ccm.helper.isObject( config.onfinish.store ) || !config.onfinish.store.user )}>
                 <label for="cb-user">User Authentication</label>
                 <select class="form-control" name="user" id="cb-user">
                   ${ Object.values( builder.ignore.user ).map( obj => html`<option value="${obj.key}" ?selected=${JSON.stringify(config.user) === JSON.stringify(obj.value)}>${obj.title}</option>` )}
                 </select>
-              </div>
-
-              <!-- Confirmation Dialog -->
-              <div class="form-group" ?hidden=${!config.onfinish || !config.onfinish.store || ( !config.data || !config.data.user ) && ( !builder.ccm.helper.isObject( config.onfinish.store ) || !config.onfinish.store.user )}>
-                <label for="cb-confirm">Confirmation Dialog</label>
-                <input type="text" name="onfinish.confirm" placeholder="optional" class="form-control" id="cb-confirm" value="${config.onfinish && config.onfinish.confirm || ''}">
-              </div>
-
-              <!-- Success Message -->
-              <div class="form-group" ?hidden=${!config.onfinish || !config.onfinish.store || ( !config.data || !config.data.user ) && ( !builder.ccm.helper.isObject( config.onfinish.store ) || !config.onfinish.store.user )}>
-                <label for="cb-success">Success Message</label>
-                <input type="text" name="onfinish.alert" placeholder="optional" class="form-control" id="cb-success" value="${config.onfinish && config.onfinish.alert || ''}">
               </div>
 
               <!-- Next Content -->
