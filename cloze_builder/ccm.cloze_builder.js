@@ -55,7 +55,7 @@
       "results": { "store": { "name": "cloze_results" }, "permissions": { "access": { "get": "all", "set": "creator", "del": "creator" } } },
       "shadow": "none",
       "submit": "Submit",
-      "tool": [ "ccm.component", "https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-8.0.0.min.js" ]
+      "tool": [ "ccm.component", "https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-8.0.0.js" ]
     },
 
     Instance: function () {
