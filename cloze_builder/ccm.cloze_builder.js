@@ -38,13 +38,13 @@
         "https://ccmjs.github.io/akless-components/libs/quill-1/quill.snow.css",
         "https://ccmjs.github.io/akless-components/libs/selectize-0/selectize.css",
         [  // serial
-          "https://ccmjs.github.io/akless-components/libs/jquery/jquery-3.5.1.slim.js",
+          "https://ccmjs.github.io/akless-components/libs/jquery/jquery-3.5.1.slim.min.js",
           [  // parallel
             "https://ccmjs.github.io/akless-components/libs/quill-1/quill.min.js",
-            "https://ccmjs.github.io/akless-components/libs/bootstrap-4/js/bootstrap.bundle.js",
+            "https://ccmjs.github.io/akless-components/libs/bootstrap-4/js/bootstrap.bundle.min.js",
             [  // serial
               "https://ccmjs.github.io/akless-components/libs/selectize-0/selectize.min.js",
-              "https://ccmjs.github.io/akless-components/libs/selectize-0/selectize-plugin.js"
+              "https://ccmjs.github.io/akless-components/libs/selectize-0/selectize-plugin.min.js"
             ]
           ]
         ]
