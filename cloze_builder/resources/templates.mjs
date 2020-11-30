@@ -56,7 +56,7 @@ export function main( config, builder ) {
               <div class="form-group">
                 <label for="cb-keywords">Provided Answers</label>
                 <select class="form-control" name="keywords" id="cb-keywords">
-                  <option value="false" ?selected=${!config.keywords}>None</option>
+                  <option value="" ?selected=${!config.keywords}>None</option>
                   <option value="true" ?selected=${config.keywords === true}>Auto generated</option>
                   <option value="manually" ?selected=${Array.isArray( config.keywords )}>Manually</option>
                 </select>
