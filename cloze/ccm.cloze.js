@@ -343,8 +343,9 @@
             results.sections.length === 0 && evaluate();                     // no evaluation results? => evaluate now
             results.total = results.sections.length;                         // add total number of gaps in result data
 
-            // update buttons
+            // update buttons and remove progress bar
             $.render( $.html( self.html.buttons, self, onReset ), self.element.querySelector( '#buttons' ) );
+            $.render( $.html( self.html.conclusion ), self.element.querySelector( '#conclusion' ) );
 
             self.logger && self.logger.log( 'finish', $.clone( results ) );  // logging of 'finish' event
             $.onFinish( self );                                              // trigger finish actions

@@ -193,12 +193,6 @@ export function main( config, builder ) {
                 <input type="text" name="captions.finish" class="form-control" id="cb-finish-btn" value="${config.captions.finish}">
               </div>
 
-              <!-- Confirmation Dialog -->
-              <div class="form-group" ?hidden=${!config.onfinish}>
-                <label for="cb-confirm">Confirmation Dialog</label>
-                <input type="text" name="onfinish.confirm" placeholder="optional" class="form-control" id="cb-confirm" value="${config.onfinish && config.onfinish.confirm || ''}">
-              </div>
-
               <!-- Save submitted Solutions -->
               <div class="form-group" ?hidden=${!config.onfinish}>
                 <label for="cb-store">Save submitted Solutions</label>
@@ -220,6 +214,12 @@ export function main( config, builder ) {
                   <option value="hbrsinfpseudo">H-BRS FB02 Account with Pseudonym</option>
                   <option value="pseudo">One-time Pseudonym</option>
                 </select>
+              </div>
+
+              <!-- Confirmation Dialog -->
+              <div class="form-group" ?hidden=${!config.onfinish || !config.onfinish.store || ( !config.data || !config.data.user ) && ( !builder.ccm.helper.isObject( config.onfinish.store ) || !config.onfinish.store.user )}>
+                <label for="cb-confirm">Confirmation Dialog</label>
+                <input type="text" name="onfinish.confirm" placeholder="optional" class="form-control" id="cb-confirm" value="${config.onfinish && config.onfinish.confirm || ''}">
               </div>
 
               <!-- Success Message -->
