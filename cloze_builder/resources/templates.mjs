@@ -56,10 +56,7 @@ export function main( config, builder ) {
               <div class="form-group">
                 <label for="cb-css">Layout</label>
                 <select class="form-control" name="css" id="cb-css">
-                  <option value="default">Default</option>
-                  <option value="lea">LEA-like</option>
-                  <option value="pbworks">PBworks-like</option>
-                  <option value="weblysleek">Weblysleek</option>
+                  ${ Object.values( builder.ignore.css ).map( obj => html`<option value="${obj.key}" ?selected=${JSON.stringify(config.css) === JSON.stringify(obj.value)}>${obj.title}</option>` )}
                 </select>
               </div>
 
@@ -219,11 +216,7 @@ export function main( config, builder ) {
               <div class="form-group" ?hidden=${!config.onfinish || !config.onfinish.store || ( !config.data || !config.data.user ) && ( !builder.ccm.helper.isObject( config.onfinish.store ) || !config.onfinish.store.user )}>
                 <label for="cb-user">User Authentication</label>
                 <select class="form-control" name="user" id="cb-user">
-                  <option value="guest">Guest Mode</option>
-                  <option value="cloud">DMS Account</option>
-                  <option value="hbrsinfkaul">H-BRS FB02 Account</option>
-                  <option value="hbrsinfpseudo">H-BRS FB02 Account with Pseudonym</option>
-                  <option value="pseudo">One-time Pseudonym</option>
+                  ${ Object.values( builder.ignore.user ).map( obj => html`<option value="${obj.key}" ?selected=${JSON.stringify(config.user) === JSON.stringify(obj.value)}>${obj.title}</option>` )}
                 </select>
               </div>
 
