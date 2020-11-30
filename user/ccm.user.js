@@ -51,17 +51,12 @@
  */
 
 ( () => {
-
   const component = {
-
     name: 'user',
-
-    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-25.5.3.js',
-
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.0.0.js',
     config: {
-
       "css": [ "ccm.load",
-        "https://ccmjs.github.io/akless-components/libs/bootstrap/css/bootstrap.css",
+        "https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css",
         { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/bootstrap/css/font-face.css" },
         "https://ccmjs.github.io/akless-components/user/resources/default.css"
       ],
@@ -80,9 +75,7 @@
 //    "store": "ccm-user",
       "title": "Guest Mode: Please enter any username"
 //    "url": "ccm2.inf.h-brs.de"
-
     },
-
     Instance: function () {
 
       const self = this;
@@ -91,7 +84,7 @@
       this.init = async () => {
 
         // set shortcut to help functions
-        $ = Object.assign( {}, this.ccm.helper, this.helper );
+        $ = Object.assign( {}, this.ccm.helper, this.helper ); $.use( this.ccm );
 
         // privatize authentication relevant instance members
         my = $.privatize( this, 'realm', 'store' );
@@ -105,21 +98,15 @@
           context = null;
           this.onchange = this.onchange ? [ this.onchange ] : [];
         }
-        else if ( this.onchange ) context.onchange.push( this.onchange );
-
+        else if ( this.onchange )
+          context.onchange.push( this.onchange );
       };
 
       this.ready = async () => {
-
-        // clear own website area
-        $.setContent( this.element, '' );
-
-        // immediate login? => login user
-        if ( this.logged_in || sessionStorage.getItem( 'ccm-user-' + my.realm ) ) await this.login( true );
-
-        // logging of 'ready' event
-        this.logger && this.logger.log( 'ready', $.privatize( this, true ) );
-
+        $.setContent( this.element, '' );                                          // clear own website area
+        if ( this.logged_in || sessionStorage.getItem( 'ccm-user-' + my.realm ) )  // immediate login?
+          await this.login( true );                                                // => login user
+        this.logger && this.logger.log( 'ready', $.privatize( this, true ) );      // logging of 'ready' event
       };
 
       this.start = async () => {
@@ -127,14 +114,13 @@
         // higher user instance with same realm exists? => redirect method call
         if ( context ) return context.start();
 
-        // correct state is already rendered? => abort
-        if ( this.isLoggedIn() && this.element.querySelector( '#logged_in' ) || !this.isLoggedIn() && this.element.querySelector( '#logged_out' ) ) return;
-
         // logging of 'start' event
         this.logger && this.logger.log( 'start', this.isLoggedIn() );
 
-        // no login/logout button? => abort
-        if ( this.norender ) return;
+        // correct state is already rendered or no login/logout button wanted? => abort
+        if ( this.isLoggedIn() && this.element.querySelector( '#logged_in' )
+          || !this.isLoggedIn() && this.element.querySelector( '#logged_out' )
+          || this.norender ) return;
 
         // render logged in or logged out view
         if ( this.isLoggedIn() )
@@ -439,12 +425,10 @@
           priodata.apps = {};
           priodata.apps[ app_key ] = data;
         }
-        await this.ccm.set( { name: my.store, url: this.url, parent: this }, $.clone( priodata ) );
+        await this.ccm.store( { name: my.store, url: this.url, parent: this } ).then( store => store.set( $.clone( priodata ) ) );
       };
 
     }
-
   };
-
-  let b="ccm."+component.name+(component.version?"-"+component.version.join("."):"")+".js";if(window.ccm&&null===window.ccm.files[b])return window.ccm.files[b]=component;(b=window.ccm&&window.ccm.components[component.name])&&b.ccm&&(component.ccm=b.ccm);"string"===typeof component.ccm&&(component.ccm={url:component.ccm});let c=(component.ccm.url.match(/(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)/)||["latest"])[0];if(window.ccm&&window.ccm[c])window.ccm[c].component(component);else{var a=document.createElement("script");document.head.appendChild(a);component.ccm.integrity&&a.setAttribute("integrity",component.ccm.integrity);component.ccm.crossorigin&&a.setAttribute("crossorigin",component.ccm.crossorigin);a.onload=function(){window.ccm[c].component(component);document.head.removeChild(a)};a.src=component.ccm.url}
+  let b="ccm."+component.name+(component.version?"-"+component.version.join("."):"")+".js";if(window.ccm&&null===window.ccm.files[b])return window.ccm.files[b]=component;(b=window.ccm&&window.ccm.components[component.name])&&b.ccm&&(component.ccm=b.ccm);"string"===typeof component.ccm&&(component.ccm={url:component.ccm});let c=(component.ccm.url.match(/(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)/)||[""])[0];if(window.ccm&&window.ccm[c])window.ccm[c].component(component);else{var a=document.createElement("script");document.head.appendChild(a);component.ccm.integrity&&a.setAttribute("integrity",component.ccm.integrity);component.ccm.crossorigin&&a.setAttribute("crossorigin",component.ccm.crossorigin);a.onload=function(){(c="latest"?window.ccm:window.ccm[c]).component(component);document.head.removeChild(a)};a.src=component.ccm.url}
 } )();

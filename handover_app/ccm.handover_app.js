@@ -18,16 +18,19 @@
 
     name: 'handover_app',
 
-    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-25.0.0.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.0.0.js',
 
     config: {
 
 //    "component_url": "https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-6.0.3.js",
-      "css": [ "ccm.load",
+      "css": [ "ccm.load", [
+        [
+          "https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css",
+//        { "url": "https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp", "type": "css" },
+//        { "url": "https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp", "type": "css", "context": "head" }
+        ],
         "https://ccmjs.github.io/akless-components/handover_app/resources/styles.css",
-        "https://ccmjs.github.io/akless-components/libs/bootstrap-4/css/bootstrap.min.css",
-        { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/bootstrap-4/css/bootstrap.min.css" }
-      ],
+      ] ],
       "data": {},
       "enabled": {
         "embed_code": true,
