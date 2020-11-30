@@ -59,7 +59,7 @@
   //  "onreset": function ( instance ) {},
   //  "onstart": function ( instance ) { console.log( 'Fill-in-the-blank text started' ); },
   //  "onvalidation": function ( instance, data ) { if ( data.gap % 2 ) data.correct = data.nearly = true; console.log( data ); },
-  //  "progress_bar": true,
+      "progress_bar": true,
       "retry": true,
   //  "show_results": true,
   //  "solutions": true,
