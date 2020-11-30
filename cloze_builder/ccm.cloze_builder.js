@@ -27,11 +27,19 @@
       "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-6.0.0.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/cloze_builder/resources/templates.mjs" ],
       "ignore": {
-        "guest": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/resources.js", "guest" ] ],
-        "cloud": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/resources.js", "cloud" ] ],
-        "hbrsinfkaul": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/resources.js", "hbrsinfkaul" ] ],
-        "hbrsinfpseudo": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/resources.js", "hbrsinfpseudo" ] ],
-        "pseudo": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/resources.js", "pseudo" ] ],
+        "css": {
+          "default": [ "ccm.load", "https://ccmjs.github.io/akless-components/cloze/resources/default.css" ],
+          "lea": [ "ccm.load", "https://ccmjs.github.io/akless-components/cloze/resources/lea.css" ],
+          "pbworks": [ "ccm.load", "https://ccmjs.github.io/akless-components/cloze/resources/pbworks.css" ],
+          "weblysleek": [ "ccm.load", "https://ccmjs.github.io/akless-components/cloze/resources/weblysleek.css" ]
+        },
+        "user": {
+          "guest": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/resources.js", "guest" ] ],
+          "cloud": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/resources.js", "cloud" ] ],
+          "hbrsinfkaul": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/resources.js", "hbrsinfkaul" ] ],
+          "hbrsinfpseudo": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/resources.js", "hbrsinfpseudo" ] ],
+          "pseudo": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/resources.js", "pseudo" ] ],
+        }
       },
       "libs": [ "ccm.load",
         // parallel
@@ -108,6 +116,7 @@
       this.getValue = () => {
         const config = $.formData( this.element );
         config.text = editor && editor.root.innerHTML;
+        config.css = this.ignore.css[ config.css ];
         if ( config.keywords === 'manually' ) config.keywords = config.tags; delete config.tags;
         if ( !config.keywords ) config.keywords = '';
         if ( !config.reset ) config.onreset = false; else delete config.reset;
@@ -121,7 +130,7 @@
         }
         if ( !config.store || config.store === 'collective' ) delete config.user;
         delete config.store;
-        if ( config.user ) config.user = this.ignore[ config.user ];
+        if ( config.user ) config.user = this.ignore.user[ config.user ];
         switch ( config.render ) {
           case 'clear': config.onfinish.clear = true; break;
           case 'restart': config.onfinish.restart = true; break;

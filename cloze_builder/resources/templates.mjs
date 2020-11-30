@@ -52,6 +52,17 @@ export function main( config, builder ) {
                 </label>
               </div>
 
+              <!-- Layout -->
+              <div class="form-group">
+                <label for="cb-css">Layout</label>
+                <select class="form-control" name="css" id="cb-css">
+                  <option value="default">Default</option>
+                  <option value="lea">LEA-like</option>
+                  <option value="pbworks">PBworks-like</option>
+                  <option value="weblysleek">Weblysleek</option>
+                </select>
+              </div>
+
               <!-- Provided Answers -->
               <div class="form-group">
                 <label for="cb-keywords">Provided Answers</label>
