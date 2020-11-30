@@ -24,13 +24,13 @@ ccm.files[ 'resources.js' ] = {
       "./../libs/quill-1/quill.snow.css",
       "./../libs/selectize-0/selectize.css",
       [  // serial
-        "./../libs/jquery/jquery-3.5.1.slim.js",
+        "./../libs/jquery/jquery-3.5.1.slim.min.js",
         [  // parallel
           "./../libs/quill-1/quill.min.js",
-          "./../libs/bootstrap-4/js/bootstrap.bundle.js",
+          "./../libs/bootstrap-4/js/bootstrap.bundle.min.js",
           [  // serial
             "./../libs/selectize-0/selectize.min.js",
-            "./../libs/selectize-0/selectize-plugin.js"
+            "./../libs/selectize-0/selectize-plugin.min.js"
           ]
         ]
       ]
