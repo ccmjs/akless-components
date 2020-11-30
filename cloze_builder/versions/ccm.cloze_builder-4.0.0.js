@@ -125,7 +125,10 @@
         switch ( config.render ) {
           case 'clear': config.onfinish.clear = true; break;
           case 'restart': config.onfinish.restart = true; break;
-          case 'app': config.onfinish.render = config.app && $.decomposeEmbedCode( config.app ) || {}; break;
+          case 'app':
+            config.onfinish.render = config.app && $.decomposeEmbedCode( config.app ) || {};
+            config.onfinish.render.config = [ 'ccm.get', config.onfinish.render.config.store, config.onfinish.render.config.key ];
+            break;
         }
         delete config.render;
         delete config.app;
