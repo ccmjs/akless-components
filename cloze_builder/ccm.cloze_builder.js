@@ -71,8 +71,9 @@
         const dataset = await $.integrate( await $.dataset( this.data ), this.tool.config );  // get initial app configuration
         this.logger && this.logger.log( 'start', $.clone( dataset ) );                        // logging of 'start' event
         this.render( dataset );                                                               // render main HTML template
-        this.element.querySelector( '#editor' ).innerHTML = dataset.text || '';               // set initial content for text editor
-        editor = new Quill( this.element.querySelector( '#editor' ), { placeholder: 'Write here...', theme: 'snow' } );     // render text editor
+        editor = this.element.querySelector( '#editor' );                                     // select webpage area for text editor
+        editor.innerHTML = dataset.text || '';                                                // set initial content for text editor
+        editor = new Quill( editor, { placeholder: 'Write here...', theme: 'snow' } );        // render text editor
 
         // prepare input field for individual list of provided answers
         jQuery( this.element.querySelector( '#cb-tags' ) ).selectize( { create: true, placeholder: 'Individual List of Provided Answers', plugins: [ 'remove_button' ] } );

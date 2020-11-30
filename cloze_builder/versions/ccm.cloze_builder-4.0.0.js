@@ -26,6 +26,13 @@
   //  "data": { "store": [ "ccm.store" ] },
       "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-6.0.0.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/cloze_builder/resources/templates.mjs" ],
+      "ignore": {
+        "guest": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/resources.js", "guest" ] ],
+        "cloud": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/resources.js", "cloud" ] ],
+        "hbrsinfkaul": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/resources.js", "hbrsinfkaul" ] ],
+        "hbrsinfpseudo": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/resources.js", "hbrsinfpseudo" ] ],
+        "pseudo": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/resources.js", "pseudo" ] ],
+      },
       "libs": [ "ccm.load",
         // parallel
         "https://ccmjs.github.io/akless-components/libs/quill-1/quill.snow.css",
@@ -44,19 +51,11 @@
       ],
   //  "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-5.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
       "preview": "Preview",
-  //  "onchange": function ( instance, data ) { console.log( data ); },
   //  "onfinish": { "restart": true },
-  //  "onstart": function ( instance ) { console.log( 'started' ); },
       "results": { "store": { "name": "cloze_results" }, "permissions": { "access": { "get": "all", "set": "creator", "del": "creator" } } },
+      "shadow": "none",
       "submit": "Submit",
-      "tool": [ "ccm.component", "https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-8.0.0.min.js" ],
-      "ignore": {
-        "guest": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/resources.js", "guest" ] ],
-        "cloud": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/resources.js", "cloud" ] ],
-        "hbrsinfkaul": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/resources.js", "hbrsinfkaul" ] ],
-        "hbrsinfpseudo": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/resources.js", "hbrsinfpseudo" ] ],
-        "pseudo": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/resources.js", "pseudo" ] ],
-      }
+      "tool": [ "ccm.component", "https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-8.0.0.min.js" ]
     },
 
     Instance: function () {
@@ -72,8 +71,9 @@
         const dataset = await $.integrate( await $.dataset( this.data ), this.tool.config );  // get initial app configuration
         this.logger && this.logger.log( 'start', $.clone( dataset ) );                        // logging of 'start' event
         this.render( dataset );                                                               // render main HTML template
-        this.element.querySelector( '#editor' ).innerHTML = dataset.text || '';               // set initial content for text editor
-        editor = new Quill( this.element.querySelector( '#editor' ), { placeholder: 'Write here...', theme: 'snow' } );     // render text editor
+        editor = this.element.querySelector( '#editor' );                                     // select webpage area for text editor
+        editor.innerHTML = dataset.text || '';                                                // set initial content for text editor
+        editor = new Quill( editor, { placeholder: 'Write here...', theme: 'snow' } );        // render text editor
 
         // prepare input field for individual list of provided answers
         jQuery( this.element.querySelector( '#cb-tags' ) ).selectize( { create: true, placeholder: 'Individual List of Provided Answers', plugins: [ 'remove_button' ] } );
