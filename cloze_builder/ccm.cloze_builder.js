@@ -37,7 +37,7 @@
         "https://ccmjs.github.io/akless-components/libs/quill-1/quill.min.js",
         "https://ccmjs.github.io/akless-components/libs/quill-1/quill.snow.css",
         [
-          "https://ccmjs.github.io/akless-components/libs/jquery/jquery-3.5.1.slim.js",
+          "https://ccmjs.github.io/akless-components/libs/jquery/jquery-3.5.1.slim.min.js",
           [
             "https://ccmjs.github.io/akless-components/libs/bootstrap-4/js/bootstrap.bundle.js",
             [
