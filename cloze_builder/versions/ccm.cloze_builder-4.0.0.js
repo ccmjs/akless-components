@@ -109,7 +109,6 @@
         const config = $.formData( this.element );
         config.text = editor && editor.root.innerHTML;
         if ( config.keywords === 'manually' ) config.keywords = config.tags; delete config.tags;
-        if ( !config.keywords ) config.keywords = '';
         if ( !config.reset ) config.onreset = false; else delete config.reset;
         if ( !config.finish ) delete config.onfinish; delete config.finish;
         if ( !config.onfinish ) return config;
