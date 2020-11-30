@@ -2,7 +2,7 @@
  * @overview ccm component for building a fill-in-the-blank text
  * @author André Kless <andre.kless@web.de> 2017-2020
  * @license The MIT License (MIT)
- * @version latest (4.0.0)
+ * @version 4.0.0
  * @changes
  * version 4.0.0 (27.11.2020)
  * - complete reimplementation
@@ -16,7 +16,7 @@
 ( () => {
 
   const component = {
-    name: 'cloze_builder',
+    name: 'cloze_builder', version: [ 4, 0, 0 ],
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.1.0.js',
     config: {
       "css": [ "ccm.load", [
@@ -26,35 +26,34 @@
   //  "data": { "store": [ "ccm.store" ] },
       "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-6.0.0.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/cloze_builder/resources/templates.mjs" ],
+      "libs": [ "ccm.load",
+        "https://ccmjs.github.io/akless-components/libs/quill-1/quill.min.js",
+        "https://ccmjs.github.io/akless-components/libs/quill-1/quill.snow.css",
+        [
+          "https://ccmjs.github.io/akless-components/libs/jquery/jquery-3.5.1.slim.js",
+          "https://ccmjs.github.io/akless-components/libs/bootstrap-4/js/bootstrap.bundle.js",
+        ],
+        "https://ccmjs.github.io/akless-components/libs/selectize-0/selectize.css",
+        [
+          "https://ccmjs.github.io/akless-components/libs/selectize-0/selectize.min.js",
+          "https://ccmjs.github.io/akless-components/libs/selectize-0/selectize-plugin.min.js"
+        ]
+      ],
+  //  "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-5.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
+      "preview": "Preview",
+  //  "onchange": function ( instance, data ) { console.log( data ); },
+  //  "onfinish": { "restart": true },
+  //  "onstart": function ( instance ) { console.log( 'started' ); },
+      "results": { "store": { "name": "cloze_results" }, "permissions": { "access": { "get": "all", "set": "creator", "del": "creator" } } },
+      "submit": "Submit",
+      "tool": [ "ccm.component", "https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-8.0.0.min.js" ],
       "ignore": {
         "guest": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/resources.js", "guest" ] ],
         "cloud": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/resources.js", "cloud" ] ],
         "hbrsinfkaul": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/resources.js", "hbrsinfkaul" ] ],
         "hbrsinfpseudo": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/resources.js", "hbrsinfpseudo" ] ],
         "pseudo": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/resources.js", "pseudo" ] ],
-      },
-      "libs": [ "ccm.load",
-        "https://ccmjs.github.io/akless-components/libs/quill-1/quill.min.js",
-        "https://ccmjs.github.io/akless-components/libs/quill-1/quill.snow.css",
-        [
-          "https://ccmjs.github.io/akless-components/libs/jquery/jquery-3.5.1.slim.js",
-          [
-            "https://ccmjs.github.io/akless-components/libs/bootstrap-4/js/bootstrap.bundle.js",
-            [
-              "https://ccmjs.github.io/akless-components/libs/selectize-0/selectize.min.js",
-              "https://ccmjs.github.io/akless-components/libs/selectize-0/selectize-plugin.min.js"
-            ]
-          ]
-        ],
-        "https://ccmjs.github.io/akless-components/libs/selectize-0/selectize.css"
-      ],
-  //  "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-5.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
-      "preview": "Preview",
-  //  "onfinish": { "restart": true },
-      "results": { "store": { "name": "cloze_results" }, "permissions": { "access": { "get": "all", "set": "creator", "del": "creator" } } },
-      "shadow": "none",
-      "submit": "Submit",
-      "tool": [ "ccm.component", "https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-8.0.0.min.js" ]
+      }
     },
 
     Instance: function () {

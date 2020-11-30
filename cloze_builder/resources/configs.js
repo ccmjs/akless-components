@@ -1,4 +1,6 @@
 /**
+ *----------------------------------------------------- DEPRECATED -----------------------------------------------------
+ *
  * @overview configurations of ccm component for building a fill-in-the-blank text
  * @author André Kless <andre.kless@web.de> 2017-2018
  * @license The MIT License (MIT)
