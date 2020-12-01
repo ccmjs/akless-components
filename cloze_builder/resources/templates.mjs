@@ -208,7 +208,7 @@ export function main( config, builder ) {
                   <option value="" ?selected=${config.onfinish && !config.onfinish.store}>None</option>
                   <option value="collective" ?selected=${config.onfinish && config.onfinish.store === true && !config.onfinish.store.user}>Collective Solution</option>
                   <option value="user" ?selected=${config.onfinish && config.onfinish.store === true && config.data.user}>User Specific</option>
-                  <option value="unique" ?selected=${config.onfinish && builder.ccm.helper.isObject( config.onfinish.store ) && !config.onfinish.store.unique}>User Specific without Modify</option>
+                  <option value="unique" ?selected=${config.onfinish && builder.ccm.helper.isObject( config.onfinish.store ) && config.onfinish.store.unique}>User Specific without Modify</option>
                 </select>
               </div>
 
