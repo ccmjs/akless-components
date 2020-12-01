@@ -16,7 +16,7 @@ ccm.files[ 'resources.js' ] = {
     "feedback": true,
     "helper.1": "./../modules/helper.mjs",
     "html.1": "./../cloze/resources/templates.mjs",
-    "keywords": true,
+    "keywords": [ "convenience", "conducting", "objectives", "durable", "competitive", "breakdown", "reasons", "evaluate", "adding", "breakthroughs", "withdraw", "patterns", "non-durable", "deleting", "feasible", "making", "sources", "niche" ],
 //  "keywords": [ "convenience", "conducting", "objectives", "durable", "competitive", "breakdown", "reasons", "evaluate", "adding", "breakthroughs", "withdraw", "patterns", "non-durable", "deleting", "feasible", "making", "sources", "niche" ],
 //  "logger": [ "ccm.instance", "./../log/ccm.log.js", [ "ccm.get", "./../log/resources/configs.js", "greedy" ] ],
     "onfinish": {

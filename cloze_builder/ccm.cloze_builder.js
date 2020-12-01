@@ -72,13 +72,19 @@
         "https://ccmjs.github.io/akless-components/libs/quill-1/quill.snow.css",
         "https://ccmjs.github.io/akless-components/libs/selectize-0/selectize.css",
         [  // serial
-          "https://ccmjs.github.io/akless-components/libs/jquery/jquery-3.5.1.slim.min.js",
+          "https://ccmjs.github.io/akless-components/libs/jquery-3/jquery.min.js",
           [  // parallel
             "https://ccmjs.github.io/akless-components/libs/quill-1/quill.min.js",
             "https://ccmjs.github.io/akless-components/libs/bootstrap-4/js/bootstrap.bundle.min.js",
             [  // serial
               "https://ccmjs.github.io/akless-components/libs/selectize-0/selectize.min.js",
-              "https://ccmjs.github.io/akless-components/libs/selectize-0/selectize-plugin.min.js"
+              [  // parallel
+                "https://ccmjs.github.io/akless-components/libs/selectize-0/remove_button-plugin.min.js",
+                [  // serial
+                  "https://ccmjs.github.io/akless-components/libs/jquery-ui-1/jquery-ui-sortable.min.js",
+                  "https://ccmjs.github.io/akless-components/libs/selectize-0/drag_drop-plugin.min.js"
+                ]
+              ]
             ]
           ]
         ]
@@ -110,7 +116,15 @@
         editor = new Quill( editor, { placeholder: 'Write here...', theme: 'snow' } );  // render text editor
 
         // prepare input field for individual list of provided answers
-        jQuery( this.element.querySelector( '#cb-tags' ) ).selectize( { create: true, placeholder: 'Individual List of Provided Answers', plugins: [ 'remove_button' ] } );
+        const keywords = Array.isArray( dataset.keywords ) && dataset.keywords;
+        jQuery( this.element.querySelector( '#cb-tags' ) ).selectize( {
+          create: true,
+          items: keywords,
+          labelField: 'value',
+          options: keywords && keywords.map( keyword => { return { value: keyword } } ),
+          placeholder: 'Individual List of Provided Answers',
+          plugins: [ 'drag_drop', 'remove_button' ]
+        } );
 
         // listen to change events of the input fields
         this.element.querySelectorAll( '*[name]' ).forEach( input => input.addEventListener( 'change', () => this.render() ) );
