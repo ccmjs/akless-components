@@ -150,7 +150,7 @@
         if ( !config.onfinish ) return config;
         const key = this.results.key || $.generateKey();
         switch ( config.store ) {
-          case 'collective': config.onfinish.store = true; config.data = { store: [ 'ccm.store', this.results.store ], key: key }; delete config.data; break;
+          case 'collective': config.onfinish.store = true; config.data = { store: [ 'ccm.store', this.results.store ], key: key }; break;
           case 'user': config.onfinish.store = true; config.data = { store: [ 'ccm.store', this.results.store ], key: key, login: true, user: true, permissions: this.results.permissions }; break;
           case 'unique': config.onfinish.login = true; config.onfinish.store = { settings: [ 'ccm.store', this.results.store ], key: key, login: true, user: true, unique: true, permissions: this.results.permissions }; break;
           default: delete config.data;
