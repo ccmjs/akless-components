@@ -93,7 +93,7 @@
     },
 
     Instance: function () {
-      let $, editor;
+      let $, editor, dataset;
 
       this.ready = async () => {
         $ = Object.assign( {}, this.ccm.helper, this.helper ); $.use( this.ccm );  // set shortcut to help functions
@@ -102,12 +102,12 @@
       };
 
       this.start = async () => {
-        const dataset = await $.integrate( await $.dataset( this.data ), this.tool.config );  // get initial app configuration
-        this.logger && this.logger.log( 'start', $.clone( dataset ) );                        // logging of 'start' event
-        this.render( dataset );                                                               // render main HTML template
-        editor = this.element.querySelector( '#editor' );                                     // select webpage area for text editor
-        editor.innerHTML = dataset.text || '';                                                // set initial content for text editor
-        editor = new Quill( editor, { placeholder: 'Write here...', theme: 'snow' } );        // render text editor
+        dataset = await $.integrate( await $.dataset( this.data ), this.tool.config );  // get initial app configuration
+        this.logger && this.logger.log( 'start', $.clone( dataset ) );                  // logging of 'start' event
+        this.render( dataset );                                                         // render main HTML template
+        editor = this.element.querySelector( '#editor' );                               // select webpage area for text editor
+        editor.innerHTML = dataset.text || '';                                          // set initial content for text editor
+        editor = new Quill( editor, { placeholder: 'Write here...', theme: 'snow' } );  // render text editor
 
         // prepare input field for individual list of provided answers
         jQuery( this.element.querySelector( '#cb-tags' ) ).selectize( { create: true, placeholder: 'Individual List of Provided Answers', plugins: [ 'remove_button' ] } );
@@ -148,7 +148,7 @@
         if ( !config.reset ) config.onreset = false; else delete config.reset;
         if ( !config.finish ) delete config.onfinish; delete config.finish;
         if ( !config.onfinish ) return config;
-        const key = this.results.key || $.generateKey();
+        const key = this.results.key || dataset.key || $.generateKey();
         switch ( config.store ) {
           case 'collective': config.onfinish.store = true; config.data = { store: [ 'ccm.store', this.results.store ], key: key }; break;
           case 'user': config.onfinish.store = true; config.data = { store: [ 'ccm.store', this.results.store ], key: key, login: true, user: true, permissions: this.results.permissions }; break;
