@@ -153,7 +153,7 @@
           case 'collective': config.onfinish.store = true; config.data = { store: [ 'ccm.store', this.results.store ], key: key }; break;
           case 'user': config.onfinish.store = true; config.data = { store: [ 'ccm.store', this.results.store ], key: key, login: true, user: true, permissions: this.results.permissions }; break;
           case 'unique': config.onfinish.login = true; config.onfinish.store = { settings: [ 'ccm.store', this.results.store ], key: key, login: true, user: true, unique: true, permissions: this.results.permissions }; break;
-          default: delete config.data;
+          default: config.data = '';
         }
         if ( !config.store || config.store === 'collective' ) delete config.user;
         delete config.store;
