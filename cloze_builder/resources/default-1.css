@@ -9,6 +9,10 @@
   border-radius: 0 !important;
 }
 
+.bg-info {
+  font-size: small;
+}
+
 li b {
   text-decoration: underline;
 }
