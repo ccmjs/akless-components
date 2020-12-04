@@ -5,8 +5,12 @@
  * @license The MIT License (MIT)
  */
 
-.card, form > button {
+.accordion > .card, form > button {
   border-radius: 0 !important;
+}
+
+li b {
+  text-decoration: underline;
 }
 
 *[disabled] {

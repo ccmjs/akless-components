@@ -47,7 +47,7 @@
           },
           "cloud": {
             "key": "cloud",
-            "title": "DMS Account",
+            "title": "Digital Makerspace Account",
             "value": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/resources.js", "cloud" ] ]
           },
           "hbrsinfkaul": {
@@ -114,6 +114,7 @@
         editor = this.element.querySelector( '#editor' );                               // select webpage area for text editor
         editor.innerHTML = dataset.text || '';                                          // set initial content for text editor
         editor = new Quill( editor, { placeholder: 'Write here...', theme: 'snow' } );  // render text editor
+        jQuery( '[data-toggle=popover]' ).popover();                                    // initialize popovers of info icons
 
         // prepare input field for individual list of provided answers
         const keywords = Array.isArray( dataset.keywords ) && dataset.keywords;
