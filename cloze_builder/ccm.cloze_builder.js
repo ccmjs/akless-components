@@ -9,6 +9,7 @@
  * - uses ccm.js v26.1.0
  * - uses helper.mjs v6.0.0
  * - HTML templates based on lit-html
+ * - added katex support
  * - updated minified component line
  * (for older version changes see ccm.cloze_builder-3.0.3.js)
  */
@@ -19,10 +20,16 @@
     name: 'cloze_builder',
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.1.0.js',
     config: {
-      "css": [ "ccm.load", [
-        "https://ccmjs.github.io/akless-components/libs/bootstrap-4/css/bootstrap.min.css",
-        "https://ccmjs.github.io/akless-components/cloze_builder/resources/default-1.css"
-      ] ],
+      "css": [ "ccm.load",
+        [  // serial
+          "https://ccmjs.github.io/akless-components/libs/bootstrap-4/css/bootstrap.min.css",
+          [  // parallel
+            "https://ccmjs.github.io/akless-components/libs/quill-1/quill.snow.css",
+            "https://ccmjs.github.io/akless-components/libs/selectize-0/selectize.css",
+            "https://ccmjs.github.io/akless-components/cloze_builder/resources/default-1.css"
+          ]
+        ]
+      ],
   //  "data": { "store": [ "ccm.store" ] },
       "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-6.0.0.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/cloze_builder/resources/templates.mjs" ],
@@ -67,10 +74,11 @@
           }
         }
       },
+      "katex": [ "ccm.load",
+        "https://ccmjs.github.io/akless-components/libs/katex/katex.min.js",
+        "https://ccmjs.github.io/akless-components/libs/katex/katex.min.css"
+      ],
       "libs": [ "ccm.load",
-        // parallel
-        "https://ccmjs.github.io/akless-components/libs/quill-1/quill.snow.css",
-        "https://ccmjs.github.io/akless-components/libs/selectize-0/selectize.css",
         [  // serial
           "https://ccmjs.github.io/akless-components/libs/jquery-3/jquery.min.js",
           [  // parallel
@@ -95,7 +103,17 @@
       "results": { "store": { "name": "cloze_results" }, "permissions": { "access": { "get": "all", "set": "creator", "del": "creator" } } },
       "shadow": "none",
       "submit": "Submit",
-      "tool": [ "ccm.component", "https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-8.0.0.js" ]
+      "tool": [ "ccm.component", "https://ccmjs.github.io/akless-components/cloze/versions/ccm.cloze-8.0.0.js" ],
+      "toolbar": [
+        [ { 'header': [ 1, 2, 3, false ] } ],
+        [ 'bold', 'italic', 'underline', 'strike' ],
+        [ 'link', { 'script': 'sub' }, { 'script': 'super' } ],
+        [ { 'color': [] }, { 'background': [] } ],
+        [ { 'list': 'ordered' }, { 'list': 'bullet' } ],
+        [ 'image', 'video' ],
+        [ 'code-block', 'formula' ],
+        [ 'clean' ]
+      ]
     },
 
     Instance: function () {
@@ -113,24 +131,13 @@
         this.render( dataset );                                                         // render main HTML template
         editor = this.element.querySelector( '#editor' );                               // select webpage area for text editor
         editor.innerHTML = dataset.text || '';                                          // set initial content for text editor
-        jQuery( '[data-toggle=popover]' ).popover();                                    // initialize popovers of info icons
+        jQuery( '[data-toggle=popover]' ).popover();                                    // initialize popovers for info icons
 
         // render text editor
         editor = new Quill( editor, {
           placeholder: 'Write here...',
           theme: 'snow',
-          modules: {
-            toolbar: [
-              [ { 'header': [ 1, 2, 3, false ] } ],
-              [ 'bold', 'italic', 'underline', 'strike' ],
-              [ 'link', { 'script': 'sub' }, { 'script': 'super' } ],
-              [ { 'color': [] }, { 'background': [] } ],
-              [ { 'list': 'ordered' }, { 'list': 'bullet' } ],
-              [ 'image', 'video' ],
-              [ 'code-block', 'formula' ],
-              [ 'clean' ]
-            ]
-          }
+          modules: { toolbar: this.toolbar }
         } );
 
         // prepare input field for individual list of provided answers
@@ -203,6 +210,7 @@
         }
         delete config.render;
         delete config.app;
+        if ( this.katex ) config.katex = JSON.parse( this.config ).katex;
         return config;
       };
     }

@@ -8,9 +8,14 @@ ccm.files[ 'resources.js' ] = {
 
   "local": {
     "css": [ "ccm.load",
-      [
+      [  // serial
         "./../libs/bootstrap-4/css/bootstrap.css",
-        "./resources/default-1.css"
+        [
+          // parallel
+          "./../libs/quill-1/quill.snow.css",
+          "./../libs/selectize-0/selectize.css",
+          "./resources/default-1.css",
+        ]
       ]
     ],
     "data": {
@@ -19,10 +24,11 @@ ccm.files[ 'resources.js' ] = {
     },
     "helper.1": "./../modules/helper.mjs",
     "html.1": "./resources/templates.mjs",
+    "katex": [ "ccm.load",
+      "./../libs/katex/katex.js",
+      "./../libs/katex/katex.css"
+    ],
     "libs": [ "ccm.load",
-      // parallel
-      "./../libs/quill-1/quill.snow.css",
-      "./../libs/selectize-0/selectize.css",
       [  // serial
         "./../libs/jquery-3/jquery.min.js",
         [  // parallel
