@@ -182,6 +182,7 @@
         const config = $.formData( this.element );
         config.text = editor && editor.root.innerHTML;
         config.css = this.ignore.css[ config.css ].value;
+        if ( this.katex ) config.katex = JSON.parse( this.config ).katex;
         if ( config.keywords === 'manually' ) config.keywords = config.tags; delete config.tags;
         if ( !config.keywords ) config.keywords = '';
         if ( !config.reset ) config.onreset = false; else delete config.reset;
@@ -210,7 +211,6 @@
         }
         delete config.render;
         delete config.app;
-        if ( this.katex ) config.katex = JSON.parse( this.config ).katex;
         return config;
       };
     }

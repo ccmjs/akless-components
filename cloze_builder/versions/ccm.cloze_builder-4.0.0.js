@@ -9,6 +9,7 @@
  * - uses ccm.js v26.1.0
  * - uses helper.mjs v6.0.0
  * - HTML templates based on lit-html
+ * - added katex support
  * - updated minified component line
  * (for older version changes see ccm.cloze_builder-3.0.3.js)
  */
@@ -181,6 +182,7 @@
         const config = $.formData( this.element );
         config.text = editor && editor.root.innerHTML;
         config.css = this.ignore.css[ config.css ].value;
+        if ( this.katex ) config.katex = JSON.parse( this.config ).katex;
         if ( config.keywords === 'manually' ) config.keywords = config.tags; delete config.tags;
         if ( !config.keywords ) config.keywords = '';
         if ( !config.reset ) config.onreset = false; else delete config.reset;
@@ -209,7 +211,6 @@
         }
         delete config.render;
         delete config.app;
-        if ( this.katex ) config.katex = JSON.parse( this.config ).katex;
         return config;
       };
     }
