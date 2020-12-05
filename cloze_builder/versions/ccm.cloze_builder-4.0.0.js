@@ -10,6 +10,7 @@
  * - uses helper.mjs v6.0.0
  * - HTML templates based on lit-html
  * - added katex support
+ * - adding of images by URL
  * - updated minified component line
  * (for older version changes see ccm.cloze_builder-3.0.3.js)
  */
