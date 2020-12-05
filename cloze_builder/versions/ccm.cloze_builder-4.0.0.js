@@ -137,7 +137,15 @@
         editor = new Quill( editor, {
           placeholder: 'Write here...',
           theme: 'snow',
-          modules: { toolbar: this.toolbar }
+          modules: { toolbar: {
+            container: this.toolbar,
+            handlers: {
+              image: () => {
+                const url = prompt( 'Enter image URL:' );
+                url && this.quill.insertEmbed( this.quill.getSelection().index, 'image', url, Quill.sources.USER );
+              }
+            }
+          } }
         } );
 
         // prepare input field for individual list of provided answers
