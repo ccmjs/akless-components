@@ -47,7 +47,7 @@
           },
           "cloud": {
             "key": "cloud",
-            "title": "DMS Account",
+            "title": "Digital Makerspace Account",
             "value": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/resources.js", "cloud" ] ]
           },
           "hbrsinfkaul": {
@@ -113,7 +113,25 @@
         this.render( dataset );                                                         // render main HTML template
         editor = this.element.querySelector( '#editor' );                               // select webpage area for text editor
         editor.innerHTML = dataset.text || '';                                          // set initial content for text editor
-        editor = new Quill( editor, { placeholder: 'Write here...', theme: 'snow' } );  // render text editor
+        jQuery( '[data-toggle=popover]' ).popover();                                    // initialize popovers of info icons
+
+        // render text editor
+        editor = new Quill( editor, {
+          placeholder: 'Write here...',
+          theme: 'snow',
+          modules: {
+            toolbar: [
+              [ { 'header': [ 1, 2, 3, false ] } ],
+              [ 'bold', 'italic', 'underline', 'strike' ],
+              [ 'link', { 'script': 'sub' }, { 'script': 'super' } ],
+              [ { 'color': [] }, { 'background': [] } ],
+              [ { 'list': 'ordered' }, { 'list': 'bullet' } ],
+              [ 'image', 'video' ],
+              [ 'code-block', 'formula' ],
+              [ 'clean' ]
+            ]
+          }
+        } );
 
         // prepare input field for individual list of provided answers
         const keywords = Array.isArray( dataset.keywords ) && dataset.keywords;
