@@ -221,7 +221,7 @@
 
             const value = $.deepValue( dataset, 'sections.' + i + '.input' );
             const size = self.blank ? this.size || max_length : keywords_data[ i ][ 0 ].word.length;
-            const maxlength = self.blank ? '' : size;
+            const maxlength = self.blank ? max_length : size;
             const onInput = () => {
               const event_data = { gap: 1 + i, input: this.value };
               self.logger && self.logger.log( 'input', $.clone( event_data ) );
