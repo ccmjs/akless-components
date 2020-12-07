@@ -53,17 +53,7 @@ export function main( instance, keywords ) {
  * @returns {TemplateResult} HTML template for input field
  */
 export function inputField( value = '', placeholder = '', size = 10, maxlength = '', onInput, onChange ) {
-  return html`
-    <input type="text"
-           size="${size}"
-           maxlength="${maxlength || ''}"
-           autocorrect="off"
-           autocapitalize="none"
-           placeholder="${placeholder}"
-           .value="${value}"
-           @input="${onInput}"
-           @change="${onChange}">
-  `;
+  return html`<input type="text" size="${size}" maxlength="${maxlength}" autocorrect="off" autocapitalize="none" placeholder="${placeholder}" .value="${value}" @input="${onInput}" @change="${onChange}">`;
 }
 
 /**
