@@ -12,6 +12,9 @@
  * - cancel button is now a reset button
  * - submit button is now a feedback button
  * - changed progress bar in conclusion area
+ * - changed default instance configuration
+ * - optional set of size for blank input field (config.size)
+ * - updated behaviour of input field size
  * - updated minified component line
  * version 7.0.2 (11.11.2020):
  * - bug fix when text is given via object
@@ -62,6 +65,7 @@
   //  "progress_bar": true,
   //  "retry": true,
   //  "show_results": true,
+  //  "size": 10,
   //  "solutions": true,
   //  "start_button": true,
       "text": "Hello, *(W)o(rl)d*! *Welcome*. This is an *Ex(amp)le*.",
@@ -151,11 +155,16 @@
             for ( let i = 0; i < keyw__d.length; i++ )                           // because of data type limitations)
               if ( keyw__d.charAt( i ) === '*' ) givens += Math.pow( 2, i );
 
-            return {
-              word: keyword.replace( regex_given, given => given.substr( 1, given.length - 2 ) ),
-              givens: givens
-            };
+            // determine solution word
+            keyword = keyword.replace( regex_given, given => given.substr( 1, given.length - 2 ) );
 
+            // determine placeholder value
+            let placeholder = '';
+            if ( !self.blank )
+              for ( let j = 0; j < keyword.length; j++ )
+                placeholder += Math.pow( 2, j ) & givens ? keyword.charAt( j ) : '_';
+
+            return { word: keyword, placeholder: placeholder };
           }
 
         } );
@@ -198,38 +207,30 @@
           self.element.querySelector( '#text' ).innerHTML = self.text;         // render text including gaps
 
           // determine size of longest solution word
-          let size = 0;
+          let max_length = 0;
           keywords_data.forEach( keyword => keyword.forEach( keyword => {
-            if ( keyword.word.length > size ) size = keyword.word.length;
+            if ( keyword.word.length > max_length ) max_length = keyword.word.length;
           } ) );
 
           // render a input field into each gap
           self.element.querySelectorAll( '.gap' ).forEach( ( gap_elem, i ) => {
 
-            // determine placeholder value
-            let placeholder = '';
-            if ( !self.blank ) {
-              const keyword = keywords_data[ i ][ 0 ].word;
-              for ( let j = 0; j < keyword.length; j++ )
-                placeholder += Math.pow( 2, j ) & keywords_data[ i ][ 0 ].givens ? keyword.charAt( j ) : '_';
-            }
+            const value = $.deepValue( dataset, 'sections.' + i + '.input' );
+            const size = self.blank ? this.size || max_length : keywords_data[ i ][ 0 ].word.length;
+            const maxlength = self.blank ? '' : size;
+            const onInput = () => {
+              const event_data = { gap: 1 + i, input: this.value };
+              self.logger && self.logger.log( 'input', $.clone( event_data ) );
+              self.oninput && self.oninput( self, $.clone( event_data ) );
+            };
+            const onChange = () => {
+              const event_data = { gap: 1 + i, input: this.value };
+              self.logger && self.logger.log( 'change', $.clone( event_data ) );
+              self.onchange && self.onchange( self, $.clone( event_data ) );
+            };
 
             // render input field
-            $.render( $.html( self.html.inputField,
-              $.deepValue( dataset, 'sections.' + i + '.input' ),                                            // value
-              placeholder,                                                                                   // placeholder
-              event => event.target.size = event.target.value.length > 10 ? event.target.value.length : 10,  // resize
-              () => {
-                const event_data = { gap: 1 + i, input: this.value };
-                self.logger && self.logger.log( 'input', $.clone( event_data ) );
-                self.oninput && self.oninput( self, $.clone( event_data ) );
-              },                                                                                   // onInput
-              () => {
-                const event_data = { gap: 1 + i, input: this.value };
-                self.logger && self.logger.log( 'change', $.clone( event_data ) );
-                self.onchange && self.onchange( self, $.clone( event_data ) );
-              }                                                                                    // onChange
-            ), gap_elem );
+            $.render( $.html( self.html.inputField, value, keywords_data[ i ][ 0 ].placeholder, size * 1.11, maxlength, onInput, onChange ), gap_elem );
 
           } );
 
@@ -290,8 +291,6 @@
                   for ( let j = 0; j < keywords_data[ i ].length; j++ )
                     if ( !keywords_data[ i ][ j ].used ) { placeholder = keywords_data[ i ][ j ].word; break; }
                   gap.setAttribute( 'placeholder', placeholder );
-                  placeholder.length <= 0 ? gap.size = gap.value.length || gap.size : gap.size = placeholder.length || gap.size;
-                  gap.size *= 1.2;
                 }
                 gap.parentNode.classList.add( event_data.correct ? 'correct' : ( event_data.nearly ? 'nearly' : 'wrong' ) );
               }
@@ -323,10 +322,11 @@
             self.logger && self.logger.log( 'retry' );
 
             // remove visual feedback from each text gap
-            self.element.querySelectorAll( '.gap' ).forEach( gap => {
+            self.element.querySelectorAll( '.gap' ).forEach( ( gap, i ) => {
               gap.classList.remove( 'correct', 'nearly', 'wrong' );
               const input = gap.querySelector( 'input' );
               input.disabled = false;
+              input.placeholder = keywords_data[ i ][ 0 ].placeholder;
             } );
 
             // update buttons

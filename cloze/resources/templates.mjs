@@ -46,14 +46,23 @@ export function main( instance, keywords ) {
  * returns the HTML template for an input field
  * @param {string} [value=''] - initial value
  * @param {string} [placeholder=''] - placeholder value
- * @param {Function} resize - resizes length of input field
+ * @param {number} [size=10] - size of input field
+ * @param {number|string} [maxlength=''] - maximum length of solution word
  * @param {Function} onInput - callback for 'oninput' event
  * @param {Function} onChange - callback for 'onchange' event
  * @returns {TemplateResult} HTML template for input field
  */
-export function inputField( value = '', placeholder = '', resize, onInput, onChange ) {
+export function inputField( value = '', placeholder = '', size = 10, maxlength = '', onInput, onChange ) {
   return html`
-    <input type="text" size="10" autocorrect="off" autocapitalize="none" placeholder="${placeholder}" .value="${value}" @input="${onInput}" @change="${onChange}" @keypress="${resize}" @keydown="${resize}">
+    <input type="text"
+           size="${size}"
+           maxlength="${maxlength || ''}"
+           autocorrect="off"
+           autocapitalize="none"
+           placeholder="${placeholder}"
+           .value="${value}"
+           @input="${onInput}"
+           @change="${onChange}">
   `;
 }
 
