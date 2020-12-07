@@ -102,11 +102,11 @@ button:disabled {
 }
 
 .gap.nearly input {
-  background-color: orange;
+  background-color: yellow;
 }
 
 .gap.wrong input {
-  background-color: rgba(255,0,0,0.3);
+  background-color: orangered;
 }
 
 #buttons {
