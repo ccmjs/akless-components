@@ -112,10 +112,10 @@
 
       this.ready = async () => {
 
-        const regex_keyword   = new RegExp( '\\' + this.mark + '.+?\\' + this.mark, 'g' );        // regular expression for finding all gaps/keywords in the text
-        const regex_keyword_  = new RegExp( '\\' + this.mark + '.+?\\' + this.mark + '.', 'g' );  // regular expression for finding all gaps/keywords in the text plus next character
-        const regex_given     = /\(.+?\)/g;                                                       // regular expression for finding all given characters of a keyword
-        const regex_reference = /^#(\d+)$/;                                                       // regular expression for finding a gap reference
+        const regex_keyword   = new RegExp( '\\' + this.mark + '.+?\\' + this.mark, 'g' );                    // regular expression for finding all gaps/keywords in the text
+        const regex_keyword_  = new RegExp( '(\\' + this.mark + '.+?\\' + this.mark + ')(</.*>)?( )', 'g' );  // regular expression for whitespace behind a gap
+        const regex_given     = /\(.+?\)/g;                                                                   // regular expression for finding all given characters of a keyword
+        const regex_reference = /^#(\d+)$/;                                                                   // regular expression for finding a gap reference
 
         // iterate all keywords in the text to determine the information data for each keyword
         ( this.text.match( regex_keyword ) || [] ).forEach( keyword => {
@@ -170,8 +170,11 @@
 
         } );
 
+        // prevent loose of whitespace behind a gap
+        this.text = this.text.replace( regex_keyword_, "$1" + "$2" + '&nbsp;' );
+
         // replace gaps/keywords with empty span elements
-        this.text = this.text.replace( regex_keyword_, match => '<span class="gap"></span>' + ( match.slice( -1 ) === ' ' ? '&nbsp;' : match.slice( -1 ) ) );
+        this.text = this.text.replace( regex_keyword, '<span class="gap"></span>' );
 
         // logging of 'ready' event
         this.logger && this.logger.log( 'ready', $.privatize( this, true ) );
