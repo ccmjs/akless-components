@@ -7,7 +7,7 @@
 ccm.files[ 'resources.js' ] = {
 
   "local": {
-    "blank": true,
+    "blank": false,
     "css": [ "ccm.load", "./../cloze/resources/default.css" ],
     "data": {
       "store": [ "ccm.store", { "name": "cloze_results", "url": "https://ccm2.inf.h-brs.de" } ],
