@@ -72,6 +72,11 @@ button:disabled {
   padding: 0.5em 0.5em;
 }
 
+.gap {
+  font-size: 0;
+  padding: 0 1px;
+}
+
 .gap input {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 15px;
