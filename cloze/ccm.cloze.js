@@ -112,10 +112,10 @@
 
       this.ready = async () => {
 
-        const regex_keyword   = new RegExp( '\\' + this.mark + '.+?\\' + this.mark, 'g' );                    // regular expression for finding all gaps/keywords in the text
-        const regex_keyword_  = new RegExp( '(\\' + this.mark + '.+?\\' + this.mark + ')(</.*>)?( )', 'g' );  // regular expression for whitespace behind a gap
-        const regex_given     = /\(.+?\)/g;                                                                   // regular expression for finding all given characters of a keyword
-        const regex_reference = /^#(\d+)$/;                                                                   // regular expression for finding a gap reference
+        const regex_keyword   = new RegExp( '\\' + this.mark + '.+?\\' + this.mark, 'g' );                     // regular expression for finding all gaps/keywords in the text
+        const regex_keyword_  = new RegExp( '(\\' + this.mark + '.+?\\' + this.mark + ')(</.*?>)?( )', 'g' );  // regular expression for whitespace behind a gap
+        const regex_given     = /\(.+?\)/g;                                                                    // regular expression for finding all given characters of a keyword
+        const regex_reference = /^#(\d+)$/;                                                                    // regular expression for finding a gap reference
 
         // iterate all keywords in the text to determine the information data for each keyword
         ( this.text.match( regex_keyword ) || [] ).forEach( keyword => {
