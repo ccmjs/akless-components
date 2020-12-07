@@ -73,6 +73,10 @@ button:disabled {
   padding: 0.5em 0.5em;
 }
 
+.gap {
+  font-size: 0;
+}
+
 .gap input {
   font-family: 'Open Sans', Verdana, Arial, Helvetica, sans-serif;
   font-size: 15px;
@@ -152,6 +156,7 @@ button {
 
 .meter {
   height: 20px;
+  font-size: 14px;
   position: relative;
   background: #555;
   border-radius: 25px;
