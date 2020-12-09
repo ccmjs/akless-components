@@ -698,10 +698,23 @@ export const onFinish = async ( settings, results ) => {
   // render other content (ccm-based app or HTML content)
   if ( settings.render )
     if ( ccm.helper.isObject( settings.render ) && settings.render.component ) {
-      let config = settings.render.config || {};                                                        // determine instance configuration
-      config.parent = config.parent || instance && instance.parent && config.parent !== false || null;  // set parent instance
-      config.root = config.root || instance && replace( instance.root, '<div>' );                       // set root element
-      await ccm.start( settings.render.component, config );                                             // render ccm-based app
+
+      // determine instance configuration
+      const config = settings.render.config || {};
+
+      // set parent instance
+      if ( !config.parent && config.parent !== false && instance && instance.parent )
+        config.parent = instance.parent;
+
+      // set root element
+      if ( !config.root ) {
+        config.root = document.createElement( 'div' );
+        instance && replace( instance.root, config.root );
+      }
+
+      // render ccm-based app
+      await ccm.start( settings.render.component, config );
+
     }
     else instance && setContent( instance.root, ccm.helper.html( settings.render ), ccm );  // render HTML content
 
