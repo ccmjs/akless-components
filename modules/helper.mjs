@@ -699,21 +699,14 @@ export const onFinish = async ( settings, results ) => {
   if ( settings.render )
     if ( ccm.helper.isObject( settings.render ) && settings.render.component ) {
 
-      // determine instance configuration
-      const config = settings.render.config || {};
+      const config = settings.render.config || {};                                            // determine instance configuration
+      if ( !config.root && instance ) config.root = instance && instance.root.parentElement;  // set root element
 
       // set parent instance
       if ( !config.parent && config.parent !== false && instance && instance.parent )
         config.parent = instance.parent;
 
-      // set root element
-      if ( !config.root ) {
-        config.root = document.createElement( 'div' );
-        instance && replace( instance.root, config.root );
-      }
-
-      // render ccm-based app
-      await ccm.start( settings.render.component, config );
+      await ccm.start( settings.render.component, config );  // render ccm-based app
 
     }
     else instance && setContent( instance.root, ccm.helper.html( settings.render ), ccm );  // render HTML content
