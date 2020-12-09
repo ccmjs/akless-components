@@ -199,7 +199,7 @@
         if ( config.keywords === 'manually' ) config.keywords = config.tags; delete config.tags;
         if ( !config.keywords ) config.keywords = '';
         if ( !config.reset ) config.onreset = false; else delete config.reset;
-        if ( !config.finish ) delete config.onfinish; delete config.finish;
+        if ( !config.finish ) config.onfinish = ''; delete config.finish;
         if ( !config.onfinish ) return config;
         const key = this.results.key || dataset.key || $.generateKey();
         switch ( config.store ) {
@@ -208,8 +208,8 @@
           case 'unique': config.onfinish.login = true; config.onfinish.store = { settings: [ 'ccm.store', this.results.store ], key: key, login: true, user: true, unique: true, permissions: this.results.permissions }; config.data = ''; break;
           default: config.data = '';
         }
-        if ( !config.store || config.store === 'collective' ) delete config.user;
-        delete config.store;
+        if ( !config.store || config.store === 'collective' ) config.user = '';
+        config.store = '';
         if ( config.user ) config.user = this.ignore.user[ config.user ].value;
         switch ( config.render ) {
           case 'clear': config.onfinish.clear = true; break;
