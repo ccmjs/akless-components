@@ -18,7 +18,7 @@
 ( () => {
 
   const component = {
-    name: 'cloze_builder',
+    name: 'cloze_builder', version: [ 4, 0, 0 ],
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.1.0.js',
     config: {
       "css": [ "ccm.load",
