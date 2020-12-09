@@ -14,6 +14,7 @@
  * - changed progress bar in conclusion area
  * - changed default instance configuration
  * - optional set of size for blank input field (config.size)
+ * - bug fix for outdated timer
  * - updated behaviour of input field size
  * - updated minified component line
  * (for older version changes see ccm.cloze-7.0.2.js)
@@ -60,7 +61,7 @@
     },
 
     Instance: function () {
-      const self = this; let $;
+      const self = this; let $, id;
 
       /**
        * information data for each keyword
@@ -351,13 +352,16 @@
              */
             let countdown = self.time;
 
+            // use ID's to kill old timers after app restart
+            let my_id = Date.now(); id = my_id;
+
             // start timer
             timer();
 
             /** updates countdown timer (recursive function) */
             function timer() {
 
-              if ( results.total ) return;                                // is already finished? => stop timer
+              if ( results.total || id !== my_id ) return;                // is already finished or outdated? => stop timer
               const timer_elem = self.element.querySelector( '#timer' );  // HTML element that contains the timer value
               $.setContent( timer_elem, countdown );                      // (re)render timer value
 
