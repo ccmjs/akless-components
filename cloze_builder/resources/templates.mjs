@@ -462,7 +462,7 @@ export function main( config, builder ) {
                     The app must be an app created in the Digital Makerspace.
                   </div>
                 </div>
-                <input type="text" name="app" class="form-control" id="cb-app">
+                <input type="text" name="app" class="form-control" id="cb-app" value="${config.onfinish && config.onfinish.render && builder.helper.embedCode( config.onfinish.render.component, config.onfinish.render.config ) || ''}">
               </div>
             </div>
           </div>
