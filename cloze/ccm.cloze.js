@@ -6,7 +6,7 @@
  * @changes
  * version 8.0.0 (27.11.2020)
  * - uses ccm.js v26.1.0
- * - uses helper.mjs v6.0.0
+ * - uses helper.mjs v6.0.1
  * - HTML templates based on lit-html
  * - input fields no more resizes on paste
  * - cancel button is now a reset button
@@ -16,21 +16,7 @@
  * - optional set of size for blank input field (config.size)
  * - updated behaviour of input field size
  * - updated minified component line
- * version 7.0.2 (11.11.2020):
- * - bug fix when text is given via object
- * version 7.0.1 (13.05.2020):
- * - uses ccm v25.5.2 as default
- * - uses helper.mjs v5.1.0 as default
- * version 7.0.0 (21.02.2020):
- * - progress bar on feedback is optional
- * - changed template property 'click' to 'onclick'
- * - uses HTML template file as default
- * - bug fix for no feedback on finish button
- * - uses helper.mjs v4.0.2 as default
- * - bug fix for HTML escaping
- * - updated dynamic placeholder size for solutions
- * - prevent escaped HTML in a keyword
- * (for older version changes see ccm.cloze-6.0.4.js)
+ * (for older version changes see ccm.cloze-7.0.2.js)
  */
 
 ( () => {
@@ -50,7 +36,7 @@
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/cloze/resources/default.css" ],
   //  "data": { "store": [ "ccm.store" ] },
   //  "feedback": true,
-      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-6.0.0.mjs" ],
+      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-6.0.1.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/cloze/resources/templates.mjs" ],
   //  "keywords": true,
   //  "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-5.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],

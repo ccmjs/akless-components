@@ -32,7 +32,8 @@
         ]
       ],
   //  "data": { "store": [ "ccm.store" ] },
-      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-6.0.0.mjs" ],
+      "defaults": {},
+      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-6.0.1.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/cloze_builder/resources/templates.mjs" ],
       "ignore": {
         "css": {
@@ -127,7 +128,10 @@
       };
 
       this.start = async () => {
-        dataset = await $.integrate( await $.dataset( this.data ), this.tool.config );  // get initial app configuration
+
+        // get initial app configuration (priority order: [high] this.data -> this.defaults -> this.tool.config [low])
+        dataset = await $.integrate( await $.dataset( this.data ), await $.integrate( this.defaults, this.tool.config ) );
+
         this.logger && this.logger.log( 'start', $.clone( dataset ) );                  // logging of 'start' event
         this.render( dataset );                                                         // render main HTML template
         editor = this.element.querySelector( '#editor' );                               // select webpage area for text editor
