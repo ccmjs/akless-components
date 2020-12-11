@@ -7,6 +7,7 @@
  * version 9.7.0 (23.06.2020):
  * - uses ccm v25.5.3
  * - support of H-BRS FB02 accounts for 'cloud' realm
+ * - expired token triggers logout for realm hbrsinfkaul and hbrsinfpseudo
  * version 9.6.0 (07.05.2020):
  * - uses ccm v25.0.0
  * - added get and set of app-specific user data
@@ -370,6 +371,16 @@
 
         // higher user instance with same realm exists? => redirect method call
         if ( context ) return context.isLoggedIn();
+
+        // expired token? => logout
+        switch ( my.realm ) {
+          case 'hbrsinfkaul':
+          case 'hbrsinfpseudo':
+            if ( data && data.date && new Date( data.date ).toLocaleDateString() !== new Date( Date.now() ).toLocaleDateString() ) {
+              this.logout();
+              return false;
+            }
+        }
 
         return !!data;
       };
