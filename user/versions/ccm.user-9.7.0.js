@@ -376,10 +376,8 @@
         switch ( my.realm ) {
           case 'hbrsinfkaul':
           case 'hbrsinfpseudo':
-            if ( data && data.date && new Date( data.date ).toLocaleDateString() !== new Date( Date.now() ).toLocaleDateString() ) {
-              this.logout();
+            if ( data && data.date && new Date( data.date ).toLocaleDateString() !== new Date( Date.now() ).toLocaleDateString() )
               return false;
-            }
         }
 
         return !!data;
