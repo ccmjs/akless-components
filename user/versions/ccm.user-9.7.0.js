@@ -372,14 +372,6 @@
         // higher user instance with same realm exists? => redirect method call
         if ( context ) return context.isLoggedIn();
 
-        // expired token? => logout
-        switch ( my.realm ) {
-          case 'hbrsinfkaul':
-          case 'hbrsinfpseudo':
-            if ( data && data.date && new Date( data.date ).toLocaleDateString() !== new Date( Date.now() ).toLocaleDateString() )
-              return false;
-        }
-
         return !!data;
       };
 
