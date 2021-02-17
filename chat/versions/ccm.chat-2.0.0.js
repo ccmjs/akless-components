@@ -2,7 +2,7 @@
  * @overview ccmjs-based web component for chat
  * @author André Kless <andre.kless@web.de> 2020-2021
  * @license The MIT License (MIT)
- * @version latest (2.0.0)
+ * @version 2.0.0
  * @changes
  * version 2.0.0 (17.02.2021):
  * - uses ccmjs v26.1.1 as default
@@ -23,6 +23,7 @@
 
   const component = {
     name: 'chat',
+    version: [ 2, 0, 0 ],
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.1.1.js',
     config: {
       "button": "Send",
