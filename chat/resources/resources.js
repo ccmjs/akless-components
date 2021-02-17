@@ -1,6 +1,6 @@
 /**
  * @overview data-based resources of ccmjs-based web component for chat
- * @author André Kless <andre.kless@web.de> 2020
+ * @author André Kless <andre.kless@web.de> 2020-2021
  * @license The MIT License (MIT)
  */
 
