@@ -9,6 +9,7 @@
  * - uses helper.mjs v6.0.1 as default
  * - updated minified component line
  * - many different chats stored in one datastore
+ * - HTML escaping for new messages
  * version 1.0.2 (28.05.2020):
  * - uses ccmjs v25.5.2 as default
  * - uses helper.mjs v5.1.0 as default
@@ -143,7 +144,7 @@
                 picture: user.picture,
                 user: this.user.getValue().key,
                 name: this.user.getUsername(),
-                text: value.inner,
+                text: $.escapeHTML( value.inner ),
                 _: {
                   access: {
                     get: 'all',
