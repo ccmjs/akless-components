@@ -44,7 +44,7 @@ ccm.files[ 'resources.js' ] = {
       },
       "reload": false
     } ],
-    "user": [ "ccm.instance", "../user/ccm.user.js", [ "ccm.get", "../user/resources/resources.js", "local" ] ]
+    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.6.0.js" ]
   },
 
   "demo": {
