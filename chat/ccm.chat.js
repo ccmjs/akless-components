@@ -144,7 +144,7 @@
                 picture: user.picture,
                 user: this.user.getValue().key,
                 name: this.user.getUsername(),
-                text: $.escapeHTML( value.inner ),
+                text: $.escapeHTML( value.inner || value ),
                 _: {
                   access: {
                     get: 'all',
