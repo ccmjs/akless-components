@@ -1,5 +1,5 @@
 /**
- * @overview static data-based resources of ccm component for team projects
+ * @overview static data-based resources of ccm-based web component for team projects
  * @author André Kless <andre.kless@web.de> 2020-2021
  * @license The MIT License (MIT)
  */
