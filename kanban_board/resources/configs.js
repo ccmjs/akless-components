@@ -1,5 +1,5 @@
 /**
- * @overview configurations of ccm component for kanban board
+ * @overview configurations of ccmjs-based web component for kanban board
  * @author André Kless <andre.kless@web.de> 2017-2018, 2020
  * @license The MIT License (MIT)
  */
