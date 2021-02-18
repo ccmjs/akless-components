@@ -1,5 +1,5 @@
 /**
- * @overview ccm component for team projects
+ * @overview ccmjs-based web component for team project
  * @author André Kless <andre.kless@web.de> 2020
  * @license The MIT License (MIT)
  * @version 1.0.1
