@@ -10,14 +10,7 @@
  * - updated minified component line
  * - many different chats stored in one datastore
  * - HTML escaping for new messages
- * version 1.0.2 (28.05.2020):
- * - uses ccmjs v25.5.2 as default
- * - uses helper.mjs v5.1.0 as default
- * - set message text in frontend not via placeholder (to avoid regex failures)
- * version 1.0.1 (10.04.2020):
- * - uses ccmjs v25.4.0 as default
- * - uses helper.mjs v5.0.0 as default
- * version 1.0.0 (23.03.2020)
+ * (for older version changes see ccm.chat-1.0.2.js)
  */
 
 ( () => {
