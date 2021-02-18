@@ -9,11 +9,7 @@
  * - uses helper.mjs v6.0.1 as default
  * - updated minified component line
  * - all datasets of a team project are stored in one datastore
- * version 1.0.1 (05.06.2020)
- * - uses ccm v25.5.3
- * - uses ccm.chat.js v1.0.2 as default
- * - uses helper.mjs v5.1.0 as default
- * version 1.0.0 (14.04.2020)
+ * (for older version changes see ccm.team_project-1.0.1.js)
  */
 
 ( () => {
