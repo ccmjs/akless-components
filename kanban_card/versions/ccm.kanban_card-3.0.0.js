@@ -1,5 +1,5 @@
 /**
- * @overview ccm component for kanban cards
+ * @overview ccm-based web component for kanban card
  * @author André Kless <andre.kless@web.de> 2016-2020
  * @license The MIT License (MIT)
  * @version 3.0.0

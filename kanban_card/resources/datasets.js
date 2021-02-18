@@ -1,5 +1,5 @@
 /**
- * @overview datasets of ccm component for kanban cards
+ * @overview datasets of ccm-based web component for kanban card
  * @author André Kless <andre.kless@web.de> 2017-2018
  * @license The MIT License (MIT)
  */
