@@ -103,8 +103,7 @@
               "x": 12,
               "y": 3,
               "width": 74,
-              "height": 74,
-              "diretion": 1
+              "height": 74
             }
           ],
           "direction": 0
@@ -601,6 +600,13 @@
             special: Object.keys( self.special ),
             upgrades: Object.keys( self.upgrades )
           } );
+          findFields( 'POWER' ).forEach( field => game.objects.push( {
+            type: "ECUBE",
+            x: field.x,
+            y: field.y,
+            width: 15,
+            height: 15
+          } ) );
           for ( const id in self.damage )
             game.damage[ id ] = self.damage[ id ].amount;
           $.shuffleArray( game.special );
@@ -644,16 +650,16 @@
           game.objects.push( robot_obj );
           self.data.store.set( game );
           self.refresh( game );
+        }
 
-          function findFields( field ) {
-            const racetrack = self.racetracks[ game.racetrack ].board;
-            const fields = [];
-            for ( let y = 0; y < racetrack.length; y++ )
-              for ( let x = 0; x < racetrack[ y ].length; x++ )
-                if ( racetrack[ y ][ x ] === field )
-                  fields.push( { x: x, y: y } );
-            return fields;
-          }
+        function findFields( field ) {
+          const racetrack = self.racetracks[ game.racetrack ].board;
+          const fields = [];
+          for ( let y = 0; y < racetrack.length; y++ )
+            for ( let x = 0; x < racetrack[ y ].length; x++ )
+              if ( racetrack[ y ][ x ] === field )
+                fields.push( { x: x, y: y } );
+          return fields;
         }
 
         function renderRacetrack() {
