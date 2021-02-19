@@ -43,7 +43,7 @@
         $ = Object.assign( {}, this.ccm.helper, this.helper ); $.use( this.ccm );
 
         // listen to datastore changes => update content
-        this.data.store.onchange = priodata => priodata.key === this.data.key && this.refresh( priodata );
+        if ( this.data.store ) this.data.store.onchange = priodata => priodata.key === this.data.key && this.refresh( priodata );
 
       };
 
@@ -217,7 +217,7 @@
         // move card
         dataset.last_change = { event: 'move', from: from, to: to, app: $.clone( card_data ) };
         await this.refresh();
-        await this.data.store.set( $.clone( dataset ) );
+        this.data.store && await this.data.store.set( $.clone( dataset ) );
 
         // logging of 'move' event and trigger of 'onchange' callback
         to = this.getCardPosition( card_elem );

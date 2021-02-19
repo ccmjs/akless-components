@@ -7,19 +7,19 @@
 ccm.files[ 'configs.js' ] = {
 
   "local": {
-    "css.1": "./resources/default.css",
+    "css.1": "./../kanban_board/resources/default.css",
     "data": {
-      "store": [ "ccm.store", { "name": "test", "url": "wss://ccm2.inf.h-brs.de", "dataset": "wss" } ],
-      "key": "wss"
+      "store": [ "ccm.store", { "name": "kanban_board", "url": "wss://ccm2.inf.h-brs.de", "dataset": "test" } ],
+      "key": "test"
     },
     "helper.1": "./../modules/helper.mjs",
-    "html.1": "./resources/templates.html",
+    "html.1": "./../kanban_board/resources/templates.html",
     "ignore": {
       "card": {
         "component": "./../kanban_card/ccm.kanban_card.js",
         "config": {
           "data": {
-            "store": [ "ccm.store", { "name": "test", "url": "wss://ccm2.inf.h-brs.de" } ]
+            "store": [ "ccm.store", { "name": "kanban_card", "url": "wss://ccm2.inf.h-brs.de" } ]
           }
         }
       }
@@ -33,30 +33,12 @@ ccm.files[ 'configs.js' ] = {
 
   "demo": {
     "data": {
-      "store": [ "ccm.store", { "name": "kanban_board", "url": "https://ccm2.inf.h-brs.de" } ],
+      "store": [ "ccm.store", { "name": "kanban_board", "url": "wss://ccm2.inf.h-brs.de", "dataset": "demo" } ],
       "key": "demo"
     },
     "ignore": {
       "card": {
         "component": "https://ccmjs.github.io/akless-components/kanban_card/versions/ccm.kanban_card-4.0.0.js",
-        "config": {
-          "data": {
-            "store": [ "ccm.store", { "name": "kanban_card", "url": "https://ccm2.inf.h-brs.de" } ]
-          },
-          "css.1": "https://ccmjs.github.io/akless-components/kanban_card/resources/gold.css"
-        }
-      }
-    }
-  },
-
-  "realtime": {
-    "data": {
-      "store": [ "ccm.store", { "name": "kanban_board", "url": "wss://ccm2.inf.h-brs.de", "dataset": "realtime" } ],
-      "key": "realtime"
-    },
-    "ignore": {
-      "card": {
-        "component": "https://ccmjs.github.io/akless-components/kanban_card/ccm.kanban_card.js",
         "config": {
           "data": {
             "store": [ "ccm.store", { "name": "kanban_card", "url": "wss://ccm2.inf.h-brs.de" } ]
@@ -69,8 +51,24 @@ ccm.files[ 'configs.js' ] = {
 
   "experimental": {
     "data": {
-      "store": [ "ccm.store", "../kanban_board/resources/datasets.js" ],
-      "key": "experimental"
+      "lanes": [
+        {
+          "cards": [
+            [ "ccm.instance", "./../kanban_card/ccm.kanban_card.js", [ "ccm.get", "./../kanban_card/resources/configs.js", "local_white" ] ],
+          ]
+        },
+        {
+          "cards": [
+            [ "ccm.instance", "./../quiz/ccm.quiz.js", [ "ccm.get", "./../quiz/resources/configs.js", "local" ] ]
+          ]
+        },
+        {
+          "cards": [
+            [ "ccm.instance", "./../blank/ccm.blank.js" ],
+            [ "ccm.instance", "./../cloze/ccm.cloze.js", [ "ccm.get", "../cloze/resources/resources.js", "local" ] ]
+          ]
+        }
+      ]
     }
   }
 

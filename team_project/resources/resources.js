@@ -13,13 +13,13 @@ ccm.files[ 'resources.js' ] = {
       "helper.1": "./../modules/helper.mjs",
       "html.1": "./../chat/resources/templates_v2.html"
     } ],
-    "css.1": "./resources/default.css",
+    "css.1": "./../team_project/resources/default.css",
     "data": {
       "store": [ "ccm.store", { "name": "team_project", "url": "https://ccm2.inf.h-brs.de" } ],
       "key": "test"
     },
     "helper.1": "./../modules/helper.mjs",
-    "html.1": "./resources/templates.html",
+    "html.1": "./../team_project/resources/templates.html",
     "kanban_board": [ "ccm.component", "./../kanban_board/ccm.kanban_board.js", {
       "css.1": "./../kanban_board/resources/default.css",
       "helper.1": "./../modules/helper.mjs",
