@@ -1,30 +1,34 @@
 /**
  * @overview configurations of ccmjs-based web component for kanban board
- * @author André Kless <andre.kless@web.de> 2017-2018, 2020
+ * @author André Kless <andre.kless@web.de> 2017-2018, 2020-2021
  * @license The MIT License (MIT)
  */
 
 ccm.files[ 'configs.js' ] = {
 
   "local": {
-    "css.1": "../kanban_board/resources/default.css",
+    "css.1": "./resources/default.css",
     "data": {
-      "store": [ "ccm.store", "../kanban_board/resources/datasets.js" ],
-      "key": "test"
+      "store": [ "ccm.store", { "name": "test", "url": "wss://ccm2.inf.h-brs.de", "dataset": "wss" } ],
+      "key": "wss"
     },
-    "helper.1": "../modules/helper.mjs",
-    "html.1": "../kanban_board/resources/templates.html",
+    "helper.1": "./../modules/helper.mjs",
+    "html.1": "./resources/templates.html",
     "ignore": {
       "card": {
-        "component": "../kanban_card/ccm.kanban_card.js",
-        "config": [ "ccm.get", "../kanban_card/resources/configs.js", "local_white" ]
+        "component": "./../kanban_card/ccm.kanban_card.js",
+        "config": {
+          "data": {
+            "store": [ "ccm.store", { "name": "test", "url": "wss://ccm2.inf.h-brs.de" } ]
+          }
+        }
       }
     },
-//  "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
+//  "logger": [ "ccm.instance", "./../log/ccm.log.js", [ "ccm.get", "./../log/resources/configs.js", "greedy" ] ],
     "members": [ "John", "Jane", "Jake" ],
 //  "onchange": event => console.log( event ),
     "reload": true,
-    "user": [ "ccm.instance", "../user/ccm.user.js", [ "ccm.get", "../user/resources/resources.js", "local" ] ]
+    "user": [ "ccm.instance", "./../user/ccm.user.js", [ "ccm.get", "./../user/resources/resources.js", "local" ] ]
   },
 
   "demo": {
@@ -34,28 +38,10 @@ ccm.files[ 'configs.js' ] = {
     },
     "ignore": {
       "card": {
-        "component": "https://ccmjs.github.io/akless-components/kanban_card/versions/ccm.kanban_card-3.0.0.js",
+        "component": "https://ccmjs.github.io/akless-components/kanban_card/versions/ccm.kanban_card-4.0.0.js",
         "config": {
           "data": {
             "store": [ "ccm.store", { "name": "kanban_card", "url": "https://ccm2.inf.h-brs.de" } ]
-          },
-          "css.1": "https://ccmjs.github.io/akless-components/kanban_card/resources/default.css"
-        }
-      }
-    }
-  },
-
-  "offline": {
-    "data": {
-      "store": [ "ccm.store", { "name": "kanban_board" } ],
-      "key": "demo"
-    },
-    "ignore": {
-      "card": {
-        "component": "https://ccmjs.github.io/akless-components/kanban_card/ccm.kanban_card.js",
-        "config": {
-          "data": {
-            "store": [ "ccm.store", { "name": "kanban_card" } ]
           },
           "css.1": "https://ccmjs.github.io/akless-components/kanban_card/resources/gold.css"
         }
@@ -65,7 +51,7 @@ ccm.files[ 'configs.js' ] = {
 
   "realtime": {
     "data": {
-      "store": [ "ccm.store", { "name": "kanban_board", "url": "wss://ccm2.inf.h-brs.de" } ],
+      "store": [ "ccm.store", { "name": "kanban_board", "url": "wss://ccm2.inf.h-brs.de", "dataset": "realtime" } ],
       "key": "realtime"
     },
     "ignore": {
