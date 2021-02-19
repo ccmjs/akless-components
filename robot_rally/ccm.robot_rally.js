@@ -1,5 +1,5 @@
 /**
- * @overview ccm component for a robot rally boardgames
+ * @overview ccm component for a robot rally boardgame
  * @author André Kless <andre.kless@web.de> 2021
  * @license The MIT License (MIT)
  * @version latest (1.0.0)
@@ -8,6 +8,48 @@
  */
 
 ( () => {
+
+  const category = {
+    0: "space",
+    1: "start",
+    2: "arrow",
+    3: "express",
+    4: "left",
+    5: "right",
+    6: "up",
+    7: "down",
+
+    8: "turn-left",
+    9: "turn-right",
+    10: "vertical",
+    11: "horizontal",
+    12: "wall-left",
+    13: "wall-right",
+    14: "wall-up",
+    15: "wall-down",
+
+    16: "r1",
+    17: "r2",
+    18: "r3",
+    19: "r4",
+    20: "r5",
+    21: "l1",
+    22: "l2",
+    23: "l3",
+
+    24: "energy"
+  };
+
+  const phase = {
+    0: "upgrade",
+    1: "program",
+    2: "player1",
+    3: "player2",
+    4: "player3",
+    5: "player4",
+    6: "player5",
+    7: "player6"
+  };
 
   const component = {
     name: 'robot_rally',
@@ -598,7 +640,8 @@
             players: {},
             damage: {},
             special: Object.keys( self.special ),
-            upgrades: Object.keys( self.upgrades )
+            upgrades: Object.keys( self.upgrades ),
+            phase: 0
           } );
           findFields( 'POWER' ).forEach( field => game.objects.push( {
             type: "ECUBE",
