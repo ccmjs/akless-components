@@ -601,26 +601,47 @@
 
       this.start = async () => {
 
+        $.render( $.html( self.html.main ), self.element );
         self.refresh( game = await $.dataset( self.data ) );
 
       };
 
-      this.refresh = game => {
+      this.refresh = async game => {
 
-        if ( !game.racetrack ) return chooseRacetrack();
+        // no racetrack? => choose racetrack
+        if ( !game.racetrack ) {
+          chooseRacetrack();
+          await render();
+          self.refresh( game );
+          return;
+        }
 
-        if ( robot === undefined ) return chooseRobot();
+        // current player has no robot? => choose robot
+        if ( robot === undefined ) {
+          chooseRobot();
+          self.refresh( game );
+          return;
+        }
+
+        /**
+         * current player data
+         * @type {Object}
+         */
         const player = game.players[ robot ];
-        if ( !player.start ) return chooseStart();
+
+        // current player has no start position? => choose start position
+        if ( !player.start ) {
+          chooseStart();
+          await render();
+          self.refresh( game );
+          return;
+        }
 
         if ( ++n < 6 ) {
           robot = undefined;
           return self.refresh( game );
         }
 
-        $.render( $.html( self.html.main ), self.element );
-        renderRacetrack();
-        renderObjects();
         console.log( game, robot );
 
 //      self.onstart && self.onstart( self );  // trigger 'onstart' event
@@ -651,7 +672,7 @@
           $.shuffleArray( game.special );
           $.shuffleArray( game.upgrades );
           self.data.store.set( game );
-          self.refresh( game );
+          console.log( 'Choosed Racetrack:', racetrack.name );
         }
 
         function chooseRobot() {
@@ -664,7 +685,7 @@
               player.deck.push( self.cards[ id ].id );
           $.shuffleArray( player.deck );
           self.data.store.set( game );
-          self.refresh( game );
+          console.log( 'Choosed robot:', getRobotName( robot ) );
         }
 
         function chooseStart() {
@@ -688,7 +709,11 @@
           };
           game.objects.push( robot_obj );
           self.data.store.set( game );
-          self.refresh( game );
+          console.log( getRobotName( robot ), 'has choosed a start position.' );
+        }
+
+        function getRobotName( robot_id ) {
+          return self.robots[ robot_id ].name;
         }
 
         function findFields( field ) {
@@ -701,19 +726,25 @@
           return fields;
         }
 
-        function renderRacetrack() {
-          const element = self.element.querySelector( '#board' );
-          const racetrack = self.racetracks[ game.racetrack ].board;
-          racetrack.forEach( row => row.forEach( cell => element.appendChild( $.html( { class: 'field', style: 'background-image: url(' + self.img + 'fields/' + cell + '.jpg)' } ) ) ) );
+        async function render() {
+          renderRacetrack();
+          await $.sleep( 1000 );
         }
 
-        function renderObjects() {
-          game.objects.forEach( obj => renderObject( obj ) );
+        function renderRacetrack() {
+          const element = $.html( self.element.querySelector( '#board' ) );
+          const racetrack = self.racetracks[ game.racetrack ].board;
+          if ( game.racetrack )
+            racetrack.forEach( row => row.forEach( cell => element.appendChild( $.html( { class: 'field', style: 'background-image: url(' + self.img + 'fields/' + cell + '.jpg)' } ) ) ) );
+          renderObjects();
 
-          function renderObject( obj ) {
-            const element = self.element.querySelector( '#board' );
-            const racetrack = self.racetracks[ game.racetrack ].board;
-            element.querySelector( '.field:nth-child(' + ( obj.x + 1 + obj.y * racetrack[ 0 ].length ) + ')' ).appendChild( $.html( { tag: 'img', class: 'obj', width: obj.width, height: obj.height, src: self.img + 'objects/' + obj.type + ( obj.nr || '' ) + '.png', style: 'transform: rotate(' + ( ( obj.direction || 0 ) * 90 ) + 'deg);' } ) );
+          function renderObjects() {
+            element.querySelectorAll( '.obj' ).forEach( obj => $.remove( obj ) );
+            game.objects.forEach( obj => renderObject( obj ) );
+
+            function renderObject( obj ) {
+              element.querySelector( '.field:nth-child(' + ( obj.x + 1 + obj.y * racetrack[ 0 ].length ) + ')' ).appendChild( $.html( { tag: 'img', class: 'obj', width: obj.width, height: obj.height, src: self.img + 'objects/' + obj.type + ( obj.nr || '' ) + '.png', style: 'transform: rotate(' + ( ( obj.direction || 0 ) * 90 ) + 'deg);' } ) );
+            }
           }
         }
 
