@@ -110,7 +110,7 @@
 
       /**
        * updates frontend and local data after a card change
-       * @param {Object} [priodata] - updated user-dependent app data (default: local data)
+       * @param {Object} [priodata] - updated app data (default: local data)
        * @returns {Promise<void>}
        */
       this.refresh = async ( priodata = dataset ) => {
