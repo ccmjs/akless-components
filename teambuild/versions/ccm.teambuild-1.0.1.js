@@ -1,5 +1,5 @@
 /**
- * @overview ccm component for realtime team building
+ * @overview ccmjs-based web component for team building
  * @author André Kless <andre.kless@web.de> 2015-2017
  * @license The MIT License (MIT)
  * @version 1.0.1

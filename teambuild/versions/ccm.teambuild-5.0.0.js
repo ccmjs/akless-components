@@ -1,42 +1,22 @@
 /**
  * @overview ccmjs-based web component for team building
- * @author André Kless <andre.kless@web.de> 2017-2020
+ * @author André Kless <andre.kless@web.de> 2017-2021
  * @license The MIT License (MIT)
- * @version 4.0.0
+ * @version 5.0.0
  * @changes
- * version 4.0.0 (10.04.2020)
- * - uses ccm v25.4.0
- * - uses helper.mjs v5.0.0 as default
- * - reduced amount of realtime messages
- * - checks permissions for better usability
- * - added optional reload button
- * - changed parameters in logged data
- * - changed parameters of onchange callback
- * - added public method: checkAction(team_nr,action):boolean
- * - added public method: getMember(team_nr,user_key):username
- * - added public method: getTeamData(team_nr):team_data
- * - added public method: getTeamElement(team_nr):team_elem
- * - added public method: getUserTeam(user_key):team_nr
- * - added public method: getValue():teams_data
- * - added public method: isEmptyTeam(team_nr):boolean
- * - added public method: isJoinable(team_nr,user_key):boolean
- * - added public method: isOnlyMember(team_nr,user_key):boolean
- * - added public method: joinableTeams():boolean
- * - added public method: joinTeam(team_nr):void
- * - added public method: leaveTeam(team_nr):void
- * - added public method: refresh(app_data):void
- * - added public method: renameTeam(team_nr,name):void
- * (for older version changes see ccm.teambuild-3.1.2.js)
+ * version 5.0.0 (21.02.2021)
+ * - uses ccmjs v26.1.1 as default
+ * - uses helper.mjs v6.0.1 as default
+ * - updated minified component line
+ * (for older version changes see ccm.teambuild-4.0.0.js)
  */
 
 ( () => {
 
   const component = {
-
-    name: 'teambuild', version: [ 4, 0, 0 ],
-
-    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-25.4.0.js',
-
+    name: 'teambuild',
+    version: [ 5, 0, 0 ],
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.1.1.js',
     config: {
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/teambuild/resources/default.css" ],
       "data": { "store": [ "ccm.store" ] },
@@ -45,7 +25,7 @@
         "leave": true,
         "rename": true
       },
-      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-5.0.0.mjs" ],
+      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-6.0.1.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/teambuild/resources/templates.html" ],
       "icon": {
         /*
@@ -55,7 +35,7 @@
         "team": ""
          */
       },
-  //  "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.4.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
+//    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-5.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
   //  "max_members": 3,
   //  "max_teams": 5,
   //  "names": [ "Team Red", "Team Blue" ],
@@ -67,7 +47,7 @@
         "join": "join",
         "free": "free"
       },
-  //  "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.4.1.js" ]
+//    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.0.js" ]
     },
 
     Instance: function () {
@@ -75,18 +55,27 @@
       let $, app_data, main_elem, user_key;
 
       this.init = async () => {
-        $ = Object.assign( {}, this.ccm.helper, this.helper );  // set shortcut to help functions
-        if ( this.user ) this.user.onchange = this.start;       // listen to login/logout events => restart
-        this.data.store.onchange = this.refresh;                // listen to datastore changes => (re)render own content
+
+        // set shortcut to help functions
+        $ = Object.assign( {}, this.ccm.helper, this.helper ); $.use( this.ccm );
+
+        // listen to login/logout events => restart
+        if ( this.user ) this.user.onchange = this.start;
+
+        // listen to realtime datastore changes => update own content
+        this.data.store.onchange = priodata => priodata.key === this.data.key && this.refresh( priodata );
+
       };
 
       this.ready = async () => {
-        this.logger && this.logger.log( 'ready', $.privatize( this, true ) );  // logging of 'ready' event
+
+        // logging of 'ready' event
+        this.logger && this.logger.log( 'ready', $.privatize( this, true ) );
+
       };
 
       this.start = async () => {
 
-        $.setContent( this.element, $.loading( this ) );                             // render loading icon
         app_data = await $.dataset( this.data );                                     // get existing app data
         user_key = this.user && this.user.isLoggedIn() && this.user.getValue().key;  // get unique key of logged in user
         this.logger && this.logger.log( 'start', $.clone( app_data ) );              // logging of 'start' event
@@ -95,7 +84,7 @@
         if ( !this.reload ) $.remove( main_elem.querySelector( '#reload' ) );        // no refresh button wanted? => remove refresh button
         this.refresh();                                                              // update own content
         if ( this.user ) { $.append( main_elem.querySelector( '#top' ), this.user.root ); this.user.start(); }      // render login/logout area
-        $.setContent( this.element, main_elem );                                     // show prepared main HTML structure (removes loading icon)
+        $.setContent( this.element, main_elem );                                     // show prepared main HTML structure
 
       };
 
@@ -385,5 +374,5 @@
 
   };
 
-  let b="ccm."+component.name+(component.version?"-"+component.version.join("."):"")+".js";if(window.ccm&&null===window.ccm.files[b])return window.ccm.files[b]=component;(b=window.ccm&&window.ccm.components[component.name])&&b.ccm&&(component.ccm=b.ccm);"string"===typeof component.ccm&&(component.ccm={url:component.ccm});let c=(component.ccm.url.match(/(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)/)||["latest"])[0];if(window.ccm&&window.ccm[c])window.ccm[c].component(component);else{var a=document.createElement("script");document.head.appendChild(a);component.ccm.integrity&&a.setAttribute("integrity",component.ccm.integrity);component.ccm.crossorigin&&a.setAttribute("crossorigin",component.ccm.crossorigin);a.onload=function(){window.ccm[c].component(component);document.head.removeChild(a)};a.src=component.ccm.url}
+  let b="ccm."+component.name+(component.version?"-"+component.version.join("."):"")+".js";if(window.ccm&&null===window.ccm.files[b])return window.ccm.files[b]=component;(b=window.ccm&&window.ccm.components[component.name])&&b.ccm&&(component.ccm=b.ccm);"string"===typeof component.ccm&&(component.ccm={url:component.ccm});let c=(component.ccm.url.match(/(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)/)||[""])[0];if(window.ccm&&window.ccm[c])window.ccm[c].component(component);else{var a=document.createElement("script");document.head.appendChild(a);component.ccm.integrity&&a.setAttribute("integrity",component.ccm.integrity);component.ccm.crossorigin&&a.setAttribute("crossorigin",component.ccm.crossorigin);a.onload=function(){(c="latest"?window.ccm:window.ccm[c]).component(component);document.head.removeChild(a)};a.src=component.ccm.url}
 } )();

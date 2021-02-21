@@ -1,15 +1,15 @@
 /**
- * @overview configurations of ccm component for team building
- * @author André Kless <andre.kless@web.de> 2017-2020
+ * @overview configurations of ccmjs-based web component for team building
+ * @author André Kless <andre.kless@web.de> 2017-2021
  * @license The MIT License (MIT)
  */
 
 ccm.files[ 'configs.js' ] = {
 
   "local": {
-    "css": [ "ccm.load", "../teambuild/resources/default.css" ],
+    "css": [ "ccm.load", "./../teambuild/resources/default.css" ],
     "data": {
-      "store": [ "ccm.store", { "name": "teambuild_data", "url": "wss://ccm2.inf.h-brs.de" } ],
+      "store": [ "ccm.store", { "name": "teambuild_data", "url": "wss://ccm2.inf.h-brs.de", "dataset": "test" } ],
       "key": "test"
     },
     "editable": {
@@ -17,37 +17,36 @@ ccm.files[ 'configs.js' ] = {
       "leave": true,
       "rename": true,
     },
-    "helper.1": "../modules/helper.mjs",
-    "html.1": "../teambuild/resources/templates.html",
-//  "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
+    "helper.1": "./../modules/helper.mjs",
+    "html.1": "./../teambuild/resources/templates.html",
+//  "logger": [ "ccm.instance", "./../log/ccm.log.js", [ "ccm.get", "./../log/resources/configs.js", "greedy" ] ],
 //  "max_members": 2,
 //  "max_teams": 3,
 //  "names": [ "Team Red", "Team Blue" ],
 //  "onchange": event => console.log( event ),
     "reload": true,
-    "user": [ "ccm.instance", "../user/ccm.user.js", [ "ccm.get", "../user/resources/resources.js", "local" ] ]
+    "user": [ "ccm.instance", "./../user/ccm.user.js", [ "ccm.get", "./../user/resources/resources.js", "local" ] ]
   },
 
   "demo": {
     "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/teambuild/resources/default.css" ],
     "data": {
-      "store": [ "ccm.store", { "name": "teambuild_data", "url": "wss://ccm2.inf.h-brs.de" } ],
+      "store": [ "ccm.store", { "name": "teambuild_data", "url": "wss://ccm2.inf.h-brs.de", "dataset": "demo" } ],
       "key": "demo"
     },
-    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.4.1.js" ]
+    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.0.js" ]
   },
 
   "clicker": {
-    "key": "clicker",
     "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/teambuild/resources/default.css" ],
     "data": {
-      "store": [ "ccm.store", { "name": "teambuild_data", "url": "wss://ccm2.inf.h-brs.de" } ],
+      "store": [ "ccm.store", { "name": "teambuild_data", "url": "wss://ccm2.inf.h-brs.de", "dataset": "clicker" } ],
       "key": "clicker"
     },
     "names": [ "Right", "Wrong", "Don't Know" ],
     "max_teams": 3,
     "editable": { "join": true, "leave": true, "rename": false },
-    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-8.2.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/configs.js", "guest" ] ]
+    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.0.js" ]
   },
 
   "se_ws17_gr1": {  // created for ccm.teambuild-1.0.0.js
