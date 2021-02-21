@@ -7,8 +7,9 @@
  * version 4.0.0 (19.02.2021):
  * - uses ccmjs v26.1.1 as default
  * - uses helper.mjs v6.0.1 as default
- * - updated minified component line
+ * - changed keys for new kanban cards
  * - realtime optimisations
+ * - updated minified component line
  * (for older version changes see ccm.kanban_board-3.0.0.js)
  */
 
@@ -44,7 +45,7 @@
         $ = Object.assign( {}, this.ccm.helper, this.helper ); $.use( this.ccm );
 
         // listen to datastore changes => update content
-        this.data.store.onchange = priodata => priodata.key === this.data.key && this.refresh( priodata );
+        if ( this.data.store ) this.data.store.onchange = priodata => priodata.key === this.data.key && this.refresh( priodata );
 
       };
 
@@ -156,7 +157,7 @@
 
         // prepare app dependency for new card
         let app = $.clone( this.ignore.card.config || {} );
-        if ( $.isObject( app.data ) && app.data.store ) app.data.store[ 1 ].dataset = app.data.key = $.generateKey();
+        if ( $.isObject( app.data ) && app.data.store ) app.data.store[ 1 ].dataset = app.data.key = this.data.key + '-card-' + $.generateKey();
         app = [ 'ccm.instance', this.ignore.card.component, app ];
 
         // create card
@@ -218,7 +219,7 @@
         // move card
         dataset.last_change = { event: 'move', from: from, to: to, app: $.clone( card_data ) };
         await this.refresh();
-        await this.data.store.set( $.clone( dataset ) );
+        this.data.store && await this.data.store.set( $.clone( dataset ) );
 
         // logging of 'move' event and trigger of 'onchange' callback
         to = this.getCardPosition( card_elem );

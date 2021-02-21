@@ -7,8 +7,9 @@
  * version 4.0.0 (19.02.2021):
  * - uses ccmjs v26.1.1 as default
  * - uses helper.mjs v6.0.1 as default
- * - updated minified component line
+ * - changed keys for new kanban cards
  * - realtime optimisations
+ * - updated minified component line
  * (for older version changes see ccm.kanban_board-3.0.0.js)
  */
 
@@ -155,7 +156,7 @@
 
         // prepare app dependency for new card
         let app = $.clone( this.ignore.card.config || {} );
-        if ( $.isObject( app.data ) && app.data.store ) app.data.store[ 1 ].dataset = app.data.key = $.generateKey();
+        if ( $.isObject( app.data ) && app.data.store ) app.data.store[ 1 ].dataset = app.data.key = this.data.key + '-card-' + $.generateKey();
         app = [ 'ccm.instance', this.ignore.card.component, app ];
 
         // create card
