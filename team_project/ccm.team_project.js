@@ -1,5 +1,5 @@
 /**
- * @overview ccm-based web component for team project
+ * @overview ccmjs-based web component for team project
  * @author André Kless <andre.kless@web.de> 2020-2021
  * @license The MIT License (MIT)
  * @version latest (2.0.0)
@@ -7,8 +7,10 @@
  * version 2.0.0 (17.02.2021)
  * - uses ccmjs v26.1.1 as default
  * - uses helper.mjs v6.0.1 as default
- * - updated minified component line
+ * - uses ccm.kanban_board.js v4.0.0 as default
+ * - bugfix for realtime listening
  * - all datasets of a team project are stored in one datastore
+ * - updated minified component line
  * (for older version changes see ccm.team_project-1.0.1.js)
  */
 
@@ -23,7 +25,7 @@
       "entries": [ "Teams", "Kanban Board", "Chat" ],
       "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-6.0.1.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/team_project/resources/templates.html" ],
-      "kanban_board": [ "ccm.component", "https://ccmjs.github.io/akless-components/kanban_board/versions/ccm.kanban_board-3.0.0.js" ],
+      "kanban_board": [ "ccm.component", "https://ccmjs.github.io/akless-components/kanban_board/versions/ccm.kanban_board-4.0.0.js" ],
 //    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-5.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
       "menu": [ "ccm.component", "https://ccmjs.github.io/akless-components/menu/versions/ccm.menu-3.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/menu/resources/configs.js", "top_tabs" ] ],
 //    "onchange": event => console.log( event ),
@@ -36,15 +38,23 @@
       let $, chat, kanban_board, main_elem, menu, team_data, team_nr, teambuild;
 
       this.init = async () => {
+
         // set shortcut to help functions
         $ = Object.assign( {}, this.ccm.helper, this.helper ); $.use( this.ccm );
 
-        if ( this.user ) this.user.onchange = this.start;  // listen to login/logout events => restart
-        this.data.store.onchange = this.refresh;           // listen to datastore changes => update content
+        // listen to login/logout events => restart
+        if ( this.user ) this.user.onchange = this.start;
+
+        // disable default listening to realtime datastore changes
+        this.data.store.onchange = null;
+
       };
 
       this.ready = async () => {
-        this.logger && this.logger.log( 'ready', $.privatize( this, true ) );  // logging of 'ready' event
+
+        // logging of 'ready' event
+        this.logger && this.logger.log( 'ready', $.privatize( this, true ) );
+
       };
 
       this.start = async () => {
@@ -81,7 +91,7 @@
         team_nr && await updateKanbanBoard();     // has a team? => prepare team-specific kanban board
         team_nr && await updateChat();            // has a team? => prepare team-specific chat
         await renderMenu();                       // render main menu
-        $.setContent( this.element, main_elem );  // show prepared main HTML structure (removes loading icon)
+        $.setContent( this.element, main_elem );  // show prepared main HTML structure
       };
 
       /** renders the main menu */
@@ -112,9 +122,9 @@
         kanban_board = await this.kanban_board.start( {
           data: {
             store: [ 'ccm.store', Object.assign( this.data.store.source(), { dataset: this.data.key + '-board-' + team_data.key } ) ],
-            key: this.data.key + '-team-' + team_data.key + '-board'
+            key: this.data.key + '-team-' + team_data.key + '-kanban'
           },
-          'ignore.card.config.data.store': [ 'ccm.store', Object.assign( this.data.store.source(), { name: 'team_project-' + this.data.key + '-cards' } ) ],
+          'ignore.card.config.data.store': [ 'ccm.store', this.data.store.source() ],
           'ignore.card.config.user': [ 'ccm.instance', this.user.component.url, JSON.parse( this.user.config ) ],
           members: Object.keys( team_data.members ).sort(),
           user: [ 'ccm.instance', this.user.component.url, JSON.parse( this.user.config ) ]

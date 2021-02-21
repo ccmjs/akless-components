@@ -1,5 +1,5 @@
 /**
- * @overview static data-based resources of ccm-based web component for team project
+ * @overview static data-based resources of ccmjs-based web component for team project
  * @author André Kless <andre.kless@web.de> 2020-2021
  * @license The MIT License (MIT)
  */
@@ -15,7 +15,7 @@ ccm.files[ 'resources.js' ] = {
     } ],
     "css.1": "./../team_project/resources/default.css",
     "data": {
-      "store": [ "ccm.store", { "name": "team_project", "url": "https://ccm2.inf.h-brs.de" } ],
+      "store": [ "ccm.store", { "name": "test", "url": "wss://ccm2.inf.h-brs.de" } ],
       "key": "test"
     },
     "helper.1": "./../modules/helper.mjs",
@@ -26,7 +26,7 @@ ccm.files[ 'resources.js' ] = {
       "html.1": "./../kanban_board/resources/templates.html",
       "ignore": {
         "card": {
-          "component": "https://ccmjs.github.io/akless-components/kanban_card/versions/ccm.kanban_card-3.0.0.js",
+          "component": "https://ccmjs.github.io/akless-components/kanban_card/versions/ccm.kanban_card-4.0.0.js",
           "config": {
             "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/kanban_card/resources/blue.css", { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/weblysleekui/font.css" } ]
           }
@@ -52,7 +52,7 @@ ccm.files[ 'resources.js' ] = {
     "kanban_board.2": {
       "ignore": {
         "card": {
-          "component": "https://ccmjs.github.io/akless-components/kanban_card/versions/ccm.kanban_card-3.0.0.js",
+          "component": "https://ccmjs.github.io/akless-components/kanban_card/versions/ccm.kanban_card-4.0.0.js",
           "config": {
             "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/kanban_card/resources/blue.css", { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/weblysleekui/font.css" } ]
           }
