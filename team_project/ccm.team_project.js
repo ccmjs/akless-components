@@ -8,6 +8,7 @@
  * - uses ccmjs v26.1.1 as default
  * - uses helper.mjs v6.0.1 as default
  * - uses ccm.kanban_board.js v4.0.0 as default
+ * - uses ccm.teambuild.js v5.0.0 as default
  * - bugfix for realtime listening
  * - all datasets of a team project are stored in one datastore
  * - updated minified component line
@@ -29,7 +30,7 @@
 //    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-5.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
       "menu": [ "ccm.component", "https://ccmjs.github.io/akless-components/menu/versions/ccm.menu-3.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/menu/resources/configs.js", "top_tabs" ] ],
 //    "onchange": event => console.log( event ),
-      "teambuild": [ "ccm.component", "https://ccmjs.github.io/akless-components/teambuild/versions/ccm.teambuild-4.0.0.js" ],
+      "teambuild": [ "ccm.component", "https://ccmjs.github.io/akless-components/teambuild/versions/ccm.teambuild-5.0.0.js" ],
 //    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.0.js" ]
     },
 
