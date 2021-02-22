@@ -14,7 +14,7 @@ ccm.files[ 'resources.js' ] = {
           // parallel
           "./../libs/quill-1/quill.snow.css",
           "./../libs/selectize-0/selectize.css",
-          "./resources/default-1.css",
+          "./../cloze_builder/resources/default-1.css",
         ]
       ]
     ],
@@ -23,7 +23,7 @@ ccm.files[ 'resources.js' ] = {
       "key": "local"
     },
     "helper.1": "./../modules/helper.mjs",
-    "html.1": "./resources/templates.mjs",
+    "html.1": "./../cloze_builder/resources/templates.mjs",
     "katex": [ "ccm.load",
       "./../libs/katex/katex.js",
       "./../libs/katex/katex.css"
