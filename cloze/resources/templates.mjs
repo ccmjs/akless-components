@@ -1,5 +1,5 @@
 /**
- * @overview HTML templates of ccm component for fill-in-the-blank texts
+ * @overview HTML templates of ccmjs-based web component for fill-in-the-blank text
  * @author André Kless <andre.kless@web.de> 2020
  */
 
