@@ -10,6 +10,7 @@
  * - updated minified component line
  * - many different chats stored in one datastore
  * - HTML escaping for new messages
+ * - changed default editor toolbar options
  * (for older version changes see ccm.chat-1.0.2.js)
  */
 
@@ -36,9 +37,7 @@
         "settings": {
           "modules": {
             "toolbar": [
-              [ "bold", "italic", "strike", "link" ],
-              [ { "list": "ordered" }, { "list": "bullet" } ],
-              [ "image", "video" ]
+              [ "bold", "italic", "strike", "link" ]
             ]
           },
           "placeholder": "",
