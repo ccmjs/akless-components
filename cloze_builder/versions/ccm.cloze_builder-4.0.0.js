@@ -177,6 +177,7 @@
           this.logger && this.logger.log( 'finish', $.clone( result_data ) );  // logging of 'finish' event
           $.onFinish( this, result_data );                                     // trigger finish actions
         } );
+
       };
 
       /**
