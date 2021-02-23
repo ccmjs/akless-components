@@ -52,6 +52,15 @@ ccm.files[ 'resources.js' ] = {
     "tool": [ "ccm.component", "./../cloze/ccm.cloze.js", [ "ccm.get", "./../cloze/resources/resources.js", "local" ] ]
   },
 
+  "demo": {
+    "data": {
+      "store": [ "ccm.store", { "local": [ "ccm.load", "./../cloze/resources/resources.js" ] } ],
+      "key": "demo"
+    },
+    "onfinish": { "log": true },
+    "results": { "store": { "name": "cloze_results", "url": "https://ccm2.inf.h-brs.de" }, "permissions": { "access": { "get": "all", "set": "creator", "del": "creator" } } }
+  },
+
   "dms": {
     "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/cloze_builder/resources/default-1.css" ],
     "libs": [ "ccm.load",
