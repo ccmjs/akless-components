@@ -23,7 +23,6 @@
 
   const component = {
     name: 'cloze_builder',
-
     version: [ 4, 0, 1 ],
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.1.1.js',
     config: {
