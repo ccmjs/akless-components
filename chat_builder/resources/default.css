@@ -11,3 +11,11 @@ form {
 .bg-info {
   font-size: small;
 }
+
+*[disabled] {
+  cursor: not-allowed;
+}
+
+*[data-hidden] {
+  display: none;
+}
