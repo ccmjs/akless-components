@@ -1,9 +1,10 @@
 /**
  * @overview HTML templates of ccm component for building a fill-in-the-blank text
- * @author André Kless <andre.kless@web.de> 2020
+ * @author André Kless <andre.kless@web.de> 2020-2021
  */
 
-import { html } from 'https://unpkg.com/lit-html';
+import { html, render } from 'https://esm.run/lit-html';
+export { render };
 
 /**
  * returns the main HTML template
