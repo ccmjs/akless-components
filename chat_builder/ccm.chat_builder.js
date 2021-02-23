@@ -105,7 +105,7 @@
     },
 
     Instance: function () {
-      let $, dataset;
+      let $, chat_config;
 
       this.ready = async () => {
         $ = Object.assign( {}, this.ccm.helper, this.helper ); $.use( this.ccm );  // set shortcut to help functions
@@ -115,12 +115,15 @@
 
       this.start = async () => {
 
-        // get initial app configuration (priority order: [high] this.data -> this.defaults -> this.tool.config [low])
-        dataset = await $.integrate( await $.dataset( this.data ), await $.integrate( this.ignore.defaults, this.tool.config ) );
+        chat_config = await $.dataset( this.data );                            // get already existing chat configuration data
+        if ( !chat_config.data ) chat_config[ 'data.key' ] = $.generateKey();  // new chat? => set unique chat key
 
-        this.logger && this.logger.log( 'start', $.clone( dataset ) );                  // logging of 'start' event
-        this.render( dataset );                                                         // render main HTML template
-        jQuery( '[data-toggle=popover]' ).popover();                                    // initialize popovers for info icons
+        // get initial app configuration (priority order: [high] this.data -> this.defaults -> this.tool.config [low])
+        chat_config = await $.integrate( chat_config, await $.integrate( this.ignore.defaults, this.tool.config ) );
+
+        this.logger && this.logger.log( 'start', $.clone( chat_config ) );  // logging of 'start' event
+        this.render( chat_config );                                         // render main HTML template
+        jQuery( '[data-toggle=popover]' ).popover();                        // initialize popovers for info icons
 
         // listen to change events of the input fields
         this.element.querySelectorAll( '*[name]' ).forEach( input => input.addEventListener( 'change', () => this.render() ) );
@@ -151,7 +154,7 @@
        * @returns {Object} app configuration
        */
       this.getValue = () => {
-        const config = Object.assign( dataset, $.formData( this.element ) );
+        const config = Object.assign( chat_config, $.formData( this.element ) );
         //config.css = this.ignore.css[ config.css ].value;
         if ( config.user ) config.user = this.ignore.user[ config.user ].value;
         config.editor[ 2 ].settings.modules.toolbar = [ [] ];

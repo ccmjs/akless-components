@@ -40,6 +40,9 @@ ccm.files[ 'resources.js' ] = {
 
   "dms": {
     "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/chat_builder/resources/default.css" ],
+    "data": {
+      "store": [ "ccm.store", { "name": "chat", "url": "https://ccm2.inf.h-brs.de" } ],
+    },
     "libs": null,
     "preview": null,
     "submit": null
