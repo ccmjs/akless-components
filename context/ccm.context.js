@@ -1,19 +1,25 @@
 /**
- * @overview ccm component for visualization of a ccm context
- * @author André Kless <andre.kless@web.de> 2020
+ * @overview ccmjs-based web component for visualization of a ccm context
+ * @author André Kless <andre.kless@web.de> 2020-2021
  * @license The MIT License (MIT)
- * @version latest (1.0.0)
+ * @version latest (1.0.1)
  * @changes
+ * version 1.0.1 (23.02.2021)
+ * - uses ccmjs v26.1.1 as default
+ * - uses helper.mjs v7.0.0 as default
+ * - lit-html render function via HTML template file
  * version 1.0.0 (20.09.2020)
  */
+
 ( () => {
+
   const component = {
     name: 'context',
-    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.0.0.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.1.1.js',
     config: {
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/context/resources/styles.css" ],
       "dark": false,
-      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-6.0.0.mjs" ],
+      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-7.0.0.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/context/resources/templates.mjs" ],
       "instance": [ "ccm.instance", "https://ccmjs.github.io/akless-components/blank_blank/ccm.blank_blank.js" ]
     },
@@ -24,7 +30,7 @@
       }
       this.start = async () => {
         this.dark && this.element.setAttribute( 'dark', '' );
-        $.render( $.html( this.html.main, this.ccm.context.root( this.instance ) ), this.element );
+        this.html.render( $.html( this.html.main, this.ccm.context.root( this.instance ) ), this.element );
       }
     }
   };

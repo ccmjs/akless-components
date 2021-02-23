@@ -1,11 +1,14 @@
 /**
- * @overview HTML templates of ccm component for visualization of a ccm context
- * @author André Kless <andre.kless@web.de> 2020
+ * @overview HTML templates of ccmjs-based web component for visualization of a ccm context
+ * @author André Kless <andre.kless@web.de> 2020-2021
  * @license The MIT License (MIT)
  */
 
-import { html } from 'https://unpkg.com/lit-html';
+import { html, render } from 'https://unpkg.com/lit-html';
 import { repeat } from 'https://unpkg.com/lit-html/directives/repeat.js';
+//import { html, render } from 'https://esm.run/lit-html';
+//import { repeat } from 'https://esm.run/lit-html/directives/repeat.js';
+export { render };
 
 export const main = instance => html`
   <div class="level">
