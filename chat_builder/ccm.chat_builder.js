@@ -20,7 +20,7 @@
         ]
       ],
   //  "data": { "store": [ "ccm.store" ] },
-      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-6.0.1.mjs" ],
+      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-7.0.0.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/chat_builder/resources/templates.mjs" ],
       "ignore": {
         "css": {
@@ -149,7 +149,7 @@
        * @param {Object} [config = this.getValue()] - app configuration
        */
       this.render = ( config = this.getValue() ) => {
-        $.render( $.html( this.html.main, config, this ), this.element );
+        this.html.render( $.html( this.html.main, config, this ), this.element );
       }
 
       /**

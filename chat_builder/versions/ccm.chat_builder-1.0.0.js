@@ -2,7 +2,7 @@
  * @overview ccmjs-based web component for building a chat
  * @author André Kless <andre.kless@web.de> 2021
  * @license The MIT License (MIT)
- * @version 1.0.0
+ * @version latest (1.0.0)
  * @changes
  * version 1.0.0 (23.02.2021)
  */
@@ -11,7 +11,6 @@
 
   const component = {
     name: 'chat_builder',
-    version: [ 1, 0, 0 ],
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.1.1.js',
     config: {
       "css": [ "ccm.load",
@@ -21,7 +20,7 @@
         ]
       ],
   //  "data": { "store": [ "ccm.store" ] },
-      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-6.0.1.mjs" ],
+      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-7.0.0.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/chat_builder/resources/templates.mjs" ],
       "ignore": {
         "css": {
@@ -150,7 +149,7 @@
        * @param {Object} [config = this.getValue()] - app configuration
        */
       this.render = ( config = this.getValue() ) => {
-        $.render( $.html( this.html.main, config, this ), this.element );
+        this.html.render( $.html( this.html.main, config, this ), this.element );
       }
 
       /**
