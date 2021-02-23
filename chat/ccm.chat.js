@@ -131,7 +131,7 @@
               const user = await this.user.login();  // login user if not logged in
 
               // prepare data of new message
-              const dataset = {
+              const message = {
                 chat: this.data.key.chat,
                 picture: user.picture,
                 user: this.user.getValue().key,
@@ -146,12 +146,12 @@
                 }
               };
 
-              dataset.key = await this.data.store.set( dataset );  // create new message in remote datastore
-              await this.refresh( dataset );                       // update local chat messages
+              message.key = await this.data.store.set( message );  // create new message in remote datastore
+              await this.refresh( message );                       // update local chat messages
               this.editor.get().root.innerHTML = '';               // clear user input in text editor
 
-              this.logger && this.logger.log( 'change', $.clone( dataset ) );                  // log 'change' event
-              this.onchange && this.onchange( { instance: this, data: $.clone( dataset ) } );  // perform 'change' callback
+              this.logger && this.logger.log( 'change', $.clone( message ) );                  // log 'change' event
+              this.onchange && this.onchange( { instance: this, data: $.clone( message ) } );  // perform 'change' callback
 
             }
           } ) );
