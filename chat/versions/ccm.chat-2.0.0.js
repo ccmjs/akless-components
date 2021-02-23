@@ -26,7 +26,7 @@
         "https://ccmjs.github.io/akless-components/chat/resources/snack.css",
         { "context": "head", "url": "https://ccmjs.github.io/akless-components/resources/fonts/WeblySleekUI/font.css" }
       ],
-      "data": { "store": [ "ccm.store" ], "key": "demo" },
+      "data": { "store": [ "ccm.store" ] },
 //    "hide_lang": true,
 //    "hide_login": true,
       "editor": [ "ccm.start", "https://ccmjs.github.io/tkless-components/editor/versions/ccm.editor-4.0.0.js", {
