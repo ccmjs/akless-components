@@ -2,7 +2,7 @@
  * @overview ccmjs-based web component for building a chat
  * @author André Kless <andre.kless@web.de> 2021
  * @license The MIT License (MIT)
- * @version latest (1.0.0)
+ * @version 1.0.0
  * @changes
  * version 1.0.0 (23.02.2021)
  */
@@ -11,6 +11,7 @@
 
   const component = {
     name: 'chat_builder',
+    version: [ 1, 0, 0 ],
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.1.1.js',
     config: {
       "css": [ "ccm.load",
