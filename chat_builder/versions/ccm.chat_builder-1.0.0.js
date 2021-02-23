@@ -32,6 +32,9 @@
           }
         },
         "defaults": {
+          "data": {
+            "store": [ "ccm.store", { "name": "chat-data", "url": "https://ccm2.inf.h-brs.de" } ]
+          },
           "editor": [ "ccm.start", "https://ccmjs.github.io/tkless-components/editor/versions/ccm.editor-4.0.0.js", {
             "editor": [ "ccm.load",
               "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js",
@@ -116,7 +119,7 @@
 
       this.start = async () => {
 
-        chat_config = await $.dataset( this.data );                            // get already existing chat configuration data
+        chat_config = await $.dataset( this.data );                            // get existing app configuration data
         if ( !chat_config.data ) chat_config[ 'data.key' ] = $.generateKey();  // new chat? => set unique chat key
 
         // get initial app configuration (priority order: [high] this.data -> this.defaults -> this.tool.config [low])
