@@ -2,7 +2,7 @@
  * @overview ccmjs-based web component for a fill-in-the-blank text
  * @author André Kless <andre.kless@web.de> 2017-2021
  * @license The MIT License (MIT)
- * @version latest (8.0.1)
+ * @version 8.0.1
  * @changes
  * version 8.0.1 (23.02.2021)
  * - uses ccmjs v26.1.1 as default
@@ -28,6 +28,7 @@
 
   const component = {
     name: 'cloze',
+    version: [ 8, 0, 1 ],
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.1.1.js',
     config: {
   //  "blank": true,

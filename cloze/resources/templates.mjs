@@ -1,9 +1,10 @@
 /**
- * @overview HTML templates of ccmjs-based web component for fill-in-the-blank text
- * @author André Kless <andre.kless@web.de> 2020
+ * @overview HTML templates of ccmjs-based web component for a fill-in-the-blank text
+ * @author André Kless <andre.kless@web.de> 2020-2021
  */
 
-import { html } from 'https://unpkg.com/lit-html';
+import { html, render } from 'https://esm.run/lit-html';
+export { render };
 
 /**
  * returns the HTML template for the start button
