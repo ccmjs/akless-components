@@ -40,6 +40,7 @@ ccm.files[ 'resources.js' ] = {
 
   "dms": {
     "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/chat_builder/resources/default.css" ],
+    "libs": null,
     "preview": null,
     "submit": null
   }
