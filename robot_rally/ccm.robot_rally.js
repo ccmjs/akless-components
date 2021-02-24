@@ -1,10 +1,10 @@
 /**
- * @overview ccm component for a robot rally boardgame
+ * @overview ccmjs-based web component for a robot rally boardgame
  * @author André Kless <andre.kless@web.de> 2021
  * @license The MIT License (MIT)
  * @version latest (1.0.0)
  * @changes
- * version 1.0.0 (15.02.2021)
+ * version 1.0.0 (24.02.2021)
  */
 
 ( () => {
@@ -44,19 +44,19 @@
   };
 
   const phase = {
-    0: "upgrade",
-    1: "program",
-    2: "player1",
-    3: "player2",
-    4: "player3",
-    5: "player4",
-    6: "player5",
-    7: "player6"
+    0: "UPGRA",
+    1: "PROGR",
+    2: "TWONK",
+    3: "HULKX",
+    4: "HAMER",
+    5: "SMASH",
+    6: "ZOOMB",
+    7: "SPINB"
   };
 
   const component = {
     name: 'robot_rally',
-    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.1.0.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.1.1.js',
     config: {
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/robot_rally/resources/default.css" ],
       "data": { "store": [ "ccm.store" ] },
@@ -592,34 +592,47 @@
     Instance: function () {
       const self = this; let $, robot, game, n = 0;
 
-      this.ready = async () => {
+      this.init = async () => {
 
         // set shortcut to help functions
         $ = Object.assign( {}, this.ccm.helper, this.helper ); $.use( this.ccm );
+
+        // listen to game changes => update content
+        this.data.store.onchange = dataset => {
+          if ( dataset.key !== this.data.key ) return;
+          game = dataset;
+          this.refresh();
+        }
 
       };
 
       this.start = async () => {
 
-        $.render( $.html( self.html.main ), self.element );
-        self.refresh( game = await $.dataset( self.data ) );
+        // render main HTML structure
+        this.html.render( $.html( self.html.main ), self.element );
+
+        // load existing game state data
+        game = await $.dataset( self.data );
+
+        // render current game state
+        self.refresh();
 
       };
 
-      this.refresh = async game => {
+      this.refresh = async () => {
 
         // no racetrack? => choose racetrack
         if ( !game.racetrack ) {
           chooseRacetrack();
           await render();
-          self.refresh( game );
+          self.refresh();
           return;
         }
 
         // current player has no robot? => choose robot
         if ( robot === undefined ) {
           chooseRobot();
-          self.refresh( game );
+          self.refresh();
           return;
         }
 
@@ -633,19 +646,45 @@
         if ( !player.start ) {
           chooseStart();
           await render();
-          self.refresh( game );
+          if ( ++n < 6 )
+            robot = undefined;
+          else
+            game.phase = 1;
+          self.refresh();
           return;
         }
 
-        if ( ++n < 6 ) {
-          robot = undefined;
-          return self.refresh( game );
+        // upgrade phase?
+        if ( game.phase === 1 ) {
+          buyUpgrade();
+          self.refresh();
+          return;
         }
 
         console.log( game, robot );
 
 //      self.onstart && self.onstart( self );  // trigger 'onstart' event
 //      $.onFinish( self );
+
+        function buyUpgrade() {
+
+          // no order of players? => set random order
+          if ( !game.shop ) {
+            game.shop = [];
+            game.order = Object.keys( game.players );
+            game.order.forEach( () => game.shop.push( game.upgrades.pop() ) );
+            $.shuffleArray( game.order );
+            self.data.store.set( game );
+            console.log( 'Upgrade Phase: The players can buy', game.shop.map( upgrade => self.upgrades[ upgrade ].name ).join( ' or ' ) );
+          }
+
+          //
+          if ( game.order[ game.order.length - 1 ] === robot ) {
+
+          }
+
+          game.phase = 2;
+        }
 
         function chooseRacetrack() {
           const racetracks = Object.keys( self.racetracks );
@@ -657,8 +696,7 @@
             players: {},
             damage: {},
             special: Object.keys( self.special ),
-            upgrades: Object.keys( self.upgrades ),
-            phase: 0
+            upgrades: Object.keys( self.upgrades )
           } );
           findFields( 'POWER' ).forEach( field => game.objects.push( {
             type: "ECUBE",
@@ -685,7 +723,7 @@
               player.deck.push( self.cards[ id ].id );
           $.shuffleArray( player.deck );
           self.data.store.set( game );
-          console.log( 'Choosed robot:', getRobotName( robot ) );
+          console.log( 'Choosed robot:', getRobotName() );
         }
 
         function chooseStart() {
@@ -709,10 +747,10 @@
           };
           game.objects.push( robot_obj );
           self.data.store.set( game );
-          console.log( getRobotName( robot ), 'has choosed a start position.' );
+          console.log( getRobotName(), 'has choosed a start position.' );
         }
 
-        function getRobotName( robot_id ) {
+        function getRobotName( robot_id = robot ) {
           return self.robots[ robot_id ].name;
         }
 
@@ -728,7 +766,7 @@
 
         async function render() {
           renderRacetrack();
-          await $.sleep( 1000 );
+          await $.sleep( 300 );
         }
 
         function renderRacetrack() {
