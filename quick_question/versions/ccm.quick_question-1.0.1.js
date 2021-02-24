@@ -2,7 +2,7 @@
  * @overview ccmjs-based web component for quick questions
  * @author André Kless <andre.kless@web.de> 2020-2021
  * @license The MIT License (MIT)
- * @version latest (1.0.1)
+ * @version 1.0.1
  * @changes
  * version 1.0.1 (24.02.2021)
  * - uses ccmjs v26.1.1 as default
@@ -16,6 +16,7 @@
 
   const component = {
     name: 'quick_question',
+    version: [ 1, 0, 1 ],
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.1.1.js',
     config: {
       "convert": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/json2json.mjs#question2highchart" ],
