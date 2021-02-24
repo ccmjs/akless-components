@@ -609,7 +609,7 @@
       this.start = async () => {
 
         // render main HTML structure
-        this.html.render( $.html( self.html.main ), self.element );
+        this.html.render( self.html.main(), self.element );
 
         // load existing game state data
         game = await $.dataset( self.data );

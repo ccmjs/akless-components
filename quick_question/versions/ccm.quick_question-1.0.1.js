@@ -168,7 +168,7 @@
         };
 
         // render content in webpage area via lit-html template
-        this.html.render( $.html( this.html.main, this, event, next, prev, add ), this.element );
+        this.html.render( this.html.main( this, event, next, prev, add ), this.element );
 
         // render diagram for results of previous question
         prev && await this.diagram.start( {

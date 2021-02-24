@@ -149,7 +149,7 @@
        * @param {Object} [config = this.getValue()] - app configuration
        */
       this.render = ( config = this.getValue() ) => {
-        this.html.render( $.html( this.html.main, config, this ), this.element );
+        this.html.render( this.html.main( config, this ), this.element );
       }
 
       /**

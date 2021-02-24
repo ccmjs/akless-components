@@ -30,7 +30,7 @@
       }
       this.start = async () => {
         this.dark && this.element.setAttribute( 'dark', '' );
-        this.html.render( $.html( this.html.main, this.ccm.context.root( this.instance ) ), this.element );
+        this.html.render( this.html.main( this.ccm.context.root( this.instance ) ), this.element );
       }
     }
   };
