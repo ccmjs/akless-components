@@ -1,5 +1,5 @@
 /**
- * @overview ccm component for rendering a predefined content
+ * @overview ccmjs-based web component for rendering a predefined content
  * @author André Kless <andre.kless@web.de> 2016-2018
  * @license The MIT License (MIT)
  * @version 5.0.1

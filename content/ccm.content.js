@@ -1,9 +1,13 @@
 /**
- * @overview ccm component for rendering a predefined content
- * @author André Kless <andre.kless@web.de> 2016-2020
+ * @overview ccmjs-based web component for rendering a predefined content
+ * @author André Kless <andre.kless@web.de> 2016-2021
  * @license The MIT License (MIT)
- * @version latest (5.4.7)
+ * @version latest (5.4.8)
  * @changes
+ * version 5.4.8 (25.02.2021):
+ * - uses ccmjs v26.1.1 as default
+ * - uses helper.mjs v7.0.0 as default
+ * - updated minified component line
  * version 5.4.7 (19.04.2020):
  * - uses ccm v25.4.0
  * - uses helper.mjs v5.0.0 as default
@@ -52,22 +56,17 @@
 ( () => {
 
   const component = {
-
     name: 'content',
-
-    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-25.4.0.js',
-
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.1.1.js',
     config: {
-
-  //  "afterstart": function () {},    // callback after instances has started ('this' is the instance)
+//    "afterstart": function () {},    // callback after instances has started ('this' is the instance)
       "components": [],                // contains the components that are reused in the predefined content
       "dependencies": [],              // contains the dependencies on the apps reused in the predefined content
-      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-5.0.0.mjs" ],
-  //  "inner": "Hello, World!",        // predefined content (could be given as HTML string, DOM Element Nodes or ccm HTML data)
-  //  "json2json": json => json,       // converts placeholders to different data structure (placeholders are passed as first parameter)
-  //  "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js" ],
-  //  "placeholder": { "foo": "bar" }  // replaces all '%foo%' in predefined content with 'bar'
-
+      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-7.0.0.mjs" ],
+//    "inner": "Hello, World!",        // predefined content (could be given as HTML string, DOM Element Nodes or ccm HTML data)
+//    "json2json": json => json,       // converts placeholders to different data structure (placeholders are passed as first parameter)
+//    "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js" ],
+//    "placeholder": { "foo": "bar" }  // replaces all '%foo%' in predefined content with 'bar'
     },
 
     Instance: function () {
@@ -77,7 +76,7 @@
       this.init = async () => {
 
         // set shortcut to help functions
-        $ = Object.assign( {}, this.ccm.helper, this.helper );
+        $ = Object.assign( {}, this.ccm.helper, this.helper ); $.use( this.ccm );
 
         // no Light DOM? => use empty fragment
         if ( !this.inner ) this.inner = document.createDocumentFragment();
@@ -193,5 +192,5 @@
 
   };
 
-  let b="ccm."+component.name+(component.version?"-"+component.version.join("."):"")+".js";if(window.ccm&&null===window.ccm.files[b])return window.ccm.files[b]=component;(b=window.ccm&&window.ccm.components[component.name])&&b.ccm&&(component.ccm=b.ccm);"string"===typeof component.ccm&&(component.ccm={url:component.ccm});let c=(component.ccm.url.match(/(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)/)||["latest"])[0];if(window.ccm&&window.ccm[c])window.ccm[c].component(component);else{var a=document.createElement("script");document.head.appendChild(a);component.ccm.integrity&&a.setAttribute("integrity",component.ccm.integrity);component.ccm.crossorigin&&a.setAttribute("crossorigin",component.ccm.crossorigin);a.onload=function(){window.ccm[c].component(component);document.head.removeChild(a)};a.src=component.ccm.url}
+  let b="ccm."+component.name+(component.version?"-"+component.version.join("."):"")+".js";if(window.ccm&&null===window.ccm.files[b])return window.ccm.files[b]=component;(b=window.ccm&&window.ccm.components[component.name])&&b.ccm&&(component.ccm=b.ccm);"string"===typeof component.ccm&&(component.ccm={url:component.ccm});let c=(component.ccm.url.match(/(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)/)||[""])[0];if(window.ccm&&window.ccm[c])window.ccm[c].component(component);else{var a=document.createElement("script");document.head.appendChild(a);component.ccm.integrity&&a.setAttribute("integrity",component.ccm.integrity);component.ccm.crossorigin&&a.setAttribute("crossorigin",component.ccm.crossorigin);a.onload=function(){(c="latest"?window.ccm:window.ccm[c]).component(component);document.head.removeChild(a)};a.src=component.ccm.url}
 } )();

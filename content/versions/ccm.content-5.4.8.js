@@ -1,9 +1,22 @@
 /**
  * @overview ccmjs-based web component for rendering a predefined content
- * @author André Kless <andre.kless@web.de> 2016-2019
+ * @author André Kless <andre.kless@web.de> 2016-2021
  * @license The MIT License (MIT)
- * @version 5.4.4
+ * @version 5.4.8
  * @changes
+ * version 5.4.8 (25.02.2021):
+ * - uses ccmjs v26.1.1 as default
+ * - uses helper.mjs v7.0.0 as default
+ * - updated minified component line
+ * version 5.4.7 (19.04.2020):
+ * - uses ccm v25.4.0
+ * - uses helper.mjs v5.0.0 as default
+ * version 5.4.6 (20.03.2020):
+ * - uses ccm v25.1.0
+ * - uses helper.mjs v4.1.0 as default
+ * version 5.4.5 (16.02.2020):
+ * - uses ccm v25.0.0
+ * - bug fix for collect all ccm dependencies in Light DOM
  * version 5.4.4 (13.11.2019):
  * - uses ccm v24.1.0
  * version 5.4.3 (10.10.2019):
@@ -43,21 +56,18 @@
 ( () => {
 
   const component = {
-
-    name: 'content', version: [ 5, 4, 4 ],
-
-    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-24.1.0.js',
-
+    name: 'content',
+    version: [ 5, 4, 8 ],
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.1.1.js',
     config: {
-
-  //  afterstart: function () {},   // callback after instances has started ('this' is the instance)
-      components: [],               // contains the components that are reused in the predefined content
-      dependencies: [],             // contains the dependencies on the apps reused in the predefined content
-  //  inner: 'Hello, World!',       // predefined content (could be given as HTML string, DOM Element Nodes or ccm HTML data)
-  //  json2json: json => json,      // converts placeholders to different data structure (placeholders are passed as first parameter)
-  //  lang: [ 'ccm.instance', 'https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js' ],
-  //  placeholder: { foo: 'bar' }   // replaces all '%foo%' in predefined content with 'bar'
-
+//    "afterstart": function () {},    // callback after instances has started ('this' is the instance)
+      "components": [],                // contains the components that are reused in the predefined content
+      "dependencies": [],              // contains the dependencies on the apps reused in the predefined content
+      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-7.0.0.mjs" ],
+//    "inner": "Hello, World!",        // predefined content (could be given as HTML string, DOM Element Nodes or ccm HTML data)
+//    "json2json": json => json,       // converts placeholders to different data structure (placeholders are passed as first parameter)
+//    "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js" ],
+//    "placeholder": { "foo": "bar" }  // replaces all '%foo%' in predefined content with 'bar'
     },
 
     Instance: function () {
@@ -67,13 +77,20 @@
       this.init = async () => {
 
         // set shortcut to help functions
-        $ = this.ccm.helper;
+        $ = Object.assign( {}, this.ccm.helper, this.helper ); $.use( this.ccm );
 
         // no Light DOM? => use empty fragment
         if ( !this.inner ) this.inner = document.createDocumentFragment();
 
         // Light DOM is given as HTML string? => use fragment with HTML string as innerHTML
         if ( typeof this.inner === 'string' ) this.inner = document.createRange().createContextualFragment( this.inner );
+
+        // Light DOM is given as array? => use fragment with array elements as children
+        if ( Array.isArray( this.inner ) ) {
+          const fragment = document.createDocumentFragment();
+          this.inner.forEach( element => fragment.appendChild( $.html( element ) ) );
+          this.inner = fragment;
+        }
 
         // dynamic replacement of placeholders
         if ( this.placeholder ) {
@@ -90,17 +107,26 @@
          */
         function collectDependencies( element ) {
 
-          // iterate over all child DOM Element Nodes
-          [ ...element.children ].forEach( child => {
+          // is ccm Custom Element? => collect dependency
+          if ( element.tagName && element.tagName.indexOf( 'CCM-' ) === 0 ) return collectDependency( element );
+
+          // iterate over all child DOM Element Nodes and collect dependencies
+          [ ...element.children ].forEach( collectDependency );
+
+          /**
+           * collects a dependency from a given HTML element
+           * @param element - HTML element
+           */
+          function collectDependency( element ) {
 
             // no ccm Custom Element? => abort and collect dependencies inside of it
-            if ( child.tagName.indexOf( 'CCM-' ) !== 0 ) return collectDependencies( child );  // recursive call
+            if ( element.tagName.indexOf( 'CCM-' ) !== 0 ) return collectDependencies( element );  // recursive call
 
             // generate ccm dependency out of founded ccm Custom Element
             const component = getComponent(); if ( !component ) return;
-            const config = $.generateConfig( child );
+            const config = $.generateConfig( element );
             config.parent = self;
-            config.root = child;
+            config.root = element;
             self.dependencies.push( $.isComponent( component ) ? [ component, config ] : [ 'ccm.start', component, config ] );
 
             /**
@@ -113,12 +139,12 @@
                * index of ccm component
                * @type {string}
                */
-              const index = child.tagName.substr( 4 ).toLowerCase();
+              const index = element.tagName.substr( 4 ).toLowerCase();
 
               // is a <ccm-app> element? => result is value of component attribute
               if ( index === 'app' ) {
-                const component = child.getAttribute( 'component' );
-                child.removeAttribute( 'component' );
+                const component = element.getAttribute( 'component' );
+                element.removeAttribute( 'component' );
                 return component;
               }
 
@@ -132,12 +158,12 @@
               // search inner HTML of own Custom Element for a source tag that contains the component URL
               const sources = self.inner.querySelectorAll( 'source' );
               for ( let i = 0; i < sources.length; i++ )
-                if ( $.getIndex( sources[ i ].getAttribute( 'src' ) ) === index )
+                if ( $.convertComponentURL( sources[ i ].getAttribute( 'src' ) ).index === index )
                   return sources[ i ].getAttribute( 'src' );
 
             }
 
-          } );
+          }
 
         }
 
@@ -167,5 +193,5 @@
 
   };
 
-  let b="ccm."+component.name+(component.version?"-"+component.version.join("."):"")+".js";if(window.ccm&&null===window.ccm.files[b])return window.ccm.files[b]=component;(b=window.ccm&&window.ccm.components[component.name])&&b.ccm&&(component.ccm=b.ccm);"string"===typeof component.ccm&&(component.ccm={url:component.ccm});let c=(component.ccm.url.match(/(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)/)||["latest"])[0];if(window.ccm&&window.ccm[c])window.ccm[c].component(component);else{var a=document.createElement("script");document.head.appendChild(a);component.ccm.integrity&&a.setAttribute("integrity",component.ccm.integrity);component.ccm.crossorigin&&a.setAttribute("crossorigin",component.ccm.crossorigin);a.onload=function(){window.ccm[c].component(component);document.head.removeChild(a)};a.src=component.ccm.url}
+  let b="ccm."+component.name+(component.version?"-"+component.version.join("."):"")+".js";if(window.ccm&&null===window.ccm.files[b])return window.ccm.files[b]=component;(b=window.ccm&&window.ccm.components[component.name])&&b.ccm&&(component.ccm=b.ccm);"string"===typeof component.ccm&&(component.ccm={url:component.ccm});let c=(component.ccm.url.match(/(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)/)||[""])[0];if(window.ccm&&window.ccm[c])window.ccm[c].component(component);else{var a=document.createElement("script");document.head.appendChild(a);component.ccm.integrity&&a.setAttribute("integrity",component.ccm.integrity);component.ccm.crossorigin&&a.setAttribute("crossorigin",component.ccm.crossorigin);a.onload=function(){(c="latest"?window.ccm:window.ccm[c]).component(component);document.head.removeChild(a)};a.src=component.ccm.url}
 } )();

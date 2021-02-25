@@ -1,6 +1,6 @@
 /**
- * @overview configurations of ccm component for rendering a predefined content
- * @author André Kless <andre.kless@web.de> 2017-2020
+ * @overview configurations of ccmjs-based web component for rendering a predefined content
+ * @author André Kless <andre.kless@web.de> 2017-2021
  * @license The MIT License (MIT)
  */
 
@@ -8,8 +8,8 @@ ccm.files[ 'configs.js' ] = {
 
   /** local test and remote demo */
   "local": {
-    "helper.1": "../modules/helper.mjs",
-    "inner": "<source src=../blank/ccm.blank.js>Welcome.<ccm-blank></ccm-blank>Good day."
+    "helper.1": "./../modules/helper.mjs",
+    "inner": "<source src=./../blank/ccm.blank.js>Welcome.<ccm-blank></ccm-blank>Good day."
   },
   "demo": {
     "inner": "<source src=https://ccmjs.github.io/akless-components/blank/ccm.blank.js>Welcome.<ccm-blank></ccm-blank> Good day."
