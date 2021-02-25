@@ -1,6 +1,6 @@
 /**
- * @overview static data-based resources of ccm component for quiz
- * @author André Kless <andre.kless@web.de> 2019-2020
+ * @overview static data-based resources of ccmjs-based web component for a quiz
+ * @author André Kless <andre.kless@web.de> 2019-2021
  * @license The MIT License (MIT)
  */
 
@@ -9,17 +9,17 @@ ccm.files[ 'resources.js' ] = {
   /** test configuration (relative paths) */
   "local": {
     "css": [ "ccm.load",
-      "../quiz/resources/weblysleek.css",
-      { "context": "head", "url": "../resources/fonts/WeblySleekUI/font.css" }
+      "./../quiz/resources/weblysleek.css",
+      { "context": "head", "url": "./../resources/fonts/WeblySleekUI/font.css" }
     ],
     "feedback": true,
-    "helper.1": "../modules/helper.mjs",
-    "html.1": "../quiz/resources/templates.html",
-    "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
+    "helper.1": "./../modules/helper.mjs",
+    "html.1": "./../quiz/resources/templates.html",
+    "logger": [ "ccm.instance", "./../log/ccm.log.js", [ "ccm.get", "./../log/resources/configs.js", "greedy" ] ],
     "navigation": true,
     "onfinish": { "restart": false },
 //  "placeholder.finish": "Restart",
-    "questions": [ "ccm.get", "../quiz/resources/resources.js", "data.questions" ],
+    "questions": [ "ccm.get", "./../quiz/resources/resources.js", "data.questions" ],
     "show_results": false,
     "start_button": false
   },

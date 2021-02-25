@@ -1,5 +1,5 @@
 /**
- * @overview ccm component for rendering a quiz
+ * @overview ccmjs-based web component for a quiz
  * @author André Kless <andre.kless@web.de> 2016-2017
  * @license The MIT License (MIT)
  * @version 2.0.0
