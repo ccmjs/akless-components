@@ -6,7 +6,7 @@
  * @changes
  * version 4.0.0 (19.02.2021):
  * - uses ccmjs v26.1.1 as default
- * - uses helper.mjs v6.0.1 as default
+ * - uses helper.mjs v7.0.0 as default
  * - changed keys for new kanban cards
  * - realtime optimisations
  * - updated minified component line
@@ -23,7 +23,7 @@
       "permissions": { "access": "all" },
       "data": { "store": [ "ccm.store" ] },
       "del": "Do you really want to delete this card?",
-      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-6.0.1.mjs" ],
+      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-7.0.0.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/kanban_board/resources/templates.html" ],
 //    "ignore": { "card": { "component": "https://ccmjs.github.io/akless-components/kanban_card/versions/ccm.kanban_card-4.0.0.js", "config": {} } },
       "lanes": [ "ToDo", "Doing", "Done" ],
