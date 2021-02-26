@@ -1,5 +1,7 @@
 /**
- * @overview configurations of ccm component for submitting data
+ *----------------------------------------------------- DEPRECATED -----------------------------------------------------
+ *
+ * @overview configurations of ccm-based web component for submitting data
  * @author André Kless <andre.kless@web.de> 2018-2020
  * @license The MIT License (MIT)
  */

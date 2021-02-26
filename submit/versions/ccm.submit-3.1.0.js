@@ -1,5 +1,5 @@
 /**
- * @overview ccm component for submitting data
+ * @overview ccm-based web component for submitting data
  * @author André Kless <andre.kless@web.de> 2018
  * @license The MIT License (MIT)
  * @version 3.1.0

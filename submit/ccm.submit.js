@@ -1,9 +1,13 @@
 /**
- * @overview ccm component for submitting data
- * @author André Kless <andre.kless@web.de> 2018-2020
+ * @overview ccm-based web component for submitting data
+ * @author André Kless <andre.kless@web.de> 2018-2021
  * @license The MIT License (MIT)
- * @version latest (8.1.3)
+ * @version latest (8.1.4)
  * @changes
+ * version 8.1.4 (26.02.2020):
+ * - uses ccmjs v26.1.1 as default
+ * - uses helper.mjs v7.0.0 as default
+ * - updated minified component line
  * version 8.1.3 (25.06.2020):
  * - uses ccm v25.5.3
  * - backwards compatibility for decomposing of an App URL
@@ -29,14 +33,10 @@
 ( () => {
 
   const component = {
-
     name: 'submit',
-
-    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-25.5.3.js',
-
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.1.1.js',
     config: {
-
-  //  "content": [ "ccm.component", "https://ccmjs.github.io/akless-components/content/versions/ccm.content-5.4.7.js" ],
+  //  "content": [ "ccm.component", "https://ccmjs.github.io/akless-components/content/versions/ccm.content-5.4.8.js" ],
       "css": [ "ccm.load", [
         [
           "https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css",
@@ -49,7 +49,7 @@
   //  "disabled": true,
   //  "enabled_only": true,
   //  "entries": [ "ccm.get", "https://ccmjs.github.io/akless-components/submit/resources/datasets.js", "demo.data" ],
-      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-5.1.0.mjs" ],
+      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-7.0.0.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/submit/resources/templates_b4.html" ],
   //  "ignore": { "defaults": { "name": "value" } },
   //  "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js" ],
@@ -57,8 +57,7 @@
   //  "no_submit_button": true,
   //  "onchange": event => console.log( event ),
   //  "onfinish": { "log": true },
-  //  "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.0.js" ]
-
+  //  "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/resources.js", "guest" ] ]
     },
 
     Instance: function () {
@@ -81,7 +80,7 @@
       this.ready = async () => {
 
         // set shortcut to help functions
-        $ = Object.assign( {}, this.ccm.helper, this.helper );
+        $ = Object.assign( {}, this.ccm.helper, this.helper ); $.use( this.ccm );
 
         // add submit property with own component reference (for recursive reuse)
         this.submit = this.component;
@@ -642,5 +641,5 @@
 
   };
 
-  let b="ccm."+component.name+(component.version?"-"+component.version.join("."):"")+".js";if(window.ccm&&null===window.ccm.files[b])return window.ccm.files[b]=component;(b=window.ccm&&window.ccm.components[component.name])&&b.ccm&&(component.ccm=b.ccm);"string"===typeof component.ccm&&(component.ccm={url:component.ccm});let c=(component.ccm.url.match(/(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)/)||["latest"])[0];if(window.ccm&&window.ccm[c])window.ccm[c].component(component);else{var a=document.createElement("script");document.head.appendChild(a);component.ccm.integrity&&a.setAttribute("integrity",component.ccm.integrity);component.ccm.crossorigin&&a.setAttribute("crossorigin",component.ccm.crossorigin);a.onload=function(){window.ccm[c].component(component);document.head.removeChild(a)};a.src=component.ccm.url}
+  let b="ccm."+component.name+(component.version?"-"+component.version.join("."):"")+".js";if(window.ccm&&null===window.ccm.files[b])return window.ccm.files[b]=component;(b=window.ccm&&window.ccm.components[component.name])&&b.ccm&&(component.ccm=b.ccm);"string"===typeof component.ccm&&(component.ccm={url:component.ccm});let c=(component.ccm.url.match(/(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)/)||[""])[0];if(window.ccm&&window.ccm[c])window.ccm[c].component(component);else{var a=document.createElement("script");document.head.appendChild(a);component.ccm.integrity&&a.setAttribute("integrity",component.ccm.integrity);component.ccm.crossorigin&&a.setAttribute("crossorigin",component.ccm.crossorigin);a.onload=function(){(c="latest"?window.ccm:window.ccm[c]).component(component);document.head.removeChild(a)};a.src=component.ccm.url}
 } )();
