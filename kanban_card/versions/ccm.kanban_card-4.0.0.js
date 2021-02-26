@@ -6,7 +6,7 @@
  * @changes
  * version 4.0.0 (19.02.2021)
  * - uses ccmjs v26.1.1 as default
- * - uses helper.mjs v6.0.1 as default
+ * - uses helper.mjs v7.0.0 as default
  * - updated minified component line
  * - bugfix for realtime update
  * - realtime update does not cause an extra request
@@ -23,7 +23,7 @@
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/kanban_card/resources/default.css" ],
       "data": { "store": [ "ccm.store" ] },
       "editable": true,
-      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-6.0.1.mjs" ],
+      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-7.0.0.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/kanban_card/resources/templates.html" ],
       "icon": {
         "owner": "https://ccmjs.github.io/akless-components/kanban_card/resources/owner.svg",

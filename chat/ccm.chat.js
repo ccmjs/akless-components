@@ -6,7 +6,7 @@
  * @changes
  * version 2.0.0 (17.02.2021):
  * - uses ccmjs v26.1.1 as default
- * - uses helper.mjs v6.0.1 as default
+ * - uses helper.mjs v7.0.0 as default
  * - updated minified component line
  * - many different chats stored in one datastore
  * - HTML escaping for new messages
@@ -44,7 +44,7 @@
           "theme": "snow"
         }
       } ],
-      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-6.0.1.mjs" ],
+      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-7.0.0.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/chat/resources/templates_v2.html" ],
 //    "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js" ],
 //    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-5.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],

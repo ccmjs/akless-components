@@ -6,7 +6,7 @@
  * @changes
  * version 5.0.0 (21.02.2021)
  * - uses ccmjs v26.1.1 as default
- * - uses helper.mjs v6.0.1 as default
+ * - uses helper.mjs v7.0.0 as default
  * - updated minified component line
  * (for older version changes see ccm.teambuild-4.0.0.js)
  */
@@ -25,7 +25,7 @@
         "leave": true,
         "rename": true
       },
-      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-6.0.1.mjs" ],
+      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-7.0.0.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/teambuild/resources/templates.html" ],
       "icon": {
         /*
