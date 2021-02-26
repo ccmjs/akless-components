@@ -54,7 +54,7 @@ ccm.files[ 'resources.js' ] = {
 
   "demo": {
     "data": {
-      "store": [ "ccm.store", { "local": [ "ccm.load", "./../cloze/resources/resources.js" ] } ],
+      "store": [ "ccm.store", { "local": [ "ccm.load", "https://ccmjs.github.io/akless-components/cloze/resources/resources.js" ] } ],
       "key": "demo"
     },
     "onfinish": { "log": true },

@@ -32,7 +32,7 @@ ccm.files[ 'resources.js' ] = {
 
   "demo": {
     "data": {
-      "store": [ "ccm.store", { "local": [ "ccm.load", "./../chat/resources/resources.js" ] } ],
+      "store": [ "ccm.store", { "local": [ "ccm.load", "https://ccmjs.github.io/akless-components/chat/resources/resources.js" ] } ],
       "key": "demo"
     },
     "onfinish": { "log": true }
