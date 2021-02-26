@@ -1,0 +1,21 @@
+/**
+ * @overview default layout of ccmjs-based web component for building a kanban board
+ * @author André Kless <andre.kless@web.de.de> 2021
+ * @license The MIT License (MIT)
+ */
+
+form {
+  padding: 1.25em;
+}
+
+.bg-info {
+  font-size: small;
+}
+
+*[disabled] {
+  cursor: not-allowed;
+}
+
+*[data-hidden] {
+  display: none;
+}
