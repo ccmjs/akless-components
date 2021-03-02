@@ -590,7 +590,7 @@
     },
 
     Instance: function () {
-      const self = this; let $, robot, game, n = 0;
+      let $, robot, player, game, n = 0;
 
       this.init = async () => {
 
@@ -609,38 +609,36 @@
       this.start = async () => {
 
         // render main HTML structure
-        this.html.render( self.html.main(), self.element );
+        this.html.render( this.html.main(), this.element );
 
         // load existing game state data
-        game = await $.dataset( self.data );
+        game = await $.dataset( this.data );
+
+        // empty game state data? => reset
+        if ( !game.players ) game = undefined;
 
         // render current game state
-        self.refresh();
+        this.refresh();
 
       };
 
       this.refresh = async () => {
 
+        // no game state data? => set initial game state data
+        if ( !game ) newGame();
+
+        // current player has no robot? => choose robot
+        if ( robot === undefined ) await chooseRobot();
+
         // no racetrack? => choose racetrack
         if ( !game.racetrack ) {
           chooseRacetrack();
           await render();
-          self.refresh();
+          this.refresh();
           return;
         }
 
-        // current player has no robot? => choose robot
-        if ( robot === undefined ) {
-          chooseRobot();
-          self.refresh();
-          return;
-        }
-
-        /**
-         * current player data
-         * @type {Object}
-         */
-        const player = game.players[ robot ];
+        player = game.players[ robot ];
 
         // current player has no start position? => choose start position
         if ( !player.start ) {
@@ -650,141 +648,21 @@
             robot = undefined;
           else
             game.phase = 1;
-          self.refresh();
+          this.refresh();
           return;
         }
 
         // upgrade phase?
         if ( game.phase === 1 ) {
           buyUpgrade();
-          self.refresh();
+          this.refresh();
           return;
         }
 
         console.log( game, robot );
 
-//      self.onstart && self.onstart( self );  // trigger 'onstart' event
-//      $.onFinish( self );
-
-        function buyUpgrade() {
-
-          // no order of players? => set random order
-          if ( !game.shop ) {
-            game.shop = [];
-            game.order = Object.keys( game.players );
-            game.order.forEach( () => game.shop.push( game.upgrades.pop() ) );
-            $.shuffleArray( game.order );
-            self.data.store.set( game );
-            console.log( 'Upgrade Phase: The players can buy', game.shop.map( upgrade => self.upgrades[ upgrade ].name ).join( ' or ' ) );
-          }
-
-          //
-          if ( game.order[ game.order.length - 1 ] === robot ) {
-
-          }
-
-          game.phase = 2;
-        }
-
-        function chooseRacetrack() {
-          const racetracks = Object.keys( self.racetracks );
-          const racetrack_id = racetracks[ Math.floor( Math.random() * racetracks.length ) ];
-          const racetrack = self.racetracks[ racetrack_id ];
-          Object.assign( game, {
-            racetrack: racetrack_id,
-            objects: $.clone( racetrack.objects ),
-            players: {},
-            damage: {},
-            special: Object.keys( self.special ),
-            upgrades: Object.keys( self.upgrades )
-          } );
-          findFields( 'POWER' ).forEach( field => game.objects.push( {
-            type: "ECUBE",
-            x: field.x,
-            y: field.y,
-            width: 15,
-            height: 15
-          } ) );
-          for ( const id in self.damage )
-            game.damage[ id ] = self.damage[ id ].amount;
-          $.shuffleArray( game.special );
-          $.shuffleArray( game.upgrades );
-          self.data.store.set( game );
-          console.log( 'Choosed Racetrack:', racetrack.name );
-        }
-
-        function chooseRobot() {
-          const robots = Object.keys( self.robots ).filter( id => !Object.keys( game.players ).includes( id ) );
-          if ( !robots.length ) return '';
-          robot = robots[ Math.floor( Math.random() * robots.length ) ];
-          const player = game.players[ robot ] = { deck: [], energy: 5 };
-          for ( const id in self.cards )
-            for ( let i = 0; i < self.cards[ id ].amount; i++ )
-              player.deck.push( self.cards[ id ].id );
-          $.shuffleArray( player.deck );
-          self.data.store.set( game );
-          console.log( 'Choosed robot:', getRobotName() );
-        }
-
-        function chooseStart() {
-          const fields = findFields( 'START' ).filter( field => {
-            for ( const id in game.players ) {
-              const start = game.players[ id ].start;
-              if ( start && start.x === field.x && start.y === field.y )
-                return false;
-            }
-            return true;
-          } );
-          player.start = fields[ Math.floor( Math.random() * fields.length ) ];
-          player.start.direction = self.racetracks[ game.racetrack ].direction;
-          const robot_obj = {
-            type: robot,
-            x: player.start.x,
-            y: player.start.y,
-            direction: player.start.direction,
-            width: 50,
-            height: 50
-          };
-          game.objects.push( robot_obj );
-          self.data.store.set( game );
-          console.log( getRobotName(), 'has choosed a start position.' );
-        }
-
-        function getRobotName( robot_id = robot ) {
-          return self.robots[ robot_id ].name;
-        }
-
-        function findFields( field ) {
-          const racetrack = self.racetracks[ game.racetrack ].board;
-          const fields = [];
-          for ( let y = 0; y < racetrack.length; y++ )
-            for ( let x = 0; x < racetrack[ y ].length; x++ )
-              if ( racetrack[ y ][ x ] === field )
-                fields.push( { x: x, y: y } );
-          return fields;
-        }
-
-        async function render() {
-          renderRacetrack();
-          await $.sleep( 300 );
-        }
-
-        function renderRacetrack() {
-          const element = $.html( self.element.querySelector( '#board' ) );
-          const racetrack = self.racetracks[ game.racetrack ].board;
-          if ( game.racetrack )
-            racetrack.forEach( row => row.forEach( cell => element.appendChild( $.html( { class: 'field', style: 'background-image: url(' + self.img + 'fields/' + cell + '.jpg)' } ) ) ) );
-          renderObjects();
-
-          function renderObjects() {
-            element.querySelectorAll( '.obj' ).forEach( obj => $.remove( obj ) );
-            game.objects.forEach( obj => renderObject( obj ) );
-
-            function renderObject( obj ) {
-              element.querySelector( '.field:nth-child(' + ( obj.x + 1 + obj.y * racetrack[ 0 ].length ) + ')' ).appendChild( $.html( { tag: 'img', class: 'obj', width: obj.width, height: obj.height, src: self.img + 'objects/' + obj.type + ( obj.nr || '' ) + '.png', style: 'transform: rotate(' + ( ( obj.direction || 0 ) * 90 ) + 'deg);' } ) );
-            }
-          }
-        }
+//      this.onstart && this.onstart( this );  // trigger 'onstart' event
+//      $.onFinish( this );
 
       };
 
@@ -794,7 +672,143 @@
        */
       this.getValue = () => game;
 
+      /** sets initial game state data */
+      const newGame = () => {
+        game = {
+          players: {},
+          damage: {},
+          special: Object.keys( this.special ),
+          upgrades: Object.keys( this.upgrades )
+        };
+        for ( const id in this.damage )
+          game.damage[ id ] = this.damage[ id ].amount;
+        $.shuffleArray( game.special );
+        $.shuffleArray( game.upgrades );
+      };
+
+      /**
+       * let the user choose an available robot
+       * @returns {Promise<void>}
+       */
+      const chooseRobot = () => new Promise( resolve => {
+        const robots = Object.keys( this.robots ).filter( id => !game.players || !Object.keys( game.players ).includes( id ) );
+        if ( !robots.length ) return '';
+        robot = robots[ Math.floor( Math.random() * robots.length ) ];
+        const player = game.players[ robot ] = { deck: [], energy: 5 };
+        for ( const id in this.cards )
+          for ( let i = 0; i < this.cards[ id ].amount; i++ )
+            player.deck.push( this.cards[ id ].id );
+        $.shuffleArray( player.deck );
+        this.data.store.set( game );
+        console.log( 'Chosen robot:', getRobotName() );
+        resolve();
+      } );
+
+      /**
+       * gets the name of a roboter
+       * @param {string} [robot_id = robot] roboter ID (default: ID of the already chosen robot)
+       * @returns {string} roboter name
+       */
+      const getRobotName = ( robot_id = robot ) => this.robots[ robot_id ].name;
+
+      const buyUpgrade = () => {
+
+        // no order of players? => set random order
+        if ( !game.shop ) {
+          game.shop = [];
+          game.order = Object.keys( game.players );
+          game.order.forEach( () => game.shop.push( game.upgrades.pop() ) );
+          $.shuffleArray( game.order );
+          this.data.store.set( game );
+          console.log( 'Upgrade Phase: The players can buy', game.shop.map( upgrade => this.upgrades[ upgrade ].name ).join( ' or ' ) );
+        }
+
+        //
+        if ( game.order[ game.order.length - 1 ] === robot ) {
+
+        }
+
+        game.phase = 2;
+      };
+
+      const chooseRacetrack = () => {
+        const racetracks = Object.keys( this.racetracks );
+        const racetrack_id = racetracks[ Math.floor( Math.random() * racetracks.length ) ];
+        const racetrack = this.racetracks[ racetrack_id ];
+        Object.assign( game, {
+          racetrack: racetrack_id,
+          objects: $.clone( racetrack.objects ),
+        } );
+        findFields( 'POWER' ).forEach( field => game.objects.push( {
+          type: "ECUBE",
+          x: field.x,
+          y: field.y,
+          width: 15,
+          height: 15
+        } ) );
+        this.data.store.set( game );
+        console.log( 'Choosed Racetrack:', racetrack.name );
+      };
+
+      const chooseStart = () => {
+        const fields = findFields( 'START' ).filter( field => {
+          for ( const id in game.players ) {
+            const start = game.players[ id ].start;
+            if ( start && start.x === field.x && start.y === field.y )
+              return false;
+          }
+          return true;
+        } );
+        player.start = fields[ Math.floor( Math.random() * fields.length ) ];
+        player.start.direction = this.racetracks[ game.racetrack ].direction;
+        const robot_obj = {
+          type: robot,
+          x: player.start.x,
+          y: player.start.y,
+          direction: player.start.direction,
+          width: 50,
+          height: 50
+        };
+        game.objects.push( robot_obj );
+        this.data.store.set( game );
+        console.log( getRobotName(), 'has choosed a start position.' );
+      };
+
+      const findFields = field => {
+        const racetrack = this.racetracks[ game.racetrack ].board;
+        const fields = [];
+        for ( let y = 0; y < racetrack.length; y++ )
+          for ( let x = 0; x < racetrack[ y ].length; x++ )
+            if ( racetrack[ y ][ x ] === field )
+              fields.push( { x: x, y: y } );
+        return fields;
+      };
+
+      const render = async () => {
+        renderRacetrack();
+        await $.sleep( 300 );
+      };
+
+      const renderRacetrack = () => {
+        const element = $.html( this.element.querySelector( '#board' ) );
+        const racetrack = this.racetracks[ game.racetrack ].board;
+        if ( game.racetrack )
+          racetrack.forEach( row => row.forEach( cell => element.appendChild( $.html( { class: 'field', style: 'background-image: url(' + this.img + 'fields/' + cell + '.jpg)' } ) ) ) );
+        renderObjects();
+      };
+
+      const renderObjects = () => {
+        this.element.querySelectorAll( '#board .obj' ).forEach( obj => $.remove( obj ) );
+        game.objects.forEach( obj => renderObject( obj ) );
+      };
+
+      const renderObject = obj => {
+        const racetrack = this.racetracks[ game.racetrack ].board;
+        this.element.querySelector( '#board .field:nth-child(' + ( obj.x + 1 + obj.y * racetrack[ 0 ].length ) + ')' ).appendChild( $.html( { tag: 'img', class: 'obj', width: obj.width, height: obj.height, src: this.img + 'objects/' + obj.type + ( obj.nr || '' ) + '.png', style: 'transform: rotate(' + ( ( obj.direction || 0 ) * 90 ) + 'deg);' } ) );
+      };
+
     }
+
   };
 
   let b="ccm."+component.name+(component.version?"-"+component.version.join("."):"")+".js";if(window.ccm&&null===window.ccm.files[b])return window.ccm.files[b]=component;(b=window.ccm&&window.ccm.components[component.name])&&b.ccm&&(component.ccm=b.ccm);"string"===typeof component.ccm&&(component.ccm={url:component.ccm});let c=(component.ccm.url.match(/(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)/)||[""])[0];if(window.ccm&&window.ccm[c])window.ccm[c].component(component);else{var a=document.createElement("script");document.head.appendChild(a);component.ccm.integrity&&a.setAttribute("integrity",component.ccm.integrity);component.ccm.crossorigin&&a.setAttribute("crossorigin",component.ccm.crossorigin);a.onload=function(){(c="latest"?window.ccm:window.ccm[c]).component(component);document.head.removeChild(a)};a.src=component.ccm.url}
