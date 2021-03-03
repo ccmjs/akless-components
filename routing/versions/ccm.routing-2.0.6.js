@@ -2,7 +2,7 @@
  * @overview ccmjs-based web component for routing
  * @author André Kless <andre.kless@web.de> 2019-2021
  * @license MIT License
- * @version latest (2.0.6)
+ * @version 2.0.6
  * @changes
  * version 2.0.6 (03.03.2020):
  * - uses ccmjs v26.1.1 as default
@@ -32,6 +32,7 @@
 
   const component = {
     name: 'routing',
+    version: [ 2, 0, 6 ],
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.1.1.js',
     config: {
 //    "app": "1558132111384X2108359471753687",
