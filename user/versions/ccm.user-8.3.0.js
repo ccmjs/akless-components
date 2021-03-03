@@ -1,5 +1,5 @@
 /**
- * @overview ccm component for user authentication
+ * @overview ccmjs-based web component for user authentication
  * @author André Kless <andre.kless@web.de> 2017-2018
  * @license The MIT License (MIT)
  * @version 8.3.0

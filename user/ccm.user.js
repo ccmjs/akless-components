@@ -1,22 +1,21 @@
 /**
- * @overview ccm component for user authentication
- * @author André Kless <andre.kless@web.de> 2017-2020
+ * @overview ccmjs-based web component for user authentication
+ * @author André Kless <andre.kless@web.de> 2017-2021
  * @license The MIT License (MIT)
- * @version latest (10.0.0)
+ * @version latest (9.7.1)
  * @changes
- * version 10.0.0 (12.12.2020):
- * - complete reimplementation
- * - uses ccm.js v26.1.0
- * - uses helper.mjs v6.0.0
- * - HTML templates based on lit-html
+ * version 9.7.1 (03.03.2021):
+ * - uses ccm.js v26.1.1
+ * - uses helper.mjs v7.0.0
  * - updated minified component line
  * (for older version changes see ccm.user-9.7.0.js)
  */
 
 ( () => {
+
   const component = {
     name: 'user',
-    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.1.0.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.1.1.js',
     config: {
       "css": [ "ccm.load", [
         "https://ccmjs.github.io/akless-components/libs/bootstrap-4/css/bootstrap.min.css",
@@ -24,7 +23,7 @@
       ] ],
 //    "guest": "guest",
 //    "hash": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/md5.mjs" ],
-      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-6.0.1.mjs" ],
+      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-7.0.0.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/user/resources/templates.mjs" ],
 //    "logged_in": true,
 //    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-5.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],

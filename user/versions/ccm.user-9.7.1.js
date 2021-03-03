@@ -1,72 +1,53 @@
 /**
  * @overview ccmjs-based web component for user authentication
- * @author André Kless <andre.kless@web.de> 2017-2019
+ * @author André Kless <andre.kless@web.de> 2017-2021
  * @license The MIT License (MIT)
- * @version 9.2.1
+ * @version 9.7.1
  * @changes
- * version 9.2.1 (09.10.2019):
- * - prevent render of same state twice
- * - uses ccm v24.0.1
- * version 9.2.0 (05.07.2019):
- * - uses Session Storage to remember user data
- * - throws error if you click on Abort in login area
- * - uses ccm v21.1.2
- * version 9.1.1 (29.05.2019):
- * - clears website area before redirect call
- * - uses ccm v20.7.1
- * version 9.1.0 (15.05.2019):
- * - login function returns user data
- * - uses ccm v20.4.0
- * version 9.0.1 (03.04.2019):
- * - bug fix for realm 'hbrsinfpseudo'
- * version 9.0.0 (11.02.2019):
- * - removed realm 'idento'
- * (for older version changes see ccm.user-8.3.1.js)
+ * version 9.7.1 (03.03.2021):
+ * - uses ccm.js v26.1.1
+ * - uses helper.mjs v7.0.0
+ * - updated minified component line
+ * (for older version changes see ccm.user-9.7.0.js)
  */
 
 ( () => {
 
   const component = {
-
-    name: 'user', version: [ 9, 2, 1 ],
-
-    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-24.0.1.js',
-
+    name: 'user',
+    version: [ 9, 7, 1 ],
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.1.1.js',
     config: {
-
-      "css": [ "ccm.load",
-        "https://ccmjs.github.io/akless-components/libs/bootstrap/css/bootstrap.css",
-        { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/bootstrap/css/font-face.css" },
-        "https://ccmjs.github.io/akless-components/user/resources/default.css"
-      ],
+      "css": [ "ccm.load", [
+        "https://ccmjs.github.io/akless-components/libs/bootstrap-4/css/bootstrap.min.css",
+        "https://ccmjs.github.io/akless-components/cloze_builder/resources/default-1.css"
+      ] ],
 //    "guest": "guest",
-      "html": [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/resources.js", "html" ],
+//    "hash": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/md5.mjs" ],
+      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-7.0.0.mjs" ],
+      "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/user/resources/templates.mjs" ],
 //    "logged_in": true,
-//    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.2.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
+//    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-5.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
+//    "map": user => user.user === 'john' ? 'Teacher' : 'Student',
 //    "norender": true,
 //    "onchange": event => console.log( 'User has logged ' + ( event ? 'in' : 'out' ) + '.' ),
+      "picture": "https://ccmjs.github.io/akless-components/user/resources/icon.svg",
       "realm": "guest",
+//    "restart": true,
 //    "store": "ccm-user",
-      "title": "Please enter username and password"
-//    "url": "ccm2.inf.h-brs.de",
-//    "hash": [ "ccm.load", { "url": "https://ccmjs.github.io/akless-components/modules/md5.mjs", "type": "module" } ]
-
+      "title": "Guest Mode: Please enter any username"
+//    "url": "ccm2.inf.h-brs.de"
     },
-
     Instance: function () {
-
       const self = this;
       let $, my, data, context = this;
 
       this.init = async () => {
 
-        // set shortcut to help functions
-        $ = this.ccm.helper;
+        $ = Object.assign( {}, this.ccm.helper, this.helper ); $.use( this.ccm );  // set shortcut to help functions
+        my = $.privatize( this, 'realm', 'store' );  // privatize authentication relevant instance members
 
-        // privatize authentication relevant instance members
-        my = $.privatize( this, 'realm', 'store' );
-
-        // set context to highest user instance with same realm
+        // set context to highest user instance with same realm and adjust onchange callback
         let instance = this;
         while ( instance = instance.parent )
           if ( $.isInstance( instance.user ) && instance.user.getRealm() === this.getRealm() )
@@ -75,21 +56,15 @@
           context = null;
           this.onchange = this.onchange ? [ this.onchange ] : [];
         }
-        else if ( this.onchange ) context.onchange.push( this.onchange );
-
+        else if ( this.onchange )
+          context.onchange.push( this.onchange );
       };
 
       this.ready = async () => {
-
-        // immediate login? => login user
-        if ( this.logged_in || sessionStorage.getItem( 'ccm-user-' + my.realm ) ) await this.login( true );
-
-        // logging of 'ready' event
-        this.logger && this.logger.log( 'ready', $.privatize( this, true ) );
-
-        // clear own website area
-        $.setContent( this.element, '' );
-
+        $.setContent( this.element, '' );                                          // clear own website area
+        if ( this.logged_in || sessionStorage.getItem( 'ccm-user-' + my.realm ) )  // immediate login?
+          await this.login( true );                                                // => login user
+        this.logger && this.logger.log( 'ready', $.privatize( this, true ) );      // logging of 'ready' event
       };
 
       this.start = async () => {
@@ -97,20 +72,19 @@
         // higher user instance with same realm exists? => redirect method call
         if ( context ) return context.start();
 
-        // correct state is already rendered? => abort
-        if ( this.isLoggedIn() && this.element.querySelector( '#logged_in' ) || !this.isLoggedIn() && this.element.querySelector( '#logged_out' ) ) return;
-
         // logging of 'start' event
         this.logger && this.logger.log( 'start', this.isLoggedIn() );
 
-        // no login/logout button? => abort
-        if ( this.norender ) return;
+        // correct state is already rendered or no login/logout button wanted? => abort
+        if ( this.isLoggedIn() && this.element.querySelector( '#logged_in' )
+          || !this.isLoggedIn() && this.element.querySelector( '#logged_out' )
+          || this.norender ) return;
 
         // render logged in or logged out view
         if ( this.isLoggedIn() )
           $.setContent( this.element, $.html( this.html.logged_in, {
             click: this.logout,
-            user: data.user
+            user: this.getUsername()
           } ) );
         else
           $.setContent( this.element, $.html( this.html.logged_out, {
@@ -127,10 +101,10 @@
       this.login = async not => {
 
         // higher user instance with same realm exists? => redirect method call
-        if ( context ) return context.login( this.onchange );
+        if ( context ) return context.login( not || this.onchange );
 
         // user already logged in? => abort
-        if ( this.isLoggedIn() ) return this.data();
+        if ( this.isLoggedIn() ) return this.getValue();
 
         // choose authentication mode and proceed login
         let result = sessionStorage.getItem( 'ccm-user-' + my.realm );
@@ -142,10 +116,33 @@
               case 'cloud':
                 result = await renderLogin( this.title, true );
                 if ( !result ) { await this.start(); throw new Error( 'login aborted' ); }
-                if ( this.hash ) result.token = this.hash.md5( result.token );
-                result.realm = my.realm;
-                result.store = my.store;
-                try { result = await this.ccm.load( { url: this.url, params: result } ); } catch ( e ) { result = undefined; }
+                if ( result.user.charAt( result.user.length - 2 ) === '2' ) {
+                  result = await this.ccm.load( {
+                    url: 'https://kaul.inf.h-brs.de/cors/token.php',
+                    method: 'POST',
+                    params: { realm: 'hbrsinfkaul', user: result.user, password: result.token }
+                  } );
+                  /*
+                  result = await this.ccm.load( {
+                    url: 'https://kaul.inf.h-brs.de/cors/login.php',
+                    method: 'GET',
+                    params: { realm: 'hbrsinfkaul' },
+                    headers: {
+                      'Authorization': 'Basic ' + btoa( result.user + ':' + result.token )
+                    }
+                  } );
+                  */
+                  if ( $.isObject( result ) ) {
+                    result.key = result.user;
+                    result.token = result.user + '#' + result.token;
+                  }
+                }
+                else {
+                  if ( this.hash ) result.token = this.hash.md5( result.token );
+                  result.realm = my.realm;
+                  result.store = my.store;
+                  try { result = await this.ccm.load( { url: this.url, params: result } ); } catch ( e ) { result = undefined; }
+                }
                 break;
               case 'guest':
                 if ( this.guest )
@@ -154,15 +151,21 @@
                   result = await renderLogin( this.title );
                   if ( !result ) { await this.start(); throw new Error( 'login aborted' ); }
                 }
-                result.token = result.user;
+                result.key = result.token = result.user;
                 break;
               case 'hbrsinfkaul':
                 result = await this.ccm.load( { url: 'https://kaul.inf.h-brs.de/login/login.php', method: 'JSONP', params: { realm: my.realm } } );
-                if ( $.isObject( result ) ) result.token = result.user + '#' + result.token;
+                if ( $.isObject( result ) ) {
+                  result.key = result.user;
+                  result.token = result.user + '#' + result.token;
+                }
                 break;
               case 'hbrsinfpseudo':
                 result = await this.ccm.load( { url: 'https://kaul.inf.h-brs.de/login/login_pseudonym.php', method: 'JSONP', params: { realm: my.realm } } );
-                if ( $.isObject( result ) ) result.token = result.user + '#' + result.token;
+                if ( $.isObject( result ) ) {
+                  result.key = result.user;
+                  result.token = result.user + '#' + result.token;
+                }
                 break;
               case 'lea':
                 result = { user: sessionStorage.getItem( 'ccm@lea-user' ), token: sessionStorage.getItem( 'ccm@lea-token' ) };
@@ -177,6 +180,10 @@
 
         // remember user data
         data = $.clone( result );
+        delete data.apps;
+        data.realm = my.realm;
+        if ( !data.picture && this.picture ) data.picture = this.picture;
+
         sessionStorage.setItem( 'ccm-user-' + my.realm, $.stringify( data ) );
 
         // logging of 'login' event
@@ -188,7 +195,7 @@
         // perform 'onchange' callbacks
         not !== true && await $.asyncForEach( this.onchange, async onchange => onchange !== not && await onchange( this.isLoggedIn() ) );
 
-        return data;
+        return this.getValue();
 
         /**
          * renders login form
@@ -229,7 +236,7 @@
           } ) );
 
           // no password needed? => remove input field for password
-          !password && $.removeElement( self.element.querySelector( '#password-entry' ) );
+          !password && $.remove( self.element.querySelector( '#password-entry' ) );
 
           /**
            * finishes login form
@@ -271,12 +278,14 @@
         // choose authentication mode and proceed logout
         switch ( my.realm ) {
           case 'cloud':
+            if ( data.user.charAt( data.user.length - 2 ) === '2' )
+              await this.ccm.load( { url: 'https://kaul.inf.h-brs.de/login/logout.php', method: 'JSONP', params: { realm: 'hbrsinfkaul' } } ).catch( () => {} );
           case 'guest':
             break;
           case 'hbrsinfkaul':
           case 'hbrsinfpseudo':
             await this.ccm.load( { url: 'https://kaul.inf.h-brs.de/login/logout.php', method: 'JSONP', params: { realm: my.realm } } ).catch( () => {} );
-          break;
+            break;
           case 'lea':
             sessionStorage.removeItem( 'ccm@lea-user' );
             sessionStorage.removeItem( 'ccm@lea-token' );
@@ -293,8 +302,13 @@
         // logging of 'logout' event
         this.logger && this.logger.log( 'logout' );
 
+        // restart after logout?
+        if ( this.restart && this.parent ) {
+          $.setContent( this.parent.element, $.loading() );   // clear parent content
+          await this.parent.start();                          // restart parent
+        }
         // (re)render own content
-        await this.start();
+        else await this.start();
 
         // perform 'onchange' callbacks
         not !== true && this.onchange.forEach( onchange => onchange !== not && onchange( this.isLoggedIn() ) );
@@ -314,15 +328,27 @@
       };
 
       /**
-       * returns user data
-       * @returns {Object}
+       * returns current result data
+       * @returns {Object} user data
        */
-      this.data = () => {
+      this.getValue = () => {
 
         // higher user instance with same realm exists? => redirect method call
-        if ( context ) return context.data();
+        if ( context && context.getValue ) return context.getValue();
 
         return $.clone( data );
+      };
+
+      /** @deprecated */
+      this.data = this.getValue;
+
+      /**
+       * returns displayed username
+       * @returns {string}
+       */
+      this.getUsername = () => {
+        const user = $.clone( this.getValue() );
+        return this.map && this.map( user ) || user.name || user.user || user.key;
       };
 
       /**
@@ -331,9 +357,36 @@
        */
       this.getRealm = () => my.realm;
 
+      /**
+       * gets app-specific user data
+       * @param {string} key - unique app key
+       * @returns {Promise<void>}
+       */
+      this.getAppData = async key => {
+        if ( context && context.getAppData ) return context.getAppData( key );
+        return await this.ccm.get( { name: my.store, url: this.url, parent: this }, this.getValue().key + '.apps.' + key );
+      };
+
+      /**
+       * sets app-specific user data
+       * @param {string} app_key - unique app key
+       * @param {Object} data
+       * @returns {Promise<void>}
+       */
+      this.setAppData = async ( app_key, data ) => {
+        if ( context && context.setAppData ) return context.setAppData( app_key, data );
+        const priodata = { key: this.getValue().key, _: { access: { get: 'creator', set: 'creator', del: 'creator' } } };
+        const user_data = await this.ccm.get( { name: my.store, url: this.url, parent: this }, this.getValue().key );
+        if ( user_data )
+          priodata[ 'apps.' + app_key ] = data;
+        else {
+          priodata.apps = {};
+          priodata.apps[ app_key ] = data;
+        }
+        await this.ccm.store( { name: my.store, url: this.url, parent: this } ).then( store => store.set( $.clone( priodata ) ) );
+      };
+
     }
-
   };
-
-  let b="ccm."+component.name+(component.version?"-"+component.version.join("."):"")+".js";if(window.ccm&&null===window.ccm.files[b])return window.ccm.files[b]=component;(b=window.ccm&&window.ccm.components[component.name])&&b.ccm&&(component.ccm=b.ccm);"string"===typeof component.ccm&&(component.ccm={url:component.ccm});let c=(component.ccm.url.match(/(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)/)||["latest"])[0];if(window.ccm&&window.ccm[c])window.ccm[c].component(component);else{var a=document.createElement("script");document.head.appendChild(a);component.ccm.integrity&&a.setAttribute("integrity",component.ccm.integrity);component.ccm.crossorigin&&a.setAttribute("crossorigin",component.ccm.crossorigin);a.onload=function(){window.ccm[c].component(component);document.head.removeChild(a)};a.src=component.ccm.url}
+  let b="ccm."+component.name+(component.version?"-"+component.version.join("."):"")+".js";if(window.ccm&&null===window.ccm.files[b])return window.ccm.files[b]=component;(b=window.ccm&&window.ccm.components[component.name])&&b.ccm&&(component.ccm=b.ccm);"string"===typeof component.ccm&&(component.ccm={url:component.ccm});let c=(component.ccm.url.match(/(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)/)||[""])[0];if(window.ccm&&window.ccm[c])window.ccm[c].component(component);else{var a=document.createElement("script");document.head.appendChild(a);component.ccm.integrity&&a.setAttribute("integrity",component.ccm.integrity);component.ccm.crossorigin&&a.setAttribute("crossorigin",component.ccm.crossorigin);a.onload=function(){(c="latest"?window.ccm:window.ccm[c]).component(component);document.head.removeChild(a)};a.src=component.ccm.url}
 } )();

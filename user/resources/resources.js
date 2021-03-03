@@ -1,6 +1,6 @@
 /**
- * @overview data-based resources of ccm component for user authentication
- * @author André Kless <andre.kless@web.de> 2019-2020
+ * @overview data-based resources of ccmjs-based web component for user authentication
+ * @author André Kless <andre.kless@web.de> 2019-2021
  * @license The MIT License (MIT)
  */
 
@@ -9,14 +9,14 @@ ccm.files[ 'resources.js' ] = {
   /** test configuration (relative paths) */
   "local": {
     "css": [ "ccm.load",
-      "../libs/bootstrap/css/bootstrap.css",
-      { "context": "head", "url": "../libs/bootstrap/css/font-face.css" },
-      "../user/resources/default.css"
+      "./../libs/bootstrap/css/bootstrap.css",
+      { "context": "head", "url": "./../libs/bootstrap/css/font-face.css" },
+      "./../user/resources/default.css"
     ],
 //  "map": user => user.user === 'john' ? 'Teacher' : 'Student',
-    "helper.1": "../modules/helper.mjs",
-    "html": [ "ccm.get", "../user/resources/resources.js", "html" ],
-//  "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ]
+    "helper.1": "./../modules/helper.mjs",
+    "html": [ "ccm.get", "./../user/resources/resources.js", "html" ],
+//  "logger": [ "ccm.instance", "./../log/ccm.log.js", [ "ccm.get", "./../log/resources/configs.js", "greedy" ] ]
   },
 
   "guest": {
