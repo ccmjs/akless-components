@@ -1,5 +1,5 @@
 /**
- * @overview configurations of ccm component for menus
+ * @overview configurations of ccmjs-based web component for a menu
  * @author André Kless <andre.kless@web.de> 2018-2020
  * @license The MIT License (MIT)
  */
@@ -7,24 +7,24 @@
 ccm.files[ 'configs.js' ] = {
 
   "local": {
-    "css.1": "../menu/resources/default.css",
-    "html.1": "../menu/resources/templates.html",
+    "css.1": "./../menu/resources/default.css",
+    "html.1": "./../menu/resources/templates.html",
     "data": {
-      "store": [ "ccm.store", "../menu/resources/datasets.js" ],
+      "store": [ "ccm.store", "./../menu/resources/datasets.js" ],
       "key": "demo"
     },
     "deselectable": true,
-    "helper.1": "../modules/helper.mjs",
+    "helper.1": "./../modules/helper.mjs",
     "keyboard_control": true,
-//  "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
+//  "logger": [ "ccm.instance", "./../log/ccm.log.js", [ "ccm.get", "./../log/resources/configs.js", "greedy" ] ],
 //  "onchange": event => console.log( event ),
     "selected": 1,
     "touch_control": true
   },
 
   "proxy": {
-    "css.1": "../menu/resources/tabs.css",
-    "html.1": "../menu/resources/templates.html",
+    "css.1": "./../menu/resources/tabs.css",
+    "html.1": "./../menu/resources/templates.html",
     "data": {
       "entries": [
         {

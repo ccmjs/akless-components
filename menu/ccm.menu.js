@@ -1,9 +1,13 @@
 /**
- * @overview ccm component for menus
- * @author André Kless <andre.kless@web.de> 2015-2016, 2018-2020
+ * @overview ccmjs-based web component for a menu
+ * @author André Kless <andre.kless@web.de> 2015-2016, 2018-2021
  * @license The MIT License (MIT)
- * @version latest (3.0.0)
+ * @version latest (3.0.1)
  * @changes
+ * version 3.0.1 (03.03.2021):
+ * - uses ccmjs v26.1.1 as default
+ * - uses helper.mjs v7.0.0 as default
+ * - updated minified component line
  * version 3.0.0 (14.04.2020):
  * - changed parameters in logged data
  * - removed optional 'onclick' callback
@@ -25,20 +29,17 @@
 ( () => {
 
   const component = {
-
     name: 'menu',
-
-    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-25.4.0.js',
-
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.1.1.js',
     config: {
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/menu/resources/default.css" ],
       "data": { "store": [ "ccm.store" ] },
 //    "deselectable": true,
-      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-5.0.0.mjs" ],
+      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-7.0.0.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/menu/resources/default.html" ],
 //    "keyboard_control": true,
 //    "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js" ],
-//    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.4.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
+//    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-5.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
 //    "onchange": event => console.log( event ),
 //    "routing": [ "ccm.instance", "https://ccmjs.github.io/akless-components/routing/versions/ccm.routing-2.0.5.js", { "app": true } ],
 //    "selected": 1,
@@ -64,8 +65,8 @@
       };
 
       this.ready = async () => {
-        $ = Object.assign( {}, this.ccm.helper, this.helper );                 // shortcut to help functions
-        this.logger && this.logger.log( 'ready', $.privatize( this, true ) );  // logging of 'ready' event
+        $ = Object.assign( {}, this.ccm.helper, this.helper ); $.use( this.ccm );  // shortcut to help functions
+        this.logger && this.logger.log( 'ready', $.privatize( this, true ) );      // logging of 'ready' event
       };
 
       this.start = async () => {
@@ -317,5 +318,5 @@
 
   };
 
-  let b="ccm."+component.name+(component.version?"-"+component.version.join("."):"")+".js";if(window.ccm&&null===window.ccm.files[b])return window.ccm.files[b]=component;(b=window.ccm&&window.ccm.components[component.name])&&b.ccm&&(component.ccm=b.ccm);"string"===typeof component.ccm&&(component.ccm={url:component.ccm});let c=(component.ccm.url.match(/(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)/)||["latest"])[0];if(window.ccm&&window.ccm[c])window.ccm[c].component(component);else{var a=document.createElement("script");document.head.appendChild(a);component.ccm.integrity&&a.setAttribute("integrity",component.ccm.integrity);component.ccm.crossorigin&&a.setAttribute("crossorigin",component.ccm.crossorigin);a.onload=function(){window.ccm[c].component(component);document.head.removeChild(a)};a.src=component.ccm.url}
+  let b="ccm."+component.name+(component.version?"-"+component.version.join("."):"")+".js";if(window.ccm&&null===window.ccm.files[b])return window.ccm.files[b]=component;(b=window.ccm&&window.ccm.components[component.name])&&b.ccm&&(component.ccm=b.ccm);"string"===typeof component.ccm&&(component.ccm={url:component.ccm});let c=(component.ccm.url.match(/(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)/)||[""])[0];if(window.ccm&&window.ccm[c])window.ccm[c].component(component);else{var a=document.createElement("script");document.head.appendChild(a);component.ccm.integrity&&a.setAttribute("integrity",component.ccm.integrity);component.ccm.crossorigin&&a.setAttribute("crossorigin",component.ccm.crossorigin);a.onload=function(){(c="latest"?window.ccm:window.ccm[c]).component(component);document.head.removeChild(a)};a.src=component.ccm.url}
 } )();
