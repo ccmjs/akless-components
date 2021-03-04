@@ -1,5 +1,5 @@
 /**
- * @overview configurations of ccm component for data logging
+ * @overview configurations of ccmjs-based web component for data logging
  * @author André Kless <andre.kless@web.de> 2017, 2020
  * @license The MIT License (MIT)
  */
