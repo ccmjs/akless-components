@@ -14,6 +14,11 @@
 
 section {
   margin: 1em;
+  display: flex;
+}
+
+section > div {
+  margin: 0 1em;
 }
 
 .board-13-10 {
@@ -27,4 +32,8 @@ section {
   display: inline-flex;
   justify-content: center;
   align-items: center;
+}
+
+#chat {
+  width: 300px;
 }

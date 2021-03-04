@@ -56,8 +56,14 @@
 
   const component = {
     name: 'robot_rally',
-    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.1.1.js',
+    ccm: './../../ccm/ccm.js',
     config: {
+      "chat": [ "ccm.component", "https://ccmjs.github.io/akless-components/chat/versions/ccm.chat-2.0.0.js", {
+        "data": {
+          "store": [ "ccm.store", { "name": "robot_rally", "url": "wss://ccm2.inf.h-brs.de" } ]
+        },
+        "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/users/versions/ccm.users-1.0.0.js" ]
+      } ],
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/robot_rally/resources/default.css" ],
       "data": { "store": [ "ccm.store" ] },
       "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-6.0.1.mjs" ],
@@ -590,7 +596,7 @@
     },
 
     Instance: function () {
-      let $, robot, player, game, n = 0;
+      let $, chat, robot, player, game, n = 0;
 
       this.init = async () => {
 
@@ -610,6 +616,21 @@
 
         // render main HTML structure
         this.html.render( this.html.main(), this.element );
+
+        // render chat
+        if ( !chat ) chat = await this.chat.instance( {
+          'data.store.1.realm': null,
+          'data.key': this.data.key + '-chat',
+          'data.permissions': null,
+          hide_login: true,
+          'user.2.store': [ 'ccm.store', Object.keys( this.robots ).map( robot => { return {
+            key: robot,
+            user: robot,
+            token: '',
+            name: getRobotName( robot ),
+            picture: this.img + 'robots/' + robot + '.png'
+          } } ) ]
+        } );
 
         // load existing game state data
         game = await $.dataset( this.data );
@@ -652,6 +673,10 @@
           return;
         }
 
+        $.setContent( this.element.querySelector( '#chat' ), chat.root );
+        await chat.user.login( robot );
+        await chat.start();
+
         // upgrade phase?
         if ( game.phase === 1 ) {
           buyUpgrade();
@@ -690,7 +715,7 @@
        * let the user choose an available robot
        * @returns {Promise<void>}
        */
-      const chooseRobot = () => new Promise( resolve => {
+      const chooseRobot = () => new Promise( async resolve => {
         const robots = Object.keys( this.robots ).filter( id => !game.players || !Object.keys( game.players ).includes( id ) );
         if ( !robots.length ) return '';
         robot = robots[ Math.floor( Math.random() * robots.length ) ];

@@ -13,8 +13,16 @@ export { render };
 export function main() {
   return html`
     <section>
-      <h1>DIZZY HIGHWAY</h1>
-      <div id="board" class="board-13-10"></div>
+      <div>
+        <div>
+          <h1>RACETRACK: DIZZY HIGHWAY</h1>
+        </div>
+        <div id="board" class="board-13-10"></div>
+      </div>
+      <div>
+        <h1>ROBOT CHAT</h1>
+        <div id="chat"></div>
+      </div>
     </section>
   `;
 }
