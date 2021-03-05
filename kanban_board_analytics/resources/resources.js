@@ -15,7 +15,7 @@ ccm.files[ 'resources.js' ] = {
   },
 
   "demo": {
-    "board": [ "ccm.instance", "https://ccmjs.github.io/akless-components/kanban_board/versions/kanban_board-4.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/kanban_board/resources/configs.js", "demo" ] ],
+    "board": [ "ccm.instance", "https://ccmjs.github.io/akless-components/kanban_board/versions/ccm.kanban_board-4.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/kanban_board/resources/configs.js", "demo" ] ],
   }
 
 };
