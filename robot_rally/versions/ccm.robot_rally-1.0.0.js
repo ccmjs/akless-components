@@ -2,7 +2,7 @@
  * @overview ccmjs-based web component for a robot rally boardgame
  * @author André Kless <andre.kless@web.de> 2021
  * @license The MIT License (MIT)
- * @version latest (1.0.0)
+ * @version 1.0.0
  * @changes
  * version 1.0.0 (05.03.2021)
  */
@@ -56,6 +56,7 @@
 
   const component = {
     name: 'robot_rally',
+    version: [ 1, 0, 0 ],
     ccm: 'https://ccmjs.github.io/ccm/verions/ccm-26.2.0.js',
     config: {
       "chat": [ "ccm.component", "https://ccmjs.github.io/akless-components/chat/versions/ccm.chat-2.1.0.js", {

@@ -19,17 +19,16 @@ ccm.files[ 'resources.js' ] = {
       "key": "test"
     },
     "helper.1": "./../modules/helper.mjs",
-    "html.1": "./../robot_rally/resources/templates.mjs"
+    "html.1": "./../robot_rally/resources/templates.mjs",
+    "img": "./../robot_rally/resources/img/"
   },
 
-  "demo": {},
-
-  /** configuration for user authentication */
-  "user": {
-    "realm": "cloud",
-    "store": "chat-user",
-    "title": "Please enter Username and Password",
-    "url": "https://ccm2.inf.h-brs.de"
+  "demo": {
+    "chat.2.data.store": [ "ccm.store", { "name": "robot_rally", "url": "wss://ccm2.inf.h-brs.de" } ],
+    "data": {
+      "store": [ "ccm.store", { "name": "robot_rally", "url": "wss://ccm2.inf.h-brs.de" } ],
+      "key": "demo"
+    }
   }
 
 };
