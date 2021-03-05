@@ -11,7 +11,7 @@
   const component = {
     name: 'users',
     version: [ 1, 0, 0 ],
-    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.1.1.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.2.0.js',
     config: {
 //    "hash": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/md5.mjs#md5" ],
       "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-7.0.0.mjs" ],
