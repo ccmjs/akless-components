@@ -1,7 +1,7 @@
 /**
  * @overview ccmjs-baed web component for a "Highchart.js" chart
- * @author André Kless <andre.kless@web.de> 2017-2019
- * @copyright Copyright (c) 2017-2019 André Kless
+ * @author André Kless <andre.kless@web.de> 2017-2019, 2021
+ * @copyright Copyright (c) 2017-2019, 2021 André Kless
  * @license
  * Creative Commons Attribution-NonCommercial 3.0: https://creativecommons.org/licenses/by-nc/3.0/
  * Only for not-for-profit educational use.
@@ -10,41 +10,36 @@
  * Make sure that you have a valid license of „Highcharts JS“ before using this ccmjs-based web component.
  *
  * The developer André Kless of this component has a valid license of „Highcharts JS“ for not-for-profit educational use for the following product(s): Highcharts, Highstock, Highmaps
- * @version latest (3.0.0)
+ * @version 3.0.3
  * @changes
+ * version 3.0.3 (05.03.2021):
+ * - uses ccmjs v26.1.1 as default
+ * - uses helper.mjs v7.0.0 as default
+ * - updated minified component line
+ * version 3.0.2 (16.10.2019):
+ * - bug fix for component ready function
+ * - uses ccmjs v24.0.4 as default
+ * version 3.0.1 (10.10.2019):
+ * - uses ccmjs v24.0.1 as default
  * version 3.0.0 (22.01.2019):
  * - "Highchart.js" library is executed only once
  * - URL to "Highchart.js" can be changed via global component namespace and no more via instance configuration
- * version 2.0.1 (16.01.2019):
- * - uses ccm v19.0.0
- * version 2.0.0 (27.10.2018)
- * - uses ccm v18.0.7
- * - removed privatization of instance members
- * - removed chart type switcher
- * - reduced chart specific config parameters
- * - added default chart size
- * version 1.0.0 (21.12.2017)
+ * (for older version changes see ccm.highchart-2.0.1.js)
  */
 
-( function () {
+( () => {
 
   const component = {
-
     name: 'highchart',
-
-    version: [ 3, 0, 0 ],
-
-    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-19.0.0.js',
-
+    version: [ 3, 0, 3 ],
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.1.1.js',
     config: {
-
-      "html": { "id": "chart", "style": "%%" },
       "data": {},
+      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-7.0.0.mjs" ],
+      "html": { "id": "chart", "style": "%%" },
+  //  "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-5.0.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
       "settings": {},
       "style": "min-width: 400px; max-width: 800px; min-height: 400px; max-height: 800px; margin: 0 auto"
-
-  //  "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-4.0.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ]
-
     },
 
     ready: async function () {
@@ -61,7 +56,7 @@
       this.ready = async () => {
 
         // set shortcut to help functions
-        $ = this.ccm.helper;
+        $ = Object.assign( {}, this.ccm.helper, this.helper ); $.use( this.ccm );
 
         // logging of 'ready' event
         this.logger && this.logger.log( 'ready', $.privatize( this, true ) );
@@ -97,7 +92,8 @@
         this.chart = Highcharts.chart( chart_elem, $.clone( this.settings ) );
 
         // resize chart
-        $.wait( 1, () => this.chart.redraw() );
+        await $.sleep( 1 );
+        this.chart.redraw();
 
       };
 
@@ -105,11 +101,11 @@
        * returns visualized data
        * @returns {Object} current result data
        */
-      this.getValue = () => data;
+      this.getValue = () => $.clone( data );
 
     }
 
   };
 
-  let b="ccm."+component.name+(component.version?"-"+component.version.join("."):"")+".js";if(window.ccm&&null===window.ccm.files[b])return window.ccm.files[b]=component;(b=window.ccm&&window.ccm.components[component.name])&&b.ccm&&(component.ccm=b.ccm);"string"===typeof component.ccm&&(component.ccm={url:component.ccm});let c=(component.ccm.url.match(/(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)/)||["latest"])[0];if(window.ccm&&window.ccm[c])window.ccm[c].component(component);else{var a=document.createElement("script");document.head.appendChild(a);component.ccm.integrity&&a.setAttribute("integrity",component.ccm.integrity);component.ccm.crossorigin&&a.setAttribute("crossorigin",component.ccm.crossorigin);a.onload=function(){window.ccm[c].component(component);document.head.removeChild(a)};a.src=component.ccm.url}
+  let b="ccm."+component.name+(component.version?"-"+component.version.join("."):"")+".js";if(window.ccm&&null===window.ccm.files[b])return window.ccm.files[b]=component;(b=window.ccm&&window.ccm.components[component.name])&&b.ccm&&(component.ccm=b.ccm);"string"===typeof component.ccm&&(component.ccm={url:component.ccm});let c=(component.ccm.url.match(/(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)/)||[""])[0];if(window.ccm&&window.ccm[c])window.ccm[c].component(component);else{var a=document.createElement("script");document.head.appendChild(a);component.ccm.integrity&&a.setAttribute("integrity",component.ccm.integrity);component.ccm.crossorigin&&a.setAttribute("crossorigin",component.ccm.crossorigin);a.onload=function(){(c="latest"?window.ccm:window.ccm[c]).component(component);document.head.removeChild(a)};a.src=component.ccm.url}
 } )();

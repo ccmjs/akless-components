@@ -1,14 +1,14 @@
 /**
- * @overview configurations of ccm component for rendering a "Highchart.js" chart
- * @author André Kless <andre.kless@web.de> 2017-2019
+ * @overview configurations of ccmjs-baed web component for a "Highchart.js" chart
+ * @author André Kless <andre.kless@web.de> 2017-2019, 2021
  * @license The MIT License (MIT)
  */
 
 ccm.files[ 'configs.js' ] = {
 
   "local": {
-    "key": "local",
-//  "logger": [ "ccm.instance", "../log/ccm.log.js", [ "ccm.get", "../log/resources/configs.js", "greedy" ] ],
+    "helper": [ "ccm.load", "./../modules/helper.mjs" ],
+//  "logger": [ "ccm.instance", "./../log/ccm.log.js", [ "ccm.get", "./../log/resources/configs.js", "greedy" ] ],
     "settings": {
       "title": {
         "text": "Solar Employment Growth by Sector, 2010-2016"

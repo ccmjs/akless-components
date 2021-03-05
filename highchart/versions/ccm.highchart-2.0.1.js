@@ -1,15 +1,15 @@
 /**
- * @overview ccm component for rendering a "Highchart.js" chart
+ * @overview ccmjs-baed web component for a "Highchart.js" chart
  * @author André Kless <andre.kless@web.de> 2017-2019
- * @copyright Copyright (c) 2017-2019 Andre Kless
+ * @copyright Copyright (c) 2017-2019 André Kless
  * @license
  * Creative Commons Attribution-NonCommercial 3.0: https://creativecommons.org/licenses/by-nc/3.0/
  * Only for not-for-profit educational use.
  *
- * This ccm component uses „Highcharts JS“: https://www.highcharts.com
- * Make sure that you have a valid license of „Highcharts JS“ before using this ccm component.
+ * This ccmjs-based web component uses „Highcharts JS“: https://www.highcharts.com
+ * Make sure that you have a valid license of „Highcharts JS“ before using this ccmjs-based web component.
  *
- * The developer Andre Kless of this component has a valid license of „Highcharts JS“ for not-for-profit educational use for the following product(s): Highcharts, Highstock, Highmaps
+ * The developer André Kless of this component has a valid license of „Highcharts JS“ for not-for-profit educational use for the following product(s): Highcharts, Highstock, Highmaps
  * @version 2.0.1
  * @changes
  * version 2.0.1 (16.01.2019):
