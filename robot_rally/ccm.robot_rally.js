@@ -56,7 +56,7 @@
 
   const component = {
     name: 'robot_rally',
-    ccm: 'https://ccmjs.github.io/ccm/verions/ccm-26.2.0.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.2.0.js',
     config: {
       "chat": [ "ccm.component", "https://ccmjs.github.io/akless-components/chat/versions/ccm.chat-2.1.0.js", {
         "data": { "store": [ "ccm.store" ] },
