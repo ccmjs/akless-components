@@ -28,7 +28,7 @@
 //    "ignore": { "card": { "component": "https://ccmjs.github.io/akless-components/kanban_card/versions/ccm.kanban_card-4.0.0.js", "config": {} } },
       "lanes": [ "ToDo", "Doing", "Done" ],
 //    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-5.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
-//    "members": [ "John", "Jane", "Jake" ],
+      "members": [ "John", "Jane", "Jake" ],
 //    "onchange": event => console.log( event ),
       "priorities": [ "A", "B", "C" ],
 //    "reload": true,

@@ -25,7 +25,6 @@ ccm.files[ 'configs.js' ] = {
       }
     },
 //  "logger": [ "ccm.instance", "./../log/ccm.log.js", [ "ccm.get", "./../log/resources/configs.js", "greedy" ] ],
-    "members": [ "John", "Jane", "Jake" ],
 //  "onchange": event => console.log( event ),
     "reload": true,
     "user": [ "ccm.instance", "./../user/ccm.user.js", [ "ccm.get", "./../user/resources/resources.js", "local" ] ]
