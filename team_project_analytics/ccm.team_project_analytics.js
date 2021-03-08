@@ -21,7 +21,7 @@
         ]
       ],
       "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-7.0.0.mjs" ],
-      "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/kanban_board_analytics/resources/templates.html" ],
+      "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/team_project_analytics/resources/templates.mjs" ],
       "project": [ "ccm.instance", "https://ccmjs.github.io/akless-components/team_project/versions/team_project-2.0.0.js" ]
     },
 
