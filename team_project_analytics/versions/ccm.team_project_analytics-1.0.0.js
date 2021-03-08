@@ -66,6 +66,7 @@
           priorities: $.clone( board.priorities )
         };
         source.teambuild.teams.forEach( team => {
+          if ( !Object.keys( team.members ).length ) return;
           dataset.teams[ team.key ] = {
             key: team.key,
             name: team.name,
