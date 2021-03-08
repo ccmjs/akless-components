@@ -81,18 +81,21 @@
         source.messages.forEach( message => {
           const team = dataset.teams[ message.chat.split( '-' )[ 2 ] ];
           team.messages++;
-          team.members[ message.user ].messages++;
+          team.members[ message.user ] && team.members[ message.user ].messages++;
         } );
         source.cards.forEach( card => {
           const team = dataset.teams[ card.key.split( '-' )[ 2 ] ];
-          team.cards++;
-          team.members[ card.owner ].cards++;
           const lane = getLane( source.boards[ team.key ], card );
-          lane && team.lanes[ lane - 1 ]++;
-          lane && team.members[ card.owner ].lanes[ lane - 1 ]++;
           const priority = dataset.priorities.indexOf( card.priority ) + 1;
+          const member = team.members[ card.owner ];
+          team.cards++;
+          lane && team.lanes[ lane - 1 ]++;
           priority && team.priorities[ priority - 1 ]++;
+          if ( !member ) return;
+          team.members[ card.owner ].cards++;
+          lane && team.members[ card.owner ].lanes[ lane - 1 ]++;
           priority && team.members[ card.owner ].priorities[ priority - 1 ]++;
+
         } );
 
         // render main HTML structure and data table
