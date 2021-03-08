@@ -85,11 +85,13 @@
         } );
         source.messages.forEach( message => {
           const team = dataset.teams[ message.chat.split( '-' )[ 2 ] ];
+          if ( !team ) return;
           team.messages++;
           team.members[ message.user ] && team.members[ message.user ].messages++;
         } );
         source.cards.forEach( card => {
           const team = dataset.teams[ card.key.split( '-' )[ 2 ] ];
+          if ( !team ) return;
           const lane = getLane( source.boards[ team.key ], card );
           const priority = dataset.priorities.indexOf( card.priority ) + 1;
           const member = team.members[ card.owner ];
@@ -100,7 +102,6 @@
           team.members[ card.owner ].cards++;
           lane && team.members[ card.owner ].lanes[ lane - 1 ]++;
           priority && team.members[ card.owner ].priorities[ priority - 1 ]++;
-
         } );
 
         // render analytics data
