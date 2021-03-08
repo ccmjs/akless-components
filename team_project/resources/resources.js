@@ -7,6 +7,7 @@
 ccm.files[ 'resources.js' ] = {
 
   "local": {
+    "analytics": [ "ccm.component", "./../team_project_analytics/ccm.team_project_analytics.js", [ "ccm.get", "./../team_project_analytics/resources/resources.js", "local" ] ],
     "chat": [ "ccm.component", "./../chat/ccm.chat.js", {
       "css.1": "./../chat/resources/snack.css",
       "css.2": { "url": "./../resources/fonts/WeblySleekUI/font.css", "context": "head" },
@@ -15,7 +16,7 @@ ccm.files[ 'resources.js' ] = {
     } ],
     "css.1": "./../team_project/resources/default.css",
     "data": {
-      "store": [ "ccm.store", { "name": "test", "url": "wss://ccm2.inf.h-brs.de" } ],
+      "store": [ "ccm.store", { "name": "team_project", "url": "wss://ccm2.inf.h-brs.de" } ],
       "key": "test"
     },
     "helper.1": "./../modules/helper.mjs",

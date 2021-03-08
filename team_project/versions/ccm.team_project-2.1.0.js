@@ -2,7 +2,7 @@
  * @overview ccmjs-based web component for team project
  * @author André Kless <andre.kless@web.de> 2020-2021
  * @license The MIT License (MIT)
- * @version latest (2.1.0)
+ * @version 2.1.0
  * @changes
  * version 2.1.0 (08.03.2021)
  * - added team project analytics
@@ -20,6 +20,7 @@
 ( () => {
   const component = {
     name: 'team_project',
+    version: [ 2, 1, 0 ],
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.1.1.js',
     config: {
       "analytics": [ "ccm.component", "https://ccmjs.github.io/akless-components/team_project_analytics/versions/ccm.team_project_analytics-1.0.0.js" ],
