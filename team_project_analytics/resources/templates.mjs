@@ -15,7 +15,7 @@ export { render };
  */
 export const main = `
   <div id="refresh" onclick="%%" title="Refresh Table Data">↻</div>
-  <div id="table"></div>
+  <div id="data"></div>
 `;
 
 /**

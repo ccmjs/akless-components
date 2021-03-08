@@ -49,6 +49,12 @@
           else if ( entry.chat                      ) source.messages.push( entry );
         } );
 
+        // render main HTML structure
+        $.setContent( this.element, $.html( this.html.main, () => { $.setContent( this.element.querySelector( '#refresh' ), $.loading( this ) ); this.start(); } ) );
+
+        // no team building dataset? => nothing to display
+        if ( !source.teambuild ) return $.setContent( this.element.querySelector( '#data' ), '<span class="p-3">This project has currently no teams.</span>' );
+
         // get kanban board instance (not team-specific)
         const board = await this.project.kanban_board.instance();
 
@@ -97,9 +103,8 @@
 
         } );
 
-        // render main HTML structure and data table
-        $.setContent( this.element, $.html( this.html.main, () => { $.setContent( this.element.querySelector( '#refresh' ), $.loading( this ) ); this.start(); } ) );
-        this.html.render( this.html.table( dataset ), this.element.querySelector( '#table' ) );
+        // render analytics data
+        this.html.render( this.html.table( dataset ), this.element.querySelector( '#data' ) );
 
       };
 

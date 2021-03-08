@@ -2,7 +2,7 @@
  * @overview ccmjs-based web component for team project analytics
  * @author André Kless <andre.kless@web.de> 2021
  * @license The MIT License (MIT)
- * @version 1.0.0
+ * @version latest (1.0.0)
  * @changes
  * version 1.0.0 (08.03.2021)
  */
@@ -11,7 +11,6 @@
 
   const component = {
     name: 'team_project_analytics',
-    version: [ 1, 0, 0 ],
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.1.1.js',
     config: {
       "chart": [ "ccm.component", "https://ccmjs.github.io/akless-components/highchart/versions/ccm.highchart-3.0.3.js" ],
@@ -49,6 +48,12 @@
           else if ( entry.key.includes( '-card-'  ) ) source.cards   .push( entry );
           else if ( entry.chat                      ) source.messages.push( entry );
         } );
+
+        // render main HTML structure
+        $.setContent( this.element, $.html( this.html.main, () => { $.setContent( this.element.querySelector( '#refresh' ), $.loading( this ) ); this.start(); } ) );
+
+        // no team building dataset? => nothing to display
+        if ( !source.teambuild ) return $.setContent( this.element.querySelector( '#data' ), '<span class="p-3">This project has currently no teams.</span>' );
 
         // get kanban board instance (not team-specific)
         const board = await this.project.kanban_board.instance();
@@ -98,9 +103,8 @@
 
         } );
 
-        // render main HTML structure and data table
-        $.setContent( this.element, $.html( this.html.main, () => { $.setContent( this.element.querySelector( '#refresh' ), $.loading( this ) ); this.start(); } ) );
-        this.html.render( this.html.table( dataset ), this.element.querySelector( '#table' ) );
+        // render analytics data
+        this.html.render( this.html.table( dataset ), this.element.querySelector( '#data' ) );
 
       };
 

@@ -15,7 +15,7 @@
   cursor: pointer;
 }
 
-.ccm_loading {
+#refresh .ccm_loading {
   font-size: 0.4em;
 }
 
