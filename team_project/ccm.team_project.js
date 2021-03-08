@@ -5,7 +5,7 @@
  * @version latest (2.1.0)
  * @changes
  * version 2.1.0 (08.03.2021)
- * - added team project analytics
+ * - added dashboard with team project analytics
  * version 2.0.0 (17.02.2021)
  * - uses ccmjs v26.1.1 as default
  * - uses helper.mjs v6.0.1 as default
@@ -26,7 +26,7 @@
       "chat": [ "ccm.component", "https://ccmjs.github.io/akless-components/chat/versions/ccm.chat-2.0.0.js" ],
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/team_project/resources/default.css" ],
       "data": { "store": [ "ccm.store" ] },
-      "entries": [ "Teams", "Kanban Board", "Chat", "Analytics" ],
+      "entries": [ "Teams", "Kanban Board", "Chat", "Dashboard" ],
       "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-6.0.1.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/team_project/resources/templates.html" ],
       "kanban_board": [ "ccm.component", "https://ccmjs.github.io/akless-components/kanban_board/versions/ccm.kanban_board-4.0.0.js" ],
