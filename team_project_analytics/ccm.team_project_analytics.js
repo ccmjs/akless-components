@@ -43,10 +43,10 @@
         // separate datasets by type
         const source = { boards: {}, cards: [], messages: [] };
         datasets.forEach( entry => {
-               if ( entry.key.endsWith( '-teams'  ) ) source.teambuild = entry;
-          else if ( entry.key.endsWith( '-kanban' ) ) source.boards[ entry.key.split( '-' )[ 2 ] ] = entry;
-          else if ( entry.key.includes( '-card-'  ) ) source.cards   .push( entry );
-          else if ( entry.chat                      ) source.messages.push( entry );
+               if ( entry.key.endsWith( '-teams' ) ) source.teambuild = entry;
+          else if ( entry.key.endsWith( '-board' ) ) source.boards[ entry.key.split( '-' )[ 2 ] ] = entry;
+          else if ( entry.key.includes( '-card-' ) ) source.cards   .push( entry );
+          else if ( entry.chat                     ) source.messages.push( entry );
         } );
 
         // render main HTML structure
