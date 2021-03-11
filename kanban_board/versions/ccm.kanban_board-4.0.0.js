@@ -8,6 +8,7 @@
  * - uses ccmjs v26.1.1 as default
  * - uses helper.mjs v7.0.0 as default
  * - changed keys for new kanban cards
+ * - default data settings for new kanban cards
  * - realtime optimisations
  * - updated minified component line
  * (for older version changes see ccm.kanban_board-3.0.0.js)
@@ -157,19 +158,25 @@
       this.addCard = async () => {
 
         // prepare app dependency for new card
-        let app = $.clone( this.ignore.card.config || {} );
-        if ( $.isObject( app.data ) && app.data.store ) app.data.store[ 1 ].dataset = app.data.key = this.data.key + '-card-' + $.generateKey();
-        app = [ 'ccm.instance', this.ignore.card.component, app ];
+        let card = $.clone( this.ignore.card.config || {} );
+        if ( this.data.store && card.data === undefined ) {
+          const key = this.data.key + '-card-' + $.generateKey();
+          card.data = {
+            store: [ 'ccm.store', Object.assign( this.data.store.source(), { dataset: key } ) ],
+            key: key
+          };
+        }
+        card = [ 'ccm.instance', this.ignore.card.component, card ];
 
         // create card
-        dataset.last_change = { event: 'add', cards: dataset.lanes[ 0 ].cards.length, app: $.clone( app ) };
+        dataset.last_change = { event: 'add', cards: dataset.lanes[ 0 ].cards.length, app: $.clone( card ) };
         await this.refresh();
         this.data.store && await this.data.store.set( dataset );
 
         // logging of 'add' event and trigger of 'onchange' callback
         const pos = [ 0, dataset.lanes[ 0 ].cards.length - 1 ];
-        this.logger && this.logger.log( 'add', { lane: pos[ 0 ], card: pos[ 1 ], app: $.clone( app ) } );
-        this.onchange && this.onchange( { event: 'add', lane: pos[ 0 ], card: pos[ 1 ], app: $.clone( app ), element: this.getCardElement( pos[ 0 ], pos[ 1 ] ), instance: this } );
+        this.logger && this.logger.log( 'add', { lane: pos[ 0 ], card: pos[ 1 ], app: $.clone( card ) } );
+        this.onchange && this.onchange( { event: 'add', lane: pos[ 0 ], card: pos[ 1 ], app: $.clone( card ), element: this.getCardElement( pos[ 0 ], pos[ 1 ] ), instance: this } );
 
       };
 
