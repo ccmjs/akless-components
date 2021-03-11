@@ -131,7 +131,7 @@
         kanban_board = await this.kanban_board.start( {
           data: {
             store: [ 'ccm.store', Object.assign( this.data.store.source(), { dataset: this.data.key + '-board-' + team_data.key } ) ],
-            key: this.data.key + '-team-' + team_data.key + '-kanban'
+            key: this.data.key + '-team-' + team_data.key + '-board'
           },
           'ignore.card.config.data.store': [ 'ccm.store', this.data.store.source() ],
           'ignore.card.config.user': [ 'ccm.instance', this.user.component.url, JSON.parse( this.user.config ) ],
