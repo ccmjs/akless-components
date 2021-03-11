@@ -9,6 +9,7 @@
  * - uses helper.mjs v7.0.0 as default
  * - changed keys for new kanban cards
  * - default data settings for new kanban cards
+ * - default user dependency for new kanban cards
  * - realtime optimisations
  * - updated minified component line
  * (for older version changes see ccm.kanban_board-3.0.0.js)
@@ -166,6 +167,8 @@
             key: key
           };
         }
+        if ( this.user && card.user === undefined )
+          card.user = [ 'ccm.instance', this.user.component.url, JSON.parse( this.user.config ) ];
         card = [ 'ccm.instance', this.ignore.card.component, card ];
 
         // create card
