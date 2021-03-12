@@ -7,6 +7,7 @@
  * version 3.0.0 (12.03.2021)
  * - flexible adding of team-specific tools
  * - changes config parameters for dependent components
+ * - uses ccmjs v26.2.0 as default
  * - uses helper.mjs v7.0.0 as default
  * version 2.1.0 (08.03.2021)
  * - added dashboard with team project analytics
@@ -24,12 +25,12 @@
 ( () => {
   const component = {
     name: 'team_project',
-    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.1.1.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.2.0.js',
     config: {
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/team_project/resources/default.css" ],
       "dashboard": {
         "title": "Dashboard",
-        "app": [ "ccm.component", "https://ccmjs.github.io/akless-components/team_project_analytics/versions/ccm.team_project_analytics-1.0.0.js" ]
+        "app": [ "ccm.component", "https://ccmjs.github.io/akless-components/team_project_analytics/versions/ccm.team_project_analytics-2.0.0.js" ]
       },
       "data": { "store": [ "ccm.store" ] },
       "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-7.0.0.mjs" ],
@@ -45,7 +46,7 @@
         {
           "key": "chat",
           "title": "Chat",
-          "app": [ "ccm.component", "https://ccmjs.github.io/akless-components/chat/versions/ccm.chat-2.0.0.js" ]
+          "app": [ "ccm.component", "https://ccmjs.github.io/akless-components/chat/versions/ccm.chat-2.1.0.js" ]
         },
         {
           "key": "board",
