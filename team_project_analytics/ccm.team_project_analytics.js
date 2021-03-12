@@ -38,10 +38,7 @@
         $ = Object.assign( {}, this.ccm.helper, this.helper ); $.use( this.ccm );
 
         // load all project-related datasets
-        const datasets = await this.project.data.store.get( { $or: [
-          { _id: { $regex: '^' + this.project.data.key + '-' } },
-          { chat: { $regex: '^' + this.project.data.key + '-' } }
-        ] } );
+        const datasets = await this.project.data.store.get( { _id: { $regex: '^' + this.project.data.key + '-' } } );
 
         // separate datasets by type
         const source = { boards: {}, cards: [], messages: [] };
