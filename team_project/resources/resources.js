@@ -50,7 +50,7 @@ ccm.files[ 'resources.js' ] = {
       "store": [ "ccm.store", { "name": "team_project", "url": "wss://ccm2.inf.h-brs.de" } ],
       "key": "demo"
     },
-    "kanban_board.2": {
+    "tools.1.app.2": {
       "ignore": {
         "card": {
           "component": "https://ccmjs.github.io/akless-components/kanban_card/versions/ccm.kanban_card-4.0.0.js",
