@@ -2,7 +2,7 @@
  * @overview ccmjs-based web component for team project
  * @author André Kless <andre.kless@web.de> 2020-2021
  * @license The MIT License (MIT)
- * @version latest (3.0.0)
+ * @version 3.0.0
  * @changes
  * version 3.0.0 (12.03.2021)
  * - flexible adding of team-specific tools
@@ -24,6 +24,7 @@
 ( () => {
   const component = {
     name: 'team_project',
+    version: [ 3, 0, 0 ],
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.1.1.js',
     config: {
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/team_project/resources/default.css" ],
@@ -51,6 +52,11 @@
           "key": "board",
           "title": "Kanban Board",
           "app": [ "ccm.component", "https://ccmjs.github.io/akless-components/kanban_board/versions/ccm.kanban_board-4.0.0.js" ]
+        },
+        {
+          "key": "retro",
+          "title": "Retrospective",
+          "app": [ "ccm.component", "https://kaul.inf.h-brs.de/ccmjs/mkaul-components/retro/versions/ccm.retro-2.0.0.js" ]
         }
       ],
 //    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.0.js" ]
