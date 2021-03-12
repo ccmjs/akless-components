@@ -6,6 +6,7 @@
  * @changes
  * version 2.0.0 (12.03.2021)
  * - compatible with ccm.team_project.js v3
+ * - uses ccmjs v26.2.0 as default
  * version 1.0.0 (08.03.2021)
  */
 
@@ -13,7 +14,7 @@
 
   const component = {
     name: 'team_project_analytics',
-    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.1.1.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.2.0.js',
     config: {
       "chart": [ "ccm.component", "https://ccmjs.github.io/akless-components/highchart/versions/ccm.highchart-3.0.3.js" ],
       "css": [ "ccm.load",
@@ -24,7 +25,7 @@
       ],
       "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-7.0.0.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/team_project_analytics/resources/templates.mjs" ],
-      "project": [ "ccm.instance", "https://ccmjs.github.io/akless-components/team_project/versions/team_project-2.0.0.js" ]
+      "project": [ "ccm.instance", "https://ccmjs.github.io/akless-components/team_project/versions/ccm.team_project-3.0.0.js" ]
     },
 
     Instance: function () {
