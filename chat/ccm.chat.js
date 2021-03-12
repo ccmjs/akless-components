@@ -8,6 +8,7 @@
  * - uses ccmjs v26.2.0 as default
  * - permission settings for new chat messages can be set via config.data.permissions
  * - permission settings for new chat messages are optional (enabled by default)
+ * - changed key and and added chat property for new chat messages
  * - refresh on realtime updates only for relevant datasets
  * version 2.0.0 (17.02.2021):
  * - uses ccmjs v26.1.1 as default
@@ -148,6 +149,7 @@
 
               // prepare data of new message
               const message = {
+                key: this.data.key.chat + '-message-' + $.generateKey(),
                 chat: this.data.key.chat,
                 picture: user.picture,
                 user: this.user.getValue().key,
