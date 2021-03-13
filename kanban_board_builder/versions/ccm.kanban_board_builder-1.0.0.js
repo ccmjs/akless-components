@@ -25,7 +25,7 @@
       ],
   //  "data": { "store": [ "ccm.store" ] },
       "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-7.0.0.mjs" ],
-      "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/chat_builder/resources/templates.mjs" ],
+      "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/kanban_board_builder/resources/templates.mjs" ],
       "ignore": {
         "layout": {
           "white": {
@@ -103,7 +103,7 @@
       this.start = async () => {
 
         kanban_board_config = await $.dataset( this.data );                                    // get existing app configuration data
-        if ( !kanban_board_config.data ) kanban_board_config[ 'data.key' ] = $.generateKey();  // new kanban_board? => set unique chat key
+        if ( !kanban_board_config.data ) kanban_board_config[ 'data.key' ] = $.generateKey();  // new kanban_board? => set unique key
 
         // get initial app configuration (priority order: [high] this.data -> this.defaults -> this.tool.config [low])
         kanban_board_config = await $.integrate( kanban_board_config, await $.integrate( this.ignore.defaults, this.tool.config ) );
