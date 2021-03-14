@@ -4,8 +4,9 @@
  * @license The MIT License (MIT)
  * @version latest (3.0.0)
  * @changes
- * version 3.0.0 (12.03.2021)
+ * version 3.0.0 (14.03.2021)
  * - flexible adding of team-specific tools
+ * - optimized amount of realtime connections
  * - changes config parameters for dependent components
  * - uses ccmjs v26.2.0 as default
  * - uses helper.mjs v7.0.0 as default
@@ -59,7 +60,7 @@
 
     Instance: function () {
 
-      let $, main_elem, menu, team_data, team_nr, teambuild, tools = [];
+      let $, main_elem, menu, source, team_data, team_nr, teambuild, tools = [];
 
       this.init = async () => {
 
@@ -79,6 +80,11 @@
         // logging of 'ready' event
         this.logger && this.logger.log( 'ready', $.privatize( this, true ) );
 
+        // separate datastore settings with realtime
+        source = this.data.store.source();
+        if ( source.url.startsWith( 'http' ) )
+          source.url = source.url.replace( 'http', 'ws' );
+
       };
 
       this.start = async () => {
@@ -92,17 +98,19 @@
         // prepare team building
         teambuild = await this.teambuild.app.start( {
           data: {
-            store: [ 'ccm.store', Object.assign( this.data.store.source(), { dataset: this.data.key + '-teams' } ) ],
+            store: [ 'ccm.store', Object.assign( $.clone( source ), { dataset: this.data.key + '-teams' } ) ],
             key: this.data.key + '-teams'
           },
           onchange: async event => {
             switch ( event.event ) {
               case 'join':
-              case 'leave':
-                team_nr = event.event === 'join' ? event.nr : 0;
+                team_nr = event.nr;
                 team_data = teambuild.getTeamData( team_nr );
-                await updateMenu( !team_nr );
-                await updateTools();
+                await updateMenu();
+                break;
+              case 'leave':
+                await updateMenu( true );
+                tools = [];
                 break;
             }
           },
@@ -111,9 +119,9 @@
         team_nr = teambuild.getUserTeam();
         team_data = teambuild.getTeamData( team_nr );
 
-        team_nr && await updateTools();           // has a team? => update team-specific tools
         await renderMenu();                       // render main menu
         $.setContent( this.element, main_elem );  // show prepared main HTML structure
+
       };
 
       /** renders the main menu */
@@ -131,7 +139,7 @@
             else if ( event.id === entries.length )
               this.dashboard.app.start( { parent: null, root: main_elem.querySelector( '#content' ), project: [ 'ccm.instance', this.component.index, JSON.parse( this.config ) ] } );
             else
-              $.setContent( main_elem.querySelector( '#content' ), tools[ event.id - 2 ].root );
+              renderTool( event.id - 2 );
           }
         } );
       };
@@ -142,20 +150,23 @@
           menu.disable( i + 2, disable );
       };
 
-      /** updates the team-specific tools */
-      const updateTools = async () => {
-        for ( let i = 0; i < this.tools.length; i++ ) {
-          if ( !team_nr ) return tools[ i ] = null;
-          const key = this.data.key + '-team-' + team_data.key + '-' + this.tools[ i ].key;
-          tools[ i ] = await this.tools[ i ].app.start( {
-            data: {
-              store: [ 'ccm.store', Object.assign( this.data.store.source(), { dataset: key } ) ],
-              key: key
-            },
-            members: Object.keys( team_data.members ).sort(),
-            user: [ 'ccm.instance', this.user.component.url, JSON.parse( this.user.config ) ]
-          } );
-        }
+      /**
+       * renders a team-specific tool
+       * @param {number} i - tool index
+       */
+      const renderTool = async i => {
+        if ( !team_nr ) return tools[ i ] = null;
+        if ( tools[ i ] ) return $.setContent( main_elem.querySelector( '#content' ), tools[ i ].root );
+        const key = this.data.key + '-team-' + team_data.key + '-' + this.tools[ i ].key;
+        tools[ i ] = await this.tools[ i ].app.start( {
+          root: main_elem.querySelector( '#content' ),
+          data: {
+            store: [ 'ccm.store', Object.assign( $.clone( source ), { dataset: key } ) ],
+            key: key
+          },
+          members: Object.keys( team_data.members ).sort(),
+          user: [ 'ccm.instance', this.user.component.url, JSON.parse( this.user.config ) ]
+        } );
       };
 
     }
