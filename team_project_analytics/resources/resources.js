@@ -19,7 +19,7 @@ ccm.files[ 'resources.js' ] = {
   },
 
   "demo": {
-    "project": [ "ccm.instance", "https://ccmjs.github.io/akless-components/team_project/versions/ccm.team_project-2.0.0.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/team_project/resources/resources.js", "demo" ] ],
+    "project": [ "ccm.instance", "https://ccmjs.github.io/akless-components/team_project/versions/ccm.team_project-2.0.0.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/team_project/resources/resources.min.js", "demo" ] ],
   }
 
 };
