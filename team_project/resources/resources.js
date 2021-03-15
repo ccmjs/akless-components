@@ -53,7 +53,7 @@ ccm.files[ 'resources.js' ] = {
     "tools.1.app.2": {
       "ignore": {
         "card": {
-          "component": "https://ccmjs.github.io/akless-components/kanban_card/versions/ccm.kanban_card-4.0.0.js",
+          "component": "https://ccmjs.github.io/akless-components/kanban_card/versions/ccm.kanban_card-4.0.1.js",
           "config": {
             "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/kanban_card/resources/blue.css", { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/weblysleekui/font.css" } ]
           }
