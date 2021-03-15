@@ -4,10 +4,7 @@
  * @license The MIT License (MIT)
  */
 
-import { html, render } from 'https://unpkg.com/lit-html';
-import { repeat } from 'https://unpkg.com/lit-html/directives/repeat.js';
-//import { html, render } from 'https://esm.run/lit-html';
-//import { repeat } from 'https://esm.run/lit-html/directives/repeat.js';
+import { html, render, repeat } from 'https://ccmjs.github.io/akless-components/libs/lit/lit.js';
 export { render };
 
 export const main = instance => html`
