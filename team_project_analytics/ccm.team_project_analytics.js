@@ -14,7 +14,7 @@
 
   const component = {
     name: 'team_project_analytics',
-    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.2.0.min.js',
+    ccm: 'https://ccmjs.github.io/ccm/ccm.min.js',
     config: {
       "chart": [ "ccm.component", "https://ccmjs.github.io/akless-components/highchart/versions/ccm.highchart-3.0.3.min.js" ],
       "css": [ "ccm.load",
