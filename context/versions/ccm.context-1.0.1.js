@@ -16,7 +16,7 @@
   const component = {
     name: 'context',
     version: [ 1, 0, 1 ],
-    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.1.1.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.1.1.min.js',
     config: {
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/context/resources/styles.css" ],
       "dark": false,
