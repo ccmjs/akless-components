@@ -1,6 +1,6 @@
 /**
- * @overview configurations of ccm-based web component for kanban card
- * @author André Kless <andre.kless@web.de> 2017-2018, 2020
+ * @overview configurations of ccmjs-based web component for a kanban card
+ * @author André Kless <andre.kless@web.de> 2017-2018, 2020-2021
  * @license The MIT License (MIT)
  */
 
@@ -13,7 +13,7 @@ ccm.files[ 'configs.js' ] = {
       "key": "demo_white"
     },
     "helper.1": "./../modules/helper.mjs",
-    "html.1": "./../kanban_card/resources/templates.html",
+    "html.1": "./../kanban_card/resources/templates-v2.html",
     "icon": {
       "owner": "./../kanban_card/resources/owner.svg",
       "deadline": "./../kanban_card/resources/deadline.svg"
@@ -30,7 +30,7 @@ ccm.files[ 'configs.js' ] = {
       "key": "demo_gold"
     },
     "helper.1": "./../modules/helper.mjs",
-    "html.1": "./../kanban_card/resources/templates.html",
+    "html.1": "./../kanban_card/resources/templates-v2.html",
     "icon": {
       "owner": "./../kanban_card/resources/owner.svg",
       "deadline": "./../kanban_card/resources/deadline.svg"
@@ -45,7 +45,7 @@ ccm.files[ 'configs.js' ] = {
       "key": "demo_blue"
     },
     "helper.1": "./../modules/helper.mjs",
-    "html.1": "./../kanban_card/resources/templates.html",
+    "html.1": "./../kanban_card/resources/templates-v2.html",
     "icon": {
       "owner": "./../kanban_card/resources/owner.svg",
       "deadline": "./../kanban_card/resources/deadline.svg"

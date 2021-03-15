@@ -1,12 +1,12 @@
 <!--
 @overview HTML template of ccmjs-based web component for a kanban card
-@author André Kless <andre.kless@web.de.de> 2020
+@author André Kless <andre.kless@web.de.de> 2020-2021
 -->
 
 <div id="main">
   <div id="header">
     <div id="title" class="entry">
-      <div class="value" contenteditable="%editable%" oninput="%oninput_title%" onblur="%onblur_title%">%title%</div>
+      <div class="value" contenteditable="%editable%" onfocus="%onfocus_title%">%title%</div>
     </div>
     <div id="owner" class="entry">
       <div class="value" contenteditable="%editable%" onfocus="%onfocus_owner%">%owner%</div>
@@ -15,7 +15,7 @@
   </div>
   <div id="body">
     <div id="summary" class="entry">
-      <div class="value" contenteditable="%editable%" oninput="%oninput_summary%" onblur="%onblur_summary%">%summary%</div>
+      <div class="value" contenteditable="%editable%" onfocus="%onfocus_summary%">%summary%</div>
     </div>
   </div>
   <div id="footer">

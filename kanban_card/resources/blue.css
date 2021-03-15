@@ -1,6 +1,6 @@
 /**
- * @overview blue layout of ccm-based web component for kanban card
- * @author André Kless <andre.kless@web.de> 2017, 2020
+ * @overview blue layout of ccmjs-based web component for a kanban card
+ * @author André Kless <andre.kless@web.de> 2017, 2020-2021
  * @license The MIT License (MIT)
  */
 
@@ -122,6 +122,11 @@
 
 input {
   width: 11em;
+}
+
+textarea {
+  width: 100%;
+  resize: vertical;
 }
 
 select {
