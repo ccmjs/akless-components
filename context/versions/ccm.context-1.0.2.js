@@ -2,7 +2,7 @@
  * @overview ccmjs-based web component for visualization of a ccm context
  * @author André Kless <andre.kless@web.de> 2020-2021
  * @license The MIT License (MIT)
- * @version latest (1.0.2)
+ * @version 1.0.2
  * @changes
  * version 1.0.2 (15.03.2021)
  * - uses ccmjs v26.2.0 as default
@@ -18,6 +18,7 @@
 
   const component = {
     name: 'context',
+    version: [ 1, 0, 2 ],
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.2.0.js',
     config: {
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/context/resources/styles.css" ],
