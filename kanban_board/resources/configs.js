@@ -16,7 +16,16 @@ ccm.files[ 'configs.js' ] = {
     "html.1": "./../kanban_board/resources/templates.html",
     "ignore": {
       "card": {
-        "component": "./../kanban_card/ccm.kanban_card.js"
+        "component": "./../kanban_card/ccm.kanban_card.js",
+        "config": {
+          "css.1": "./../kanban_card/resources/default.css",
+          "helper.1": "./../modules/helper.mjs",
+          "html.1": "./../kanban_card/resources/templates.html",
+          "icon": {
+            "owner": "./../kanban_card/resources/owner.svg",
+            "deadline": "./../kanban_card/resources/deadline.svg"
+          }
+        }
       }
     },
 //  "logger": [ "ccm.instance", "./../log/ccm.log.js", [ "ccm.get", "./../log/resources/configs.js", "greedy" ] ],
