@@ -20,7 +20,7 @@ ccm.files[ 'configs.js' ] = {
         "config": {
           "css.1": "./../kanban_card/resources/default.css",
           "helper.1": "./../modules/helper.mjs",
-          "html.1": "./../kanban_card/resources/templates.html",
+          "html.1": "./../kanban_card/resources/templates-v2.html",
           "icon": {
             "owner": "./../kanban_card/resources/owner.svg",
             "deadline": "./../kanban_card/resources/deadline.svg"
@@ -41,7 +41,7 @@ ccm.files[ 'configs.js' ] = {
     },
     "ignore": {
       "card": {
-        "component": "https://ccmjs.github.io/akless-components/kanban_card/versions/ccm.kanban_card-4.0.0.js",
+        "component": "https://ccmjs.github.io/akless-components/kanban_card/versions/ccm.kanban_card-4.0.1.js",
         "config": {
           "css.1": "https://ccmjs.github.io/akless-components/kanban_card/resources/blue.css"
         }
