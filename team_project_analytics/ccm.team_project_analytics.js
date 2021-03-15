@@ -14,9 +14,9 @@
 
   const component = {
     name: 'team_project_analytics',
-    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.2.0.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.2.0.min.js',
     config: {
-      "chart": [ "ccm.component", "https://ccmjs.github.io/akless-components/highchart/versions/ccm.highchart-3.0.3.js" ],
+      "chart": [ "ccm.component", "https://ccmjs.github.io/akless-components/highchart/versions/ccm.highchart-3.0.3.min.js" ],
       "css": [ "ccm.load",
         [  // serial
           "https://ccmjs.github.io/akless-components/libs/bootstrap-4/css/bootstrap.min.css",
@@ -25,7 +25,7 @@
       ],
       "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-7.0.0.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/team_project_analytics/resources/templates.mjs" ],
-      "project": [ "ccm.instance", "https://ccmjs.github.io/akless-components/team_project/versions/ccm.team_project-3.0.0.js" ]
+      "project": [ "ccm.instance", "https://ccmjs.github.io/akless-components/team_project/versions/ccm.team_project-3.0.0.min.js" ]
     },
 
     Instance: function () {
