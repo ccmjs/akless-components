@@ -4,9 +4,10 @@
  * @license The MIT License (MIT)
  * @version 2.0.0
  * @changes
- * version 2.0.0 (12.03.2021)
+ * version 2.0.0 (16.03.2021)
  * - compatible with ccm.team_project.js v3
  * - uses ccmjs v26.2.0 as default
+ * - no count of deleted kanban cards
  * version 1.0.0 (08.03.2021)
  */
 
@@ -15,9 +16,9 @@
   const component = {
     name: 'team_project_analytics',
     version: [ 2, 0, 0 ],
-    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.2.0.min.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.2.0.js',
     config: {
-      "chart": [ "ccm.component", "https://ccmjs.github.io/akless-components/highchart/versions/ccm.highchart-3.0.3.min.js" ],
+      "chart": [ "ccm.component", "https://ccmjs.github.io/akless-components/highchart/versions/ccm.highchart-3.0.3.js" ],
       "css": [ "ccm.load",
         [  // serial
           "https://ccmjs.github.io/akless-components/libs/bootstrap-4/css/bootstrap.min.css",
@@ -26,7 +27,7 @@
       ],
       "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-7.0.0.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/team_project_analytics/resources/templates.mjs" ],
-      "project": [ "ccm.instance", "https://ccmjs.github.io/akless-components/team_project/versions/ccm.team_project-3.0.0.min.js" ]
+      "project": [ "ccm.instance", "https://ccmjs.github.io/akless-components/team_project/versions/ccm.team_project-3.0.0.js" ]
     },
 
     Instance: function () {
@@ -49,6 +50,8 @@
           else if ( entry.key.includes( '-card-' ) ) source.cards   .push( entry );
           else if ( entry.chat                     ) source.messages.push( entry );
         } );
+        const boards_cards = Object.values( source.boards ).reduce( ( cards, board ) => cards.concat( board.lanes.reduce( ( cards, lane ) => cards.concat( lane.cards.map( card => card[ 2 ].data.key ) ), [] ) ), [] );
+        source.cards = source.cards.filter( card => boards_cards.includes( card.key ) );
 
         // render main HTML structure
         $.setContent( this.element, $.html( this.html.main, () => { $.setContent( this.element.querySelector( '#refresh' ), $.loading( this ) ); this.start(); } ) );
