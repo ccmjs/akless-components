@@ -49,10 +49,7 @@
             "card": {
               "component": "https://ccmjs.github.io/akless-components/kanban_card/versions/ccm.kanban_card-4.0.0.js",
               "config": {
-                "css": [ 'ccm.load', 'https://ccmjs.github.io/akless-components/kanban_card/resources/blue.css' ],
-                "data": {
-                  "store": [ "ccm.store", { "name": "kanban_card", "url": "wss://ccm2.inf.h-brs.de" } ]
-                }
+                "css": [ 'ccm.load', 'https://ccmjs.github.io/akless-components/kanban_card/resources/blue.css' ]
               }
             }
           },
