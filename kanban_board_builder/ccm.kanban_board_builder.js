@@ -53,7 +53,7 @@
             }
           },
           "data": {
-            "store": [ "ccm.store", { "name": "kanban_board-data", "url": "https://ccm2.inf.h-brs.de" } ]
+            "store": [ "ccm.store", { "name": "kanban_board-data", "url": "wss://ccm2.inf.h-brs.de" } ]
           },
           "members": [ "John", "Jane", "Jake" ],
           "permissions": null,
