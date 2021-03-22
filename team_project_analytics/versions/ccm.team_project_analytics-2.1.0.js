@@ -2,7 +2,7 @@
  * @overview ccmjs-based web component for team project analytics
  * @author André Kless <andre.kless@web.de> 2021
  * @license The MIT License (MIT)
- * @version latest (2.1.0)
+ * @version 2.1.0
  * @changes
  * version 2.1.0 (2.03.2021)
  * - added onstart callback
@@ -17,6 +17,7 @@
 
   const component = {
     name: 'team_project_analytics',
+    version: [ 2, 1, 0 ],
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.2.0.js',
     config: {
       "chart": [ "ccm.component", "https://ccmjs.github.io/akless-components/highchart/versions/ccm.highchart-3.0.3.js" ],
