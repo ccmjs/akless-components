@@ -4,7 +4,7 @@
  * @license The MIT License (MIT)
  * @version 2.1.0
  * @changes
- * version 2.1.0 (2.03.2021)
+ * version 2.1.0 (22.03.2021)
  * - added onstart callback
  * version 2.0.0 (16.03.2021)
  * - compatible with ccm.team_project.js v3
