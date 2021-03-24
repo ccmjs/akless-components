@@ -50,3 +50,7 @@
 #name > div[data-centered] {
   top: 0;
 }
+
+*[data-hidden] {
+  display: none;
+}

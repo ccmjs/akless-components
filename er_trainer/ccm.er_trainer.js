@@ -54,9 +54,10 @@
         }
       },
       "number": 5,
+//    "oncancel": ( instance, phrase_nr ) => {},
 //    "phrases": [],
       "text": {
-        "abort": "Abbrechen",
+        "cancel": "Abbrechen",
         "current_state": "Sie haben %% von %% Phrasen richtig beantwortet!",
         "entity1": "Entity 1",
         "entity2": "Entity 2",
@@ -76,7 +77,7 @@
 
     Instance: function () {
 
-      let $, dataset, nr;
+      let $, dataset, phrase_nr;
 
       this.start = async () => {
 
@@ -95,21 +96,21 @@
         } );
 
         // render first phrase
-        nr = 0;
+        phrase_nr = 0;
         nextPhrase();
 
       };
 
       /** starts the next phrase */
       const nextPhrase = () => {
-        const section = $.clone( this.phrases[ nr++ ] );
+        const section = $.clone( this.phrases[ phrase_nr++ ] );
         section.input = [];
         dataset.sections.push( section );
         render();
       };
 
       /** renders current phrase */
-      const render = () => this.html.render( this.html.main( this, dataset, nr, onNotationChange, onLeftInputChange, onRightInputchange ), this.element );
+      const render = () => this.html.render( this.html.main( this, dataset, phrase_nr, onNotationChange, onLeftInputChange, onRightInputchange, onCancelClick, onSubmitClick, onNextClick, onFinishClick ), this.element );
 
       /**
        * returns current app state data
@@ -135,6 +136,18 @@
         render();
       };
 
+      /** when 'cancel' button is clicked */
+      const onCancelClick = () => this.oncancel && this.oncancel( this, phrase_nr );
+
+      /** when 'submit' button is clicked */
+      const onSubmitClick = () => {};
+
+      /** when 'next' button is clicked */
+      const onNextClick = () => {};
+
+      /** when 'finish' button is clicked */
+      const onFinishClick = () => {};
+
       /**
        * updates the selected value of left or right selector box
        * @param {boolean} left_or_right - left: false, right: true
@@ -142,7 +155,7 @@
        */
       const setInput = ( left_or_right, value ) => {
         if ( this.notations[ dataset.notation ].swap ) left_or_right = !left_or_right;
-        const section = dataset.sections[ nr - 1 ];
+        const section = dataset.sections[ phrase_nr - 1 ];
         if ( !section.input ) section.input = [];
         section.input[ left_or_right ? 1 : 0 ] = value;
       };

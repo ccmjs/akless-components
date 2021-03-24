@@ -14,9 +14,13 @@ export { render };
  * @param {function} onNotationChange - when selected entry for displayed notation changes
  * @param {function} onLeftInputChange - when selected entry of left selector box changes
  * @param {function} onRightInputChange - when selected entry of right selector box changes
+ * @param {function} onCancelClick - when 'cancel' button is clicked
+ * @param {function} onSubmitClick - when 'submit' button is clicked
+ * @param {function} onNextClick - when 'next' button is clicked
+ * @param {function} onFinishClick - when 'finish' button is clicked
  * @returns {TemplateResult} main HTML template
  */
-export function main( app, data, nr, onNotationChange, onLeftInputChange, onRightInputChange ) {
+export function main( app, data, nr, onNotationChange, onLeftInputChange, onRightInputChange, onCancelClick, onSubmitClick, onNextClick, onFinishClick ) {
   let { entity = app.default.entity, format = app.default.format, path = app.default.path + data.notation + '/', relation = app.default.relation, swap, centered } = app.notations[ data.notation ];
   const phrase = app.phrases[ nr - 1 ];
   const section = data.sections[ nr - 1 ];
@@ -97,10 +101,10 @@ export function main( app, data, nr, onNotationChange, onLeftInputChange, onRigh
 
         <!-- Buttons -->
         <section class="d-flex justify-content-center flex-wrap px-2 py-3">
-          <button class="btn btn-outline-danger m-1">${app.text.abort}</button>
-          <button class="btn btn-primary m-1">${app.text.submit}</button>
-          <button class="btn btn-secondary m-1">${app.text.next}</button>
-          <button class="btn btn-success m-1">${app.text.finish}</button>
+          <button class="btn btn-outline-danger m-1" @click=${onCancelClick} ?data-hidden=${!app.oncancel}>${app.text.cancel}</button>
+          <button class="btn btn-primary m-1" @click=${onSubmitClick}>${app.text.submit}</button>
+          <button class="btn btn-secondary m-1" @click=${onNextClick}>${app.text.next}</button>
+          <button class="btn btn-success m-1" @click=${onFinishClick}>${app.text.finish}</button>
         </section>
 
         <!-- Current State -->
