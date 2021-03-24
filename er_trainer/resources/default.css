@@ -54,3 +54,31 @@
 *[data-hidden] {
   display: none;
 }
+
+#element.correct header {
+  background-color: #dff0d8 !important;
+  border-color: #d6e9c6;
+}
+
+#element.correct #heading {
+  color: #3c763d;
+  font-weight: bold;
+}
+
+#element.correct main {
+  border-color: #d6e9c6;
+}
+
+#element.failed header {
+  background-color: #f2dede !important;
+  border-color: #ebccd1;
+}
+
+#element.failed #heading {
+  color: #a94442;
+  font-weight: bold;
+}
+
+#element.failed main {
+  border-color: #ebccd1;
+}

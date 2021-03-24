@@ -27,7 +27,7 @@ export function main( app, data, nr, onNotationChange, onLeftInputChange, onRigh
   return html`
     <h1 class="mx-3">${app.text.title}</h1> <!-- Title -->
     <header class="bg-light border rounded-top d-flex flex-wrap justify-content-between align-items-center p-2">
-      <div class="p-2 pr-3">${app.text.heading}</div> <!-- Heading -->
+      <div id="heading" class="p-2 pr-3">${section.correct===undefined?app.text.heading:(section.correct?app.text.correct:app.text.failed)}</div> <!-- Heading -->
       <div class="d-flex align-items-center text-nowrap px-2">
 
         <!-- Notation Selection -->
@@ -71,7 +71,10 @@ export function main( app, data, nr, onNotationChange, onLeftInputChange, onRigh
             <div class="filler"></div>
             <div id="name">
               <img id="middle" src="${path+relation+'.'+format}">
-              <div ?data-centered=${centered}>${phrase.relationship[1]}</div>
+              <div>
+                
+              </div>
+              <div class="text-nowrap" ?data-centered=${centered}>${phrase.relationship[1]}</div>
             </div>
             <div class="filler"></div>
             <div>
@@ -102,8 +105,8 @@ export function main( app, data, nr, onNotationChange, onLeftInputChange, onRigh
         <!-- Buttons -->
         <section class="d-flex justify-content-center flex-wrap px-2 py-3">
           <button class="btn btn-outline-danger m-1" @click=${onCancelClick} ?data-hidden=${!app.oncancel}>${app.text.cancel}</button>
-          <button class="btn btn-primary m-1" @click=${onSubmitClick}>${app.text.submit}</button>
-          <button class="btn btn-secondary m-1" @click=${onNextClick}>${app.text.next}</button>
+          <button class="btn btn-primary m-1" @click=${onSubmitClick} ?data-hidden=${section.correct !== undefined}>${app.text.submit}</button>
+          <button class="btn btn-secondary m-1" @click=${onNextClick} ?data-hidden=${section.correct === undefined}>${app.text.next}</button>
           <button class="btn btn-success m-1" @click=${onFinishClick}>${app.text.finish}</button>
         </section>
 

@@ -59,9 +59,11 @@
 //    "phrases": [],
       "text": {
         "cancel": "Abbrechen",
+        "correct": "Ihre letzte Antwort war richtig!",
         "current_state": "Sie haben %% von %% Phrasen richtig beantwortet!",
         "entity1": "Entity 1",
         "entity2": "Entity 2",
+        "failed": "Ihre letzte Antwort war falsch!",
         "finish": "Beenden",
         "heading": "Bitte wählen Sie den zu der Phrase passenden Beziehungstyp in der Auswahlbox aus!",
         "input1": "Auswahl 1:",
@@ -105,8 +107,12 @@
       /** starts the next phrase */
       const nextPhrase = () => {
         const section = $.clone( this.phrases[ phrase_nr++ ] );
-        section.input = [];
-        dataset.sections.push( section );
+        dataset.sections.push( {
+          input: [],
+          relationship: section.relationship,
+          solution: section.solution,
+          text: section.text
+        } );
         render();
       };
 
@@ -141,16 +147,27 @@
       const onCancelClick = () => this.oncancel && this.oncancel( this, phrase_nr );
 
       /** when 'submit' button is clicked */
-      const onSubmitClick = () => {};
+      const onSubmitClick = () => {
+        const section = dataset.sections[ phrase_nr - 1 ];
+        section.input = [ this.element.querySelector( '#input1' ).value, this.element.querySelector( '#input2' ).value ];
+        section.correct = section.input.toString() === section.solution.toString();
+        if ( section.correct ) dataset.correct++;
+        this.element.classList.add( section.correct ? 'correct' : 'failed' );
+        render();
+      };
 
       /** when 'next' button is clicked */
-      const onNextClick = () => {};
+      const onNextClick = () => {
+        this.element.classList.remove( 'correct' );
+        this.element.classList.remove( 'failed' );
+        nextPhrase();
+      }
 
       /** when 'finish' button is clicked */
       const onFinishClick = () => {};
 
       /**
-       * updates the selected value of left or right selector box
+       * updates selected value of left or right selector box in app state data
        * @param {boolean} left_or_right - left: false, right: true
        * @param {string} value - selected value
        */
