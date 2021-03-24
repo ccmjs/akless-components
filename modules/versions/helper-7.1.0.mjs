@@ -3,7 +3,7 @@
  * ES6 module that exports useful help functions for <i>ccmjs</i> component developers.
  * @author André Kless <andre.kless@web.de> 2019-2021
  * @license The MIT License (MIT)
- * @version latest (7.1.0)
+ * @version 7.1.0
  * @changes
  * version 7.1.0 (24.03.2021):
  * - shuffleArray(array) returns the array after in-place shuffle
