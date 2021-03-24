@@ -8,3 +8,40 @@
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   margin: 1em;
 }
+
+#diagram {
+  overflow: auto;
+}
+
+#left, #right {
+  width: 60px;
+}
+
+#middle {
+  width: 240px;
+}
+
+.filler {
+  flex: 1;
+  height: 2px;
+  background-color: black;
+}
+
+img {
+  display: block;
+}
+
+#name {
+  position: relative;
+}
+
+#name > div {
+  position: absolute;
+  left: 50%;
+  top: -10px;
+  transform: translate( -50%, -50% );
+}
+
+#name > div[data-centered] {
+  top: 0;
+}

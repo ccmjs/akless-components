@@ -22,9 +22,9 @@
 //    "data": { "store": [ "ccm.store" ] },
       "default": {
         "entity": "e",
-        "format": "svg",
+        "format": "png",
         "notation": "crow",
-        "path": "https://ccmjs.github.io/akless-components/er_trainer/resources/",
+        "path": "./resources/img/",
         "relation": "r"
       },
       "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-7.0.0.mjs" ],
@@ -33,7 +33,8 @@
         "abrial": {
           "key": "abrial",
           "title": "Abrial",
-          "swap": true
+          "swap": true,
+          "centered": true
         },
         "arrow": {
           "key": "arrow",
@@ -66,7 +67,7 @@
         "legend": "Legende",
         "next": "Weiter",
         "phrase": "Phrase [%%]:",
-        "selection": [ "1", "c", "n", "cn" ],
+        "selection": [ "-", "1", "c", "n", "cn" ],
         "submit": "Antworten"
       },
       "title": "ER-Trainer"
