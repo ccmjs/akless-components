@@ -28,7 +28,7 @@
         "path": "./resources/img/",
         "relation": "r"
       },
-      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-7.0.0.mjs" ],
+      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-7.1.0.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/er_trainer/resources/templates.mjs" ],
       "notations": {
         "abrial": {
@@ -54,6 +54,7 @@
           "title": "UML"
         }
       },
+      "number": 5,
 //    "phrases": [],
       "text": {
         "abort": "Abbrechen",
@@ -69,19 +70,22 @@
         "next": "Weiter",
         "phrase": "Phrase [%%]:",
         "selection": [ "-", "1", "c", "n", "cn" ],
-        "submit": "Antworten"
-      },
-      "title": "ER-Trainer"
+        "submit": "Antworten",
+        "title": "ER-Trainer"
+      }
     },
 
     Instance: function () {
 
-      let $, dataset;
+      let $, dataset, nr;
 
       this.start = async () => {
 
         // set shortcut to help functions
         $ = Object.assign( {}, this.ccm.helper, this.helper ); $.use( this.ccm );
+
+        // select the needed amount of phrases randomly
+        this.phrases = $.shuffleArray( this.phrases ).slice( 0, this.number );
 
         // get already existing app state data
         dataset = Object.assign( await $.dataset( this.data ), {
@@ -91,16 +95,58 @@
           total: this.phrases.length
         } );
 
-        // render main HTML template
-        this.html.render( this.html.main( this, dataset, 1 ), this.element );
+        // render first phrase
+        nr = 0;
+        nextPhrase();
 
       };
 
+      /** starts the next phrase */
+      const nextPhrase = () => {
+        const section = $.clone( this.phrases[ nr++ ] );
+        section.input = [];
+        dataset.sections.push( section );
+        render();
+      };
+
+      /** renders current phrase */
+      const render = () => this.html.render( this.html.main( this, dataset, nr, onNotationChange, onLeftInputChange, onRightInputchange ), this.element );
+
       /**
-       * returns current result data
+       * returns current app state data
        * @returns {Object}
        */
       this.getValue = () => $.clone( dataset );
+
+      /** when selected entry for displayed notation changes */
+      const onNotationChange = event => {
+        dataset.notation = event.target.value;
+        render();
+      };
+
+      /** when selected entry of left selector box changes */
+      const onLeftInputChange = event => {
+        setInput( false, event.target.value );
+        render();
+      };
+
+      /** when selected entry of right selector box changes */
+      const onRightInputchange = event => {
+        setInput( true, event.target.value );
+        render();
+      };
+
+      /**
+       * updates the selected value of left or right selector box
+       * @param {boolean} left_or_right - left: false, right: true
+       * @param {string} value - selected value
+       */
+      const setInput = ( left_or_right, value ) => {
+        if ( this.notations[ dataset.notation ].swap ) left_or_right = !left_or_right;
+        const section = dataset.sections[ nr - 1 ];
+        if ( !section.input ) section.input = [];
+        section.input[ left_or_right ? 1 : 0 ] = value;
+      };
 
     }
   };
