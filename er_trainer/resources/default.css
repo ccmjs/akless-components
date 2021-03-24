@@ -21,14 +21,19 @@
   width: 240px;
 }
 
+#left {
+  transform: scaleX(-1);
+}
+
 .filler {
   flex: 1;
   height: 2px;
   background-color: black;
 }
 
-img {
+#diagram img {
   display: block;
+  max-height: 100px;
 }
 
 #name {
