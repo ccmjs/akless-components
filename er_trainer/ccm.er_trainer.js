@@ -55,8 +55,8 @@
       },
       "number": 5,
 //    "oncancel": ( instance, phrase_nr ) => {},
-//    "onfinish": { "restart": true },
-//    "phrases": [],
+      "onfinish": { "restart": true },
+      "phrases": [ "ccm.get", { "name": "eild-er_trainer-phrases", "url": "https://ccm2.inf.h-brs.de" } ],
       "text": {
         "cancel": "Abbrechen",
         "correct": "Ihre letzte Antwort war richtig!",

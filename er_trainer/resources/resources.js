@@ -19,8 +19,7 @@ ccm.files[ 'resources.js' ] = {
     },
     "helper.1": "./../modules/helper.mjs",
     "html.1": "./../er_trainer/resources/templates.mjs",
-    "onfinish": { "restart": true, store: true, alert: 'Saved!' },
-    "phrases": [ "ccm.get", { "name": "eild-er_trainer-phrases", "url": "https://ccm2.inf.h-brs.de" } ]
+    "onfinish": { "restart": true, store: true, alert: 'Saved!' }
   },
 
   "demo": {
@@ -28,8 +27,7 @@ ccm.files[ 'resources.js' ] = {
       "store": [ "ccm.store", { "name": "er_trainer-data", "url": "https://ccm2.inf.h-brs.de" } ],
       "key": "demo"
     },
-    "onfinish": { "restart": true, store: true, alert: 'Saved!' },
-    "phrases": [ "ccm.get", { "name": "eild-er_trainer-phrases", "url": "https://ccm2.inf.h-brs.de" } ]
+    "onfinish": { "restart": true, store: true, alert: 'Saved!' }
   }
 
 };
