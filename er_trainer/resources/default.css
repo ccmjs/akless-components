@@ -51,10 +51,6 @@
   top: 0;
 }
 
-*[data-hidden] {
-  display: none;
-}
-
 #element.correct header {
   background-color: #dff0d8 !important;
   border-color: #d6e9c6;
@@ -81,4 +77,18 @@
 
 #element.failed main {
   border-color: #ebccd1;
+}
+
+.entity.correct {
+  background-color: #dff0d8;
+  border-color: #d6e9c6 !important;
+}
+
+.entity.failed {
+  background-color: #f2dede;
+  border-color: #ebccd1 !important;
+}
+
+*[data-hidden] {
+  display: none !important;
 }

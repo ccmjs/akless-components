@@ -10,7 +10,7 @@ export { render };
  * returns the main HTML template
  * @param {Object} app - app instance
  * @param {Object} data - app state data
- * @param {number} nr - number of current phrase
+ * @param {number} phrase_nr - number of current phrase
  * @param {function} onNotationChange - when selected entry for displayed notation changes
  * @param {function} onLeftInputChange - when selected entry of left selector box changes
  * @param {function} onRightInputChange - when selected entry of right selector box changes
@@ -20,10 +20,10 @@ export { render };
  * @param {function} onFinishClick - when 'finish' button is clicked
  * @returns {TemplateResult} main HTML template
  */
-export function main( app, data, nr, onNotationChange, onLeftInputChange, onRightInputChange, onCancelClick, onSubmitClick, onNextClick, onFinishClick ) {
+export function main( app, data, phrase_nr, onNotationChange, onLeftInputChange, onRightInputChange, onCancelClick, onSubmitClick, onNextClick, onFinishClick ) {
   let { entity = app.default.entity, format = app.default.format, path = app.default.path + data.notation + '/', relation = app.default.relation, swap, centered } = app.notations[ data.notation ];
-  const phrase = app.phrases[ nr - 1 ];
-  const section = data.sections[ nr - 1 ];
+  const phrase = app.phrases[ phrase_nr - 1 ];
+  const section = data.sections[ phrase_nr - 1 ];
   return html`
     <h1 class="mx-3">${app.text.title}</h1> <!-- Title -->
     <header class="bg-light border rounded-top d-flex flex-wrap justify-content-between align-items-center p-2">
@@ -51,7 +51,7 @@ export function main( app, data, nr, onNotationChange, onLeftInputChange, onRigh
         
         <!-- Phrase -->
         <section class="lead text-nowrap px-2 py-3">
-          <b>${app.ccm.helper.html(app.text.phrase,nr.toString())}</b>
+          <b>${app.ccm.helper.html(app.text.phrase,phrase_nr.toString())}</b>
           <span class="text-wrap">${phrase.text}</span>
         </section>
         
@@ -62,7 +62,7 @@ export function main( app, data, nr, onNotationChange, onLeftInputChange, onRigh
             <div>${app.text.entity2}</div>
           </div>
           <div id="diagram" class="d-flex justify-content-between align-items-center">
-            <div class="border rounded p-3 text-nowrap">
+            <div class="entity border rounded p-3 text-nowrap ${section.correct!==undefined&&(section.input[0]===section.solution[0]?'correct':'failed')}">
               ${phrase.relationship[0]}
             </div>
             <div>
@@ -71,43 +71,53 @@ export function main( app, data, nr, onNotationChange, onLeftInputChange, onRigh
             <div class="filler"></div>
             <div id="name">
               <img id="middle" src="${path+relation+'.'+format}">
-              <div>
-                
-              </div>
               <div class="text-nowrap" ?data-centered=${centered}>${phrase.relationship[1]}</div>
             </div>
             <div class="filler"></div>
             <div>
               <img id="right" src="${path+(section.input[1]||entity)+'.'+format}">
             </div>
-            <div class="border rounded p-3 text-nowrap">
+            <div class="entity border rounded p-3 text-nowrap ${section.correct!==undefined&&(section.input[1]===section.solution[1]?'correct':'failed')}">
               ${phrase.relationship[2]}
             </div>
           </div>
         </section>
 
         <!-- Selector Boxes -->
-        <section class="d-flex justify-content-between align-items-center px-2 py-3">
+        <section class="d-flex justify-content-between align-items-center px-2 py-3" ?data-hidden=${section.correct!==undefined}>
           <div class="d-flex align-items-center pr-2">
             <label for="input1" class="m-0 text-nowrap"><b>${app.text.input1}</b></label>
             <select id="input1" class="form-control ml-2" @change=${onLeftInputChange}>
-              ${app.text.selection.map(caption=>html`<option value="${caption===app.text.selection[0]?'':caption}" ?selected=${section.input[0]===caption}>${caption}</option>`)}
+              ${app.text.selection.map(caption=>html`<option value="${caption===app.text.selection[0]?'':caption}" ?selected=${caption===app.text.selection[0]&&!section.input[0]||section.input[0]===caption}>${caption}</option>`)}
             </select>
           </div>
           <div class="d-flex align-items-center pl-2">
             <label for="input2" class="m-0 text-nowrap"><b>${app.text.input2}</b></label>
             <select id="input2" class="form-control ml-2" @change=${onRightInputChange}>
-              ${app.text.selection.map(caption=>html`<option value="${caption===app.text.selection[0]?'':caption}" ?selected=${section.input[1]===caption}>${caption}</option>`)}
+              ${app.text.selection.map(caption=>html`<option value="${caption===app.text.selection[0]?'':caption}" ?selected=${caption===app.text.selection[0]&&!section.input[1]||section.input[1]===caption}>${caption}</option>`)}
             </select>
+          </div>
+        </section>
+
+        <!-- Correct Solution -->
+        <section class="d-flex flex-column align-items-center px-2" ?data-hidden=${section.correct===undefined||section.correct}>
+          <div class="lead">${app.text.correct_solution}</div>
+          <div class="d-flex align-items-center mt-3">
+            <div>
+              <img id="left" src="${path+(section.solution[0]||entity)+'.'+format}">
+            </div>
+            <div>
+              <img id="right" src="${path+(section.solution[1]||entity)+'.'+format}">
+            </div>
           </div>
         </section>
 
         <!-- Buttons -->
         <section class="d-flex justify-content-center flex-wrap px-2 py-3">
           <button class="btn btn-outline-danger m-1" @click=${onCancelClick} ?data-hidden=${!app.oncancel}>${app.text.cancel}</button>
-          <button class="btn btn-primary m-1" @click=${onSubmitClick} ?data-hidden=${section.correct !== undefined}>${app.text.submit}</button>
-          <button class="btn btn-secondary m-1" @click=${onNextClick} ?data-hidden=${section.correct === undefined}>${app.text.next}</button>
-          <button class="btn btn-success m-1" @click=${onFinishClick}>${app.text.finish}</button>
+          <button class="btn btn-primary m-1" @click=${onSubmitClick} ?data-hidden=${section.correct!==undefined}>${app.text.submit}</button>
+          <button class="btn btn-secondary m-1" @click=${onNextClick} ?data-hidden=${section.correct===undefined||phrase_nr===app.number}>${app.text.next}</button>
+          <button class="btn btn-success m-1" @click=${onFinishClick} ?data-hidden=${section.correct===undefined||phrase_nr<app.number||!app.onfinish}>${app.text.finish}</button>
         </section>
 
         <!-- Current State -->

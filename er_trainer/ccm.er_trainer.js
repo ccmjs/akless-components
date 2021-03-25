@@ -55,15 +55,17 @@
       },
       "number": 5,
 //    "oncancel": ( instance, phrase_nr ) => {},
+//    "onfinish": { "restart": true },
 //    "phrases": [],
       "text": {
         "cancel": "Abbrechen",
         "correct": "Ihre letzte Antwort war richtig!",
+        "correct_solution": "Richtige Lösung:",
         "current_state": "Sie haben %% von %% Phrasen richtig beantwortet!",
         "entity1": "Entity 1",
         "entity2": "Entity 2",
         "failed": "Ihre letzte Antwort war falsch!",
-        "finish": "Beenden",
+        "finish": "Neustart",
         "heading": "Bitte wählen Sie den zu der Phrase passenden Beziehungstyp in der Auswahlbox aus!",
         "input1": "Auswahl 1:",
         "input2": "Auswahl 2:",
@@ -152,6 +154,7 @@
         section.correct = section.input.toString() === section.solution.toString();
         if ( section.correct ) dataset.correct++;
         this.element.classList.add( section.correct ? 'correct' : 'failed' );
+        this.element.classList.add( section.correct ? 'correct' : 'failed' );
         render();
       };
 
@@ -163,7 +166,11 @@
       }
 
       /** when 'finish' button is clicked */
-      const onFinishClick = () => {};
+      const onFinishClick = () => {
+        this.element.classList.remove( 'correct' );
+        this.element.classList.remove( 'failed' );
+        this.onfinish && $.onFinish( this );
+      }
 
       /**
        * updates selected value of left or right selector box in app state data
