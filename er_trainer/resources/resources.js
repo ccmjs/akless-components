@@ -26,13 +26,6 @@ ccm.files[ 'resources.js' ] = {
     "user": [ "ccm.instance", "./../user/ccm.user.js", [ "ccm.get", "./../user/resources/resources.js", "guest" ] ]
   },
 
-  "demo": {
-    "data": {
-      "store": [ "ccm.store", { "name": "er_trainer-data", "url": "https://ccm2.inf.h-brs.de" } ],
-      "key": "demo"
-    },
-    "onfinish": { "restart": true, store: true, alert: 'Saved!' },
-    "text.finish": "Speichern und Neustart"
-  }
+  "demo": {}
 
 };
