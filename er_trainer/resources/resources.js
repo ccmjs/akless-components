@@ -15,11 +15,15 @@ ccm.files[ 'resources.js' ] = {
     ],
     "data": {
       "store": [ "ccm.store", { "name": "er_trainer-data", "url": "https://ccm2.inf.h-brs.de" } ],
-      "key": "test"
+      "key": "test",
+      "login": true,
+      "user": true
     },
     "helper.1": "./../modules/helper.mjs",
     "html.1": "./../er_trainer/resources/templates.mjs",
-    "onfinish": { "restart": true, store: true, alert: 'Saved!' }
+    "onfinish": { "restart": true, store: true, alert: 'Saved!' },
+    "text.finish": "Speichern und Neustart",
+    "user": [ "ccm.instance", "./../user/ccm.user.js", [ "ccm.get", "./../user/resources/resources.js", "guest" ] ]
   },
 
   "demo": {
@@ -27,7 +31,8 @@ ccm.files[ 'resources.js' ] = {
       "store": [ "ccm.store", { "name": "er_trainer-data", "url": "https://ccm2.inf.h-brs.de" } ],
       "key": "demo"
     },
-    "onfinish": { "restart": true, store: true, alert: 'Saved!' }
+    "onfinish": { "restart": true, store: true, alert: 'Saved!' },
+    "text.finish": "Speichern und Neustart"
   }
 
 };
