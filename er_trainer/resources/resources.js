@@ -15,7 +15,7 @@ ccm.files[ 'resources.js' ] = {
     ],
     "data": {
       "store": [ "ccm.store", { "name": "er_trainer-data", "url": "https://ccm2.inf.h-brs.de" } ],
-      "key": "test",
+      "key": "test"
     },
     "helper.1": "./../modules/helper.mjs",
     "html.1": "./../er_trainer/resources/templates.mjs",
@@ -24,6 +24,11 @@ ccm.files[ 'resources.js' ] = {
   },
 
   "demo": {
+    "data": {
+      "store": [ "ccm.store", { "name": "er_trainer-data", "url": "https://ccm2.inf.h-brs.de" } ],
+      "key": "demo"
+    },
+    "phrases": [ "ccm.get", { "name": "eild-er_trainer-phrases", "url": "https://ccm2.inf.h-brs.de" } ]
   }
 
 };
