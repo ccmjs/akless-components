@@ -25,7 +25,7 @@
         "entity": "e",
         "format": "png",
         "notation": "crow",
-        "path": "./resources/img/",
+        "path": "https://ccmjs.github.io/akless-components/er_trainer/resources/img/",
         "relation": "r"
       },
       "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-7.1.0.mjs" ],
