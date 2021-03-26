@@ -8,6 +8,7 @@
  * - onchange callback is also triggered on realtime updates
  * - messages are sorted by timestamp
  * - uses ccmjs v26.2.1 as default
+ * - uses helper.mjs v7.1.0 as default
  * version 2.1.0 (05.03.2021):
  * - uses ccmjs v26.2.0 as default
  * - permission settings for new chat messages can be set via config.data.permissions
@@ -64,7 +65,7 @@
           "theme": "snow"
         }
       } ],
-      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-7.0.0.mjs" ],
+      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-7.1.0.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/chat/resources/templates_v2.html" ],
 //    "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js" ],
 //    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-5.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
