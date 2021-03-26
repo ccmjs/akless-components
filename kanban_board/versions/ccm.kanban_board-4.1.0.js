@@ -51,9 +51,6 @@
         // set shortcut to help functions
         $ = Object.assign( {}, this.ccm.helper, this.helper ); $.use( this.ccm );
 
-        // listen to datastore changes => update content
-        if ( this.data.store ) this.data.store.onchange = priodata => priodata.key === this.data.key && this.refresh( priodata );
-
         // listen to datastore changes => update chat messages
         this.data.store.onchange = async priodata => {
           if ( priodata.key !== this.data.key ) return;
