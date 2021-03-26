@@ -45,7 +45,8 @@
         },
         "chen": {
           "key": "chen",
-          "title": "Chen"
+          "title": "Chen",
+          "centered": true
         },
         "crow": {
           "key": "crow",
