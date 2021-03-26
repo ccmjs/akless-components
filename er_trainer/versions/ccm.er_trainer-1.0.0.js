@@ -24,7 +24,7 @@
       "default": {
         "entity": "e",
         "format": "svg",
-        "images": [ "e", "1", "c", "n", "mc", "r" ],
+        "images": [ "e", "1", "c", "n", "cn", "r" ],
         "left": "copied",
         "notation": "crow",
         "path": "https://ccmjs.github.io/akless-components/er_trainer/resources/img/",
