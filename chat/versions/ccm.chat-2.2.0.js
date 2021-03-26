@@ -2,7 +2,7 @@
  * @overview ccmjs-based web component for chat
  * @author André Kless <andre.kless@web.de> 2020-2021
  * @license The MIT License (MIT)
- * @version latest (2.2.0)
+ * @version 2.2.0
  * @changes
  * version 2.2.0 (26.03.2021):
  * - onchange callback is also triggered on realtime updates
@@ -27,6 +27,7 @@
 
   const component = {
     name: 'chat',
+    version: [ 2, 0, 0 ],
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.2.1.js',
     config: {
       "button": "Send",
