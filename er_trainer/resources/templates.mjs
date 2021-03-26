@@ -88,13 +88,13 @@ export function main( app, data, phrase_nr, onNotationChange, onLeftInputChange,
           <div class="d-flex align-items-center pr-2">
             <label for="input1" class="m-0 text-nowrap"><b>${app.text.input1}</b></label>
             <select id="input1" class="form-control ml-2" @change=${onLeftInputChange}>
-              ${app.text.selection.map(caption=>html`<option value="${caption===app.text.selection[0]?'':caption}" ?selected=${caption===app.text.selection[0]&&!section.input[0]||section.input[0]===caption}>${caption}</option>`)}
+              ${app.text.selection.map(caption=>html`<option value="${caption===app.text.selection[0]?'':caption}">${caption}</option>`)}
             </select>
           </div>
           <div class="d-flex align-items-center pl-2">
             <label for="input2" class="m-0 text-nowrap"><b>${app.text.input2}</b></label>
             <select id="input2" class="form-control ml-2" @change=${onRightInputChange}>
-              ${app.text.selection.map(caption=>html`<option value="${caption===app.text.selection[0]?'':caption}" ?selected=${caption===app.text.selection[0]&&!section.input[1]||section.input[1]===caption}>${caption}</option>`)}
+              ${app.text.selection.map(caption=>html`<option value="${caption===app.text.selection[0]?'':caption}">${caption}</option>`)}
             </select>
           </div>
         </section>
