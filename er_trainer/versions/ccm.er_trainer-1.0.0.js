@@ -24,6 +24,7 @@
       "default": {
         "entity": "e",
         "format": "svg",
+        "left": "copied",
         "notation": "crow",
         "path": "https://ccmjs.github.io/akless-components/er_trainer/resources/img/",
         "relation": "r"
@@ -39,7 +40,8 @@
         },
         "arrow": {
           "key": "arrow",
-          "title": "Pfeilnotation"
+          "title": "Pfeilnotation",
+          "left": "mirrored"
         },
         "chen": {
           "key": "chen",
@@ -47,7 +49,8 @@
         },
         "crow": {
           "key": "crow",
-          "title": "Krähenfuß"
+          "title": "Krähenfuß",
+          "left": "mirrored"
         },
         "mc": {
           "key": "mc",

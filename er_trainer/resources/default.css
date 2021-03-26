@@ -21,7 +21,7 @@
   width: 240px;
 }
 
-#left {
+#left.mirrored {
   transform: scaleX(-1);
 }
 

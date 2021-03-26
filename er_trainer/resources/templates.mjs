@@ -21,7 +21,7 @@ export { render };
  * @returns {TemplateResult} main HTML template
  */
 export function main( app, data, phrase_nr, onNotationChange, onLeftInputChange, onRightInputChange, onCancelClick, onSubmitClick, onNextClick, onFinishClick ) {
-  let { entity = app.default.entity, format = app.default.format, path = app.default.path + data.notation + '/', relation = app.default.relation, swap, centered } = app.notations[ data.notation ];
+  let { entity = app.default.entity, format = app.default.format, left = app.default.left, path = app.default.path + data.notation + '/', relation = app.default.relation, swap, centered } = app.notations[ data.notation ];
   const phrase = app.phrases[ phrase_nr - 1 ];
   const section = data.sections[ phrase_nr - 1 ];
   return html`
@@ -66,7 +66,7 @@ export function main( app, data, phrase_nr, onNotationChange, onLeftInputChange,
               ${phrase.relationship[0]}
             </div>
             <div>
-              <img id="left" src="${path+(section.input[0]||entity)+'.'+format}">
+              <img id="left" class="${left}" src="${path+(section.input[0]||entity)+'.'+format}">
             </div>
             <div class="filler"></div>
             <div id="name">
