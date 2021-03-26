@@ -21,7 +21,7 @@ export { render };
  * @returns {TemplateResult} main HTML template
  */
 export function main( app, data, phrase_nr, onNotationChange, onLeftInputChange, onRightInputChange, onCancelClick, onSubmitClick, onNextClick, onFinishClick ) {
-  let { entity = app.default.entity, format = app.default.format, left = app.default.left, path = app.default.path + data.notation + '/', relation = app.default.relation, swap, centered } = app.notations[ data.notation ];
+  let { entity = app.default.entity, format = app.default.format, images = app.default.images, left = app.default.left, path = app.default.path + data.notation + '/', relation = app.default.relation, centered } = app.notations[ data.notation ];
   const phrase = app.phrases[ phrase_nr - 1 ];
   const section = data.sections[ phrase_nr - 1 ];
   return html`
@@ -88,13 +88,13 @@ export function main( app, data, phrase_nr, onNotationChange, onLeftInputChange,
           <div class="d-flex align-items-center pr-2">
             <label for="input1" class="m-0 text-nowrap"><b>${app.text.input1}</b></label>
             <select id="input1" class="form-control ml-2" @change=${onLeftInputChange}>
-              ${app.text.selection.map(caption=>html`<option value="${caption===app.text.selection[0]?'':caption}">${caption}</option>`)}
+              ${app.text.selection.map((caption,i)=>html`<option value="${images[i]}">${caption}</option>`)}
             </select>
           </div>
           <div class="d-flex align-items-center pl-2">
             <label for="input2" class="m-0 text-nowrap"><b>${app.text.input2}</b></label>
             <select id="input2" class="form-control ml-2" @change=${onRightInputChange}>
-              ${app.text.selection.map(caption=>html`<option value="${caption===app.text.selection[0]?'':caption}">${caption}</option>`)}
+              ${app.text.selection.map((caption,i)=>html`<option value="${images[i]}">${caption}</option>`)}
             </select>
           </div>
         </section>
@@ -115,7 +115,7 @@ export function main( app, data, phrase_nr, onNotationChange, onLeftInputChange,
         <!-- Buttons -->
         <section class="d-flex justify-content-center flex-wrap px-2 py-3">
           <button class="btn btn-outline-danger m-1" @click=${onCancelClick} ?data-hidden=${!app.oncancel}>${app.text.cancel}</button>
-          <button class="btn btn-primary m-1" @click=${onSubmitClick} ?data-hidden=${section.correct!==undefined}>${app.text.submit}</button>
+          <button class="btn btn-primary m-1" @click=${onSubmitClick} ?data-hidden=${section.correct!==undefined||section.input[0]===images[0]||section.input[1]===images[0]}>${app.text.submit}</button>
           <button class="btn btn-secondary m-1" @click=${onNextClick} ?data-hidden=${section.correct===undefined||phrase_nr===app.number}>${app.text.next}</button>
           <button class="btn btn-success m-1" @click=${onFinishClick} ?data-hidden=${section.correct===undefined||phrase_nr<app.number||!app.onfinish}>${app.text.finish}</button>
         </section>

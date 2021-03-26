@@ -23,6 +23,7 @@
       "default": {
         "entity": "e",
         "format": "svg",
+        "images": [ "e", "1", "c", "n", "mc", "r" ],
         "left": "copied",
         "notation": "crow",
         "path": "https://ccmjs.github.io/akless-components/er_trainer/resources/img/",
@@ -80,7 +81,7 @@
         "legend": "Legende",
         "next": "Weiter",
         "phrase": "Phrase [%%]:",
-        "selection": [ "-", "1", "c", "n", "cn" ],
+        "selection": [ "Bitte auswählen", "einfach", "bedingt", "mehrfach", "bedingt mehrfach" ],
         "submit": "Antworten",
         "title": "ER-Trainer"
       }
