@@ -6,6 +6,7 @@
  * @changes
  * version 2.2.0 (26.03.2021):
  * - onchange callback is also triggered on realtime updates
+ * - messages are sorted by timestamp
  * - uses ccmjs v26.2.1 as default
  * version 2.1.0 (05.03.2021):
  * - uses ccmjs v26.2.0 as default
@@ -113,7 +114,13 @@
 
       this.start = async () => {
 
-        store = await this.ccm.store( await $.dataset( this.data ) );       // store all chat messages in a local datastore
+        // get already existing chat messages
+        let messages = await $.dataset( this.data );
+
+        // sort messages by timestamp
+        if ( this.moment && moment ) messages = messages.sort( ( a, b ) => moment( a.created_at ).diff( b.created_at ) );
+
+        store = await this.ccm.store( messages );                           // store all chat messages in a local datastore
         this.logger && this.logger.log( 'start', $.clone( store.local ) );  // logging of 'start' event
         moment.locale( this.lang && this.lang.getValue() );                 // set time format language
         $.setContent( this.element, $.html( this.html.main ) );             // render main HTML structure
