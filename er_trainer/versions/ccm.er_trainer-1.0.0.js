@@ -78,7 +78,7 @@
         "legend": "Legende",
         "next": "Weiter",
         "phrase": "Phrase [%%]:",
-        "selection": [ "-", "1", "c", "n", "cn" ],
+        "selection": [ "-", "einfach", "bedingt", "mehrfach", "bedingt mehrfach" ],
         "submit": "Antworten",
         "title": "ER-Trainer"
       }
