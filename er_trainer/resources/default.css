@@ -45,10 +45,12 @@
   left: 50%;
   top: 50%;
   transform: translate( -50%, -50% );
+  font-size: smaller;
+  padding-bottom: 20px;
 }
 
 #name > div[data-centered] {
-  top: 0;
+  padding-bottom: 0;
 }
 
 #element.correct header {
