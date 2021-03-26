@@ -2,7 +2,7 @@
  * @overview ccmjs-based web component for kanban board
  * @author André Kless <andre.kless@web.de> 2016-2018, 2020-2021
  * @license The MIT License (MIT)
- * @version latest (4.1.0)
+ * @version 4.1.0
  * @changes
  * version 4.1.0 (26.02.2021):
  * - onchange callback is also triggered on realtime updates
@@ -23,6 +23,7 @@
 
   const component = {
     name: 'kanban_board',
+    version: [ 4, 1, 0 ],
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.2.1.js',
     config: {
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/kanban_board/resources/default.css" ],
