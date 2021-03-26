@@ -23,7 +23,7 @@
 //    "data": { "store": [ "ccm.store" ] },
       "default": {
         "entity": "e",
-        "format": "png",
+        "format": "svg",
         "notation": "crow",
         "path": "https://ccmjs.github.io/akless-components/er_trainer/resources/img/",
         "relation": "r"
@@ -48,6 +48,10 @@
         "crow": {
           "key": "crow",
           "title": "Krähenfuß"
+        },
+        "mc": {
+          "key": "mc",
+          "title": "MC"
         },
         "uml": {
           "key": "uml",
