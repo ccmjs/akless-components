@@ -67,7 +67,7 @@
 
         // listen to datastore changes => update own content
         this.data.store.onchange = async priodata => {
-          if ( priodata.key === this.data.key ) return;
+          if ( priodata.key !== this.data.key ) return;
           await this.refresh( priodata );
           this.onchange && this.onchange( { instance: this, extern: true } );
         };
