@@ -2,7 +2,7 @@
  * @overview ccm component for a listing
  * @author André Kless <andre.kless@web.de> 2018-2020
  * @license MIT License
- * @version latest (4.1.0)
+ * @version 4.1.0
  * @changes
  * version 4.2.0 (28.03.2021)
  * - onchange callback is also triggered on realtime updates
@@ -33,26 +33,24 @@
 ( () => {
 
   const component = {
-
     name: 'listing',
-
+    version: [ 4, 2, 0 ],
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.2.0.js',
-
     config: {
-  //  "convert": async json => json,
+//    "convert": async json => json,
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/listing/resources/default.css" ],
       "data": {},
-  //  "defaults": {},
+//    "defaults": {},
       "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-7.1.0.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/listing/resources/default.html" ],
-  //  "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js" ],
-  //  "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-5.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
-  //  "onchange": event => console.log( event ),
-  //  "onrender": event => console.log( event ),
-  //  "reload": true,
-  //  "replace": [ [ 'A': 'X' ], [ 'B': 'Y' ], [ 'C': 'Z' ] ],
-  //  "sort": ( a, b ) => a < b ? -1 : ( a > b ? 1 : 0 ),
-  //  "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.5.0.js" ]
+//    "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js" ],
+//    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-5.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
+//    "onchange": event => console.log( event ),
+//    "onrender": event => console.log( event ),
+//    "reload": true,
+//    "replace": [ [ 'A': 'X' ], [ 'B': 'Y' ], [ 'C': 'Z' ] ],
+//    "sort": ( a, b ) => a < b ? -1 : ( a > b ? 1 : 0 ),
+//    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.5.0.js" ]
     },
 
     Instance: function () {
@@ -73,6 +71,7 @@
           await this.refresh( priodata );
           this.onchange && this.onchange( { instance: this, extern: true } );
         };
+
       };
 
       this.ready = async () => {
