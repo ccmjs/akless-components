@@ -10,8 +10,8 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="240"
-   height="30"
-   viewBox="0 0 63.499999 7.9375002"
+   height="100"
+   viewBox="0 0 63.499999 26.458334"
    version="1.1"
    id="svg1964"
    inkscape:version="0.92.3 (2405546, 2018-03-11)"
@@ -26,17 +26,17 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="5.6"
-     inkscape:cx="70.310543"
+     inkscape:cx="104.10149"
      inkscape:cy="65.440604"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
      units="px"
      showguides="false"
-     inkscape:window-width="1920"
-     inkscape:window-height="1017"
-     inkscape:window-x="-8"
-     inkscape:window-y="-8"
+     inkscape:window-width="2736"
+     inkscape:window-height="1699"
+     inkscape:window-x="-13"
+     inkscape:window-y="-13"
      inkscape:window-maximized="1" />
   <metadata
      id="metadata1961">
@@ -46,7 +46,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -54,10 +54,10 @@
      inkscape:label="Ebene 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(0,-289.06248)">
+     transform="translate(0,-270.54165)">
     <path
        style="fill:none;stroke:#000000;stroke-width:0.54794627;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 0.0320467,293.01695 31.4760683,-3.67888 31.960319,3.70724 -31.960319,3.67908 z"
+       d="M 0.70509695,283.72895 31.508417,270.84657 62.785636,283.82824 31.508417,296.71133 Z"
        id="path2343"
        inkscape:connector-curvature="0" />
   </g>
