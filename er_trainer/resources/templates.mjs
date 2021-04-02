@@ -63,7 +63,7 @@ export function main( app, data, phrase_nr, onNotationChange, onLegendClick, onL
             <div>${app.text.entity2}</div>
           </div>
           <div id="diagram" class="d-flex justify-content-between align-items-center">
-            <div class="entity border rounded p-3 text-nowrap ${section.correct!==undefined&&(section.input[0]===section.solution[0]?'correct':'failed')}">
+            <div class="entity border rounded p-3 text-nowrap ${section.correct!==undefined&&(section.input[swap?1:0]===section.solution[swap?1:0]?'correct':'failed')}">
               ${phrase.relationship[0]}
             </div>
             <div>
@@ -78,7 +78,7 @@ export function main( app, data, phrase_nr, onNotationChange, onLegendClick, onL
             <div>
               <img id="right" src="${images[app.values.indexOf(section.input[swap?0:1])+1]}">
             </div>
-            <div class="entity border rounded p-3 text-nowrap ${section.correct!==undefined&&(section.input[1]===section.solution[1]?'correct':'failed')}">
+            <div class="entity border rounded p-3 text-nowrap ${section.correct!==undefined&&(section.input[swap?0:1]===section.solution[swap?0:1]?'correct':'failed')}">
               ${phrase.relationship[2]}
             </div>
           </div>
