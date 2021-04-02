@@ -22,14 +22,18 @@
       ],
 //    "data": { "store": [ "ccm.store" ] },
       "default": {
-        "entity": "e",
         "format": "svg",
         "images": [ "e", "1", "c", "n", "cn", "r" ],
         "left": "copied",
         "notation": "crow",
-        "path": "https://ccmjs.github.io/akless-components/er_trainer/resources/img/",
-        "relation": "r"
+        "path": "https://ccmjs.github.io/akless-components/er_trainer/resources/img/"
       },
+      "modal": [ "ccm.start", "https://ccmjs.github.io/tkless-components/modal/versions/ccm.modal-3.0.0.js", {
+        "backdrop_close": true,
+        "content": "",
+        "closed": true,
+        "buttons": ""
+      } ],
       "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-7.1.0.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/er_trainer/resources/templates.mjs" ],
       "notations": {
@@ -86,17 +90,38 @@
         "selection": [ "Bitte auswählen", "einfach", "bedingt", "mehrfach", "bedingt mehrfach" ],
         "submit": "Antworten",
         "title": "ER-Trainer"
-      }
+      },
+      "values": [ "1", "c", "n", "cn" ]
     },
 
     Instance: function () {
 
       let $, dataset, phrase_nr;
 
-      this.start = async () => {
+      this.init = async () => {
 
         // set shortcut to help functions
         $ = Object.assign( {}, this.ccm.helper, this.helper ); $.use( this.ccm );
+
+        // set title of modal dialog
+        this.modal.title = this.text.legend;
+
+        // uniform notations data
+        for ( const key in this.notations ) {
+          let notation = this.notations[ key ];
+          this.notations[ key ] = {
+            key: notation.key,
+            title: notation.title,
+            swap: !!notation.swap,
+            centered: !!notation.centered,
+            left: notation.left || this.default.left,
+            images: ( notation.images || this.default.images ).map( image => image.includes( '.' ) ? image : ( notation.path || this.default.path ) + notation.key + '/' + image + '.' + ( notation.format || this.default.format ) )
+          };
+        }
+
+      };
+
+      this.start = async () => {
 
         // select the needed amount of phrases randomly
         this.phrases = $.shuffleArray( this.phrases ).slice( 0, this.number );
@@ -113,13 +138,16 @@
         phrase_nr = 0;
         nextPhrase();
 
+        // set content of modal dialog for legend table
+        this.html.render( this.html.legend( this ), this.modal.element.querySelector( 'main' ) );
+
       };
 
       /** starts the next phrase */
       const nextPhrase = () => {
         const section = $.clone( this.phrases[ phrase_nr++ ] );
         dataset.sections.push( {
-          input: [],
+          input: [ '', '' ],
           relationship: section.relationship,
           solution: section.solution,
           text: section.text
@@ -128,7 +156,7 @@
       };
 
       /** renders current phrase */
-      const render = () => this.html.render( this.html.main( this, dataset, phrase_nr, onNotationChange, onLeftInputChange, onRightInputchange, onCancelClick, onSubmitClick, onNextClick, onFinishClick ), this.element );
+      const render = () => this.html.render( this.html.main( this, dataset, phrase_nr, onNotationChange, onLegendClick, onLeftInputChange, onRightInputchange, onCancelClick, onSubmitClick, onNextClick, onFinishClick ), this.element );
 
       /**
        * returns current app state data
@@ -141,6 +169,9 @@
         dataset.notation = event.target.value;
         render();
       };
+
+      /** when 'legend' button is clicked */
+      const onLegendClick = () => this.modal.open();
 
       /** when selected entry of left selector box changes */
       const onLeftInputChange = event => {
@@ -188,7 +219,6 @@
        * @param {string} value - selected value
        */
       const setInput = ( left_or_right, value ) => {
-        if ( this.notations[ dataset.notation ].swap ) left_or_right = !left_or_right;
         const section = dataset.sections[ phrase_nr - 1 ];
         if ( !section.input ) section.input = [];
         section.input[ left_or_right ? 1 : 0 ] = value;
