@@ -4,7 +4,7 @@
  * @license MIT License
  * @version 2.0.6
  * @changes
- * version 2.0.6 (03.03.2020):
+ * version 2.0.6 (03.03.2021):
  * - uses ccmjs v26.1.1 as default
  * - uses helper.mjs v7.0.0 as default
  * - updated minified component line
