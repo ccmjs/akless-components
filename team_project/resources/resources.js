@@ -16,7 +16,14 @@ ccm.files[ 'resources.js' ] = {
     "helper.1": "./../modules/helper.mjs",
     "html.1": "./../team_project/resources/templates.html",
 //  "logger": [ "ccm.instance", "./../log/ccm.log.js", [ "ccm.get", "./../log/resources/configs.js", "greedy" ] ],
-    "menu": [ "ccm.component", "./../menu/ccm.menu.js", [ "ccm.get", "./../menu/resources/configs.js", "top_tabs" ] ],
+    "menu": [ "ccm.component", "./../menu/ccm.menu.js", {
+      "css": [ "ccm.load", [
+        "./../libs/bootstrap-4/css/bootstrap.min.css",
+        "./../menu/resources/top_tabs.css"
+      ] ],
+      "html": [ "ccm.load", "./../menu/resources/top_tabs.html" ],
+      "routing": [ "ccm.instance", "./../routing/ccm.routing.js", { "app": "team_project" } ]
+    } ],
 //  "onchange": event => console.log( event ),
     "teambuild.app": [ "ccm.component", "./../teambuild/ccm.teambuild.js", {
       "css": [ "ccm.load", "./../teambuild/resources/default.css" ],
@@ -53,14 +60,14 @@ ccm.files[ 'resources.js' ] = {
     "tools.1.app.2": {
       "ignore": {
         "card": {
-          "component": "https://ccmjs.github.io/akless-components/kanban_card/versions/ccm.kanban_card-4.0.1.js",
+          "component": "https://ccmjs.github.io/akless-components/kanban_card/versions/ccm.kanban_card-4.1.0.js",
           "config": {
             "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/kanban_card/resources/blue.css", { "context": "head", "url": "https://ccmjs.github.io/akless-components/libs/weblysleekui/font.css" } ]
           }
         }
       }
     },
-    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.0.js" ]
+    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.1.js" ]
   }
 
 };
