@@ -41,7 +41,7 @@ ccm.files[ 'configs.js' ] = {
     },
     "ignore": {
       "card": {
-        "component": "https://ccmjs.github.io/akless-components/kanban_card/versions/ccm.kanban_card-4.0.1.js",
+        "component": "https://ccmjs.github.io/akless-components/kanban_card/versions/ccm.kanban_card-4.1.0.js",
         "config": {
           "css.1": "https://ccmjs.github.io/akless-components/kanban_card/resources/blue.css"
         }
