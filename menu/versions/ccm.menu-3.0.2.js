@@ -2,7 +2,7 @@
  * @overview ccmjs-based web component for a menu
  * @author André Kless <andre.kless@web.de> 2015-2016, 2018-2021
  * @license The MIT License (MIT)
- * @version latest (3.0.2)
+ * @version 3.0.2
  * @changes
  * version 3.0.2 (05.04.2021):
  * - uses ccmjs v26.2.1 as default
@@ -33,6 +33,7 @@
 
   const component = {
     name: 'menu',
+    version: [ 3, 0, 2 ],
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.2.1.js',
     config: {
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/menu/resources/default.css" ],
