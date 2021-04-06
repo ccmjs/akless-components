@@ -1,6 +1,6 @@
 /**
  * @overview default layout of ccmjs-based web component for chat
- * @author André Kless <andre.kless@web.de> 2020
+ * @author André Kless <andre.kless@web.de> 2020-2021
  * @license The MIT License (MIT)
  */
 
@@ -13,6 +13,12 @@
   justify-content: flex-end;
   align-items: center;
   padding: 0.5em 1em 0.25em 1em;
+}
+
+#reload {
+  font-size: xx-large;
+  padding: 0 0.3em;
+  cursor: pointer;
 }
 
 #messages {

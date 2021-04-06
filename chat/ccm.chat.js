@@ -9,6 +9,7 @@
  * - messages are sorted by timestamp
  * - uses ccmjs v26.2.1 as default
  * - uses helper.mjs v7.1.0 as default
+ * - added optional reload icon
  * version 2.1.0 (05.03.2021):
  * - uses ccmjs v26.2.0 as default
  * - permission settings for new chat messages can be set via config.data.permissions
@@ -73,6 +74,7 @@
 //    "onchange": event => console.log( event ),
 //    "onstart": instance => console.log( instance ),
       "picture": "https://ccmjs.github.io/akless-components/user/resources/icon.svg",
+//    "reload": true,
       "time_format": "Do MMMM YYYY, H:mm:ss",
 //    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.0.js" ]
     },
@@ -120,10 +122,11 @@
         // sort messages by timestamp
         if ( this.moment && moment ) messages = messages.sort( ( a, b ) => moment( a.created_at ).diff( b.created_at ) );
 
-        store = await this.ccm.store( messages );                           // store all chat messages in a local datastore
-        this.logger && this.logger.log( 'start', $.clone( store.local ) );  // logging of 'start' event
-        moment.locale( this.lang && this.lang.getValue() );                 // set time format language
-        $.setContent( this.element, $.html( this.html.main ) );             // render main HTML structure
+        store = await this.ccm.store( messages );                                          // store all chat messages in a local datastore
+        this.logger && this.logger.log( 'start', $.clone( store.local ) );                 // logging of 'start' event
+        moment.locale( this.lang && this.lang.getValue() );                                // set time format language
+        $.setContent( this.element, $.html( this.html.main, { onreload: this.start } ) );  // render main HTML structure
+        !this.reload && $.remove( this.element.querySelector( '#reload' ) );               // no refresh button wanted? => remove refresh button
 
         // render language and login/logout area
         if ( this.lang && !this.hide_lang  ) { $.append( this.element.querySelector( '#top' ), this.lang.root ); this.lang.start(); }
