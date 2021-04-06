@@ -122,11 +122,11 @@
         // sort messages by timestamp
         if ( this.moment && moment ) messages = messages.sort( ( a, b ) => moment( a.created_at ).diff( b.created_at ) );
 
-        store = await this.ccm.store( messages );                                          // store all chat messages in a local datastore
-        this.logger && this.logger.log( 'start', $.clone( store.local ) );                 // logging of 'start' event
-        moment.locale( this.lang && this.lang.getValue() );                                // set time format language
-        $.setContent( this.element, $.html( this.html.main, { onreload: this.start } ) );  // render main HTML structure
-        !this.reload && $.remove( this.element.querySelector( '#reload' ) );               // no refresh button wanted? => remove refresh button
+        store = await this.ccm.store( messages );                             // store all chat messages in a local datastore
+        this.logger && this.logger.log( 'start', $.clone( store.local ) );    // logging of 'start' event
+        moment.locale( this.lang && this.lang.getValue() );                   // set time format language
+        $.setContent( this.element, $.html( this.html.main, this.start ) );   // render main HTML structure
+        !this.reload && $.remove( this.element.querySelector( '#reload' ) );  // no refresh button wanted? => remove refresh button
 
         // render language and login/logout area
         if ( this.lang && !this.hide_lang  ) { $.append( this.element.querySelector( '#top' ), this.lang.root ); this.lang.start(); }
