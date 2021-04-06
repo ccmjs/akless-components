@@ -4,9 +4,9 @@
  * @license The MIT License (MIT)
  * @version latest (3.1.0)
  * @changes
- * version 3.1.0 (05.04.2021)
+ * version 3.1.0 (07.04.2021)
  * - added optional routing
- * - uses ccmjs v26.2.1 as default
+ * - uses ccmjs v26.3.0 as default
  * - uses helper.mjs v7.1.0 as default
  * - tab menu uses uses Bootstrap v4.5.3 from own repository
  * - uses ccm.teambuild.js v5.1.0 as default
@@ -35,7 +35,7 @@
 ( () => {
   const component = {
     name: 'team_project',
-    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.2.1.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.3.0.js',
     config: {
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/team_project/resources/default.css" ],
       "dashboard": {
@@ -177,7 +177,7 @@
         tools[ i ] = await this.tools[ i ].app.start( {
           root: main_elem.querySelector( '#content' ),
           data: {
-            store: [ 'ccm.store', Object.assign( $.clone( source ), { dataset: key } ) ],
+            store: [ 'ccm.store', Object.assign( $.clone( source ), { observe: [ key, { chat: key } ] } ) ],
             key: key
           },
           members: Object.keys( team_data.members ).sort(),
