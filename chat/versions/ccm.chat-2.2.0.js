@@ -4,10 +4,10 @@
  * @license The MIT License (MIT)
  * @version 2.2.0
  * @changes
- * version 2.2.0 (26.03.2021):
+ * version 2.2.0 (07.04.2021):
  * - onchange callback is also triggered on realtime updates
  * - messages are sorted by timestamp
- * - uses ccmjs v26.2.1 as default
+ * - uses ccmjs v26.3.0 as default
  * - uses helper.mjs v7.1.0 as default
  * - added optional reload icon
  * version 2.1.0 (05.03.2021):
@@ -31,7 +31,7 @@
   const component = {
     name: 'chat',
     version: [ 2, 2, 0 ],
-    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.2.1.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.3.0.js',
     config: {
       "button": "Send",
       "css": [ "ccm.load",
