@@ -35,6 +35,7 @@
 ( () => {
   const component = {
     name: 'team_project',
+    version: [ 3, 1, 0 ],
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.3.0.js',
     config: {
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/team_project/resources/default.css" ],
