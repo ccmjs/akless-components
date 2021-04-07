@@ -4,8 +4,8 @@
  * @license The MIT License (MIT)
  * @version 2.1.1
  * @changes
- * version 2.1.1 (05.04.2021)
- * - uses ccmjs v26.2.1 as default
+ * version 2.1.1 (07.04.2021)
+ * - uses ccmjs v26.3.0 as default
  * - uses helper.mjs v7.1.0 as default
  * - uses ccm.team_project.js v3.1.0 as default
  * version 2.1.0 (22.03.2021)
@@ -22,7 +22,7 @@
   const component = {
     name: 'team_project_analytics',
     version: [ 2, 1, 1 ],
-    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.2.1.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.3.0.js',
     config: {
       "chart": [ "ccm.component", "https://ccmjs.github.io/akless-components/highchart/versions/ccm.highchart-3.0.3.js" ],
       "css": [ "ccm.load",
