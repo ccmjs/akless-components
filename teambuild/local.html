@@ -6,4 +6,7 @@
 
 <style>* { height: 100%; } body { margin: 0; }</style>
 <script src="./ccm.teambuild.js"></script>
+<script>
+  document.addEventListener( 'ccm-teambuild', event => console.log( event.detail.event ) );
+</script>
 <ccm-teambuild key='["ccm.get","./resources/configs.js","local"]'></ccm-teambuild>
