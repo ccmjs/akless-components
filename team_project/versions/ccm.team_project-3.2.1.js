@@ -2,7 +2,7 @@
  * @overview ccmjs-based web component for team project
  * @author André Kless <andre.kless@web.de> 2020-2021
  * @license The MIT License (MIT)
- * @version latest (3.2.1)
+ * @version 3.2.1
  * @changes
  * version 3.2.1 (14.04.2021)
  * - uses ccm.teambuild.js v5.2.0 as default
@@ -39,6 +39,7 @@
 ( () => {
   const component = {
     name: 'team_project',
+    version: [ 3, 2, 1 ],
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.3.0.js',
     config: {
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/team_project/resources/default.css" ],
