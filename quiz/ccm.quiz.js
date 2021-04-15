@@ -180,7 +180,7 @@
           self.start_button = false;
           self.cancel_button = false;
           self.navigation = true;
-          self.feedback = false;
+          self.feedback = true;
           self.shuffle = false;
           self.time = false;
           self.questions.forEach( question => question.random = false );
