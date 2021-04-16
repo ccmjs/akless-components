@@ -2,7 +2,7 @@
  * @overview ccmjs-based web component for a kanban card
  * @author André Kless <andre.kless@web.de> 2016-2021
  * @license The MIT License (MIT)
- * @version latest (4.1.1)
+ * @version 4.1.1
  * @changes
  * version 4.1.1 (16.04.2021)
  * - uses ccmjs v26.3.1 as default
@@ -32,6 +32,7 @@
 
   const component = {
     name: 'kanban_card',
+    version: [ 4, 1, 1 ],
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.3.1.js',
     config: {
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/kanban_card/resources/default.css" ],
