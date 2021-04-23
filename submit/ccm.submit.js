@@ -601,7 +601,7 @@
               store.settings = store.store;
               delete store.store;
             }
-            store.settings.parent = this;
+            store.settings.parent = self;
             $.onFinish( { store: store, login: self.onfinish.login }, self.getValue() );
           }
         }
