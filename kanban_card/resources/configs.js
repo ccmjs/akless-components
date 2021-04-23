@@ -58,7 +58,7 @@ ccm.files[ 'configs.js' ] = {
       "store": [ "ccm.store", { "name": "kanban_card", "url": "https://ccm2.inf.h-brs.de" } ],
       "key": "demo_white"
     },
-    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.0.js" ]
+    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.1.js" ]
   },
 
   "demo_gold": {
@@ -67,7 +67,7 @@ ccm.files[ 'configs.js' ] = {
       "store": [ "ccm.store", { "name": "kanban_card", "url": "https://ccm2.inf.h-brs.de" } ],
       "key": "demo_gold"
     },
-    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.0.js" ]
+    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.1.js" ]
   },
 
   "demo_blue": {
@@ -76,7 +76,7 @@ ccm.files[ 'configs.js' ] = {
       "store": [ "ccm.store", { "name": "kanban_card", "url": "wss://ccm2.inf.h-brs.de", "dataset": "demo_blue" } ],
       "key": "demo_blue"
     },
-    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.0.js" ]
+    "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.1.js" ]
   }
 
 };
