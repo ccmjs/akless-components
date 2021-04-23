@@ -8,6 +8,7 @@ ccm.files[ 'resources.js' ] = {
 
   /** test configuration (relative paths) */
   "local": {
+    "autosave": true,
     "css.1.1": "./../submit/resources/default_b4.css",
 //  "inner": [ "ccm.load", { "url": "./../submit/resources/demo.html", "type": "data" } ],
     "enabled_only": false,
@@ -27,8 +28,8 @@ ccm.files[ 'resources.js' ] = {
     "onchange": event => console.log( event ),
     "onfinish": {
       "log": true,
-//    "store": true,
-//    "alert": "Saved!"
+      "store": true,
+      "alert": "Saved!"
     }
   },
 
