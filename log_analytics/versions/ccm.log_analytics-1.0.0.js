@@ -172,8 +172,8 @@
         } );
 
         // convert data to needed array structure
-        for ( const time in all ) series[ 0 ].data.push( [ parseInt( time ), all[ time ] ] );
-        for ( const time in all ) series[ 1 ].data.push( [ parseInt( time ), all[ time ] ] );
+        for ( const time in ready ) series[ 0 ].data.push( [ parseInt( time ), ready[ time ] ] );
+        for ( const time in all   ) series[ 1 ].data.push( [ parseInt( time ), all  [ time ] ] );
 
         // sort data by time stamp
         series[ 0 ].data.sort( ( a, b ) => b[ 0 ] - a[ 0 ] );
