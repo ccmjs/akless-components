@@ -16,6 +16,10 @@ ccm.files[ 'resources.js' ] = {
   },
 
   "demo": {
+    "data": {
+      "store": [ "ccm.store", { "name": "db-ss21-er-log", "url": "https://ccm2.inf.h-brs.de" } ],
+      "key": {}
+    }
   }
 
 };
