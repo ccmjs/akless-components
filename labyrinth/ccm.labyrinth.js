@@ -13,7 +13,7 @@
     name: 'labyrinth',
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.4.0.js',
     config: {
-      "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/log_analytics/resources/styles.css" ],
+      "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/labyrinth/resources/styles.css" ],
       "data": { "x": 4, "y": 4 },
       "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-7.2.0.mjs" ],
 //    "onstart": instance => { ... },
