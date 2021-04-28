@@ -3,9 +3,6 @@
  * @author André Kless <andre.kless@web.de> 2021
  */
 
-import { html, render, repeat } from 'https://ccmjs.github.io/akless-components/libs/lit/lit.js';
-export { render };
-
 /**
  * returns the main HTML template
  * @returns {string} main HTML template
