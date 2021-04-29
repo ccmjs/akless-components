@@ -10,7 +10,7 @@ ccm.files[ 'resources.js' ] = {
     "css.1": "./../team_project/resources/default.css",
     "dashboard.app": [ "ccm.component", "./../team_project_analytics/ccm.team_project_analytics.js", [ "ccm.get", "./../team_project_analytics/resources/resources.js", "local" ] ],
     "data": {
-      "store": [ "ccm.store", { "name": "team_project", "url": "https://ccm2.inf.h-brs.de" } ],
+      "store": [ "ccm.store", { "name": "team_project", "url": "wss://ccm2.inf.h-brs.de" } ],
       "key": "test"
     },
     "helper.1": "./../modules/helper.mjs",
@@ -54,7 +54,7 @@ ccm.files[ 'resources.js' ] = {
 
   "demo": {
     "data": {
-      "store": [ "ccm.store", { "name": "team_project", "url": "https://ccm2.inf.h-brs.de" } ],
+      "store": [ "ccm.store", { "name": "team_project", "url": "wss://ccm2.inf.h-brs.de" } ],
       "key": "demo"
     },
     "tools.1.app.2": {
