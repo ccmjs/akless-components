@@ -2,8 +2,11 @@
  * @overview ccmjs-based web component for team project
  * @author André Kless <andre.kless@web.de> 2020-2021
  * @license The MIT License (MIT)
- * @version latest (3.3.0)
+ * @version latest (3.3.1)
  * @changes
+ * version 3.3.1 (29.04.2021)
+ * - bugfix to reduce realtime communication
+ * - dashboard uses ccm.team_project_analytics.js v2.1.5 as default
  * version 3.3.0 (29.04.2021)
  * - realtime is adjustable
  * - uses ccmjs v26.4.0 as default
@@ -44,12 +47,12 @@
 ( () => {
   const component = {
     name: 'team_project',
-    ccm: './../../ccm/ccm.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.4.0.js',
     config: {
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/team_project/resources/default.css" ],
       "dashboard": {
         "title": "Dashboard",
-        "app": [ "ccm.component", "https://ccmjs.github.io/akless-components/team_project_analytics/versions/ccm.team_project_analytics-2.1.4.js" ]
+        "app": [ "ccm.component", "https://ccmjs.github.io/akless-components/team_project_analytics/versions/ccm.team_project_analytics-2.1.5.js" ]
       },
       "data": { "store": [ "ccm.store" ] },
       "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-7.2.0.mjs" ],
