@@ -67,7 +67,6 @@
 //    "onchange": event => console.log( event ),
       "teambuild": {
         "title": "Teams",
-//      "realtime": false,
         "app": [ "ccm.component", "https://ccmjs.github.io/akless-components/teambuild/versions/ccm.teambuild-5.2.0.js" ]
       },
       "tools": [
@@ -89,7 +88,7 @@
 
     Instance: function () {
 
-      let $, dashboard, main_elem, menu, team_data, team_nr, teambuild, tools = [];
+      let $, dashboard, main_elem, menu, team_data, source, team_nr, teambuild, tools = [];
 
       this.init = async () => {
 
@@ -109,6 +108,11 @@
         // logging of 'ready' event
         this.logger && this.logger.log( 'ready', $.privatize( this, true ) );
 
+        // separate datastore settings with realtime
+        source = this.data.store.source();
+        if ( source.url.startsWith( 'http' ) )
+          source.url = source.url.replace( 'http', 'ws' );
+
       };
 
       this.start = async () => {
@@ -119,17 +123,10 @@
         // render login/logout area
         if ( this.user ) { $.append( main_elem.querySelector( '#top' ), this.user.root ); this.user.start(); }
 
-        // prepare datastore settings for team building
-        const source = $.clone( this.data.store.source() );
-        if ( this.teambuild.realtime === true && source.url.startsWith( 'http' ) )
-          source.url = source.url.replace( 'http', 'ws' );
-        if ( this.teambuild.realtime === false && source.url.startsWith( 'ws' ) )
-          source.url = source.url.replace( 'ws', 'http' );
-
         // prepare team building
         teambuild = await this.teambuild.app.start( {
           data: {
-            store: [ 'ccm.store', Object.assign( source, { dataset: this.data.key + '-teams' } ) ],
+            store: [ 'ccm.store', Object.assign( $.clone( source ), { dataset: this.data.key + '-teams' } ) ],
             key: this.data.key + '-teams'
           },
           onchange: async event => {
@@ -203,16 +200,14 @@
         if ( !team_nr ) return tools[ i ] = null;
         if ( tools[ i ] ) return $.setContent( main_elem.querySelector( '#content' ), tools[ i ].root );
         const key = this.data.key + '-team-' + team_data.key + '-' + this.tools[ i ].key;
-        const source = $.clone( this.data.store.source() );
-        source.observe = [ key, { chat: key } ];
-        if ( this.tools[ i ].realtime === true && source.url.startsWith( 'http' ) )
-          source.url = source.url.replace( 'http', 'ws' );
-        if ( this.tools[ i ].realtime === false && source.url.startsWith( 'ws' ) )
-          source.url = source.url.replace( 'ws', 'http' );
+        const settings = $.clone( source );
+        settings.observe = [ key, { chat: key } ];
+        if ( this.tools[ i ].realtime === false && settings.url.startsWith( 'ws' ) )
+          settings.url = settings.url.replace( 'ws', 'http' );
         tools[ i ] = await this.tools[ i ].app.start( {
           root: main_elem.querySelector( '#content' ),
           data: {
-            store: [ 'ccm.store', source ],
+            store: [ 'ccm.store', settings ],
             key: key
           },
           members: Object.keys( team_data.members ).sort(),
