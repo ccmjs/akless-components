@@ -1,0 +1,57 @@
+/**
+ * @overview layout of ccmjs-based web component for multiply table training
+ * @author André Kless <andre.kless@web.de> 2021
+ * @license The MIT License (MIT)
+ */
+
+#element {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+/*
+  background-color: white;
+  filter: invert(100%);
+ */
+}
+
+span {
+  white-space: nowrap;
+}
+
+#element, input {
+  font-size: 10vw;
+  font-family: Arial, sans-serif;
+}
+
+.progress {
+  width: 80%;
+  height: 6vw;
+}
+
+.progress-bar.run {
+  animation-name: timer;
+  animation-duration: 3s;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+/* The animation code */
+@keyframes timer {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+#points {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 1em;
+}
+
+#points svg {
+  width: 3vw;
+  height: 3vw;
+  margin: .5vw;
+}
