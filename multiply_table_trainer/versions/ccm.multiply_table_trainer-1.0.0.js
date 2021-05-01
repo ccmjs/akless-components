@@ -16,7 +16,12 @@
     config: {
       "color": "#007bff",
       "commutative": true,
-      "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/multiply_table_trainer/resources/styles.css" ],
+      "css": [ "ccm.load",
+        [  // serial
+          "https://ccmjs.github.io/akless-components/libs/bootstrap-4/css/bootstrap.min.css",
+          "https://ccmjs.github.io/akless-components/team_project_analytics/resources/styles.css"
+        ]
+      ],
       "data": {},
       "feedback": 1,
       "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-7.2.0.mjs" ],
