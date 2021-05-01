@@ -2,7 +2,7 @@
  * @overview ccmjs-based web component for multiply table training
  * @author André Kless <andre.kless@web.de> 2021
  * @license The MIT License (MIT)
- * @version latest (1.0.0)
+ * @version 1.0.0
  * @changes
  * version 1.0.0 (01.05.2021)
  */
@@ -11,6 +11,7 @@
 
   const component = {
     name: 'multiply_table_trainer',
+    version: [ 1, 0, 0 ],
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.4.0.js',
     config: {
       "color": "#007bff",
