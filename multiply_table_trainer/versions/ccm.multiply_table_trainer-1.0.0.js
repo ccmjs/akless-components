@@ -29,7 +29,7 @@
 //    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-5.0.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
       "min": [ 1, 1, 1 ],
       "max": [ 10, 10, 100 ],
-      "onfinish": { "log": true, "restart": true },
+      "onfinish": { "log": true },
 //    "onstart": instance => { ... }
       "operator": "∙",
       "timer": 3
