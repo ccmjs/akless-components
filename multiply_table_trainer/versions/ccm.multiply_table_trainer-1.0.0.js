@@ -19,7 +19,7 @@
       "css": [ "ccm.load",
         [  // serial
           "https://ccmjs.github.io/akless-components/libs/bootstrap-4/css/bootstrap.min.css",
-          "https://ccmjs.github.io/akless-components/team_project_analytics/resources/styles.css"
+          "https://ccmjs.github.io/akless-components/multiply_table_trainer/resources/styles.css"
         ]
       ],
       "data": {},
