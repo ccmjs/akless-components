@@ -131,10 +131,10 @@
             }
           } )()
         };
-        section.correct = input === solution;
+        section.correct = section.input === section.solution;
         input.disabled = true;
-        progress_bar.style.backgroundColor = correct ? 'limegreen' : 'red' ;
-        correct && results.correct++;
+        progress_bar.style.backgroundColor = section.correct ? 'limegreen' : 'red' ;
+        section.correct && results.correct++;
         results.sections[ nr - 1 ] = section;
         this.html.render( this.html.main( this, equations[ nr - 1 ] ), this.element );
         window.setTimeout( next, this.feedback * 1000 );
