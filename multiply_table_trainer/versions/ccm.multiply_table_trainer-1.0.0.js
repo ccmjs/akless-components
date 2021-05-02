@@ -30,7 +30,7 @@
 //    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-5.0.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
       "min": [ 1, 1, 1 ],
       "max": [ 10, 10, 100 ],
-      "onfinish": { "log": true, "restart": true },
+      "onfinish": { "log": true },
 //    "onstart": instance => { ... }
       "operator": "*",
       "timer": 3,
@@ -121,18 +121,21 @@
       };
 
       const feedback = () => {
-        const value = input.value;
         const [ a, b ] = equations[ nr - 1 ];
-        const correct = ( () => {
-          switch ( this.operator ) {
-            case '+': return a + b;
-            case '*': return a * b;
-          }
-        } )() === parseInt( value );
+        const section = {
+          input: parseInt( input.value ),
+          solution: ( () => {
+            switch ( this.operator ) {
+              case '+': return a + b;
+              case '*': return a * b;
+            }
+          } )()
+        };
+        section.correct = input === solution;
         input.disabled = true;
         progress_bar.style.backgroundColor = correct ? 'limegreen' : 'red' ;
         correct && results.correct++;
-        results.sections[ nr - 1 ] = correct;
+        results.sections[ nr - 1 ] = section;
         this.html.render( this.html.main( this, equations[ nr - 1 ] ), this.element );
         window.setTimeout( next, this.feedback * 1000 );
       };
