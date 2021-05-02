@@ -122,6 +122,8 @@
       const feedback = () => {
         const [ a, b ] = equations[ nr - 1 ];
         const section = {
+          operands: [ a, b ],
+          operator: this.operator,
           input: parseInt( input.value ),
           solution: ( () => {
             switch ( this.operator ) {

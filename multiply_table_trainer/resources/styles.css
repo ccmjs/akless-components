@@ -7,9 +7,6 @@
 #element {
   width: 100%;
   height: 100%;
-/*
-  filter: invert(100%);
- */
   background-image: url("./img/numbers.jpg");
   background-size: cover;
   display: flex;
@@ -20,13 +17,6 @@
 #start {
   width: 90%;
   height: 90%;
-}
-
-#start button {
-  font-size: 5vw !important;
-}
-
-#start {
   border: 1px solid silver;
   border-radius: 0.5em;
   display: inline-flex;
@@ -36,6 +26,10 @@
   padding: 1em;
   text-align: center;
   font-size: 9vw;
+}
+
+#start button {
+  font-size: 5vw !important;
 }
 
 main {
@@ -49,11 +43,11 @@ main {
   border-radius: 0.5em;
 }
 
-main span {
+#equation span {
   white-space: nowrap;
 }
 
-#element, input {
+#start, #equation, input {
   font-size: 10vw;
   font-family: Arial, sans-serif;
 }
@@ -78,7 +72,7 @@ main span {
 #points {
   display: flex;
   flex-wrap: wrap;
-  margin: 0 0.25em;
+  margin: 0 3em;
 }
 
 #points svg {

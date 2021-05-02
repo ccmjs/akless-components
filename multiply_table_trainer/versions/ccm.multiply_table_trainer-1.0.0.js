@@ -2,7 +2,7 @@
  * @overview ccmjs-based web component for multiply table training
  * @author André Kless <andre.kless@web.de> 2021
  * @license The MIT License (MIT)
- * @version 1.0.0
+ * @version latest (1.0.0)
  * @changes
  * version 1.0.0 (02.05.2021)
  */
@@ -11,7 +11,6 @@
 
   const component = {
     name: 'multiply_table_trainer',
-    version: [ 1, 0, 0 ],
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.4.0.js',
     config: {
       "button": "START",
@@ -123,6 +122,8 @@
       const feedback = () => {
         const [ a, b ] = equations[ nr - 1 ];
         const section = {
+          operands: [ a, b ],
+          operator: this.operator,
           input: parseInt( input.value ),
           solution: ( () => {
             switch ( this.operator ) {
