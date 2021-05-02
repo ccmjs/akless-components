@@ -31,13 +31,13 @@
       "max": [ 10, 10, 100 ],
       "onfinish": { "log": true },
 //    "onstart": instance => { ... }
-      "operator": "∙",
+      "operator": "*",
       "timer": 3
     },
 
     Instance: function () {
 
-      let $, current, input, equations = {}, progress_bar, points = 0, results = [], nr;
+      let $, input, equations = {}, progress_bar, results, nr;
 
       this.ready = async () => {
 
@@ -114,10 +114,15 @@
       const feedback = () => {
         const value = input.value;
         const [ a, b ] = equations[ nr - 1 ];
-        const correct = a * b === parseInt( value );
+        const correct = ( () => {
+          switch ( this.operator ) {
+            case '+': return a + b;
+            case '*': return a * b;
+          }
+        } )() === parseInt( value );
         input.disabled = true;
-        this.element.querySelector( '.progress-bar' ).style.backgroundColor = correct ? 'limegreen' : 'red' ;
-        correct && points++;
+        progress_bar.style.backgroundColor = correct ? 'limegreen' : 'red' ;
+        correct && results.correct++;
         results.sections[ nr - 1 ] = correct;
         this.html.render( this.html.main( this, equations[ nr - 1 ] ), this.element );
         window.setTimeout( next, this.feedback * 1000 );
