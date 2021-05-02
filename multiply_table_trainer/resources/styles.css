@@ -17,6 +17,22 @@
   align-items: center;
 }
 
+#start {
+  width: 90%;
+  height: 90%;
+}
+
+#start {
+  border: 1px solid silver;
+  border-radius: 0.5em;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 1em;
+  text-align: center;
+}
+
 main {
   width: 90%;
   height: 90%;
@@ -24,17 +40,16 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: white;
   border: 1px solid silver;
   border-radius: 0.5em;
 }
 
-span {
+main span {
   white-space: nowrap;
 }
 
-#element, input {
-  font-size: 10vw;
+#element, input, button {
+  font-size: 10vw !important;
   font-family: Arial, sans-serif;
 }
 

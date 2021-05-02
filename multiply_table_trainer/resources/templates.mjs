@@ -7,6 +7,17 @@ import { html, render, repeat } from 'https://ccmjs.github.io/akless-components/
 export { render };
 
 /**
+ * returns the HTML template o the start screen
+ * @type {String}
+ */
+export const start = `
+  <div id="start" class="bg-white">
+    <span>%title%</span>
+    <button class="btn btn-primary" onclick="%onclick%">%button%</button>
+  </div>
+`;
+
+/**
  * returns the main HTML template
  * @param {Object} instance
  * @param {number[]} operands - operands of current equation
@@ -21,7 +32,7 @@ export function main( instance, [ a, b ] ) {
     }
   };
   return html`
-    <main>
+    <main class="bg-white">
       <div>
         <span>${ a } ${ op() } ${ b }</span><span>&nbsp;= <input type="number" min="${ instance.min[ 2 ] }" max="${ instance.max[ 2 ] }"></span>
       </div>

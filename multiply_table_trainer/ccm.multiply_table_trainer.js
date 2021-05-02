@@ -4,7 +4,7 @@
  * @license The MIT License (MIT)
  * @version latest (1.0.0)
  * @changes
- * version 1.0.0 (01.05.2021)
+ * version 1.0.0 (02.05.2021)
  */
 
 ( () => {
@@ -13,6 +13,7 @@
     name: 'multiply_table_trainer',
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.4.0.js',
     config: {
+      "button": "START",
       "color": "#007bff",
       "commutative": true,
       "css": [ "ccm.load",
@@ -28,10 +29,11 @@
 //    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-5.0.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
       "min": [ 1, 1, 1 ],
       "max": [ 10, 10, 100 ],
-      "onfinish": { "log": true },
+      "onfinish": { "log": true, "restart": true },
 //    "onstart": instance => { ... }
       "operator": "*",
-      "timer": 3
+      "timer": 3,
+      "title": "Multiplication Table Trainer"
     },
 
     Instance: function () {
@@ -50,6 +52,9 @@
 
       this.start = async () => {
 
+        // render start screen
+        $.setContent( this.element, $.html( this.html.start, { title: this.title, button: this.button, onclick: next } ) );
+
         // prepare equations
         for ( let i = this.min[ 0 ]; i <= this.max[ 0 ]; i++ )
           for ( let j = this.min[ 1 ]; j <= this.max[ 1 ]; j++ ) {
@@ -65,8 +70,8 @@
           sections: Array.from( { length: equations.length } )
         };
 
-        // show first equation
-        nr = 0; next();
+        // start with first equation
+        nr = 0;
 
         // logging of 'start' event
         this.logger && this.logger.log( 'start', $.clone( equations ) );
@@ -108,6 +113,10 @@
 
         // show feedback when progress bar finishes
         window.setTimeout( feedback, this.timer * 1000 );
+
+        // logging of 'next' event
+        this.logger && this.logger.log( 'next', $.clone( equations[ nr - 1 ] ) );
+
       };
 
       const feedback = () => {
