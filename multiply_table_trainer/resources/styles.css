@@ -50,7 +50,6 @@ span {
   animation-fill-mode: forwards;
 }
 
-/* The animation code */
 @keyframes timer {
   from { width: 0; }
   to { width: 100%; }
@@ -59,7 +58,7 @@ span {
 #points {
   display: flex;
   flex-wrap: wrap;
-  margin: 0 1em;
+  margin: 0 0.25em;
 }
 
 #points svg {
