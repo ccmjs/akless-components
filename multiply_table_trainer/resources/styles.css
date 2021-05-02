@@ -22,6 +22,10 @@
   height: 90%;
 }
 
+#start button {
+  font-size: 5vw !important;
+}
+
 #start {
   border: 1px solid silver;
   border-radius: 0.5em;
@@ -31,6 +35,7 @@
   align-items: center;
   padding: 1em;
   text-align: center;
+  font-size: 9vw;
 }
 
 main {
@@ -48,8 +53,8 @@ main span {
   white-space: nowrap;
 }
 
-#element, input, button {
-  font-size: 10vw !important;
+#element, input {
+  font-size: 10vw;
   font-family: Arial, sans-serif;
 }
 
