@@ -12,6 +12,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: Arial, sans-serif;
 }
 
 #start {
@@ -25,7 +26,7 @@
   align-items: center;
   padding: 1em;
   text-align: center;
-  font-size: 9vw;
+  font-size: 6vw;
 }
 
 #start button {
@@ -47,9 +48,8 @@ main {
   white-space: nowrap;
 }
 
-#start, #equation, input {
+#equation, input {
   font-size: 10vw;
-  font-family: Arial, sans-serif;
 }
 
 .progress {
