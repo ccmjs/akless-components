@@ -12,8 +12,14 @@ export { render };
  */
 export const start = `
   <div id="start" class="bg-white">
-    <span>%title%</span>
-    <button class="btn btn-primary" onclick="%onclick%">%button%</button>
+    <form onsubmit="%onclick%">
+      <span>%title%</span>
+      <label>
+        Zeitlimit:
+        <input type="number" name="timer" min="1" max="9" value="%timer%" required>Sekunden
+      </label>
+      <input type="submit" class="btn btn-primary" value="%button%">
+    </form>
   </div>
 `;
 
