@@ -6,6 +6,7 @@
  * @changes
  * version 1.1.0 (08.05.2021)
  * - timer can be set on start screen
+ * - set default timer to 5 seconds
  * version 1.0.0 (02.05.2021)
  */
 
@@ -35,7 +36,7 @@
       "onfinish": { "log": true },
 //    "onstart": instance => { ... }
       "operator": "*",
-      "timer": 3,
+      "timer": 5,
       "title": "Multiplication Table Trainer"
     },
 
