@@ -8,6 +8,7 @@
  * - uses ccmjs v26.1.1
  * - uses helper.mjs v7.0.0
  * - lit-html render function via HTML template file
+ * - correct place for defaults property
  * version 4.0.0 (27.11.2020)
  * - complete reimplementation
  * - uses ccm.js v26.1.0
