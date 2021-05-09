@@ -37,7 +37,6 @@
         ]
       ],
   //  "data": { "store": [ "ccm.store" ] },
-      "defaults": {},
       "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-7.0.0.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/cloze_builder/resources/templates.mjs" ],
       "ignore": {
@@ -53,6 +52,7 @@
             "value": [ "ccm.load", "https://ccmjs.github.io/akless-components/cloze/resources/lea.css" ]
           }
         },
+        "defaults": {},
         "user": {
           "guest": {
             "key": "guest",
@@ -134,8 +134,8 @@
 
       this.start = async () => {
 
-        // get initial app configuration (priority order: [high] this.data -> this.defaults -> this.tool.config [low])
-        dataset = await $.integrate( await $.dataset( this.data ), await $.integrate( this.defaults, this.tool.config ) );
+        // get initial app configuration (priority order: [high] this.data -> this.ignore.defaults -> this.tool.config [low])
+        dataset = await $.integrate( await $.dataset( this.data ), await $.integrate( this.ignore.defaults, this.tool.config ) );
 
         this.logger && this.logger.log( 'start', $.clone( dataset ) );                  // logging of 'start' event
         this.render( dataset );                                                         // render main HTML template
