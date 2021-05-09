@@ -55,7 +55,7 @@ export function main( instance, [ a, b ] ) {
             `;
           else
             return html`
-              <div title="${ result.operands[ 0 ] + ' ' + op() + ' ' + result.operands[ 1 ] }">
+              <div title="${ result.operands[ 0 ] + ' ' + op() + ' ' + result.operands[ 1 ] + ' = ' + result.solution }">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle-fill text-${ result.correct ? 'success' : 'danger' }" viewBox="0 0 16 16">
                   <circle cx="8" cy="8" r="8"/>
                 </svg>
