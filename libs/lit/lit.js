@@ -1268,6 +1268,7 @@ const generateMap = (list, start, end) => {
 // Stores previous ordered list of parts and map of key to index
 const partListCache = new WeakMap();
 const keyListCache = new WeakMap();
+
 /**
  * A directive that repeats a series of values (usually `TemplateResults`)
  * generated from an iterable, and updates those items efficiently when the
@@ -1628,4 +1629,27 @@ const repeat = directive((items, keyFnOrTemplate, template) => {
     };
 });
 
-export { html, render, repeat };
+/**
+ * Renders the result as HTML, rather than text.
+ *
+ * Note, this is unsafe to use with any user-provided input that hasn't been
+ * sanitized or escaped, as it may lead to cross-site-scripting
+ * vulnerabilities.
+ */
+const unsafeHTML = directive((value) => (part) => {
+    if (!(part instanceof NodePart)) {
+        throw new Error('unsafeHTML can only be used in text bindings');
+    }
+    const previousValue = previousValues.get(part);
+    if (previousValue !== undefined && isPrimitive(value) &&
+      value === previousValue.value && part.value === previousValue.fragment) {
+        return;
+    }
+    const template = document.createElement('template');
+    template.innerHTML = value; // innerHTML casts to string internally
+    const fragment = document.importNode(template.content, true);
+    part.setValue(fragment);
+    previousValues.set(part, { value, fragment });
+});
+
+export { html, render, repeat, unsafeHTML };
