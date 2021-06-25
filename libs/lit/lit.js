@@ -12,6 +12,14 @@
  * http://polymer.github.io/PATENTS.txt
  */
 const directives = new WeakMap();
+
+// For each part, remember the value that was last rendered to the part by the
+// unsafeHTML directive, and the DocumentFragment that was last set as a value.
+// The DocumentFragment is used as a unique key to check if the last value
+// rendered to the part was with unsafeHTML. If not, we'll always re-render the
+// value passed to unsafeHTML.
+const previousValues = new WeakMap();
+
 /**
  * Brands a function as a directive factory function so that lit-html will call
  * the function during template rendering, rather than passing as a value.
