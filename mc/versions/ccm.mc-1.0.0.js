@@ -10,6 +10,7 @@
 ( () => {
   const component = {
     name: 'mc',
+    version: [ 1, 0, 0 ],
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.4.0.js',
     config: {
       "css": [ "ccm.load", [
