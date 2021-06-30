@@ -20,7 +20,7 @@ ccm.files[ 'resources.js' ] = {
     "questions": [ "ccm.get", "./../mc/resources/resources.js", "questions" ],
     "text": {
       "question": "Frage %nr%/%total%",
-      "buttons": [ "Richtig", "", "Falsch" ],
+      "buttons": [ "Richtig", "Enthaltung", "Falsch" ],
       "finish": "Fertig",
       "next": "Weiter",
       "submit": "Abschicken"
@@ -38,7 +38,7 @@ ccm.files[ 'resources.js' ] = {
     "questions": [ "ccm.get", "https://ccmjs.github.io/akless-components/mc/resources/resources.js", "questions" ],
     "text": {
       "question": "Frage %nr%/%total%",
-      "buttons": [ "Richtig", "", "Falsch" ],
+      "buttons": [ "Richtig", "Enthaltung", "Falsch" ],
       "finish": "Fertig",
       "next": "Weiter",
       "submit": "Abschicken"
