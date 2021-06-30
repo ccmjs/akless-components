@@ -13,7 +13,7 @@
   cursor: pointer;
 }
 
-.answer:hover:not(.correct):not(.failed):not(.none) {
+.answer:hover:not(.correct):not(.wrong):not(.none) {
   background-color: #f8f9fa;
 }
 

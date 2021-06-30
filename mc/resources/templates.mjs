@@ -32,9 +32,9 @@ export function question( instance, events ) {
         ${ repeat( question.answers, answer => answer.key, answerTemplate ) }
       </div>
       <div class="py-3">
-        <button type="submit" class="btn btn-primary btn-sm" .disabled="${ question.input }" @click="${ events.onSubmit }">${ instance.text.submit }</button>
-        <button type="button" class="btn btn-primary btn-sm" .disabled="${ !question.input || data.nr === instance.questions.length }" @click="${ events.onNext }">${ instance.text.next }</button>
-        <button type="button" class="btn btn-primary btn-sm" .disabled="${ !question.input || data.nr !== instance.questions.length }" @click="${ events.onFinish }">${ instance.text.finish }</button>
+        <button type="submit" class="btn btn-primary btn-sm" .disabled="${ question.answers[ 0 ].input !== undefined }" @click="${ events.onSubmit }">${ instance.text.submit }</button>
+        <button type="button" class="btn btn-primary btn-sm" .disabled="${ question.answers[ 0 ].input === undefined || data.nr === data.questions.length }" @click="${ events.onNext }">${ instance.text.next }</button>
+        <button type="button" class="btn btn-primary btn-sm" .disabled="${ question.answers[ 0 ].input === undefined || data.nr !== data.questions.length }" @click="${ events.onFinish }">${ instance.text.finish }</button>
       </div>
     </form>
   `;
@@ -48,18 +48,18 @@ export function question( instance, events ) {
   function answerTemplate( answer, i ) {
     const nr = i + 1;
     return html`
-      <div class="p-2 d-flex justify-content-between align-items-center border-bottom answer${ instance.feedback && question.input && ' ' + ( question.input[ i ] === '' ? 'none' : question.input[ i ] === question.solution[ i ] ? 'correct' : 'wrong' ) || '' }">
+      <div class="p-2 d-flex justify-content-between align-items-center border-bottom answer${ instance.feedback && answer.input !== undefined && ' ' + ( answer.input === '' ? 'none' : answer.input === answer.solution ? 'correct' : 'wrong' ) || '' }">
         <div class="d-flex align-items-center">
           <div class="icon">${ icon() }</div>
           <div class="mx-2">${ instance.escape ? answer.text : unsafeHTML( answer.text ) }</div>
         </div>
         <div class="ms-2">
           <div class="btn-group btn-group-sm" role="group" aria-label="Basic radio toggle button group">
-            <input type="radio" class="btn-check" name="input.${ nr - 1 }" value="true" id="answer-${ nr }-1" autocomplete="off" .disabled="${ question.input }" ?checked="${ question.input && question.input[ i ] === true }">
+            <input type="radio" class="btn-check" name="input.${ i }" value="true" id="answer-${ nr }-1" autocomplete="off" .disabled="${ answer.input !== undefined }" ?checked="${ answer.input === true }">
             <label class="btn btn-outline-success" for="answer-${ nr }-1">${ instance.text.buttons[ 0 ] }</label>
-            <input type="radio" class="btn-check middle" name="input.${ nr - 1 }" value="" id="answer-${ nr }-2" autocomplete="off" .disabled="${ question.input }" ?checked="${ !question.input || question.input[ i ] === '' }">
+            <input type="radio" class="btn-check middle" name="input.${ i }" value="" id="answer-${ nr }-2" autocomplete="off" .disabled="${ answer.input !== undefined }" ?checked="${ answer.input === undefined || answer.input === '' }">
             <label class="btn btn-outline-secondary" for="answer-${ nr }-2">${ instance.text.buttons[ 1 ] }</label>
-            <input type="radio" class="btn-check" name="input.${ nr - 1 }" value="false" id="answer-${ nr }-3" autocomplete="off" .disabled="${ question.input }" ?checked="${ question.input && question.input[ i ] === false }">
+            <input type="radio" class="btn-check" name="input.${ i }" value="false" id="answer-${ nr }-3" autocomplete="off" .disabled="${ answer.input !== undefined }" ?checked="${ answer.input === false }">
             <label class="btn btn-outline-danger" for="answer-${ nr }-3">${ instance.text.buttons[ 2 ] }</label>
           </div>
         </div>
@@ -71,11 +71,11 @@ export function question( instance, events ) {
      * @returns {*}
      */
     function icon() {
-      if ( !instance.feedback || !question.input )
+      if ( !instance.feedback || answer.input === undefined )
         return html`<span class="badge rounded-pill bg-primary">${ nr }</span>`;
-      if ( question.input[ i ] === '' )
+      if ( answer.input === '' )
         return html`<svg xmlns="http://www.w3.org/2000/svg" height="24"></svg>`;
-      if ( question.input[ i ] === question.solution[ i ] )
+      if ( answer.input === answer.solution )
         return html`
           <svg xmlns="http://www.w3.org/2000/svg" height="24" fill="currentColor" class="bi bi-check-lg text-success" viewBox="0 0 16 16">
             <path d="M13.485 1.431a1.473 1.473 0 0 1 2.104 2.062l-7.84 9.801a1.473 1.473 0 0 1-2.12.04L.431 8.138a1.473 1.473 0 0 1 2.084-2.083l4.111 4.112 6.82-8.69a.486.486 0 0 1 .04-.045z"/>

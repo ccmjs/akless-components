@@ -110,15 +110,25 @@
          */
         onSubmit: event => {
           event.preventDefault();
-          data.questions[ data.nr - 1 ].input = $.formData( this.element.querySelector( 'form' ) ).input;
+          if ( data.questions[ data.nr - 1 ].answers[ 0 ].input !== undefined ) return;
+          const input = $.formData( this.element.querySelector( 'form' ) ).input;
+          input.forEach( ( input, i ) => data.questions[ data.nr - 1 ].answers[ i ].input = input );
           this.feedback ? render() : events.onNext();
         },
 
         /** when 'next' button is clicked */
-        onNext: () => { data.nr++; render(); },
+        onNext: () => {
+          if ( data.questions[ data.nr - 1 ].answers[ 0 ].input === undefined || data.nr === data.questions.length ) return;
+          data.nr++;
+          render();
+        },
 
         /** when 'finish' button is clicked */
-        onFinish: () => { delete data.nr; $.onFinish( this ); }
+        onFinish: () => {
+          if ( data.questions[ data.nr - 1 ].answers[ 0 ].input === undefined || data.nr !== data.questions.length ) return;
+          delete data.nr;
+          $.onFinish( this );
+        }
 
       };
 
