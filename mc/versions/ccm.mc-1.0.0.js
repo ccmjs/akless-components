@@ -58,11 +58,13 @@
         // set shortcut to help functions
         $ = Object.assign( {}, this.ccm.helper, this.helper ); $.use( this.ccm );
 
-        // set identifier for each question and each answer
-        this.questions.forEach( question => {
+        // set identifier and original order number for each question and each answer
+        this.questions.forEach( ( question, i ) => {
           if ( !question.key ) question.key = $.toKey( question.text );
-          question.answers.forEach( answer => {
+          question.nr = i + 1;
+          question.answers.forEach( ( answer, i ) => {
             if ( !answer.key ) answer.key = $.toKey( answer.text );
+            answer.nr = i + 1;
           } );
         } );
 
