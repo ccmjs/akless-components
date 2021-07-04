@@ -14,7 +14,7 @@
     config: {
       "chart": [ "ccm.component", "https://ccmjs.github.io/akless-components/highchart/versions/ccm.highchart-3.0.4.js" ],
       "css": [ "ccm.load", [
-        "https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css",
+        "https://ccmjs.github.io/akless-components/libs/bootstrap-5/css/bootstrap.min.css",
         "https://ccmjs.github.io/akless-components/mc_analytics/resources/styles.css"
       ] ],
       "data": {},
