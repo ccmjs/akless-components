@@ -35,7 +35,7 @@ ccm.files[ 'resources.js' ] = {
     },
     "feedback": true,
     "onfinish": { "log": true, "store": true, "restart": true },
-    "questions": [ "ccm.get", { "name": "dbs-questions", "url": "https://cm2.inf.h-brs.de" } ],
+    "questions": [ "ccm.get", { "name": "dbs-questions", "url": "https://ccm2.inf.h-brs.de" } ],
     "text": {
       "question": "Frage %nr%/%total%",
       "buttons": [ "Richtig", "Enthaltung", "Falsch" ],
