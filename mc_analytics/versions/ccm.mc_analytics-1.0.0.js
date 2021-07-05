@@ -19,9 +19,10 @@
         "https://ccmjs.github.io/akless-components/mc_analytics/resources/styles.css"
       ] ],
       "data": {},
+//    "editor": [ "ccm.start", "https://ccmjs.github.io/tkless-components/editor/versions/ccm.editor-4.0.0.js" ],
       "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-7.4.0.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/mc_analytics/resources/templates.mjs" ],
-      "modal": [ "ccm.start", "https://ccmjs.github.io/tkless-components/modal/versions/ccm.modal-3.0.0.js", {
+      "modal": [ "ccm.start", "https://ccmjs.github.io/tkless-components/modal/versions/ccm.modal-3.1.0.js", {
         "backdrop_close": true,
         "buttons": null,
         "closed": true,
@@ -29,6 +30,7 @@
         "title": ""
       } ],
 //    "onstart": instance => { ... },
+//    "source": [ "ccm.store" ],
       "sort": {
         "question": ( a, b ) => a.nr - b.nr,
         "answer":   ( a, b ) => a.nr - b.nr
@@ -82,6 +84,12 @@
       let questions;
 
       /**
+       * data pool of questions and answers
+       * @type {Object[]}
+       */
+      let source;
+
+      /**
        * starts the app
        * @returns {Promise<void>}
        */
@@ -89,6 +97,9 @@
 
         // set shortcut to help functions
         $ = Object.assign( {}, this.ccm.helper, this.helper ); $.use( this.ccm );
+
+        // load data pool of questions and answers
+        if ( this.source ) source = $.arrToStore( await this.source.get() );
 
         // get analytics data
         data = await $.dataset( this.data );
@@ -103,9 +114,17 @@
         // render analytics data
         this.html.render( this.html.table( this ), this.element.querySelector( '#data' ) );
 
-        // set click events for diagram buttons
+        // set click events for diagram buttons and question/answer text
         this.element.querySelectorAll( '.question' ).forEach( row => row.querySelector( 'button' ).addEventListener( 'click', () => showQuestionChart( row.dataset.key ) ) );
         this.element.querySelector( '#points-chart' ).addEventListener( 'click', showPointsChart );
+        this.element.querySelectorAll( '.question [data-editable]' ).forEach( question => question.addEventListener( 'click', event => {
+          const row = event.target.closest( '[data-key]' );
+          editText( row.dataset.key );
+        } ) );
+        this.element.querySelectorAll( '.answer [data-editable]' ).forEach( answer => answer.addEventListener( 'click', event => {
+          const row = event.target.closest( '[data-key]' );
+          editText( row.dataset.for, row.dataset.key );
+        } ) );
 
         // trigger 'onstart' callback
         this.onstart && await this.onstart( this );
@@ -132,7 +151,7 @@
               section = {
                 key: question.key,
                 nr: question.nr,
-                text: question.text,
+                text: source ? source[ question.key ].text : question.text,
                 answers: {},
                 total: 0,
                 points: {
@@ -144,7 +163,7 @@
                 section.answers[ answer.key ] = {
                   key: answer.key,
                   nr: answer.nr,
-                  text: answer.text,
+                  text: source ? source[ question.key ].answers.find( obj => obj.key === answer.key ).text : answer.text,
                   solution: answer.solution,
                   correct: 0,
                   wrong: 0
@@ -313,6 +332,27 @@
           }
         } );
 
+      };
+
+      /**
+       * shows a modal dialog with a WYSIWYG online text editor to edit the text of a question or an answer
+       * @param {string} question_key - unique key of the question in the data pool
+       * @param {string} [answer_key] - unique key of the answer in the data pool
+       */
+      const editText = ( question_key, answer_key ) => {
+        const question = source[ question_key ];
+        this.editor.data = answer_key ? question.answers.find( answer => answer.key === answer_key ).text : question.text;
+        $.setContent( this.modal.element.querySelector( '#content' ), this.editor.root );
+        this.editor.start();
+        this.modal.onclose = () => {
+          this.modal.onclose = null;
+          if ( answer_key )
+            question.answers.find( answer => answer.key === answer_key ).text = this.editor.getValue().inner;
+          else
+            question.text = this.editor.getValue().inner;
+          this.source.set( question ).then( this.start );
+        };
+        this.modal.open();
       };
 
     }

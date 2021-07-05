@@ -13,8 +13,25 @@ ccm.files[ 'resources.js' ] = {
       "store": [ "ccm.store", { "name": "mc-data", "url": "https://ccm2.inf.h-brs.de" } ],
       "key": "test"
     },
+    "editor": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/editor/versions/ccm.editor-4.0.0.js", {
+      "editor": [ "ccm.load",
+        "https://ccmjs.github.io/tkless-components/libs/quill/quill.js",
+        "https://cdn.quilljs.com/1.2.0/quill.snow.css"
+      ],
+      "settings": {
+        "modules": {
+          "toolbar": [
+            [ "bold", "italic", "underline", "strike" ],
+            [ { "list": "ordered" }, { "list": "bullet" } ],
+            [ "link", "image" ]
+          ]
+        },
+        "theme": "snow"
+      }
+    } ],
     "helper.1": "./../modules/helper.mjs",
     "html.1": "./../mc_analytics/resources/templates.mjs",
+    "source": [ "ccm.store", { "name": "dbs-questions", "url": "https://ccm2.inf.h-brs.de" } ],
     "text": {
       "answer": "Multiple Choice Antwort",
       "average": "Durchschnittlich erreichte Punkte",

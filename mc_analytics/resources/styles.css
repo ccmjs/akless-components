@@ -58,3 +58,7 @@ th > span, td > span {
   font-size: x-large;
   padding-bottom: 1px;
 }
+
+[data-editable] {
+  cursor: pointer;
+}
