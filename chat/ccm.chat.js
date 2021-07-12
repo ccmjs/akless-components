@@ -142,7 +142,7 @@
 
         // render text editor and send button
         if ( this.user && this.user.isLoggedIn() ) {
-          $.setContent( this.element.querySelector( '#input' ), $.isInstance( this.editor ) ? this.editor.root : this.html.input );
+          $.setContent( this.element.querySelector( '#input' ), this.editor ? this.editor.root : this.html.input );
           $.append( this.element.querySelector( '#input' ), $.html( this.html.button, {
             caption: this.button,
             onclick: async () => {
@@ -151,7 +151,7 @@
                * current user input from text editor
                * @type {{inner: string}}
                */
-              let value = $.isInstance( this.editor ) ? this.editor.getValue() : this.element.querySelector( '#input textarea' ).value;
+              let value = this.editor ? this.editor.getValue() : this.element.querySelector( '#input textarea' ).value;
 
               // is empty? => abort
               if ( !$.html( value ).innerText.trim() ) return;
@@ -185,7 +185,7 @@
               await this.refresh( message );                       // update local chat messages
 
               // clear user input in text editor and set focus
-              if ( $.isInstance( this.editor ) ) {
+              if ( this.editor ) {
                 this.editor.get().root.innerHTML = '';
                 setTimeout( () => this.editor.get().focus(), 500 );
               }
@@ -199,7 +199,7 @@
 
             }
           } ) );
-          $.isInstance( this.editor ) ? setTimeout( () => this.editor.get().focus(), 500 ) : this.element.querySelector( '#input textarea' ).focus();
+          this.editor ? setTimeout( () => this.editor.get().focus(), 500 ) : this.element.querySelector( '#input textarea' ).focus();
         }
 
         this.onstart && this.onstart( this );  // perform 'start' callback
