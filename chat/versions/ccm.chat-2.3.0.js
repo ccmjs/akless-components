@@ -2,7 +2,7 @@
  * @overview ccmjs-based web component for chat
  * @author André Kless <andre.kless@web.de> 2020-2021
  * @license The MIT License (MIT)
- * @version latest (2.3.0)
+ * @version 2.3.0
  * @changes
  * version 2.3.0 (12.07.2021):
  * - text editor can also be a textarea
@@ -35,6 +35,7 @@
 
   const component = {
     name: 'chat',
+    version: [ 2, 3, 0 ],
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.3.1.js',
     config: {
       "button": "Send",
