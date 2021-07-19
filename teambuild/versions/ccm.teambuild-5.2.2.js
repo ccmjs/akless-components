@@ -2,7 +2,7 @@
  * @overview ccmjs-based web component for team building
  * @author André Kless <andre.kless@web.de> 2017-2021
  * @license The MIT License (MIT)
- * @version latest (5.2.2)
+ * @version 5.2.2
  * @changes
  * version 5.2.2 (16.04.2021)
  * - uses ccmjs v26.4.3 as default
@@ -28,6 +28,7 @@
 
   const component = {
     name: 'teambuild',
+    version: [ 5, 2, 2 ],
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.4.3.js',
     config: {
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/teambuild/resources/default.css" ],
