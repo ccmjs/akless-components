@@ -14,7 +14,6 @@ ccm.files[ 'resources.js' ] = {
       "store": [ "ccm.store", { "name": "chat-data", "url": "wss://ccm2.inf.h-brs.de" } ],
       "key": "test"
     },
-    "helper.1": "./../modules/helper.mjs",
 //  "hide_login": true,
     "html.1": "./../chat/resources/templates_v2.html",
 //  "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js", [ "ccm.get", "./../chat/resources/resources.js", "lang" ] ],
