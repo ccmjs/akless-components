@@ -38,7 +38,7 @@
 
   const component = {
     name: 'chat',
-    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.3.1.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.4.3.js',
     config: {
       "button": "Send",
       "css": [ "ccm.load",
