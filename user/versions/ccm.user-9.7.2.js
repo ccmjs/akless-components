@@ -2,7 +2,7 @@
  * @overview ccmjs-based web component for user authentication
  * @author André Kless <andre.kless@web.de> 2017-2021
  * @license The MIT License (MIT)
- * @version latest (9.7.2)
+ * @version 9.7.2
  * @changes
  * version 9.7.2 (19.07.2021):
  * - logout with unknown realm only with URL
@@ -19,6 +19,7 @@
 
   const component = {
     name: 'user',
+    version: [ 9, 7, 2 ],
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.4.3.js',
     config: {
       "css": [ "ccm.load",
