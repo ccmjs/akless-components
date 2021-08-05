@@ -3,7 +3,7 @@
  * ES6 module that exports useful help functions for <i>ccmjs</i> component developers.
  * @author André Kless <andre.kless@web.de> 2019-2021
  * @license The MIT License (MIT)
- * @version latest (7.4.1)
+ * @version 7.4.1
  * @changes
  * version 7.4.1 (05.08.2021):
  * - dataset(settings):obj returns an object in any case
