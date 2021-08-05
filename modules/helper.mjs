@@ -541,7 +541,7 @@ export const dataset = async ( settings = {} ) => {
   settings = ccm.helper.clone( settings );
 
   // settings are dataset directly? => dataset is result
-  if ( !ccm.helper.isDatastore( settings.store ) ) return $.isObject( settings ) ? settings : {};
+  if ( !ccm.helper.isDatastore( settings.store ) ) return ccm.helper.isObject( settings ) ? settings : {};
 
   // no dataset key? => generate a unique key
   if ( !settings.key ) settings.key = ccm.helper.generateKey();
