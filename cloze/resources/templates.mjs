@@ -3,7 +3,7 @@
  * @author André Kless <andre.kless@web.de> 2020-2021
  */
 
-import { html, render } from 'https://esm.run/lit-html';
+import { html, render } from 'https://ccmjs.github.io/akless-components/libs/lit/lit.js';
 export { render };
 
 /**
