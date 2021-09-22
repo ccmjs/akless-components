@@ -55,7 +55,7 @@ export const local = {
       "./../styles.css"
     ]
   ],
-  "html.1": "./resources/templates.mjs",
+  "html": [ "ccm.load", "./templates.mjs" ],
   "text": text,
   "tool": tool
 };
@@ -65,6 +65,7 @@ export const local = {
  * @type {Object}
  */
 export const demo = {
+  "html.1": [ "ccm.load", "https://ccmjs.github.io/akless-components/config_builder/resources/pdf_viewer/templates.mjs" ],
   "text": text,
   "tool": tool
 };
