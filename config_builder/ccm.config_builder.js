@@ -10,18 +10,22 @@
 ( () => {
   const component = {
     name: 'config_builder',
-    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.4.4.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-27.0.0.js',
     config: {
       "css": [ "ccm.load",
         [  // serial
           "https://ccmjs.github.io/akless-components/libs/bootstrap-5/css/bootstrap.css",
           "https://ccmjs.github.io/akless-components/config_builder/resources/styles.css"
-        ]
+        ],
+        "https://ccmjs.github.io/akless-components/libs/bootstrap-5/css/bootstrap-icons.css",
+        { "url": "https://ccmjs.github.io/tkless-components/libs/bootstrap-5/css/bootstrap-fonts.css", "context": "head" },
       ],
 //    "data": { "store": [ "ccm.store" ] },
       "defaults": {},
       "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-7.5.0.mjs" ],
 //    "html": [ "ccm.load", "templates.mjs" ],
+      "id": "cb",
+      "ignore": {},
       "libs": [ "ccm.load", "https://ccmjs.github.io/akless-components/libs/bootstrap-5/js/bootstrap.bundle.min.js" ],
 //    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-5.0.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
       "onfinish": { "log": true },
@@ -42,6 +46,12 @@
       let $;
 
       /**
+       * initial app configuration
+       * @type {Object}
+       */
+      let config;
+
+      /**
        * when all dependencies are solved after creation and before the app starts
        * @returns {Promise<void>}
        */
@@ -49,6 +59,7 @@
         $ = Object.assign( {}, this.ccm.helper, this.helper ); $.use( this.ccm );  // set shortcut to help functions
         delete this.tool.config.parent;                                            // remove no needed parent reference
         this.logger && this.logger.log( 'ready', $.privatize( this, true ) );      // logging of 'ready' event
+        this.element.classList.add( 'cb' );                                        // add class as prefix for CSS rules (to compensate Shadow DOM)
       };
 
       /**
@@ -57,11 +68,11 @@
        */
       this.start = async () => {
 
-        /**
-         * initial app configuration (priority order: [high] this.data -> this.defaults -> this.tool.config [low])
-         * @type {Object}
-         */
-        const config = await $.integrate( await $.dataset( this.data ), await $.integrate( this.defaults, this.tool.config ) );
+        // set initial app configuration (priority order: [high] this.data -> this.ignore.defaults -> this.tool.config [low])
+        config = await $.integrate( await $.dataset( this.data ), await $.integrate( this.ignore.defaults, this.tool.config ) );
+
+        // generate unique key for app state data
+        if ( config.data && config.data.store && !config.data.key ) config.data.key = $.generateKey();
 
         this.logger && this.logger.log( 'start', $.clone( config ) );  // logging of 'start' event
         this.render( config );                                         // render webpage area
@@ -78,7 +89,12 @@
        * returns current resulting app configuration
        * @returns {Object} current resulting app configuration
        */
-      this.getValue = () => $.formData( this.element.querySelector( 'form' ) );
+      this.getValue = () => {
+        let form_data = $.formData( this.element.querySelector( 'form' ) );
+        for ( const key in this.ignore.mapping )
+          form_data[ key ] = this.ignore.mapping[ key ][ form_data[ key ] ].value;
+        return Object.assign( {}, config, form_data );
+      };
 
       /**
        * contains all event handlers
@@ -89,11 +105,9 @@
         /** when the value of an input field changes */
         onChange: () => this.render( this.getValue() ),
 
-        /**
-         * when 'preview' button is clicked
-         */
+        /** when 'preview' button is clicked */
         onPreview: () => {
-          const preview_body = this.element.querySelector( '#pvb-preview .modal-body' );
+          const preview_body = this.element.querySelector( '.modal-body' );
           $.setContent( preview_body, '' );
           this.tool.start( Object.assign( this.getValue(), { root: preview_body } ) );
         },
