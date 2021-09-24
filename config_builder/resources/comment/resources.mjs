@@ -9,6 +9,7 @@
  * @type {Object}
  */
 const basic = {
+  "id": "cmb",
   "ignore": {
     "defaults": {
       "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.2.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/resources.js", "guest" ] ]
