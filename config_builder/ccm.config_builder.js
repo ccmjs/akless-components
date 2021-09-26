@@ -18,7 +18,7 @@
           "https://ccmjs.github.io/akless-components/config_builder/resources/styles.min.css"
         ],
         "https://ccmjs.github.io/akless-components/libs/bootstrap-5/css/bootstrap-icons.min.css",
-        { "url": "https://ccmjs.github.io/tkless-components/libs/bootstrap-5/css/bootstrap-fonts.min.css", "context": "head" },
+        { "url": "https://ccmjs.github.io/akless-components/libs/bootstrap-5/css/bootstrap-fonts.min.css", "context": "head" },
       ],
 //    "data": { "store": [ "ccm.store" ] },
       "defaults": {},
