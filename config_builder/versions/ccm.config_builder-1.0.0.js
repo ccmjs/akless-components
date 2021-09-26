@@ -15,11 +15,11 @@
     config: {
       "css": [ "ccm.load",
         [  // serial
-          "https://ccmjs.github.io/akless-components/libs/bootstrap-5/css/bootstrap.css",
-          "https://ccmjs.github.io/akless-components/config_builder/resources/styles.css"
+          "https://ccmjs.github.io/akless-components/libs/bootstrap-5/css/bootstrap.min.css",
+          "https://ccmjs.github.io/akless-components/config_builder/resources/styles.min.css"
         ],
-        "https://ccmjs.github.io/akless-components/libs/bootstrap-5/css/bootstrap-icons.css",
-        { "url": "https://ccmjs.github.io/tkless-components/libs/bootstrap-5/css/bootstrap-fonts.css", "context": "head" },
+        "https://ccmjs.github.io/akless-components/libs/bootstrap-5/css/bootstrap-icons.min.css",
+        { "url": "https://ccmjs.github.io/tkless-components/libs/bootstrap-5/css/bootstrap-fonts.min.css", "context": "head" },
       ],
 //    "data": { "store": [ "ccm.store" ] },
       "defaults": {},
