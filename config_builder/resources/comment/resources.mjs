@@ -12,7 +12,7 @@ const basic = {
   "id": "cmb",
   "ignore": {
     "defaults": {
-      "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.2.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/resources.js", "guest" ] ]
+      "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.2.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/resources.min.js", "guest" ] ]
     },
     "mapping": {
       "user": {
@@ -24,27 +24,27 @@ const basic = {
         "guest": {
           "key": "guest",
           "title": "Guest Mode",
-          "value": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.2.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/resources.js", "guest" ] ]
+          "value": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.2.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/resources.min.js", "guest" ] ]
         },
         "cloud": {
           "key": "cloud",
           "title": "Digital Makerspace Account",
-          "value": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.2.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/resources.js", "cloud" ] ]
+          "value": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.2.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/resources.min.js", "cloud" ] ]
         },
         "hbrsinfkaul": {
           "key": "hbrsinfkaul",
           "title": "H-BRS FB02 Account",
-          "value": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.2.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/resources.js", "hbrsinfkaul" ] ]
+          "value": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.2.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/resources.min.js", "hbrsinfkaul" ] ]
         },
         "hbrsinfpseudo": {
           "key": "hbrsinfpseudo",
           "title": "H-BRS FB02 Account with Pseudonym",
-          "value": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.2.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/resources.js", "hbrsinfpseudo" ] ]
+          "value": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.2.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/resources.min.js", "hbrsinfpseudo" ] ]
         },
         "pseudo": {
           "key": "pseudo",
           "title": "One-time Pseudonym",
-          "value": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.2.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/resources.js", "pseudo" ] ]
+          "value": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.2.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/resources.min.js", "pseudo" ] ]
         }
       }
     }
@@ -119,7 +119,7 @@ const basic = {
     "user": "User Authentication",
     "user_info": "The user must log in to send or rate a comment.<ul class=\"m-0 pl-4\"><li><u>Guest Mode:</u> The user can authenticate with any username and without a password.</li><li><u>Digital Makerspace Account:</u> The user must log in with a Digital Makerspace account.</li><li><u>H-BRS FB02 Account:</u> The user has to authenticate with an account from the Department of Computer Sciences at Hochschule Bonn-Rhein-Sieg University of Applied Sciences.</li><li><u>H-BRS FB02 Account with Pseudonym:</u> The same as the previous option, but the username is replaced with a pseudonym.</li><li><u>One-time Pseudonym:</u> The user is automatically logged in with a one-time pseudonym. Each login after the end of a session returns a different pseudonym.</li></ul>"
   },
-  "tool": [ "ccm.component", "https://ccmjs.github.io/tkless-components/comment/versions/ccm.comment-7.0.0.js" ]
+  "tool": [ "ccm.component", "https://ccmjs.github.io/tkless-components/comment/versions/ccm.comment-7.0.0.min.js" ]
 }
 
 /**

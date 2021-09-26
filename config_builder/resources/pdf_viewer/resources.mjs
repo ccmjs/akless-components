@@ -39,7 +39,7 @@ const basic = {
     "text_user": "Required Account",
     "text_user_info": "Here you can set whether the PDF should only be displayed for people who log in with a specific account.<ul class=\"m-0 pl-4\"><li><b>Digital Makerspace Account:</b> The user must log in with a Digital Makerspace account.</li><li><b>H-BRS FB02 Account:</b> The user has to authenticate with an account from the Department of Computer Sciences at Hochschule Bonn-Rhein-Sieg University of Applied Sciences.</li></ul>"
   },
-  "tool": [ "ccm.component", "https://ccmjs.github.io/tkless-components/pdf_viewer/versions/ccm.pdf_viewer-7.0.0.js" ]
+  "tool": [ "ccm.component", "https://ccmjs.github.io/tkless-components/pdf_viewer/versions/ccm.pdf_viewer-7.0.0.min.js" ]
 };
 
 /**
