@@ -10,7 +10,7 @@
 ( () => {
   const component = {
     name: 'config_builder',
-    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-27.0.0.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-27.0.0.min.js',
     config: {
       "css": [ "ccm.load",
         [  // serial
