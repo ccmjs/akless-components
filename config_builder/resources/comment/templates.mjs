@@ -15,7 +15,7 @@ export { render };
  */
 export function main( config, builder, events ) {
   const id = builder.id;
-  use( config, builder, events );
+  use( config, builder, events, id );
   return html`
     <form @submit=${ events.onSubmit }>
       <div class="accordion accordion-flush" id="${ id }-accordion">
