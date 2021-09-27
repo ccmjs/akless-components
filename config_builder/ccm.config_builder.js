@@ -10,7 +10,7 @@
 ( () => {
   const component = {
     name: 'config_builder',
-    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-27.0.0.min.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-27.1.0.min.js',
     config: {
       "css": [ "ccm.load",
         [  // serial
@@ -27,7 +27,7 @@
       "id": "cb",
       "ignore": {},
       "libs": [ "ccm.load", "https://ccmjs.github.io/akless-components/libs/bootstrap-5/js/bootstrap.bundle.min.js" ],
-//    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-5.0.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
+//    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-5.0.1.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.min.js", "greedy" ] ],
       "onfinish": { "log": true },
       "shadow": "none",
 //    "text": {
