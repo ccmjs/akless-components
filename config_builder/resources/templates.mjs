@@ -109,7 +109,7 @@ export function buttons() {
  */
 export function modal() {
   return html`
-    <div class="modal fade" id="${ id }-preview" tabindex="-1" aria-labelledby="${ id }-preview-title" aria-hidden="true">
+    <div class="modal" id="${ id }-preview" tabindex="-1" aria-labelledby="${ id }-preview-title" aria-hidden="true">
       <div class="modal-dialog modal-fullscreen">
         <div class="modal-content">
           <div class="modal-header">
