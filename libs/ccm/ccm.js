@@ -5,8 +5,10 @@
  * and defines the Custom Element <code>\<ccm-app\></code>.
  * @author André Kless <andre.kless@web.de> 2014-2021
  * @license The MIT License (MIT)
- * @version latest (27.1.0)
+ * @version latest (27.1.1)
  * @changes
+ * version 27.1.1 (28.09.2021)
+ * - an instance created with ccm.start() is ready AFTER instance.start() is finished
  * version 27.1.0 (27.09.2021)
  * - added attribute 'ccm' for <ccm-app> to define used version of ccmjs (<ccm-app ccm="27.1.0" component="..." src="...">)
  * version 27.0.0 (24.09.2021)
@@ -501,7 +503,7 @@
      * @description Returns the _ccmjs_ version.
      * @returns {ccm.types.version_nr}
      */
-    version: () => '27.1.0',
+    version: () => '27.1.1',
 
     /**
      * @summary loads resources
@@ -1407,10 +1409,15 @@
             const next = instances.pop();
 
             // result has a ready function? => perform and delete ready function and check next result afterwards (recursive call)
-            next.ready ? next.ready().then( () => { delete next.ready; ready(); } ) : ready();
+            next.ready ? next.ready().then( () => { delete next.ready; proceed(); } ) : proceed();
 
-            // does the app has to be started directly? => do it
-            if ( next._start ) { delete next._start; next.start(); }
+            /** when instance is ready */
+            function proceed() {
+
+              // does the app has to be started directly? => do it (otherwise: continue with next instance)
+              if ( next._start ) { delete next._start; next.start().then( ready ); } else ready();
+
+            }
 
           }
 
