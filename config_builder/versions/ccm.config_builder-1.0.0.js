@@ -11,7 +11,7 @@
   const component = {
     name: 'config_builder',
     version: [ 1, 0, 0 ],
-    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-27.1.0.min.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-27.1.1.min.js',
     config: {
       "css": [ "ccm.load",
         [  // serial
