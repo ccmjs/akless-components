@@ -4,7 +4,7 @@
  * @license The MIT License (MIT)
  * @version latest (1.0.0)
  * @changes
- * version 1.0.0 (22.09.2021)
+ * version 1.0.0 (30.09.2021)
  */
 
 ( () => {
@@ -22,7 +22,7 @@
       ],
 //    "data": { "store": [ "ccm.store" ] },
       "defaults": {},
-      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-7.5.0.mjs" ],
+      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-7.7.0.mjs" ],
 //    "html": [ "ccm.load", "templates.mjs" ],
       "id": "cb",
       "ignore": {},
