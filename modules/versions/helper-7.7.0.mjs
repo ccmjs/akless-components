@@ -3,7 +3,7 @@
  * ES6 module that exports useful help functions for <i>ccmjs</i> component developers.
  * @author André Kless <andre.kless@web.de> 2019-2021
  * @license The MIT License (MIT)
- * @version latest (7.7.0)
+ * @version 7.7.0
  * @changes
  * version 7.7.0 (30.09.2021):
  * - updated onfinish(settings,results,user):void - added user parameter
