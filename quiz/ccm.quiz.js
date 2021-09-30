@@ -535,7 +535,7 @@
             } ) );
 
             // render 'finish' button (if needed)
-            !self.show_results && $.setContent( finish_elem, $.html( {
+            !self.show_results && self.onfinish && $.setContent( finish_elem, $.html( {
               tag: 'button',
               disabled: !self.anytime_finish && ( question.i !== self.questions.length - 1 || self.feedback && !evaluated[ question.nr ] ),
               inner: self.placeholder.finish,
