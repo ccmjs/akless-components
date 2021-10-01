@@ -83,8 +83,9 @@ export const local = {
   ],
   "html": [ "ccm.load", "./templates.mjs" ],
   "id": "pvb",
+  "onfinish": { "log": true },
   "text": en,
-  "tool": [ "ccm.component", "https://ccmjs.github.io/tkless-components/pdf_viewer/versions/ccm.pdf_viewer-7.0.0.min.js", [ "ccm.load", "https://ccmjs.github.io/tkless-components/pdf_viewer/resources/resources.mjs#local" ] ]
+  "tool": [ "ccm.component", "https://ccmjs.github.io/tkless-components/pdf_viewer/versions/ccm.pdf_viewer-7.0.0.min.js" ]
 };
 
 /**
