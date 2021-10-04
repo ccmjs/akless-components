@@ -26,7 +26,7 @@ export function heading( key  ) {
     </div>
     <div class="collapse info" id="${ id }-${ key }-info">
       <small class="card card-body bg-info p-2">
-        ${ unsafeHTML( builder.text[ key + '_info' ] ) }
+        <span>${ unsafeHTML( builder.text[ key + '_info' ] ) }</span>
       </small>
     </div>
   `;
@@ -80,7 +80,7 @@ export function checkbox( setup ) {
     </div>
     <div class="collapse info" id="${ id }-${ key }-info">
       <small class="card card-body bg-info p-2">
-        ${ builder.text[ key + '_info' ] }
+        <span>${ unsafeHTML( builder.text[ key + '_info' ] ) }</span>
       </small>
     </div>
   `;
