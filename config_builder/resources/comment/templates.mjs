@@ -3,7 +3,7 @@
  * @author André Kless <andre.kless@web.de> 2021
  */
 
-import { html, render, use, heading, checkbox, text, buttons, modal } from './../templates.mjs';  // https://ccmjs.github.io/akless-components/config_builder/resources/
+import { html, render, use, heading, checkbox, text, buttons, modal } from 'https://ccmjs.github.io/akless-components/config_builder/resources/templates.mjs';
 export { render };
 
 /**
