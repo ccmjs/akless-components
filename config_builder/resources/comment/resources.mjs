@@ -208,6 +208,7 @@ export const test = {
       }
     }
   },
+  "onfinish": { "log": true },
   "text": en,
   "tool": [ "ccm.component", "https://ccmjs.github.io/tkless-components/comment/versions/ccm.comment-7.0.0.min.js" ]
 };
