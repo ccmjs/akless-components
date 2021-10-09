@@ -158,7 +158,7 @@ export const en = {
  * test configuration (relative paths)
  * @type {Object}
  */
-export const local = {
+export const test = {
   "css": [ "ccm.load",
     [  // serial
       "./../../../libs/bootstrap-5/css/bootstrap.css",
