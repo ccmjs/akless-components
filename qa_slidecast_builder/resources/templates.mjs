@@ -57,10 +57,10 @@ export function main( config, builder, events ) {
         ${ text( 'pdf_viewer.2.text.last' ) }
         ${ text( 'pdf_viewer.2.text.jump' ) }
         ${ text( { prop: 'pdf_viewer.2.text.download', hidden: !config.downloadable } ) }
-        ${ text( 'pdf_viewer.2.text.protected' ) }
-        ${ text( 'pdf_viewer.2.text.denied' ) }
         ${ text( 'text.comments' ) }
         ${ text( 'text.description' ) }
+        ${ text( 'pdf_viewer.2.text.protected' ) }
+        ${ text( 'pdf_viewer.2.text.denied' ) }
       </section>
 
       <nav class="d-grid mt-2">

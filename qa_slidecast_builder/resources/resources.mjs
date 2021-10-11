@@ -38,7 +38,7 @@ const de = {
   "preview_title": "Vorschau der App",
   "section_basis": "Grundlage",
   "section_slides": "Folien",
-  "section_labels": "Beschriftungen",
+  "section_labels": "Texte",
   "section_commentary": "Kommentierung",
   "submit": "Abschicken",
   "text_comments": "Button-Tooltip: Folienkommentare",
