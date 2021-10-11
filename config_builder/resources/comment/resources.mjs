@@ -5,7 +5,7 @@
  */
 
 /**
- * german texts and labels for PDF viewer builder
+ * german texts and labels for commentary builder
  * @type {Object}
  */
 export const de = {
@@ -80,7 +80,7 @@ export const de = {
 };
 
 /**
- * english texts and labels for PDF viewer builder
+ * english texts and labels for commentary builder
  * @type {Object}
  */
 export const en = {
@@ -155,20 +155,15 @@ export const en = {
 };
 
 /**
- * test configuration (relative paths)
+ * basic configuration (absolute paths)
  * @type {Object}
  */
-export const test = {
-  "css": [ "ccm.load",
-    [  // serial
-      "./../../../libs/bootstrap-5/css/bootstrap.css",
-      "./../styles.css"
-    ],
-    "./../../../libs/bootstrap-5/css/bootstrap-icons.css",
-    { "url": "./../../../libs/bootstrap-5/css/bootstrap-fonts.css", "context": "head" }
-  ],
-  "html": [ "ccm.load", "./templates.mjs" ],
+export const basic = {
+  "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/config_builder/resources/comment/templates.mjs" ],
   "id": "cmb",
+  "defaults": {
+    "text": [ "ccm.load", "https://ccmjs.github.io/tkless-components/comment/resources/resources.mjs#en" ]
+  },
   "ignore": {
     "defaults": {
       "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.2.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/resources.min.js", "guest" ] ]
@@ -208,9 +203,26 @@ export const test = {
       }
     }
   },
-  "onfinish": { "log": true },
   "text": en,
   "tool": [ "ccm.component", "https://ccmjs.github.io/tkless-components/comment/versions/ccm.comment-7.0.0.min.js" ]
+};
+
+/**
+ * test configuration (relative paths)
+ * @type {Object}
+ */
+export const test = {
+  "src": basic,
+  "css": [ "ccm.load",
+    [  // serial
+      "./../../../libs/bootstrap-5/css/bootstrap.css",
+      "./../styles.css"
+    ],
+    "./../../../libs/bootstrap-5/css/bootstrap-icons.css",
+    { "url": "./../../../libs/bootstrap-5/css/bootstrap-fonts.css", "context": "head" }
+  ],
+  "html": [ "ccm.load", "./templates.mjs" ],
+  "onfinish": { "log": true }
 };
 
 /**
@@ -218,50 +230,11 @@ export const test = {
  * @type {Object}
  */
 export const demo = {
-  "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/config_builder/resources/comment/templates.mjs" ],
-  "id": "cmb",
-  "ignore": {
-    "defaults": {
-      "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.2.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/resources.min.js", "guest" ] ]
-    },
-    "mapping": {
-      "user": {
-        "guest": {
-          "key": "guest",
-          "title": "Gastmodus",
-          "value": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.2.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/resources.min.js", "guest" ] ]
-        },
-        "cloud": {
-          "key": "cloud",
-          "title": "Digital Makerspace Account",
-          "value": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.2.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/resources.min.js", "cloud" ] ]
-        },
-        "hbrsinfkaul": {
-          "key": "hbrsinfkaul",
-          "title": "H-BRS FB02 Account",
-          "value": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.2.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/resources.min.js", "hbrsinfkaul" ] ]
-        },
-        "hbrsinfpseudo": {
-          "key": "hbrsinfpseudo",
-          "title": "H-BRS FB02 Account mit Pseudonym",
-          "value": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.2.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/resources.min.js", "hbrsinfpseudo" ] ]
-        },
-        "pseudo": {
-          "key": "pseudo",
-          "title": "Einmaliges Pseudonym",
-          "value": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.2.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/resources.min.js", "pseudo" ] ]
-        },
-        "none": {
-          "key": "none",
-          "title": "Deaktiviert",
-          "value": ""
-        }
-      }
-    }
-  },
-  "text": de,
-  "tool": [ "ccm.component", "https://ccmjs.github.io/tkless-components/comment/versions/ccm.comment-7.0.0.min.js", {
-    "data": { "store": [ "ccm.store" ] },
-    "src": [ "ccm.load", "https://ccmjs.github.io/tkless-components/comment/resources/resources.mjs#demo" ]
-  } ]
+  "src": basic,
+  "defaults.text.1": "https://ccmjs.github.io/tkless-components/comment/resources/resources.mjs#de",
+  "ignore.mapping.user.guest.title": "Gastmodus",
+  "ignore.mapping.user.hbrsinfpseudo.title": "H-BRS FB02 Account mit Pseudonym",
+  "ignore.mapping.user.pseudo.title": "Einmaliges Pseudonym",
+  "ignore.mapping.user.none.title": "Deaktiviert",
+  "text": de
 };

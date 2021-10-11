@@ -22,6 +22,7 @@
         { "url": "https://ccmjs.github.io/akless-components/libs/bootstrap-5/css/bootstrap-fonts.min.css", "context": "head" },
       ],
 //    "data": { "store": [ "ccm.store" ] },
+      "defaults": {},
       "ignore": { "defaults": {} },
       "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-7.7.0.mjs" ],
 //    "html": [ "ccm.load", "templates.mjs" ],
@@ -68,8 +69,8 @@
        */
       this.start = async () => {
 
-        // set initial app configuration (priority order: [high] this.data -> this.ignore.defaults -> this.tool.config [low])
-        config = await $.integrate( await $.dataset( this.data ), await $.integrate( this.ignore.defaults, this.tool.config ) );
+        // set initial app configuration (priority order: [high] this.data -> this.defaults -> this.ignore.defaults -> this.tool.config [low])
+        config = await $.integrate( await $.dataset( this.data ), await $.integrate( this.defaults, await $.integrate( this.ignore.defaults, this.tool.config ) ) );
 
         // generate unique key for app state data
         if ( config.data && config.data.store && !config.data.key ) config.data.key = $.generateKey();
