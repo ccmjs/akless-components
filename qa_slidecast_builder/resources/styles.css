@@ -1,0 +1,53 @@
+/**
+ * @overview default layout of ccmjs-based web component for building a "Q&A Slidecast"
+ * @author André Kless <andre.kless@web.de.de> 2021
+ * @license The MIT License (MIT)
+ */
+
+.qsb b i {
+  cursor: pointer;
+  font-size: medium;
+}
+
+.qsb .btn-sm {
+  padding: .25rem .25rem;
+}
+
+.qsb .heading {
+  display: flex;
+  align-items: center;
+}
+
+.qsb .heading label {
+  margin-bottom: 0;
+}
+
+.qsb .info {
+  margin-bottom: 0.5rem;
+}
+
+.qsb .form-check {
+  margin-bottom: 0;
+}
+
+.qsb input[type="checkbox"] {
+  cursor: pointer;
+}
+
+.qsb *[disabled] {
+  cursor: not-allowed;
+}
+
+.qsb *[data-hidden] {
+  display: none;
+}
+
+.qsb .modal-body {
+  padding: 0;
+}
+
+/*
+nav:last-child {
+  border: 1px solid black;
+}
+ */
