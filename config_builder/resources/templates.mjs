@@ -45,7 +45,7 @@ export function heading( key  ) {
  */
 export function text( setup ) {
   let { prop, value, key = prop, type = 'text', disabled, hidden } = typeof setup === 'string' ? { prop: setup } : setup;
-  if ( !value ) value = builder.ccm.helper.deepValue( config, prop );
+  if ( !value ) value = builder.ccm.helper.deepValue( config, prop ) || '';
   key = key.replaceAll( '.', '_' );
   return html`
     <div class="mb-3" ?data-hidden=${ hidden }>
