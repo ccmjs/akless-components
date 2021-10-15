@@ -56,6 +56,29 @@ export function text( setup ) {
 }
 
 /**
+ * returns the HTML template for an textarea element
+ * @param {Object|string} setup
+ * @param {string} setup.prop - configuration property
+ * @param {string} [setup.value = config.prop] - initial property value
+ * @param {string} [setup.key = prop] - used key for this property
+ * @param {string} [setup.type = 'text'] - input type
+ * @param {boolean} [setup.disabled] - input element is disabled
+ * @param {boolean} [setup.hidden] - hole template is hidden
+ * @returns {TemplateResult}
+ */
+export function textarea( setup ) {
+  let { prop, value, key = prop, type = 'text', disabled, hidden } = typeof setup === 'string' ? { prop: setup } : setup;
+  if ( !value ) value = builder.ccm.helper.deepValue( config, prop ) || '';
+  key = key.replaceAll( '.', '_' );
+  return html`
+    <div class="mb-3" ?data-hidden=${ hidden }>
+      ${ heading( key ) }
+      <textarea class="form-control" name="{ prop }" id="${ id }-${ key }" rows="3" ?disabled=${ disabled } @change=${ events.onChange }>${ value }</textarea>
+    </div>
+  `;
+}
+
+/**
  * returns the HTML template for a checkbox element
  * @param {Object|string} setup
  * @param {string} setup.prop - configuration property
