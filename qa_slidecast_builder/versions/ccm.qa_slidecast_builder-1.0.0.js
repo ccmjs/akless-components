@@ -4,7 +4,7 @@
  * @license The MIT License (MIT)
  * @version 1.0.0
  * @changes
- * version 1.0.0 (11.10.2021)
+ * version 1.0.0 (18.10.2021)
  */
 
 ( () => {
@@ -28,35 +28,22 @@
       ],
 //    "data": { "store": [ "ccm.store" ] },
       "defaults": {
+        "pdf_viewer.2": {
+          "downloadable": true,
+          "pdf": "https://ccmjs.github.io/tkless-components/pdf_viewer/resources/demo/en/slides.pdf",
+          "text": [ "ccm.load", "https://ccmjs.github.io/akless-components/qa_slidecast_builder/resources/resources.mjs#viewer_en" ]
+        },
         "text": [ "ccm.load", "https://ccmjs.github.io/tkless-components/qa_slidecast/resources/resources.mjs#text_en" ]
       },
-      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-7.7.0.mjs" ],
+      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-7.8.0.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/qa_slidecast_builder/resources/templates.mjs" ],
       "id": "qsb",
-      "ignore": {
-        "defaults": {
-          "pdf_viewer.2": {
-            "downloadable": true,
-            "pdf": "https://ccmjs.github.io/tkless-components/pdf_viewer/resources/demo/en/slides.pdf",
-            "text": {
-              "denied": "Access Denied",
-              "download": "Download Slides",
-              "first": "First Slide",
-              "jump": "Jump to specific Slide",
-              "last": "Last Slide",
-              "next": "Next Slide",
-              "prev": "Previous Slide",
-              "protected": "This slides are password protected. Enter a password.",
-            }
-          }
-        }
-      },
       "libs": [ "ccm.load", "https://ccmjs.github.io/akless-components/libs/bootstrap-5/js/bootstrap.bundle.min.js" ],
 //    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-5.0.1.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.min.js", "greedy" ] ],
 //    "onfinish": { "log": true },
       "section": "basis",
       "shadow": "none",
-      "text": [ "ccm.load", "https://ccmjs.github.io/akless-components/qa_slidecast_builder/resources/resources.mjs#en" ],
+      "text": [ "ccm.load", "https://ccmjs.github.io/akless-components/qa_slidecast_builder/resources/resources.mjs#builder_en" ],
       "tool": [ "ccm.component", "https://ccmjs.github.io/tkless-components/qa_slidecast/versions/ccm.qa_slidecast-2.0.0.min.js" ]
     },
     Instance: function () {
@@ -72,6 +59,12 @@
        * @type {Object}
        */
       let config;
+
+      /**
+       * ccmjs-based instance of "Q&A Slidecast" for slides configuration
+       * @type {Object}
+       */
+      let slidecast;
 
       /**
        * when all dependencies are solved after creation and before the app starts
@@ -90,8 +83,8 @@
        */
       this.start = async () => {
 
-        // set initial app configuration (priority order: [high] this.data -> this.defaults -> this.ignore.defaults -> this.tool.config [low])
-        config = await $.integrate( await $.dataset( this.data ), await $.integrate( this.defaults, await $.integrate( this.ignore.defaults, this.tool.config ) ) );
+        // set initial app configuration (priority order: [high] this.data -> this.defaults -> this.tool.config [low])
+        config = await $.integrate( await $.dataset( this.data ), await $.integrate( this.defaults, this.tool.config ) );
 
         // generate unique key for app state data
         if ( config.data && config.data.store && !config.data.key ) config.data.key = $.generateKey();
@@ -120,11 +113,17 @@
         const comment = form_data.comment; delete form_data.comment;
         const result = $.clone( config );
         $.assign( result, form_data );
+        slidecast && $.deepValue( result, 'ignore.slides', slidecast.getValue().slides );
         if ( comment )
           result.comment[ 2 ] = this.comment_builder.getValue();
         else
           result.comment = '';
         return result;
+      };
+
+      const addSlide = ( index, value = 'https://ccmjs.github.io/tkless-components/qa_slidecast/resources/demo/de/extra.jpg' ) => {
+        slidecast.ignore.slides.splice( index, 0, { content: value } );
+        slidecast.start();
       };
 
       /**
@@ -133,14 +132,68 @@
        */
       const events = {
 
+        onAddLeft: () => this.element.querySelector( 'input[name="index"]' ).value = slidecast.slide_nr - 1,
+
+        onAddRight: () => this.element.querySelector( 'input[name="index"]' ).value = slidecast.slide_nr++,
+
+        onAddResource: event => {
+          event.preventDefault();
+          const form = this.element.querySelector( '#' + this.id + '-add-form' );
+          const modal = bootstrap.Modal.getInstance( form.querySelector( '.modal' ) );
+          const form_data = $.formData( form );
+          addSlide( form_data.index, form_data[ form_data.resource ] );
+          modal.hide();
+          form.reset();
+        },
+
+        onSlideSettings: event => {
+          event.preventDefault();
+          const form = this.element.querySelector( '#' + this.id + '-edit-form' );
+          const index = slidecast.slide_nr - 1;
+          const slide = this.element.querySelector( 'input[name="index"]' ).value = slidecast.ignore.slides[ index ];
+          $.fillForm( form, {
+            app: slide.description,
+            slide: {
+              audio: slide.audio || '',
+              commentary: slide.commentary !== false,
+              description: slide.description
+            }
+          } );
+//        slidecast.start();
+        },
+
+        onDeleteSlide: () => {
+          const index = slidecast.slide_nr - 1;
+          if ( typeof slidecast.ignore.slides[ index ].content === 'number' ) return;
+          slidecast.ignore.slides.splice( index, 1 );
+          index && slidecast.slide_nr--;
+          slidecast.start();
+        },
+
         /** when the value of an input field changes */
-        onChange: () => this.render( this.getValue() ),
+        onChange: async event => {
+          if ( event.target.name === 'pdf_viewer.2.pdf' ) slidecast = null;
+          this.render( this.getValue() );
+          if ( event.target.name === 'section' && event.target.value === 'slides' && !slidecast )
+            slidecast = await this.tool.start( {
+              src: config,
+              root: this.element.querySelector( '#' + this.id + '-slidecast' ),
+              routing: '',
+              comment: '',
+              description: '',
+              'pdf_viewer.2.downloadable': '',
+              onstart: instance => this.html.render( this.html.controls( this, instance, events ), this.element.querySelector( '#' + this.id + '-controls' ) ),
+              onchange: ( { instance, before } ) => before && this.html.render( this.html.controls( this, instance, events ), this.element.querySelector( '#' + this.id + '-controls' ) )
+            } );
+          slidecast && $.remove( slidecast.element.querySelector( '#control' ) );
+        },
 
         /** when 'preview' button is clicked */
         onPreview: () => {
-          const preview_body = this.element.querySelector( '.modal-body' );
+          const preview_body = this.element.querySelector( '#' + this.id + '-preview .modal-body' );
           $.setContent( preview_body, '' );
-          this.tool.start( Object.assign( this.getValue(), { root: preview_body } ) );
+          this.logger && this.logger.log( 'preview', $.clone( config ) );               // logging of 'finish' event
+          this.tool.start( Object.assign( this.getValue(), { root: preview_body } ) );  // start preview of the app
         },
 
         /**
