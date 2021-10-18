@@ -73,7 +73,7 @@ export function textarea( setup ) {
   return html`
     <div class="mb-3" ?data-hidden=${ hidden }>
       ${ heading( key ) }
-      <textarea class="form-control" name="{ prop }" id="${ id }-${ key }" rows="3" ?disabled=${ disabled } @change=${ events.onChange }>${ value }</textarea>
+      <textarea class="form-control" name="${ prop }" id="${ id }-${ key }" rows="3" ?disabled=${ disabled } @change=${ events.onChange }>${ value }</textarea>
     </div>
   `;
 }
