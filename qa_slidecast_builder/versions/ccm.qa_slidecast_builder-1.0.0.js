@@ -12,7 +12,7 @@
     name: 'qa_slidecast_builder',
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-27.1.1.min.js',
     config: {
-      "comment_builder": [ "ccm.start", "https://ccmjs.github.io/akless-components/config_builder/versions/ccm.config_builder-1.0.0.js", {
+      "comment_builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/config_builder/versions/ccm.config_builder-1.0.0.js", {
         "src": [ "ccm.load", "https://ccmjs.github.io/akless-components/config_builder/resources/comment/resources.mjs#basic" ],
         "libs": "",
         "text.preview": ""
@@ -66,6 +66,12 @@
       let slidecast;
 
       /**
+       * ccmjs-based instance for building a commentary
+       * @type {Object}
+       */
+      let comment_builder;
+
+      /**
        * when all dependencies are solved after creation and before the app starts
        * @returns {Promise<void>}
        */
@@ -85,11 +91,9 @@
         // set initial app configuration (priority order: [high] this.data -> this.defaults -> this.tool.config [low])
         config = await $.integrate( await $.dataset( this.data ), await $.integrate( this.defaults, this.tool.config ) );
 
-        // generate unique key for app state data
-        if ( config.data && config.data.store && !config.data.key ) config.data.key = $.generateKey();
-
-        this.logger && this.logger.log( 'start', $.clone( config ) );  // logging of 'start' event
-        this.render( config );                                         // render webpage area
+        comment_builder = await this.comment_builder.start( { data: config.comment[ 2 ] } );  // start app builder for commentary
+        this.logger && this.logger.log( 'start', $.clone( config ) );                         // logging of 'start' event
+        this.render( config );                                                                // render webpage area
 
       };
 
@@ -99,7 +103,7 @@
        */
       this.render = ( config = this.getValue() ) => {
         this.html.render( this.html.main( config, this, events ), this.element );
-        $.setContent( this.element.querySelector( '#' + this.id + '-commentary' ), this.comment_builder.root );
+        $.setContent( this.element.querySelector( '#' + this.id + '-commentary' ), comment_builder.root );
       };
 
       /**
@@ -114,7 +118,7 @@
         $.assign( result, form_data );
         slidecast && $.deepValue( result, 'ignore.slides', slidecast.getValue().slides );
         if ( comment )
-          result.comment[ 2 ] = this.comment_builder.getValue();
+          result.comment[ 2 ] = comment_builder.getValue();
         else
           result.comment = '';
         return result;
@@ -145,20 +149,26 @@
           form.reset();
         },
 
-        onSlideSettings: event => {
-          event.preventDefault();
+        onSlideSettings: () => {
           const form = this.element.querySelector( '#' + this.id + '-edit-form' );
-          const index = slidecast.slide_nr - 1;
-          const slide = this.element.querySelector( 'input[name="index"]' ).value = slidecast.ignore.slides[ index ];
+          const { audio, content, commentary, description } = slidecast.ignore.slides[ slidecast.slide_nr - 1 ];
           $.fillForm( form, {
-            app: slide.description,
             slide: {
-              audio: slide.audio || '',
-              commentary: slide.commentary !== false,
-              description: slide.description
+              audio: audio || '',
+              commentary: commentary !== false,
+              description: description
             }
           } );
-//        slidecast.start();
+          const button = form.querySelector( '#' + this.id + '-edit-delete' );
+          typeof content === 'number' ? button.dataset.invisible = true : delete button.dataset.invisible;
+        },
+
+        onSubmitSlideSettings: event => {
+          event.preventDefault();
+          const form_data = $.formData( this.element.querySelector( '#' + this.id + '-edit-form' ) );
+          const slide = slidecast.ignore.slides[ slidecast.slide_nr - 1 ];
+          Object.assign( slide, form_data.slide );
+          slidecast.start();
         },
 
         onDeleteSlide: () => {
@@ -171,21 +181,22 @@
 
         /** when the value of an input field changes */
         onChange: async event => {
-          if ( event.target.name === 'pdf_viewer.2.pdf' ) slidecast = null;
+          if ( event.target.name === 'pdf_viewer.2.pdf' ) { slidecast = null; delete config.ignore.slides; }
           this.render( this.getValue() );
           if ( event.target.name === 'section' && event.target.value === 'slides' && !slidecast )
             slidecast = await this.tool.start( {
-              src: config,
               root: this.element.querySelector( '#' + this.id + '-slidecast' ),
               routing: '',
-              comment: '',
               description: '',
+              comment: '',
+              text: {},
+              'ignore.slides': config.ignore.slides,
+              'pdf_viewer.2.pdf': this.element.querySelector( 'input[name="pdf_viewer.2.pdf"]' ).value,
               'pdf_viewer.2.downloadable': '',
               'pdf_viewer.2.text': {},
               onstart: instance => this.html.render( this.html.controls( this, instance, events ), this.element.querySelector( '#' + this.id + '-controls' ) ),
               onchange: ( { instance, before } ) => before && this.html.render( this.html.controls( this, instance, events ), this.element.querySelector( '#' + this.id + '-controls' ) )
             } );
-          slidecast && $.remove( slidecast.element.querySelector( '#control' ) );
         },
 
         /** when 'preview' button is clicked */

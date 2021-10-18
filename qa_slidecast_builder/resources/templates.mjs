@@ -48,7 +48,9 @@ export function main( config, builder, events ) {
       <!-- Section: Slides -->
       <section id="${ id }-slides" ?data-hidden=${ builder.section !== 'slides' }>
         <article id="${ id }-slidecast"></article>
-        <nav id="${ id }-controls" class="mx-2 mb-3 d-flex justify-content-between"></nav>
+        <div class="mx-2 mb-3 d-flex justify-content-center">
+          <nav id="${ id }-controls"></nav>
+        </div>
       </section>
 
       <!-- Section: Commentary -->
@@ -130,7 +132,7 @@ export function main( config, builder, events ) {
 
   function modalSlideSettings() {
     return html`
-      <form id="${ id }-edit-form" @submit=${ events.onSlideSettings }>
+      <form id="${ id }-edit-form" @submit=${ events.onSubmitSlideSettings }>
         <div class="modal" id="${ id }-edit" tabindex="-1" aria-labelledby="${ id }-edit-title" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
@@ -139,14 +141,13 @@ export function main( config, builder, events ) {
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body m-3">
-                <input type="hidden" name="index">
                 ${ text( 'slide.audio' ) }
                 ${ textarea( { prop: 'slide.description', hidden: !config.description } ) }
                 ${ checkbox( { prop: 'slide.commentary', switcher: true, hidden: !config.comment } ) }
               </div>
               <div class="modal-footer justify-content-between">
-                <button type="button" class="btn btn-danger" @click=${ events.onDeleteSlide }>${ builder.text.delete }</button>
-                <button type="submit" class="btn btn-primary">${ builder.text.confirm }</button>
+                <button type="button" id="${ id }-edit-delete" class="btn btn-danger" data-bs-dismiss="modal" @click=${ events.onDeleteSlide }>${ builder.text.delete }</button>
+                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">${ builder.text.confirm }</button>
               </div>
             </div>
           </div>

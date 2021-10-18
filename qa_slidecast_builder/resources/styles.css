@@ -29,6 +29,10 @@
   cursor: pointer;
 }
 
+.qsb *[data-invisible] {
+  visibility: hidden;
+}
+
 .qsb *[data-hidden] {
   display: none;
 }
