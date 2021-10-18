@@ -61,11 +61,11 @@ export function main( config, builder, events ) {
         ${ text( 'pdf_viewer.2.text.next' ) }
         ${ text( 'pdf_viewer.2.text.last' ) }
         ${ text( 'pdf_viewer.2.text.jump' ) }
-        ${ text( { prop: 'pdf_viewer.2.text.download', hidden: !config.pdf_viewer[ 2 ].downloadable } ) }
-        ${ text( 'text.comments' ) }
-        ${ text( 'text.description' ) }
         ${ text( 'pdf_viewer.2.text.protected' ) }
         ${ text( 'pdf_viewer.2.text.denied' ) }
+        ${ text( { prop: 'pdf_viewer.2.text.download', hidden: !config.pdf_viewer[ 2 ].downloadable } ) }
+        ${ text( { prop: 'text.comments', hidden: !config.comment } ) }
+        ${ text( { prop: 'text.description', hidden: !config.description } ) }
       </section>
 
       ${ buttons( !config.pdf_viewer[ 2 ].pdf ) }
@@ -141,8 +141,8 @@ export function main( config, builder, events ) {
               <div class="modal-body m-3">
                 <input type="hidden" name="index">
                 ${ text( 'slide.audio' ) }
-                ${ textarea( 'slide.description' ) }
-                ${ checkbox( { prop: 'slide.commentary', switcher: true } ) }
+                ${ textarea( { prop: 'slide.description', hidden: !config.description } ) }
+                ${ checkbox( { prop: 'slide.commentary', switcher: true, hidden: !config.comment } ) }
               </div>
               <div class="modal-footer justify-content-between">
                 <button type="button" class="btn btn-danger" @click=${ events.onDeleteSlide }>${ builder.text.delete }</button>

@@ -197,7 +197,8 @@ export const test = {
       "downloadable": true,
       "pdf": "https://ccmjs.github.io/tkless-components/pdf_viewer/resources/demo/en/slides.pdf",
       "text": viewer_en
-    }
+    },
+    "text": [ "ccm.load", "https://ccmjs.github.io/tkless-components/qa_slidecast/resources/resources.mjs#text_en" ]
   },
   "helper.1": "./../modules/helper.mjs",
   "html.1": "./../qa_slidecast_builder/resources/templates.mjs",
