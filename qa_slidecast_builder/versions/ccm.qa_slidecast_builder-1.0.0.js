@@ -190,7 +190,6 @@
 
         /** when the value of an input field changes */
         onChange: async event => {
-          if ( event.target.name === 'pdf_viewer.2.pdf' ) { slidecast = null; delete config.ignore.slides; }
           this.render( this.getValue() );
           if ( event.target.name === 'section' && event.target.value === 'slides' && !slidecast )
             slidecast = await this.tool.start( {
