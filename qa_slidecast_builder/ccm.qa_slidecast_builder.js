@@ -206,9 +206,8 @@
 
         /** when the value of an input field changes */
         onChange: async event => {
-          if ( event.target.name === 'pdf_viewer.2.pdf' ) await startSlidecast( slidecast && slidecast.ignore.slides );
           this.render( this.getValue() );
-          if ( event.target.name === 'section' && event.target.value === 'slides' && !slidecast ) startSlidecast();
+          if ( event.target.name === 'section' && event.target.value === 'slides' && !slidecast || event.target.name === 'pdf_viewer.2.pdf' ) await startSlidecast( slidecast && slidecast.ignore.slides );
         },
 
         /** when 'preview' button is clicked */
