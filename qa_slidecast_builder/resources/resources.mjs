@@ -241,7 +241,7 @@ export const test = {
  */
 export const demo = {
   "defaults": {
-    "comment.2": {
+    "comment_builder.2": {
       "src": [ "ccm.load", "https://ccmjs.github.io/akless-components/config_builder/resources/comment/resources.mjs#basic" ],
       "defaults.text.1": "https://ccmjs.github.io/tkless-components/comment/resources/resources.mjs#de",
       "ignore.mapping.user.guest.title": "Gastmodus",
