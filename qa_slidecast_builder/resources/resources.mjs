@@ -240,18 +240,18 @@ export const test = {
  * @type {Object}
  */
 export const demo = {
+  "comment_builder.2": {
+    "src": [ "ccm.load", "https://ccmjs.github.io/akless-components/config_builder/resources/comment/resources.mjs#basic" ],
+    "defaults.text.1": "https://ccmjs.github.io/tkless-components/comment/resources/resources.mjs#de",
+    "ignore.mapping.user.guest.title": "Gastmodus",
+    "ignore.mapping.user.hbrsinfpseudo.title": "H-BRS FB02 Account mit Pseudonym",
+    "ignore.mapping.user.pseudo.title": "Einmaliges Pseudonym",
+    "ignore.mapping.user.none.title": "Deaktiviert",
+    "libs": "",
+    "text": [ "ccm.load", "https://ccmjs.github.io/akless-components/config_builder/resources/comment/resources.mjs#de" ],
+    "text.preview": ""
+  },
   "defaults": {
-    "comment_builder.2": {
-      "src": [ "ccm.load", "https://ccmjs.github.io/akless-components/config_builder/resources/comment/resources.mjs#basic" ],
-      "defaults.text.1": "https://ccmjs.github.io/tkless-components/comment/resources/resources.mjs#de",
-      "ignore.mapping.user.guest.title": "Gastmodus",
-      "ignore.mapping.user.hbrsinfpseudo.title": "H-BRS FB02 Account mit Pseudonym",
-      "ignore.mapping.user.pseudo.title": "Einmaliges Pseudonym",
-      "ignore.mapping.user.none.title": "Deaktiviert",
-      "libs": "",
-      "text": [ "ccm.load", "https://ccmjs.github.io/akless-components/config_builder/resources/comment/resources.mjs#de" ],
-      "text.preview": ""
-    },
     "pdf_viewer.2": {
       "downloadable": true,
       "pdf": "https://ccmjs.github.io/tkless-components/pdf_viewer/resources/demo/de/slides.pdf",
