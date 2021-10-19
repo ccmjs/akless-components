@@ -2,7 +2,7 @@
  * @overview ccmjs-based web component for building a "Q&A Slidecast"
  * @author André Kless <andre.kless@web.de> 2021
  * @license The MIT License (MIT)
- * @version 1.0.0
+ * @version latest (1.0.0)
  * @changes
  * version 1.0.0 (19.10.2021)
  */
@@ -10,7 +10,6 @@
 ( () => {
   const component = {
     name: 'qa_slidecast_builder',
-    version: [ 1, 0, 0 ],
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-27.1.1.min.js',
     config: {
       "comment_builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/config_builder/versions/ccm.config_builder-1.0.0.js", {
@@ -144,6 +143,7 @@
           onstart: instance => this.html.render( this.html.controls( this, instance, events ), this.element.querySelector( '#' + this.id + '-controls' ) ),
           onchange: ( { instance, before } ) => before && this.html.render( this.html.controls( this, instance, events ), this.element.querySelector( '#' + this.id + '-controls' ) )
         } );
+        $.remove( slidecast.element.querySelector( '#control' ) );
       };
 
       /**

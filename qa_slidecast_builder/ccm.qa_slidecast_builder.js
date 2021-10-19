@@ -143,6 +143,7 @@
           onstart: instance => this.html.render( this.html.controls( this, instance, events ), this.element.querySelector( '#' + this.id + '-controls' ) ),
           onchange: ( { instance, before } ) => before && this.html.render( this.html.controls( this, instance, events ), this.element.querySelector( '#' + this.id + '-controls' ) )
         } );
+        $.remove( slidecast.element.querySelector( '#control' ) );
       };
 
       /**
