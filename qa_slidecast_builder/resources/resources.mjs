@@ -109,7 +109,7 @@ const builder_de = {
   "pdf_viewer_2_text_download_info": "Tooltip, der erscheint, wenn der Mauszeiger über den Button \"Folien herunterladen\" bewegt wird.",
   "pdf_viewer_2_text_first": "Button-Tooltip: Erste Folie",
   "pdf_viewer_2_text_first_info": "Tooltip, der erscheint, wenn der Mauszeiger über den Button \"Erste Folie\" bewegt wird.",
-  "pdf_viewer_2_text_jump": "Button-Tooltip: Zu einer bestimmten Folie springen",
+  "pdf_viewer_2_text_jump": "Button-Tooltip: Zu bestimmter Folie springen",
   "pdf_viewer_2_text_jump_info": "Tooltip, der erscheint, wenn der Mauszeiger über das Eingabefeld bewegt wird, mit dem man zu einer bestimmten Folie springt.",
   "pdf_viewer_2_text_last": "Button-Tooltip: Letzte Folie",
   "pdf_viewer_2_text_last_info": "Tooltip, der erscheint, wenn der Mauszeiger über den Button \"Letzte Folie\" bewegt wird.",
