@@ -6,7 +6,6 @@
 
 import { slides_de } from 'https://ccmjs.github.io/tkless-components/qa_slidecast/resources/resources.mjs';
 import { text_en as slidecast_en, text_de as slidecast_de } from 'https://ccmjs.github.io/tkless-components/qa_slidecast/resources/resources.mjs';
-import { en as viewer_en, de as viewer_de } from 'https://ccmjs.github.io/tkless-components/pdf_viewer/resources/resources.mjs';
 import { de as comment_de } from 'https://ccmjs.github.io/tkless-components/comment/resources/resources.mjs';
 
 /**
@@ -154,6 +153,36 @@ const builder_de = {
   "text_comments_info": "Tooltip, der erscheint, wenn der Mauszeiger über den Button zum Ein-/Ausblenden der Folienkommentare bewegt wird.",
   "text_description": "Button-Tooltip: Folienbeschreibung",
   "text_description_info": "Tooltip, der erscheint, wenn der Mauszeiger über den Button zum Ein-/Ausblenden der Folienbeschreibung bewegt wird."
+};
+
+/**
+ * english texts and labels for "PDF Viewer" inside of "Q&A Slidecast" builder
+ * @type {Object}
+ */
+const viewer_en = {
+  "denied": "Access Denied",
+  "download": "Download Slides",
+  "first": "First Slide",
+  "jump": "Jump to specific Slide",
+  "last": "Last Slide",
+  "next": "Next Slide",
+  "prev": "Previous Slide",
+  "protected": "This slides are password protected. Enter a password."
+};
+
+/**
+ * german texts and labels for "PDF Viewer" inside of "Q&A Slidecast" builder
+ * @type {Object}
+ */
+const viewer_de = {
+  "denied": "Zugriff verweigert",
+  "download": "Folien herunterladen",
+  "first": "Erste Folie",
+  "jump": "Zu einer bestimmten Folie springen",
+  "last": "Letzte Folie",
+  "next": "Nächste Folie",
+  "prev": "Vorherige Folie",
+  "protected": "Diese Folien sind passwortgeschützt. Geben Sie ein Passwort ein."
 };
 
 /**
