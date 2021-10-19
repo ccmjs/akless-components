@@ -4,7 +4,7 @@
  * @license The MIT License (MIT)
  * @version 1.0.0
  * @changes
- * version 1.0.0 (30.09.2021)
+ * version 1.0.0 (19.10.2021)
  */
 
 ( () => {
@@ -30,6 +30,7 @@
       "libs": [ "ccm.load", "https://ccmjs.github.io/akless-components/libs/bootstrap-5/js/bootstrap.bundle.min.js" ],
 //    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-5.0.1.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.min.js", "greedy" ] ],
 //    "onfinish": { "log": true },
+      "preview": true,
       "shadow": "none",
 //    "text": {
 //      "preview": "Preview",

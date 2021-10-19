@@ -117,7 +117,7 @@ export function checkbox( setup ) {
 export function buttons( disabled ) {
   return html`
     <div class="d-grid">
-      <button type="button" class="btn btn-info rounded-0" data-bs-toggle="modal" data-bs-target="#${ id }-preview" ?disabled=${ disabled } ?data-hidden=${ !builder.text.preview } @click=${ events.onPreview }>
+      <button type="button" class="btn btn-info rounded-0" data-bs-toggle="modal" data-bs-target="#${ id }-preview" ?disabled=${ disabled } ?data-hidden=${ !builder.preview } @click=${ events.onPreview }>
         ${ builder.text.preview }
       </button>
       <button class="btn btn-primary rounded-0" type="submit" ?disabled=${ disabled } ?data-hidden=${ !builder.onfinish || !builder.text.submit }>
