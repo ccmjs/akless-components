@@ -7,6 +7,7 @@
 import { slides_de } from 'https://ccmjs.github.io/tkless-components/qa_slidecast/resources/resources.mjs';
 import { text_en as slidecast_en, text_de as slidecast_de } from 'https://ccmjs.github.io/tkless-components/qa_slidecast/resources/resources.mjs';
 import { de as comment_de } from 'https://ccmjs.github.io/tkless-components/comment/resources/resources.mjs';
+import {basic, de} from "../../config_builder/resources/comment/resources.mjs";
 
 /**
  * english texts and labels for "Q&A Slidecast" builder
@@ -240,6 +241,17 @@ export const test = {
  */
 export const demo = {
   "defaults": {
+    "comment.2": {
+      "src": [ "ccm.load", "https://ccmjs.github.io/akless-components/config_builder/resources/comment/resources.mjs#basic" ],
+      "defaults.text.1": "https://ccmjs.github.io/tkless-components/comment/resources/resources.mjs#de",
+      "ignore.mapping.user.guest.title": "Gastmodus",
+      "ignore.mapping.user.hbrsinfpseudo.title": "H-BRS FB02 Account mit Pseudonym",
+      "ignore.mapping.user.pseudo.title": "Einmaliges Pseudonym",
+      "ignore.mapping.user.none.title": "Deaktiviert",
+      "libs": "",
+      "text": [ "ccm.load", "https://ccmjs.github.io/akless-components/config_builder/resources/comment/resources.mjs#de" ],
+      "text.preview": ""
+    },
     "pdf_viewer.2": {
       "downloadable": true,
       "pdf": "https://ccmjs.github.io/tkless-components/pdf_viewer/resources/demo/de/slides.pdf",
