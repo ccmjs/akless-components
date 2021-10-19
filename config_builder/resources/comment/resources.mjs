@@ -24,7 +24,7 @@ export const de = {
   "controls_like_info": "Jeder Kommentar hat einen Button, über den man ausdrücken kann, dass der Kommentar einem gefällt. Klicke erneut, um dies rückgängig zu machen. Eigene Kommentare können nicht markiert werden.",
   "controls_recycle": "Wiederherstellbare Kommentare",
   "controls_recycle_info": "Jeder gelöschte eigene Kommentar hat einen Button, über den er wiederhergestellt werden kann. Gelöschte Kommentare anderer Benutzer können nicht wiederhergestellt werden.",
-  "controls_report": "Markierung unangemessener Kommentare",
+  "controls_report": "Meldung unangemessener Kommentare",
   "controls_report_info": "Jeder Kommentar hat einen Button, über den er als unangemessen markiert wird. Klicke erneut, um dies rückgängig zu machen. Bitte beachte, dass es durch den dezentralen Ansatz dieser Anwendung keinen Betreiber gibt, der gemeldete Kommentare überprüft. Solche Kommentare werden aber deutlich mit einem roten Hintergrund als unangemessen gekennzeichnet. Bei gesetzeswidrigen Inhalten sollte eine Anzeige gegen den Verfasser des Kommentars gestellt werden.",
   "controls_sort": "Änderbare Kommentar-Sortierung",
   "controls_sort_info": "Oben befindet sich ein Button, über den die Sortierung der Kommentare jederzeit geändert werden kann.",
