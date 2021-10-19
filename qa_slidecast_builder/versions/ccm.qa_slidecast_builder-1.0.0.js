@@ -130,6 +130,22 @@
         slidecast.start();
       };
 
+      const startSlidecast = async ( slides = config.ignore.slides ) => {
+        slidecast = await this.tool.start( {
+          root: this.element.querySelector( '#' + this.id + '-slidecast' ),
+          routing: '',
+          description: '',
+          comment: '',
+          text: {},
+          'ignore.slides': slides,
+          'pdf_viewer.2.pdf': this.element.querySelector( 'input[name="pdf_viewer.2.pdf"]' ).value,
+          'pdf_viewer.2.downloadable': '',
+          'pdf_viewer.2.text': {},
+          onstart: instance => this.html.render( this.html.controls( this, instance, events ), this.element.querySelector( '#' + this.id + '-controls' ) ),
+          onchange: ( { instance, before } ) => before && this.html.render( this.html.controls( this, instance, events ), this.element.querySelector( '#' + this.id + '-controls' ) )
+        } );
+      };
+
       /**
        * contains all event handlers
        * @type {Object.<string,Function>}
@@ -190,21 +206,9 @@
 
         /** when the value of an input field changes */
         onChange: async event => {
+          if ( event.target.name === 'pdf_viewer.2.pdf' ) await startSlidecast( slidecast && slidecast.ignore.slides );
           this.render( this.getValue() );
-          if ( event.target.name === 'section' && event.target.value === 'slides' && !slidecast )
-            slidecast = await this.tool.start( {
-              root: this.element.querySelector( '#' + this.id + '-slidecast' ),
-              routing: '',
-              description: '',
-              comment: '',
-              text: {},
-              'ignore.slides': config.ignore.slides,
-              'pdf_viewer.2.pdf': this.element.querySelector( 'input[name="pdf_viewer.2.pdf"]' ).value,
-              'pdf_viewer.2.downloadable': '',
-              'pdf_viewer.2.text': {},
-              onstart: instance => this.html.render( this.html.controls( this, instance, events ), this.element.querySelector( '#' + this.id + '-controls' ) ),
-              onchange: ( { instance, before } ) => before && this.html.render( this.html.controls( this, instance, events ), this.element.querySelector( '#' + this.id + '-controls' ) )
-            } );
+          if ( event.target.name === 'section' && event.target.value === 'slides' && !slidecast ) startSlidecast();
         },
 
         /** when 'preview' button is clicked */
