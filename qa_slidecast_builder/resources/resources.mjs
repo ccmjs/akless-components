@@ -248,9 +248,9 @@ export const demo = {
     "ignore.mapping.user.pseudo.title": "Einmaliges Pseudonym",
     "ignore.mapping.user.none.title": "Deaktiviert",
     "libs": "",
+    "preview": "",
     "text": [ "ccm.load", "https://ccmjs.github.io/akless-components/config_builder/resources/comment/resources.mjs#de" ]
   },
-  "comment_builder.2.text.preview": "",
   "defaults": {
     "pdf_viewer.2": {
       "downloadable": true,
