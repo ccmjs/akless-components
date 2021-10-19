@@ -4,6 +4,11 @@
  * @license The MIT License (MIT)
  */
 
+import { slides_de } from 'https://ccmjs.github.io/tkless-components/qa_slidecast/resources/resources.mjs';
+import { text_en as slidecast_en, text_de as slidecast_de } from 'https://ccmjs.github.io/tkless-components/qa_slidecast/resources/resources.mjs';
+import { en as viewer_en, de as viewer_de } from 'https://ccmjs.github.io/tkless-components/pdf_viewer/resources/resources.mjs';
+import { de as comment_de } from 'https://ccmjs.github.io/tkless-components/comment/resources/resources.mjs';
+
 /**
  * english texts and labels for "Q&A Slidecast" builder
  * @type {Object}
@@ -67,6 +72,8 @@ const builder_en = {
   "slide_audio_info": "Enter the URL of an audio. If you only have the audio as a file on your filesystem, you must first publish it under a public URL, which you then specify here.",
   "slide_commentary": "Commentary",
   "slide_commentary_info": "The commenting for this slide can be switched off.",
+  "slide_content": "Content",
+  "slide_content_info": "Enter the HTML embed code of an app or the URL to an image file, a video file or a YouTube video.",
   "slide_description": "Description",
   "slide_description_info": "This text is displayed below the slide as a slide description. Alternatively, the HTML embed code of a separate app that has already been created in the Digital Makerspace can pasted here. This app will then be displayed instead of a slide description.",
   "submit": "Submit",
@@ -138,6 +145,8 @@ const builder_de = {
   "slide_audio_info": "Geben Sie die URL einer Audiodatei ein. Wenn Sie das Audio nur als Datei auf Ihrem Dateisystem haben, müssen Sie es zunächst unter einer öffentlichen URL veröffentlichen, die Sie dann hier angeben.",
   "slide_commentary": "Kommentierung",
   "slide_commentary_info": "Die Kommentierung für diese Folie kann ausgeschaltet werden.",
+  "slide_content": "Inhalt",
+  "slide_content_info": "Geben Sie hier den HTML-Einbettungscode einer App oder die URL zu einer Bilddatei, einer Videodatei oder einem YouTube-Video an.",
   "slide_description": "Beschreibung",
   "slide_description_info": "Dieser Text wird unter der Folie als Folienbeschreibung angezeigt. Alternativ kann hier auch der HTML-Einbettungscode einer separaten App, die bereits im Digital Makerspace erstellt wurde, eingefügt werden. Diese App wird dann anstelle einer Folienbeschreibung angezeigt.",
   "submit": "Abschicken",
@@ -148,33 +157,18 @@ const builder_de = {
 };
 
 /**
- * english texts and labels for "PDF Viewer" inside of "Q&A Slidecast" builder
+ * example for app state data
  * @type {Object}
  */
-const viewer_en = {
-  "denied": "Access Denied",
-  "download": "Download Slides",
-  "first": "First Slide",
-  "jump": "Jump to specific Slide",
-  "last": "Last Slide",
-  "next": "Next Slide",
-  "prev": "Previous Slide",
-  "protected": "This slides are password protected. Enter a password."
-};
-
-/**
- * german texts and labels for "PDF Viewer" inside of "Q&A Slidecast" builder
- * @type {Object}
- */
-const viewer_de = {
-  "denied": "Zugriff verweigert",
-  "download": "Folien herunterladen",
-  "first": "Erste Folie",
-  "jump": "Zu einer bestimmten Folie springen",
-  "last": "Letzte Folie",
-  "next": "Nächste Folie",
-  "prev": "Vorherige Folie",
-  "protected": "Diese Folien sind passwortgeschützt. Geben Sie ein Passwort ein."
+const example = {
+  "comment": [ "ccm.component", "https://ccmjs.github.io/tkless-components/comment/versions/ccm.comment-7.0.0.min.js", { "text": comment_de } ],
+  "ignore": { "slides": slides_de },
+  "pdf_viewer": [ "ccm.start", "https://ccmjs.github.io/tkless-components/pdf_viewer/versions/ccm.pdf_viewer-7.0.0.min.js", {
+    "downloadable": true,
+    "pdf": "https://ccmjs.github.io/tkless-components/pdf_viewer/resources/demo/de/slides.pdf",
+    "text": viewer_de
+  } ],
+  "text": slidecast_de
 };
 
 /**
@@ -192,13 +186,17 @@ export const test = {
     "./../libs/bootstrap-5/css/bootstrap-icons.css",
     { "url": "./../libs/bootstrap-5/css/bootstrap-fonts.css", "context": "head" }
   ],
+  "data": {
+    "store": [ "ccm.store", { "app": example } ],
+    "key": "app"
+  },
   "defaults": {
     "pdf_viewer.2": {
       "downloadable": true,
       "pdf": "https://ccmjs.github.io/tkless-components/pdf_viewer/resources/demo/en/slides.pdf",
       "text": viewer_en
     },
-    "text": [ "ccm.load", "https://ccmjs.github.io/tkless-components/qa_slidecast/resources/resources.mjs#text_en" ]
+    "text": slidecast_en
   },
   "helper.1": "./../modules/helper.mjs",
   "html.1": "./../qa_slidecast_builder/resources/templates.mjs",
@@ -218,7 +216,7 @@ export const demo = {
       "pdf": "https://ccmjs.github.io/tkless-components/pdf_viewer/resources/demo/de/slides.pdf",
       "text": viewer_de,
     },
-    "text": [ "ccm.load", "https://ccmjs.github.io/tkless-components/qa_slidecast/resources/resources.mjs#text_de" ]
+    "text": slidecast_de
   },
   "text": builder_de
 };

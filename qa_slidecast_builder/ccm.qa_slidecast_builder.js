@@ -4,7 +4,7 @@
  * @license The MIT License (MIT)
  * @version latest (1.0.0)
  * @changes
- * version 1.0.0 (18.10.2021)
+ * version 1.0.0 (19.10.2021)
  */
 
 ( () => {
@@ -155,19 +155,27 @@
           $.fillForm( form, {
             slide: {
               audio: audio || '',
+              content: content,
               commentary: commentary !== false,
               description: description
             }
           } );
+
+          const entry = form.querySelector( '#' + this.id + '-edit-content' );
+          typeof content === 'number' ? entry.dataset.hidden = true : delete entry.dataset.hidden;
+
           const button = form.querySelector( '#' + this.id + '-edit-delete' );
           typeof content === 'number' ? button.dataset.invisible = true : delete button.dataset.invisible;
+
         },
 
-        onSubmitSlideSettings: event => {
+        onSubmitSlideSettings: async event => {
           event.preventDefault();
           const form_data = $.formData( this.element.querySelector( '#' + this.id + '-edit-form' ) );
           const slide = slidecast.ignore.slides[ slidecast.slide_nr - 1 ];
           Object.assign( slide, form_data.slide );
+          delete slide._content;
+          delete slide._description;
           slidecast.start();
         },
 

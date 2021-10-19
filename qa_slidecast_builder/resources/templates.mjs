@@ -141,6 +141,9 @@ export function main( config, builder, events ) {
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body m-3">
+                <div id="${ id }-edit-content">
+                  ${ text( 'slide.content' ) }
+                </div>
                 ${ text( 'slide.audio' ) }
                 ${ textarea( { prop: 'slide.description', hidden: !config.description } ) }
                 ${ checkbox( { prop: 'slide.commentary', switcher: true, hidden: !config.comment } ) }
