@@ -173,7 +173,7 @@
           const form = this.element.querySelector( '#' + this.id + '-expand-form' );
           const form_data = $.formData( form );
           form_data.slide_nr = parseInt( form_data.slide_nr );
-          slides_viewer.ignore.slides.splice( form_data.slide_nr - 1, 0, { content: form_data[ form_data.resource ] } );
+          slides_viewer.ignore.slides.splice( form_data.slide_nr - 1, 0, { content: form_data[ form_data.expand ] } );
           await slides_viewer.start();
           bootstrap.Modal.getInstance( form.querySelector( '.modal' ) ).hide();
           form.reset();
