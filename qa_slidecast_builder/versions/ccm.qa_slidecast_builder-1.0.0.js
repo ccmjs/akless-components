@@ -4,7 +4,7 @@
  * @license The MIT License (MIT)
  * @version 1.0.0
  * @changes
- * version 1.0.0 (19.10.2021)
+ * version 1.0.0 (20.10.2021)
  */
 
 ( () => {
@@ -13,10 +13,10 @@
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-27.1.1.min.js',
     version: [ 1, 0, 0 ],
     config: {
-      "comment_builder": [ "ccm.component", "https://ccmjs.github.io/akless-components/config_builder/versions/ccm.config_builder-1.0.0.js", {
+      "comment_builder": [ "ccm.instance", "https://ccmjs.github.io/akless-components/config_builder/versions/ccm.config_builder-1.0.0.js", {
         "src": [ "ccm.load", "https://ccmjs.github.io/akless-components/config_builder/resources/comment/resources.mjs#basic" ],
         "libs": "",
-        "text.preview": ""
+        "preview": ""
       } ],
       "css": [ "ccm.load",
         [  // serial
@@ -62,16 +62,10 @@
       let config;
 
       /**
-       * ccmjs-based instance of "Q&A Slidecast" for slides configuration
+       * ccmjs-based instance of "Q&A Slidecast" (used for slides editing)
        * @type {Object}
        */
-      let slidecast;
-
-      /**
-       * ccmjs-based instance for building a commentary
-       * @type {Object}
-       */
-      let comment_builder;
+      let slides_viewer;
 
       /**
        * when all dependencies are solved after creation and before the app starts
@@ -81,7 +75,7 @@
         $ = Object.assign( {}, this.ccm.helper, this.helper ); $.use( this.ccm );  // set shortcut to help functions
         delete this.tool.config.parent;                                            // remove no needed parent reference
         this.logger && this.logger.log( 'ready', $.privatize( this, true ) );      // logging of 'ready' event
-        this.element.classList.add( 'qsb' );                                       // add class as prefix for CSS rules (to compensate Shadow DOM)
+        this.element.classList.add( this.id );                                     // add class as prefix for CSS rules (to compensate Shadow DOM)
       };
 
       /**
@@ -93,9 +87,39 @@
         // set initial app configuration (priority order: [high] this.data -> this.defaults -> this.tool.config [low])
         config = await $.integrate( await $.dataset( this.data ), await $.integrate( this.defaults, this.tool.config ) );
 
-        comment_builder = await this.comment_builder.start( { data: config.comment[ 2 ] } );  // start app builder for commentary
-        this.logger && this.logger.log( 'start', $.clone( config ) );                         // logging of 'start' event
-        this.render( config );                                                                // render webpage area
+        // logging of 'start' event
+        this.logger && this.logger.log( 'start', $.clone( config ) );
+
+        // prepare slides viewer (used for slides editing)
+        const renderControls = () => this.html.render( this.html.controls( this, slides_viewer, events ), this.element.querySelector( '#' + this.id + '-controls' ) );
+        slides_viewer = await this.tool.instance( {
+          parent: this,
+          routing: '',
+          description: '',
+          comment: '',
+          text: {},
+          'ignore.slides': config.ignore.slides,
+          'pdf_viewer.2.pdf': config.pdf_viewer[ 2 ].pdf,
+          'pdf_viewer.2.downloadable': '',
+          'pdf_viewer.2.text': {},
+          onstart: () => renderControls(),
+          onchange: ( { before } ) => before && renderControls()
+        } );
+
+        // start app builder for commentary
+        this.comment_builder.data = config.comment[ 2 ];
+        await this.comment_builder.start();
+
+        // render webpage area and place
+        this.render( config );
+
+        // start slides viewer and remove control area
+        await slides_viewer.start();
+        $.remove( slides_viewer.element.querySelector( '#control' ) );
+
+        // render slides viewer and app builder for commentary
+        $.setContent( this.element.querySelector( '#' + this.id + '-commentary' ), this.comment_builder.root );
+        $.setContent( this.element.querySelector( '#' + this.id + '-viewer' ), slides_viewer.root );
 
       };
 
@@ -103,10 +127,7 @@
        * renders the webpage area
        * @param {Object} [config = this.getValue()] - initial app configuration
        */
-      this.render = ( config = this.getValue() ) => {
-        this.html.render( this.html.main( config, this, events ), this.element );
-        $.setContent( this.element.querySelector( '#' + this.id + '-commentary' ), comment_builder.root );
-      };
+      this.render = ( config = this.getValue() ) => this.html.render( this.html.main( config, this, events ), this.element );
 
       /**
        * returns current resulting app configuration
@@ -118,34 +139,9 @@
         const comment = form_data.comment; delete form_data.comment;
         const result = $.clone( config );
         $.assign( result, form_data );
-        slidecast && $.deepValue( result, 'ignore.slides', slidecast.getValue().slides );
-        if ( comment )
-          result.comment[ 2 ] = comment_builder.getValue();
-        else
-          result.comment = '';
+        $.deepValue( result, 'ignore.slides', slides_viewer.ignore.slides );
+        comment ? result.comment[ 2 ] = this.comment_builder.getValue() : result.comment = '';
         return result;
-      };
-
-      const addSlide = ( index, value = 'https://ccmjs.github.io/tkless-components/qa_slidecast/resources/demo/de/extra.jpg' ) => {
-        slidecast.ignore.slides.splice( index, 0, { content: value } );
-        slidecast.start();
-      };
-
-      const startSlidecast = async ( slides = config.ignore.slides ) => {
-        slidecast = await this.tool.start( {
-          root: this.element.querySelector( '#' + this.id + '-slidecast' ),
-          routing: '',
-          description: '',
-          comment: '',
-          text: {},
-          'ignore.slides': slides,
-          'pdf_viewer.2.pdf': this.element.querySelector( 'input[name="pdf_viewer.2.pdf"]' ).value,
-          'pdf_viewer.2.downloadable': '',
-          'pdf_viewer.2.text': {},
-          onstart: instance => this.html.render( this.html.controls( this, instance, events ), this.element.querySelector( '#' + this.id + '-controls' ) ),
-          onchange: ( { instance, before } ) => before && this.html.render( this.html.controls( this, instance, events ), this.element.querySelector( '#' + this.id + '-controls' ) )
-        } );
-        $.remove( slidecast.element.querySelector( '#control' ) );
       };
 
       /**
@@ -154,23 +150,40 @@
        */
       const events = {
 
-        onAddLeft: () => this.element.querySelector( 'input[name="index"]' ).value = slidecast.slide_nr - 1,
+        /** when the value of an input field changes */
+        onChange: async event => {
 
-        onAddRight: () => this.element.querySelector( 'input[name="index"]' ).value = slidecast.slide_nr++,
+          // update webpage area
+          this.render();
+
+          // changed PDF? => update slides viewer
+          if ( event.target.name === 'pdf_viewer.2.pdf' ) {
+            slides_viewer.pdf_viewer.pdf = this.element.querySelector( 'input[name="pdf_viewer.2.pdf"]' ).value;
+            await slides_viewer.start();
+          }
+
+          // switched to slide settings? => refresh slides viewer
+          event.target.name === 'section' && await slides_viewer.pdf_viewer.refresh();
+
+        },
+
+        onAddLeft: () => this.element.querySelector( 'input[name="index"]' ).value = slides_viewer.slide_nr - 1,
+
+        onAddRight: () => this.element.querySelector( 'input[name="index"]' ).value = slides_viewer.slide_nr++,
 
         onAddResource: event => {
           event.preventDefault();
           const form = this.element.querySelector( '#' + this.id + '-add-form' );
           const modal = bootstrap.Modal.getInstance( form.querySelector( '.modal' ) );
           const form_data = $.formData( form );
-          addSlide( form_data.index, form_data[ form_data.resource ] );
+          slides_viewer.ignore.slides.splice( form_data.index, 0, { content: form_data[ form_data.resource ] } );
           modal.hide();
           form.reset();
         },
 
         onSlideSettings: () => {
           const form = this.element.querySelector( '#' + this.id + '-edit-form' );
-          const { audio, content, commentary, description } = slidecast.ignore.slides[ slidecast.slide_nr - 1 ];
+          const { audio, content, commentary, description } = slides_viewer.ignore.slides[ slides_viewer.slide_nr - 1 ];
           $.fillForm( form, {
             slide: {
               audio: audio || '',
@@ -191,33 +204,27 @@
         onSubmitSlideSettings: async event => {
           event.preventDefault();
           const form_data = $.formData( this.element.querySelector( '#' + this.id + '-edit-form' ) );
-          const slide = slidecast.ignore.slides[ slidecast.slide_nr - 1 ];
+          const slide = slides_viewer.ignore.slides[ slides_viewer.slide_nr - 1 ];
           Object.assign( slide, form_data.slide );
           delete slide._content;
           delete slide._description;
-          slidecast.start();
+          slides_viewer.start();
         },
 
         onDeleteSlide: () => {
-          const index = slidecast.slide_nr - 1;
-          if ( typeof slidecast.ignore.slides[ index ].content === 'number' ) return;
-          slidecast.ignore.slides.splice( index, 1 );
-          index && slidecast.slide_nr--;
-          slidecast.start();
-        },
-
-        /** when the value of an input field changes */
-        onChange: async event => {
-          this.render( this.getValue() );
-          if ( event.target.name === 'section' && event.target.value === 'slides' && !slidecast || event.target.name === 'pdf_viewer.2.pdf' ) await startSlidecast( slidecast && slidecast.ignore.slides );
+          const index = slides_viewer.slide_nr - 1;
+          if ( typeof slides_viewer.ignore.slides[ index ].content === 'number' ) return;
+          slides_viewer.ignore.slides.splice( index, 1 );
+          index && slides_viewer.slide_nr--;
+          slides_viewer.start();
         },
 
         /** when 'preview' button is clicked */
         onPreview: () => {
           const preview_body = this.element.querySelector( '#' + this.id + '-preview .modal-body' );
           $.setContent( preview_body, '' );
-          this.logger && this.logger.log( 'preview', $.clone( config ) );               // logging of 'finish' event
-          this.tool.start( Object.assign( this.getValue(), { root: preview_body } ) );  // start preview of the app
+          this.logger && this.logger.log( 'preview', $.clone( config ) );               // logging of 'preview' event
+          this.tool.start( Object.assign( this.getValue(), { root: preview_body } ) );  // render app in preview
         },
 
         /**

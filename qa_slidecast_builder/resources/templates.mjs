@@ -47,7 +47,7 @@ export function main( config, builder, events ) {
 
       <!-- Section: Slides -->
       <section id="${ id }-slides" ?data-hidden=${ builder.section !== 'slides' }>
-        <article id="${ id }-slidecast"></article>
+        <article id="${ id }-viewer"></article>
         <div class="mx-2 mb-3 d-flex justify-content-center">
           <nav id="${ id }-controls"></nav>
         </div>
