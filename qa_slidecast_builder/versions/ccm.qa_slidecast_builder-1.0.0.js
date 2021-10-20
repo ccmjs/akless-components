@@ -222,7 +222,7 @@
           const index = slides_viewer.slide_nr - 1;
           if ( typeof slides_viewer.ignore.slides[ index ].content === 'number' ) return;
           slides_viewer.ignore.slides.splice( index, 1 );
-          index && slides_viewer.slide_nr--;
+          index > 1 && slides_viewer.slide_nr--;
           slides_viewer.start();
         },
 
