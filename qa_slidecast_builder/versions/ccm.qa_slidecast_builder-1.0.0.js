@@ -165,16 +165,16 @@
         },
 
         /** when one of the buttons to expand the slides is clicked */
-        onExpandLeft: () => this.element.querySelector( 'input[name="index"]' ).value = slides_viewer.slide_nr - 1,
-        onExpandRight: () => this.element.querySelector( 'input[name="index"]' ).value = slides_viewer.slide_nr,
+        onExpandLeft: () => this.element.querySelector( 'input[name="slide_nr"]' ).value = slides_viewer.slide_nr,
+        onExpandRight: () => this.element.querySelector( 'input[name="slide_nr"]' ).value = slides_viewer.slide_nr + 1,
 
         /** when 'submit' event of the form to expand the slides is triggered */
         onExpandSubmit: async event => {
           event.preventDefault();
           const form = this.element.querySelector( '#' + this.id + '-expand-form' );
           const form_data = $.formData( form );
-          slides_viewer.ignore.slides.splice( form_data.index, 0, { content: form_data[ form_data.resource ] } );
-          slides_viewer.slide_nr = parseInt( form_data.index ) + 1;
+          slides_viewer.ignore.slides.splice( form_data.slide_nr - 1, 0, { content: form_data[ form_data.resource ] } );
+          slides_viewer.slide_nr = parseInt( form_data.slide_nr );
           await slides_viewer.start();
           bootstrap.Modal.getInstance( form.querySelector( '.modal' ) ).hide();
           form.reset();
