@@ -102,7 +102,7 @@ export function main( config, builder, events ) {
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body m-3">
-                <input type="hidden" name="index">
+                <input type="hidden" name="slide_nr">
                 ${ heading( 'expand' ) }
                 ${ radio( 'app' ) }
                 ${ radio( 'image' ) }
