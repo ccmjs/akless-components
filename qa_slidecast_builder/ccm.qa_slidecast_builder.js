@@ -90,8 +90,7 @@
         this.logger && this.logger.log( 'start', $.clone( config ) );
 
         // prepare slides viewer (used for slides editing)
-        const renderControls = () => this.html.render( this.html.controls( this, slides_viewer, events ), this.element.querySelector( '#' + this.id + '-controls' ) );
-        slides_viewer = await this.tool.instance( {
+        slides_viewer = await this.tool.start( {
           parent: this,
           routing: '',
           description: '',
@@ -100,10 +99,9 @@
           'ignore.slides': config.ignore.slides,
           'pdf_viewer.2.pdf': config.pdf_viewer[ 2 ].pdf,
           'pdf_viewer.2.downloadable': '',
-          'pdf_viewer.2.text': {},
-          onstart: () => renderControls(),
-          onchange: ( { before } ) => before && renderControls()
+          'pdf_viewer.2.text': {}
         } );
+        $.remove( slides_viewer.element.querySelector( '#control' ) );
 
         // start app builder for commentary
         this.comment_builder.data = config.comment[ 2 ];
@@ -111,10 +109,6 @@
 
         // render webpage area and place
         this.render( config );
-
-        // start slides viewer and remove control area
-        await slides_viewer.start();
-        $.remove( slides_viewer.element.querySelector( '#control' ) );
 
         // render slides viewer and app builder for commentary
         $.setContent( this.element.querySelector( '#' + this.id + '-commentary' ), this.comment_builder.root );
@@ -157,8 +151,11 @@
 
           // changed PDF? => update slides viewer
           if ( event.target.name === 'pdf_viewer.2.pdf' ) {
-            slides_viewer.pdf_viewer.pdf = this.element.querySelector( 'input[name="pdf_viewer.2.pdf"]' ).value;
-            await slides_viewer.start();
+            const value = this.element.querySelector( 'input[name="pdf_viewer.2.pdf"]' ).value;
+            if ( value ) {
+              slides_viewer.pdf_viewer.pdf = value;
+              await slides_viewer.start();
+            }
           }
 
           // switched to slide settings? => refresh slides viewer
@@ -166,22 +163,27 @@
 
         },
 
-        onAddLeft: () => this.element.querySelector( 'input[name="index"]' ).value = slides_viewer.slide_nr - 1,
+        /** when one of the buttons to expand the slides is clicked */
+        onExpandLeft: () => this.element.querySelector( 'input[name="index"]' ).value = slides_viewer.slide_nr - 1,
+        onExpandRight: () => this.element.querySelector( 'input[name="index"]' ).value = slides_viewer.slide_nr,
 
-        onAddRight: () => this.element.querySelector( 'input[name="index"]' ).value = slides_viewer.slide_nr++,
-
-        onAddResource: event => {
+        /** when 'submit' event of the form to expand the slides is triggered */
+        onExpandSubmit: async event => {
           event.preventDefault();
-          const form = this.element.querySelector( '#' + this.id + '-add-form' );
-          const modal = bootstrap.Modal.getInstance( form.querySelector( '.modal' ) );
+          const form = this.element.querySelector( '#' + this.id + '-expand-form' );
           const form_data = $.formData( form );
           slides_viewer.ignore.slides.splice( form_data.index, 0, { content: form_data[ form_data.resource ] } );
-          modal.hide();
+          slides_viewer.slide_nr = parseInt( form_data.index ) + 1;
+          await slides_viewer.start();
+          bootstrap.Modal.getInstance( form.querySelector( '.modal' ) ).hide();
           form.reset();
         },
 
-        onSlideSettings: () => {
-          const form = this.element.querySelector( '#' + this.id + '-edit-form' );
+        /** when button for slide settings is clicked */
+        onClickSlideSettings: () => {
+
+          // fill HTML form for slide settings with initial values
+          const form = this.element.querySelector( '#' + this.id + '-settings-form' );
           const { audio, content, commentary, description } = slides_viewer.ignore.slides[ slides_viewer.slide_nr - 1 ];
           $.fillForm( form, {
             slide: {
@@ -192,25 +194,30 @@
             }
           } );
 
-          const entry = form.querySelector( '#' + this.id + '-edit-content' );
+          // content cannot be changed for slides
+          const entry = form.querySelector( '#' + this.id + '-settings-content' );
           typeof content === 'number' ? entry.dataset.hidden = true : delete entry.dataset.hidden;
 
-          const button = form.querySelector( '#' + this.id + '-edit-delete' );
+          // slides cannot be deleted
+          const button = form.querySelector( '#' + this.id + '-settings-delete' );
           typeof content === 'number' ? button.dataset.invisible = true : delete button.dataset.invisible;
 
         },
 
+        /** when 'submit' event of the HTML form the for slide settings is triggered */
         onSubmitSlideSettings: async event => {
           event.preventDefault();
-          const form_data = $.formData( this.element.querySelector( '#' + this.id + '-edit-form' ) );
-          const slide = slides_viewer.ignore.slides[ slides_viewer.slide_nr - 1 ];
-          Object.assign( slide, form_data.slide );
-          delete slide._content;
-          delete slide._description;
+          const form_data = $.formData( this.element.querySelector( '#' + this.id + '-settings-form' ) ).slide;
+          const slide_data = slides_viewer.ignore.slides[ slides_viewer.slide_nr - 1 ];
+          if ( parseInt( form_data.content ) ) delete form_data.content;
+          Object.assign( slide_data, form_data );
+          delete slide_data._content;
+          delete slide_data._description;
           slides_viewer.start();
         },
 
-        onDeleteSlide: () => {
+        /** when 'delete' button in the slide settings is clicked */
+        onDelete: () => {
           const index = slides_viewer.slide_nr - 1;
           if ( typeof slides_viewer.ignore.slides[ index ].content === 'number' ) return;
           slides_viewer.ignore.slides.splice( index, 1 );
