@@ -175,6 +175,7 @@
           const form_data = $.formData( form );
           form_data.slide_nr = parseInt( form_data.slide_nr );
           slides_viewer.ignore.slides.splice( form_data.slide_nr - 1, 0, { content: form_data[ form_data.expand ] } );
+          slides_viewer.slide_nr = form_data.slide_nr;
           await slides_viewer.start();
           bootstrap.Modal.getInstance( form.querySelector( '.modal' ) ).hide();
           form.reset();
@@ -222,7 +223,7 @@
           const index = slides_viewer.slide_nr - 1;
           if ( typeof slides_viewer.ignore.slides[ index ].content === 'number' ) return;
           slides_viewer.ignore.slides.splice( index, 1 );
-          index > 1 && slides_viewer.slide_nr--;
+          index && slides_viewer.slide_nr--;
           slides_viewer.start();
         },
 
