@@ -11,17 +11,16 @@
     name: 'test',
     ccm: './../libs/ccm/ccm.js',
     config: {
-      routing: [ 'ccm.instance', './ccm.routing.js', { first: true } ]
+      routing: [ 'ccm.instance', './ccm.routing.js' ]
     },
     Instance: function () {
       this.ready = async () => this.routing.define( { home: home, page: page } );
       this.start = async () => {
         this.element.innerHTML = `
-          Hello World!
           <button id="home">Home</button>
           | Page <input type="number" min="1" max="5" value="5" id="nr">
           <button id="page">Open</button>
-          <div id="content">
+          <p id="content">
         `;
         home();
         this.element.querySelector( '#home' ).addEventListener( 'click', () => home() );

@@ -14,7 +14,7 @@
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-27.1.1.min.js',
     config: {
 //    "app": "1558132111384X2108359471753687",
-//    "first": true
+      "first": true
     },
     Instance: function () {
 
