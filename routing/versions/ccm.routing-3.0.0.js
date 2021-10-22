@@ -25,18 +25,18 @@
       let routes;
 
       /**
-       * search params of the URL
-       * @type {URLSearchParams}
+       * current app route
+       * @type {string}
        */
-      const searchParams = new URLSearchParams( location.search );
+      let current_route = '';
 
       /**
        * when all dependencies are solved after creation and before the app starts
        * @returns {Promise<void>}
        */
       this.ready = async () => {
-        // no app ID? => use component name
-        if ( !this.app && this.parent ) this.app = this.parent.component.name;
+        if ( !this.app && this.parent ) this.app = this.parent.component.name;  // no app ID? => use component name
+        window.onpopstate = this.refresh;                                       // check route on 'popstate' event
       };
 
       /**
@@ -50,10 +50,7 @@
        * gets current app route
        * @returns {string}
        */
-      this.get = () => {
-        const route = searchParams.get( 'ccm-' + this.app );
-        return route && route.split( '-' ).map( value => parseInt( value ) || value ) || '';
-      }
+      this.get = () => new URLSearchParams( window.location.search ).get( 'ccm-' + this.app ) || '';
 
       /**
        * sets current app route
@@ -62,8 +59,10 @@
        * @example routing.set('page-5')
        */
       this.set = route => {
-        searchParams.set( 'ccm-' + this.app, route );
-        window.history.replaceState( '', '', '?' + searchParams.toString() );
+        if ( route === current_route ) return;
+        const searchParams = new URLSearchParams( window.location.search );
+        searchParams.set( 'ccm-' + this.app, current_route = route );
+        window.history.pushState( '', '', '?' + searchParams.toString() );
       }
 
       /**
@@ -72,7 +71,13 @@
        */
       this.refresh = async () => {
         const route = this.get();
-        route && routes[ route[ 0 ] ] && routes[ route[ 0 ] ].apply( undefined, route.slice( 1 ) );
+        if ( route === current_route ) return;
+        const split = route.split( '-' ).map( value => parseInt( value ) || value );
+        current_route = route;
+        if ( routes[ split[ 0 ] ] )
+          await routes[ split[ 0 ] ].apply( undefined, split.slice( 1 ) )
+        else if ( this.parent )
+          await this.parent.start();
       }
 
     }

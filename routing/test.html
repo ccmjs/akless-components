@@ -14,12 +14,7 @@
       routing: [ 'ccm.instance', './ccm.routing.js' ]
     },
     Instance: function () {
-      this.ready = async () => {
-        this.routing.define( {
-          home: () => this.element.querySelector( '#content' ).innerHTML = 'Welcome Home',
-          page: page_nr => this.element.querySelector( '#content' ).innerHTML = 'Page ' + page_nr
-        } );
-      };
+      this.ready = async () => this.routing.define( { home: home, page: page } );
       this.start = async () => {
         this.element.innerHTML = `
           Hello World!
@@ -28,16 +23,18 @@
           <button id="page">Open</button>
           <div id="content">
         `;
+        this.element.querySelector( '#home' ).addEventListener( 'click', () => home() );
+        this.element.querySelector( '#page' ).addEventListener( 'click', () => page( this.element.querySelector( '#nr' ).value ) );
         this.routing.refresh();
-        this.element.querySelector( '#home' ).addEventListener( 'click', () => {
-          this.routing.set( 'home' );
-          this.routing.refresh();
-        } );
-        this.element.querySelector( '#page' ).addEventListener( 'click', () => {
-          this.routing.set( 'page-' + this.element.querySelector( '#nr' ).value );
-          this.routing.refresh();
-        } );
       };
+      const home = () => {
+        this.routing.set( 'home' );
+        this.element.querySelector( '#content' ).innerHTML = 'Welcome Home';
+      }
+      const page = page_nr => {
+        this.routing.set( 'page-' + page_nr );
+        this.element.querySelector( '#content' ).innerHTML = 'Page ' + page_nr;
+      }
     }
   }, { root: document.body } );
 </script>
