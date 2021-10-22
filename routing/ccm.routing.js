@@ -13,7 +13,8 @@
     name: 'routing',
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-27.1.1.min.js',
     config: {
-//    "app": "1558132111384X2108359471753687"
+//    "app": "1558132111384X2108359471753687",
+//    "first": true
     },
     Instance: function () {
 
@@ -61,7 +62,8 @@
         if ( route === current_route ) return;
         const searchParams = new URLSearchParams( window.location.search );
         searchParams.set( 'ccm-' + this.app, current_route = route );
-        window.history.pushState( '', '', '?' + searchParams.toString() );
+        window.history[ ( this.first ? 'replace' : 'push' ) + 'State' ]( '', '', '?' + searchParams.toString() );
+        this.first = false;
       }
 
       /**

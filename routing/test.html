@@ -11,7 +11,7 @@
     name: 'test',
     ccm: './../libs/ccm/ccm.js',
     config: {
-      routing: [ 'ccm.instance', './ccm.routing.js' ]
+      routing: [ 'ccm.instance', './ccm.routing.js', { first: true } ]
     },
     Instance: function () {
       this.ready = async () => this.routing.define( { home: home, page: page } );
@@ -23,6 +23,7 @@
           <button id="page">Open</button>
           <div id="content">
         `;
+        home();
         this.element.querySelector( '#home' ).addEventListener( 'click', () => home() );
         this.element.querySelector( '#page' ).addEventListener( 'click', () => page( this.element.querySelector( '#nr' ).value ) );
         this.routing.refresh();
