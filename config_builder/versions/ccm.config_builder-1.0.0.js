@@ -24,7 +24,7 @@
 //    "data": { "store": [ "ccm.store" ] },
       "defaults": {},
       "ignore": { "defaults": {} },
-      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-7.8.0.mjs" ],
+      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-7.8.0.min.mjs" ],
 //    "html": [ "ccm.load", "templates.mjs" ],
       "id": "cb",
       "libs": [ "ccm.load", "https://ccmjs.github.io/akless-components/libs/bootstrap-5/js/bootstrap.bundle.min.js" ],
