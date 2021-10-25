@@ -61,7 +61,7 @@
         $ = Object.assign( {}, this.ccm.helper, this.helper ); $.use( this.ccm );  // set shortcut to help functions
         delete this.tool.config.parent;                                            // remove no needed parent reference
         this.logger && this.logger.log( 'ready', $.privatize( this, true ) );      // logging of 'ready' event
-        this.element.classList.add( 'cb' );                                        // add class as prefix for CSS rules (to compensate Shadow DOM)
+        this.element.classList.add( this.id );                                     // add class as prefix for CSS rules (to compensate Shadow DOM)
       };
 
       /**
