@@ -13,15 +13,15 @@ ccm.files[ 'resources.js' ] = {
     "app_manager": [ "ccm.component", "https://ccmjs.github.io/akless-components/app_manager/versions/ccm.app_manager-2.0.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/app_manager/resources/configs.js", "live" ] ],
     "apps": [ "ccm.store", { "name": "dms-apps", "url": "https://ccm2.inf.h-brs.de" } ],
     "css": [ "ccm.load",
-      "https://ccmjs.github.io/akless-components/dms/resources/css/dms.css",
+      "https://ccmjs.github.io/akless-components/dms/v4.5.0/resources/css/dms.css",
       "https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     ],
     "component_manager": [ "ccm.component", "https://ccmjs.github.io/akless-components/component_manager/versions/ccm.component_manager-4.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/component_manager/resources/resources.js", "live" ] ],
     "components": [ "ccm.store", { "name": "dms-components", "url": "https://ccm2.inf.h-brs.de" } ],
-    "default_icon": "https://ccmjs.github.io/akless-components/dms/resources/img/default.png",
+    "default_icon": "https://ccmjs.github.io/akless-components/dms/v4.5.0/resources/img/default.png",
     "form": [ "ccm.component", "https://ccmjs.github.io/akless-components/submit/versions/ccm.submit-8.1.1.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/submit/resources/configs.js", "component_meta_create" ] ],
     "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/dms/v4.5.0/resources/html/dms.html" ],
-    "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/dms/resources/resources.js", "lang" ] ],
+    "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/dms/v4.5.0/resources/resources.js", "lang" ] ],
     "listing": {
       "apps": [ "ccm.component", "https://ccmjs.github.io/akless-components/listing/versions/ccm.listing-4.0.0.js", {
         "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/dms/v4.5.0/resources/html/listing_apps.html" ],
