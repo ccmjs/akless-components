@@ -87,6 +87,7 @@ ccm.files[ 'resources.js' ] = {
       }
     } ],
     "logo": "https://ccmjs.github.io/akless-components/dms/v4.5.0/resources/img/component.png",
+    "menu": [ "ccm.component", "https://ccmjs.github.io/akless-components/menu/versions/ccm.menu-3.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/dms/v4.5.0/resources/resources.js", "menu" ] ],
     "rating": {
       "apps": {
         "component": [ "ccm.component", "https://ccmjs.github.io/tkless-components/star_rating_result/versions/ccm.star_rating_result-5.0.0.js", {
