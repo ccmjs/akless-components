@@ -14,7 +14,7 @@ export { render };
  * @returns {TemplateResult} main HTML template
  */
 export function main( config, builder, events ) {
-  const id = builder.id;
+  const id = builder.component.name;
   use( config, builder, events, id );
   return html`
     <form @submit=${ events.onSubmit }>

@@ -4,44 +4,48 @@
  * @license The MIT License (MIT)
  */
 
-.cb b i {
+b i {
   cursor: pointer;
   font-size: medium;
 }
 
-.cb .btn-sm {
+.btn-sm {
   padding: .25rem .25rem;
 }
 
-.cb .heading {
+.heading {
   display: flex;
   align-items: center;
 }
 
-.cb .heading label {
+.heading label {
   margin-bottom: 0;
 }
 
-.cb .info {
+.accordion-button:not(.collapsed) {
+  background-color: rgb(var(--bs-light-rgb)) !important;
+}
+
+.info {
   margin-bottom: 0.5rem;
 }
 
-.cb .form-check {
+.form-check {
   margin-bottom: 0;
 }
 
-.cb input[type="checkbox"] {
+input[type="checkbox"] {
   cursor: pointer;
 }
 
-.cb *[disabled] {
+*[disabled] {
   cursor: not-allowed;
 }
 
-.cb *[data-hidden] {
+*[data-hidden] {
   display: none;
 }
 
-.cb .modal-body {
+.modal-body {
   padding: 0;
 }

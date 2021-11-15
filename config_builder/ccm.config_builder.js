@@ -25,7 +25,6 @@
       "ignore": { "defaults": {} },
       "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-7.8.0.min.mjs" ],
 //    "html": [ "ccm.load", "templates.mjs" ],
-      "id": "cb",
       "libs": [ "ccm.load", "https://ccmjs.github.io/akless-components/libs/bootstrap-5/js/bootstrap.bundle.min.js" ],
 //    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-5.0.1.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.min.js", "greedy" ] ],
 //    "onfinish": { "log": true },
@@ -60,7 +59,6 @@
         $ = Object.assign( {}, this.ccm.helper, this.helper ); $.use( this.ccm );  // set shortcut to help functions
         delete this.tool.config.parent;                                            // remove no needed parent reference
         this.logger && this.logger.log( 'ready', $.privatize( this, true ) );      // logging of 'ready' event
-        this.element.classList.add( this.id );                                     // add class as prefix for CSS rules (to compensate Shadow DOM)
       };
 
       /**

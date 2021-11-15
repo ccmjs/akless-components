@@ -7,7 +7,7 @@ import { html, render, unsafeHTML } from 'https://ccmjs.github.io/akless-compone
 export { html, render, unsafeHTML };
 
 let config, builder, events, id;
-export const use = ( _config, _builder, _events, _id ) => { config = _config; builder = _builder; events = _events; id = _id; };
+export const use = ( _config, _builder, _events ) => { config = _config; builder = _builder; events = _events; id = builder.component.name };
 
 /**
  * returns the HTML template for a heading of an input element
