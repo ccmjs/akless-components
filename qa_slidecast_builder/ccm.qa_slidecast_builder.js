@@ -36,7 +36,6 @@
       },
       "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-7.8.0.min.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/qa_slidecast_builder/resources/templates.mjs" ],
-      "id": "qsb",
       "libs": [ "ccm.load", "https://ccmjs.github.io/akless-components/libs/bootstrap-5/js/bootstrap.bundle.min.js" ],
 //    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-5.0.1.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.min.js", "greedy" ] ],
 //    "onfinish": { "log": true },
@@ -74,7 +73,6 @@
         $ = Object.assign( {}, this.ccm.helper, this.helper ); $.use( this.ccm );  // set shortcut to help functions
         delete this.tool.config.parent;                                            // remove no needed parent reference
         this.logger && this.logger.log( 'ready', $.privatize( this, true ) );      // logging of 'ready' event
-        this.element.classList.add( this.id );                                     // add class as prefix for CSS rules (to compensate Shadow DOM)
       };
 
       /**
@@ -111,8 +109,8 @@
         this.render( config );
 
         // render slides viewer and app builder for commentary
-        $.setContent( this.element.querySelector( '#' + this.id + '-commentary' ), this.comment_builder.root );
-        $.setContent( this.element.querySelector( '#' + this.id + '-viewer' ), slides_viewer.root );
+        $.setContent( this.element.querySelector( '#' + this.component.name + '-commentary' ), this.comment_builder.root );
+        $.setContent( this.element.querySelector( '#' + this.component.name + '-viewer' ), slides_viewer.root );
 
       };
 
@@ -170,7 +168,7 @@
         /** when 'submit' event of the form to expand the slides is triggered */
         onExpandSubmit: async event => {
           event.preventDefault();
-          const form = this.element.querySelector( '#' + this.id + '-expand-form' );
+          const form = this.element.querySelector( '#' + this.component.name + '-expand-form' );
           const form_data = $.formData( form );
           form_data.slide_nr = parseInt( form_data.slide_nr );
           slides_viewer.ignore.slides.splice( form_data.slide_nr - 1, 0, { content: form_data[ form_data.expand ] } );
@@ -184,7 +182,7 @@
         onClickSlideSettings: () => {
 
           // fill HTML form for slide settings with initial values
-          const form = this.element.querySelector( '#' + this.id + '-settings-form' );
+          const form = this.element.querySelector( '#' + this.component.name + '-settings-form' );
           const { audio, content, commentary, description } = slides_viewer.ignore.slides[ slides_viewer.slide_nr - 1 ];
           $.fillForm( form, {
             slide: {
@@ -196,11 +194,11 @@
           } );
 
           // content cannot be changed for slides
-          const entry = form.querySelector( '#' + this.id + '-settings-content' );
+          const entry = form.querySelector( '#' + this.component.name + '-settings-content' );
           typeof content === 'number' ? entry.dataset.hidden = true : delete entry.dataset.hidden;
 
           // slides cannot be deleted
-          const button = form.querySelector( '#' + this.id + '-settings-delete' );
+          const button = form.querySelector( '#' + this.component.name + '-settings-delete' );
           typeof content === 'number' ? button.dataset.invisible = true : delete button.dataset.invisible;
 
         },
@@ -208,7 +206,7 @@
         /** when 'submit' event of the HTML form the for slide settings is triggered */
         onSubmitSlideSettings: async event => {
           event.preventDefault();
-          const form_data = $.formData( this.element.querySelector( '#' + this.id + '-settings-form' ) ).slide;
+          const form_data = $.formData( this.element.querySelector( '#' + this.component.name + '-settings-form' ) ).slide;
           const slide_data = slides_viewer.ignore.slides[ slides_viewer.slide_nr - 1 ];
           if ( parseInt( form_data.content ) ) delete form_data.content;
           Object.assign( slide_data, form_data );
@@ -228,7 +226,7 @@
 
         /** when 'preview' button is clicked */
         onPreview: () => {
-          const preview_body = this.element.querySelector( '#' + this.id + '-preview .modal-body' );
+          const preview_body = this.element.querySelector( '#' + this.component.name + '-preview .modal-body' );
           $.setContent( preview_body, '' );
           this.logger && this.logger.log( 'preview', $.clone( config ) );               // logging of 'preview' event
           this.tool.start( Object.assign( this.getValue(), { root: preview_body } ) );  // render app in preview
