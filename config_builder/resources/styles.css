@@ -4,13 +4,8 @@
  * @license The MIT License (MIT)
  */
 
-b i {
-  cursor: pointer;
-  font-size: medium;
-}
-
 .btn-sm {
-  padding: .25rem .25rem;
+  padding: .25rem .25rem !important;
 }
 
 .heading {
@@ -36,7 +31,7 @@ b i {
 }
 
 .form-check {
-  margin-bottom: 0;
+  margin-bottom: 0 !important;
 }
 
 input[type="checkbox"] {
