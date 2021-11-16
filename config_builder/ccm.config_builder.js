@@ -74,7 +74,7 @@
         // generate unique key for app state data
         if ( config.data && config.data.store && !config.data.key ) config.data.key = $.generateKey();
 
-        if ( this.onstart ) config = await this.onstart( config );     // trigger 'onstart' callback
+        if ( this.onstart ) config = await this.onstart( this, config );     // trigger 'onstart' callback
         this.logger && this.logger.log( 'start', $.clone( config ) );  // logging of 'start' event
         this.render( config );                                         // render webpage area
 
