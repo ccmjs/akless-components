@@ -108,6 +108,7 @@ export const live = {
   "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/config_builder/resources/pdf_viewer/templates.mjs" ],
   "id": "pvb",
   "libs": "",
+  "onstart": async ( config_builder_instance, initial_app_config ) => { initial_app_config.text = config_builder_instance.ccm.helper.solveDependency( initial_app_config.text ); return initial_app_config; },
   "text": de,
   "tool": [ "ccm.component", "https://ccmjs.github.io/tkless-components/pdf_viewer/versions/ccm.pdf_viewer-7.0.0.min.js", [ "ccm.load", "https://ccmjs.github.io/tkless-components/pdf_viewer/resources/resources.mjs#demo" ] ]
 };

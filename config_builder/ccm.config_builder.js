@@ -28,6 +28,7 @@
       "libs": [ "ccm.load", "https://ccmjs.github.io/akless-components/libs/bootstrap-5/js/bootstrap.bundle.min.js" ],
 //    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-5.0.1.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.min.js", "greedy" ] ],
 //    "onfinish": { "log": true },
+//    "onstart": initial_app_config => initial_app_config,
       "preview": true,
       "shadow": "none",
 //    "text": {
@@ -73,6 +74,7 @@
         // generate unique key for app state data
         if ( config.data && config.data.store && !config.data.key ) config.data.key = $.generateKey();
 
+        if ( this.onstart ) config = await this.onstart( config );     // trigger 'onstart' callback
         this.logger && this.logger.log( 'start', $.clone( config ) );  // logging of 'start' event
         this.render( config );                                         // render webpage area
 
