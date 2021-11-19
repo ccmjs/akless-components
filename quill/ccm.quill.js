@@ -27,7 +27,7 @@
         $ = Object.assign( {}, this.ccm.helper, this.helper ); $.use( this.ccm );
         this.quill = new Quill( this.element, this.options );
         this.data && this.quill.setContents( await $.dataset( this.data ) );
-        this.onchange && this.quill.on( 'editor-change', () => this.onchange( this ) );
+        this.onchange && this.quill.on( 'text-change', () => this.onchange( this ) );
       };
       this.getHTML = () => this.quill.root.innerHTML;
       this.getValue = () => this.quill.getContents();
