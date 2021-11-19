@@ -15,7 +15,6 @@ export const test = {
     "./../libs/selectize-0/selectize.css",
     "./../selectize/resources/styles.css"
   ] ],
-  "helper.1": "./../modules/helper.mjs",
   "items": [ "Apple" ],
   "libs": [ "ccm.load", [
     "./../libs/jquery-3/jquery.js",

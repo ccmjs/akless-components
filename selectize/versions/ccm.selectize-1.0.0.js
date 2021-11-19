@@ -17,7 +17,6 @@
         "https://ccmjs.github.io/akless-components/libs/selectize-0/selectize.css",
         "https://ccmjs.github.io/akless-components/selectize/resources/styles.css"
       ] ],
-      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-7.8.0.min.mjs" ],
       "items": [],
       "libs": [ "ccm.load", [
         "https://ccmjs.github.io/akless-components/libs/jquery-3/jquery.min.js",
