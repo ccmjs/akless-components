@@ -1,0 +1,14 @@
+/**
+ * @overview default layout of ccmjs-based web component for selectize
+ * @author André Kless <andre.kless@web.de> 2021
+ * @license The MIT License (MIT)
+ */
+
+#element {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+a {
+  text-decoration: none;
+  margin-left: 0.2em;
+}
