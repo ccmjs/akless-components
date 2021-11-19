@@ -3,6 +3,8 @@
  * @author André Kless <andre.kless@web.de> 2021
  * @license The MIT License (MIT)
  * @version 1.0.0
+ * @changes
+ * version 1.0.0 (19.11.2021)
  */
 
 ( () => {
