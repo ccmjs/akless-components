@@ -15,7 +15,7 @@
         "https://ccmjs.github.io/akless-components/libs/quill-1/quill.snow.min.css",
         "https://ccmjs.github.io/akless-components/quill/resources/styles.css"
       ] ],
-      "data": { "ops": [ { "insert": "Hello, World!\n" } ] },
+//    "data": { "ops": [ { "insert": "Hello, World!\n" } ] },
       "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-7.8.0.min.mjs" ],
       "libs": [ "ccm.load", "https://ccmjs.github.io/akless-components/libs/quill-1/quill.min.js" ],
 //    "onchange": instance => console.log( instance.getValue() ),
