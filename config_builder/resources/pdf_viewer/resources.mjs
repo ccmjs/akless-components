@@ -108,7 +108,6 @@ export const demo = {
 export const live = {
   "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/config_builder/resources/styles.min.css" ],
   "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/config_builder/resources/pdf_viewer/templates.mjs" ],
-  "id": "pvb",
   "libs": "",
   "onstart": onStart,
   "text": de,
