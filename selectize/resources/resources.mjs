@@ -27,7 +27,7 @@ export const test = {
       ]
     ]
   ] ],
-  "onchange": items => console.log( items ),
+  "onchange": event => console.log( event.instance.getValue() ),
   "options": [ "Apple", "Orange", "Banana" ],
   "placeholder": "Please enter here...",
   "plugins": [ "drag_drop", "remove_button" ]
