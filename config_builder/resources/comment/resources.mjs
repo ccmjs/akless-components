@@ -160,7 +160,6 @@ export const en = {
  */
 export const basic = {
   "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/config_builder/resources/comment/templates.mjs" ],
-  "id": "cmb",
   "defaults": {
     "text": [ "ccm.load", "https://ccmjs.github.io/tkless-components/comment/resources/resources.mjs#en" ]
   },
@@ -244,6 +243,7 @@ export const demo = {
  * @type {Object}
  */
 export const live = {
+  "src": basic,
   "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/config_builder/resources/styles.min.css" ],
   "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/config_builder/resources/comment/templates.mjs" ],
   "libs": "",
