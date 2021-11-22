@@ -4,7 +4,7 @@
  * @license The MIT License (MIT)
  * @version latest (1.0.0)
  * @changes
- * version 1.0.0 (19.11.2021)
+ * version 1.0.0 (22.11.2021)
  */
 
 ( () => {
@@ -36,10 +36,9 @@
 //    "plugins": [ "drag_drop", "remove_button" ]
     },
     Instance: function () {
-      let selectize;
       this.start = async () => {
         this.element.innerHTML = '<select multiple style="font-family: Arial,sans-serif">';
-        selectize = jQuery( this.element.querySelector( 'select' ) ).selectize( {
+        this.selectize = jQuery( this.element.querySelector( 'select' ) ).selectize( {
           create: this.create,
           createOnBlur: this.create_on_blur,
           items: this.items,
