@@ -15,7 +15,7 @@ export const test = {
   ] ],
   "helper.1": "./../modules/helper.mjs",
   "libs": [ "ccm.load", "./../libs/quill-1/quill.js" ],
-  "onchange": instance => console.log( instance.getValue() ),
+  "onchange": event => console.log( event.instance.getValue() ),
   "options": {
     "placeholder": "Please enter here...",
     "theme": "snow"

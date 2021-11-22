@@ -4,7 +4,7 @@
  * @license The MIT License (MIT)
  * @version latest (1.0.0)
  * @changes
- * version 1.0.0 (19.11.2021)
+ * version 1.0.0 (22.11.2021)
  */
 
 ( () => {
@@ -19,7 +19,7 @@
 //    "data": { "ops": [ { "insert": "Hello, World!\n" } ] },
       "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-7.8.0.min.mjs" ],
       "libs": [ "ccm.load", "https://ccmjs.github.io/akless-components/libs/quill-1/quill.min.js" ],
-//    "onchange": instance => console.log( instance.getValue() ),
+//    "onchange": event => console.log( event.instance.getValue() ),
       "options": { "theme": "snow" },
       "shadow": "none"
     },
@@ -29,7 +29,7 @@
         $ = Object.assign( {}, this.ccm.helper, this.helper ); $.use( this.ccm );
         this.quill = new Quill( this.element, this.options );
         this.data && this.quill.setContents( await $.dataset( this.data ) );
-        this.onchange && this.quill.on( 'text-change', () => this.onchange( this ) );
+        this.onchange && this.quill.on( 'text-change', () => this.onchange( { instance: this } ) );
       };
       this.getValue = () => this.quill.getContents();
       this.getHTML = () => this.quill.root.innerHTML;
