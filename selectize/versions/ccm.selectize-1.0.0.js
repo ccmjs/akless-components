@@ -48,7 +48,7 @@
           placeholder: this.placeholder,
           plugins: this.plugins,
           onChange: () => this.onchange( { instance: this } )
-        } );
+        } )[ 0 ].selectize;
       };
       this.getValue = () => [ ...( this.selectize.items || [] ) ];
     }
