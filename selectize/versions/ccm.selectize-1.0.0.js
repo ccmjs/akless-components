@@ -31,7 +31,7 @@
           ]
         ]
       ] ],
-//    "onchange": items => console.log( items ),
+//    "onchange": event => console.log( event.instance.getValue() ),
       "options": [],
 //    "placeholder": "Please enter here...",
 //    "plugins": [ "drag_drop", "remove_button" ]
@@ -47,10 +47,10 @@
           options: this.options.map( option => { return { value: option } } ),
           placeholder: this.placeholder,
           plugins: this.plugins,
-          onChange: this.onchange
+          onChange: () => this.onchange( { instance: this } )
         } );
       };
-      this.getValue = () => [ ...( selectize.items || [] ) ];
+      this.getValue = () => [ ...( this.selectize.items || [] ) ];
     }
   };
   let b="ccm."+component.name+(component.version?"-"+component.version.join("."):"")+".js";if(window.ccm&&null===window.ccm.files[b])return window.ccm.files[b]=component;(b=window.ccm&&window.ccm.components[component.name])&&b.ccm&&(component.ccm=b.ccm);"string"===typeof component.ccm&&(component.ccm={url:component.ccm});let c=(component.ccm.url.match(/(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)/)||[""])[0];if(window.ccm&&window.ccm[c])window.ccm[c].component(component);else{var a=document.createElement("script");document.head.appendChild(a);component.ccm.integrity&&a.setAttribute("integrity",component.ccm.integrity);component.ccm.crossorigin&&a.setAttribute("crossorigin",component.ccm.crossorigin);a.onload=function(){(c="latest"?window.ccm:window.ccm[c]).component(component);document.head.removeChild(a)};a.src=component.ccm.url}
