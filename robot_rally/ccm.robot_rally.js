@@ -10,37 +10,37 @@
 ( () => {
 
   const category = {
-    0: "space",
-    1: "start",
-    2: "arrow",
-    3: "express",
+    0: "space",       // 1
+    1: "start",       // 2
+    2: "arrow",       // 4
+    3: "express",     // 8
 
-    4: "left",
-    5: "right",
-    6: "up",
-    7: "down",
+    4: "left",        // 16
+    5: "right",       // 32
+    6: "up",          // 64
+    7: "down",        // 128
 
-    8: "turn-left",
-    9: "turn-right",
-    10: "vertical",
-    11: "horizontal",
+    8: "turn-left",   // 256
+    9: "turn-right",  // 512
+    10: "vertical",   // 1024
+    11: "horizontal", // 2048
 
-    12: "wall-left",
-    13: "wall-right",
-    14: "wall-up",
-    15: "wall-down",
+    12: "wall-left",  // 4096
+    13: "wall-right", // 8192
+    14: "wall-up",    // 16384
+    15: "wall-down",  // 32768
 
-    16: "r1",
-    17: "r2",
-    18: "r3",
-    19: "r4",
+    16: "r1",         // 65536
+    17: "r2",         // 131072
+    18: "r3",         // 262144
+    19: "r4",         // 524288
 
-    20: "r5",
-    21: "l1",
-    22: "l2",
-    23: "l3",
+    20: "r5",         // 1048576
+    21: "l1",         // 2097152
+    22: "l2",         // 4194304
+    23: "l3",         // 8388608
 
-    24: "energy"
+    24: "energy"      // 16777216
   };
 
   const phase = {
@@ -56,18 +56,16 @@
 
   const component = {
     name: 'robot_rally',
-    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.2.0.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-27.1.1.js',
     config: {
-      "chat": [ "ccm.component", "https://ccmjs.github.io/akless-components/chat/versions/ccm.chat-2.1.0.js", {
+      "chat": [ "ccm.component", "https://ccmjs.github.io/akless-components/chat/versions/ccm.chat-2.3.2.js", {
         "data": { "store": [ "ccm.store" ] },
         "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/users/versions/ccm.users-1.0.0.js" ]
       } ],
-      "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/robot_rally/resources/default.css" ],
+      "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/robot_rally/resources/styles.css" ],
       "data": { "store": [ "ccm.store" ] },
       "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-7.0.0.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/robot_rally/resources/templates.mjs" ],
-
-      "img": "https://ccmjs.github.io/akless-components/robot_rally/resources/img/",
       "fields": {
         "BLANK": 0,
         "START": 2,
@@ -93,6 +91,28 @@
         "WU_LV": 2114560,
         "POWER": 16777216
       },
+      "difficulty": [
+        {
+          "name": "START-STRECKE: DIZZY HIGHWAY",
+          "description": "Startet mit dieser Strecke, wenn ihr zum ersten Mal ROBO RALLY spielt."
+        },
+        {
+          "name": "ANFÄNGER",
+          "description": "Schon etwas vertraut mit den ROBO RALLY Basisregeln? Dann probiert diese Strecke aus. Hier müsst ihr etwas mehr mit den Fabrikelementen interagieren als in Dizzy Highway."
+        },
+        {
+          "name": "FORTGESCHRITTENE",
+          "description": "Meint ihr, ihr könnt es zu jeder Zeit mit jedem Fabrikelement aufnehmen? Tja, bei diesen Strecken für fortgeschrittene Spieler könnt ihr ihnen nicht entkommen. Ihr sitzt in der Klemme. Ihr werdet beschossen. Ihr jagt Checkpoints hinterher, die sich bewegen."
+        },
+        {
+          "name": "PROFIS",
+          "description": "Diese Strecken eignen sich für Spieler, die eine strategische Herausforderung suchen. Eng platzierte Felder bedeuten eine nahezu konstante Interaktion mit Fabrikelementen und gegnerischen Robotern."
+        },
+        {
+          "name": "ROBOTER. MÜSSEN. ZERSTÖRT. WERDEN.",
+          "description": "Wir wissen nicht, wer sich diese Strecken ausgedacht hat. Sie sind einfach nur fies."
+        }
+      ],
       "explanation": {
         "starter": "If you’re playing for the first time, start here!",
         "beginner": "Comfortable with the basic ROBO RALLY rules? Try these courses, where you’ll need to interact with the board elements more than you did in Dizzy Highway.",
@@ -102,13 +122,9 @@
         "duration": "This is the typical amount of time it’ll take players who are familiar with the ROBO RALLY rules to get through the course. A short game may take about thirty minutes; a medium game may take about one hour; and a long game may take an hour and a half or more. The actual game time will depend on the number of players.",
         "rules": "Some racing courses include rules you’ll need to follow in addition to the core ROBO RALLY rules."
       },
-      "racetracks": {
-        "DIZZY": {
-          "id": "DIZZY",
+      "racetracks": [
+        {
           "name": "DIZZY HIGHWAY",
-          "difficulty": "STARTER COURSE",
-          "duration": "Short",
-          "rules": "None",
           "board": [
             [ "BLANK", "BLANK", "ARR_R", "BLANK", "DAR_D", "DAR_D", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "POWER" ],
             [ "BLANK", "START", "BLANK", "BLANK", "DADLD", "DALDL", "DAR_L", "DAR_L", "DAR_L", "DAR_L", "DAR_L", "DALUL", "DAR_L" ],
@@ -147,10 +163,317 @@
               "width": 74,
               "height": 74
             }
+          ]
+        },
+        {
+          "name": "RISKANTE KREUZUNG",
+          "board": [
+            [ "BLANK", "BLANK", "ARR_R", "BLANK", "DAR_D", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "DAR_U", "BLANK", "BLANK" ],
+            [ "BLANK", "START", "BLANK", "BLANK", "DAR_D", "BLANK", "AR_LD", "ARR_L", "AR_UL", "BLANK", "SPACE", "DAR_L", "DAR_L" ],
+            [ "BLANK", "WALLU", "BLANK", "DAR_L", "_____", "BLANK", "ARR_D", "POWER", "ARR_U", "BLANK", "BLANK", "BLANK", "BLANK" ],
+            [ "START", "BLANK", "BLANK", "BLANK", "BLANK", "AR_LD", "AR_DL", "BLANK", "AR_LU", "ARR_L", "ARR_L", "AR_UL", "BLANK" ],
+            [ "BLANK", "START", "WALLR", "BLANK", "AR_LD", "AR_DL", "BLANK", "BLANK", "BLANK", "POWER", "BLANK", "ARR_U", "BLANK" ],
+            [ "BLANK", "START", "WALLR", "BLANK", "ARR_D", "BLANK", "POWER", "BLANK", "BLANK", "BLANK", "AR_UR", "AR_RU", "BLANK" ],
+            [ "START", "BLANK", "BLANK", "BLANK", "AR_DR", "ARR_R", "ARR_R", "AR_RD", "BLANK", "AR_UR", "AR_RU", "BLANK", "BLANK" ],
+            [ "BLANK", "WALLD", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "ARR_D", "POWER", "ARR_U", "BLANK", "_____", "DAR_R" ],
+            [ "BLANK", "START", "BLANK", "DAR_R", "DAR_R", "_____", "BLANK", "AR_DR", "ARR_R", "AR_RU", "BLANK", "DAR_U", "BLANK" ],
+            [ "BLANK", "BLANK", "ARR_R", "BLANK", "BLANK", "DAR_D", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "DAR_U", "BLANK" ]
           ],
-          "direction": 0
+          "objects": [
+            {
+              "type": "ANTEN",
+              "x": 0,
+              "y": 4,
+              "width": 64,
+              "height": 64,
+              "direction": 0
+            },
+            {
+              "type": "REBOT",
+              "x": 4,
+              "y": 9,
+              "width": 74,
+              "height": 74,
+              "direction": 3,
+              "range": [ 3, 0, 12, 9 ]
+            },
+            {
+              "type": "CHECK",
+              "nr": 1,
+              "x": 8,
+              "y": 7,
+              "width": 74,
+              "height": 74
+            },
+            {
+              "type": "CHECK",
+              "nr": 2,
+              "x": 11,
+              "y": 0,
+              "width": 74,
+              "height": 74
+            }
+          ]
+        },
+        {
+          "name": "POWER PARCOURS",
+          "board": [
+            [ "BLANK", "BLANK", "ARR_R", "POWER", "WALLD", "P24_D", "WALLD", "BLANK", "BLANK", "BLANK", "BLANK", "DAR_U", "POWER" ],
+            [ "BLANK", "START", "BLANK", "BLANK", "BLANK", "DAR_R", "DAR_R", "DAR_R", "DAR_R", "DAR_R", "DAR_R", "DAURU", "BLANK" ],
+            [ "BLANK", "WALLU", "BLANK", "SPACE", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "DAR_U", "BLANK" ],
+            [ "START", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "WULPO", "BLANK", "BLANK", "WURPO", "BLANK", "DAR_U", "BLANK" ],
+            [ "BLANK", "START", "WALLR", "BLANK", "DAR_D", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "DAR_U", "BLANK" ],
+            [ "BLANK", "START", "WALLR", "BLANK", "DAR_D", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "DAR_U", "BLANK" ],
+            [ "START", "BLANK", "BLANK", "BLANK", "DAR_D", "BLANK", "WDLPO", "BLANK", "BLANK", "WRDPO", "BLANK", "BLANK", "BLANK" ],
+            [ "BLANK", "WALLD", "BLANK", "BLANK", "DAR_D", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "SPACE" ],
+            [ "BLANK", "START", "BLANK", "BLANK", "DADLD", "DAR_L", "DAR_L", "DAR_L", "DAR_L", "DAR_L", "BLANK", "BLANK", "BLANK" ],
+            [ "BLANK", "BLANK", "ARR_R", "BLANK", "DAR_D", "BLANK", "BLANK", "BLANK", "BLANK", "WALLU", "P24_U", "WALLU", "POWER" ]
+          ],
+          "objects": [
+            {
+              "type": "ANTEN",
+              "x": 0,
+              "y": 4,
+              "width": 64,
+              "height": 64,
+              "direction": 0
+            },
+            {
+              "type": "REBOT",
+              "x": 7,
+              "y": 0,
+              "width": 74,
+              "height": 74,
+              "direction": 2,
+              "range": [ 3, 0, 12, 9 ]
+            },
+            {
+              "type": "CHECK",
+              "nr": 1,
+              "x": 12,
+              "y": 3,
+              "width": 74,
+              "height": 74
+            },
+            {
+              "type": "CHECK",
+              "nr": 2,
+              "x": 5,
+              "y": 6,
+              "width": 74,
+              "height": 74
+            }
+          ]
+        },
+        {
+          "name": "KREISEL-SPRINT",
+          "board": [
+            [ "BLANK", "START", "WALLR", "BLANK", "DAR_D", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "DAR_U", "BLANK", "BLANK" ],
+            [ "BLANK", "WALLU", "BLANK", "BLANK", "DAR_D", "BLANK", "AR_LD", "ARR_L", "AR_UL", "BLANK", "SPACE", "DAR_L", "DAR_L" ],
+            [ "START", "BLANK", "WALRD", "DAR_L", "_____", "BLANK", "ARR_D", "POWER", "ARR_U", "BLANK", "BLANK", "BLANK", "BLANK" ],
+            [ "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "AR_LD", "AR_DL", "BLANK", "AR_LU", "ARR_L", "ARR_L", "AR_UL", "BLANK" ],
+            [ "BLANK", "START", "WALLR", "BLANK", "AR_LD", "AR_DL", "BLANK", "BLANK", "BLANK", "POWER", "BLANK", "ARR_U", "BLANK" ],
+            [ "BLANK", "START", "WALLR", "BLANK", "ARR_D", "BLANK", "POWER", "BLANK", "BLANK", "BLANK", "AR_UR", "AR_RU", "BLANK" ],
+            [ "BLANK", "BLANK", "BLANK", "BLANK", "AR_DR", "ARR_R", "ARR_R", "AR_RD", "BLANK", "AR_UR", "AR_RU", "BLANK", "BLANK" ],
+            [ "START", "BLANK", "WALUR", "BLANK", "BLANK", "BLANK", "BLANK", "ARR_D", "POWER", "ARR_U", "BLANK", "_____", "DAR_R" ],
+            [ "BLANK", "WALLD", "BLANK", "DAR_R", "DAR_R", "_____", "BLANK", "AR_DR", "ARR_R", "AR_RU", "BLANK", "DAR_U", "BLANK" ],
+            [ "BLANK", "START", "WALLR", "BLANK", "BLANK", "DAR_D", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "DAR_U", "BLANK" ]
+          ],
+          "objects": [
+            {
+              "type": "ANTEN",
+              "x": 0,
+              "y": 4,
+              "width": 64,
+              "height": 64,
+              "direction": 0
+            },
+            {
+              "type": "REBOT",
+              "x": 12,
+              "y": 0,
+              "width": 74,
+              "height": 74,
+              "direction": 1,
+              "range": [ 3, 0, 12, 9 ]
+            },
+            {
+              "type": "CHECK",
+              "nr": 1,
+              "x": 12,
+              "y": 8,
+              "width": 74,
+              "height": 74
+            },
+            {
+              "type": "CHECK",
+              "nr": 2,
+              "x": 5,
+              "y": 2,
+              "width": 74,
+              "height": 74
+            },
+            {
+              "type": "CHECK",
+              "nr": 3,
+              "x": 4,
+              "y": 9,
+              "width": 74,
+              "height": 74
+            }
+          ]
+        },
+        {
+          "name": "LASER SQUARE",
+          "board": [
+            [ "BLANK", "BLANK", "ARR_R", "POWER", "DAR_D", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "ARR_U", "BLANK" ],
+            [ "BLANK", "START", "BLANK", "ARR_L", "BLANK", "BLANK", "BLANK", "SPACE", "BLANK", "BLANK", "BLANK", "BLANK", "DAR_L" ],
+            [ "BLANK", "WALLU", "BLANK", "BLANK", "BLANK", "WU_LV", "WL_LH", "LAS_H", "LAS_H", "LAS_H", "WR_LH", "BLANK", "BLANK" ],
+            [ "START", "BLANK", "BLANK", "BLANK", "BLANK", "LAS_V", "DARUL", "DAR_R", "DAR_R", "DARRD", "WU_LV", "BLANK", "BLANK" ],
+            [ "BLANK", "START", "WALLR", "BLANK", "POWER", "LAS_V", "DAR_U", "BLANK", "BLANK", "DAR_D", "LAS_V", "SPACE", "BLANK" ],
+            [ "BLANK", "START", "WALLR", "BLANK", "SPACE", "LAS_V", "DAR_U", "ROT_R", "POWER", "DAR_D", "LAS_V", "POWER", "BLANK" ],
+            [ "START", "BLANK", "BLANK", "BLANK", "BLANK", "WD_LV", "DARLU", "DAR_L", "DAR_L", "DARDL", "LAS_V", "BLANK", "BLANK" ],
+            [ "BLANK", "WALLD", "BLANK", "BLANK", "BLANK", "WL_LH", "LAS_H", "LAS_H", "LAS_H", "WR_LH", "WD_LV", "BLANK", "BLANK" ],
+            [ "BLANK", "START", "BLANK", "DAR_R", "BLANK", "BLANK", "BLANK", "BLANK", "SPACE", "BLANK", "BLANK", "BLANK", "ARR_R" ],
+            [ "BLANK", "BLANK", "ARR_R", "BLANK", "ARR_U", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "DAR_U", "POWER" ]
+          ],
+          "objects": [
+            {
+              "type": "ANTEN",
+              "x": 0,
+              "y": 4,
+              "width": 64,
+              "height": 64,
+              "direction": 0
+            },
+            {
+              "type": "REBOT",
+              "x": 3,
+              "y": 5,
+              "width": 74,
+              "height": 74,
+              "direction": 3,
+              "range": [ 3, 0, 12, 9 ]
+            },
+            {
+              "type": "CHECK",
+              "nr": 1,
+              "x": 8,
+              "y": 1,
+              "width": 74,
+              "height": 74
+            },
+            {
+              "type": "CHECK",
+              "nr": 2,
+              "x": 9,
+              "y": 8,
+              "width": 74,
+              "height": 74
+            }
+          ]
+        },
+        {
+          "name": "ROCK'N REBOOT",
+          "board": [
+            [ "BLANK", "BLANK", "ARR_R", "BLANK", "DAR_D", "BLANK", "BLANK", "BLANK", "POWER", "AR_UR", "ARR_R", "AR_RU", "BLANK" ],
+            [ "BLANK", "START", "BLANK", "BLANK", "DARDR", "DAR_R", "DAR_R", "SPACE", "BLANK", "ARR_U", "BLANK", "DARLD", "DAR_L" ],
+            [ "BLANK", "WALLU", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "ARR_U", "BLANK", "DAR_D", "BLANK" ],
+            [ "START", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "ARR_U", "BLANK", "DAR_D", "BLANK" ],
+            [ "BLANK", "START", "WALLR", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "SPACE", "BLANK" ],
+            [ "BLANK", "START", "WALLR", "POWER", "SPACE", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "POWER", "BLANK" ],
+            [ "START", "BLANK", "BLANK", "BLANK", "DAR_U", "BLANK", "ARR_D", "BLANK", "BLANK", "ARR_R", "ARR_R", "ARR_R", "AR_RD" ],
+            [ "BLANK", "WALLD", "BLANK", "BLANK", "DAR_U", "BLANK", "ARR_D", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "ARR_D" ],
+            [ "BLANK", "START", "BLANK", "DAR_R", "DARRU", "POWER", "ARR_D", "BLANK", "SPACE", "DAR_L", "DAR_L", "DARUL", "AR_DR" ],
+            [ "BLANK", "BLANK", "ARR_R", "BLANK", "AR_LD", "ARR_L", "AR_DL", "BLANK", "BLANK", "BLANK", "POWER", "DAR_U", "BLANK" ]
+          ],
+          "objects": [
+            {
+              "type": "ANTEN",
+              "x": 0,
+              "y": 4,
+              "width": 64,
+              "height": 64,
+              "direction": 0
+            },
+            {
+              "type": "REBOT",
+              "x": 5,
+              "y": 4,
+              "width": 74,
+              "height": 74,
+              "direction": 0,
+              "range": [ 3, 0, 12, 9 ]
+            },
+            {
+              "type": "CHECK",
+              "nr": 1,
+              "x": 12,
+              "y": 9,
+              "width": 74,
+              "height": 74
+            },
+            {
+              "type": "CHECK",
+              "nr": 2,
+              "x": 12,
+              "y": 0,
+              "width": 74,
+              "height": 74
+            },
+            {
+              "type": "CHECK",
+              "nr": 3,
+              "x": 9,
+              "y": 9,
+              "width": 74,
+              "height": 74
+            }
+          ]
+        },
+        {
+          "name": "BLANK",
+          "board": [
+            [ "BLANK", "BLANK", "ARR_R", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK" ],
+            [ "BLANK", "START", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK" ],
+            [ "BLANK", "WALLU", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK" ],
+            [ "START", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK" ],
+            [ "BLANK", "START", "WALLR", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK" ],
+            [ "BLANK", "START", "WALLR", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK" ],
+            [ "START", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK" ],
+            [ "BLANK", "WALLD", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK" ],
+            [ "BLANK", "START", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK" ],
+            [ "BLANK", "BLANK", "ARR_R", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK" ]
+          ],
+          "objects": [
+            {
+              "type": "ANTEN",
+              "x": 0,
+              "y": 4,
+              "width": 64,
+              "height": 64,
+              "direction": 0
+            },
+            {
+              "type": "REBOT",
+              "x": 3,
+              "y": 0,
+              "width": 74,
+              "height": 74,
+              "direction": 0,
+              "range": [ 3, 0, 12, 9 ]
+            },
+            {
+              "type": "CHECK",
+              "nr": 1,
+              "x": 3,
+              "y": 9,
+              "width": 74,
+              "height": 74
+            }
+          ]
         }
-      },
+      ],
       "objects": {
         "ANTEN": {
           "id": "ANTEN",
@@ -169,6 +492,7 @@
           "name": "Reboot Token"
         }
       },
+      "path": "https://ccmjs.github.io/akless-components/robot_rally/resources/",
       "robots": {
         "TWONK": {
           "id": "TWONK",
@@ -195,6 +519,7 @@
           "name": "SPIN BOT"
         }
       },
+      "size": 80,
       "cards": {
         "MOVE1": {
           "id": "MOVE1",
@@ -258,11 +583,11 @@
           "amount": 38,
           "effect": "This is the simplest form of damage. Robots must take a SPAM damage card when they are shot by a board or robot laser."
         },
-        "WORMD": {
-          "id": "WORMD",
-          "name": "WORM",
-          "amount": 6,
-          "effect": "When you program a worm damage card, you must immediately reboot your robot."
+        "VIRUS": {
+          "id": "VIRUS",
+          "name": "VIRUS",
+          "amount": 18,
+          "effect": "When you program a virus damage card, any robot on the board within a six-space radius of you must immediately take a virus card from the draw pile."
         },
         "TROJA": {
           "id": "TROJA",
@@ -270,11 +595,11 @@
           "amount": 12,
           "effect": "When you program a Trojan horse damage card, you must immediately take two SPAM damage cards."
         },
-        "VIRUS": {
-          "id": "VIRUS",
-          "name": "VIRUS",
-          "amount": 18,
-          "effect": "When you program a virus damage card, any robot on the board within a six-space radius of you must immediately take a virus card from the draw pile."
+        "WORMD": {
+          "id": "WORMD",
+          "name": "WORM",
+          "amount": 6,
+          "effect": "When you program a worm damage card, you must immediately reboot your robot."
         }
       },
       "special": {
@@ -594,9 +919,13 @@
     },
 
     Instance: function () {
-      let $, chat, robot, player, game, n = 0;
+      let $, chat, robot, game, n = 0;
 
-      this.init = async () => {
+      /**
+       * when all dependencies are solved after creation and before the app starts
+       * @returns {Promise<void>}
+       */
+      this.ready = async () => {
 
         // set shortcut to help functions
         $ = Object.assign( {}, this.ccm.helper, this.helper ); $.use( this.ccm );
@@ -605,57 +934,67 @@
         this.data.store.onchange = dataset => {
           if ( dataset.key !== this.data.key ) return;
           game = dataset;
-          this.refresh();
+          this.play();
         }
 
       };
 
+      /**
+       * starts the app
+       * @returns {Promise<void>}
+       */
       this.start = async () => {
-
-        // render main HTML structure
-        this.html.render( this.html.main(), this.element );
-
-        // render chat
-        if ( !chat ) chat = await this.chat.instance( {
-          'data.store.1.realm': null,
-          'data.key': this.data.key + '-chat',
-          'data.permissions': null,
-          hide_login: true,
-          'user.2.store': [ 'ccm.store', Object.keys( this.robots ).map( robot => { return {
-            key: robot,
-            user: robot,
-            token: '',
-            name: getRobotName( robot ),
-            picture: this.img + 'robots/' + robot + '.png'
-          } } ) ]
-        } );
 
         // load existing game state data
         game = await $.dataset( this.data );
 
-        // empty game state data? => reset
-        if ( !game.players ) game = undefined;
-
-        // render current game state
-        this.refresh();
+        // perform next game step
+        await play();
 
       };
 
-      this.refresh = async () => {
+      /**
+       * returns current result data
+       * @returns {Object} result data
+       */
+      this.getValue = () => $.clone( game );
 
-        // no game state data? => set initial game state data
-        if ( !game ) newGame();
+      /**
+       * performs the next game step
+       * @returns {Promise<void>}
+       */
+      const play = async () => {
 
-        // current player has no robot? => choose robot
-        if ( robot === undefined ) await chooseRobot();
+        // empty game state data? => start new game
+        if ( !game.robots ) await helper.newGame();
+
+        // player has no robot? => choose robot
+        if ( robot === undefined ) return render.chooseRobot();
 
         // no racetrack? => choose racetrack
-        if ( !game.racetrack ) {
-          chooseRacetrack();
-          await render();
-          this.refresh();
-          return;
-        }
+        if ( !game.racetrack ) return render.chooseRacetrack();
+
+        // render main HTML template
+        render.board();
+
+        console.log( 'finish' );
+        return;
+
+        // render chat
+        if ( !chat )
+          chat = await this.chat.instance( {
+            'data.store.1.realm': null,
+            'data.key': this.data.key + '-chat',
+            'data.permissions': null,
+            hide_login: true,
+            'user.2.store': [ 'ccm.store', Object.keys( this.robots ).map( robot => { return {
+              key: robot,
+              user: robot,
+              token: '',
+              name: getRobotName( robot ),
+              picture: this.img + 'robots/' + robot + '.png'
+            } } ) ]
+          } );
 
         player = game.players[ robot ];
 
@@ -690,49 +1029,132 @@
       };
 
       /**
-       * returns current result data
-       * @returns {Object} result data
+       * contains all render functions
+       * @type {Object.<string,Function>}
        */
-      this.getValue = () => game;
+      const render = {
 
-      /** sets initial game state data */
-      const newGame = () => {
-        game = {
-          players: {},
-          damage: {},
-          special: Object.keys( this.special ),
-          upgrades: Object.keys( this.upgrades )
-        };
-        for ( const id in this.damage )
-          game.damage[ id ] = this.damage[ id ].amount;
-        $.shuffleArray( game.special );
-        $.shuffleArray( game.upgrades );
+        /** lets the user choose a robot */
+        chooseRobot: () => this.html.render( this.html.chooseRobot( Object.values( this.robots ), this.path, events.onSelectedRobot ), this.element ),
+
+        /** lets the user choose a racetrack */
+        chooseRacetrack: () => this.html.render( this.html.chooseRacetrack( this.racetracks, this.path, this.size / 2, events.onSelectedRacetrack ), this.element ),
+
+        /** renders the game board */
+        board: () => {
+          const board = this.racetracks[ game.racetrack - 1 ].board;
+          this.html.render( this.html.board( board, game.objects, this.path, this.size ), this.element );
+          this.element.querySelectorAll( '.board .obj' ).forEach( obj => $.remove( obj ) );
+          game.objects.forEach( obj => {
+            const field = this.element.querySelector( '.board .field:nth-child(' + ( obj.x + 1 + obj.y * board[ 0 ].length ) + ')' );
+            field.appendChild( $.html( {
+              tag: 'img',
+              class: 'obj',
+              width: obj.width,
+              height: obj.height,
+              src: this.path + 'images/objects/' + obj.type + ( obj.nr || '' ) + '.png',
+              style: 'transform: rotate(' + ( ( obj.direction || 0 ) * 90 ) + 'deg);'
+            } ) );
+          } );
+        }
+
       };
 
       /**
-       * let the user choose an available robot
-       * @returns {Promise<void>}
+       * contains all event handlers
+       * @type {Object.<string,Function>}
        */
-      const chooseRobot = () => new Promise( async resolve => {
-        const robots = Object.keys( this.robots ).filter( id => !game.players || !Object.keys( game.players ).includes( id ) );
-        if ( !robots.length ) return '';
-        robot = robots[ Math.floor( Math.random() * robots.length ) ];
-        const player = game.players[ robot ] = { deck: [], energy: 5 };
-        for ( const id in this.cards )
-          for ( let i = 0; i < this.cards[ id ].amount; i++ )
-            player.deck.push( this.cards[ id ].id );
-        $.shuffleArray( player.deck );
-        this.data.store.set( game );
-        console.log( 'Chosen robot:', getRobotName() );
-        resolve();
-      } );
+      const events = {
+
+        /**
+         * when a robot has been selected
+         * @param {string} robot_id - ID of the selected robot
+         * @returns {Promise<void>}
+         */
+        onSelectedRobot: async robot_id => {
+          robot = robot_id;
+          if ( !game.master ) game.master = robot;
+          const player = game.robots[ robot ] = { deck: [], energy: 5 };
+          for ( const id in this.cards )
+            for ( let i = 0; i < this.cards[ id ].amount; i++ )
+              player.deck.push( this.cards[ id ].id );
+          $.shuffleArray( player.deck );
+          await helper.save();
+          console.log( helper.getRobotName() + ' wurde als Roboter ausgewählt.' );
+          await play();
+        },
+
+        /**
+         * when a racetrack has been selected
+         * @param {number} nr - racetrack number
+         * @returns {Promise<void>}
+         */
+        onSelectedRacetrack: async nr => {
+          Object.assign( game, {
+            racetrack: nr,
+            objects: $.clone( this.racetracks[ nr - 1 ].objects )
+          } );
+          helper.findFields( nr, 'POWER' ).forEach( field => game.objects.push( {
+            type: "ECUBE",
+            x: field.x,
+            y: field.y,
+            width: this.size / 5,
+            height: this.size / 5
+          } ) );
+          await helper.save();
+          console.log( 'Die ' + nr + '. Rennstrecke wurde ausgewählt.' );
+          await play();
+        }
+
+      };
 
       /**
-       * gets the name of a roboter
-       * @param {string} [robot_id = robot] roboter ID (default: ID of the already chosen robot)
-       * @returns {string} roboter name
+       * contains all app specific help functions
+       * @type {Object.<string,Function>}
        */
-      const getRobotName = ( robot_id = robot ) => this.robots[ robot_id ].name;
+      const helper = {
+
+        /**
+         * finds all fields of a certain type in a racetrack
+         * @param {number} racetrack - racetrack number
+         * @param {string} field - field type
+         */
+        findFields: ( racetrack, field ) => {
+          const board = this.racetracks[ racetrack - 1 ].board;
+          const fields = [];
+          for ( let y = 0; y < board.length; y++ )
+            for ( let x = 0; x < board[ y ].length; x++ )
+              if ( board[ y ][ x ] === field )
+                fields.push( { x: x, y: y } );
+          return fields;
+        },
+
+        /**
+         * gets the name of a robot
+         * @param {string} [robot_id = robot] roboter ID (default: ID of the selected robot)
+         * @returns {string} robot name
+         */
+        getRobotName: ( robot_id = robot ) => this.robots[ robot_id ].name,
+
+        /** sets initial game state data */
+        newGame: async () => {
+          game = {
+            robots: {},
+            damage: {},
+            special: Object.keys( this.special ),
+            upgrades: Object.keys( this.upgrades )
+          };
+          for ( const id in this.damage )
+            game.damage[ id ] = this.damage[ id ].amount;
+          $.shuffleArray( game.special );
+          $.shuffleArray( game.upgrades );
+          await helper.save();
+        },
+
+        /** saves game state data */
+        save: async () => this.data.store.set( game )
+
+      };
 
       const buyUpgrade = () => {
 
@@ -752,25 +1174,6 @@
         }
 
         game.phase = 2;
-      };
-
-      const chooseRacetrack = () => {
-        const racetracks = Object.keys( this.racetracks );
-        const racetrack_id = racetracks[ Math.floor( Math.random() * racetracks.length ) ];
-        const racetrack = this.racetracks[ racetrack_id ];
-        Object.assign( game, {
-          racetrack: racetrack_id,
-          objects: $.clone( racetrack.objects ),
-        } );
-        findFields( 'POWER' ).forEach( field => game.objects.push( {
-          type: "ECUBE",
-          x: field.x,
-          y: field.y,
-          width: 15,
-          height: 15
-        } ) );
-        this.data.store.set( game );
-        console.log( 'Choosed Racetrack:', racetrack.name );
       };
 
       const chooseStart = () => {
@@ -797,37 +1200,9 @@
         console.log( getRobotName(), 'has choosed a start position.' );
       };
 
-      const findFields = field => {
-        const racetrack = this.racetracks[ game.racetrack ].board;
-        const fields = [];
-        for ( let y = 0; y < racetrack.length; y++ )
-          for ( let x = 0; x < racetrack[ y ].length; x++ )
-            if ( racetrack[ y ][ x ] === field )
-              fields.push( { x: x, y: y } );
-        return fields;
-      };
-
-      const render = async () => {
+      const _render = async () => {
         renderRacetrack();
         await $.sleep( 300 );
-      };
-
-      const renderRacetrack = () => {
-        const element = $.html( this.element.querySelector( '#board' ) );
-        const racetrack = this.racetracks[ game.racetrack ].board;
-        if ( game.racetrack )
-          racetrack.forEach( row => row.forEach( cell => element.appendChild( $.html( { class: 'field', style: 'background-image: url(' + this.img + 'fields/' + cell + '.jpg)' } ) ) ) );
-        renderObjects();
-      };
-
-      const renderObjects = () => {
-        this.element.querySelectorAll( '#board .obj' ).forEach( obj => $.remove( obj ) );
-        game.objects.forEach( obj => renderObject( obj ) );
-      };
-
-      const renderObject = obj => {
-        const racetrack = this.racetracks[ game.racetrack ].board;
-        this.element.querySelector( '#board .field:nth-child(' + ( obj.x + 1 + obj.y * racetrack[ 0 ].length ) + ')' ).appendChild( $.html( { tag: 'img', class: 'obj', width: obj.width, height: obj.height, src: this.img + 'objects/' + obj.type + ( obj.nr || '' ) + '.png', style: 'transform: rotate(' + ( ( obj.direction || 0 ) * 90 ) + 'deg);' } ) );
       };
 
     }
