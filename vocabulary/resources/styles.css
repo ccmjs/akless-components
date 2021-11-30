@@ -1,0 +1,18 @@
+/**
+ * @overview default layout of ccmjs-based web component for vocabulary
+ * @author André Kless <andre.kless@web.de> 2021
+ * @license The MIT License (MIT)
+ */
+
+input {
+  border: none;
+  background: transparent;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  color: black;
+  width: 100%;
+}
+
+th input {
+  font-weight: bold;
+}
