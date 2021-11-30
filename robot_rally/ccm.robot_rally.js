@@ -4,7 +4,7 @@
  * @license The MIT License (MIT)
  * @version latest (1.0.0)
  * @changes
- * version 1.0.0 (05.03.2021)
+ * version 1.0.0 (30.11.2021)
  */
 
 ( () => {
@@ -122,7 +122,6 @@
         "P135L": 0,
         "P135R": 0,
         "P135U": 0,
-        "POW_H": 0,
         "POWER": 0,
         "ROT_L": 0,
         "ROT_R": 0,
@@ -147,31 +146,7 @@
         "WU_PV": 0,
         "WUL1V": 0,
         "WUL2V": 0,
-        "WURPV": 0,
-
-        "BLANK": 0,
-        "START": 2,
-        "DAR_L": 28,
-        "ARR_R": 36,
-        "DAR_R": 44,
-        "DAR_U": 76,
-        "DAR_D": 140,
-        "DALUL": 284,
-        "DARDR": 300,
-        "DAURU": 332,
-        "DADLD": 396,
-        "DALDL": 540,
-        "DARUR": 556,
-        "DAULU": 588,
-        "DADRD": 652,
-        "WALLR": 8192,
-        "WALLU": 16384,
-        "WALLD": 32768,
-        "WL_LH": 2103296,
-        "WR_LH": 2107392,
-        "WD_LV": 2130944,
-        "WU_LV": 2114560,
-        "POWER": 16777216
+        "WURPV": 0
       },
       "difficulty": [
         {
@@ -224,26 +199,19 @@
               "type": "ANTEN",
               "x": 0,
               "y": 4,
-              "width": 64,
-              "height": 64,
               "direction": 0
             },
             {
               "type": "REBOT",
               "x": 7,
               "y": 3,
-              "width": 74,
-              "height": 74,
               "direction": 1,
               "range": [ 3, 0, 12, 9 ]
             },
             {
-              "type": "CHECK",
-              "nr": 1,
+              "type": "GOAL1",
               "x": 12,
-              "y": 3,
-              "width": 74,
-              "height": 74
+              "y": 3
             }
           ]
         },
@@ -266,34 +234,24 @@
               "type": "ANTEN",
               "x": 0,
               "y": 4,
-              "width": 64,
-              "height": 64,
               "direction": 0
             },
             {
               "type": "REBOT",
               "x": 4,
               "y": 9,
-              "width": 74,
-              "height": 74,
               "direction": 3,
               "range": [ 3, 0, 12, 9 ]
             },
             {
-              "type": "CHECK",
-              "nr": 1,
+              "type": "GOAL1",
               "x": 8,
-              "y": 7,
-              "width": 74,
-              "height": 74
+              "y": 7
             },
             {
-              "type": "CHECK",
-              "nr": 2,
+              "type": "GOAL2",
               "x": 11,
-              "y": 0,
-              "width": 74,
-              "height": 74
+              "y": 0
             }
           ]
         },
@@ -309,41 +267,31 @@
             [ "START", "BLANK", "BLANK", "BLANK", "DAR_D", "BLANK", "WDLPV", "BLANK", "BLANK", "WRDPV", "BLANK", "BLANK", "BLANK" ],
             [ "BLANK", "WAL_D", "BLANK", "BLANK", "DAR_D", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "SPACE" ],
             [ "BLANK", "START", "BLANK", "BLANK", "D_DLD", "DAR_L", "DAR_L", "DAR_L", "DAR_L", "DAR_L", "BLANK", "BLANK", "BLANK" ],
-            [ "BLANK", "BLANK", "ARR_R", "BLANK", "DAR_D", "BLANK", "BLANK", "BLANK", "BLANK", "WAL_U", "P24_U", "WAL_U", "POWER" ]
+            [ "BLANK", "BLANK", "ARR_R", "POWER", "DAR_D", "BLANK", "BLANK", "BLANK", "BLANK", "WAL_U", "P24_U", "WAL_U", "POWER" ]
           ],
           "objects": [
             {
               "type": "ANTEN",
               "x": 0,
               "y": 4,
-              "width": 64,
-              "height": 64,
               "direction": 0
             },
             {
               "type": "REBOT",
               "x": 7,
               "y": 0,
-              "width": 74,
-              "height": 74,
               "direction": 2,
               "range": [ 3, 0, 12, 9 ]
             },
             {
-              "type": "CHECK",
-              "nr": 1,
+              "type": "GOAL1",
               "x": 12,
-              "y": 3,
-              "width": 74,
-              "height": 74
+              "y": 3
             },
             {
-              "type": "CHECK",
-              "nr": 2,
+              "type": "GOAL2",
               "x": 5,
-              "y": 6,
-              "width": 74,
-              "height": 74
+              "y": 6
             }
           ]
         },
@@ -366,42 +314,29 @@
               "type": "ANTEN",
               "x": 0,
               "y": 4,
-              "width": 64,
-              "height": 64,
               "direction": 0
             },
             {
               "type": "REBOT",
               "x": 12,
               "y": 0,
-              "width": 74,
-              "height": 74,
               "direction": 1,
               "range": [ 3, 0, 12, 9 ]
             },
             {
-              "type": "CHECK",
-              "nr": 1,
+              "type": "GOAL1",
               "x": 12,
-              "y": 8,
-              "width": 74,
-              "height": 74
+              "y": 8
             },
             {
-              "type": "CHECK",
-              "nr": 2,
+              "type": "GOAL2",
               "x": 5,
-              "y": 2,
-              "width": 74,
-              "height": 74
+              "y": 2
             },
             {
-              "type": "CHECK",
-              "nr": 3,
+              "type": "GOAL3",
               "x": 4,
-              "y": 9,
-              "width": 74,
-              "height": 74
+              "y": 9
             }
           ]
         },
@@ -424,34 +359,24 @@
               "type": "ANTEN",
               "x": 0,
               "y": 4,
-              "width": 64,
-              "height": 64,
               "direction": 0
             },
             {
               "type": "REBOT",
               "x": 3,
               "y": 5,
-              "width": 74,
-              "height": 74,
               "direction": 3,
               "range": [ 3, 0, 12, 9 ]
             },
             {
-              "type": "CHECK",
-              "nr": 1,
+              "type": "GOAL1",
               "x": 8,
-              "y": 1,
-              "width": 74,
-              "height": 74
+              "y": 1
             },
             {
-              "type": "CHECK",
-              "nr": 2,
+              "type": "GOAL2",
               "x": 9,
-              "y": 8,
-              "width": 74,
-              "height": 74
+              "y": 8
             }
           ]
         },
@@ -474,42 +399,74 @@
               "type": "ANTEN",
               "x": 0,
               "y": 4,
-              "width": 64,
-              "height": 64,
               "direction": 0
             },
             {
               "type": "REBOT",
               "x": 5,
               "y": 4,
-              "width": 74,
-              "height": 74,
               "direction": 0,
               "range": [ 3, 0, 12, 9 ]
             },
             {
-              "type": "CHECK",
-              "nr": 1,
+              "type": "GOAL1",
               "x": 12,
-              "y": 9,
-              "width": 74,
-              "height": 74
+              "y": 9
             },
             {
-              "type": "CHECK",
-              "nr": 2,
+              "type": "GOAL2",
               "x": 12,
-              "y": 0,
-              "width": 74,
-              "height": 74
+              "y": 0
             },
             {
-              "type": "CHECK",
-              "nr": 3,
+              "type": "GOAL3",
               "x": 9,
-              "y": 9,
-              "width": 74,
-              "height": 74
+              "y": 9
+            }
+          ]
+        },
+        {
+          "name": "BURN-OUT",
+          "board": [
+            [ "BLANK", "BLANK", "ARR_R", "BLANK", "DAR_D", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "ARR_U", "POWER" ],
+            [ "BLANK", "START", "BLANK", "ARR_R", "BLANK", "BLANK", "BLANK", "SPACE", "POWER", "BLANK", "BLANK", "BLANK", "DAR_L" ],
+            [ "BLANK", "WAL_U", "BLANK", "BLANK", "BLANK", "WUL1V", "L1S_L", "LA1_H", "LA1_H", "LA1_H", "WRL1H", "BLANK", "BLANK" ],
+            [ "START", "BLANK", "BLANK", "BLANK", "BLANK", "LA1_V", "DA_UR", "DAR_R", "DAR_R", "DA_RD", "L1S_U", "BLANK", "BLANK" ],
+            [ "BLANK", "START", "WAL_R", "BLANK", "BLANK", "LA1_V", "DAR_U", "ROT_R", "BLANK", "DAR_D", "LA1_V", "SPACE", "BLANK" ],
+            [ "BLANK", "START", "WAL_R", "BLANK", "SPACE", "LA1_V", "DAR_U", "POWER", "BLANK", "DAR_D", "LA1_V", "BLANK", "BLANK" ],
+            [ "START", "BLANK", "BLANK", "BLANK", "BLANK", "L1S_D", "DA_LU", "DAR_L", "DAR_L", "DA_DL", "LA1_V", "BLANK", "BLANK" ],
+            [ "BLANK", "WAL_D", "BLANK", "BLANK", "BLANK", "WLL1H", "LA1_H", "LA1_H", "LA1_H", "L1S_R", "WDL1V", "BLANK", "BLANK" ],
+            [ "BLANK", "START", "BLANK", "DAR_R", "BLANK", "BLANK", "BLANK", "POWER", "SPACE", "BLANK", "BLANK", "BLANK", "ARR_R" ],
+            [ "BLANK", "BLANK", "ARR_R", "POWER", "ARR_D", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "DAR_U", "BLANK" ]
+          ],
+          "objects": [
+            {
+              "type": "ANTEN",
+              "x": 0,
+              "y": 4,
+              "direction": 0
+            },
+            {
+              "type": "REBOT",
+              "x": 0,
+              "y": 6,
+              "direction": 0,
+              "range": [ 0, 0, 12, 9 ]
+            },
+            {
+              "type": "GOAL1",
+              "x": 11,
+              "y": 5
+            },
+            {
+              "type": "GOAL2",
+              "x": 3,
+              "y": 0
+            },
+            {
+              "type": "GOAL3",
+              "x": 12,
+              "y": 9
             }
           ]
         },
@@ -532,26 +489,19 @@
               "type": "ANTEN",
               "x": 0,
               "y": 4,
-              "width": 64,
-              "height": 64,
               "direction": 0
             },
             {
               "type": "REBOT",
               "x": 3,
               "y": 0,
-              "width": 74,
-              "height": 74,
               "direction": 0,
               "range": [ 3, 0, 12, 9 ]
             },
             {
-              "type": "CHECK",
-              "nr": 1,
+              "type": "GOAL1",
               "x": 3,
-              "y": 9,
-              "width": 74,
-              "height": 74
+              "y": 9
             }
           ]
         }
@@ -559,19 +509,39 @@
       "objects": {
         "ANTEN": {
           "id": "ANTEN",
-          "name": "Priority Antenna"
-        },
-        "CHECK": {
-          "id": "CHECK",
-          "name": "Checkpoint Token"
+          "size": 80
         },
         "ECUBE": {
           "id": "ECUBE",
-          "name": "Energy Cube"
+          "size": 20
+        },
+        "GOAL1": {
+          "id": "GOAL1",
+          "size": 92.5
+        },
+        "GOAL2": {
+          "id": "GOAL2",
+          "size": 92.5
+        },
+        "GOAL3": {
+          "id": "GOAL3",
+          "size": 92.5
+        },
+        "GOAL4": {
+          "id": "GOAL4",
+          "size": 92.5
+        },
+        "GOAL5": {
+          "id": "GOAL5",
+          "size": 92.5
+        },
+        "GOAL6": {
+          "id": "GOAL6",
+          "size": 92.5
         },
         "REBOT": {
           "id": "REBOT",
-          "name": "Reboot Token"
+          "size": 92.5
         }
       },
       "path": "https://ccmjs.github.io/akless-components/robot_rally/resources/",
@@ -601,7 +571,7 @@
           "name": "SPIN BOT"
         }
       },
-      "size": 80,
+      "size": 71,
       "cards": {
         "MOVE1": {
           "id": "MOVE1",
@@ -1120,22 +1090,30 @@
         chooseRobot: () => this.html.render( this.html.chooseRobot( Object.values( this.robots ), this.path, events.onSelectedRobot ), this.element ),
 
         /** lets the user choose a racetrack */
-        chooseRacetrack: () => this.html.render( this.html.chooseRacetrack( this.racetracks, this.path, this.size / 2, events.onSelectedRacetrack ), this.element ),
+        chooseRacetrack: () => {
+          this.html.render( this.html.chooseRacetrack( this.racetracks, this.path, this.size / 2, events.onSelectedRacetrack ), this.element );
+          this.racetracks.forEach( ( racetrack, i ) =>
+            render.objects( this.element.querySelectorAll( '.board' )[ i ], racetrack.objects, racetrack.board[ 0 ].length )
+          );
+        },
 
         /** renders the game board */
         board: () => {
           const board = this.racetracks[ game.racetrack - 1 ].board;
           this.html.render( this.html.board( board, game.objects, this.path, this.size ), this.element );
           this.element.querySelectorAll( '.board .obj' ).forEach( obj => $.remove( obj ) );
-          game.objects.forEach( obj => {
-            const field = this.element.querySelector( '.board .field:nth-child(' + ( obj.x + 1 + obj.y * board[ 0 ].length ) + ')' );
+          render.objects( this.element.querySelector( '.board' ), game.objects, board[ 0 ].length );
+        },
+
+        objects: ( element, objects, width ) => {
+          objects.forEach( obj => {
+            const field = element.querySelector( '.field:nth-child(' + ( obj.x + 1 + obj.y * width ) + ')' );
+            const size = this.objects[ obj.type ].size;
             field.appendChild( $.html( {
               tag: 'img',
               class: 'obj',
-              width: obj.width,
-              height: obj.height,
               src: this.path + 'images/objects/' + obj.type + ( obj.nr || '' ) + '.png',
-              style: 'transform: rotate(' + ( ( obj.direction || 0 ) * 90 ) + 'deg);'
+              style: 'transform: rotate(' + ( ( obj.direction || 0 ) * 90 ) + 'deg); width: ' + size + '%; height: ' + size + '%'
             } ) );
           } );
         }
