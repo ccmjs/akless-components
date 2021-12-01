@@ -67,11 +67,13 @@
       "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-7.0.0.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/robot_rally/resources/templates.mjs" ],
       "fields": {
+        "_____": 0,
         "AL_LV": 0,
         "AR_DL": 0,
         "AR_DR": 0,
         "AR_LD": 0,
         "AR_LU": 0,
+        "AR_LV": 0,
         "AR_RD": 0,
         "AR_RU": 0,
         "AR_UL": 0,
@@ -640,16 +642,16 @@
         {
           "name": "PUSHER-PANIK",
           "board": [
-            [ "BLANK", "BLANK", "ARR_R", "BLANK", "ARR_L", "ARR_L", "ARR_L", "AR_UL", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK" ],
-            [ "BLANK", "START", "BLANK", "BLANK", "P135U", "BLANK", "WAL_D", "AR_LU", "ARR_L", "BLANK", "SPACE", "P135R", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK" ],
-            [ "BLANK", "WAL_U", "BLANK", "BLANK", "SPACE", "P24_L", "SPACE", "BLANK", "BLANK", "POWER", "P24_U", "BLANK", "ARR_U", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK" ],
-            [ "START", "BLANK", "BLANK", "BLANK", "BLANK", "POWER", "BLANK", "P135L", "SPACE", "BLANK", "SPACE", "WAL_L", "ARR_U", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK" ],
-            [ "BLANK", "START", "WAL_R", "BLANK", "ARR_D", "BLANK", "POWER", "P24_R", "BLANK", "P24_L", "POWER", "AR_UR", "AR_RU", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK" ],
-            [ "BLANK", "START", "WAL_R", "AR_LD", "AR_DL", "BLANK", "BLANK", "WAL_L", "BLANK", "BLANK", "BLANK", "ARR_U", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK" ],
-            [ "START", "BLANK", "BLANK", "ARR_D", "WAL_R", "SPACE", "BLANK", "SPACE", "P135R", "BLANK", "POWER", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK" ],
-            [ "BLANK", "WAL_D", "BLANK", "ARR_D", "BLANK", "P24_D", "POWER", "BLANK", "BLANK", "SPACE", "P24_R", "SPACE", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK" ],
-            [ "BLANK", "START", "BLANK", "ARR_D", "P135L", "SPACE", "BLANK", "ARR_R", "AR_RD", "WAL_U", "BLANK", "P135D", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK" ],
-            [ "BLANK", "BLANK", "ARR_R", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "AR_DR", "ARR_R", "ARR_R", "ARR_R", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK" ]
+            [ "BLANK", "BLANK", "ARR_R", "BLANK", "ARR_L", "ARR_L", "ARR_L", "AR_UL", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "L1S_U", "BLANK", "BLANK", "ROT_L", "BLANK", "BLANK" ],
+            [ "BLANK", "START", "BLANK", "BLANK", "P135U", "BLANK", "WAL_D", "AR_LU", "ARR_L", "BLANK", "SPACE", "P135R", "BLANK", "BLANK", "BLANK", "SPACE", "POWER", "L1S_D", "BLANK", "BLANK", "BLANK", "ARR_U", "BLANK" ],
+            [ "BLANK", "WAL_U", "BLANK", "BLANK", "SPACE", "P24_L", "SPACE", "BLANK", "BLANK", "POWER", "P24_U", "BLANK", "ARR_U", "ROT_L", "BLANK", "BLANK", "DA_LD", "DAR_R", "DAR_L", "DAR_L", "DAR_L", "ARR_U", "POWER" ],
+            [ "START", "BLANK", "BLANK", "BLANK", "BLANK", "POWER", "BLANK", "P135L", "SPACE", "BLANK", "SPACE", "WAL_L", "ARR_U", "BLANK", "BLANK", "BLANK", "DAR_D", "BLANK", "AR_UR", "ARR_R", "ARR_R", "AR_RU", "BLANK" ],
+            [ "BLANK", "START", "WAL_R", "BLANK", "ARR_D", "BLANK", "POWER", "P24_R", "BLANK", "P24_L", "POWER", "AR_UR", "AR_RU", "BLANK", "WUL2V", "P135R", "DAR_D", "POWER", "ARR_U", "P135L", "BLANK", "ROT_R", "BLANK" ],
+            [ "BLANK", "START", "WAL_R", "AR_LD", "AR_DL", "BLANK", "BLANK", "WAL_L", "BLANK", "BLANK", "BLANK", "ARR_U", "BLANK", "BLANK", "L2S_D", "BLANK", "DAR_D", "BLANK", "ARR_U", "BLANK", "BLANK", "BLANK", "BLANK" ],
+            [ "START", "BLANK", "BLANK", "ARR_D", "WAL_R", "SPACE", "BLANK", "SPACE", "P135R", "BLANK", "POWER", "BLANK", "BLANK", "BLANK", "POWER", "BLANK", "DAR_D", "BLANK", "ARR_U", "BLANK", "L1S_L", "LA1_H", "L1S_R" ],
+            [ "BLANK", "WAL_D", "BLANK", "ARR_D", "BLANK", "P24_D", "POWER", "BLANK", "BLANK", "SPACE", "P24_R", "SPACE", "BLANK", "ROT_R", "BLANK", "DAR_L", "DA_DL", "L1S_U", "ARR_U", "BLANK", "BLANK", "BLANK", "BLANK" ],
+            [ "BLANK", "START", "BLANK", "ARR_D", "P135L", "SPACE", "BLANK", "ARR_R", "AR_RD", "WAL_U", "BLANK", "P135D", "BLANK", "BLANK", "BLANK", "BLANK", "ARR_R", "AR_LV", "AR_RU", "SPACE", "POWER", "ROT_L", "BLANK" ],
+            [ "BLANK", "BLANK", "ARR_R", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "AR_DR", "ARR_R", "ARR_R", "ARR_R", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "L1S_D", "BLANK", "BLANK", "WAL_U", "BLANK", "BLANK" ]
           ],
           "objects": [
             {
@@ -660,15 +662,126 @@
             },
             {
               "type": "GOAL1",
-              "x": 0,
+              "x": 6,
+              "y": 6
+            },
+            {
+              "type": "GOAL2",
+              "x": 10,
+              "y": 4
+            },
+            {
+              "type": "GOAL3",
+              "x": 14,
+              "y": 7
+            },
+            {
+              "type": "GOAL4",
+              "x": 22,
+              "y": 1
+            },
+            {
+              "type": "GOAL5",
+              "x": 17,
+              "y": 3
+            },
+            {
+              "type": "GOAL6",
+              "x": 22,
               "y": 9
             },
             {
               "type": "REBOT",
-              "x": 0,
-              "y": 0,
+              "x": 4,
+              "y": 9,
               "direction": 0,
-              "range": [ 0, 0, 12, 9 ]
+              "range": [ 3, 0, 12, 9 ]
+            },
+            {
+              "type": "REBOT",
+              "x": 15,
+              "y": 0,
+              "direction": 2,
+              "range": [ 10, 0, 22, 9 ]
+            }
+          ]
+        },
+        {
+          "name": "CHAOS MANIA",
+          "board": [
+            [ "_____", "_____", "_____", "BLANK", "BLANK", "BLANK", "BLANK", "L1S_U", "BLANK", "BLANK", "ROT_L", "BLANK", "BLANK", "_____", "_____", "_____", "_____", "_____", "_____", "_____", "_____", "_____", "_____" ],
+            [ "_____", "_____", "_____", "BLANK", "BLANK", "SPACE", "POWER", "L1S_D", "BLANK", "BLANK", "BLANK", "ARR_U", "BLANK", "_____", "_____", "_____", "_____", "_____", "_____", "_____", "_____", "_____", "_____" ],
+            [ "_____", "_____", "_____", "ROT_L", "BLANK", "BLANK", "DA_LD", "DAR_L", "DAR_L", "DAR_L", "DAR_L", "ARR_U", "POWER", "_____", "_____", "_____", "_____", "_____", "_____", "_____", "_____", "_____", "_____" ],
+            [ "_____", "_____", "_____", "BLANK", "BLANK", "BLANK", "DAR_D", "BLANK", "AR_UR", "ARR_R", "ARR_R", "AR_RU", "BLANK", "_____", "_____", "_____", "_____", "_____", "_____", "_____", "_____", "_____", "_____" ],
+            [ "_____", "_____", "_____", "BLANK", "WUL2V", "P135R", "DAR_D", "POWER", "ARR_U", "P135L", "BLANK", "ROT_R", "BLANK", "_____", "_____", "_____", "_____", "_____", "_____", "_____", "_____", "_____", "_____" ],
+            [ "BLANK", "START", "WAL_R", "BLANK", "L2S_D", "BLANK", "DAR_D", "BLANK", "ARR_U", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "DAR_D", "BLANK", "BLANK", "BLANK", "POWER", "L1S_L", "LA1_H", "L1S_R", "BLANK" ],
+            [ "BLANK", "WAL_U", "BLANK", "BLANK", "POWER", "BLANK", "DAR_D", "BLANK", "ARR_U", "BLANK", "L1S_L", "LA1_H", "L1S_R", "BLANK", "DAR_D", "BLANK", "AR_LD", "ARR_L", "BLANK", "BLANK", "BLANK", "DAR_D", "BLANK" ],
+            [ "START", "BLANK", "WA_RD", "ROT_R", "BLANK", "DAR_L", "DA_DL", "L1S_U", "ARR_U", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "DAR_D", "L1S_U", "SPACE", "BLANK", "BLANK", "SPACE", "L1S_U", "DAR_D", "BLANK" ],
+            [ "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "ARR_R", "AR_LV", "AR_RU", "SPACE", "POWER", "ROT_L", "BLANK", "BLANK", "DA_DR", "DR_LV", "SPACE", "L1S_L", "L1S_R", "SPACE", "DL_LV", "DA_DL", "BLANK" ],
+            [ "BLANK", "START", "WAL_R", "BLANK", "BLANK", "BLANK", "BLANK", "L1S_D", "BLANK", "BLANK", "WAL_U", "BLANK", "BLANK", "WU_PO", "BLANK", "LA1_V", "ROT_R", "BLANK", "BLANK", "WAL_R", "LA1_V", "POWER", "WAL_U" ],
+            [ "BLANK", "START", "WAL_R", "BLANK", "ARR_D", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "ARR_U", "BLANK", "WAL_D", "BLANK", "LA1_V", "WAL_L", "POWER", "BLANK", "ROT_L", "LA1_V", "BLANK", "WAL_D" ],
+            [ "BLANK", "BLANK", "BLANK", "ARR_L", "AR_DL", "BLANK", "BLANK", "P135U", "BLANK", "BLANK", "BLANK", "AR_LU", "ARR_L", "BLANK", "DA_UR", "DR_LV", "SPACE", "L1S_L", "L1S_R", "SPACE", "DL_LV", "DA_UL", "BLANK" ],
+            [ "START", "BLANK", "WA_UR", "BLANK", "BLANK", "POWER", "DAR_R", "ROT_R", "ROT_L", "DAR_L", "POWER", "BLANK", "BLANK", "BLANK", "DAR_U", "L1S_D", "SPACE", "BLANK", "BLANK", "SPACE", "L1S_D", "DAR_U", "BLANK" ],
+            [ "BLANK", "WAL_D", "BLANK", "BLANK", "BLANK", "SPACE", "L1S_U", "BLANK", "BLANK", "L1S_U", "SPACE", "ARR_U", "BLANK", "BLANK", "DAR_U", "BLANK", "BLANK", "BLANK", "ARR_R", "AR_RU", "BLANK", "DAR_U", "BLANK" ],
+            [ "BLANK", "START", "WAL_R", "BLANK", "BLANK", "BLANK", "LA1_V", "ROT_R", "POWER", "LA1_V", "BLANK", "ARR_U", "BLANK", "POWER", "L1S_L", "LA1_H", "L1S_R", "BLANK", "BLANK", "BLANK", "BLANK", "DAR_U", "BLANK" ],
+            [ "_____", "_____", "_____", "BLANK", "BLANK", "BLANK", "LA1_V", "POWER", "ROT_L", "LA1_V", "BLANK", "ARR_D", "BLANK", "_____", "_____", "_____", "_____", "_____", "_____", "_____", "_____", "_____", "_____" ],
+            [ "_____", "_____", "_____", "BLANK", "BLANK", "SPACE", "WDL1V", "BLANK", "BLANK", "L1S_D", "SPACE", "ARR_D", "BLANK", "_____", "_____", "_____", "_____", "_____", "_____", "_____", "_____", "_____", "_____" ],
+            [ "_____", "_____", "_____", "BLANK", "BLANK", "POWER", "DAR_R", "ROT_L", "ROT_R", "DAR_R", "POWER", "BLANK", "BLANK", "_____", "_____", "_____", "_____", "_____", "_____", "_____", "_____", "_____", "_____" ],
+            [ "_____", "_____", "_____", "ARR_R", "AR_RD", "BLANK", "BLANK", "BLANK", "P135D", "BLANK", "BLANK", "AR_UR", "ARR_R", "_____", "_____", "_____", "_____", "_____", "_____", "_____", "_____", "_____", "_____" ],
+            [ "_____", "_____", "_____", "BLANK", "ARR_D", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "ARR_U", "BLANK", "_____", "_____", "_____", "_____", "_____", "_____", "_____", "_____", "_____", "_____" ]
+          ],
+          "objects": [
+            {
+              "type": "ANTEN",
+              "x": 0,
+              "y": 9,
+              "direction": 0
+            },
+            {
+              "type": "GOAL1",
+              "x": 8,
+              "y": 1
+            },
+            {
+              "type": "GOAL2",
+              "x": 22,
+              "y": 8
+            },
+            {
+              "type": "GOAL3",
+              "x": 8,
+              "y": 16
+            },
+            {
+              "type": "GOAL4",
+              "x": 5,
+              "y": 11
+            },
+            {
+              "type": "GOAL5",
+              "x": 20,
+              "y": 13
+            },
+            {
+              "type": "REBOT",
+              "x": 4,
+              "y": 2,
+              "direction": 0,
+              "range": [ 3, 0, 12, 9 ]
+            },
+            {
+              "type": "REBOT",
+              "x": 3,
+              "y": 16,
+              "direction": 3,
+              "range": [ 3, 10, 12, 19 ]
+            },
+            {
+              "type": "REBOT",
+              "x": 17,
+              "y": 14,
+              "direction": 3,
+              "range": [ 13, 5, 22, 14 ]
             }
           ]
         },

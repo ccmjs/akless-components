@@ -105,7 +105,7 @@ export function board( board, objects, path, size ) {
  * @returns {TemplateResult}
  */
 function field( id, path ) {
-  return html`<div class="field" style="background-image: url( ${ path + 'images/fields/' + id + '.jpg' } )"></div>`;
+  return id === '_____' ? html`<div class="field"></div>` : html`<div class="field" style="background-image: url( ${ path + 'images/fields/' + id + '.jpg' } )"></div>`;
 }
 
 /**
