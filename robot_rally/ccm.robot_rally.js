@@ -101,6 +101,7 @@
         "DAR_L": 0,
         "DAR_R": 0,
         "DAR_U": 0,
+        "DD_LH": 0,
         "DDLLH": 0,
         "DL_LV": 0,
         "DLULH": 0,
@@ -135,49 +136,18 @@
         "WAL_L": 0,
         "WAL_R": 0,
         "WAL_U": 0,
-        "WD_PH": 0,
-        "WD_PV": 0,
+        "WD_PO": 0,
         "WDL1V": 0,
-        "WDLPV": 0,
+        "WDL_P": 0,
+        "WL_PO": 0,
         "WLL1H": 0,
-        "WLUPV": 0,
-        "WRDPV": 0,
+        "WLU_P": 0,
+        "WRD_P": 0,
         "WRL1H": 0,
-        "WU_PV": 0,
+        "WU_PO": 0,
         "WUL1V": 0,
         "WUL2V": 0,
-        "WURPV": 0
-      },
-      "difficulty": [
-        {
-          "name": "START-STRECKE: DIZZY HIGHWAY",
-          "description": "Startet mit dieser Strecke, wenn ihr zum ersten Mal ROBO RALLY spielt."
-        },
-        {
-          "name": "ANFÄNGER",
-          "description": "Schon etwas vertraut mit den ROBO RALLY Basisregeln? Dann probiert diese Strecke aus. Hier müsst ihr etwas mehr mit den Fabrikelementen interagieren als in Dizzy Highway."
-        },
-        {
-          "name": "FORTGESCHRITTENE",
-          "description": "Meint ihr, ihr könnt es zu jeder Zeit mit jedem Fabrikelement aufnehmen? Tja, bei diesen Strecken für fortgeschrittene Spieler könnt ihr ihnen nicht entkommen. Ihr sitzt in der Klemme. Ihr werdet beschossen. Ihr jagt Checkpoints hinterher, die sich bewegen."
-        },
-        {
-          "name": "PROFIS",
-          "description": "Diese Strecken eignen sich für Spieler, die eine strategische Herausforderung suchen. Eng platzierte Felder bedeuten eine nahezu konstante Interaktion mit Fabrikelementen und gegnerischen Robotern."
-        },
-        {
-          "name": "ROBOTER. MÜSSEN. ZERSTÖRT. WERDEN.",
-          "description": "Wir wissen nicht, wer sich diese Strecken ausgedacht hat. Sie sind einfach nur fies."
-        }
-      ],
-      "explanation": {
-        "starter": "If you’re playing for the first time, start here!",
-        "beginner": "Comfortable with the basic ROBO RALLY rules? Try these courses, where you’ll need to interact with the board elements more than you did in Dizzy Highway.",
-        "intermediate": "Feel like you can take on any board element any time? Well, you can’t escape them in the intermediate courses. You’ll get stuck. You’ll get shot. You’ll chase moving checkpoints.",
-        "advanced": "These are for players looking for a strategic challenge. Cramped spaces mean near-constant interaction with board elements and rival robots.",
-        "crazy": "We don’t know who designed these. They’re just mean.",
-        "duration": "This is the typical amount of time it’ll take players who are familiar with the ROBO RALLY rules to get through the course. A short game may take about thirty minutes; a medium game may take about one hour; and a long game may take an hour and a half or more. The actual game time will depend on the number of players.",
-        "rules": "Some racing courses include rules you’ll need to follow in addition to the core ROBO RALLY rules."
+        "WUR_P": 0
       },
       "racetracks": [
         {
@@ -261,10 +231,10 @@
             [ "BLANK", "BLANK", "ARR_R", "POWER", "WAL_D", "P24_D", "WAL_D", "BLANK", "BLANK", "BLANK", "BLANK", "DAR_U", "POWER" ],
             [ "BLANK", "START", "BLANK", "BLANK", "BLANK", "DAR_R", "DAR_R", "DAR_R", "DAR_R", "DAR_R", "DAR_R", "D_URU", "BLANK" ],
             [ "BLANK", "WAL_U", "BLANK", "SPACE", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "DAR_U", "BLANK" ],
-            [ "START", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "WLUPV", "BLANK", "BLANK", "WURPV", "BLANK", "DAR_U", "BLANK" ],
+            [ "START", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "WLU_P", "BLANK", "BLANK", "WUR_P", "BLANK", "DAR_U", "BLANK" ],
             [ "BLANK", "START", "WAL_R", "BLANK", "DAR_D", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "DAR_U", "BLANK" ],
             [ "BLANK", "START", "WAL_R", "BLANK", "DAR_D", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "DAR_U", "BLANK" ],
-            [ "START", "BLANK", "BLANK", "BLANK", "DAR_D", "BLANK", "WDLPV", "BLANK", "BLANK", "WRDPV", "BLANK", "BLANK", "BLANK" ],
+            [ "START", "BLANK", "BLANK", "BLANK", "DAR_D", "BLANK", "WDL_P", "BLANK", "BLANK", "WRD_P", "BLANK", "BLANK", "BLANK" ],
             [ "BLANK", "WAL_D", "BLANK", "BLANK", "DAR_D", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "SPACE" ],
             [ "BLANK", "START", "BLANK", "BLANK", "D_DLD", "DAR_L", "DAR_L", "DAR_L", "DAR_L", "DAR_L", "BLANK", "BLANK", "BLANK" ],
             [ "BLANK", "BLANK", "ARR_R", "POWER", "DAR_D", "BLANK", "BLANK", "BLANK", "BLANK", "WAL_U", "P24_U", "WAL_U", "POWER" ]
@@ -428,16 +398,16 @@
         {
           "name": "BURN-OUT",
           "board": [
-            [ "BLANK", "BLANK", "ARR_R", "BLANK", "DAR_D", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "ARR_U", "POWER" ],
-            [ "BLANK", "START", "BLANK", "ARR_R", "BLANK", "BLANK", "BLANK", "SPACE", "POWER", "BLANK", "BLANK", "BLANK", "DAR_L" ],
-            [ "BLANK", "WAL_U", "BLANK", "BLANK", "BLANK", "WUL1V", "L1S_L", "LA1_H", "LA1_H", "LA1_H", "WRL1H", "BLANK", "BLANK" ],
-            [ "START", "BLANK", "BLANK", "BLANK", "BLANK", "LA1_V", "DA_UR", "DAR_R", "DAR_R", "DA_RD", "L1S_U", "BLANK", "BLANK" ],
+            [ "BLANK", "START", "WAL_R", "BLANK", "DAR_D", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "ARR_U", "POWER" ],
+            [ "BLANK", "WAL_U", "BLANK", "ARR_R", "BLANK", "BLANK", "BLANK", "SPACE", "POWER", "BLANK", "BLANK", "BLANK", "DAR_L" ],
+            [ "START", "BLANK", "WA_RD", "BLANK", "BLANK", "WUL1V", "L1S_L", "LA1_H", "LA1_H", "LA1_H", "WRL1H", "BLANK", "BLANK" ],
+            [ "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "LA1_V", "DA_UR", "DAR_R", "DAR_R", "DA_RD", "L1S_U", "BLANK", "BLANK" ],
             [ "BLANK", "START", "WAL_R", "BLANK", "BLANK", "LA1_V", "DAR_U", "ROT_R", "BLANK", "DAR_D", "LA1_V", "SPACE", "BLANK" ],
             [ "BLANK", "START", "WAL_R", "BLANK", "SPACE", "LA1_V", "DAR_U", "POWER", "BLANK", "DAR_D", "LA1_V", "BLANK", "BLANK" ],
-            [ "START", "BLANK", "BLANK", "BLANK", "BLANK", "L1S_D", "DA_LU", "DAR_L", "DAR_L", "DA_DL", "LA1_V", "BLANK", "BLANK" ],
-            [ "BLANK", "WAL_D", "BLANK", "BLANK", "BLANK", "WLL1H", "LA1_H", "LA1_H", "LA1_H", "L1S_R", "WDL1V", "BLANK", "BLANK" ],
-            [ "BLANK", "START", "BLANK", "DAR_R", "BLANK", "BLANK", "BLANK", "POWER", "SPACE", "BLANK", "BLANK", "BLANK", "ARR_R" ],
-            [ "BLANK", "BLANK", "ARR_R", "POWER", "ARR_D", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "DAR_U", "BLANK" ]
+            [ "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "L1S_D", "DA_LU", "DAR_L", "DAR_L", "DA_DL", "LA1_V", "BLANK", "BLANK" ],
+            [ "START", "BLANK", "WA_UR", "BLANK", "BLANK", "WLL1H", "LA1_H", "LA1_H", "LA1_H", "L1S_R", "WDL1V", "BLANK", "BLANK" ],
+            [ "BLANK", "WAL_D", "BLANK", "DAR_R", "BLANK", "BLANK", "BLANK", "POWER", "SPACE", "BLANK", "BLANK", "BLANK", "ARR_R" ],
+            [ "BLANK", "START", "WAL_R", "POWER", "ARR_D", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "DAR_U", "BLANK" ]
           ],
           "objects": [
             {
@@ -471,7 +441,239 @@
           ]
         },
         {
-          "name": "BLANK",
+          "name": "CHAOS RALLYE",
+          "board": [
+            [ "BLANK", "BLANK", "ARR_R", "BLANK", "ARR_D", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "ARR_U", "BLANK" ],
+            [ "BLANK", "START", "BLANK", "ARR_L", "AR_DL", "BLANK", "ARR_L", "ARR_L", "ARR_R", "ARR_R", "BLANK", "AR_LU", "ARR_L" ],
+            [ "BLANK", "WAL_U", "BLANK", "BLANK", "BLANK", "POWER", "SPACE", "BLANK", "BLANK", "SPACE", "POWER", "BLANK", "BLANK" ],
+            [ "START", "BLANK", "BLANK", "BLANK", "BLANK", "DAR_D", "WLL1H", "LA1_H", "LA1_H", "L1S_R", "DAR_D", "BLANK", "BLANK" ],
+            [ "BLANK", "START", "WAL_R", "BLANK", "BLANK", "ROT_L", "BLANK", "POWER", "ROT_L", "BLANK", "ROT_R", "BLANK", "BLANK" ],
+            [ "BLANK", "START", "WAL_R", "BLANK", "BLANK", "ROT_R", "BLANK", "ROT_R", "POWER", "BLANK", "ROT_L", "BLANK", "BLANK" ],
+            [ "START", "BLANK", "BLANK", "BLANK", "BLANK", "DAR_U", "L1S_L", "LA1_H", "LA1_H", "WRL1H", "DAR_U", "BLANK", "BLANK" ],
+            [ "BLANK", "WAL_D", "BLANK", "BLANK", "BLANK", "POWER", "SPACE", "BLANK", "BLANK", "SPACE", "POWER", "BLANK", "BLANK" ],
+            [ "BLANK", "START", "BLANK", "ARR_R", "AR_RD", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "AR_UR", "ARR_R" ],
+            [ "BLANK", "BLANK", "ARR_R", "BLANK", "ARR_D", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "ARR_U", "BLANK" ]
+          ],
+          "objects": [
+            {
+              "type": "ANTEN",
+              "x": 0,
+              "y": 4,
+              "direction": 0
+            },
+            {
+              "type": "GOAL1",
+              "x": 11,
+              "y": 4
+            },
+            {
+              "type": "GOAL2",
+              "x": 4,
+              "y": 5
+            },
+            {
+              "type": "GOAL3",
+              "x": 8,
+              "y": 2
+            },
+            {
+              "type": "GOAL4",
+              "x": 8,
+              "y": 7
+            },
+            {
+              "type": "REBOT",
+              "x": 0,
+              "y": 0,
+              "direction": 0,
+              "range": [ 0, 0, 12, 9 ]
+            }
+          ]
+        },
+        {
+          "name": "ÜBERHOLSPUR",
+          "board": [
+            [ "BLANK", "START", "WAL_R", "POWER", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "SPACE", "BLANK", "POWER", "POWER", "DAR_D", "DAR_D", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK" ],
+            [ "BLANK", "WAL_U", "BLANK", "DAR_L", "D_LUL", "DAR_L", "DAR_L", "DAR_L", "DAR_L", "BLANK", "BLANK", "BLANK", "WAL_L", "BLANK", "D_DLD", "D_LDL", "DAR_L", "DAR_L", "DAR_L", "DAR_L", "DAR_L", "D_LUL", "DAR_L" ],
+            [ "START", "BLANK", "WA_RD", "BLANK", "DAR_U", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "P24_L", "BLANK", "DAR_D", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "POWER", "D_ULU", "DAR_L" ],
+            [ "BLANK", "BLANK", "BLANK", "BLANK", "DAR_U", "BLANK", "WLU_P", "BLANK", "BLANK", "WUR_P", "BLANK", "DAR_D", "WAL_L", "BLANK", "DAR_D", "BLANK", "WUL1V", "BLANK", "L1S_L", "WRL1H", "BLANK", "DAR_U", "BLANK" ],
+            [ "BLANK", "START", "WAL_R", "BLANK", "DAR_U", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "DAR_D", "BLANK", "BLANK", "DAR_D", "BLANK", "L1S_D", "POWER", "BLANK", "BLANK", "BLANK", "DAR_U", "BLANK" ],
+            [ "BLANK", "START", "WAL_R", "BLANK", "DAR_U", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "DAR_D", "BLANK", "BLANK", "DAR_D", "BLANK", "BLANK", "BLANK", "POWER", "L1S_U", "BLANK", "DAR_U", "BLANK" ],
+            [ "BLANK", "BLANK", "BLANK", "WAL_R", "DAR_U", "BLANK", "WDL_P", "BLANK", "BLANK", "WRD_P", "BLANK", "DAR_D", "BLANK", "BLANK", "DAR_D", "BLANK", "WLL1H", "L1S_R", "BLANK", "WDL1V", "BLANK", "DAR_U", "BLANK" ],
+            [ "START", "BLANK", "WA_UR", "P24_R", "DAR_U", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "DAR_D", "BLANK", "DAR_R", "D_DRD", "POWER", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "DAR_U", "BLANK" ],
+            [ "BLANK", "WAL_D", "BLANK", "WAL_R", "BLANK", "BLANK", "BLANK", "DAR_R", "DAR_R", "DAR_R", "DAR_R", "D_RDR", "DAR_R", "DAR_R", "D_RDR", "DAR_R", "DAR_R", "DAR_R", "DAR_R", "DAR_R", "D_RUR", "D_URU", "BLANK" ],
+            [ "BLANK", "START", "WAL_R", "POWER", "BLANK", "SPACE", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "POWER", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "DAR_U", "DAR_U", "POWER" ]
+          ],
+          "objects": [
+            {
+              "type": "ANTEN",
+              "x": 0,
+              "y": 4,
+              "direction": 0
+            },
+            {
+              "type": "GOAL1",
+              "x": 17,
+              "y": 3
+            },
+            {
+              "type": "GOAL2",
+              "x": 6,
+              "y": 6
+            },
+            {
+              "type": "GOAL3",
+              "x": 22,
+              "y": 7
+            },
+            {
+              "type": "REBOT",
+              "x": 10,
+              "y": 9,
+              "direction": 3,
+              "range": [ 3, 0, 12, 9 ]
+            },
+            {
+              "type": "REBOT",
+              "x": 18,
+              "y": 0,
+              "direction": 1,
+              "range": [ 12, 0, 22, 9 ]
+            }
+          ]
+        },
+        {
+          "name": "CHECKPOINT-JAGD",
+          "board": [
+            [ "BLANK", "BLANK", "ARR_R", "BLANK", "BLANK", "BLANK", "BLANK", "WLL1H", "L1S_R", "BLANK", "BLANK", "BLANK", "BLANK" ],
+            [ "BLANK", "START", "BLANK", "BLANK", "DA_UR", "DAR_R", "DA_RD", "BLANK", "BLANK", "DA_UR", "DAR_R", "DA_RD", "BLANK" ],
+            [ "BLANK", "WAL_U", "BLANK", "BLANK", "DAR_U", "POWER", "DAR_D", "BLANK", "BLANK", "DAR_U", "POWER", "DAR_D", "BLANK" ],
+            [ "START", "BLANK", "BLANK", "BLANK", "DA_LU", "DAR_L", "DA_DL", "BLANK", "BLANK", "DA_LU", "DAR_L", "DA_DL", "BLANK" ],
+            [ "BLANK", "START", "WAL_R", "L1S_U", "BLANK", "BLANK", "BLANK", "WD_PO", "WAL_L", "BLANK", "BLANK", "BLANK", "WUL1V" ],
+            [ "BLANK", "START", "WAL_R", "WDL1V", "BLANK", "BLANK", "BLANK", "WAL_R", "WU_PO", "BLANK", "BLANK", "BLANK", "L1S_D" ],
+            [ "START", "BLANK", "BLANK", "BLANK", "DA_UR", "DAR_R", "DA_RD", "BLANK", "BLANK", "DA_UR", "DAR_R", "DA_RD", "BLANK" ],
+            [ "BLANK", "WAL_D", "BLANK", "BLANK", "DAR_U", "POWER", "DAR_D", "BLANK", "BLANK", "DAR_U", "POWER", "DAR_D", "BLANK" ],
+            [ "BLANK", "START", "BLANK", "BLANK", "DA_LU", "DAR_L", "DA_DL", "BLANK", "BLANK", "DA_LU", "DAR_L", "DA_DL", "BLANK" ],
+            [ "BLANK", "BLANK", "ARR_R", "BLANK", "BLANK", "BLANK", "BLANK", "L1S_L", "WRL1H", "BLANK", "BLANK", "BLANK", "BLANK" ]
+          ],
+          "objects": [
+            {
+              "type": "ANTEN",
+              "x": 0,
+              "y": 4,
+              "direction": 0
+            },
+            {
+              "type": "GOAL1",
+              "x": 10,
+              "y": 1
+            },
+            {
+              "type": "GOAL2",
+              "x": 6,
+              "y": 7
+            },
+            {
+              "type": "GOAL3",
+              "x": 5,
+              "y": 3
+            },
+            {
+              "type": "GOAL4",
+              "x": 9,
+              "y": 7
+            },
+            {
+              "type": "REBOT",
+              "x": 0,
+              "y": 7,
+              "direction": 0,
+              "range": [ 0, 0, 12, 9 ]
+            }
+          ]
+        },
+        {
+          "name": "AUSWEICHMANÖVER",
+          "board": [
+            [ "BLANK", "BLANK", "ARR_R", "BLANK", "BLANK", "BLANK", "BLANK", "WAL_L", "WAL_R", "BLANK", "BLANK", "BLANK", "BLANK" ],
+            [ "BLANK", "START", "BLANK", "L1S_U", "DAR_R", "DAR_R", "DA_RD", "POWER", "BLANK", "DA_LD", "DAR_L", "DAR_L", "DAR_L" ],
+            [ "BLANK", "WAL_U", "BLANK", "LA1_V", "BLANK", "L1S_L", "DD_LH", "LA1_H", "LA1_H", "DD_LH", "L1S_R", "BLANK", "BLANK" ],
+            [ "START", "BLANK", "BLANK", "L1S_D", "BLANK", "SPACE", "SPACE", "WAL_U", "ROT_L", "SPACE", "SPACE", "AR_UL", "BLANK" ],
+            [ "BLANK", "START", "WAL_R", "POWER", "BLANK", "BLANK", "L1S_U", "BLANK", "BLANK", "L1S_U", "BLANK", "ARR_U", "BLANK" ],
+            [ "BLANK", "START", "WAL_R", "BLANK", "ARR_D", "BLANK", "WDL1V", "BLANK", "POWER", "L1S_D", "BLANK", "BLANK", "BLANK" ],
+            [ "START", "BLANK", "BLANK", "BLANK", "AR_DR", "SPACE", "SPACE", "ROT_R", "WAL_D", "SPACE", "SPACE", "BLANK", "L1S_U" ],
+            [ "BLANK", "WAL_D", "BLANK", "BLANK", "BLANK", "L1S_L", "DU_LH", "LA1_H", "LA1_H", "DU_LH", "L1S_R", "BLANK", "LA1_V" ],
+            [ "BLANK", "START", "BLANK", "DAR_R", "DAR_R", "DAR_R", "DA_RU", "BLANK", "BLANK", "DA_LU", "DAR_L", "DAR_L", "L1S_D" ],
+            [ "BLANK", "BLANK", "ARR_R", "BLANK", "BLANK", "BLANK", "BLANK", "WL_PO", "WAL_R", "BLANK", "BLANK", "BLANK", "POWER" ]
+          ],
+          "objects": [
+            {
+              "type": "ANTEN",
+              "x": 0,
+              "y": 4,
+              "direction": 0
+            },
+            {
+              "type": "GOAL1",
+              "x": 8,
+              "y": 6
+            },
+            {
+              "type": "GOAL2",
+              "x": 12,
+              "y": 9
+            },
+            {
+              "type": "GOAL3",
+              "x": 8,
+              "y": 3
+            },
+            {
+              "type": "REBOT",
+              "x": 4,
+              "y": 9,
+              "direction": 3,
+              "range": [ 3, 0, 12, 9 ]
+            }
+          ]
+        },
+        {
+          "name": "PUSHER-PANIK",
+          "board": [
+            [ "BLANK", "BLANK", "ARR_R", "BLANK", "ARR_L", "ARR_L", "ARR_L", "AR_UL", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK" ],
+            [ "BLANK", "START", "BLANK", "BLANK", "P135U", "BLANK", "WAL_D", "AR_LU", "ARR_L", "BLANK", "SPACE", "P135R", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK" ],
+            [ "BLANK", "WAL_U", "BLANK", "BLANK", "SPACE", "P24_L", "SPACE", "BLANK", "BLANK", "POWER", "P24_U", "BLANK", "ARR_U", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK" ],
+            [ "START", "BLANK", "BLANK", "BLANK", "BLANK", "POWER", "BLANK", "P135L", "SPACE", "BLANK", "SPACE", "WAL_L", "ARR_U", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK" ],
+            [ "BLANK", "START", "WAL_R", "BLANK", "ARR_D", "BLANK", "POWER", "P24_R", "BLANK", "P24_L", "POWER", "AR_UR", "AR_RU", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK" ],
+            [ "BLANK", "START", "WAL_R", "AR_LD", "AR_DL", "BLANK", "BLANK", "WAL_L", "BLANK", "BLANK", "BLANK", "ARR_U", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK" ],
+            [ "START", "BLANK", "BLANK", "ARR_D", "WAL_R", "SPACE", "BLANK", "SPACE", "P135R", "BLANK", "POWER", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK" ],
+            [ "BLANK", "WAL_D", "BLANK", "ARR_D", "BLANK", "P24_D", "POWER", "BLANK", "BLANK", "SPACE", "P24_R", "SPACE", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK" ],
+            [ "BLANK", "START", "BLANK", "ARR_D", "P135L", "SPACE", "BLANK", "ARR_R", "AR_RD", "WAL_U", "BLANK", "P135D", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK" ],
+            [ "BLANK", "BLANK", "ARR_R", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "AR_DR", "ARR_R", "ARR_R", "ARR_R", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK" ]
+          ],
+          "objects": [
+            {
+              "type": "ANTEN",
+              "x": 0,
+              "y": 4,
+              "direction": 0
+            },
+            {
+              "type": "GOAL1",
+              "x": 0,
+              "y": 9
+            },
+            {
+              "type": "REBOT",
+              "x": 0,
+              "y": 0,
+              "direction": 0,
+              "range": [ 0, 0, 12, 9 ]
+            }
+          ]
+        },
+        {
+          "name": "A",
           "board": [
             [ "BLANK", "BLANK", "ARR_R", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK" ],
             [ "BLANK", "START", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK" ],
@@ -492,16 +694,51 @@
               "direction": 0
             },
             {
+              "type": "GOAL1",
+              "x": 0,
+              "y": 9
+            },
+            {
               "type": "REBOT",
-              "x": 3,
+              "x": 0,
               "y": 0,
               "direction": 0,
-              "range": [ 3, 0, 12, 9 ]
+              "range": [ 0, 0, 12, 9 ]
+            }
+          ]
+        },
+        {
+          "name": "B",
+          "board": [
+            [ "BLANK", "START", "WAL_R", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK" ],
+            [ "BLANK", "WAL_U", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK" ],
+            [ "START", "BLANK", "WA_RD", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK" ],
+            [ "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK" ],
+            [ "BLANK", "START", "WAL_R", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK" ],
+            [ "BLANK", "START", "WAL_R", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK" ],
+            [ "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK" ],
+            [ "START", "BLANK", "WA_UR", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK" ],
+            [ "BLANK", "WAL_D", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK" ],
+            [ "BLANK", "START", "WAL_R", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK" ]
+          ],
+          "objects": [
+            {
+              "type": "ANTEN",
+              "x": 0,
+              "y": 4,
+              "direction": 0
             },
             {
               "type": "GOAL1",
-              "x": 3,
+              "x": 0,
               "y": 9
+            },
+            {
+              "type": "REBOT",
+              "x": 0,
+              "y": 0,
+              "direction": 0,
+              "range": [ 0, 0, 12, 9 ]
             }
           ]
         }
