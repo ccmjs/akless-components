@@ -185,7 +185,8 @@
               "x": 12,
               "y": 3
             }
-          ]
+          ],
+          "direction": 0
         },
         {
           "name": "RISKANTE KREUZUNG",
@@ -225,7 +226,8 @@
               "x": 11,
               "y": 0
             }
-          ]
+          ],
+          "direction": 0
         },
         {
           "name": "POWER PARCOURS",
@@ -265,7 +267,8 @@
               "x": 5,
               "y": 6
             }
-          ]
+          ],
+          "direction": 0
         },
         {
           "name": "KREISEL-SPRINT",
@@ -310,7 +313,8 @@
               "x": 4,
               "y": 9
             }
-          ]
+          ],
+          "direction": 0
         },
         {
           "name": "LASER SQUARE",
@@ -350,7 +354,8 @@
               "x": 9,
               "y": 8
             }
-          ]
+          ],
+          "direction": 0
         },
         {
           "name": "ROCK'N REBOOT",
@@ -395,7 +400,8 @@
               "x": 9,
               "y": 9
             }
-          ]
+          ],
+          "direction": 0
         },
         {
           "name": "BURN-OUT",
@@ -440,7 +446,8 @@
               "x": 12,
               "y": 9
             }
-          ]
+          ],
+          "direction": 0
         },
         {
           "name": "CHAOS RALLYE",
@@ -449,8 +456,8 @@
             [ "BLANK", "START", "BLANK", "ARR_L", "AR_DL", "BLANK", "ARR_L", "ARR_L", "ARR_R", "ARR_R", "BLANK", "AR_LU", "ARR_L" ],
             [ "BLANK", "WAL_U", "BLANK", "BLANK", "BLANK", "POWER", "SPACE", "BLANK", "BLANK", "SPACE", "POWER", "BLANK", "BLANK" ],
             [ "START", "BLANK", "BLANK", "BLANK", "BLANK", "DAR_D", "WLL1H", "LA1_H", "LA1_H", "L1S_R", "DAR_D", "BLANK", "BLANK" ],
-            [ "BLANK", "START", "WAL_R", "BLANK", "BLANK", "ROT_L", "BLANK", "POWER", "ROT_L", "BLANK", "ROT_R", "BLANK", "BLANK" ],
-            [ "BLANK", "START", "WAL_R", "BLANK", "BLANK", "ROT_R", "BLANK", "ROT_R", "POWER", "BLANK", "ROT_L", "BLANK", "BLANK" ],
+            [ "BLANK", "START", "WAL_R", "BLANK", "BLANK", "ROT_L", "BLANK", "POWER", "ROT_L", "BLANK", "ROT_R", "P135R", "BLANK" ],
+            [ "BLANK", "START", "WAL_R", "BLANK", "P135L", "ROT_R", "BLANK", "ROT_R", "POWER", "BLANK", "ROT_L", "BLANK", "BLANK" ],
             [ "START", "BLANK", "BLANK", "BLANK", "BLANK", "DAR_U", "L1S_L", "LA1_H", "LA1_H", "WRL1H", "DAR_U", "BLANK", "BLANK" ],
             [ "BLANK", "WAL_D", "BLANK", "BLANK", "BLANK", "POWER", "SPACE", "BLANK", "BLANK", "SPACE", "POWER", "BLANK", "BLANK" ],
             [ "BLANK", "START", "BLANK", "ARR_R", "AR_RD", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "AR_UR", "ARR_R" ],
@@ -490,7 +497,8 @@
               "direction": 0,
               "range": [ 0, 0, 12, 9 ]
             }
-          ]
+          ],
+          "direction": 0
         },
         {
           "name": "ÜBERHOLSPUR",
@@ -498,10 +506,10 @@
             [ "BLANK", "START", "WAL_R", "POWER", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "SPACE", "BLANK", "POWER", "POWER", "DAR_D", "DAR_D", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK" ],
             [ "BLANK", "WAL_U", "BLANK", "DAR_L", "D_LUL", "DAR_L", "DAR_L", "DAR_L", "DAR_L", "BLANK", "BLANK", "BLANK", "WAL_L", "BLANK", "D_DLD", "D_LDL", "DAR_L", "DAR_L", "DAR_L", "DAR_L", "DAR_L", "D_LUL", "DAR_L" ],
             [ "START", "BLANK", "WA_RD", "BLANK", "DAR_U", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "P24_L", "BLANK", "DAR_D", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "POWER", "D_ULU", "DAR_L" ],
-            [ "BLANK", "BLANK", "BLANK", "BLANK", "DAR_U", "BLANK", "WLU_P", "BLANK", "BLANK", "WUR_P", "BLANK", "DAR_D", "WAL_L", "BLANK", "DAR_D", "BLANK", "WUL1V", "BLANK", "L1S_L", "WRL1H", "BLANK", "DAR_U", "BLANK" ],
-            [ "BLANK", "START", "WAL_R", "BLANK", "DAR_U", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "DAR_D", "BLANK", "BLANK", "DAR_D", "BLANK", "L1S_D", "POWER", "BLANK", "BLANK", "BLANK", "DAR_U", "BLANK" ],
-            [ "BLANK", "START", "WAL_R", "BLANK", "DAR_U", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "DAR_D", "BLANK", "BLANK", "DAR_D", "BLANK", "BLANK", "BLANK", "POWER", "L1S_U", "BLANK", "DAR_U", "BLANK" ],
-            [ "BLANK", "BLANK", "BLANK", "WAL_R", "DAR_U", "BLANK", "WDL_P", "BLANK", "BLANK", "WRD_P", "BLANK", "DAR_D", "BLANK", "BLANK", "DAR_D", "BLANK", "WLL1H", "L1S_R", "BLANK", "WDL1V", "BLANK", "DAR_U", "BLANK" ],
+            [ "BLANK", "BLANK", "BLANK", "BLANK", "DAR_U", "BLANK", "WLU_P", "BLANK", "BLANK", "WUR_P", "BLANK", "DAR_D", "WAL_L", "BLANK", "DAR_D", "BLANK", "L1S_U", "BLANK", "WLL1H", "L1S_R", "BLANK", "DAR_U", "BLANK" ],
+            [ "BLANK", "START", "WAL_R", "BLANK", "DAR_U", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "DAR_D", "BLANK", "BLANK", "DAR_D", "BLANK", "WDL1V", "POWER", "BLANK", "BLANK", "BLANK", "DAR_U", "BLANK" ],
+            [ "BLANK", "START", "WAL_R", "BLANK", "DAR_U", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "DAR_D", "BLANK", "BLANK", "DAR_D", "BLANK", "BLANK", "BLANK", "POWER", "WUL1V", "BLANK", "DAR_U", "BLANK" ],
+            [ "BLANK", "BLANK", "BLANK", "WAL_R", "DAR_U", "BLANK", "WDL_P", "BLANK", "BLANK", "WRD_P", "BLANK", "DAR_D", "BLANK", "BLANK", "DAR_D", "BLANK", "L1S_L", "WRL1H", "BLANK", "L1S_D", "BLANK", "DAR_U", "BLANK" ],
             [ "START", "BLANK", "WA_UR", "P24_R", "DAR_U", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "DAR_D", "BLANK", "DAR_R", "D_DRD", "POWER", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "DAR_U", "BLANK" ],
             [ "BLANK", "WAL_D", "BLANK", "WAL_R", "BLANK", "BLANK", "BLANK", "DAR_R", "DAR_R", "DAR_R", "DAR_R", "D_RDR", "DAR_R", "DAR_R", "D_RDR", "DAR_R", "DAR_R", "DAR_R", "DAR_R", "DAR_R", "D_RUR", "D_URU", "BLANK" ],
             [ "BLANK", "START", "WAL_R", "POWER", "BLANK", "SPACE", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "POWER", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "DAR_U", "DAR_U", "POWER" ]
@@ -542,7 +550,8 @@
               "direction": 1,
               "range": [ 12, 0, 22, 9 ]
             }
-          ]
+          ],
+          "direction": 0
         },
         {
           "name": "CHECKPOINT-JAGD",
@@ -592,19 +601,20 @@
               "direction": 0,
               "range": [ 0, 0, 12, 9 ]
             }
-          ]
+          ],
+          "direction": 0
         },
         {
           "name": "AUSWEICHMANÖVER",
           "board": [
             [ "BLANK", "BLANK", "ARR_R", "BLANK", "BLANK", "BLANK", "BLANK", "WAL_L", "WAL_R", "BLANK", "BLANK", "BLANK", "BLANK" ],
             [ "BLANK", "START", "BLANK", "L1S_U", "DAR_R", "DAR_R", "DA_RD", "POWER", "BLANK", "DA_LD", "DAR_L", "DAR_L", "DAR_L" ],
-            [ "BLANK", "WAL_U", "BLANK", "LA1_V", "BLANK", "L1S_L", "DD_LH", "LA1_H", "LA1_H", "DD_LH", "L1S_R", "BLANK", "BLANK" ],
-            [ "START", "BLANK", "BLANK", "L1S_D", "BLANK", "SPACE", "SPACE", "WAL_U", "ROT_L", "SPACE", "SPACE", "AR_UL", "BLANK" ],
-            [ "BLANK", "START", "WAL_R", "POWER", "BLANK", "BLANK", "L1S_U", "BLANK", "BLANK", "L1S_U", "BLANK", "ARR_U", "BLANK" ],
-            [ "BLANK", "START", "WAL_R", "BLANK", "ARR_D", "BLANK", "WDL1V", "BLANK", "POWER", "L1S_D", "BLANK", "BLANK", "BLANK" ],
-            [ "START", "BLANK", "BLANK", "BLANK", "AR_DR", "SPACE", "SPACE", "ROT_R", "WAL_D", "SPACE", "SPACE", "BLANK", "L1S_U" ],
-            [ "BLANK", "WAL_D", "BLANK", "BLANK", "BLANK", "L1S_L", "DU_LH", "LA1_H", "LA1_H", "DU_LH", "L1S_R", "BLANK", "LA1_V" ],
+            [ "BLANK", "WAL_U", "BLANK", "LA1_V", "BLANK", "WLL1H", "DD_LH", "LA1_H", "LA1_H", "DD_LH", "L1S_R", "BLANK", "BLANK" ],
+            [ "START", "BLANK", "BLANK", "WDL1V", "BLANK", "SPACE", "SPACE", "WAL_U", "ROT_L", "SPACE", "SPACE", "AR_UL", "BLANK" ],
+            [ "BLANK", "START", "WAL_R", "POWER", "BLANK", "BLANK", "WUL1V", "BLANK", "BLANK", "L1S_U", "BLANK", "ARR_U", "BLANK" ],
+            [ "BLANK", "START", "WAL_R", "BLANK", "ARR_D", "BLANK", "L1S_D", "BLANK", "POWER", "WDL1V", "BLANK", "BLANK", "BLANK" ],
+            [ "START", "BLANK", "BLANK", "BLANK", "AR_DR", "SPACE", "SPACE", "ROT_R", "WAL_D", "SPACE", "SPACE", "BLANK", "WUL1V" ],
+            [ "BLANK", "WAL_D", "BLANK", "BLANK", "BLANK", "L1S_L", "DU_LH", "LA1_H", "LA1_H", "DU_LH", "WRL1H", "BLANK", "LA1_V" ],
             [ "BLANK", "START", "BLANK", "DAR_R", "DAR_R", "DAR_R", "DA_RU", "BLANK", "BLANK", "DA_LU", "DAR_L", "DAR_L", "L1S_D" ],
             [ "BLANK", "BLANK", "ARR_R", "BLANK", "BLANK", "BLANK", "BLANK", "WL_PO", "WAL_R", "BLANK", "BLANK", "BLANK", "POWER" ]
           ],
@@ -637,21 +647,22 @@
               "direction": 3,
               "range": [ 3, 0, 12, 9 ]
             }
-          ]
+          ],
+          "direction": 0
         },
         {
           "name": "PUSHER-PANIK",
           "board": [
-            [ "BLANK", "BLANK", "ARR_R", "BLANK", "ARR_L", "ARR_L", "ARR_L", "AR_UL", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "L1S_U", "BLANK", "BLANK", "ROT_L", "BLANK", "BLANK" ],
+            [ "BLANK", "BLANK", "ARR_R", "BLANK", "ARR_L", "ARR_L", "ARR_L", "AR_UL", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "WUL1V", "BLANK", "BLANK", "ROT_L", "BLANK", "BLANK" ],
             [ "BLANK", "START", "BLANK", "BLANK", "P135U", "BLANK", "WAL_D", "AR_LU", "ARR_L", "BLANK", "SPACE", "P135R", "BLANK", "BLANK", "BLANK", "SPACE", "POWER", "L1S_D", "BLANK", "BLANK", "BLANK", "ARR_U", "BLANK" ],
-            [ "BLANK", "WAL_U", "BLANK", "BLANK", "SPACE", "P24_L", "SPACE", "BLANK", "BLANK", "POWER", "P24_U", "BLANK", "ARR_U", "ROT_L", "BLANK", "BLANK", "DA_LD", "DAR_R", "DAR_L", "DAR_L", "DAR_L", "ARR_U", "POWER" ],
+            [ "BLANK", "WAL_U", "BLANK", "BLANK", "SPACE", "P24_L", "SPACE", "BLANK", "BLANK", "POWER", "P24_U", "BLANK", "ARR_U", "ROT_L", "BLANK", "BLANK", "DA_LD", "DAR_L", "DAR_L", "DAR_L", "DAR_L", "ARR_U", "POWER" ],
             [ "START", "BLANK", "BLANK", "BLANK", "BLANK", "POWER", "BLANK", "P135L", "SPACE", "BLANK", "SPACE", "WAL_L", "ARR_U", "BLANK", "BLANK", "BLANK", "DAR_D", "BLANK", "AR_UR", "ARR_R", "ARR_R", "AR_RU", "BLANK" ],
-            [ "BLANK", "START", "WAL_R", "BLANK", "ARR_D", "BLANK", "POWER", "P24_R", "BLANK", "P24_L", "POWER", "AR_UR", "AR_RU", "BLANK", "WUL2V", "P135R", "DAR_D", "POWER", "ARR_U", "P135L", "BLANK", "ROT_R", "BLANK" ],
-            [ "BLANK", "START", "WAL_R", "AR_LD", "AR_DL", "BLANK", "BLANK", "WAL_L", "BLANK", "BLANK", "BLANK", "ARR_U", "BLANK", "BLANK", "L2S_D", "BLANK", "DAR_D", "BLANK", "ARR_U", "BLANK", "BLANK", "BLANK", "BLANK" ],
-            [ "START", "BLANK", "BLANK", "ARR_D", "WAL_R", "SPACE", "BLANK", "SPACE", "P135R", "BLANK", "POWER", "BLANK", "BLANK", "BLANK", "POWER", "BLANK", "DAR_D", "BLANK", "ARR_U", "BLANK", "L1S_L", "LA1_H", "L1S_R" ],
+            [ "BLANK", "START", "WAL_R", "BLANK", "ARR_D", "BLANK", "POWER", "P24_R", "BLANK", "P24_L", "POWER", "AR_UR", "AR_RU", "BLANK", "L2S_U", "P135R", "DAR_D", "POWER", "ARR_U", "P24_L", "BLANK", "ROT_R", "BLANK" ],
+            [ "BLANK", "START", "WAL_R", "AR_LD", "AR_DL", "BLANK", "BLANK", "WAL_L", "BLANK", "BLANK", "BLANK", "ARR_U", "BLANK", "BLANK", "WDL2V", "BLANK", "DAR_D", "BLANK", "ARR_U", "BLANK", "BLANK", "BLANK", "BLANK" ],
+            [ "START", "BLANK", "BLANK", "ARR_D", "WAL_R", "SPACE", "BLANK", "SPACE", "P135R", "BLANK", "POWER", "BLANK", "BLANK", "BLANK", "POWER", "BLANK", "DAR_D", "BLANK", "ARR_U", "BLANK", "BLANK", "WLL1H", "L1S_R" ],
             [ "BLANK", "WAL_D", "BLANK", "ARR_D", "BLANK", "P24_D", "POWER", "BLANK", "BLANK", "SPACE", "P24_R", "SPACE", "BLANK", "ROT_R", "BLANK", "DAR_L", "DA_DL", "L1S_U", "ARR_U", "BLANK", "BLANK", "BLANK", "BLANK" ],
             [ "BLANK", "START", "BLANK", "ARR_D", "P135L", "SPACE", "BLANK", "ARR_R", "AR_RD", "WAL_U", "BLANK", "P135D", "BLANK", "BLANK", "BLANK", "BLANK", "ARR_R", "AR_LV", "AR_RU", "SPACE", "POWER", "ROT_L", "BLANK" ],
-            [ "BLANK", "BLANK", "ARR_R", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "AR_DR", "ARR_R", "ARR_R", "ARR_R", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "L1S_D", "BLANK", "BLANK", "WAL_U", "BLANK", "BLANK" ]
+            [ "BLANK", "BLANK", "ARR_R", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "AR_DR", "ARR_R", "ARR_R", "ARR_R", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "WDL1V", "BLANK", "BLANK", "WAL_U", "BLANK", "BLANK" ]
           ],
           "objects": [
             {
@@ -704,29 +715,30 @@
               "direction": 2,
               "range": [ 10, 0, 22, 9 ]
             }
-          ]
+          ],
+          "direction": 0
         },
         {
           "name": "CHAOS MANIA",
           "board": [
-            [ "_____", "_____", "_____", "BLANK", "BLANK", "BLANK", "BLANK", "L1S_U", "BLANK", "BLANK", "ROT_L", "BLANK", "BLANK", "_____", "_____", "_____", "_____", "_____", "_____", "_____", "_____", "_____", "_____" ],
+            [ "_____", "_____", "_____", "BLANK", "BLANK", "BLANK", "BLANK", "WUL1V", "BLANK", "BLANK", "ROT_L", "BLANK", "BLANK", "_____", "_____", "_____", "_____", "_____", "_____", "_____", "_____", "_____", "_____" ],
             [ "_____", "_____", "_____", "BLANK", "BLANK", "SPACE", "POWER", "L1S_D", "BLANK", "BLANK", "BLANK", "ARR_U", "BLANK", "_____", "_____", "_____", "_____", "_____", "_____", "_____", "_____", "_____", "_____" ],
             [ "_____", "_____", "_____", "ROT_L", "BLANK", "BLANK", "DA_LD", "DAR_L", "DAR_L", "DAR_L", "DAR_L", "ARR_U", "POWER", "_____", "_____", "_____", "_____", "_____", "_____", "_____", "_____", "_____", "_____" ],
             [ "_____", "_____", "_____", "BLANK", "BLANK", "BLANK", "DAR_D", "BLANK", "AR_UR", "ARR_R", "ARR_R", "AR_RU", "BLANK", "_____", "_____", "_____", "_____", "_____", "_____", "_____", "_____", "_____", "_____" ],
-            [ "_____", "_____", "_____", "BLANK", "WUL2V", "P135R", "DAR_D", "POWER", "ARR_U", "P135L", "BLANK", "ROT_R", "BLANK", "_____", "_____", "_____", "_____", "_____", "_____", "_____", "_____", "_____", "_____" ],
-            [ "BLANK", "START", "WAL_R", "BLANK", "L2S_D", "BLANK", "DAR_D", "BLANK", "ARR_U", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "DAR_D", "BLANK", "BLANK", "BLANK", "POWER", "L1S_L", "LA1_H", "L1S_R", "BLANK" ],
-            [ "BLANK", "WAL_U", "BLANK", "BLANK", "POWER", "BLANK", "DAR_D", "BLANK", "ARR_U", "BLANK", "L1S_L", "LA1_H", "L1S_R", "BLANK", "DAR_D", "BLANK", "AR_LD", "ARR_L", "BLANK", "BLANK", "BLANK", "DAR_D", "BLANK" ],
-            [ "START", "BLANK", "WA_RD", "ROT_R", "BLANK", "DAR_L", "DA_DL", "L1S_U", "ARR_U", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "DAR_D", "L1S_U", "SPACE", "BLANK", "BLANK", "SPACE", "L1S_U", "DAR_D", "BLANK" ],
-            [ "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "ARR_R", "AR_LV", "AR_RU", "SPACE", "POWER", "ROT_L", "BLANK", "BLANK", "DA_DR", "DR_LV", "SPACE", "L1S_L", "L1S_R", "SPACE", "DL_LV", "DA_DL", "BLANK" ],
-            [ "BLANK", "START", "WAL_R", "BLANK", "BLANK", "BLANK", "BLANK", "L1S_D", "BLANK", "BLANK", "WAL_U", "BLANK", "BLANK", "WU_PO", "BLANK", "LA1_V", "ROT_R", "BLANK", "BLANK", "WAL_R", "LA1_V", "POWER", "WAL_U" ],
+            [ "_____", "_____", "_____", "BLANK", "L2S_U", "P135R", "DAR_D", "POWER", "ARR_U", "P24_L", "BLANK", "ROT_R", "BLANK", "_____", "_____", "_____", "_____", "_____", "_____", "_____", "_____", "_____", "_____" ],
+            [ "BLANK", "START", "WAL_R", "BLANK", "WDL2V", "BLANK", "DAR_D", "BLANK", "ARR_U", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "DAR_D", "BLANK", "BLANK", "BLANK", "POWER", "WLL1H", "LA1_H", "L1S_R", "BLANK" ],
+            [ "BLANK", "WAL_U", "BLANK", "BLANK", "POWER", "BLANK", "DAR_D", "BLANK", "ARR_U", "BLANK", "BLANK", "WLL1H", "L1S_R", "BLANK", "DAR_D", "BLANK", "AR_LD", "ARR_L", "BLANK", "BLANK", "BLANK", "DAR_D", "BLANK" ],
+            [ "START", "BLANK", "WA_RD", "ROT_R", "BLANK", "DAR_L", "DA_DL", "L1S_U", "ARR_U", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "DAR_D", "L1S_U", "SPACE", "BLANK", "BLANK", "SPACE", "WUL1V", "DAR_D", "BLANK" ],
+            [ "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "ARR_R", "AR_LV", "AR_RU", "SPACE", "POWER", "ROT_L", "BLANK", "BLANK", "DA_DR", "DR_LV", "SPACE", "L1S_L", "WRL1H", "SPACE", "DL_LV", "DA_DL", "BLANK" ],
+            [ "BLANK", "START", "WAL_R", "BLANK", "BLANK", "BLANK", "BLANK", "WDL1V", "BLANK", "BLANK", "WAL_U", "BLANK", "BLANK", "WU_PO", "BLANK", "LA1_V", "ROT_R", "BLANK", "BLANK", "WAL_R", "LA1_V", "POWER", "WAL_U" ],
             [ "BLANK", "START", "WAL_R", "BLANK", "ARR_D", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "ARR_U", "BLANK", "WAL_D", "BLANK", "LA1_V", "WAL_L", "POWER", "BLANK", "ROT_L", "LA1_V", "BLANK", "WAL_D" ],
-            [ "BLANK", "BLANK", "BLANK", "ARR_L", "AR_DL", "BLANK", "BLANK", "P135U", "BLANK", "BLANK", "BLANK", "AR_LU", "ARR_L", "BLANK", "DA_UR", "DR_LV", "SPACE", "L1S_L", "L1S_R", "SPACE", "DL_LV", "DA_UL", "BLANK" ],
-            [ "START", "BLANK", "WA_UR", "BLANK", "BLANK", "POWER", "DAR_R", "ROT_R", "ROT_L", "DAR_L", "POWER", "BLANK", "BLANK", "BLANK", "DAR_U", "L1S_D", "SPACE", "BLANK", "BLANK", "SPACE", "L1S_D", "DAR_U", "BLANK" ],
-            [ "BLANK", "WAL_D", "BLANK", "BLANK", "BLANK", "SPACE", "L1S_U", "BLANK", "BLANK", "L1S_U", "SPACE", "ARR_U", "BLANK", "BLANK", "DAR_U", "BLANK", "BLANK", "BLANK", "ARR_R", "AR_RU", "BLANK", "DAR_U", "BLANK" ],
-            [ "BLANK", "START", "WAL_R", "BLANK", "BLANK", "BLANK", "LA1_V", "ROT_R", "POWER", "LA1_V", "BLANK", "ARR_U", "BLANK", "POWER", "L1S_L", "LA1_H", "L1S_R", "BLANK", "BLANK", "BLANK", "BLANK", "DAR_U", "BLANK" ],
+            [ "BLANK", "BLANK", "BLANK", "ARR_L", "AR_DL", "BLANK", "BLANK", "P135U", "BLANK", "BLANK", "BLANK", "AR_LU", "ARR_L", "BLANK", "DA_UR", "DR_LV", "SPACE", "WLL1H", "L1S_R", "SPACE", "DL_LV", "DA_UL", "BLANK" ],
+            [ "START", "BLANK", "WA_UR", "BLANK", "BLANK", "POWER", "DAR_R", "ROT_R", "ROT_L", "DAR_L", "POWER", "BLANK", "BLANK", "BLANK", "DAR_U", "WDL1V", "SPACE", "BLANK", "BLANK", "SPACE", "L1S_D", "DAR_U", "BLANK" ],
+            [ "BLANK", "WAL_D", "BLANK", "BLANK", "BLANK", "SPACE", "L1S_U", "BLANK", "BLANK", "WUL1V", "SPACE", "ARR_U", "BLANK", "BLANK", "DAR_U", "BLANK", "BLANK", "BLANK", "ARR_R", "AR_RU", "BLANK", "DAR_U", "BLANK" ],
+            [ "BLANK", "START", "WAL_R", "BLANK", "BLANK", "BLANK", "LA1_V", "ROT_R", "POWER", "LA1_V", "BLANK", "ARR_U", "BLANK", "POWER", "L1S_L", "LA1_H", "WRL1H", "BLANK", "BLANK", "BLANK", "BLANK", "DAR_U", "BLANK" ],
             [ "_____", "_____", "_____", "BLANK", "BLANK", "BLANK", "LA1_V", "POWER", "ROT_L", "LA1_V", "BLANK", "ARR_D", "BLANK", "_____", "_____", "_____", "_____", "_____", "_____", "_____", "_____", "_____", "_____" ],
             [ "_____", "_____", "_____", "BLANK", "BLANK", "SPACE", "WDL1V", "BLANK", "BLANK", "L1S_D", "SPACE", "ARR_D", "BLANK", "_____", "_____", "_____", "_____", "_____", "_____", "_____", "_____", "_____", "_____" ],
-            [ "_____", "_____", "_____", "BLANK", "BLANK", "POWER", "DAR_R", "ROT_L", "ROT_R", "DAR_R", "POWER", "BLANK", "BLANK", "_____", "_____", "_____", "_____", "_____", "_____", "_____", "_____", "_____", "_____" ],
+            [ "_____", "_____", "_____", "BLANK", "BLANK", "POWER", "DAR_R", "ROT_L", "ROT_R", "DAR_L", "POWER", "BLANK", "BLANK", "_____", "_____", "_____", "_____", "_____", "_____", "_____", "_____", "_____", "_____" ],
             [ "_____", "_____", "_____", "ARR_R", "AR_RD", "BLANK", "BLANK", "BLANK", "P135D", "BLANK", "BLANK", "AR_UR", "ARR_R", "_____", "_____", "_____", "_____", "_____", "_____", "_____", "_____", "_____", "_____" ],
             [ "_____", "_____", "_____", "BLANK", "ARR_D", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "ARR_U", "BLANK", "_____", "_____", "_____", "_____", "_____", "_____", "_____", "_____", "_____", "_____" ]
           ],
@@ -783,7 +795,8 @@
               "direction": 3,
               "range": [ 13, 5, 22, 14 ]
             }
-          ]
+          ],
+          "direction": 0
         },
         {
           "name": "IMMER IN BEWEGUNG",
@@ -833,7 +846,8 @@
               "direction": 2,
               "range": [ 0, 0, 12, 9 ]
             }
-          ]
+          ],
+          "direction": 2
         },
         {
           "name": "TODESFALLE",
@@ -888,7 +902,8 @@
               "direction": 2,
               "range": [ 0, 0, 12, 9 ]
             }
-          ]
+          ],
+          "direction": 2
         },
         {
           "name": "PFAD DER VERWÜSTUNG",
@@ -896,10 +911,10 @@
             [ "BLANK", "DAR_D", "DAR_D", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "POWER", "POWER", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "SPACE", "BLANK", "POWER", "BLANK", "ARR_D", "L1S_U", "BLANK", "BLANK", "BLANK", "WR_PO", "BLANK", "BLANK", "BLANK" ],
             [ "BLANK", "D_DLD", "D_LDL", "DAR_L", "DAR_L", "DAR_L", "DAR_L", "DAR_L", "D_LUL", "DAR_L", "DAR_L", "D_LUL", "DAR_L", "DAR_L", "DAR_L", "DAR_L", "BLANK", "BLANK", "BLANK", "WAL_L", "ARR_L", "AR_DL", "DURLV", "DAR_R", "DAR_R", "DAR_R", "DAR_R", "DAR_R", "DA_RD", "BLANK" ],
             [ "BLANK", "DAR_D", "POWER", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "D_ULU", "DAR_L", "BLANK", "DAR_U", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "P24_L", "BLANK", "BLANK", "DLULV", "DAR_L", "DAR_L", "DA_UL", "SPACE", "BLANK", "DAR_D", "BLANK" ],
-            [ "BLANK", "DAR_D", "BLANK", "WUL1V", "BLANK", "L1S_L", "WRL1H", "BLANK", "DAR_U", "BLANK", "BLANK", "DAR_U", "BLANK", "WLU_P", "BLANK", "BLANK", "WUR_P", "BLANK", "DAR_D", "WAL_L", "BLANK", "ROT_L", "LA1_V", "BLANK", "POWER", "DAR_U", "DAR_U", "ARR_U", "DAR_D", "WUL2V" ],
-            [ "BLANK", "DAR_D", "BLANK", "L1S_D", "BLANK", "POWER", "BLANK", "BLANK", "DAR_U", "BLANK", "BLANK", "DAR_U", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "DAR_D", "BLANK", "POWER", "DA_UR", "DR_LV", "DAR_R", "DA_RD", "DAR_U", "DAR_U", "POWER", "DAR_D", "WLL2V" ],
-            [ "BLANK", "DAR_D", "BLANK", "BLANK", "POWER", "BLANK", "L1S_U", "BLANK", "DAR_U", "BLANK", "BLANK", "DAR_U", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "DAR_D", "BLANK", "BLANK", "DAR_U", "WDL1V", "BLANK", "DAR_D", "DAR_U", "DAR_U", "ARR_D", "DAR_D", "L2S_D" ],
-            [ "BLANK", "DAR_D", "BLANK", "WLL1H", "L1S_R", "BLANK", "WDL1V", "BLANK", "DAR_U", "BLANK", "WAL_R", "DAR_U", "BLANK", "WDL_P", "BLANK", "BLANK", "WRD_P", "BLANK", "DAR_D", "BLANK", "BLANK", "DA_LU", "DAR_L", "DA_UL", "DAR_D", "DAR_U", "DAR_U", "BLANK", "DAR_D", "BLANK" ],
+            [ "BLANK", "DAR_D", "BLANK", "L1S_U", "BLANK", "WLL1H", "L1S_R", "BLANK", "DAR_U", "BLANK", "BLANK", "DAR_U", "BLANK", "WLU_P", "BLANK", "BLANK", "WUR_P", "BLANK", "DAR_D", "WAL_L", "BLANK", "ROT_L", "LA1_V", "BLANK", "POWER", "DAR_U", "DAR_U", "ARR_U", "DAR_D", "WUL2V" ],
+            [ "BLANK", "DAR_D", "BLANK", "WDL1V", "BLANK", "POWER", "BLANK", "BLANK", "DAR_U", "BLANK", "BLANK", "DAR_U", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "DAR_D", "BLANK", "POWER", "DA_UR", "DR_LV", "DAR_R", "DA_RD", "DAR_U", "DAR_U", "POWER", "DAR_D", "WLL2V" ],
+            [ "BLANK", "DAR_D", "BLANK", "BLANK", "POWER", "BLANK", "WUL1V", "BLANK", "DAR_U", "BLANK", "BLANK", "DAR_U", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "DAR_D", "BLANK", "BLANK", "DAR_U", "WDL1V", "BLANK", "DAR_D", "DAR_U", "DAR_U", "ARR_D", "DAR_D", "L2S_D" ],
+            [ "BLANK", "DAR_D", "BLANK", "L1S_L", "WRL1H", "BLANK", "L1S_D", "BLANK", "DAR_U", "BLANK", "WAL_R", "DAR_U", "BLANK", "WDL_P", "BLANK", "BLANK", "WRD_P", "BLANK", "DAR_D", "BLANK", "BLANK", "DA_LU", "DAR_L", "DA_UL", "DAR_D", "DAR_U", "DAR_U", "BLANK", "DAR_D", "BLANK" ],
             [ "DAR_R", "D_DRD", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "POWER", "DAR_U", "BLANK", "P24_R", "DAR_U", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "DAR_D", "BLANK", "WAL_R", "BLANK", "POWER", "DAR_U", "DAR_D", "DAR_U", "DA_LU", "DAR_L", "DA_DL", "BLANK" ],
             [ "DAR_R", "D_RDR", "DAR_R", "DAR_R", "DAR_R", "DAR_R", "DAR_R", "D_RUR", "D_URU", "BLANK", "WAL_R", "BLANK", "BLANK", "BLANK", "DAR_R", "DAR_R", "DAR_R", "DAR_R", "D_RDR", "DAR_R", "DAR_R", "DAR_R", "DAR_R", "DA_RU", "DA_DR", "DA_RU", "L2S_L", "WRL2H", "BLANK", "BLANK" ],
             [ "POWER", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "DAR_U", "DAR_U", "BLANK", "POWER", "BLANK", "SPACE", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "POWER", "BLANK", "BLANK", "SPACE", "BLANK", "BLANK", "POWER", "BLANK", "BLANK", "BLANK", "BLANK" ],
@@ -950,20 +965,21 @@
               "direction": 3,
               "range": [ 20, 0, 29, 9 ]
             }
-          ]
+          ],
+          "direction": 3
         },
         {
           "name": "TORNADO CHALLENGE",
           "board": [
             [ "BLANK", "BLANK", "POWER", "AR_UR", "ARR_R", "ARR_R", "ARR_R", "ARR_R", "ARR_R", "AR_RD", "BLANK", "ARR_D", "BLANK", "BLANK", "POWER", "BLANK", "BLANK", "SPACE", "BLANK", "BLANK" ],
             [ "BLANK", "ROT_R", "L1S_U", "ARR_U", "DAR_R", "DAR_R", "DAR_R", "DAR_R", "DA_RD", "ARR_D", "ARR_L", "AR_DL", "WLL2H", "L2S_R", "DA_LD", "DA_UL", "DA_LD", "DAR_L", "DAR_L", "DAR_L" ],
-            [ "BLANK", "BLANK", "L1S_D", "ARR_U", "AR_UR", "ARR_R", "ARR_R", "AR_RD", "BLANK", "ARR_D", "BLANK", "DA_UR", "DAR_R", "DA_RD", "DAR_D", "DAR_U", "DAR_D", "POWER", "WAL_R", "BLANK" ],
-            [ "BLANK", "L1S_U", "BLANK", "ARR_U", "ARR_U", "POWER", "BLANK", "ARR_D", "L3SLW", "ARR_D", "BLANK", "DAR_U", "BLANK", "DAR_D", "DAR_D", "DAR_U", "DA_DR", "DAR_R", "DA_RD", "BLANK" ],
+            [ "BLANK", "BLANK", "WDL1V", "ARR_U", "AR_UR", "ARR_R", "ARR_R", "AR_RD", "BLANK", "ARR_D", "BLANK", "DA_UR", "DAR_R", "DA_RD", "DAR_D", "DAR_U", "DAR_D", "POWER", "WAL_R", "BLANK" ],
+            [ "BLANK", "WUL1V", "BLANK", "ARR_U", "ARR_U", "POWER", "BLANK", "ARR_D", "L3SLW", "ARR_D", "BLANK", "DAR_U", "BLANK", "DAR_D", "DAR_D", "DAR_U", "DA_DR", "DAR_R", "DA_RD", "BLANK" ],
             [ "BLANK", "LA1_V", "ROT_L", "ARR_U", "ARR_U", "SPACE", "ARR_L", "AR_DL", "POWER", "ARR_D", "L2S_U", "DAR_U", "ARR_U", "DAR_D", "DAR_D", "DAR_U", "BLANK", "WUL1V", "DAR_D", "BLANK" ],
             [ "BLANK", "L1S_D", "BLANK", "ARR_U", "ARR_U", "BLANK", "DAR_R", "DAR_R", "DA_RU", "ARR_D", "WRL2V", "DAR_U", "POWER", "DAR_D", "DAR_D", "DA_LU", "DAR_L", "DL_LV", "DA_DL", "POWER" ],
             [ "BLANK", "ARR_D", "BLANK", "ARR_U", "AR_LU", "ARR_L", "ARR_L", "ARR_L", "ARR_L", "AR_DL", "WDL2V", "DAR_U", "ARR_D", "DAR_D", "DAR_D", "POWER", "BLANK", "LA1_V", "ROT_L", "BLANK" ],
             [ "BLANK", "ARR_D", "SPACE", "ARR_U", "BLANK", "ROT_L", "POWER", "ROT_R", "BLANK", "BLANK", "BLANK", "DAR_U", "BLANK", "SPACE", "DA_DR", "DAR_R", "DAR_R", "DRDLV", "BLANK", "BLANK" ],
-            [ "BLANK", "AR_DR", "ARR_R", "AR_RU", "SPACE", "BLANK", "L1S_L", "LA1_H", "L1S_R", "BLANK", "BLANK", "DA_LU", "DAR_L", "DAR_L", "DAR_L", "DAR_L", "DAR_L", "DDLLV", "AR_UR", "ARR_R" ],
+            [ "BLANK", "AR_DR", "ARR_R", "AR_RU", "SPACE", "BLANK", "L1S_L", "LA1_H", "WRL1H", "BLANK", "BLANK", "DA_LU", "DAR_L", "DAR_L", "DAR_L", "DAR_L", "DAR_L", "DDLLV", "AR_UR", "ARR_R" ],
             [ "POWER", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "BLANK", "WL_PO", "BLANK", "BLANK", "BLANK", "L1S_D", "ARR_U", "BLANK" ],
             [ "_____", "_____", "_____", "_____", "_____", "ARR_U", "BLANK", "BLANK", "BLANK", "WAL_U", "WAL_U", "BLANK", "BLANK", "BLANK", "ARR_U", "_____", "_____", "_____", "_____", "_____" ],
             [ "_____", "_____", "_____", "_____", "_____", "BLANK", "START", "WAL_L", "BLANK", "START", "START", "BLANK", "WAL_R", "START", "BLANK", "_____", "_____", "_____", "_____", "_____" ],
@@ -1005,7 +1021,8 @@
               "direction": 2,
               "range": [ 10, 0, 19, 9 ]
             }
-          ]
+          ],
+          "direction": 3
         },
         {
           "name": "KURZER PROZESS",
@@ -1055,7 +1072,8 @@
               "direction": 0,
               "range": [ 0, 0, 12, 9 ]
             }
-          ]
+          ],
+          "direction": 0
         },
         {
           "name": "DAS GROSSE RENNEN",
@@ -1146,7 +1164,8 @@
               "direction": 3,
               "range": [ 13, 10, 22, 19 ]
             }
-          ]
+          ],
+          "direction": 0
         }
       ],
       "objects": {
