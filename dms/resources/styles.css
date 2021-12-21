@@ -1,0 +1,238 @@
+/**
+ * @overview default layout of ccmjs-based web component for a digital makerspace
+ * @author André Kless <andre.kless@web.de.de> 2021
+ * @license The MIT License (MIT)
+ */
+
+#element {
+  --dms-tools: var( --bs-primary );
+  --dms-apps: var( --bs-success );
+  --dms-components: var( --bs-warning );
+  --dms-more: var( --bs-info );
+  --dms-tools-rgb: var( --bs-primary-rgb );
+  --dms-apps-rgb: var( --bs-success-rgb );
+  --dms-components-rgb: var( --bs-warning-rgb );
+  --dms-more-rgb: var( --bs-info-rgb );
+  --dms-alpha: 0.125;
+  --dms-focus: 0.5;
+}
+
+.btn-outline-tools {
+  color: var( --dms-tools );
+  border-color: var( --dms-tools );
+}
+
+.btn-outline-apps {
+  color: var( --dms-apps );
+  border-color: var( --dms-apps );
+}
+
+.btn-outline-components {
+  color: var( --dms-components );
+  border-color: var( --dms-components );
+}
+
+.btn-outline-tools:hover {
+  color: white;
+  background-color: var( --dms-tools );
+}
+
+.btn-outline-apps:hover {
+  color: white;
+  background-color: var( --dms-apps );
+}
+
+.btn-outline-components:hover {
+  color: white;
+  background-color: var( --dms-components );
+}
+
+[data-focus-tools] {
+  box-shadow: 0 0 0 0.25rem rgba( var( --dms-tools-rgb ), var( --dms-focus ) ) !important;
+}
+
+[data-focus-apps] {
+  box-shadow: 0 0 0 0.25rem rgba( var( --dms-apps-rgb ), var( --dms-focus ) ) !important;
+}
+
+[data-focus-developer] {
+  box-shadow: 0 0 0 0.25rem rgba( var( --dms-components-rgb ), var( --dms-focus ) ) !important;
+}
+
+.bg-tools-light,
+.hover-bg-tools:hover {
+  background-color: rgba( var( --dms-tools-rgb ), var( --dms-alpha ) );
+}
+
+.bg-apps-light,
+.hover-bg-apps:hover {
+  background-color: rgba( var( --dms-apps-rgb ), var( --dms-alpha ) );
+}
+
+.bg-components-light,
+.hover-bg-components:hover {
+  background-color: rgba( var( --dms-components-rgb ), var( --dms-alpha ) );
+}
+
+.bg-more-light {
+  background-color: rgba( var( --dms-more-rgb ), var( --dms-alpha ) );
+}
+
+.btn-tools {
+  color: white !important;
+  background-color: var( --dms-tools );
+  border-color: var( --dms-tools );
+}
+
+.btn-apps {
+  color: white !important;
+  background-color: var( --dms-apps );
+  border-color: var( --dms-apps );
+}
+
+.btn-components {
+  color: black !important;
+  background-color: var( --dms-components );
+  border-color: var( --dms-components );
+}
+
+.btn-tools:hover,
+.btn-apps:hover,
+.btn-components:hover {
+  background-image: linear-gradient( rgba( 0, 0, 0, 0.1 ) 0 0 );
+}
+
+.text-tools {
+  color: var( --dms-tools );
+}
+
+.text-apps {
+  color: var( --dms-apps );
+}
+
+.text-components {
+  color: var( --dms-components );
+}
+
+.bg-tools {
+  background-color: var( --dms-tools );
+}
+
+.bg-apps {
+  background-color: var( --dms-apps );
+}
+
+.bg-components {
+  background-color: var( --dms-components );
+}
+
+#search_results .card:hover {
+  border-color: rgb( var( --dms-tools-rgb ) );
+}
+
+.btn-xs {
+  padding: 0.25rem;
+  font-size: .875rem;
+  line-height: .78;
+  position: relative;
+  bottom: 2px;
+}
+
+.star {
+  cursor: pointer;
+  padding-right: 0.2em;
+}
+
+.dropdown-menu {
+  min-width: auto;
+}
+
+.form-check {
+  line-height: 20px;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+*[disabled] {
+  cursor: not-allowed;
+}
+
+*[data-hidden] {
+  display: none !important;
+}
+
+*[data-invisible] {
+  visibility: hidden;
+}
+
+#breadcrumb {
+  white-space: nowrap;
+}
+
+#trailer .col {
+  min-width: 16em;
+}
+
+#trailer video {
+  height: 10em;
+}
+
+#search_controls label {
+  white-space: nowrap;
+}
+
+#home_trailer .col {
+  min-width: 23em;
+}
+
+#search_results .card {
+  cursor: pointer;
+}
+
+#search_results .card:hover {
+  box-shadow: 1px 1px 5px silver;
+}
+
+
+#comments {
+  margin: 0 -1em;
+}
+
+footer .text-muted {
+  line-height: 16px;
+  text-decoration: none;
+}
+
+.heading {
+  display: flex !important;
+  align-items: center;
+}
+
+.heading label {
+  margin-bottom: 0;
+}
+
+.btn-sm {
+  padding: .25rem .25rem !important;
+}
+
+.info {
+  margin-bottom: 0.5rem;
+}
+
+input[type="checkbox"],
+input[type="radio"],
+input + label {
+  cursor: pointer;
+}
+
+table button {
+  margin-left: -0.4em;
+}
+
+table .bi-dot {
+  margin-left: -0.4em;
+  font-size: larger;
+}
