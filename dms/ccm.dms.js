@@ -70,12 +70,6 @@
       let editor;
 
       /**
-       * metadata of an edited tool/app/component
-       * @type {Object}
-       */
-      let meta = {};
-
-      /**
        * main HTML element
        * @type {Element}
        */
@@ -257,61 +251,35 @@
           window.history.pushState( '', '', '?' + section + '=' + meta_key );
           await this.refresh();
         },
-        onMetaEdit: async ( type, meta_key ) => {
+        onEdit: async ( type, meta_key ) => {
           window.history.pushState( '', '', '?edit=' + type + '&key=' + meta_key );
           await this.refresh();
         },
-        onMetaChange: type => this.render.metaChange( type ),
-        onSave: async type => {
-          if ( !meta.title || !meta.visibility ) return;
+        onSave: async ( type, meta_key ) => {
           await this.user.login();
-          if ( meta.visibility === 'private' )
-            meta.agree = { content: false, software: false, copyright: false };
-          else if ( type === 'app' && !meta.agree.content || !meta.agree.software || !meta.agree.copyright )
+          const form = $.formData( element.querySelector( 'form' ) );
+          if ( !form.title || !form.visibility ) return;
+          if ( form.visibility === 'private' )
+            form.agree = { content: false, software: false, copyright: false };
+          else if ( type === 'app' && !form.agree.content || !form.agree.software || !form.agree.copyright )
             return;
-          if ( type === 'app' )
-            delete meta.agree.content;
-
-          console.log( type, meta );
-          return;
-
-          // create app
-          const app_meta = $.clone( meta );
-          const app_config = editor.getValue();
-          const app_key = $.generateKey();
-          app_meta.key = app_config.key = [ tool_key, app_key ];
-          app_meta.component = app_config.component = tool_key;
-          app_meta.app = app_config.app = app_key;
-          app_meta.creator = this.user.getUsername();
-          app_meta.ignore = { config: [ 'ccm.get', this.configs.source(), app_config.key ] };
-          app_config.ignore = { meta: [ 'ccm.get', this.apps.source(), app_meta.key ] };
-          app_meta._ = app_config._ = {
-            creator: this.user.getValue().key,
-            realm: 'cloud',
-            access: {
-              get: app_meta.visibility === 'private' ? 'creator' : 'all',
-              set: 'creator',
-              del: 'creator'
-            }
-          };
-          app_meta.listed = app_meta.visibility === 'public';
-          app_meta.ratings = {};
-          app_meta.icon = data.components.meta[ tool_key ].icon;
-          if ( !app_meta.tags ) app_meta.tags = [];
-          delete app_meta.selectize;
-          delete app_meta.quill;
-          delete app_meta.visibility;
-          await Promise.all( [ this.apps.set( app_meta ),  this.configs.set( app_config ) ] );
-          data.apps.arr.push( app_meta );
-          data.apps.meta[ app_meta.key.toString() ] = app_meta;
-          const set = ( prop, value = app_meta[ prop ] ) => !data.apps.options[ prop ].includes( value ) && data.apps.options[ prop ].push( value );
+          if ( type !== 'app' )
+            delete form.agree.content;
+          const prop = type !== 'app' ? 'components' : 'apps';
+          const meta = data[ prop ].meta[ meta_key ];
+          form.key = meta.key;
+          form.tags = meta.selectize.getValue();
+          form.description = meta.quill.getHTML();
+          form.listed = form.visibility === 'public';
+          form[ '_.access.get' ] = form.visibility === 'private' ? 'creator' : 'all';
+          delete form.visibility;
+          await this[ prop ].set( form );
+          $.assign( meta, form );
+          const set = ( key, value = form[ key ] ) => !data[ prop ].options[ key ].includes( value ) && data[ prop ].options[ key ].push( value );
           set( 'title' );
           set( 'creator' );
-          app_meta.tags.forEach( tag => set( 'tags', tag ) );
-          //const prop = type !== 'app' ? 'components' : 'apps';
-          //const meta = data[ prop ].meta[ meta_key ];
-          window.history.pushState( '', '', '?app=' + app_meta.key );
-          await this.refresh();
+          form.tags.forEach( tag => set( 'tags', tag ) );
+          await this.events.onItem( type, meta_key );
         },
         onDelete: async ( type, meta_key ) => {
           const prop = type !== 'app' ? 'components' : 'apps';
@@ -320,22 +288,22 @@
           data[ prop ].arr = data[ prop ].arr.filter( meta => meta.key !== meta_key );
           this.events.onList( type + 's' );
         },
-        onRating: async ( section, meta_key, rating ) => {
+        onRating: async ( type, meta_key, rating ) => {
           const user_key = ( await this.user.login() ).key;
-          const prop = section === 'app' ? 'apps' : 'components';
+          const prop = type === 'app' ? 'apps' : 'components';
           const meta = data[ prop ].meta[ meta_key.toString() ];
           const priodata = { key: '_' + user_key }
-          priodata[ ( section === 'tool' ? 'tools' : 'ratings' ) + '.' + meta.key.toString() ] = rating;
-          let ratings = section === 'app' ? meta.ratings : meta.ratings[ section + 's' ];
+          priodata[ ( type === 'tool' ? 'tools' : 'ratings' ) + '.' + meta.key.toString() ] = rating;
+          let ratings = type === 'app' ? meta.ratings : meta.ratings[ type + 's' ];
           if ( rating === ratings[ user_key ] ) rating = 0;
           ratings[ user_key ] = rating;
           ratings = Object.values( ratings );
           rating = ( ratings.reduce( ( a, b ) => a + b, 0 ) / ratings.length ) || 0;
-          if ( section === 'app' )
+          if ( type === 'app' )
             meta.rating = rating;
           else
-            meta.rating[ section ] = rating;
-          this.render.rating( section, meta.key );
+            meta.rating[ type ] = rating;
+          this.render.rating( type, meta.key );
           await this[ prop ].set( priodata );
         },
 
@@ -344,7 +312,7 @@
         },
         onDeveloper: async () => {
           window.history.pushState( '', '', '?developer' );
-          await refresh();
+          await this.refresh();
         },
         onEditor: ( tool_key, app_key ) => {
           if ( app_key === true ) return render.editor( tool_key, true );
@@ -398,60 +366,6 @@
         onShowApp: async app_key => {
           window.history.pushState( '', '', '?show=' + app_key );
           await refresh();
-        },
-        onEditApp: async meta_key => {
-          window.history.pushState( '', '', '?edit_app=' + meta_key );
-          await refresh();
-        },
-        onEditAppSubmit: async meta_key => {
-          const meta = data.apps.meta[ meta_key ];
-          if ( !meta.title || !meta.visibility ) return;
-          await this.user.login();
-          if ( meta.visibility === 'private' )
-            meta.agree = { content: false, software: false, copyright: false };
-          else if ( !meta.agree.content || !meta.agree.software || !meta.agree.copyright )
-            return;
-          const app_meta = $.clone( meta );
-          const app_config = editor.getValue();
-          const app_key = $.generateKey();
-          app_meta.key = app_config.key = [ tool_key, app_key ];
-          app_meta.component = app_config.component = tool_key;
-          app_meta.app = app_config.app = app_key;
-          app_meta.creator = this.user.getUsername();
-          app_meta.ignore = { config: [ 'ccm.get', this.configs.source(), app_config.key ] };
-          app_config.ignore = { meta: [ 'ccm.get', this.apps.source(), app_meta.key ] };
-          app_meta._ = app_config._ = {
-            creator: this.user.getValue().key,
-            realm: 'cloud',
-            access: {
-              get: app_meta.visibility === 'private' ? 'creator' : 'all',
-              set: 'creator',
-              del: 'creator'
-            }
-          };
-          app_meta.listed = app_meta.visibility === 'public';
-          app_meta.ratings = {};
-          app_meta.icon = data.components.meta[ tool_key ].icon;
-          if ( !app_meta.tags ) app_meta.tags = [];
-          delete app_meta.selectize;
-          delete app_meta.quill;
-          delete app_meta.visibility;
-          await Promise.all( [ this.apps.set( app_meta ),  this.configs.set( app_config ) ] );
-          data.apps.arr.push( app_meta );
-          data.apps.meta[ app_meta.key.toString() ] = app_meta;
-          const set = ( prop, value = app_meta[ prop ] ) => !data.apps.options[ prop ].includes( value ) && data.apps.options[ prop ].push( value );
-          set( 'title' );
-          set( 'creator' );
-          app_meta.tags.forEach( tag => set( 'tags', tag ) );
-          window.history.pushState( '', '', '?app=' + app_meta.key );
-          await refresh();
-        },
-        onDeleteApp: async meta_key => {
-          Promise.all( [ this.apps.del( meta_key ), this.configs.del( meta_key ) ] ).then( () => {
-            delete data.apps.meta[ meta_key ];
-            data.apps.arr = data.apps.arr.filter( meta => meta.key !== meta_key );
-            events.onApps();
-          } );
         }
       };
 
@@ -478,8 +392,7 @@
             this.render.item( section, params[ section ] );
             break;
           case 'edit':
-            meta = $.clone( data[ params.edit !== 'app' ? 'components' : 'apps' ].meta[ params.key ] );
-            this.render.metaEdit( params.edit );
+            this.render.edit( params.edit, params.key );
             break;
           default:
             this.render.home();
@@ -528,9 +441,10 @@
         rating: ( section, meta_key ) => {
           this.html.render( this.html.rating( section, meta_key ), element.querySelector( '#rating article' ) );
         },
-        metaEdit: async type => {
+        edit: async ( type, meta_key ) => {
+          const meta = data[ type !== 'app' ? 'components' : 'apps' ].meta[ meta_key ];
           this.render.header( type === 'component' ? 'developer' : type + 's' );
-          this.html.render( this.html.edit( type, meta ), element );
+          this.html.render( this.html.edit( type, meta_key ), element );
           if ( !meta.selectize ) {
             meta.selectize = await this.selectize.start( {
               options: [ ...new Set( [ ...data.apps.options.tags, ...( meta.tags || [] ) ] ) ],
@@ -542,14 +456,6 @@
             meta.quill = await this.quill.start( { onchange: event => meta.description = event.instance.getHTML() } );
             meta.description && meta.quill.setHTML( meta.description );
           }
-          $.setContent( this.element.querySelector( '#form-tags' ), meta.selectize.root );
-          $.setContent( this.element.querySelector( '#form-description' ), meta.quill.root );
-        },
-        metaChange: type => {
-          const form_data = $.formData( element.querySelector( 'form' ) );
-          const old_visibility = meta.visibility || '';
-          meta = Object.assign( meta, form_data );
-          old_visibility !== form_data.visibility && this.html.render( this.html.meta( type, meta ), element.querySelector( 'form' ) );
           $.setContent( this.element.querySelector( '#form-tags' ), meta.selectize.root );
           $.setContent( this.element.querySelector( '#form-description' ), meta.quill.root );
         },

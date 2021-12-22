@@ -377,7 +377,7 @@ export function item( section, meta_key ) {
                     <span class="badge rounded-pill bg-light text-dark" ?data-hidden=${ meta.listed || meta._.access.get === 'creator' }>${ dms.text.meta_not_listed }</span>
                     <span class="badge rounded-pill bg-light text-dark" ?data-hidden=${ !is_creator || !meta.listed || meta._.access.get === 'creator' }>${ dms.text.meta_public }</span>
                   </div>
-                  <button class="btn btn-outline-secondary btn-xs mt-2" ?data-hidden=${ !is_creator } @click=${ () => dms.events.onMetaEdit( section, meta.key ) }>${ dms.text.meta_edit }</button>
+                  <button class="btn btn-outline-secondary btn-xs mt-2" ?data-hidden=${ !is_creator } @click=${ () => dms.events.onEdit( section, meta.key ) }>${ dms.text.meta_edit }</button>
                 </div>
               </div>
             </div>
@@ -528,18 +528,18 @@ function breadcrumb( color, entries ) {
 
 /**
  * HTML template for a rating
- * @param {string} section - 'tool', 'app' or 'component'
- * @param {Object} meta_key - metadata key
+ * @param {string} type - 'tool', 'app' or 'component'
+ * @param {string|string[]} meta_key - metadata key
  * @returns {TemplateResult}
  */
-export function rating( section, meta_key ) {
-  const color = section + 's';
-  const meta = data[ section !== 'app' ? 'components' : 'apps' ].meta[ meta_key ];
-  const ratings = section === 'app' ? meta.ratings : meta.ratings[ section + 's' ];
+export function rating( type, meta_key ) {
+  const color = type + 's';
+  const meta = data[ type !== 'app' ? 'components' : 'apps' ].meta[ meta_key ];
+  const ratings = type === 'app' ? meta.ratings : meta.ratings[ type + 's' ];
   const rating = ratings[ ( dms.user.getValue() || {} ).key ];
   return html`
     <span class="text-${ color }" title="${ dms.text.tooltip_rating }">
-      ${ [ 1, 2, 3, 4, 5 ].map( star => html`<i class="bi star bi-star${ star <= rating ? '-fill' : '' }" @click=${ () => dms.events.onRating( section, meta_key, star ) }></i>` ) }
+      ${ [ 1, 2, 3, 4, 5 ].map( star => html`<i class="bi star bi-star${ star <= rating ? '-fill' : '' }" @click=${ () => dms.events.onRating( type, meta_key, star ) }></i>` ) }
     </span>
   `;
 }
@@ -547,27 +547,28 @@ export function rating( section, meta_key ) {
 /**
  * HTML template for edit metadata
  * @param {string} type - 'tool', 'app', or 'component'
- * @param {Object} data - metadata of the edited tool/app/component
+ * @param {string|string[]} meta_key - metadata key of the edited tool/app/component
  * @returns {TemplateResult}
  */
-export function edit( type, data ) {
+export function edit( type, meta_key ) {
+  const meta = data[ type !== 'app' ? 'components' : 'apps' ].meta[ meta_key ];
   const color = type + 's';
   return html`
     <div class="bg-${ color }-light p-2 pb-4">
       ${ breadcrumb( color, [
         { title: dms.text[ color ], onClick: () => dms.events.onList( color ) },
-        { title: data.title, onClick: () => dms.events.onItem( type, data.key ) },
+        { title: meta.title, onClick: () => dms.events.onItem( type, meta.key ) },
         { title: dms.text.meta_edit }
       ] ) }
       <section class="container bg-white border p-4">
-        <form id="form" @submit=${ event => { event.preventDefault(); dms.events.onSave( type ); } }>
-          ${ meta( type, data ) }
+        <form id="form" @submit=${ event => { event.preventDefault(); dms.events.onSave( type, meta_key ); } }>
+          ${ inputs( type, meta_key ) }
         </form>
       </section>
       <div class="container px-0 py-3 d-flex justify-content-between">
-        <button class="btn btn-secondary" @click=${ () => dms.events.onItem( type, data.key ) }><i class="bi bi-chevron-left"></i> ${ dms.text.btn_back }</button>
+        <button class="btn btn-secondary" @click=${ () => dms.events.onItem( type, meta.key ) }><i class="bi bi-chevron-left"></i> ${ dms.text.btn_back }</button>
         <button type="submit" class="btn btn-${ color }" form="form">${ dms.text.btn_save }</input>
-        <button class="btn btn-danger" @click=${ () => dms.events.onDelete( type, data.key ) }><i class="bi bi-trash-fill"></i> ${ dms.text.btn_delete }</button>
+        <button class="btn btn-danger" @click=${ () => dms.events.onDelete( type, meta.key ) }><i class="bi bi-trash-fill"></i> ${ dms.text.btn_delete }</button>
       </div>
     </div>
   `;
@@ -576,97 +577,101 @@ export function edit( type, data ) {
 /**
  * HTML template for metadata inputs
  * @param {string} type - 'tool', 'app', or 'component'
- * @param {Object} data - metadata of the tool/app/component
+ * @param {string|string[]} meta_key - metadata key of the edited tool/app/component
  * @returns {TemplateResult}
  */
-export function meta( type, data ) {
-  const published = data.visibility && data.visibility !== 'private';
-  const onClick = event => {
-    const visibility = event.target.value;
-    const old = data.visibility;
-    console.log( data.visibility, visibility );
-    data.visibility = visibility;
-    if ( old === 'not_listed' && visibility === 'public'
-      || old === 'public' && visibility === 'not_listed') return;
-    const form = event.target.closest( 'form' );
-    render( meta( type, data ), form );
-    dms.helper.setContent( form.querySelector( '#form-tags' ), data.selectize.root );
-    dms.helper.setContent( form.querySelector( '#form-description' ), data.quill.root );
-  }
+export function inputs( type, meta_key ) {
+  const meta = data[ type !== 'app' ? 'components' : 'apps' ].meta[ meta_key ];
+  const is_private = meta._.access.get === 'creator';
+  let tmp = null;
   return html`
     <div class="alert alert-info" role="alert">${ dms.text.meta_hint }</div>
     <div>
       <label for="form-title" class="form-label mb-1">
-        Titel: <small class="text-danger">*</small>
+        ${ dms.text.meta_title }: <small class="text-danger">*</small>
       </label>
-      <input type="text" name="title" class="form-control" id="form-title" required .value=${ data.title || '' }>
+      <input type="text" name="title" class="form-control" id="form-title" required .value=${ meta.title || '' }>
     </div>
     <div class="mt-3">
       <label for="form-subject" class="form-label mb-1">
-        Kurzbeschreibung:
+        ${ dms.text.meta_subject }:
       </label>
-      <input type="text" name="subject" class="form-control" id="form-subject" .value=${ data.subject || '' }>
+      <input type="text" name="subject" class="form-control" id="form-subject" .value=${ meta.subject || '' }>
     </div>
     <div class="mt-3">
       <label class="form-label mb-1">
-        Kategorien:
-      </label>
-      <div id="form-tags"></div>
-    </div>
-    <div class="mt-3">
-      <label class="form-label mb-1">
-        Ausführliche Beschreibung:
+        ${ dms.text.meta_detailed_description }:
       </label>
       <div id="form-description"></div>
     </div>
     <div class="mt-3">
+      <label class="form-label mb-1">
+        ${ dms.text.meta_categories }:
+      </label>
+      <div id="form-tags"></div>
+    </div>
+    <div class="mt-3">
       <div class="form-label mb-1">
-        Sichtbarkeit:
+        ${ dms.text.meta_visibility }:
         <small class="text-danger">*</small>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="visibility" id="form-visibility-private" value="private" required ?checked=${ data.visibility === 'private' } @click=${ onClick }>
-        <label class="form-check-label" for="form-visibility-private"><span class="badge rounded-pill bg-danger">Privat</span></label>
+        <input class="form-check-input" type="radio" name="visibility" id="form-visibility-private" value="private" required ?checked=${ is_private } @click=${ onClick }>
+        <label class="form-check-label" for="form-visibility-private"><span class="badge rounded-pill bg-danger">${ dms.text.meta_private }</span></label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="visibility" id="form-visibility-not_listed" value="not_listed" ?checked=${ data.visibility === 'not_listed' } @click=${ onClick }>
-        <label class="form-check-label" for="form-visibility-not_listed"><span class="badge rounded-pill bg-warning">Nicht gelistet</span></label>
+        <input class="form-check-input" type="radio" name="visibility" id="form-visibility-not_listed" value="not_listed" ?checked=${ !is_private && !meta.listed } @click=${ onClick }>
+        <label class="form-check-label" for="form-visibility-not_listed"><span class="badge rounded-pill bg-warning">${ dms.text.meta_not_listed }</span></label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="visibility" id="form-visibility-public" value="public" ?checked=${ data.visibility === 'public' } @click=${ onClick }>
-        <label class="form-check-label" for="form-visibility-public"><span class="badge rounded-pill bg-success">Öffentlich</span></label>
+        <input class="form-check-input" type="radio" name="visibility" id="form-visibility-public" value="public" ?checked=${ !is_private && meta.listed } @click=${ onClick }>
+        <label class="form-check-label" for="form-visibility-public"><span class="badge rounded-pill bg-success">${ dms.text.meta_public }</span></label>
       </div>
     </div>
-    <div class="mt-3" id="form-agree" ?data-hidden=${ !published }>
+    <div class="mt-3" id="form-agree" ?data-hidden=${ !meta.key || is_private }>
       <div class="form-label mb-1">
-        Einverständniserklärung:
+        ${ dms.text.meta_agree }:
       </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" name="agree.content" id="form-agree-content" ?required=${ published } ?checked=${ data.agree && data.agree.content }>
+      <div class="form-check form-check-inline" ?data-hidden=${ type !== 'app' }>
+        <input class="form-check-input" type="checkbox" name="agree.content" id="form-agree-content" ?required=${ type === 'app' } ?checked=${ meta.agree && meta.agree.content }>
         <label class="form-check-label" for="form-agree-content">
-          <small>Ich bin damit einverstanden, dass alle Inhalte meiner App als Gemeinfrei unter der CC0-Lizenz veröffentlicht werden.</small>
+          <small>${ dms.text.meta_agree_content }</small>
           <small class="text-danger">*</small>
         </label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" name="agree.software" id="form-agree-software" ?required=${ published } ?checked=${ data.agree && data.agree.software }>
+        <input class="form-check-input" type="checkbox" name="agree.software" id="form-agree-software" required ?checked=${ meta.agree && meta.agree.software }>
         <label class="form-check-label" for="form-agree-software">
-          <small>Ich bin damit einverstanden, dass die gesamte Software meiner App als freie Software unter der MIT-Lizenz veröffentlicht wird.</small>
+          <small>${ dms.text.meta_agree_software }</small>
           <small class="text-danger">*</small>
         </label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" name="agree.copyright" id="form-agree-copyright" ?required=${ published } ?checked=${ data.agree && data.agree.copyright }>
+        <input class="form-check-input" type="checkbox" name="agree.copyright" id="form-agree-copyright" required ?checked=${ meta.agree && meta.agree.copyright }>
         <label class="form-check-label" for="form-agree-copyright">
-          <small>Ich bestätige, dass hierdurch keine Urheberrechte Dritter verletzt werden.</small>
+          <small>${ dms.text.meta_agree_copyright }</small>
           <small class="text-danger">*</small>
         </label>
       </div>
     </div>
     <div class="mt-3">
-      <small><span class="text-danger">*</span> Pflichtfelder</small>
+      <small><span class="text-danger">*</span> ${ dms.text.meta_required }</small>
     </div>
   `;
+
+  function onClick( event ) {
+    const form = event.target.closest( 'form' );
+    const agree = form.querySelector( '#form-agree' );
+    if ( agree )
+      delete agree.dataset.hidden;
+    if ( event.target.value === 'private' )
+      agree.parentNode.replaceChild( document.createElement( 'aside' ), tmp = agree );
+    else if ( tmp ) {
+      const aside = form.querySelector( 'aside' );
+      aside.parentNode.replaceChild( tmp, aside );
+      tmp = null;
+    }
+  }
 }
 
 
