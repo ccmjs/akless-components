@@ -48,28 +48,13 @@ export function main() {
 
 /**
  * HTML template for header
- * @param {string} [section] - current section
+ * @param {string} [active] - 'tools', 'apps' or 'developer'
  * @returns {TemplateResult}
  */
-export function header( section ) {
+export function header( active ) {
   const user = dms.user.getValue(); if ( user ) user.name = dms.user.getUsername();
   const components = user && data.components.arr.filter( component => component.creator === user.name ) || [];
   const apps = user && data.apps.arr.filter( app => app.creator === user.name ) || [];
-  let active;
-  switch ( section ) {
-    case 'tool':
-    case 'tools':
-      active = 'tools';
-      break;
-    case 'app':
-    case 'apps':
-      active = 'apps';
-      break;
-    case 'component':
-    case 'components':
-      active = 'developer';
-      break;
-  }
   return html`
     <div class="container-fluid">
       <button class="btn navbar-brand p-0 my-1" @click=${ dms.events.onHome }>
@@ -117,6 +102,7 @@ export function header( section ) {
             </button>
           </li>
           <li ?data-hidden=${ !user }><hr class="dropdown-divider"></li>
+          <li ?data-hidden=${ !user }><button disabled class="dropdown-item" type="button">${ dms.text.btn_trash }</button></li>
           <li ?data-hidden=${ !user }><button class="dropdown-item" type="button" @click=${ dms.events.onLogout }>${ dms.text.btn_logout }</button></li>
         </ul>
       </nav>
@@ -365,6 +351,7 @@ export function item( section, meta_key ) {
   const meta = data[ section !== 'app' ? 'components' : 'apps' ].meta[ meta_key ];
   const created_at = new Date( meta.created_at ).toLocaleDateString( dms.text.date_format, { year: 'numeric', month: 'long', day: 'numeric' } );
   const updated_at = new Date( meta.updated_at ).toLocaleDateString( dms.text.date_format, { year: 'numeric', month: 'long', day: 'numeric' } );
+  const is_creator = meta._.creator === ( dms.user.getValue() || {} ).key;
   return html`
     <div id="item" class="bg-${ color }-light p-2 pb-4">
       ${ breadcrumb( color, [
@@ -385,15 +372,12 @@ export function item( section, meta_key ) {
                   <h5 class="mb-0">${ meta.title }</h5>
                   <div>
                     <span class="badge rounded-pill bg-${ color }">${ dms.text[ section ] }</span>
-                    <!--
-                    <span class="badge rounded-pill bg-primary pointer" title="Diese App wurde mit dem Werkzeug '${ meta.tool }' erstellt. Klicke hier, um direkt zum Werkzeug zu gelangen." @click=${ () => events.onTool( meta.component ) }>${ meta.tool }</span>
-                    <span class="badge rounded-pill bg-warning" ?data-hidden=${ meta.listed || meta._.access.get === 'creator' }>Nicht gelistet</span>
-                    <span class="badge rounded-pill bg-danger" ?data-hidden=${ meta._.access.get !== 'creator' }>Privat</span>
-                    -->
+                    <span class="badge rounded-pill bg-tools-light text-dark pointer" title="${ dms.text.tooltip_tool }" ?data-hidden=${ section !== 'app' } @click=${ () => dms.events.onItem( 'tool', meta.component ) }>${ meta.tool }</span>
+                    <span class="badge rounded-pill bg-light text-dark" ?data-hidden=${ meta._.access.get !== 'creator' }>${ dms.text.meta_private }</span>
+                    <span class="badge rounded-pill bg-light text-dark" ?data-hidden=${ meta.listed || meta._.access.get === 'creator' }>${ dms.text.meta_not_listed }</span>
+                    <span class="badge rounded-pill bg-light text-dark" ?data-hidden=${ !is_creator || !meta.listed || meta._.access.get === 'creator' }>${ dms.text.meta_public }</span>
                   </div>
-                  <!--
-                  <button class="btn btn-outline-secondary btn-xs mt-2" ?data-hidden=${ !dms.events.onEdit } @click=${ () => onEdit( meta.key ) }>Metadaten editieren</button>
-                  -->
+                  <button class="btn btn-outline-secondary btn-xs mt-2" ?data-hidden=${ !is_creator } @click=${ () => dms.events.onMetaEdit( section, meta.key ) }>${ dms.text.meta_edit }</button>
                 </div>
               </div>
             </div>
@@ -560,231 +544,121 @@ export function rating( section, meta_key ) {
   `;
 }
 
-
-
 /**
- * HTML template for tool section
- * @param {Object} meta - tool meta data
- * @param {string} user_key - key of the currently logged in user
+ * HTML template for edit metadata
+ * @param {string} type - 'tool', 'app', or 'component'
+ * @param {Object} data - metadata of the edited tool/app/component
  * @returns {TemplateResult}
  */
-export function tool( meta, user_key ) {
-  const created_at = new Date( meta.created_at ).toLocaleDateString( 'de-DE', { year: 'numeric', month: 'long', day: 'numeric' } );
-  const updated_at = new Date( meta.updated_at ).toLocaleDateString( 'de-DE', { year: 'numeric', month: 'long', day: 'numeric' } );
+export function edit( type, data ) {
+  const color = type + 's';
   return html`
-    <div class="bg-tools p-2 pb-4">
-      ${ breadcrumb( 'tools', [
-        { title: 'Werkzeuge', onClick: () => events.onList( 'tools' ) },
-        { title: meta.title }
+    <div class="bg-${ color }-light p-2 pb-4">
+      ${ breadcrumb( color, [
+        { title: dms.text[ color ], onClick: () => dms.events.onList( color ) },
+        { title: data.title, onClick: () => dms.events.onItem( type, data.key ) },
+        { title: dms.text.meta_edit }
       ] ) }
-      <div class="container bg-white rounded border">
-        
-        <!-- Trailer -->
-        <section id="section-tool-trailer" class="container trailer">
-          <div class="row">
-            <div class="col">
-              <div class="d-flex my-3">
-                <div class="flex-shrink-0">
-                  <img src="${ meta.icon || dms.icon }" width="64" height="64" alt="Icon des Werkzeugs">
-                </div>
-                <div class="flex-grow-1 ms-3">
-                  <h5 class="mb-0">${ meta.title }</h5>
-                  <span class="badge rounded-pill bg-primary">Werkzeug</span>
-                </div>
-              </div>
-            </div>
-            <div class="col d-flex justify-content-start align-items-end my-3">
-              <button class="btn btn-outline-primary btn-lg" @click=${ () => events.onEditor( meta.key ) }>Starte App-Editor<i class="bi bi-chevron-right"></i></button>
-            </div>
-          </div>
-        </section>
-
-        <!-- Description -->
-        <section id="section-tool-description" class="container py-3" ?data-hidden=${ !meta.description }>
-          <h6 class="text-decoration-underline">Beschreibung</h6>
-          <p class="text-muted mb-0">${ meta.description }</p>
-        </section>
-
-        <!-- Infos -->
-        <section id="section-tool-info" class="container py-3">
-          <h6 class="text-decoration-underline">Informationen</h6>
-          <small>
-            <table class="table">
-              <tbody>
-                <tr>
-                  <th scope="row">Titel des Werkzeugs</th>
-                  <td>
-                    <button class="btn btn-xs text-primary" title="Klicke hier, um alle mit diesem Werkzeug erstellten Apps zu sehen." @click=${ () => events.onList( 'apps', { tool: meta.key } ) }>${ meta.title }</button>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">Author</th>
-                  <td>
-                    <button class="btn btn-xs text-primary" title="Klicke hier, um alle Werkzeuge dieses Authors zu sehen." @click=${ () => events.onList( 'tools', { creator: meta.creator } ) }>${ meta.creator }</button>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">Kategorien</th>
-                  <td>
-                    ${ meta.tags.map( ( tag, i ) => html`${ i ? html`<i class="bi bi-dot"></i>` : '' }<button class="btn btn-xs text-primary" title="Klicke hier, um alle Werkzeuge dieser Kategorie zu sehen." @click=${ () => events.onList( 'tools', { category: tag } ) }>${ tag }</button>` ) }
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">Software-Lizenz</th>
-                  <td>
-                    <a href="https://de.wikipedia.org/wiki/MIT-Lizenz" target="_blank" title="Alle Werkzeuge im Digital Makerspace sind als freie Software unter der MIT-Lizenz veröffentlicht. Klicke hier für Details zur Lizenz.">MIT-Lizenz</a>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">Veröffentlicht am</th>
-                  <td>${ created_at }</td>
-                </tr>
-                <tr>
-                  <th scope="row">Letztes Update</th>
-                  <td>${ created_at === updated_at ? '-' : updated_at }</td>
-                </tr>
-              </tbody>
-            </table>
-          </small>
-        </section>
-
-        <!-- Rating -->
-        <section id="section-tool-rating" class="container py-3">
-          <h6 class="text-decoration-underline">Meine Bewertung</h6>
-          <article>${ rating( meta.key, meta.ratings[ user_key ] ) }</article>
-        </section>
-
-        <!-- Comments -->
-        <section id="section-tool-comments" class="container py-3">
-          <h6 class="text-decoration-underline">Kommentare</h6>
-          <article id="comments"></article>
-        </section>
-        
+      <section class="container bg-white border p-4">
+        <form id="form" @submit=${ event => { event.preventDefault(); dms.events.onSave( type ); } }>
+          ${ meta( type, data ) }
+        </form>
+      </section>
+      <div class="container px-0 py-3 d-flex justify-content-between">
+        <button class="btn btn-secondary" @click=${ () => dms.events.onItem( type, data.key ) }><i class="bi bi-chevron-left"></i> ${ dms.text.btn_back }</button>
+        <button type="submit" class="btn btn-${ color }" form="form">${ dms.text.btn_save }</input>
+        <button class="btn btn-danger" @click=${ () => dms.events.onDelete( type, data.key ) }><i class="bi bi-trash-fill"></i> ${ dms.text.btn_delete }</button>
       </div>
     </div>
   `;
 }
 
 /**
- * HTML template for app section
- * @param {Object} meta - app metadata
- * @param {string} user_key - key of the currently logged in user
- * @param {Function} [onEdit] - when uer wants to edit app metadata
+ * HTML template for metadata inputs
+ * @param {string} type - 'tool', 'app', or 'component'
+ * @param {Object} data - metadata of the tool/app/component
  * @returns {TemplateResult}
  */
-export function app( meta, user_key, onEdit ) {
-  const created_at = ( meta.created_at ? new Date( meta.created_at ) : new Date() ).toLocaleDateString( 'de-DE', { year: 'numeric', month: 'long', day: 'numeric' } );
-  const updated_at = ( meta.updated_at ? new Date( meta.updated_at ) : new Date() ).toLocaleDateString( 'de-DE', { year: 'numeric', month: 'long', day: 'numeric' } );
+export function meta( type, data ) {
+  const published = data.visibility && data.visibility !== 'private';
+  const onClick = event => {
+    const visibility = event.target.value;
+    if ( data.visibility === visibility ) return;
+    data.visibility = visibility;
+    render( meta( type, data ), event.target.closest( 'form' ) );
+  }
   return html`
-    <div class="bg-apps p-2 pb-4">
-      ${ breadcrumb( 'apps', [
-    { title: 'Apps', onClick: () => events.onList( 'apps' ) },
-    { title: meta.title }
-  ] ) }
-      <div class="container bg-white rounded border">
-        
-        <!-- Trailer -->
-        <section id="section-app-trailer" class="container trailer">
-          <div class="row">
-            <div class="col">
-              <div class="d-flex my-3">
-                <div class="flex-shrink-0">
-                  <img src="${ meta.icon }" width="64" height="64" alt="Icon der App">
-                </div>
-                <div class="flex-grow-1 ms-3">
-                  <h5 class="mb-0">${ meta.title }</h5>
-                  <div>
-                    <span class="badge rounded-pill bg-success">App</span>
-                    <span class="badge rounded-pill bg-primary pointer" title="Diese App wurde mit dem Werkzeug '${ meta.tool }' erstellt. Klicke hier, um direkt zum Werkzeug zu gelangen." @click=${ () => events.onTool( meta.component ) }>${ meta.tool }</span>
-                    <span class="badge rounded-pill bg-warning" ?data-hidden=${ meta.listed || meta._.access.get === 'creator' }>Nicht gelistet</span>
-                    <span class="badge rounded-pill bg-danger" ?data-hidden=${ meta._.access.get !== 'creator' }>Privat</span>
-                  </div>
-                  <button class="btn btn-outline-secondary btn-xs mt-2" ?data-hidden=${ !onEdit } @click=${ () => onEdit( meta.key ) }>Metadaten editieren</button>
-                </div>
-              </div>
-            </div>
-            <div class="col d-flex justify-content-start align-items-end my-3">
-              <button class="btn btn-outline-success btn-lg" @click=${ () => events.onShowApp( meta.key ) }>App anzeigen<i class="bi bi-chevron-right"></i></button>
-            </div>
-          </div>
-        </section>
-
-        <!-- Description -->
-        <section id="section-app-description" class="container py-3" ?data-hidden=${ !meta.description }>
-          <h6 class="text-decoration-underline">Beschreibung</h6>
-          <p class="text-muted mb-0">${ meta.description }</p>
-        </section>
-
-        <!-- Infos -->
-        <section id="section-app-info" class="container py-3">
-          <h6 class="text-decoration-underline">Informationen</h6>
-          <small>
-            <table class="table">
-              <tbody>
-                <tr>
-                  <th scope="row">Titel der App</th>
-                  <td>
-                    ${ meta.title }
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">
-                    Werkzeug
-                  </th>
-                  <td>
-                    <button class="btn btn-xs text-primary" title="Klicke hier, um alle mit diesem Werkzeug erstellten Apps zu sehen." @click=${ () => events.onList( 'apps', { tool: meta.tool } ) }>${ meta.tool }</button>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">Author</th>
-                  <td>
-                    <button class="btn btn-xs text-primary" title="Klicke hier, um alle Apps dieses Authors zu sehen." @click=${ () => events.onList( 'apps', { creator: meta.creator } ) }>${ meta.creator }</button>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">Kategorien</th>
-                  <td>
-                    ${ meta.tags.length ? meta.tags.map( ( tag, i ) => html`${ i ? html`<i class="bi bi-dot"></i>` : '' }<button class="btn btn-xs text-primary" title="Klicke hier, um alle Apps dieser Kategorie zu sehen." @click=${ () => events.onList( 'apps', { category: tag } ) }>${ tag }</button>` ) : html`-` }
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">Content-Lizenz</th>
-                  <td>
-                    ${ meta.agree.content ? html`<a href="https://creativecommons.org/publicdomain/zero/1.0/deed.de" target="_blank" title="Alle App-Inhalte im Digital Makerspace sind gemeinfrei unter der CC0-Lizenz veröffentlicht. Klicke hier für Details zur Lizenz." ?data-hidden=${ !meta.agree.content }>CC0-Lizenz</a>` : html`-` }
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">Software-Lizenz</th>
-                  <td>
-                    ${ meta.agree.software ? html`<a href="https://de.wikipedia.org/wiki/MIT-Lizenz" target="_blank" title="Alle Apps im Digital Makerspace sind als freie Software unter der MIT-Lizenz veröffentlicht. Klicke hier für Details zur Lizenz.">MIT-Lizenz</a>` : html`-` }
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">Veröffentlicht am</th>
-                  <td>${ created_at }</td>
-                </tr>
-                <tr>
-                  <th scope="row">Letztes Update</th>
-                  <td>${ created_at === updated_at ? '-' : updated_at }</td>
-                </tr>
-              </tbody>
-            </table>
-          </small>
-        </section>
-
-        <!-- Rating -->
-        <section id="section-app-rating" class="container py-3">
-          <h6 class="text-decoration-underline">Meine Bewertung</h6>
-          <article>${ rating( meta.key, meta.ratings[ user_key ] ) }</article>
-        </section>
-
-        <!-- Comments -->
-        <section id="section-app-comments" class="container py-3">
-          <h6 class="text-decoration-underline">Kommentare</h6>
-          <article class="comments"></article>
-        </section>
-        
+    <div class="alert alert-info" role="alert">${ dms.text.meta_hint }</div>
+    <div>
+      <label for="form-title" class="form-label mb-1">
+        Titel: <small class="text-danger">*</small>
+      </label>
+      <input type="text" name="title" class="form-control" id="form-title" required .value=${ data.title || '' }>
+    </div>
+    <div class="mt-3">
+      <label for="form-subject" class="form-label mb-1">
+        Kurzbeschreibung:
+      </label>
+      <input type="text" name="subject" class="form-control" id="form-subject" .value=${ data.subject || '' }>
+    </div>
+    <div class="mt-3">
+      <label class="form-label mb-1">
+        Kategorien:
+      </label>
+      <div id="form-tags"></div>
+    </div>
+    <div class="mt-3">
+      <label class="form-label mb-1">
+        Ausführliche Beschreibung:
+      </label>
+      <div id="form-description"></div>
+    </div>
+    <div class="mt-3">
+      <div class="form-label mb-1">
+        Sichtbarkeit:
+        <small class="text-danger">*</small>
       </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="visibility" id="form-visibility-private" value="private" required ?checked=${ data.visibility === 'private' } @click=${ () => dms.events.onMetaChange( type ) }>
+        <label class="form-check-label" for="form-visibility-private"><span class="badge rounded-pill bg-danger">Privat</span></label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="visibility" id="form-visibility-not_listed" value="not_listed" ?checked=${ data.visibility === 'not_listed' } @click=${ () => dms.events.onMetaChange( type ) }>
+        <label class="form-check-label" for="form-visibility-not_listed"><span class="badge rounded-pill bg-warning">Nicht gelistet</span></label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="visibility" id="form-visibility-public" value="public" ?checked=${ data.visibility === 'public' } @click=${ () => dms.events.onMetaChange( type ) }>
+        <label class="form-check-label" for="form-visibility-public"><span class="badge rounded-pill bg-success">Öffentlich</span></label>
+      </div>
+    </div>
+    <div class="mt-3" id="form-agree" ?data-hidden=${ !published }>
+      <div class="form-label mb-1">
+        Einverständniserklärung:
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" name="agree.content" id="form-agree-content" ?required=${ published } ?checked=${ data.agree && data.agree.content }>
+        <label class="form-check-label" for="form-agree-content">
+          <small>Ich bin damit einverstanden, dass alle Inhalte meiner App als Gemeinfrei unter der CC0-Lizenz veröffentlicht werden.</small>
+          <small class="text-danger">*</small>
+        </label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" name="agree.software" id="form-agree-software" ?required=${ published } ?checked=${ data.agree && data.agree.software }>
+        <label class="form-check-label" for="form-agree-software">
+          <small>Ich bin damit einverstanden, dass die gesamte Software meiner App als freie Software unter der MIT-Lizenz veröffentlicht wird.</small>
+          <small class="text-danger">*</small>
+        </label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" name="agree.copyright" id="form-agree-copyright" ?required=${ published } ?checked=${ data.agree && data.agree.copyright }>
+        <label class="form-check-label" for="form-agree-copyright">
+          <small>Ich bestätige, dass hierdurch keine Urheberrechte Dritter verletzt werden.</small>
+          <small class="text-danger">*</small>
+        </label>
+      </div>
+    </div>
+    <div class="mt-3">
+      <small><span class="text-danger">*</span> Pflichtfelder</small>
     </div>
   `;
 }
@@ -856,95 +730,6 @@ export function createApp( tool_meta ) {
         <button type="submit" class="btn btn-primary" form="form">Fertig</input>
       </div>
     </div>
-  `;
-}
-
-/**
- * HTML template for app metadata
- * @param {Object} [app_meta = {}] - metadata of the app
- * @returns {TemplateResult}
- */
-function appMeta( app_meta = {} ) {
-  const published = app_meta.visibility && app_meta.visibility !== 'private';
-  return html`
-    <section id="section-app-edit_app" class="container bg-white border p-4">
-      <form id="form" @submit=${ event => { event.preventDefault(); events.onEditAppSubmit( app_meta.key ); } }>
-        <div class="alert alert-success" role="alert">
-          Gib zusätzliche Informationen zur App an, damit du und andere sie einfacher finden und verstehen können.
-        </div>
-        <div>
-          <label for="form-title" class="form-label mb-1">
-            Titel: <small class="text-danger">*</small>
-          </label>
-          <input type="text" name="title" class="form-control" id="form-title" required .value=${ app_meta.title || '' }>
-        </div>
-        <div class="mt-3">
-          <label for="form-subject" class="form-label mb-1">
-            Kurzbeschreibung:
-          </label>
-          <input type="text" name="subject" class="form-control" id="form-subject" .value=${ app_meta.subject || '' }>
-        </div>
-        <div class="mt-3">
-          <label class="form-label mb-1">
-            Kategorien:
-          </label>
-          <div id="form-tags"></div>
-        </div>
-        <div class="mt-3">
-          <label class="form-label mb-1">
-            Ausführliche Beschreibung:
-          </label>
-          <div id="form-description"></div>
-        </div>
-        <div class="mt-3">
-          <div class="form-label mb-1">
-            Sichtbarkeit:
-            <small class="text-danger">*</small>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="visibility" id="form-visibility-private" value="private" required ?checked=${ app_meta.visibility === 'private' }>
-            <label class="form-check-label" for="form-visibility-private"><span class="badge rounded-pill bg-danger">Privat</span></label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="visibility" id="form-visibility-not_listed" value="not_listed" ?checked=${ app_meta.visibility === 'not_listed' }>
-            <label class="form-check-label" for="form-visibility-not_listed"><span class="badge rounded-pill bg-warning">Nicht gelistet</span></label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="visibility" id="form-visibility-public" value="public" ?checked=${ app_meta.visibility === 'public' }>
-            <label class="form-check-label" for="form-visibility-public"><span class="badge rounded-pill bg-success">Öffentlich</span></label>
-          </div>
-        </div>
-        <div class="mt-3" id="form-agree" ?data-hidden=${ !published }>
-          <div class="form-label mb-1">
-            Einverständniserklärung:
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" name="agree.content" id="form-agree-content" ?required=${ published } ?checked=${ app_meta.agree && app_meta.agree.content }>
-            <label class="form-check-label" for="form-agree-content">
-              <small>Ich bin damit einverstanden, dass alle Inhalte meiner App als Gemeinfrei unter der CC0-Lizenz veröffentlicht werden.</small>
-              <small class="text-danger">*</small>
-            </label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" name="agree.software" id="form-agree-software" ?required=${ published } ?checked=${ app_meta.agree && app_meta.agree.software }>
-            <label class="form-check-label" for="form-agree-software">
-              <small>Ich bin damit einverstanden, dass die gesamte Software meiner App als freie Software unter der MIT-Lizenz veröffentlicht wird.</small>
-              <small class="text-danger">*</small>
-            </label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" name="agree.copyright" id="form-agree-copyright" ?required=${ published } ?checked=${ app_meta.agree && app_meta.agree.copyright }>
-            <label class="form-check-label" for="form-agree-copyright">
-              <small>Ich bestätige, dass hierdurch keine Urheberrechte Dritter verletzt werden.</small>
-              <small class="text-danger">*</small>
-            </label>
-          </div>
-        </div>
-        <div class="mt-3">
-          <small><span class="text-danger">*</span> Pflichtfelder</small>
-        </div>
-      </form>
-    </section>
   `;
 }
 

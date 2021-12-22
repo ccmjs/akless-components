@@ -70,10 +70,10 @@
       let editor;
 
       /**
-       * metadata for a new app
+       * metadata of an edited tool/app/component
        * @type {Object}
        */
-      let app_meta = {};
+      let meta = {};
 
       /**
        * main HTML element
@@ -103,7 +103,10 @@
         this.logger && this.logger.log( 'start' );
 
         // load metadata of all components and apps
-        data = await Promise.all( [ this.components.get(), this.apps.get() ] );
+        data = await Promise.all( [
+          this.components.get( { deleted: undefined } ),
+          this.apps.get( { deleted: undefined } )
+        ] );
         data = {
           components: {
             arr: data[ 0 ],
@@ -254,6 +257,69 @@
           window.history.pushState( '', '', '?' + section + '=' + meta_key );
           await this.refresh();
         },
+        onMetaEdit: async ( type, meta_key ) => {
+          window.history.pushState( '', '', '?edit=' + type + '&key=' + meta_key );
+          await this.refresh();
+        },
+        onMetaChange: type => this.render.metaChange( type ),
+        onSave: async type => {
+          if ( !meta.title || !meta.visibility ) return;
+          await this.user.login();
+          if ( meta.visibility === 'private' )
+            meta.agree = { content: false, software: false, copyright: false };
+          else if ( type === 'app' && !meta.agree.content || !meta.agree.software || !meta.agree.copyright )
+            return;
+          if ( type === 'app' )
+            delete meta.agree.content;
+
+          console.log( type, meta );
+          return;
+
+          // create app
+          const app_meta = $.clone( meta );
+          const app_config = editor.getValue();
+          const app_key = $.generateKey();
+          app_meta.key = app_config.key = [ tool_key, app_key ];
+          app_meta.component = app_config.component = tool_key;
+          app_meta.app = app_config.app = app_key;
+          app_meta.creator = this.user.getUsername();
+          app_meta.ignore = { config: [ 'ccm.get', this.configs.source(), app_config.key ] };
+          app_config.ignore = { meta: [ 'ccm.get', this.apps.source(), app_meta.key ] };
+          app_meta._ = app_config._ = {
+            creator: this.user.getValue().key,
+            realm: 'cloud',
+            access: {
+              get: app_meta.visibility === 'private' ? 'creator' : 'all',
+              set: 'creator',
+              del: 'creator'
+            }
+          };
+          app_meta.listed = app_meta.visibility === 'public';
+          app_meta.ratings = {};
+          app_meta.icon = data.components.meta[ tool_key ].icon;
+          if ( !app_meta.tags ) app_meta.tags = [];
+          delete app_meta.selectize;
+          delete app_meta.quill;
+          delete app_meta.visibility;
+          await Promise.all( [ this.apps.set( app_meta ),  this.configs.set( app_config ) ] );
+          data.apps.arr.push( app_meta );
+          data.apps.meta[ app_meta.key.toString() ] = app_meta;
+          const set = ( prop, value = app_meta[ prop ] ) => !data.apps.options[ prop ].includes( value ) && data.apps.options[ prop ].push( value );
+          set( 'title' );
+          set( 'creator' );
+          app_meta.tags.forEach( tag => set( 'tags', tag ) );
+          //const prop = type !== 'app' ? 'components' : 'apps';
+          //const meta = data[ prop ].meta[ meta_key ];
+          window.history.pushState( '', '', '?app=' + app_meta.key );
+          await this.refresh();
+        },
+        onDelete: async ( type, meta_key ) => {
+          const prop = type !== 'app' ? 'components' : 'apps';
+          await this[ prop ].set( { key: meta_key, deleted: true } );
+          delete data[ prop ].meta[ meta_key ];
+          data[ prop ].arr = data[ prop ].arr.filter( meta => meta.key !== meta_key );
+          this.events.onList( type + 's' );
+        },
         onRating: async ( section, meta_key, rating ) => {
           const user_key = ( await this.user.login() ).key;
           const prop = section === 'app' ? 'apps' : 'components';
@@ -272,10 +338,10 @@
           this.render.rating( section, meta.key );
           await this[ prop ].set( priodata );
         },
+
         onShow: async ( section, meta_key ) => {
           console.log( section, meta_key );
         },
-
         onDeveloper: async () => {
           window.history.pushState( '', '', '?developer' );
           await refresh();
@@ -294,7 +360,7 @@
             app_meta.agree = { content: false, software: false, copyright: false };
           else if ( !app_meta.agree.content || !app_meta.agree.software || !app_meta.agree.copyright )
             return;
-          const app_meta = $.clone( app_meta );
+          const app_meta = $.clone( meta );
           const app_config = editor.getValue();
           const app_key = $.generateKey();
           app_meta.key = app_config.key = [ tool_key, app_key ];
@@ -411,6 +477,10 @@
           case 'component':
             this.render.item( section, params[ section ] );
             break;
+          case 'edit':
+            meta = $.clone( data[ params.edit !== 'app' ? 'components' : 'apps' ].meta[ params.key ] );
+            this.render.metaEdit( params.edit );
+            break;
           default:
             this.render.home();
         }
@@ -438,12 +508,13 @@
           this.html.render( this.html.home(), element );
         },
         list: ( section, values ) => {
-          this.render.header( section );
+          this.render.header( section === 'components' ? 'developer' : section );
+          $.replace( element, element = element.cloneNode() );  // resets lit-html template
           this.html.render( this.html.list( section, values ), element );
         },
         cards: ( section, values ) => this.html.render( this.html.cards( section, values ), element.querySelector( '#search_results' ) ),
         item: async ( section, meta_key ) => {
-          this.render.header( section );
+          this.render.header( section === 'component' ? 'developer' : section + 's' );
           this.html.render( this.html.item( section, meta_key ), element );
           const meta = data[ section === 'app' ? 'apps' : 'components' ].meta[ meta_key ];
           const comments_key = section + '_comments';
@@ -457,6 +528,31 @@
         rating: ( section, meta_key ) => {
           this.html.render( this.html.rating( section, meta_key ), element.querySelector( '#rating article' ) );
         },
+        metaEdit: async type => {
+          this.render.header( type === 'component' ? 'developer' : type + 's' );
+          this.html.render( this.html.edit( type, meta ), element );
+          if ( !meta.selectize ) {
+            meta.selectize = await this.selectize.start( {
+              options: [ ...new Set( [ ...data.apps.options.tags, ...( meta.tags || [] ) ] ) ],
+              items: meta.tags || [],
+              onchange: event => meta.tags = event.instance.getValue()
+            } );
+          }
+          if ( !meta.quill ) {
+            meta.quill = await this.quill.start( { onchange: event => meta.description = event.instance.getHTML() } );
+            meta.description && meta.quill.setHTML( meta.description );
+          }
+          $.setContent( this.element.querySelector( '#form-tags' ), meta.selectize.root );
+          $.setContent( this.element.querySelector( '#form-description' ), meta.quill.root );
+        },
+        metaChange: type => {
+          const form_data = $.formData( element.querySelector( 'form' ) );
+          const old_visibility = meta.visibility || '';
+          meta = Object.assign( meta, form_data );
+          old_visibility !== form_data.visibility && this.html.render( this.html.meta( type, meta ), element.querySelector( 'form' ) );
+          $.setContent( this.element.querySelector( '#form-tags' ), meta.selectize.root );
+          $.setContent( this.element.querySelector( '#form-description' ), meta.quill.root );
+        },
 
         developer: () => {
           render.header( 'developer' );
@@ -465,7 +561,7 @@
         editor: ( tool_key, app_key ) => {
           render.header( 'tools' );
           const tool_meta = data.components.meta[ tool_key ];
-          if ( app_key !== true ) app_meta = {};
+          if ( app_key !== true ) meta = {};
           this.html.render( this.html.editor( tool_meta ), element );
           if ( app_key === true ) return $.setContent( this.element.querySelector( '#section-tool-editor' ), editor.root );
           const config = app_key && data.apps.meta[ app_key ].ignore.config;
@@ -490,24 +586,24 @@
           await this.user.login();
           render.header( 'tools' );
           this.html.render( this.html.createApp( data.components.meta[ tool_key ] ), element );
-          if ( !app_meta.selectize ) {
-            app_meta.selectize = await this.selectize.start( {
-              options: [ ...new Set( [ ...data.apps.options.tags, ...( app_meta.tags || [] ) ] ) ],
-              items: app_meta.tags || [],
-              onchange: event => app_meta.tags = event.instance.getValue()
+          if ( !meta.selectize ) {
+            meta.selectize = await this.selectize.start( {
+              options: [ ...new Set( [ ...data.apps.options.tags, ...( meta.tags || [] ) ] ) ],
+              items: meta.tags || [],
+              onchange: event => meta.tags = event.instance.getValue()
             } );
           }
-          if ( !app_meta.quill ) {
-            app_meta.quill = await this.quill.start( { onchange: event => app_meta.description = event.instance.getHTML() } );
-            app_meta.description && app_meta.quill.setHTML( app_meta.description );
+          if ( !meta.quill ) {
+            meta.quill = await this.quill.start( { onchange: event => meta.description = event.instance.getHTML() } );
+            meta.description && meta.quill.setHTML( meta.description );
           }
-          $.setContent( this.element.querySelector( '#form-tags' ), app_meta.selectize.root );
-          $.setContent( this.element.querySelector( '#form-description' ), app_meta.quill.root );
+          $.setContent( this.element.querySelector( '#form-tags' ), meta.selectize.root );
+          $.setContent( this.element.querySelector( '#form-description' ), meta.quill.root );
           const form_elem = this.element.querySelector( '#form' );
           form_elem.querySelectorAll( '[name]' ).forEach( input => input.addEventListener( 'change', () => {
             const form_data = $.formData( form_elem );
-            const old_visibility = app_meta.visibility || '';
-            app_meta = Object.assign( app_meta, form_data );
+            const old_visibility = meta.visibility || '';
+            meta = Object.assign( meta, form_data );
             old_visibility !== form_data.visibility && render.createApp( tool_key );
           } ) )
         },
