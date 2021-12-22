@@ -458,6 +458,8 @@
           }
           $.setContent( this.element.querySelector( '#form-tags' ), meta.selectize.root );
           $.setContent( this.element.querySelector( '#form-description' ), meta.quill.root );
+          const radio = element.querySelector( '#form-visibility-private' );
+          radio.checked && radio.click();
         },
 
         developer: () => {
