@@ -583,9 +583,15 @@ export function meta( type, data ) {
   const published = data.visibility && data.visibility !== 'private';
   const onClick = event => {
     const visibility = event.target.value;
-    if ( data.visibility === visibility ) return;
+    const old = data.visibility;
+    console.log( data.visibility, visibility );
     data.visibility = visibility;
-    render( meta( type, data ), event.target.closest( 'form' ) );
+    if ( old === 'not_listed' && visibility === 'public'
+      || old === 'public' && visibility === 'not_listed') return;
+    const form = event.target.closest( 'form' );
+    render( meta( type, data ), form );
+    dms.helper.setContent( form.querySelector( '#form-tags' ), data.selectize.root );
+    dms.helper.setContent( form.querySelector( '#form-description' ), data.quill.root );
   }
   return html`
     <div class="alert alert-info" role="alert">${ dms.text.meta_hint }</div>
@@ -619,15 +625,15 @@ export function meta( type, data ) {
         <small class="text-danger">*</small>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="visibility" id="form-visibility-private" value="private" required ?checked=${ data.visibility === 'private' } @click=${ () => dms.events.onMetaChange( type ) }>
+        <input class="form-check-input" type="radio" name="visibility" id="form-visibility-private" value="private" required ?checked=${ data.visibility === 'private' } @click=${ onClick }>
         <label class="form-check-label" for="form-visibility-private"><span class="badge rounded-pill bg-danger">Privat</span></label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="visibility" id="form-visibility-not_listed" value="not_listed" ?checked=${ data.visibility === 'not_listed' } @click=${ () => dms.events.onMetaChange( type ) }>
+        <input class="form-check-input" type="radio" name="visibility" id="form-visibility-not_listed" value="not_listed" ?checked=${ data.visibility === 'not_listed' } @click=${ onClick }>
         <label class="form-check-label" for="form-visibility-not_listed"><span class="badge rounded-pill bg-warning">Nicht gelistet</span></label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="visibility" id="form-visibility-public" value="public" ?checked=${ data.visibility === 'public' } @click=${ () => dms.events.onMetaChange( type ) }>
+        <input class="form-check-input" type="radio" name="visibility" id="form-visibility-public" value="public" ?checked=${ data.visibility === 'public' } @click=${ onClick }>
         <label class="form-check-label" for="form-visibility-public"><span class="badge rounded-pill bg-success">Öffentlich</span></label>
       </div>
     </div>
