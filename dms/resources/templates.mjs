@@ -3,7 +3,7 @@
  * @author André Kless <andre.kless@web.de> 2021
  */
 
-import { html, render, repeat } from 'https://ccmjs.github.io/akless-components/libs/lit/lit.min.js';
+import { html, render, repeat, unsafeHTML } from 'https://ccmjs.github.io/akless-components/libs/lit/lit.min.js';
 export { render };
 
 // app instance (dms) and app state data (data) are shared with the HTML templates
@@ -392,7 +392,7 @@ export function item( section, meta_key ) {
         <!-- Description -->
         <section class="container py-3" ?data-hidden=${ !meta.description }>
           <h6 class="text-decoration-underline">${ dms.text.meta_description }</h6>
-          <p class="text-muted mb-0">${ meta.description }</p>
+          <p class="text-muted mb-0">${ unsafeHTML( meta.description ) }</p>
         </section>
 
         <!-- Information -->
