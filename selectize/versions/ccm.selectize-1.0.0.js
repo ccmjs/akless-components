@@ -47,7 +47,7 @@
           options: this.options.map( option => { return { value: option } } ),
           placeholder: this.placeholder,
           plugins: this.plugins,
-          onChange: () => this.onchange( { instance: this } )
+          onChange: () => this.onchange && this.onchange( { instance: this } )
         } )[ 0 ].selectize;
       };
       this.getValue = () => [ ...( this.selectize.items || [] ) ];
