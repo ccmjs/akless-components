@@ -4,7 +4,7 @@
  * @license The MIT License (MIT)
  * @version latest (5.0.0)
  * @changes
- * version 5.0.0 (07.12.2021): reimplementation
+ * version 5.0.0 (22.12.2021): reimplementation
  * (for older version changes see ccm.dms-4.5.0.js)
  */
 
@@ -64,16 +64,16 @@
       let data;
 
       /**
-       * ccmjs-based app editor instance
-       * @type {Object}
-       */
-      let editor;
-
-      /**
        * main HTML element
        * @type {Element}
        */
       let element;
+
+      /**
+       * for the temporary storage of instance references
+       * @type {Object}
+       */
+      const tmp = {};
 
       /**
        * when all dependencies are solved after creation and before the app starts
@@ -255,7 +255,7 @@
           window.history.pushState( '', '', '?edit=' + type + '&key=' + meta_key );
           await this.refresh();
         },
-        onSave: async ( type, meta_key ) => {
+        onEditSubmit: async ( type, meta_key ) => {
           await this.user.login();
           const form = $.formData( element.querySelector( 'form' ) );
           if ( !form.title || !form.visibility ) return;
@@ -273,12 +273,21 @@
           form.listed = form.visibility === 'public';
           form[ '_.access.get' ] = form.visibility === 'private' ? 'creator' : 'all';
           delete form.visibility;
-          await this[ prop ].set( form );
+
+          await Promise.all( [
+            await this[ prop ].set( form ),
+            type === 'app' && await this.configs.set( {
+              key: Array.isArray( meta_key ) ? meta_key.split( ',' ) : meta_key,
+              '_.access.get': form.visibility === 'private' ? 'creator' : 'all'
+            } )
+          ] );
           $.assign( meta, form );
+          
           const set = ( key, value = form[ key ] ) => !data[ prop ].options[ key ].includes( value ) && data[ prop ].options[ key ].push( value );
           set( 'title' );
           set( 'creator' );
           form.tags.forEach( tag => set( 'tags', tag ) );
+
           await this.events.onItem( type, meta_key );
         },
         onDelete: async ( type, meta_key ) => {
@@ -292,6 +301,7 @@
           const user_key = ( await this.user.login() ).key;
           const prop = type === 'app' ? 'apps' : 'components';
           const meta = data[ prop ].meta[ meta_key.toString() ];
+          if ( user_key === meta._.creator ) return;
           const priodata = { key: '_' + user_key }
           priodata[ ( type === 'tool' ? 'tools' : 'ratings' ) + '.' + meta.key.toString() ] = rating;
           let ratings = type === 'app' ? meta.ratings : meta.ratings[ type + 's' ];
@@ -306,67 +316,71 @@
           this.render.rating( type, meta.key );
           await this[ prop ].set( priodata );
         },
-
-        onShow: async ( section, meta_key ) => {
-          console.log( section, meta_key );
-        },
-        onDeveloper: async () => {
-          window.history.pushState( '', '', '?developer' );
+        onStart: async ( type, meta_key, template ) => {
+          switch ( type ) {
+            case 'tool':
+              if ( template === true ) return this.render.editor( meta_key, template );
+              window.history.pushState( '', '', '?editor=' + meta_key + ( template ? '&template=' + template : '' ) );
+              break;
+            case 'app':
+              window.history.pushState( '', '', '?show=' + meta_key );
+              break;
+            case 'component':
+              window.history.pushState( '', '', '?code=' + meta_key );
+              break;
+          }
           await this.refresh();
         },
-        onEditor: ( tool_key, app_key ) => {
-          if ( app_key === true ) return render.editor( tool_key, true );
-          window.history.pushState( '', '', '?editor=' + tool_key + ( app_key ? '&template=' + app_key : '' ) );
-          refresh();
-        },
-        onPreview: tool_key => render.preview( tool_key ),
-        onCreateApp: tool_key => render.createApp( tool_key ),
-        onCreateAppSubmit: async tool_key => {
-          if ( !app_meta.title || !app_meta.visibility ) return;
+        onCreate: async tool_key => this.render.create( tool_key ),
+        onCreateSubmit: async tool_key => {
           await this.user.login();
-          if ( app_meta.visibility === 'private' )
-            app_meta.agree = { content: false, software: false, copyright: false };
-          else if ( !app_meta.agree.content || !app_meta.agree.software || !app_meta.agree.copyright )
+          const form = $.formData( element.querySelector( 'form' ) );
+          if ( !form.title || !form.visibility ) return;
+          if ( form.visibility === 'private' )
+            form.agree = { content: false, software: false, copyright: false };
+          else if ( !form.agree.content || !form.agree.software || !form.agree.copyright )
             return;
-          const app_meta = $.clone( meta );
-          const app_config = editor.getValue();
+
+          const tool_meta = data.components.meta[ tool_key ];
+          form.creator = this.user.getUsername();
+          form.icon = tool_meta.icon;
+          form.tags = tmp.selectize.getValue();
+          form.description = tmp.quill.getHTML();
+          form.listed = form.visibility === 'public';
+
+          const config = tmp.editor.getValue();
           const app_key = $.generateKey();
-          app_meta.key = app_config.key = [ tool_key, app_key ];
-          app_meta.component = app_config.component = tool_key;
-          app_meta.app = app_config.app = app_key;
-          app_meta.creator = this.user.getUsername();
-          app_meta.ignore = { config: [ 'ccm.get', this.configs.source(), app_config.key ] };
-          app_config.ignore = { meta: [ 'ccm.get', this.apps.source(), app_meta.key ] };
-          app_meta._ = app_config._ = {
+          form.key = config.key = [ tool_key, app_key ];
+          form.component = config.component = tool_key;
+          form.app = config.app = app_key;
+          form.ignore = { config: [ 'ccm.get', this.configs.source(), form.key ] };
+          config.ignore = { meta: [ 'ccm.get', this.apps.source(), form.key ] };
+          form._ = config._ = {
             creator: this.user.getValue().key,
             realm: 'cloud',
             access: {
-              get: app_meta.visibility === 'private' ? 'creator' : 'all',
+              get: form.visibility === 'private' ? 'creator' : 'all',
               set: 'creator',
               del: 'creator'
             }
           };
-          app_meta.listed = app_meta.visibility === 'public';
-          app_meta.ratings = {};
-          app_meta.icon = data.components.meta[ tool_key ].icon;
-          if ( !app_meta.tags ) app_meta.tags = [];
-          delete app_meta.selectize;
-          delete app_meta.quill;
-          delete app_meta.visibility;
-          await Promise.all( [ this.apps.set( app_meta ),  this.configs.set( app_config ) ] );
-          data.apps.arr.push( app_meta );
-          data.apps.meta[ app_meta.key.toString() ] = app_meta;
-          const set = ( prop, value = app_meta[ prop ] ) => !data.apps.options[ prop ].includes( value ) && data.apps.options[ prop ].push( value );
+          delete form.visibility;
+
+          await Promise.all( [ this.apps.set( form ), this.configs.set( config ) ] );
+          form.ratings = {};
+          form.tool = tool_meta.title;
+          form.created_at = form.updated_at = Date.now();
+          data.apps.arr.push( form );
+          data.apps.meta[ form.key.toString() ] = form;
+
+          const set = ( key, value = form[ key ] ) => !data.apps.options[ key ].includes( value ) && data.apps.options[ key ].push( value );
           set( 'title' );
           set( 'creator' );
-          app_meta.tags.forEach( tag => set( 'tags', tag ) );
-          window.history.pushState( '', '', '?app=' + app_meta.key );
-          await refresh();
+          form.tags.forEach( tag => set( 'tags', tag ) );
+
+          await this.events.onItem( 'app', form.key );
         },
-        onShowApp: async app_key => {
-          window.history.pushState( '', '', '?show=' + app_key );
-          await refresh();
-        }
+        onPreview: tool_key => this.render.preview( tool_key )
       };
 
       /** renders route specific content */
@@ -394,19 +408,16 @@
           case 'edit':
             this.render.edit( params.edit, params.key );
             break;
+          case 'editor':
+            this.render.editor( params.editor, params.template );
+            break;
           default:
             this.render.home();
         }
 
         /*
-        else if ( route === '?developer' )
-          this.render.developer();
-        else if ( route.startsWith( '?editor=' ) )
-          this.render.editor( params.editor, params.template );
         else if ( route.startsWith( '?show=' ) )
           this.render.showApp( params.show );
-        else if ( route.startsWith( '?edit_app=' ) )
-          this.render.editApp( params.edit_app );
          */
       };
 
@@ -448,12 +459,11 @@
           if ( !meta.selectize ) {
             meta.selectize = await this.selectize.start( {
               options: [ ...new Set( [ ...data.apps.options.tags, ...( meta.tags || [] ) ] ) ],
-              items: meta.tags || [],
-              onchange: event => meta.tags = event.instance.getValue()
+              items: meta.tags || []
             } );
           }
           if ( !meta.quill ) {
-            meta.quill = await this.quill.start( { onchange: event => meta.description = event.instance.getHTML() } );
+            meta.quill = await this.quill.start();
             meta.description && meta.quill.setHTML( meta.description );
           }
           $.setContent( this.element.querySelector( '#form-tags' ), meta.selectize.root );
@@ -461,85 +471,45 @@
           const radio = element.querySelector( '#form-visibility-private' );
           radio.checked && radio.click();
         },
-
-        developer: () => {
-          render.header( 'developer' );
-          render.main( 'developer' );
-        },
         editor: ( tool_key, app_key ) => {
-          render.header( 'tools' );
+          this.render.header( 'tools' );
           const tool_meta = data.components.meta[ tool_key ];
-          if ( app_key !== true ) meta = {};
-          this.html.render( this.html.editor( tool_meta ), element );
-          if ( app_key === true ) return $.setContent( this.element.querySelector( '#section-tool-editor' ), editor.root );
+          this.html.render( this.html.editor( tool_key ), element );
+          if ( app_key === true )
+            return $.setContent( this.element.querySelector( '#editor' ), tmp.editor.root );
           const config = app_key && data.apps.meta[ app_key ].ignore.config;
           Promise.all( [
-            this.ccm.helper.solveDependency( tool_meta.ignore.editor ),
+            this.ccm.helper.solveDependency( tool_meta.ignore.editors[ 0 ] ),
             this.ccm.helper.solveDependency( tool_meta.ignore.defaults ),
             this.ccm.helper.solveDependency( config )
           ] ).then( ( [ editor_comp, defaults, config = {} ] ) => editor_comp.start( {
-            root: this.element.querySelector( '#section-tool-editor' ),
+            root: this.element.querySelector( '#editor' ),
             data: { store: [ 'ccm.store', { app: config } ], key: 'app' },
             'ignore.defaults': defaults,
             preview: false
-          } ).then( editor_inst => editor = editor_inst ) );
+          } ).then( editor_inst => tmp.editor = editor_inst ) );
+        },
+        create: async tool_key => {
+          this.render.header( 'tools' );
+          this.html.render( this.html.create( tool_key ), element );
+          tmp.selectize = await this.selectize.start( {
+              root: this.element.querySelector( '#form-tags' ),
+              options: data.apps.options.tags
+            } );
+          tmp.quill = await this.quill.start( {
+              root: this.element.querySelector( '#form-description' )
+            } );
+          const radio = element.querySelector( '#form-visibility-private' );
+          radio.click();
+          radio.checked = false;
         },
         preview: tool_key => {
-          render.header( 'tools' );
+          this.render.header( 'tools' );
           const tool_meta = data.components.meta[ tool_key ];
-          this.html.render( this.html.preview( tool_meta ), element );
-          this.ccm.start( tool_meta.path, { root: this.element.querySelector( '#section-tool-preview' ), src: editor.getValue() } );
+          this.html.render( this.html.preview( tool_key ), element );
+          this.ccm.start( tool_meta.path, { root: this.element.querySelector( '#preview' ), src: tmp.editor.getValue() } );
         },
-        createApp: async tool_key => {
-          await this.user.login();
-          render.header( 'tools' );
-          this.html.render( this.html.createApp( data.components.meta[ tool_key ] ), element );
-          if ( !meta.selectize ) {
-            meta.selectize = await this.selectize.start( {
-              options: [ ...new Set( [ ...data.apps.options.tags, ...( meta.tags || [] ) ] ) ],
-              items: meta.tags || [],
-              onchange: event => meta.tags = event.instance.getValue()
-            } );
-          }
-          if ( !meta.quill ) {
-            meta.quill = await this.quill.start( { onchange: event => meta.description = event.instance.getHTML() } );
-            meta.description && meta.quill.setHTML( meta.description );
-          }
-          $.setContent( this.element.querySelector( '#form-tags' ), meta.selectize.root );
-          $.setContent( this.element.querySelector( '#form-description' ), meta.quill.root );
-          const form_elem = this.element.querySelector( '#form' );
-          form_elem.querySelectorAll( '[name]' ).forEach( input => input.addEventListener( 'change', () => {
-            const form_data = $.formData( form_elem );
-            const old_visibility = meta.visibility || '';
-            meta = Object.assign( meta, form_data );
-            old_visibility !== form_data.visibility && render.createApp( tool_key );
-          } ) )
-        },
-        editApp: async meta_key => {
-          render.header( 'apps' );
-          let meta = data.apps.meta[ meta_key ];
-          this.html.render( this.html.editApp( meta ), element );
-          if ( !meta.selectize ) {
-            meta.selectize = await this.selectize.start( {
-              options: [ ...new Set( [ ...data.apps.options.tags, ...( meta.tags || [] ) ] ) ],
-              items: meta.tags || [],
-              onchange: event => meta.tags = event.instance.getValue()
-            } );
-          }
-          if ( !meta.quill ) {
-            meta.quill = await this.quill.start( { onchange: event => meta.description = event.instance.getHTML() } );
-            meta.description && meta.quill.setHTML( meta.description );
-          }
-          $.setContent( this.element.querySelector( '#form-tags' ), meta.selectize.root );
-          $.setContent( this.element.querySelector( '#form-description' ), meta.quill.root );
-          const form_elem = this.element.querySelector( '#form' );
-          form_elem.querySelectorAll( '[name]' ).forEach( input => input.addEventListener( 'change', () => {
-            const form_data = $.formData( form_elem );
-            const old_visibility = meta.visibility || '';
-            meta = Object.assign( meta, form_data );
-            old_visibility !== form_data.visibility && render.editApp( meta_key );
-          } ) )
-        },
+
         showApp: async app_key => {
           render.header( 'apps' );
           const app_meta = data.apps.meta[ app_key ];

@@ -382,8 +382,8 @@ export function item( section, meta_key ) {
               </div>
             </div>
             <div class="col d-flex justify-content-start align-items-end my-3">
-              <button class="btn btn-outline-${ color } btn-lg" @click=${ () => dms.events.onShow( section, meta.key ) }>
-                ${ dms.text[ section + '_show' ] }<i class="bi bi-chevron-right"></i>
+              <button class="btn btn-outline-${ color } btn-lg" @click=${ () => dms.events.onStart( section, meta.key ) }>
+                ${ dms.text[ section + '_start' ] }<i class="bi bi-chevron-right"></i>
               </button>
             </div>
           </div>
@@ -485,7 +485,7 @@ export function item( section, meta_key ) {
         </section>
 
         <!-- Rating -->
-        <section id="rating" class="container py-3">
+        <section id="rating" class="container py-3" ?data-hidden=${ is_creator }>
           <h6 class="text-decoration-underline">${ dms.text.meta_rating }</h6>
           <article>${ rating( section, meta.key ) }</article>
         </section>
@@ -527,7 +527,7 @@ function breadcrumb( color, entries ) {
 }
 
 /**
- * HTML template for a rating
+ * HTML template for rating of an tool/app/component
  * @param {string} type - 'tool', 'app' or 'component'
  * @param {string|string[]} meta_key - metadata key
  * @returns {TemplateResult}
@@ -561,13 +561,13 @@ export function edit( type, meta_key ) {
         { title: dms.text.meta_edit }
       ] ) }
       <section class="container bg-white border p-4">
-        <form id="form" @submit=${ event => { event.preventDefault(); dms.events.onSave( type, meta_key ); } }>
+        <form id="form" @submit=${ event => { event.preventDefault(); dms.events.onEditSubmit( type, meta_key ); } }>
           ${ inputs( type, meta_key ) }
         </form>
       </section>
       <div class="container px-0 py-3 d-flex justify-content-between">
         <button class="btn btn-secondary" @click=${ () => dms.events.onItem( type, meta.key ) }><i class="bi bi-chevron-left"></i> ${ dms.text.btn_back }</button>
-        <button type="submit" class="btn btn-${ color }" form="form">${ dms.text.btn_save }</input>
+        <button type="submit" class="btn btn-${ color }" form="form">${ dms.text.btn_save }</button>
         <button class="btn btn-danger" @click=${ () => dms.events.onDelete( type, meta.key ) }><i class="bi bi-trash-fill"></i> ${ dms.text.btn_delete }</button>
       </div>
     </div>
@@ -577,12 +577,12 @@ export function edit( type, meta_key ) {
 /**
  * HTML template for metadata inputs
  * @param {string} type - 'tool', 'app', or 'component'
- * @param {string|string[]} meta_key - metadata key of the edited tool/app/component
+ * @param {string|string[]} [meta_key] - metadata key of the edited tool/app/component
  * @returns {TemplateResult}
  */
 export function inputs( type, meta_key ) {
-  const meta = data[ type !== 'app' ? 'components' : 'apps' ].meta[ meta_key ];
-  const is_private = meta._.access.get === 'creator';
+  const meta = data[ type !== 'app' ? 'components' : 'apps' ].meta[ meta_key ] || {};
+  const is_private = meta._ && meta._.access.get === 'creator';
   let tmp = null;
   return html`
     <div class="alert alert-info" role="alert">${ dms.text.meta_hint }</div>
@@ -616,19 +616,19 @@ export function inputs( type, meta_key ) {
         <small class="text-danger">*</small>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="visibility" id="form-visibility-private" value="private" required ?checked=${ is_private } @click=${ onClick }>
+        <input class="form-check-input" type="radio" name="visibility" id="form-visibility-private" value="private" required ?checked=${ meta_key && is_private } @click=${ onClick }>
         <label class="form-check-label" for="form-visibility-private"><span class="badge rounded-pill bg-danger">${ dms.text.meta_private }</span></label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="visibility" id="form-visibility-not_listed" value="not_listed" ?checked=${ !is_private && !meta.listed } @click=${ onClick }>
+        <input class="form-check-input" type="radio" name="visibility" id="form-visibility-not_listed" value="not_listed" ?checked=${ meta_key && !is_private && !meta.listed } @click=${ onClick }>
         <label class="form-check-label" for="form-visibility-not_listed"><span class="badge rounded-pill bg-warning">${ dms.text.meta_not_listed }</span></label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="visibility" id="form-visibility-public" value="public" ?checked=${ !is_private && meta.listed } @click=${ onClick }>
+        <input class="form-check-input" type="radio" name="visibility" id="form-visibility-public" value="public" ?checked=${ meta_key && !is_private && meta.listed } @click=${ onClick }>
         <label class="form-check-label" for="form-visibility-public"><span class="badge rounded-pill bg-success">${ dms.text.meta_public }</span></label>
       </div>
     </div>
-    <div class="mt-3" id="form-agree" ?data-hidden=${ !meta.key || is_private }>
+    <div class="mt-3" id="form-agree" ?data-hidden=${ !meta_key || is_private }>
       <div class="form-label mb-1">
         ${ dms.text.meta_agree }:
       </div>
@@ -665,7 +665,7 @@ export function inputs( type, meta_key ) {
     if ( agree )
       delete agree.dataset.hidden;
     if ( event.target.value === 'private' )
-      agree.parentNode.replaceChild( document.createElement( 'aside' ), tmp = agree );
+      agree && agree.parentNode.replaceChild( document.createElement( 'aside' ), tmp = agree );
     else if ( tmp ) {
       const aside = form.querySelector( 'aside' );
       aside.parentNode.replaceChild( tmp, aside );
@@ -674,98 +674,82 @@ export function inputs( type, meta_key ) {
   }
 }
 
-
-
 /**
- * HTML template for editor section
- * @param {Object} tool_meta - meta data of the tool
+ * HTML template for the app editor of a tool
+ * @param {Object} tool_key - metadata key of the tool
  * @returns {TemplateResult}
  */
-export function editor( tool_meta ) {
+export function editor( tool_key ) {
+  const tool_meta = data.components.meta[ tool_key ];
   return html`
-    <div class="bg-tools p-2 pb-4">
+    <div class="bg-tools-light p-2 pb-4">
       ${ breadcrumb( 'tools', [
-        { title: 'Werkzeuge', onClick: () => events.onList( 'tools' ) },
-        { title: tool_meta.title, onClick: () => events.onTool( tool_meta.key ) },
-        { title: 'Editor' }
+        { title: dms.text.tools, onClick: () => dms.events.onList( 'tools' ) },
+        { title: tool_meta.title, onClick: () => dms.events.onItem( 'tool', tool_key ) },
+        { title: dms.text.editor }
       ] ) }
-      <section id="section-tool-editor" class="container bg-white border p-0"></section>
+      <section id="editor" class="container bg-white border p-0"></section>
       <div class="container px-0 py-3 d-flex justify-content-between">
-        <button class="btn btn-primary" @click=${ () => events.onCreateApp( tool_meta.key ) }>App erstellen</button>
-        <button class="btn btn-info" @click=${ () => events.onPreview( tool_meta.key ) }>Vorschau <i class="bi bi-chevron-right"></i></button>
+        <button class="btn btn-secondary" @click=${ () => dms.events.onItem( 'tool', tool_key ) }><i class="bi bi-chevron-left"></i> ${ dms.text.btn_back }</button>
+        <button class="btn btn-primary" @click=${ () => dms.events.onCreate( tool_key ) }>${ dms.text.btn_create_app }</button>
+        <button class="btn btn-info" @click=${ () => dms.events.onPreview( tool_key ) }>${ dms.text.btn_preview } <i class="bi bi-chevron-right"></i></button>
       </div>
     </div>
   `;
 }
 
 /**
- * HTML template for preview section
- * @param {Object} tool_meta - meta data of the tool
+ * HTML template for create app metadata
+ * @param {string|string[]} [tool_key] - metadata key of the used tool
  * @returns {TemplateResult}
  */
-export function preview( tool_meta ) {
+export function create( tool_key ) {
   return html`
-    <div class="bg-tools p-2 pb-4">
+    <div class="bg-tools-light p-2 pb-4">
       ${ breadcrumb( 'tools', [
-        { title: 'Werkzeuge', onClick: () => events.onList( 'tools' ) },
-        { title: tool_meta.title, onClick: () => events.onTool( tool_meta.key ) },
-        { title: 'Editor', onClick: () => events.onEditor( tool_meta.key, true ) },
-        { title: 'Vorschau' }
+        { title: dms.text.tools, onClick: () => dms.events.onList( 'tools' ) },
+        { title: data.components.meta[ tool_key ].title, onClick: () => dms.events.onItem( 'tool', tool_key ) },
+        { title: dms.text.editor, onClick: () => dms.events.onStart( 'tool', tool_key, true ) },
+        { title: dms.text.btn_create_app }
       ] ) }
-      <section id="section-tool-preview" class="container bg-white border p-0"></section>
+      <section class="container bg-white border p-4">
+        <form id="form" @submit=${ event => { event.preventDefault(); dms.events.onCreateSubmit( tool_key ); } }>
+          ${ inputs( 'app' ) }
+        </form>
+      </section>
       <div class="container px-0 py-3 d-flex justify-content-between">
-        <button class="btn btn-secondary" @click=${ () => events.onEditor( tool_meta.key, true ) }><i class="bi bi-chevron-left"></i> Zurück</button>
-        <button class="btn btn-primary" @click=${ () => events.onCreateApp( tool_meta.key ) }>App erstellen</button>
+        <button class="btn btn-secondary" @click=${ () => dms.events.onStart( 'tool', tool_key, true ) }><i class="bi bi-chevron-left"></i> ${ dms.text.btn_back }</button>
+        <button type="submit" class="btn btn-tools" form="form">${ dms.text.btn_create_app }</button>
       </div>
     </div>
   `;
 }
 
 /**
- * HTML template for create app section
- * @param {Object} tool_meta - metadata of the tool
+ * HTML template for app preview
+ * @param {Object} tool_key - metadata key of the used tool
  * @returns {TemplateResult}
  */
-export function createApp( tool_meta ) {
+export function preview( tool_key ) {
+  const tool_meta = data.components.meta[ tool_key ];
   return html`
-    <div class="bg-tools p-2 pb-4">
+    <div class="bg-tools-light p-2 pb-4">
       ${ breadcrumb( 'tools', [
-        { title: 'Werkzeuge', onClick: () => events.onList( 'tools' ) },
-        { title: tool_meta.title, onClick: () => events.onTool( tool_meta.key ) },
-        { title: 'Editor', onClick: () => events.onEditor( tool_meta.key, true ) },
-        { title: 'App erstellen' }
+        { title: dms.text.tools, onClick: () => dms.events.onList( 'tools' ) },
+        { title: tool_meta.title, onClick: () => dms.events.onItem( 'tool', tool_key ) },
+        { title: dms.text.editor, onClick: () => dms.events.onStart( 'tool', tool_key, true ) },
+        { title: dms.text.btn_preview }
       ] ) }
-      ${ appMeta() }
+      <section id="preview" class="container bg-white border p-0"></section>
       <div class="container px-0 py-3 d-flex justify-content-between">
-        <button class="btn btn-secondary" @click=${ () => events.onEditor( tool_meta.key, true ) }><i class="bi bi-chevron-left"></i> Zurück</button>
-        <button type="submit" class="btn btn-primary" form="form">Fertig</input>
+        <button class="btn btn-secondary" @click=${ () => dms.events.onStart( 'tool', tool_key, true ) }><i class="bi bi-chevron-left"></i> ${ dms.text.btn_back }</button>
+        <button class="btn btn-tools" @click=${ () => dms.events.onCreate( tool_key ) }>${ dms.text.btn_create_app }</button>
       </div>
     </div>
   `;
 }
 
-/**
- * HTML template for edit app metadata section
- * @param {Object} app_meta - metadata of the app
- * @returns {TemplateResult}
- */
-export function editApp( app_meta ) {
-  return html`
-    <div class="bg-apps p-2 pb-4">
-      ${ breadcrumb( 'apps', [
-        { title: 'Apps', onClick: () => events.onList( 'apps' ) },
-        { title: app_meta.title, onClick: () => events.onApp( app_meta.key ) },
-        { title: 'Metadaten editieren' }
-      ] ) }
-      ${ appMeta( app_meta ) }
-      <div class="container px-0 py-3 d-flex justify-content-between">
-        <button class="btn btn-secondary" @click=${ () => events.onApp( app_meta.key ) }><i class="bi bi-chevron-left"></i> Zurück</button>
-        <button class="btn btn-danger" @click=${ () => events.onDeleteApp( app_meta.key ) }><i class="bi bi-trash-fill"></i> App löschen</button>
-        <button type="submit" class="btn btn-success" form="form">Speichern</input>
-      </div>
-    </div>
-  `;
-}
+
 
 /**
  * HTML template for show an app
@@ -797,18 +781,5 @@ export function showApp( app_meta ) {
         <button class="btn btn-primary" data-hidden @click=${ () => events.onEditor( app_meta.component, app_meta.key ) }>Eigene App editieren <i class="bi bi-chevron-right"></i></button>
       </div>
     </div>
-  `;
-}
-
-/**
- * HTML template for developer section
- * @returns {TemplateResult}
- */
-export function developer() {
-  return html`
-    
-    <!-- Trailer -->
-    ${ trailer( 'developer', 'Entwickler', 'Programmiere eigene Webkomponenten und ergänze damit weitere Werkzeuge, mit denen neue Arten von Apps gebaut werden können.' ) }
-    
   `;
 }
