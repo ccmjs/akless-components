@@ -13,8 +13,8 @@ const en = {
   "a_department": "Department of",
   "a_disclaimer": "Disclaimer",
   "a_inf": "Computer Science",
-  "a_license_content": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
-  "a_license_software": "https://en.wikipedia.org/wiki/MIT_License",
+  "a_licence_content": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "a_licence_software": "https://en.wikipedia.org/wiki/MIT_License",
   "alt_app": "Icon of the App",
   "alt_component": "Icon of the Component",
   "alt_logo_dms": "Logo of the Digital Makerspace",
@@ -85,9 +85,9 @@ const en = {
   "meta_edit": "Edit Metadata",
   "meta_hint": "Include additional information so you and others can better find and understand your creation.",
   "meta_infos": "Information",
-  "meta_license_cc0": "CC0 License",
+  "meta_licence_cc0": "CC0 License",
   "meta_licence_content": "Content Licence",
-  "meta_license_mit": "MIT License",
+  "meta_licence_mit": "MIT License",
   "meta_licence_software": "Software Licence",
   "meta_not_listed": "Not listed",
   "meta_private": "Private",
@@ -140,8 +140,8 @@ const de = {
   "a_department": "Fachbereich",
   "a_disclaimer": "Impressum",
   "a_inf": "Informatik",
-  "a_license_content": "https://creativecommons.org/publicdomain/zero/1.0/deed.de",
-  "a_license_software": "https://de.wikipedia.org/wiki/MIT-Lizenz",
+  "a_licence_content": "https://creativecommons.org/publicdomain/zero/1.0/deed.de",
+  "a_licence_software": "https://de.wikipedia.org/wiki/MIT-Lizenz",
   "alt_app": "Icon der App",
   "alt_component": "Icon der Komponente",
   "alt_logo_dms": "Logo des Digital Makerspace",
@@ -211,9 +211,9 @@ const de = {
   "meta_edit": "Metadaten editieren",
   "meta_hint": "Gib zusätzliche Informationen an, damit du und andere deine Kreation besser finden und verstehen können.",
   "meta_infos": "Informationen",
-  "meta_license_cc0": "CC0-Lizenz",
+  "meta_licence_cc0": "CC0-Lizenz",
   "meta_licence_content": "Content-Lizenz",
-  "meta_license_mit": "MIT-Lizenz",
+  "meta_licence_mit": "MIT-Lizenz",
   "meta_licence_software": "Software-Lizenz",
   "meta_not_listed": "Nicht gelistet",
   "meta_private": "Privat",
@@ -709,6 +709,10 @@ export const test = {
   "helper.1": "./../modules/helper.mjs",
   "html.1": "./../dms/resources/templates.mjs",
   "icon": "./../dms/resources/icon.png",
+  "lang": [ "ccm.instance", "./../lang/ccm.lang.js", {
+    "active": "en",
+    "translations": { "de": de, "en": en }
+  } ],
   "libs.1": "./../libs/bootstrap-5/js/bootstrap.bundle.js",
   "logger": [ "ccm.instance", "./../log/ccm.log.js", [ "ccm.get", "./../log/resources/configs.js", "greedy" ] ],
   "onfinish": { "log": true },
@@ -724,6 +728,7 @@ export const test = {
  * @type {Object}
  */
 export const demo = {
+  "apps": [ "ccm.store", example_apps ],
   "comment": [ "ccm.component", "https://ccmjs.github.io/tkless-components/comment/versions/ccm.comment-7.0.0.min.js", {
     "data": { "store": [ "ccm.store" ] },
     "libs": [ "ccm.load", [
@@ -735,8 +740,9 @@ export const demo = {
     ] ],
     "text": [ "ccm.load", "https://ccmjs.github.io/tkless-components/comment/resources/resources.mjs#de" ]
   } ],
-  "apps": [ "ccm.store", example_apps ],
   "components": [ "ccm.store", example_components ],
+  "lang.2.active": "de",
+  "lang.2.translation": { "de": de, "en": en },
   "text": de
 };
 
