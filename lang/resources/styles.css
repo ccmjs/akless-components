@@ -1,0 +1,13 @@
+/**
+ * @overview default layout of ccmjs-based web component for multilingualism
+ * @author André Kless <andre.kless@web.de.de> 2021
+ * @license The MIT License (MIT)
+ */
+
+select {
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: 0.25rem;
+  padding: 0.25rem;
+  width: 3rem;
+}
