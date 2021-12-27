@@ -5,8 +5,10 @@
  * and defines the Custom Element <code>\<ccm-app\></code>.
  * @author André Kless <andre.kless@web.de> 2014-2021
  * @license The MIT License (MIT)
- * @version latest (27.1.1)
+ * @version latest (27.1.2)
  * @changes
+ * version 27.1.2 (27.12.2021)
+ * - highestByProperty() and nearestByProperty() returns null if there is no start instance
  * version 27.1.1 (28.09.2021)
  * - an instance created with ccm.start() is ready AFTER instance.start() is finished
  * version 27.1.0 (27.09.2021)
@@ -503,7 +505,7 @@
      * @description Returns the _ccmjs_ version.
      * @returns {ccm.types.version_nr}
      */
-    version: () => '27.1.1',
+    version: () => '27.1.2',
 
     /**
      * @summary loads resources
@@ -1608,6 +1610,7 @@
         const start = instance;
         let result = null;
         if ( not_me ) instance = instance.parent;
+        if ( !instance ) return null;
         do
           if ( ccm.helper.isObject( instance ) && instance[ property ] !== undefined && instance[ property ] !== start )
             result = instance;
@@ -1627,6 +1630,7 @@
 
         const start = instance;
         if ( not_me ) instance = instance.parent;
+        if ( !instance ) return null;
         do
           if ( ccm.helper.isObject( instance ) && instance[ property ] !== undefined && instance[ property ] !== start )
             return instance;
