@@ -75,7 +75,7 @@ export function header( active ) {
         <nav class="dropdown me-0 my-1 flex-grow-1 d-flex justify-content-end">
           <button class="btn dropdown-toggle d-flex align-items-center px-1 py-0" type="button" id="user" data-bs-toggle="dropdown" aria-expanded="false">
             <span class="me-2" ?data-hidden=${ !user }>${ user && user.name }</span>
-            <img src="${ user && user.picture || dms.picture }" alt="${ dms.text.alt_picture }" class="rounded" width="32" height="32" data-lang="alt-picture-alt">
+            <img src="${ user && user.picture || dms.picture }" alt="${ dms.text.alt_picture }" class="rounded" width="32" height="32" data-lang="alt_picture-alt">
           </button>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="user">
             <li ?data-hidden=${ user }><button class="dropdown-item" type="button" data-lang="btn_login" @click=${ dms.events.onLogin }>${ dms.text.btn_login }</button></li>
