@@ -113,7 +113,7 @@
         this.parent && this.parent.element.querySelectorAll( '*[data-lang]' ).forEach( elem => {
           elem.dataset.lang.split( ' ' ).forEach( index => {
             const split = index.split( '-' );
-            if ( split.length < 1 ) return;
+            if ( !index ) return;
             let translation = this.translations[ this.active ][ split[ 0 ] ];
             if ( split.length > 2 ) {
               let i = 2;
