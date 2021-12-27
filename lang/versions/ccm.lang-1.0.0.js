@@ -29,17 +29,10 @@
       },
 //    "active": "en",
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/lang/resources/styles.min.css" ],
-      "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/lang/resources/templates.mjs" ],
-      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-7.8.0.min.mjs" ],
+      "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/lang/resources/templates.mjs" ]
 //    "onchange": event => console.log( event )
     },
     Instance: function () {
-
-      /**
-       * shortcut to help functions
-       * @type {Object.<string,Function>}
-       */
-      let $;
 
       /**
        * highest instance for multilingualism
@@ -53,11 +46,13 @@
        */
       this.init = async () => {
 
-        // set shortcut to help functions
-        $ = Object.assign( {}, this.ccm.helper, this.helper ); $.use( this.ccm );
-
         // no initial language? => detect from browser
-        if ( !this.active ) this.active = navigator.language.split( '-' )[ 0 ];
+        if ( !this.active ) {
+          this.active = navigator.language.split( '-' )[ 0 ];
+        }
+
+        // no translations for initial language? => use first language that has translations
+        if ( !this.translations[ this.active ] ) this.active = Object.keys( this.translations )[ 0 ];
 
         // get highest instance for multilingualism
         context = this.ccm.context.highestByProperty( this, 'lang', true );
@@ -120,10 +115,15 @@
           elem.dataset.lang.split( ' ' ).forEach( index => {
             const split = index.split( '-' );
             if ( split.length < 1 ) return;
+            let translation = this.translations[ this.active ][ split[ 0 ] ];
+            if ( split.length > 2 ) {
+              let i = 2;
+              translation = translation.replace( /%%/g, match => split[ i++ ] || match );
+            }
             if ( split[ 1 ] )
-              elem.setAttribute( split[ 1 ], this.translations[ this.active ][ split[ 0 ] ] );
+              elem.setAttribute( split[ 1 ], translation );
             else
-              elem.innerHTML = this.translations[ this.active ][ split[ 0 ] ];
+              elem.innerHTML = translation;
           } )
         } );
       }
