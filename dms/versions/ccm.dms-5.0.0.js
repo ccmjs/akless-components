@@ -33,7 +33,7 @@
       "icon": "https://ccmjs.github.io/akless-components/dms/resources/icon.png",
       "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-7.8.0.min.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/dms/resources/templates.mjs" ],
-      "lang": [ "ccm.instance", "https://ccmjs.github.io/akless-components/lang/versions/ccm.lang-1.0.0.min.js", {
+      "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/versions/ccm.lang-1.0.0.min.js", {
         "translations": {
           "de": [ "ccm.load", "https://ccmjs.github.io/akless-components/dms/resources/resources.mjs#de" ],
           "en": [ "ccm.load", "https://ccmjs.github.io/akless-components/dms/resources/resources.mjs#en" ]
@@ -223,7 +223,7 @@
 
         // render language selection and translate content
         $.setContent( this.element.querySelector( '#lang' ), this.lang.root );
-        await this.lang.start();
+        this.lang.translate();
 
       };
 

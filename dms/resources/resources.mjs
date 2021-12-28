@@ -695,6 +695,8 @@ export const test = {
   "apps": [ "ccm.store", example_apps ],
   "comment": [ "ccm.component", "https://ccmjs.github.io/tkless-components/comment/ccm.comment.js", {
     "data": { "store": [ "ccm.store" ] },
+    "lang.1": "./../lang/ccm.lang.js",
+    "lang.2.active": "en",
     "text": [ "ccm.load", "https://ccmjs.github.io/tkless-components/comment/resources/resources.mjs#en" ]
   } ],
   "components": [ "ccm.store", example_components ],
@@ -709,7 +711,7 @@ export const test = {
   "helper.1": "./../modules/helper.mjs",
   "html.1": "./../dms/resources/templates.mjs",
   "icon": "./../dms/resources/icon.png",
-  "lang": [ "ccm.instance", "./../lang/ccm.lang.js", {
+  "lang": [ "ccm.start", "./../lang/ccm.lang.js", {
     "active": "en",
     "translations": { "de": de, "en": en }
   } ],
@@ -731,6 +733,7 @@ export const demo = {
   "apps": [ "ccm.store", example_apps ],
   "comment": [ "ccm.component", "https://ccmjs.github.io/tkless-components/comment/versions/ccm.comment-7.0.0.min.js", {
     "data": { "store": [ "ccm.store" ] },
+    "lang.2.active": "de",
     "libs": [ "ccm.load", [
       [
         "https://ccmjs.github.io/tkless-components/libs/dayjs/dayjs.min.js",
@@ -755,5 +758,6 @@ export const live = {
   "comment.2.data.store.1": { "url": "https://ccm2.inf.h-brs.de", "name": "dms-components-comments" },
   "components": [ "ccm.store", { "url": "https://ccm2.inf.h-brs.de", "name": "dms-components" } ],
   "configs": [ "ccm.store", { "url": "https://ccm2.inf.h-brs.de", "name": "dms-configs" } ],
+  "lang.2.translation": { "de": de, "en": en },
   "text": de
 };
