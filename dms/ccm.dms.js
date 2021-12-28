@@ -192,8 +192,8 @@
 
         // collect options for tool searches and eliminate duplicates
         data.components.arr.forEach( component => {
-          if ( !component.listed && ( !user || user.key !== component._.creator ) ) return;
           component.apps = 0;  // counter for published apps that are already created with this component
+          if ( !component.listed && ( !user || user.key !== component._.creator ) ) return;
           add( data.components.options.title, component.title );
           add( data.components.options.creator, component.creator );
           component.tags.forEach( tag => add( data.components.options.tags, tag ) );

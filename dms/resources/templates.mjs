@@ -321,10 +321,10 @@ export function cards( section, values ) {
       <div class="col p-2">
         <div class="card h-100" @click=${ () => dms.events.onItem( item, meta.key ) }>
           <div class="card-header d-flex p-3">
-            <img class="me-3" src="${ meta.icon || dms.icon }" width="64" height="64" alt="${ dms.text[ 'alt_' + item ] }">
+            <img class="me-3" src="${ meta.icon || dms.icon }" width="64" height="64" alt="${ dms.text[ 'alt_' + item ] }" data-lang="alt_${ item }-alt">
             <div class="overflow-hidden">
               <h5 class="card-title mb-0">${ meta.title }</h5>
-              <span class="badge rounded-pill bg-${ section }">${ dms.text[ item ] }</span>
+              <span class="badge rounded-pill bg-${ section }" data-lang="${ item }">${ dms.text[ item ] }</span>
               <span class="badge rounded-pill bg-tools-light text-dark" title="${ dms.text.tooltip_tool }" data-lang="tooltip_tool-title" ?data-hidden=${ !meta.app }>${ meta.tool }</span>
             </div>
           </div>
@@ -339,7 +339,7 @@ export function cards( section, values ) {
               <span data-lang="apps">${ dms.text.apps }</span>
             </small>
             <small>
-              <span class="text-${ section }" title="${ dms.text[ 'tooltip_rating_' + item ] }">
+              <span class="text-${ section }" title="${ dms.text[ 'tooltip_rating_' + item ] }" data-lang="tooltip_rating_${ item }-title">
                 ${ [ 1, 2, 3, 4, 5 ].map( star => html`<i class="bi bi-star${ star <= rating ? '-fill' : ( star < rating + 1 ? '-half' : '' ) }"></i> ` ) }
               </span>
               <span title="${ dms.text.tooltip_ratings }" data-lang="tooltip_ratings-title">(${ Object.keys( ratings ).length })</span>
@@ -379,7 +379,7 @@ export function item( section, meta_key ) {
             <div class="col">
               <div class="d-flex my-3">
                 <div class="flex-shrink-0">
-                  <img src="${ meta.icon || dms.icon }" width="64" height="64" alt="${ dms.text[ 'alt_' + section ] }">
+                  <img src="${ meta.icon || dms.icon }" width="64" height="64" alt="${ dms.text[ 'alt_' + section ] }" data-lang="alt_${ section }-alt">
                 </div>
                 <div class="flex-grow-1 ms-3">
                   <h5 class="mb-0">${ meta.title }</h5>
