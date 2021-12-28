@@ -396,7 +396,7 @@ export function item( section, meta_key ) {
             </div>
             <div class="col d-flex justify-content-start align-items-end my-3">
               <button class="btn btn-outline-${ color } btn-lg" @click=${ () => dms.events.onStart( section, meta.key ) }>
-                ${ dms.text[ section + '_start' ] }<i class="bi bi-chevron-right"></i>
+                <span data-lang="${ section + '_start' }">${ dms.text[ section + '_start' ] }</span><i class="bi bi-chevron-right"></i>
               </button>
             </div>
           </div>
