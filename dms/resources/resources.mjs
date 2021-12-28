@@ -758,6 +758,6 @@ export const live = {
   "comment.2.data.store.1": { "url": "https://ccm2.inf.h-brs.de", "name": "dms-components-comments" },
   "components": [ "ccm.store", { "url": "https://ccm2.inf.h-brs.de", "name": "dms-components" } ],
   "configs": [ "ccm.store", { "url": "https://ccm2.inf.h-brs.de", "name": "dms-configs" } ],
-  "lang.2.translation": { "de": de, "en": en },
+  "lang.2.translations": { "de": de, "en": en },
   "text": de
 };
