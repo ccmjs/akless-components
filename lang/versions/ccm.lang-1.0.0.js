@@ -4,7 +4,7 @@
  * @license The MIT License (MIT)
  * @version 1.0.0
  * @changes
- * version 1.0.0 (27.12.2021)
+ * version 1.0.0 (28.12.2021)
  */
 
 ( () => {
@@ -59,7 +59,7 @@
 
         // prepare onchange event listeners
         if ( context )
-          context.lang.onchange.push( this.switch );
+          ( context = context.lang ).onchange.push( this.switch );
         else
           this.onchange = this.onchange ? [ this.onchange ] : [];
 
@@ -97,7 +97,7 @@
        */
       this.switch = lang => {
         if ( !this.translations[ lang ] ) return;
-        if ( context ) return context.switch( lang );
+        if ( context && context.active !== lang ) return context.switch( lang );
         this.active = lang;
         this.start();
         this.translate();
