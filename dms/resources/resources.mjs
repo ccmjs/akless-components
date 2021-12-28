@@ -745,7 +745,7 @@ export const demo = {
   } ],
   "components": [ "ccm.store", example_components ],
   "lang.2.active": "de",
-  "lang.2.translation": { "de": de, "en": en },
+  "lang.2.translations": { "de": de, "en": en },
   "text": de
 };
 
