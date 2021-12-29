@@ -61,7 +61,7 @@
 
         // prepare onchange event listeners
         if ( context ) {
-          context = context.lang;
+          context = context.active;
           context.onchange.push( this.switch );
           this.onchange && context.onchange.push( this.onchange );
           delete this.onchange;
