@@ -83,10 +83,14 @@ export const test = {
   ],
   "html": [ "ccm.load", "./templates.mjs" ],
   "id": "pvb",
+  "lang": [ "ccm.start", "./../../../lang/ccm.lang.js", {
+    "active": "en",
+    "translations": { "de": de, "en": en }
+  } ],
   "onstart": onStart,
   "onfinish": { "log": true },
   "text": en,
-  "tool": [ "ccm.component", "https://ccmjs.github.io/tkless-components/pdf_viewer/versions/ccm.pdf_viewer-7.0.0.min.js" ]
+  "tool": [ "ccm.component", "https://ccmjs.github.io/tkless-components/pdf_viewer/versions/ccm.pdf_viewer-7.0.0.js" ]
 };
 
 /**
@@ -96,6 +100,10 @@ export const test = {
 export const demo = {
   "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/config_builder/resources/pdf_viewer/templates.mjs" ],
   "id": "pvb",
+  "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/versions/ccm.lang-1.0.0.min.js", {
+    "active": "de",
+    "translations": { "de": de, "en": en }
+  } ],
   "onstart": onStart,
   "text": de,
   "tool": [ "ccm.component", "https://ccmjs.github.io/tkless-components/pdf_viewer/versions/ccm.pdf_viewer-7.0.0.min.js", [ "ccm.load", "https://ccmjs.github.io/tkless-components/pdf_viewer/resources/resources.mjs#demo" ] ]
@@ -108,6 +116,9 @@ export const demo = {
 export const live = {
   "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/config_builder/resources/styles.min.css" ],
   "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/config_builder/resources/pdf_viewer/templates.mjs" ],
+  "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/versions/ccm.lang-1.0.0.min.js", {
+    "translations": { "de": de, "en": en }
+  } ],
   "libs": "",
   "onstart": onStart,
   "text": de,

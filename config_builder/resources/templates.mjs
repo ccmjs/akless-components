@@ -17,7 +17,7 @@ export const use = ( _config, _builder, _events ) => { config = _config; builder
 export function heading( key  ) {
   return html`
     <div class="heading">
-      <label for="${ id }-${ key }" class="form-label">
+      <label for="${ id }-${ key }" class="form-label" data-lang="${ key }">
         ${ builder.text[ key ] }
       </label>
       <button class="btn btn-inline btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#${ id }-${ key }-info" aria-expanded="false" aria-controls="${ id }-${ key }-info">
@@ -26,7 +26,7 @@ export function heading( key  ) {
     </div>
     <div class="collapse info" id="${ id }-${ key }-info">
       <small class="card card-body bg-info p-2">
-        <span>${ unsafeHTML( builder.text[ key + '_info' ] ) }</span>
+        <span data-lang="${ key }_info">${ unsafeHTML( builder.text[ key + '_info' ] ) }</span>
       </small>
     </div>
   `;
@@ -96,14 +96,14 @@ export function checkbox( setup ) {
   return html`  
     <div class="form-check heading ${ switcher ? ' form-switch' : '' }" ?data-hidden=${ hidden }>
       <input class="form-check-input" type="checkbox" name="${ prop }" id="${ id }-${ key }" ?checked=${ value } ?disabled=${ disabled } @change=${ events.onChange }>
-      <label class="form-check-label ps-2" for="${ id }-${ key }">${ builder.text[ key ] }</label>
+      <label class="form-check-label ps-2" for="${ id }-${ key }" data-lang="${ key }">${ builder.text[ key ] }</label>
       <button class="btn btn-inline btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#${ id }-${ key }-info" aria-expanded="false" aria-controls="${ id }-${ key }-info">
         <i class="bi bi-info-circle-fill text-info"></i>
       </button>
     </div>
     <div class="collapse info" id="${ id }-${ key }-info">
       <small class="card card-body bg-info p-2">
-        <span>${ unsafeHTML( builder.text[ key + '_info' ] ) }</span>
+        <span data-lang="${ key }_info">${ unsafeHTML( builder.text[ key + '_info' ] ) }</span>
       </small>
     </div>
   `;
@@ -117,10 +117,10 @@ export function checkbox( setup ) {
 export function buttons( disabled ) {
   return html`
     <div class="d-grid">
-      <button type="button" class="btn btn-info rounded-0" data-bs-toggle="modal" data-bs-target="#${ id }-preview" ?disabled=${ disabled } ?data-hidden=${ !builder.preview } @click=${ events.onPreview }>
+      <button type="button" class="btn btn-info rounded-0" data-bs-toggle="modal" data-bs-target="#${ id }-preview" data-lang="preview" ?disabled=${ disabled } ?data-hidden=${ !builder.preview } @click=${ events.onPreview }>
         ${ builder.text.preview }
       </button>
-      <button class="btn btn-primary rounded-0" type="submit" ?disabled=${ disabled } ?data-hidden=${ !builder.onfinish || !builder.text.submit }>
+      <button class="btn btn-primary rounded-0" type="submit" data-lang="submit" ?disabled=${ disabled } ?data-hidden=${ !builder.onfinish || !builder.text.submit }>
         ${ builder.text.submit }
       </button>
     </div>
@@ -137,7 +137,7 @@ export function modal() {
       <div class="modal-dialog modal-fullscreen">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="${ id }-preview-title">${ builder.text.preview_title }</h5>
+            <h5 class="modal-title" id="${ id }-preview-title" data-lang="preview_title">${ builder.text.preview_title }</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body"></div>
