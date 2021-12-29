@@ -17,9 +17,9 @@ export function main( config, builder, events ) {
   const id = builder.component.name;
   use( config, builder, events, id );
   return html`
-    <header class="d-flex justify-content-end align-items-center"></header>
+    <header class="d-flex justify-content-end align-items-center border-bottom"></header>
     <form @submit=${ events.onSubmit }>
-      <div class="accordion accordion-flush border-top" id="${ id }-accordion">
+      <div class="accordion accordion-flush" id="${ id }-accordion">
 
         <!-- General Settings -->
         <div class="accordion-item">
