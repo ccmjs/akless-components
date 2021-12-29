@@ -77,7 +77,7 @@
       this.start = async () => {
 
         // not highest instance? => remove root element
-        if ( context ) return this.root.parentNode.removeChild( this.root );
+        if ( context ) { this.element.innerHTML = ''; return; }
 
         // render language selection
         this.html.render( this.html.main( this.languages[ this.active ], this.active, this.switch ), this.element );
