@@ -60,8 +60,12 @@
         }
 
         // prepare onchange event listeners
-        if ( context )
-          ( context = context.lang ).onchange.push( this.switch );
+        if ( context ) {
+          context = context.lang;
+          context.onchange.push( this.switch );
+          this.onchange && context.onchange.push( this.onchange );
+          delete this.onchange;
+        }
         else
           this.onchange = this.onchange ? [ this.onchange ] : [];
 
