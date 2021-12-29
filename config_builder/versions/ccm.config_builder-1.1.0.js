@@ -14,7 +14,7 @@
 ( () => {
   const component = {
     name: 'config_builder',
-    version: [ 1, 0, 0 ],
+    version: [ 1, 1, 0 ],
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-27.1.2.min.js',
     config: {
       "css": [ "ccm.load",
