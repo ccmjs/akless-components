@@ -4,6 +4,10 @@
  * @license The MIT License (MIT)
  */
 
+header > * {
+  padding-left: 0.5em;
+}
+
 header:empty {
   display: none; !important;
 }

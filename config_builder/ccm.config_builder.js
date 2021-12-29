@@ -4,7 +4,10 @@
  * @license The MIT License (MIT)
  * @version latest (1.1.0)
  * @changes
- * version 1.1.0 (29.12.2021): added multilingualism; uses ccmjs v27.1.2 as default
+ * version 1.1.0 (29.12.2021):
+ * - added optional multilingualism
+ * - added optional user authentication
+ * - uses ccmjs v27.1.2 as default
  * version 1.0.0 (19.10.2021)
  */
 
@@ -38,7 +41,8 @@
 //      "preview_title": "App Preview",
 //      "submit": "Submit"
 //    },
-//    "tool": [ "ccm.component", "ccm.tool.js" ]
+//    "tool": [ "ccm.component", "ccm.tool.js" ],
+//    "user": [ "ccm.start", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.2.js" ]
     },
     Instance: function () {
 
@@ -70,6 +74,9 @@
        */
       this.start = async () => {
 
+        // user authentication
+        this.user && await this.user.login();
+
         // set initial app configuration (priority order: [high] this.data -> this.defaults -> this.ignore.defaults -> this.tool.config [low])
         config = await $.integrate( await $.dataset( this.data ), await $.integrate( this.defaults, await $.integrate( this.ignore.defaults, this.tool.config ) ) );
 
@@ -80,8 +87,10 @@
         this.logger && this.logger.log( 'start', $.clone( config ) );     // logging of 'start' event
         this.render( config );                                            // render webpage area
 
-        // render language selection
-        this.lang && $.append( this.element.querySelector( 'header' ), this.lang.root );
+        // render language selection and user login/logout
+        const header = this.element.querySelector( 'header' );
+        this.lang && header && $.append( header, this.lang.root );
+        this.user && header && $.append( header, this.user.root );
 
       };
 
