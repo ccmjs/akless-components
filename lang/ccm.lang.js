@@ -46,7 +46,7 @@
       this.init = async () => {
 
         // get highest instance for multilingualism
-        context = this.ccm.context.highestByProperty( this, 'lang', true );
+        context = ( this.ccm.context.highestByProperty( this, 'lang', true ) || {} ).lang;
 
         // set initial language
         if ( context )
@@ -61,7 +61,6 @@
 
         // prepare onchange event listeners
         if ( context ) {
-          context = context.active;
           context.onchange.push( this.switch );
           this.onchange && context.onchange.push( this.onchange );
           delete this.onchange;
