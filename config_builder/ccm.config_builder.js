@@ -7,6 +7,7 @@
  * version 1.1.0 (29.12.2021):
  * - added optional multilingualism
  * - added optional user authentication
+ * - added HTML class for CSS prefixing
  * - uses ccmjs v27.1.2 as default
  * version 1.0.0 (19.10.2021)
  */
@@ -64,7 +65,7 @@
        */
       this.ready = async () => {
         $ = Object.assign( {}, this.ccm.helper, this.helper ); $.use( this.ccm );  // set shortcut to help functions
-        delete this.tool.config.parent;                                            // remove no needed parent reference
+        this.element.classList.add( 'config_builder' );
         this.logger && this.logger.log( 'ready', $.privatize( this, true ) );      // logging of 'ready' event
       };
 

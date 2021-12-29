@@ -4,56 +4,56 @@
  * @license The MIT License (MIT)
  */
 
-header > * {
+.config_builder header > * {
   padding: 0.5em;
 }
 
-header:empty {
+.config_builder header:empty {
   display: none !important;
 }
 
-.heading {
+.config_builder .heading {
   display: flex !important;
   align-items: center;
 }
 
-.heading label {
+.config_builder .heading label {
   margin-bottom: 0;
 }
 
-.btn-sm {
+.config_builder .btn-sm {
   padding: .25rem .25rem !important;
 }
 
-.info {
+.config_builder .info {
   margin-bottom: 0.5rem;
 }
 
-input[type="checkbox"] {
+.config_builder input[type="checkbox"] {
   cursor: pointer;
 }
 
-.form-check {
+.config_builder .form-check {
   margin-bottom: 0 !important;
 }
 
-.accordion-button:not(.collapsed) {
+.config_builder .accordion-button:not(.collapsed) {
   background-color: rgb(var(--bs-light-rgb)) !important;
   color: inherit !important;
 }
 
-.accordion-button:not(.collapsed)::after {
+.config_builder .accordion-button:not(.collapsed)::after {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23212529'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e") !important;
 }
 
-*[disabled] {
+.config_builder *[disabled] {
   cursor: not-allowed;
 }
 
-*[data-hidden] {
+.config_builder *[data-hidden] {
   display: none !important;
 }
 
-.modal-body {
+.config_builder .modal-body {
   padding: 0;
 }
