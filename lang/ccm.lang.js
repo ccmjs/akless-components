@@ -4,7 +4,7 @@
  * @license The MIT License (MIT)
  * @version latest (1.0.0)
  * @changes
- * version 1.0.0 (28.12.2021)
+ * version 1.0.0 (29.12.2021)
  */
 
 ( () => {
@@ -45,16 +45,19 @@
        */
       this.init = async () => {
 
-        // no initial language? => detect from browser
-        if ( !this.active ) {
-          this.active = navigator.language.split( '-' )[ 0 ];
-        }
-
-        // no translations for initial language? => use first language that has translations
-        if ( !this.translations[ this.active ] ) this.active = Object.keys( this.translations )[ 0 ];
-
         // get highest instance for multilingualism
         context = this.ccm.context.highestByProperty( this, 'lang', true );
+
+        // set initial language
+        if ( context )
+          this.active = context.active;                                            // detect from highest instance
+        else {
+          if ( !this.active ) this.active = document.body.getAttribute( 'lang' );  // detect from <body lang="">
+          if ( !this.active ) this.active = navigator.language;                    // detect from browser
+          this.active = this.active.split( '-' )[ 0 ].toLowerCase();
+          // no translations for initial language? => use first language that has translations
+          if ( !this.translations[ this.active ] ) this.active = Object.keys( this.translations )[ 0 ];
+        }
 
         // prepare onchange event listeners
         if ( context )
