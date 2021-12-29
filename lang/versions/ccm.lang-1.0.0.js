@@ -91,6 +91,9 @@
        */
       this.getValue = () => context ? context.getValue() : this.active;
 
+      /** gets highest instance for multilingualism  */
+      this.getContext = () => context;
+
       /**
        * adds a listener for a language change
        * @param {Function} callback
