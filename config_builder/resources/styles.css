@@ -9,7 +9,7 @@ header > * {
 }
 
 header:empty {
-  display: none; !important;
+  display: none !important;
 }
 
 .heading {
