@@ -4,6 +4,10 @@
  * @license The MIT License (MIT)
  */
 
+header:empty {
+  display: none; !important;
+}
+
 .heading {
   display: flex !important;
   align-items: center;

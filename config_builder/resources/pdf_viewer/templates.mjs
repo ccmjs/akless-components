@@ -17,7 +17,7 @@ export function main( config, builder, events ) {
   const id = builder.component.name;
   use( config, builder, events, id );
   return html`
-    <header class="d-flex justify-content-end align-items-center p-2 bg-dark" ?data-hidden=${ !builder.lang }></header>
+    <header class="d-flex justify-content-end align-items-center p-2 bg-dark"></header>
     <form @submit=${ events.onSubmit }>
       <div class="accordion accordion-flush" id="${ id }-accordion">
 
