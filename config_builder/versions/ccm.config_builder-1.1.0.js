@@ -90,8 +90,10 @@
 
         // render language selection and user login/logout
         const header = this.element.querySelector( 'header' );
-        this.lang && header && $.append( header, this.lang.root );
-        this.user && header && $.append( header, this.user.root );
+        if ( header ) {
+          header && this.lang && this.lang.getContext() && $.append( header, this.lang.root );
+          header && this.user && $.append( header, this.user.root );
+        }
 
       };
 
