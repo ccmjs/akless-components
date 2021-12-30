@@ -13,8 +13,7 @@
     name: 'routing',
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-27.1.1.min.js',
     config: {
-//    "app": "1558132111384X2108359471753687",
-      "first": true
+//    "app": "1558132111384X2108359471753687"
     },
     Instance: function () {
 
@@ -29,6 +28,23 @@
        * @type {string}
        */
       let current_route = '';
+
+      /**
+       * is first use
+       * @type {boolean}
+       */
+      let first = true;
+
+      /**
+       * when the instance is created, when all dependencies have been resolved and before the dependent sub-instances are initialized and ready
+       * @returns {Promise<void>}
+       */
+      this.init = async () => {
+
+        // no app ID? => use component name
+        if ( !this.app && this.parent ) this.app = this.parent.component.name;
+
+      };
 
       /**
        * when all dependencies are solved after creation and before the app starts
@@ -62,8 +78,8 @@
         if ( route === current_route ) return;
         const searchParams = new URLSearchParams( window.location.search );
         searchParams.set( 'ccm-' + this.app, current_route = route );
-        window.history[ ( this.first ? 'replace' : 'push' ) + 'State' ]( '', '', '?' + searchParams.toString() );
-        this.first = false;
+        window.history[ ( first ? 'replace' : 'push' ) + 'State' ]( '', '', '?' + searchParams.toString() );
+        first = false;
       }
 
       /**
