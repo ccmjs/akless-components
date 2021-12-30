@@ -37,7 +37,7 @@
        */
       this.ready = async () => {
         if ( !this.app && this.parent ) this.app = this.parent.component.name;  // no app ID? => use component name
-        window.onpopstate = this.refresh;                                       // check route on 'popstate' event
+        window.addEventListener( 'popstate', this.refresh );                    // check route on 'popstate' event
       };
 
       /**
