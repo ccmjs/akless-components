@@ -90,7 +90,7 @@ export const test = {
   "onstart": onStart,
   "onfinish": { "log": true },
   "text": en,
-  "tool": [ "ccm.component", "https://ccmjs.github.io/tkless-components/pdf_viewer/versions/ccm.pdf_viewer-7.0.0.js" ]
+  "tool": [ "ccm.component", "https://ccmjs.github.io/tkless-components/pdf_viewer/ccm.pdf_viewer.js" ]
 };
 
 /**
@@ -106,7 +106,7 @@ export const demo = {
   } ],
   "onstart": onStart,
   "text": de,
-  "tool": [ "ccm.component", "https://ccmjs.github.io/tkless-components/pdf_viewer/versions/ccm.pdf_viewer-7.0.0.min.js", [ "ccm.load", "https://ccmjs.github.io/tkless-components/pdf_viewer/resources/resources.mjs#demo" ] ]
+  "tool": [ "ccm.component", "https://ccmjs.github.io/tkless-components/pdf_viewer/versions/ccm.pdf_viewer-7.1.0.min.js", [ "ccm.load", "https://ccmjs.github.io/tkless-components/pdf_viewer/resources/resources.mjs#demo" ] ]
 };
 
 /**
@@ -122,7 +122,7 @@ export const live = {
   "libs": "",
   "onstart": onStart,
   "text": de,
-  "tool": [ "ccm.component", "https://ccmjs.github.io/tkless-components/pdf_viewer/versions/ccm.pdf_viewer-7.0.0.min.js", [ "ccm.load", "https://ccmjs.github.io/tkless-components/pdf_viewer/resources/resources.mjs#demo" ] ]
+  "tool": [ "ccm.component", "https://ccmjs.github.io/tkless-components/pdf_viewer/versions/ccm.pdf_viewer-7.1.0.min.js", [ "ccm.load", "https://ccmjs.github.io/tkless-components/pdf_viewer/resources/resources.mjs#demo" ] ]
 };
 
 /**
