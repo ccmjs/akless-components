@@ -14,11 +14,7 @@
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-27.1.2.min.js',
     config: {
       "apps": [ "ccm.store" ],
-      "comment": [ "ccm.component", "https://ccmjs.github.io/tkless-components/comment/versions/ccm.comment-7.0.0.min.js", {
-        "data": { "store": [ "ccm.store" ] },
-        "text": [ "ccm.load", "https://ccmjs.github.io/tkless-components/comment/resources/resources.mjs#de" ],
-        "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.2.js" ]
-      } ],
+      "comment": [ "ccm.component", "https://ccmjs.github.io/tkless-components/comment/versions/ccm.comment-7.0.0.min.js" ],
       "css": [ "ccm.load",
         [
           "https://ccmjs.github.io/akless-components/libs/bootstrap-5/css/bootstrap.min.css",
@@ -32,12 +28,7 @@
       "icon": "https://ccmjs.github.io/akless-components/dms/resources/icon.png",
       "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-7.8.0.min.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/dms/resources/templates.mjs" ],
-      "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/versions/ccm.lang-1.0.0.min.js", {
-        "translations": {
-          "de": [ "ccm.load", "https://ccmjs.github.io/akless-components/dms/resources/resources.mjs#de" ],
-          "en": [ "ccm.load", "https://ccmjs.github.io/akless-components/dms/resources/resources.mjs#en" ]
-        }
-      } ],
+//    "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/versions/ccm.lang-1.0.0.min.js" ],
       "libs": [ "ccm.load", "https://ccmjs.github.io/akless-components/libs/bootstrap-5/js/bootstrap.bundle.min.js" ],
 //    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-5.0.1.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.min.js", "greedy" ] ],
       "picture": "https://ccmjs.github.io/akless-components/user/resources/icon.svg",
@@ -89,8 +80,10 @@
 
         $ = Object.assign( {}, this.ccm.helper, this.helper ); $.use( this.ccm );  // set shortcut to help functions
         this.logger && this.logger.log( 'ready', $.privatize( this, true ) );      // logging of 'ready' event
-        window.onpopstate = this.refresh;                                          // check route on 'popstate' event
-        this.lang.observe( () => element.querySelector( '.date' ) && this.refresh() );
+        window.addEventListener( 'popstate', this.refresh );                       // check route on 'popstate' event
+
+        // listen to language change event => translate timestamps
+        this.lang && this.lang.observe( () => element.querySelector( '.timestamp' ) && this.refresh() );
 
       };
 
@@ -220,9 +213,8 @@
         element = this.element.querySelector( 'main' );
         await this.refresh();
 
-        // render language selection and translate content
-        $.setContent( this.element.querySelector( '#lang' ), this.lang.root );
-        this.lang.translate();
+        // render language selection
+        this.lang && $.setContent( this.element.querySelector( '#lang' ), this.lang.root );
 
       };
 
@@ -441,21 +433,23 @@
         home: () => {
           this.render.header();
           this.html.render( this.html.home(), element );
-          this.lang.translate();
+          this.lang && this.lang.translate();
         },
         list: ( section, values ) => {
           this.render.header( section === 'components' ? 'developer' : section );
           $.replace( element, element = element.cloneNode() );  // resets lit-html template
           this.html.render( this.html.list( section, values ), element );
-          this.lang.translate();
+          this.lang && this.lang.translate();
         },
         cards: ( section, values ) => {
           this.html.render( this.html.cards( section, values ), element.querySelector( '#search_results' ) );
-          this.lang.translate();
+          this.lang && this.lang.translate();
         },
         item: async ( section, meta_key ) => {
           this.render.header( section === 'component' ? 'developer' : section + 's' );
           this.html.render( this.html.item( section, meta_key ), element );
+          this.lang && this.lang.translate();
+          if ( !this.comment ) return;
           const meta = data[ section === 'app' ? 'apps' : 'components' ].meta[ meta_key ];
           const comments_key = section + '_comments';
           if ( !meta[ comments_key ] )
@@ -464,11 +458,10 @@
               user: [ 'ccm.instance', this.user.component.url, JSON.parse( this.user.config ) ]
             } );
           $.setContent( this.element.querySelector( '#comments' ), meta[ comments_key ].root );
-          this.lang.translate();
         },
         rating: ( section, meta_key ) => {
           this.html.render( this.html.rating( section, meta_key ), element.querySelector( '#rating article' ) );
-          this.lang.translate();
+          this.lang && this.lang.translate();
         },
         edit: async ( type, meta_key ) => {
           const meta = data[ type !== 'app' ? 'components' : 'apps' ].meta[ meta_key ];
@@ -488,13 +481,13 @@
           $.setContent( this.element.querySelector( '#form-description' ), meta.quill.root );
           const radio = element.querySelector( '#form-visibility-private' );
           radio.checked && radio.click();
-          this.lang.translate();
+          this.lang && this.lang.translate();
         },
         editor: ( tool_key, app_key ) => {
           this.render.header( 'tools' );
           const tool_meta = data.components.meta[ tool_key ];
           this.html.render( this.html.editor( tool_key ), element );
-          this.lang.translate();
+          this.lang && this.lang.translate();
           if ( app_key === true )
             return $.setContent( this.element.querySelector( '#editor' ), tmp.editor.root );
           const config = app_key && data.apps.meta[ app_key ].ignore.config;
@@ -503,10 +496,11 @@
             this.ccm.helper.solveDependency( tool_meta.ignore.defaults ),
             this.ccm.helper.solveDependency( config )
           ] ).then( ( [ editor_comp, defaults, config = {} ] ) => editor_comp.start( {
-            root: this.element.querySelector( '#editor' ),
             data: { store: [ 'ccm.store', { app: config } ], key: 'app' },
             'ignore.defaults': defaults,
-            preview: false
+            parent: this,
+            preview: false,
+            root: this.element.querySelector( '#editor' )
           } ).then( editor_inst => tmp.editor = editor_inst ) );
         },
         create: async tool_key => {
@@ -522,14 +516,14 @@
           const radio = element.querySelector( '#form-visibility-private' );
           radio.click();
           radio.checked = false;
-          this.lang.translate();
+          this.lang && this.lang.translate();
         },
         preview: tool_key => {
           this.render.header( 'tools' );
           const tool_meta = data.components.meta[ tool_key ];
           this.html.render( this.html.preview( tool_key ), element );
           this.ccm.start( tool_meta.path, { root: this.element.querySelector( '#preview' ), src: tmp.editor.getValue() } );
-          this.lang.translate();
+          this.lang && this.lang.translate();
         },
 
         showApp: async app_key => {
@@ -537,7 +531,7 @@
           const app_meta = data.apps.meta[ app_key ];
           const tool_meta = data.components.meta[ app_meta.component ];
           this.html.render( this.html.showApp( app_meta ), element );
-          this.lang.translate();
+          this.lang && this.lang.translate();
           await this.ccm.start( tool_meta.path, { src: await $.solveDependency( app_meta.ignore.config ), root: this.element.querySelector( '#app' ) } );
         }
       };

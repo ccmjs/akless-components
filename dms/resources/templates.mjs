@@ -188,6 +188,7 @@ export function home() {
       </section>
     `;
   }
+
 }
 
 /**
@@ -482,13 +483,13 @@ export function item( section, meta_key ) {
                 <!-- Publish Date -->
                 <tr>
                   <th scope="row" data-lang="meta_created_at">${ dms.text.meta_created_at }</th>
-                  <td class="date">${ created_at }</td>
+                  <td class="timestamp">${ created_at }</td>
                 </tr>
                 
                 <!-- Last Update -->
                 <tr>
                   <th scope="row" data-lang="meta_updated_at">${ dms.text.meta_updated_at }</th>
-                  <td class="date">${ created_at === updated_at ? '-' : updated_at }</td>
+                  <td class="timestamp">${ created_at === updated_at ? '-' : updated_at }</td>
                 </tr>
               </tbody>
             </table>

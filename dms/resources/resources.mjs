@@ -264,7 +264,7 @@ const de = {
 export const example_components = {
   "pdf_viewer": {
     "key": "pdf_viewer",
-    "path": "https://ccmjs.github.io/tkless-components/pdf_viewer/versions/ccm.pdf_viewer-7.0.0.min.js",
+    "path": "https://ccmjs.github.io/tkless-components/pdf_viewer/versions/ccm.pdf_viewer-7.1.0.min.js",
     "icon": "https://ccmjs.github.io/tkless-components/pdf_viewer/resources/icon.svg",
     "title": "PDF-Viewer",
     "subject": "PDF online anschauen ohne Download",
@@ -277,7 +277,7 @@ export const example_components = {
     },
     "ignore": {
       "editors": [
-        [ "ccm.component", "https://ccmjs.github.io/akless-components/config_builder/versions/ccm.config_builder-1.0.0.min.js", [ "ccm.load", "https://ccmjs.github.io/akless-components/config_builder/resources/pdf_viewer/resources.mjs#live" ] ]
+        [ "ccm.component", "https://ccmjs.github.io/akless-components/config_builder/versions/ccm.config_builder-1.1.0.min.js", [ "ccm.load", "https://ccmjs.github.io/akless-components/config_builder/resources/pdf_viewer/resources.mjs#live" ] ]
       ],
       "defaults": [ "ccm.load", "https://ccmjs.github.io/tkless-components/pdf_viewer/resources/resources.mjs#demo" ]
     },
@@ -615,21 +615,24 @@ export const example_apps = {
     "title": "Demo: PDF-Viewer",
     "subject": "Demo einer 'PDF-Viewer'-App",
     "description": "Beispiel für eine App die mit dem Werkzeug \"PDF-Viewer\" erstellt wurde.",
-    "creator": "Tea Kless",
+    "creator": "André Kless",
     "tags": [ "PDF" ],
-    "listed": true,
+    "listed": false,
     "agree": {
       "content": true,
       "software": true,
       "copyright": true
     },
     "ignore": {
-      "config": [ "ccm.load", "https://ccmjs.github.io/tkless-components/pdf_viewer/resources/resources.mjs#demo" ]
+      "config": {
+        "src": [ "ccm.load", "https://ccmjs.github.io/tkless-components/pdf_viewer/resources/resources.mjs#demo" ],
+        "lang": ""
+      }
     },
     "created_at": "2021-10-28T11:27:00",
     "updated_at": "2021-10-28T11:27:00",
     "_": {
-      "creator": "tkless",
+      "creator": "akless",
       "realm": "cloud",
       "access": {
         "get": "all",
@@ -694,9 +697,20 @@ export const example_apps = {
 export const test = {
   "apps": [ "ccm.store", example_apps ],
   "comment": [ "ccm.component", "https://ccmjs.github.io/tkless-components/comment/ccm.comment.js", {
-    "data": { "store": [ "ccm.store" ] },
-    "lang.1": "./../lang/ccm.lang.js",
-    "lang.2.active": "en",
+    "lang": [ "ccm.start", "./../lang/ccm.lang.js", {
+      "active": "en",
+      "translations": {
+        "de": [ "ccm.load", "https://ccmjs.github.io/tkless-components/comment/resources/resources.mjs#de" ],
+        "en": [ "ccm.load", "https://ccmjs.github.io/tkless-components/comment/resources/resources.mjs#en" ]
+      }
+    } ],
+    "libs": [ "ccm.load", [
+      [
+        "./../libs/dayjs/dayjs.min.js",
+        "./../libs/dayjs/relativeTime.min.js"
+      ],
+      "./../libs/dayjs/de.min.js"
+    ] ],
     "text": [ "ccm.load", "https://ccmjs.github.io/tkless-components/comment/resources/resources.mjs#en" ]
   } ],
   "components": [ "ccm.store", example_components ],
@@ -732,20 +746,27 @@ export const test = {
 export const demo = {
   "apps": [ "ccm.store", example_apps ],
   "comment": [ "ccm.component", "https://ccmjs.github.io/tkless-components/comment/versions/ccm.comment-7.0.0.min.js", {
-    "data": { "store": [ "ccm.store" ] },
-    "lang.2.active": "de",
+    "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/versions/ccm.lang-1.0.0.min.js", {
+      "active": "de",
+      "translations": {
+        "de": [ "ccm.load", "https://ccmjs.github.io/tkless-components/comment/resources/resources.mjs#de" ],
+        "en": [ "ccm.load", "https://ccmjs.github.io/tkless-components/comment/resources/resources.mjs#en" ]
+      }
+    } ],
     "libs": [ "ccm.load", [
       [
-        "https://ccmjs.github.io/tkless-components/libs/dayjs/dayjs.min.js",
-        "https://ccmjs.github.io/tkless-components/libs/dayjs/relativeTime.min.js"
+        "https://ccmjs.github.io/akless-components/libs/dayjs/dayjs.min.js",
+        "https://ccmjs.github.io/akless-components/libs/dayjs/relativeTime.min.js"
       ],
-      "https://ccmjs.github.io/tkless-components/libs/dayjs/de.min.js"
+      "https://ccmjs.github.io/akless-components/libs/dayjs/de.min.js"
     ] ],
     "text": [ "ccm.load", "https://ccmjs.github.io/tkless-components/comment/resources/resources.mjs#de" ]
   } ],
   "components": [ "ccm.store", example_components ],
-  "lang.2.active": "de",
-  "lang.2.translations": { "de": de, "en": en },
+  "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/versions/ccm.lang-1.0.0.min.js", {
+    "active": "de",
+    "translations": { "de": de, "en": en }
+  } ],
   "text": de
 };
 
@@ -755,9 +776,28 @@ export const demo = {
  */
 export const live = {
   "apps": [ "ccm.store", { "url": "https://ccm2.inf.h-brs.de", "name": "dms-apps" } ],
-  "comment.2.data.store.1": { "url": "https://ccm2.inf.h-brs.de", "name": "dms-components-comments" },
+  "comment": [ "ccm.component", "https://ccmjs.github.io/tkless-components/comment/versions/ccm.comment-7.0.0.min.js", {
+    "data": { "store": [ "ccm.store", { "url": "https://ccm2.inf.h-brs.de", "name": "dms-components-comments" } ] },
+    "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/versions/ccm.lang-1.0.0.min.js", {
+      "active": "de",
+      "translations": {
+        "de": [ "ccm.load", "https://ccmjs.github.io/tkless-components/comment/resources/resources.mjs#de" ],
+        "en": [ "ccm.load", "https://ccmjs.github.io/tkless-components/comment/resources/resources.mjs#en" ]
+      }
+    } ],
+    "libs": [ "ccm.load", [
+      [
+        "https://ccmjs.github.io/akless-components/libs/dayjs/dayjs.min.js",
+        "https://ccmjs.github.io/akless-components/libs/dayjs/relativeTime.min.js"
+      ],
+      "https://ccmjs.github.io/akless-components/libs/dayjs/de.min.js"
+    ] ],
+    "text": [ "ccm.load", "https://ccmjs.github.io/tkless-components/comment/resources/resources.mjs#de" ]
+  } ],
   "components": [ "ccm.store", { "url": "https://ccm2.inf.h-brs.de", "name": "dms-components" } ],
   "configs": [ "ccm.store", { "url": "https://ccm2.inf.h-brs.de", "name": "dms-configs" } ],
-  "lang.2.translations": { "de": de, "en": en },
+  "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/versions/ccm.lang-1.0.0.min.js", {
+    "translations": { "de": de, "en": en }
+  } ],
   "text": de
 };
