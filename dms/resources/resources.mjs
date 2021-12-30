@@ -279,7 +279,10 @@ export const example_components = {
       "editors": [
         [ "ccm.component", "https://ccmjs.github.io/akless-components/config_builder/versions/ccm.config_builder-1.1.0.min.js", [ "ccm.load", "https://ccmjs.github.io/akless-components/config_builder/resources/pdf_viewer/resources.mjs#live" ] ]
       ],
-      "defaults": [ "ccm.load", "https://ccmjs.github.io/tkless-components/pdf_viewer/resources/resources.mjs#demo" ]
+      "defaults": {
+        "src": [ "ccm.load", "https://ccmjs.github.io/tkless-components/pdf_viewer/resources/resources.mjs#demo" ],
+        "lang": ""
+      }
     },
     "created_at": "2021-10-28T01:27:00",
     "updated_at": "2021-11-06T11:27:00",
