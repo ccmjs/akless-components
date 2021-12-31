@@ -15,6 +15,8 @@ const en = {
   "a_inf": "Computer Science",
   "a_licence_content": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
   "a_licence_software": "https://en.wikipedia.org/wiki/MIT_License",
+  "alert_edit": "Edited own App",
+  "alert_template": "Used App as Template",
   "alt_app": "Icon of the App",
   "alt_component": "Icon of the Component",
   "alt_logo_dms": "Logo of the Digital Makerspace",
@@ -29,8 +31,10 @@ const en = {
   "breadcrumb": "You are here:",
   "btn_back": "Back",
   "btn_create_app": "Create App",
+  "btn_create_new": "Create as New",
   "btn_data": "My Data",
   "btn_delete": "Delete",
+  "btn_edit": "Edit own App",
   "btn_explore": "Explore Apps",
   "btn_guide": "Developer Guide",
   "btn_login": "Login",
@@ -39,7 +43,11 @@ const en = {
   "btn_preview": "Preview",
   "btn_profile": "Profile",
   "btn_register": "Register",
+  "btn_results": "Show Results",
   "btn_save": "Save",
+  "btn_save_app": "Save Changes",
+  "btn_share": "Share App",
+  "btn_template": "Create similar App",
   "btn_toolbox": "Open Toolbox",
   "btn_trash": "Recycle Bin",
   "component": "Component",
@@ -108,6 +116,7 @@ const en = {
   "search_sort_used": "Most used",
   "search_title": "Title",
   "search_tool": "Tool",
+  "show": "Show",
   "title": "Digital Makerspace",
   "tool": "Tool",
   "tool_start": "Start App Editor",
@@ -149,6 +158,8 @@ const de = {
   "alt_picture": "Profilbild",
   "alt_tool": "Icon des Werkzeugs",
   "alt_user": "Benutzer",
+  "alert_edit": "Editierte eigene App",
+  "alert_template": "Als Vorlage genutzte App",
   "app": "App",
   "app_creator": "Author",
   "app_start": "App anzeigen",
@@ -157,8 +168,10 @@ const de = {
   "breadcrumb": "Du bist hier:",
   "btn_back": "Zurück",
   "btn_create_app": "App erstellen",
+  "btn_create_new": "Neue App erstellen",
   "btn_data": "Meine Daten",
   "btn_delete": "Löschen",
+  "btn_edit": "Eigene App editieren",
   "btn_explore": "Erkunde Apps",
   "btn_guide": "Entwicklerhandbuch",
   "btn_login": "Anmelden",
@@ -167,7 +180,11 @@ const de = {
   "btn_preview": "Vorschau",
   "btn_profile": "Profil",
   "btn_register": "Registrieren",
+  "btn_results": "Zeige Ergebnisse",
   "btn_save": "Speichern",
+  "btn_save_app": "Änderungen speichern",
+  "btn_share": "App teilen",
+  "btn_template": "Ähnliche App erstellen",
   "btn_toolbox": "Öffne Werkzeugkasten",
   "btn_trash": "Papierkorb",
   "component": "Komponente",
@@ -234,6 +251,7 @@ const de = {
   "search_sort_used": "Meist genutzt",
   "search_title": "Titel",
   "search_tool": "Werkzeug",
+  "show": "Anzeigen",
   "title": "Digital Makerspace",
   "tool": "Werkzeug",
   "tool_start": "Starte App-Editor",
@@ -264,7 +282,7 @@ const de = {
 export const example_components = {
   "pdf_viewer": {
     "key": "pdf_viewer",
-    "path": "https://ccmjs.github.io/tkless-components/pdf_viewer/versions/ccm.pdf_viewer-7.1.0.min.js",
+    "path": "https://ccmjs.github.io/tkless-components/pdf_viewer/ccm.pdf_viewer.min.js",
     "icon": "https://ccmjs.github.io/tkless-components/pdf_viewer/resources/icon.svg",
     "title": "PDF-Viewer",
     "subject": "PDF online anschauen ohne Download",
@@ -332,14 +350,21 @@ export const example_components = {
   },
   "comment": {
     "key": "comment",
+    "path": "https://ccmjs.github.io/tkless-components/comment/ccm.comment.min.js",
     "icon": "https://ccmjs.github.io/tkless-components/comment/resources/comment.svg",
     "title": "Kommentierung",
     "subject": "Schreiben und bewerten von Kommentaren.",
     "description": "-",
     "creator": "André Kless",
     "tags": [ "Kollaboration" ],
+    "agree": {
+      "software": true,
+      "copyright": true
+    },
     "ignore": {
-      "editor": [ "ccm.component", "https://ccmjs.github.io/akless-components/config_builder/versions/ccm.config_builder-1.0.0.min.js", [ "ccm.load", "https://ccmjs.github.io/akless-components/config_builder/resources/comment/resources.mjs#live" ] ],
+      "editors": [
+        [ "ccm.component", "https://ccmjs.github.io/akless-components/config_builder/versions/ccm.config_builder-1.1.0.min.js", [ "ccm.load", "https://ccmjs.github.io/akless-components/config_builder/resources/comment/resources.mjs#live" ] ]
+      ],
       "defaults": [ "ccm.load", "https://ccmjs.github.io/tkless-components/comment/resources/resources.mjs#demo" ]
     },
     "created_at": "2021-10-28T02:27:00",
@@ -627,10 +652,7 @@ export const example_apps = {
       "copyright": true
     },
     "ignore": {
-      "config": {
-        "src": [ "ccm.load", "https://ccmjs.github.io/tkless-components/pdf_viewer/resources/resources.mjs#demo" ],
-        "lang": ""
-      }
+      "config": [ "ccm.load", "https://ccmjs.github.io/tkless-components/pdf_viewer/resources/resources.mjs#demo" ]
     },
     "created_at": "2021-10-28T11:27:00",
     "updated_at": "2021-10-28T11:27:00",
@@ -652,7 +674,7 @@ export const example_apps = {
     "title": "Demo: Kommentierung",
     "subject": "Demo einer Kommentierungs-App",
     "description": "Beispiel für eine App die mit dem Werkzeug \"Kommentierung\" erstellt wurde.",
-    "creator": "André Kless",
+    "creator": "Tea Kless",
     "tags": [ "Kollaboration", "Echtzeit", "Kommunikation" ],
     "listed": true,
     "agree": {
@@ -666,7 +688,7 @@ export const example_apps = {
     "created_at": "2021-10-29T11:27:00",
     "updated_at": "2021-10-29T11:27:00",
     "_": {
-      "creator": "akless",
+      "creator": "tkless",
       "realm": "cloud",
       "access": {
         "get": "all",

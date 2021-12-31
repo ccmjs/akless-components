@@ -4,7 +4,7 @@
  * @license The MIT License (MIT)
  * @version latest (5.0.0)
  * @changes
- * version 5.0.0 (27.12.2021): reimplementation
+ * version 5.0.0 (31.12.2021): reimplementation
  * (for older version changes see ccm.dms-4.5.0.js)
  */
 
@@ -414,14 +414,12 @@
           case 'editor':
             this.render.editor( params.editor, params.template );
             break;
+          case 'show':
+            this.render.show( params.show );
+            break;
           default:
             this.render.home();
         }
-
-        /*
-        else if ( route.startsWith( '?show=' ) )
-          this.render.showApp( params.show );
-         */
       };
 
       /**
@@ -486,7 +484,7 @@
         editor: ( tool_key, app_key ) => {
           this.render.header( 'tools' );
           const tool_meta = data.components.meta[ tool_key ];
-          this.html.render( this.html.editor( tool_key ), element );
+          this.html.render( this.html.editor( tool_key, app_key ), element );
           this.lang && this.lang.translate();
           if ( app_key === true )
             return $.setContent( this.element.querySelector( '#editor' ), tmp.editor.root );
@@ -525,14 +523,13 @@
           this.ccm.start( tool_meta.path, { root: this.element.querySelector( '#preview' ), src: tmp.editor.getValue() } );
           this.lang && this.lang.translate();
         },
-
-        showApp: async app_key => {
-          render.header( 'apps' );
+        show: async app_key => {
+          this.render.header( 'apps' );
           const app_meta = data.apps.meta[ app_key ];
           const tool_meta = data.components.meta[ app_meta.component ];
-          this.html.render( this.html.showApp( app_meta ), element );
+          this.html.render( this.html.show( app_key ), element );
           this.lang && this.lang.translate();
-          await this.ccm.start( tool_meta.path, { src: await $.solveDependency( app_meta.ignore.config ), root: this.element.querySelector( '#app' ) } );
+          await this.ccm.start( tool_meta.path, { src: await $.solveDependency( app_meta.ignore.config ), parent: this, root: this.element.querySelector( '#app' ) } );
         }
       };
 

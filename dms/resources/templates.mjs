@@ -82,7 +82,7 @@ export function header( active ) {
             <li ?data-hidden=${ user }><button disabled class="dropdown-item" type="button" data-lang="btn-register">${ dms.text.btn_register }</button></li>
             <li ?data-hidden=${ !user }>
               <button disabled class="dropdown-item d-flex align-items-center" type="button">
-                <span data-lang="btn_notification">${ dms.text.btn_notifications }</span>
+                <span data-lang="btn_notifications">${ dms.text.btn_notifications }</span>
                 <span class="badge rounded-pill bg-danger ms-1">1</span>
               </button>
             </li>
@@ -367,7 +367,7 @@ export function item( section, meta_key ) {
   const is_creator = meta._.creator === ( dms.user.getValue() || {} ).key;
   const creator = ( section === 'app' ? 'author' : 'developer' );
   return html`
-    <div id="item" class="bg-${ color }-light p-2 pb-4">
+    <div id="item" class="bg-${ color }-light p-2 pb-3">
       ${ breadcrumb( color, [
         { title: `<span data-lang="${ section + 's' }">${ dms.text[ section + 's' ] }</span>`, onClick: () => dms.events.onList( section + 's' ) },
         { title: meta.title }
@@ -566,7 +566,7 @@ export function edit( type, meta_key ) {
   const meta = data[ type !== 'app' ? 'components' : 'apps' ].meta[ meta_key ];
   const color = type + 's';
   return html`
-    <div class="bg-${ color }-light p-2 pb-4">
+    <div class="bg-${ color }-light p-2 pb-3">
       ${ breadcrumb( color, [
         { title: `<span data-lang="${ color }">${ dms.text[ color ] }</span>`, onClick: () => dms.events.onList( color ) },
         { title: meta.title, onClick: () => dms.events.onItem( type, meta.key ) },
@@ -698,25 +698,38 @@ export function inputs( type, meta_key ) {
 /**
  * HTML template for the app editor of a tool
  * @param {Object} tool_key - metadata key of the tool
+ * @param {Object} [app_key] - metadata key of the reused app
  * @returns {TemplateResult}
  */
-export function editor( tool_key ) {
+export function editor( tool_key, app_key ) {
   const tool_meta = data.components.meta[ tool_key ];
+  const app_meta = app_key && data.apps.meta[ app_key ];
+  const is_creator = app_meta && app_meta._.creator === ( dms.user.getValue() || {} ).key;
   return html`
-    <div class="bg-tools-light p-2 pb-4">
+    <div class="bg-tools-light p-2 pb-3">
       ${ breadcrumb( 'tools', [
         { title: `<span data-lang="tools">${ dms.text.tools }</span>`, onClick: () => dms.events.onList( 'tools' ) },
         { title: tool_meta.title, onClick: () => dms.events.onItem( 'tool', tool_key ) },
         { title: `<span data-lang="editor">${ dms.text.editor }</span>` }
       ] ) }
+      <section class="alert alert-dark small mx-3 mb-2 px-2 py-0 d-flex align-items-center" role="alert" ?data-hidden=${ !app_key }>
+        <span data-lang="${ is_creator ? 'alert_edit' : 'alert_template' }">${ dms.text[ is_creator ? 'alert_edited' : 'alert_template' ] }</span>
+        <i class="bi bi-arrow-right ps-1"></i>
+        <button class="btn btn-sm text-apps px-1 py-0" @click=${ () => dms.events.onStart( 'app', app_key ) }>${ ( app_meta || {} ).title }</button>
+      </section>
       <section id="editor" class="container bg-white border p-0"></section>
-      <div class="container px-0 py-3 d-flex justify-content-between">
-        <button class="btn btn-secondary" @click=${ () => dms.events.onItem( 'tool', tool_key ) }>
+      <div class="container px-0 py-2 d-flex justify-content-between flex-wrap">
+        <button class="btn btn-secondary text-nowrap my-1" @click=${ () => dms.events.onItem( 'tool', tool_key ) }>
           <i class="bi bi-chevron-left"></i>
           <span data-lang="btn_back">${ dms.text.btn_back }</span>
         </button>
-        <button class="btn btn-primary" data-lang="btn_create_app" @click=${ () => dms.events.onCreate( tool_key ) }>${ dms.text.btn_create_app }</button>
-        <button class="btn btn-info" @click=${ () => dms.events.onPreview( tool_key ) }>
+        <button class="btn btn-tools text-nowrap m-1" data-lang="btn_save_app" ?data-hidden=${ !is_creator } @click=${ () => dms.events.onCreate( tool_key ) }>
+          ${ dms.text.save_app }
+        </button>
+        <button class="btn btn-tools text-nowrap m-1" data-lang="${ is_creator ? 'btn_create_new' : 'btn_create_app' }" @click=${ () => dms.events.onCreate( tool_key ) }>
+          ${ dms.text[ is_creator ? 'btn_create_new' : 'btn_create_app' ] }
+        </button>
+        <button class="btn btn-info text-nowrap my-1" @click=${ () => dms.events.onPreview( tool_key ) }>
           <span data-lang="btn_preview">${ dms.text.btn_preview }</span>
           <i class="bi bi-chevron-right"></i>
         </button>
@@ -732,7 +745,7 @@ export function editor( tool_key ) {
  */
 export function create( tool_key ) {
   return html`
-    <div class="bg-tools-light p-2 pb-4">
+    <div class="bg-tools-light p-2 pb-3">
       ${ breadcrumb( 'tools', [
         { title: `<span data-lang="tools">${ dms.text.tools }</span>`, onClick: () => dms.events.onList( 'tools' ) },
         { title: data.components.meta[ tool_key ].title, onClick: () => dms.events.onItem( 'tool', tool_key ) },
@@ -764,7 +777,7 @@ export function create( tool_key ) {
 export function preview( tool_key ) {
   const tool_meta = data.components.meta[ tool_key ];
   return html`
-    <div class="bg-tools-light p-2 pb-4">
+    <div class="bg-tools-light p-2 pb-3">
       ${ breadcrumb( 'tools', [
         { title: `<span data-lang="tools">${ dms.text.tools }</span>`, onClick: () => dms.events.onList( 'tools' ) },
         { title: tool_meta.title, onClick: () => dms.events.onItem( 'tool', tool_key ) },
@@ -784,36 +797,35 @@ export function preview( tool_key ) {
   `;
 }
 
-
-
 /**
  * HTML template for show an app
- * @param {Object} app_meta - app meta data
+ * @param {Object} app_key - metadata key of the app
  * @returns {TemplateResult}
  */
-export function showApp( app_meta ) {
+export function show( app_key ) {
+  const app_meta = data.apps.meta[ app_key ];
+  const is_creator = app_meta._.creator === ( dms.user.getValue() || {} ).key;
   return html`
-    <div class="bg-apps p-2 pb-4">
+    <div class="bg-apps-light p-2 pb-3">
       ${ breadcrumb( 'apps', [
-        { title: 'Apps', onClick: () => events.onList( 'apps' ) },
-        { title: app_meta.title, onClick: () => events.onApp( app_meta.key ) },
-        { title: 'Anzeigen' }
+        { title: `<span data-lang="apps">${ dms.text.apps }</span>`, onClick: () => dms.events.onList( 'apps' ) },
+        { title: app_meta.title, onClick: () => dms.events.onItem( 'app', app_meta.key ) },
+        { title: `<span data-lang="show">${ dms.text.show }</span>` }
       ] ) }
-      <div class="container bg-white border" id="app"></div>
+      <div class="container bg-white border px-0" id="app"></div>
       <div class="container px-0 py-3 d-flex flex-wrap justify-content-between text-nowrap">
-        <button class="btn btn-success mb-2" @click=${ () => events.onShareApp( app_meta.key ) }>
+        <button class="btn btn-success mb-2" disabled @click=${ () => dms.events.onShare( app_meta.key ) }>
           <i class="bi bi-share"></i>
-          App teilen
+          <span data-lang="btn_share">${ dms.text.btn_share }</span>
         </button>
-        <button class="btn btn-info mb-2 mx-2">
+        <button class="btn btn-info mb-2 mx-2" disabled>
           <i class="bi bi-bar-chart-line"></i>
-          Zeige Ergebnisse
+          <span data-lang="btn_results">${ dms.text.btn_results }</span>
         </button>
-        <button class="btn btn-primary mb-2" @click=${ () => events.onEditor( app_meta.component, app_meta.key ) }>
-          Ähnliche App erstellen
+        <button class="btn btn-primary mb-2" @click=${ () => dms.events.onStart( 'tool', app_meta.component, app_meta.key ) }>
+          <span data-lang="${ is_creator ? 'btn_edit' : 'btn_template' }">${ dms.text[ is_creator ? 'btn_edit' : 'btn_template' ] }</span>
           <i class="bi bi-chevron-right"></i>
         </button>
-        <button class="btn btn-primary" data-hidden @click=${ () => events.onEditor( app_meta.component, app_meta.key ) }>Eigene App editieren <i class="bi bi-chevron-right"></i></button>
       </div>
     </div>
   `;
