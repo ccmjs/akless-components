@@ -202,6 +202,9 @@ export const basic = {
       }
     }
   },
+  "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/versions/ccm.lang-1.0.0.min.js", {
+    "translations": { "de": de, "en": en }
+  } ],
   "text": en,
   "tool": [ "ccm.component", "https://ccmjs.github.io/tkless-components/comment/ccm.comment.min.js" ]
 };
@@ -221,6 +224,8 @@ export const test = {
     { "url": "./../../../libs/bootstrap-5/css/bootstrap-fonts.css", "context": "head" }
   ],
   "html": [ "ccm.load", "./templates.mjs" ],
+  "lang.1": "./../../../lang/ccm.lang.js",
+  "lang.2.active": "en",
   "onfinish": { "log": true }
 };
 
@@ -235,6 +240,7 @@ export const demo = {
   "ignore.mapping.user.hbrsinfpseudo.title": "H-BRS FB02 Account mit Pseudonym",
   "ignore.mapping.user.pseudo.title": "Einmaliges Pseudonym",
   "ignore.mapping.user.none.title": "Deaktiviert",
+  "lang.2.active": "de",
   "text": de
 };
 
