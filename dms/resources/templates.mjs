@@ -302,7 +302,9 @@ export function cards( section, values ) {
   ).sort( ( a, b ) => {
     switch ( values.sort ) {
       case 'rating':
-        return b.rating - a.rating;
+        const type = section.slice( 0, -1 );
+        return ( a.app ? b.rating - a.rating : b.rating[ type ] - a.rating[ type ] )
+          || ( Object.keys( b.app ? b.ratings : b.ratings[ section ] ).length - Object.keys( a.app ? a.ratings : a.ratings[ section ] ).length );
       case 'used':
         return b.apps - a.apps;
       case 'newest':
