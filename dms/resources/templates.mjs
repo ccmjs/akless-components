@@ -163,7 +163,7 @@ export function home() {
   function headline( rubric, title, text, button ) {
     const color = rubric === 'developer' ? 'components' : rubric;
     return html`
-      <h5><span data-lang="${ title }">${ dms.text[ title ] }</span> &nbsp;<a class="btn btn-outline-${ color } btn-xs" href="?${ rubric }" data-lang="${ button }">${ dms.text[ button ] }</a></h5>
+      <h5><span data-lang="${ title }">${ dms.text[ title ] }</span> &nbsp;<button class="btn btn-outline-${ color } btn-xs" data-lang="${ button }" ?disabled=${ rubric === 'developer' } @click=${ () => dms.events.onList( color ) }>${ dms.text[ button ] }</button></h5>
       <p data-lang="${ text }">${ dms.text[ text ] }</p>
     `;
   }
@@ -179,7 +179,10 @@ export function home() {
             <video controls poster="https://ccmjs.github.io/digital-makerspace/img/trailer.jpg" alt="Einführungsvideo" title="Platzhalter für Video" class="img-thumbnail"></video>
           </div>
           <div>
-            <a class="btn btn-${ color } btn-lg" href="?${ rubric }" data-lang="${ button }">${ dms.text[ button ] } <i class="bi bi-chevron-right"></i></a>
+            <button class="btn btn-${ color } btn-lg" ?disabled=${ rubric === 'developer' } @click=${ () => dms.events.onList( color ) }>
+              <span data-lang="${ button }">${ dms.text[ button ] }</span>
+              <i class="bi bi-chevron-right"></i>
+            </button>
           </div>
         </div>
       </section>
@@ -578,7 +581,7 @@ export function edit( type, meta_key ) {
         </form>
       </section>
       <div class="container px-0 py-3 d-flex justify-content-between">
-        <button class="btn btn-secondary" @click=${ () => dms.events.onItem( type, meta.key ) }>
+        <button class="btn btn-secondary" title="${ dms.text[ 'tooltip_back_' + type ] }" data-lang="tooltip_back_${ type }-title" @click=${ () => dms.events.onItem( type, meta.key ) }>
           <i class="bi bi-chevron-left"></i>
           <span data-lang="btn_back">${ dms.text.btn_back }</span>
         </button>
@@ -712,28 +715,34 @@ export function editor( tool_key, app_key ) {
         { title: tool_meta.title, onClick: () => dms.events.onItem( 'tool', tool_key ) },
         { title: `<span data-lang="editor">${ dms.text.editor }</span>` }
       ] ) }
-      <section class="alert alert-dark small mx-3 mb-2 px-2 py-0 d-flex align-items-center" role="alert" ?data-hidden=${ !app_key }>
-        <span data-lang="${ is_creator ? 'alert_edit' : 'alert_template' }">${ dms.text[ is_creator ? 'alert_edited' : 'alert_template' ] }</span>
-        <i class="bi bi-arrow-right ps-1"></i>
-        <button class="btn btn-sm text-apps px-1 py-0" @click=${ () => dms.events.onStart( 'app', app_key ) }>${ ( app_meta || {} ).title }</button>
+      <section class="container px-0 pb-1">
+        <alert class="alert alert-dark small mb-2 px-2 py-0 d-flex align-items-center" role="alert" ?data-hidden=${ !app_key }>
+          <span data-lang="${ is_creator ? 'alert_edit' : 'alert_template' }">${ dms.text[ is_creator ? 'alert_edited' : 'alert_template' ] }</span>
+          <i class="bi bi-arrow-right ps-1"></i>
+          <button class="btn btn-sm text-apps px-1 py-0" @click=${ () => dms.events.onStart( 'app', app_key ) }>${ ( app_meta || {} ).title }</button>
+        </alert>
       </section>
       <section id="editor" class="container bg-white border p-0"></section>
-      <div class="container px-0 py-2 d-flex justify-content-between flex-wrap">
-        <button class="btn btn-secondary text-nowrap my-1" @click=${ () => dms.events.onItem( 'tool', tool_key ) }>
+      <nav class="container px-0 py-2 d-flex justify-content-between flex-wrap">
+        <button class="btn btn-secondary text-nowrap m-1" title="${ dms.text.tooltip_back_tool }" data-lang="tooltip_back_tool-title" @click=${ () => dms.events.onItem( 'tool', tool_key ) }>
           <i class="bi bi-chevron-left"></i>
           <span data-lang="btn_back">${ dms.text.btn_back }</span>
         </button>
-        <button class="btn btn-tools text-nowrap m-1" data-lang="btn_save_app" ?data-hidden=${ !is_creator } @click=${ () => dms.events.onCreate( tool_key ) }>
-          ${ dms.text.save_app }
+        <button class="btn btn-apps text-nowrap m-1" title="${ dms.text.tooltip_save }" data-lang="tooltip_save-title" ?data-hidden=${ !is_creator } @click=${ () => dms.events.onSave( app_meta.key ) }>
+          <span data-lang="btn_save_app">${ dms.text.save_app }</span>
         </button>
-        <button class="btn btn-tools text-nowrap m-1" data-lang="${ is_creator ? 'btn_create_new' : 'btn_create_app' }" @click=${ () => dms.events.onCreate( tool_key ) }>
-          ${ dms.text[ is_creator ? 'btn_create_new' : 'btn_create_app' ] }
+        <button class="btn btn-tools text-nowrap m-1" title="${ dms.text.tooltip_create }" data-lang="tooltip_create-title" @click=${ () => dms.events.onCreate( tool_key ) }>
+          <span data-lang="${ is_creator ? 'btn_create_new' : 'btn_create_app' }">${ dms.text[ is_creator ? 'btn_create_new' : 'btn_create_app' ] }</span>
         </button>
-        <button class="btn btn-info text-nowrap my-1" @click=${ () => dms.events.onPreview( tool_key ) }>
+        <button class="btn btn-light text-nowrap m-1" title="tooltip_take" disabled data-lang="tooltip_take-title" ?data-hidden=${ !is_creator } @click=${ () => {} }>
+          <i class="bi bi-share"></i>
+          <span data-lang="btn_take">${ dms.text.btn_take }</span>
+        </button>
+        <button class="btn btn-info text-nowrap m-1" title="${ dms.text.tooltip_preview }" data-lang="tooltip_preview-title" @click=${ () => dms.events.onPreview( tool_key ) }>
           <span data-lang="btn_preview">${ dms.text.btn_preview }</span>
           <i class="bi bi-chevron-right"></i>
         </button>
-      </div>
+      </nav>
     </div>
   `;
 }
@@ -788,9 +797,9 @@ export function preview( tool_key ) {
       <div class="container px-0 py-3 d-flex justify-content-between">
         <button class="btn btn-secondary" @click=${ () => dms.events.onStart( 'tool', tool_key, true ) }>
           <i class="bi bi-chevron-left"></i>
-          <span data-lang="btn_back">${ dms.text.btn_back }</span>
+          <span title="${ dms.text.tooltip_back_editor }" data-lang="btn_back tooltip_back_editor-title">${ dms.text.btn_back }</span>
         </button>
-        <button class="btn btn-tools" data-lang="btn_create_app" @click=${ () => dms.events.onCreate( tool_key ) }>${ dms.text.btn_create_app }</button>
+        <button class="btn btn-tools" title="${ dms.text.tooltip_create }" data-lang="btn_create_app tooltip_create-title" @click=${ () => dms.events.onCreate( tool_key ) }>${ dms.text.btn_create_app }</button>
         <button data-invisible>_____</button>
       </div>
     </div>

@@ -1,10 +1,10 @@
 /**
  * @overview ccmjs-based web component for a digital makerspace
- * @author André Kless <andre.kless@web.de> 2021
+ * @author André Kless <andre.kless@web.de> 2018-2022
  * @license The MIT License (MIT)
  * @version latest (5.0.0)
  * @changes
- * version 5.0.0 (31.12.2021): reimplementation
+ * version 5.0.0 (01.01.2022): reimplementation
  * (for older version changes see ccm.dms-4.5.0.js)
  */
 
@@ -383,6 +383,13 @@
 
           await this.events.onItem( 'app', form.key );
         },
+        onSave: async app_key => {
+          await this.user.login();
+          const config = tmp.editor.getValue();
+          config.key = app_key;
+          await this.configs.set( config );
+          this.events.onStart( 'app', app_key );
+        },
         onPreview: tool_key => this.render.preview( tool_key )
       };
 
@@ -484,7 +491,7 @@
         editor: ( tool_key, app_key ) => {
           this.render.header( 'tools' );
           const tool_meta = data.components.meta[ tool_key ];
-          this.html.render( this.html.editor( tool_key, app_key ), element );
+          this.html.render( this.html.editor( tool_key, app_key === true ? tmp.app_key : app_key ), element );
           this.lang && this.lang.translate();
           if ( app_key === true )
             return $.setContent( this.element.querySelector( '#editor' ), tmp.editor.root );
@@ -499,7 +506,10 @@
             parent: this,
             preview: false,
             root: this.element.querySelector( '#editor' )
-          } ).then( editor_inst => tmp.editor = editor_inst ) );
+          } ).then( editor_inst => {
+            tmp.editor = editor_inst;
+            tmp.app_key = app_key;
+          } ) );
         },
         create: async tool_key => {
           this.render.header( 'tools' );
