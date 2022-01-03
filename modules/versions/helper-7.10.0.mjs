@@ -3,7 +3,7 @@
  * ES6 module that exports useful help functions for <i>ccmjs</i> component developers.
  * @author André Kless <andre.kless@web.de> 2019-2022
  * @license The MIT License (MIT)
- * @version latest (7.10.0)
+ * @version 7.10.0
  * @changes
  * version 7.10.0 (03.01.2022):
  * - added params(values):values - sets and/or deletes parameters in the URL and returns all parameter values in the URL
