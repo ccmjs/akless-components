@@ -4,7 +4,7 @@
  * @license The MIT License (MIT)
  * @version 5.0.0
  * @changes
- * version 5.0.0 (01.01.2022): reimplementation
+ * version 5.0.0 (03.01.2022): reimplementation
  * (for older version changes see ccm.dms-4.5.0.js)
  */
 
@@ -27,7 +27,7 @@
       "components": [ "ccm.store" ],
       "configs": [ "ccm.store" ],
       "icon": "https://ccmjs.github.io/akless-components/dms/resources/icon.png",
-      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-7.8.0.min.mjs" ],
+      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-7.10.0.min.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/dms/resources/templates.mjs" ],
 //    "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/versions/ccm.lang-1.0.0.min.js" ],
       "libs": [ "ccm.load", "https://ccmjs.github.io/akless-components/libs/bootstrap-5/js/bootstrap.bundle.min.js" ],
@@ -83,8 +83,11 @@
         this.logger && this.logger.log( 'ready', $.privatize( this, true ) );      // logging of 'ready' event
         window.addEventListener( 'popstate', this.refresh );                       // check route on 'popstate' event
 
-        // listen to language change event => translate timestamps
-        this.lang && this.lang.observe( () => element.querySelector( '.timestamp' ) && this.refresh() );
+        // listen to language change event
+        this.lang && this.lang.observe( lang => {
+          $.params( { lang: lang } );                               // change language in URL parameter
+          element.querySelector( '.timestamp' ) && this.refresh();  // translate timestamps
+        } );
 
       };
 
@@ -239,24 +242,25 @@
           this.refresh();
         },
         onHome: async () => {
-          window.history.pushState( '', '', '?home' );
+          $.params( { view: 'home' }, true, true );
           await this.refresh();
         },
         onList: async ( section, values = {} ) => {
-          window.history.pushState( '', '', '?' + section + Object.keys( values ).map( key => '&' + key + '=' + values[ key ] ) );
+          $.params( Object.assign( { view: section }, values ), true, true );
           await this.refresh();
         },
         onSearch: section => {
           const values = { sort: element.querySelector( '#section-sort' ).value };
           element.querySelectorAll( 'input[type="search"]' ).forEach( input => values[ input.id.split( '-' ).pop() ] = input.value );
+          $.params( values );
           this.render.cards( section, values );
         },
         onItem: async ( section, meta_key ) => {
-          window.history.pushState( '', '', '?' + section + '=' + meta_key );
+          $.params( { view: section, id: meta_key }, true, true );
           await this.refresh();
         },
         onEdit: async ( type, meta_key ) => {
-          window.history.pushState( '', '', '?edit=' + type + '&key=' + meta_key );
+          $.params( { edit: type, id: meta_key }, true, true );
           await this.refresh();
         },
         onEditSubmit: async ( type, meta_key ) => {
@@ -324,13 +328,13 @@
           switch ( type ) {
             case 'tool':
               if ( template === true ) return this.render.editor( meta_key, template );
-              window.history.pushState( '', '', '?editor=' + meta_key + ( template ? '&template=' + template : '' ) );
+              $.params( { editor: meta_key, template: template }, true, true );
               break;
             case 'app':
-              window.history.pushState( '', '', '?show=' + meta_key );
+              $.params( { show: meta_key }, true, true );
               break;
             case 'component':
-              window.history.pushState( '', '', '?code=' + meta_key );
+              $.params( { code: meta_key }, true, true );
               break;
           }
           await this.refresh();
@@ -396,38 +400,29 @@
 
       /** renders route specific content */
       this.refresh = () => {
-        let section;
-        const params = window.location.search.slice( 1 ).split( '&' ).reduce( ( acc, s) => {
-          const [ k, v ] = s.split( '=' );
-          if ( !section ) section = k;
-          return Object.assign( acc, { [ k ]: decodeURIComponent( v ) } );
-        }, {} );
-        switch ( section ) {
+        const params = $.params();
+        const lang = this.lang && this.lang.active;
+        if ( lang )
+          if ( params.lang )
+            params.lang !== lang && this.lang.switch( params.lang );
+          else
+            $.params( { lang: lang } );
+        switch ( params.view ) {
           case 'home':
-            this.render.home();
-            break;
+            return this.render.home();
           case 'tools':
           case 'apps':
           case 'components':
-            this.render.list( section, params );
-            break;
+            return this.render.list( params.view, params );
           case 'tool':
           case 'app':
           case 'component':
-            this.render.item( section, params[ section ] );
-            break;
-          case 'edit':
-            this.render.edit( params.edit, params.key );
-            break;
-          case 'editor':
-            this.render.editor( params.editor, params.template );
-            break;
-          case 'show':
-            this.render.show( params.show );
-            break;
-          default:
-            this.render.home();
+            return this.render.item( params.view, params.id );
         }
+        if ( params.edit ) return this.render.edit( params.edit, params.id );
+        if ( params.editor ) return this.render.editor( params.editor, params.template );
+        if ( params.show ) return this.render.show( params.show );
+        this.render.home();
       };
 
       /**
