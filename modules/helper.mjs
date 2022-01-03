@@ -6,7 +6,7 @@
  * @version latest (7.10.0)
  * @changes
  * version 7.10.0 (03.01.2022):
- * - added params(values):values - sets and/or deletes parameters in the URL and returns all parameter values in the URL
+ * - added params(values,push):values - sets and/or deletes parameters in the URL and returns all parameter values in the URL
  * version 7.9.0 (30.12.2021):
  * - added touchControl(elem,{onLeft,onRight}):void - adds touch control to an element
  * version 7.8.0 (08.10.2021):
@@ -427,6 +427,7 @@ export const filterProperties = ( obj, ...keys ) => {
  * sets and/or deletes parameters in the URL and returns all parameter values in the URL
  * @function
  * @param {Object} [values] - key/values that are to be set and/or deleted in the URL
+ * @param {boolean} [push] - push or replace the state in the browser history
  * @returns {Object} key/values of all parameters in the URL
  * @example
  * // URL: http://www.example.de?abc=xyz&name=john
@@ -435,11 +436,11 @@ export const filterProperties = ( obj, ...keys ) => {
  * // URL: http://www.example.de?name=jane&foo=bar
  * @memberOf ModuleHelper.DataHandling
  */
-export const params = ( values = {} ) => {
+export const params = ( values = {}, push ) => {
   const searchParams = new URLSearchParams( window.location.search );
   for ( const key in values )
     values[ key ] ? searchParams.set( key, values[ key ] ) : searchParams.delete( key );
-  window.history.replaceState( '', '', '?' + searchParams.toString().replaceAll( '+', '%20' ) );
+  Object.keys( values ).length && window.history[ ( push ? 'push' : 'replace' ) + 'State' ]( '', '', '?' + searchParams.toString().replaceAll( '+', '%20' ) );
   return window.location.search.slice( 1 ).split( '&' ).reduce( ( acc, s) => {
     const [ k, v ] = s.split( '=' );
     return Object.assign( acc, { [ k ]: decodeURIComponent( v ) } );
