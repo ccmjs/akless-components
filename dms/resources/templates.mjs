@@ -88,6 +88,12 @@ export function header( active ) {
             </li>
             <li ?data-hidden=${ !user }><button disabled class="dropdown-item" type="button" data-lang="btn_profile">${ dms.text.btn_profile }</button></li>
             <li ?data-hidden=${ !user }><button disabled class="dropdown-item" type="button" data-lang="btn_data">${ dms.text.btn_data }</button></li>
+            <li ?data-hidden=${ !user }>
+              <button disabled class="dropdown-item d-flex align-items-center" type="button">
+                <span data-lang="btn_bookmarks">${ dms.text.btn_bookmarks }</span>
+                <span class="badge rounded-pill bg-secondary ms-1">1</span>
+              </button>
+            </li>
             <li ?data-hidden=${ !user }><hr class="dropdown-divider"></li>
             <li ?data-hidden=${ !user }><h6 class="dropdown-header" data-lang="header_created">${ dms.text.header_created }</h6></li>
             <li ?data-hidden=${ !user || !components }>
@@ -109,7 +115,12 @@ export function header( active ) {
               </button>
             </li>
             <li ?data-hidden=${ !user }><hr class="dropdown-divider"></li>
-            <li ?data-hidden=${ !user }><button disabled class="dropdown-item" type="button" data-lang="btn_trash">${ dms.text.btn_trash }</button></li>
+            <li ?data-hidden=${ !user }>
+              <button disabled class="dropdown-item" type="button">
+                <span data-lang="btn_trash">${ dms.text.btn_trash }</span>
+                <span class="badge rounded-pill bg-dark ms-1">1</span>
+              </button>
+            </li>
             <li ?data-hidden=${ !user }><button class="dropdown-item" type="button" data-lang="btn-logout" @click=${ dms.events.onLogout }>${ dms.text.btn_logout }</button></li>
           </ul>
         </nav>
