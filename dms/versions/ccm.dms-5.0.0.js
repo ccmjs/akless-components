@@ -4,7 +4,7 @@
  * @license The MIT License (MIT)
  * @version 5.0.0
  * @changes
- * version 5.0.0 (03.01.2022): reimplementation
+ * version 5.0.0 (05.01.2022): reimplementation
  * (for older version changes see ccm.dms-4.5.0.js)
  */
 
@@ -332,9 +332,6 @@
               break;
             case 'app':
               $.params( { show: meta_key }, true, true );
-              break;
-            case 'component':
-              $.params( { code: meta_key }, true, true );
               break;
           }
           await this.refresh();

@@ -382,6 +382,8 @@ export function item( section, meta_key ) {
   const updated_at = new Date( meta.updated_at ).toLocaleDateString( date_format, { year: 'numeric', month: 'long', day: 'numeric' } );
   const is_creator = meta._.creator === ( dms.user.getValue() || {} ).key;
   const creator = ( section === 'app' ? 'author' : 'developer' );
+  let code = data.components.meta[ meta_key ];
+  if ( code ) code = code.code || code.path;
   return html`
     <div id="item" class="bg-${ color }-light p-2 pb-3">
       ${ breadcrumb( color, [
@@ -412,9 +414,12 @@ export function item( section, meta_key ) {
               </div>
             </div>
             <div class="col d-flex justify-content-start align-items-end my-3">
-              <button class="btn btn-outline-${ color } btn-lg" @click=${ () => dms.events.onStart( section, meta.key ) }>
+              <button class="btn btn-outline-${ color } btn-lg" ?data-hidden=${ section === 'component' } @click=${ () => dms.events.onStart( section, meta.key ) }>
                 <span data-lang="${ section + '_start' }">${ dms.text[ section + '_start' ] }</span><i class="bi bi-chevron-right"></i>
               </button>
+              <a class="btn btn-outline-${ color } btn-lg" href="${ code }" target="_blank" ?data-hidden=${ section !== 'component' }>
+                <span data-lang="${ section + '_start' }">${ dms.text[ section + '_start' ] }</span><i class="bi bi-chevron-right"></i>
+              </a>
             </div>
           </div>
         </section>

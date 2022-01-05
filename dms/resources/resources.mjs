@@ -302,6 +302,7 @@ const de = {
 export const example_components = {
   "pdf_viewer": {
     "key": "pdf_viewer",
+    "code": "https://github.com/ccmjs/tkless-components/blob/master/pdf_viewer/ccm.pdf_viewer.js",
     "path": "https://ccmjs.github.io/tkless-components/pdf_viewer/ccm.pdf_viewer.min.js",
     "icon": "https://ccmjs.github.io/tkless-components/pdf_viewer/resources/icon.svg",
     "title": "PDF-Viewer",
