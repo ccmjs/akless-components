@@ -1,18 +1,9 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="author" content="André Kless <andre.kless@web.de> 2018-2019">
+<meta name="author" content="André Kless <andre.kless@web.de> 2018-2019, 2022">
 <meta name="license" content="The MIT License (MIT)">
-<style>* { height: 100%; } body { margin: 0; }</style>
-
-<body>
-<div></div>
-<script src="https://ccmjs.github.io/ccm/versions/ccm-19.0.0.js"></script>
-<script>
-  ccm.start( 'versions/ccm.window-1.0.0.js', { root: document.body.querySelector( 'div' ), key: [ 'ccm.get', 'resources/configs.js', 'demo' ] } );
-</script>
-
-<!--
-<script src="versions/ccm.window-1.0.0.js"></script>
-<ccm-window-1-0-0 key='["ccm.get","resources/configs.js","demo"]'></ccm-window-1-0-0>
--->
+<title>Demo | Fliegendes App-Fenster</title>
+<style>body { margin: 0 }</style>
+<script src="https://ccmjs.github.io/akless-components/window/versions/ccm.window-2.0.0.js"></script>
+<ccm-window-2-0-0 src='["ccm.load","https://ccmjs.github.io/akless-components/window/resources/resources.mjs#demo"]'></ccm-window-2-0-0>

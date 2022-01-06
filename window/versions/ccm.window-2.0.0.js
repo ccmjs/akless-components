@@ -2,7 +2,7 @@
  * @overview ccmjs-based web component for a flying app window
  * @author André Kless <andre.kless@web.de> 2018-2019, 2022
  * @license The MIT License (MIT)
- * @version latest (2.0.0)
+ * @version 2.0.0
  * @changes
  * version 2.0.0 (06.01.2022): reimplementation
  * (for older version changes see ccm.window-1.0.0.js)
@@ -11,6 +11,7 @@
 ( () => {
   const component = {
     name: 'window',
+    version: [ 2, 0, 0 ],
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-27.1.2.min.js',
     config: {
       "app": [ "ccm.start", "https://ccmjs.github.io/akless-components/blank/ccm.blank.js" ],
