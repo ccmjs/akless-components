@@ -1,0 +1,1 @@
+#element{background-color:#fff;padding:.5em;overflow:auto}header{display:flex;justify-content:end;align-items:center}header>*{padding-left:.5em;padding-bottom:.5em}[data-hidden]{display:none!important}

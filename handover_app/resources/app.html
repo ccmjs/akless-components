@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="André Kless <andre.kless@web.de> 2022">
+<meta name="license" content="The MIT License (MIT)">
+<title>App</title>
+<link rel="manifest" href="/manifest.json">
+<style>body { margin: 0 }</style>
+<script src="https://ccmjs.github.io/ccm/versions/ccm-27.1.2.min.js"></script>
+<body>
+<script>
+  const searchParams = new URL( window.location.href ).searchParams;
+  const component = searchParams.get( 'component' );
+  const config = { root: document.body, src: JSON.parse( searchParams.get( 'config' ) ) };
+  window.ccm.start( component, config );
+</script>

@@ -5,16 +5,22 @@
  */
 
 #element {
-  min-width: 431px;
-  max-width: 530px;
   background-color: #fff;
-  background-clip: padding-box;
-  border: 1px solid rgb(221, 221, 221);
-  border-radius: 0.3em;
-  padding: 1em;
+  padding: 0.5em;
+  overflow: auto;
 }
 
-#qr_code img {
-  height: 145px;
-  width: 145px;
+header {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+header > * {
+  padding-left: 0.5em;
+  padding-bottom: 0.5em;
+}
+
+*[data-hidden] {
+  display: none !important;
 }

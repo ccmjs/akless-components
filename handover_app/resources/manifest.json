@@ -1,0 +1,22 @@
+{
+  "name": "App",
+  "icons": [
+    {
+      "src": "https://ccmjs.github.io/akless-components/dms/resources/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "https://ccmjs.github.io/akless-components/dms/resources/icon.png",
+      "type": "image/png",
+      "sizes": "320x320"
+    },
+    {
+      "src": "https://ccmjs.github.io/akless-components/dms/resources/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone"
+}
