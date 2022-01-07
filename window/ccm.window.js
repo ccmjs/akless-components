@@ -27,7 +27,8 @@
       "icon": "https://ccmjs.github.io/akless-components/dms/resources/icon-192.png",
 //    "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/versions/ccm.lang-1.0.0.min.js" ],
       "libs": [ "ccm.load", "https://ccmjs.github.io/akless-components/libs/moveable/moveable.min.js" ],
-      "text": [ "ccm.load", "https://ccmjs.github.io/akless-components/window/resources/resources.mjs#en" ]
+      "text": [ "ccm.load", "https://ccmjs.github.io/akless-components/window/resources/resources.mjs#en" ],
+      "url": "https://ccmjs.github.io/akless-components/window/versions/ccm.window-2.0.0.min.js"
     },
     Instance: function () {
 
@@ -70,7 +71,7 @@
         $.setContent( this.element.querySelector( 'main' ), this.app.root );
 
         // set bookmarklet script
-        this.element.querySelector( '#bookmarklet' ).setAttribute( 'href', $.bookmarklet( this.component.url, JSON.parse( this.config ) ) );
+        this.element.querySelector( '#bookmarklet' ).setAttribute( 'href', $.bookmarklet( this.component.url || this.url, JSON.parse( this.config ) ) );
 
         // make window moveable and resizable
         await $.sleep( 100 );
