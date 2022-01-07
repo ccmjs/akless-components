@@ -16,7 +16,7 @@ export { render };
 export function main( text, events ) {
   return html`
     <header class="d-flex justify-content-between bg-light border rounded-top text-dark">
-      <div class="p-1 text-nowrap">Flying App</div>
+      <div class="p-1 text-nowrap" data-lang="title">${ text.title }</div>
       <div class="draggable"></div>
       <nav class="px-1 d-flex align-items-center">
         <div id="lang"></div>
