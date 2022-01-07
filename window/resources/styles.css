@@ -7,6 +7,8 @@
 #element {
   position: absolute;
   margin: 0.5em;
+  z-index: 5000;
+  font-size: initial;
 }
 
 header .draggable {
