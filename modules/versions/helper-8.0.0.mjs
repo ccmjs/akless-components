@@ -3,7 +3,7 @@
  * ES6 module that exports useful help functions for <i>ccmjs</i> component developers.
  * @author André Kless <andre.kless@web.de> 2019-2022
  * @license The MIT License (MIT)
- * @version latest (8.0.0)
+ * @version 8.0.0
  * @changes
  * version 8.0.0 (07.01.2022):
  * - updated help functions for app handover
