@@ -1152,7 +1152,7 @@ export const bookmarklet = ( component, config = {} ) => {
   if ( config.includes && config.includes( '.mjs#' ) ) config = [ 'ccm.load', config ];
   component = encodeURI( component );
   const index = encodeURI( ccm.helper.convertComponentURL( component ).index );
-  config = encodeURI( JSON.stringify( config ) );
+  config = encodeURI( ccm.helper.stringify( config ) );
   return `javascript:(function()%7Bvar%20u%3D%22${component}%22%2Ci%3D%22${index}%22%2Cc%3D'${config}'%2Ce%3Ddocument.createElement(%22script%22)%3Be.setAttribute(%22src%22%2Cu)%2Cdocument.head.appendChild(e)%2C(e%3Ddocument.createElement(%22ccm-%22%2Bi)).setAttribute(%22src%22%2Cc)%2Cdocument.body.appendChild(e)%7D)()`;
 }
 
