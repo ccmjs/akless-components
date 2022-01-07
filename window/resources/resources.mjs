@@ -8,7 +8,7 @@
  * english texts and labels for a digital makerspace
  * @type {Object}
  */
-const en = {
+export const en = {
   "bookmarklet": "App",
   "title": "App",
   "tooltip_bookmarklet": "This is a bookmarklet that you can use to open this app window on other websites as well. To do this, drag this icon into your bookmarks bar and use it on other websites.",
@@ -19,7 +19,7 @@ const en = {
  * german texts and labels for a digital makerspace
  * @type {Object}
  */
-const de = {
+export const de = {
   "bookmarklet": "App",
   "title": "App",
   "tooltip_bookmarklet": "Dies ist ein Bookmarklet, mit dem du dieses App-Fenster auch in anderen Webseiten öffnen kannst. Ziehe dazu dieses Symbol in deine Lesezeichenleiste und nutze es auf anderen Webseiten.",
