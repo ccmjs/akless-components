@@ -9,6 +9,7 @@
  * @type {Object}
  */
 const en = {
+  "tooltip_bookmarklet": "This is a bookmarklet that you can use to open this app window on other websites as well. To do this, drag this icon into your bookmarks bar and use it on other websites.",
   "tooltip_close": "Closes the app window."
 };
 
@@ -17,6 +18,7 @@ const en = {
  * @type {Object}
  */
 const de = {
+  "tooltip_bookmarklet": "Dies ist ein Bookmarklet, mit dem du dieses App-Fenster auch in anderen Webseiten öffnen kannst. Ziehe dazu dieses Symbol in deine Lesezeichenleiste und nutze es auf anderen Webseiten.",
   "tooltip_close": "Schließt das App-Fenster."
 };
 

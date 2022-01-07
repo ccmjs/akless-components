@@ -4,7 +4,7 @@
  * @license The MIT License (MIT)
  * @version latest (2.0.0)
  * @changes
- * version 2.0.0 (06.01.2022): reimplementation
+ * version 2.0.0 (07.01.2022): reimplementation
  * (for older version changes see ccm.window-1.0.0.js)
  */
 
@@ -22,12 +22,12 @@
         "https://ccmjs.github.io/akless-components/libs/bootstrap-5/css/bootstrap-icons.min.css",
         { "url": "https://ccmjs.github.io/akless-components/libs/bootstrap-5/css/bootstrap-fonts.min.css", "context": "head" },
       ],
-      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-7.10.0.mjs" ],
-      "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/window/resources/template.mjs" ],
+      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-8.0.0.min.mjs" ],
+      "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/window/resources/templates.mjs" ],
       "icon": "https://ccmjs.github.io/akless-components/dms/resources/icon-192.png",
 //    "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/versions/ccm.lang-1.0.0.min.js" ],
       "libs": [ "ccm.load", "https://ccmjs.github.io/akless-components/libs/moveable/moveable.min.js" ],
-      "text": {}
+      "text": [ "ccm.load", "https://ccmjs.github.io/akless-components/window/resources/resources.mjs#en" ]
     },
     Instance: function () {
 
@@ -52,7 +52,7 @@
          */
         const events = {
 
-          /** when close button is clicked */
+          /** when the close button is clicked */
           onClose: () => {
             $.remove( this.root );
             $.remove( document.body.querySelector( '.moveable-control-box' ) );
@@ -68,6 +68,9 @@
 
         // render app in flying window
         $.setContent( this.element.querySelector( 'main' ), this.app.root );
+
+        // set bookmarklet script
+        this.element.querySelector( '#bookmarklet' ).setAttribute( 'href', $.bookmarklet( this.component.url, JSON.parse( this.config ) ) );
 
         // make window moveable and resizable
         await $.sleep( 100 );
