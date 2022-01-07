@@ -55,7 +55,7 @@ export const test = {
  * @type {Object}
  */
 export const demo = {
-  "app": [ "ccm.start", "https://ccmjs.github.io/tkless-components/qa_slidecast/ccm.qa_slidecast.js", [ "ccm.load", "https://ccmjs.github.io/tkless-components/qa_slidecast/resources/resources.mjs#demo" ] ],
+  "app": [ "ccm.start", "https://ccmjs.github.io/tkless-components/qa_slidecast/versions/ccm.qa_slidecast-2.0.0.min.js", [ "ccm.load", "https://ccmjs.github.io/tkless-components/qa_slidecast/resources/resources.mjs#demo" ] ],
   "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/versions/ccm.lang-1.0.0.min.js", {
     "active": "de",
     "translations": { "de": de, "en": en }
