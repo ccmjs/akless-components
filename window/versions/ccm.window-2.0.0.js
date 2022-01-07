@@ -25,7 +25,6 @@
       ],
       "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-8.0.0.min.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/window/resources/templates.mjs" ],
-      "icon": "https://ccmjs.github.io/akless-components/dms/resources/icon-192.png",
 //    "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/versions/ccm.lang-1.0.0.min.js" ],
       "libs": [ "ccm.load", "https://ccmjs.github.io/akless-components/libs/moveable/moveable.min.js" ],
       "text": [ "ccm.load", "https://ccmjs.github.io/akless-components/window/resources/resources.mjs#en" ],
