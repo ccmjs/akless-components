@@ -64,6 +64,9 @@
         // render main HTML structure
         this.html.render( this.html.main( this.text, events ), this.element );
 
+        // translate content
+        this.lang && this.lang.translate();
+
         // render language selection
         this.lang && !this.lang.getContext() && $.setContent( this.element.querySelector( '#lang' ), this.lang.root );
 
