@@ -51,7 +51,7 @@ export const test = {
 };
 
 /**
- * demo configuration (absolute paths)
+ * demo configuration
  * @type {Object}
  */
 export const demo = {
@@ -64,7 +64,7 @@ export const demo = {
 };
 
 /**
- * live configuration (absolute paths)
+ * live configuration
  * @type {Object}
  */
 export const live = {
