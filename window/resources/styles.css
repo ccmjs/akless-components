@@ -24,6 +24,10 @@ header nav > * {
   margin: 0.2em;
 }
 
+main {
+  overflow: auto;
+}
+
 [data-hidden] {
   display: none;
 }
