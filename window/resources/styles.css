@@ -23,3 +23,7 @@ header nav > * {
   cursor: pointer;
   margin: 0.2em;
 }
+
+[data-hidden] {
+  display: none;
+}

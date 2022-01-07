@@ -21,6 +21,7 @@ export function main( text, events ) {
       <nav class="px-1 d-flex align-items-center">
         <div id="lang"></div>
         <a id="bookmarklet" title="${ text.tooltip_bookmarklet }" data-lang="tooltip_bookmarklet-title">
+          <span data-lang="bookmarklet" data-hidden>${ text.bookmarklet }</span>
           <i class="bi bi-bookmark"></i>
         </a>
         <i class="bi bi-x-square" title="${ text.tooltip_close }" data-lang="tooltip_close-title" @click=${ events.onClose }></i>

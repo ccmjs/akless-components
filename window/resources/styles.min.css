@@ -1,1 +1,1 @@
-#element{position:absolute;top:0;left:0;margin:.5em;z-index:5000;font-size:initial}header .draggable{cursor:move;min-width:3em;width:100%}header nav>*{cursor:pointer;margin:.2em}
+#element{position:absolute;top:0;left:0;margin:.5em;z-index:5000;font-size:initial}header .draggable{cursor:move;min-width:3em;width:100%}header nav>*{cursor:pointer;margin:.2em}[data-hidden]{display:none}
