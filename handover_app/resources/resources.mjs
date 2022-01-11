@@ -11,10 +11,10 @@
 export const en = {
   "bookmarklet": "Bookmarklet",
   "copy": "Copy",
-  "embed": "HTML Embed Code",
+  "embed": "Embed Code",
   "html": "HTML File",
   "ibook": "iBook Widget",
-  "scorm": "SCORM Package",
+  "scorm": "SCORM",
   "url": "App URL"
 };
 
@@ -25,10 +25,10 @@ export const en = {
 export const de = {
   "bookmarklet": "Bookmarklet",
   "copy": "Kopieren",
-  "embed": "HTML-Einbettungscode",
+  "embed": "Einbettungscode",
   "html": "HTML-Datei",
   "ibook": "iBook-Widget",
-  "scorm": "SCORM-Paket",
+  "scorm": "SCORM",
   "url": "App-URL"
 };
 
