@@ -70,6 +70,7 @@ export const demo = {
     "active": "de",
     "translations": { "de": de, "en": en }
   } ],
+  "qr_code": [ "ccm.load", "https://ccmjs.github.io/akless-components/libs/qrcode-generator/qrcode.min.js" ],
   "text": de,
   "tool": "https://ccmjs.github.io/tkless-components/qa_slidecast/versions/ccm.qa_slidecast-2.0.0.min.js",
   "window": [ "ccm.component", "https://ccmjs.github.io/akless-components/window/versions/ccm.window-2.0.0.min.js", [ "ccm.load", "https://ccmjs.github.io/akless-components/window/resources/resources.mjs#live" ] ]
@@ -84,6 +85,7 @@ export const live = {
   "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/versions/ccm.lang-1.0.0.min.js", {
     "translations": { "de": de, "en": en }
   } ],
+  "qr_code": [ "ccm.load", "https://ccmjs.github.io/akless-components/libs/qrcode-generator/qrcode.min.js" ],
   "text": {},
   "tool": "https://ccmjs.github.io/tkless-components/qa_slidecast/versions/ccm.qa_slidecast-2.0.0.min.js",
   "window": [ "ccm.component", "https://ccmjs.github.io/akless-components/window/versions/ccm.window-2.0.0.min.js", [ "ccm.load", "https://ccmjs.github.io/akless-components/window/resources/resources.mjs#live" ] ]
