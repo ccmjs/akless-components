@@ -100,7 +100,7 @@
         const config = {
           embed: this.enabled.embed && $.embedCode( this.tool, this.ignore.config ),
           url: this.enabled.url && app_url,
-          qr_code: this.enabled.qr_code,
+          qr_code: this.enabled.qr_code && this.qr_code,
           html: this.enabled.html,
           scorm: this.enabled.scorm,
           ibook: this.enabled.ibook,
