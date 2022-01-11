@@ -36,7 +36,7 @@
 //    "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/versions/ccm.lang-1.0.0.min.js" ],
 //    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-5.0.1.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
 //    "qr_code": [ "ccm.load", "https://ccmjs.github.io/akless-components/libs/qrcode-generator/qrcode.min.js" ],
-      "text": [ "ccm.load", "https://ccm.github.io/akless-components/handover_app/resources/resources.mjs#en" ],
+      "text": [ "ccm.load", "https://ccmjs.github.io/akless-components/handover_app/resources/resources.mjs#en" ],
       "tool": "https://ccmjs.github.io/akless-components/blank/ccm.blank.min.js",
       "url": "https://ccmjs.github.io/akless-components/handover_app/resources/app.html",
 //    "window": [ "ccm.component", "https://ccmjs.github.io/akless-components/window/versions/ccm.window-2.0.0.min.js" ]
