@@ -1137,7 +1137,7 @@ export const formData = ( elem, settings = {} ) => {
  */
 export const appURL = ( url, component, config = {} ) => {
   if ( config.store && config.key ) config = [ 'ccm.get', ccm.helper.isDatastore( config.store ) ? config.store.source() : config.store, config.key ];
-  if ( config.includes( '.mjs#' ) ) config = [ 'ccm.load', config ];
+  if ( config.includes && includes( '.mjs#' ) ) config = [ 'ccm.load', config ];
   return `${ url }?component=${ encodeURIComponent( component ) }&config=${ encodeURIComponent( ccm.helper.stringify( config ) ) }`;
 };
 
