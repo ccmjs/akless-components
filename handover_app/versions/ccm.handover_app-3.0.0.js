@@ -39,7 +39,7 @@
 //    "qr_code": [ "ccm.load", "https://ccmjs.github.io/akless-components/libs/qrcode-generator/qrcode.min.js" ],
       "text": [ "ccm.load", "https://ccm.github.io/akless-components/handover_app/resources/resources.mjs#en" ],
       "tool": "https://ccmjs.github.io/akless-components/blank/ccm.blank.min.js",
-      "url": "https://ccmjs.github.io/akless-components/handover_app/app.html",
+      "url": "https://ccmjs.github.io/akless-components/handover_app/resources/app.html",
 //    "window": [ "ccm.component", "https://ccmjs.github.io/akless-components/window/versions/ccm.window-2.0.0.min.js" ]
     },
     Instance: function () {
