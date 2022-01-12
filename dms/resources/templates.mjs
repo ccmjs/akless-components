@@ -121,7 +121,7 @@ export function header( active ) {
                 <span class="badge rounded-pill bg-dark ms-1">1</span>
               </button>
             </li>
-            <li ?data-hidden=${ !user }><button class="dropdown-item" type="button" data-lang="btn-logout" @click=${ dms.events.onLogout }>${ dms.text.btn_logout }</button></li>
+            <li ?data-hidden=${ !user }><button class="dropdown-item" type="button" data-lang="btn_logout" @click=${ dms.events.onLogout }>${ dms.text.btn_logout }</button></li>
           </ul>
         </nav>
       </div>
