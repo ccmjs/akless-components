@@ -323,7 +323,25 @@
           else
             meta.rating[ type ] = rating;
           this.render.rating( type, meta.key );
-          await this[ prop ].set( priodata );
+          const store = this[ prop ];
+          if ( await store.get( priodata.key ) )
+            await store.set( priodata );
+          else
+            await store.set( {
+              "key": priodata.key,
+              "user": user_key,
+              "tools": {},
+              "ratings": {},
+              "_": {
+                "creator": user_key,
+                "realm": "cloud",
+                "access": {
+                  "get": "all",
+                  "set": "creator",
+                  "del": "creator"
+                }
+              }
+            } );
         },
         onStart: async ( type, meta_key, template ) => {
           switch ( type ) {
