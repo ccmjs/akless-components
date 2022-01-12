@@ -57,7 +57,7 @@ export const test = {
   "text": en,
   "tool": "https://ccmjs.github.io/tkless-components/qa_slidecast/ccm.qa_slidecast.js",
   "url": "http://localhost:63342/akless-components/handover_app/resources/app.html",
-  "window": [ "ccm.component", "https://ccmjs.github.io/akless-components/window/ccm.window.js", [ "ccm.load", "https://ccmjs.github.io/akless-components/window/resources/resources.mjs#live" ] ]
+  "window": [ "ccm.component", "https://ccmjs.github.io/akless-components/window/ccm.window.js", [ "ccm.load", "https://ccmjs.github.io/akless-components/window/resources/resources.mjs#test" ] ]
 };
 
 /**
@@ -73,20 +73,5 @@ export const demo = {
   "qr_code": [ "ccm.load", "https://ccmjs.github.io/akless-components/libs/qrcode-generator/qrcode.min.js" ],
   "text": de,
   "tool": "https://ccmjs.github.io/tkless-components/qa_slidecast/versions/ccm.qa_slidecast-2.0.0.min.js",
-  "window": [ "ccm.component", "https://ccmjs.github.io/akless-components/window/versions/ccm.window-2.0.0.min.js", [ "ccm.load", "https://ccmjs.github.io/akless-components/window/resources/resources.mjs#live" ] ]
-};
-
-/**
- * live configuration
- * @type {Object}
- */
-export const live = {
-  "ignore.config": [ "ccm.load", "https://ccmjs.github.io/tkless-components/qa_slidecast/resources/resources.mjs#demo" ],
-  "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/versions/ccm.lang-1.0.0.min.js", {
-    "translations": { "de": de, "en": en }
-  } ],
-  "qr_code": [ "ccm.load", "https://ccmjs.github.io/akless-components/libs/qrcode-generator/qrcode.min.js" ],
-  "text": {},
-  "tool": "https://ccmjs.github.io/tkless-components/qa_slidecast/versions/ccm.qa_slidecast-2.0.0.min.js",
-  "window": [ "ccm.component", "https://ccmjs.github.io/akless-components/window/versions/ccm.window-2.0.0.min.js", [ "ccm.load", "https://ccmjs.github.io/akless-components/window/resources/resources.mjs#live" ] ]
+  "window": [ "ccm.component", "https://ccmjs.github.io/akless-components/window/versions/ccm.window-2.0.0.min.js", [ "ccm.load", "https://ccmjs.github.io/akless-components/window/resources/resources.mjs#demo" ] ]
 };
