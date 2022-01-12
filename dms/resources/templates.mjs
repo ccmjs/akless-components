@@ -94,8 +94,8 @@ export function header( active ) {
                 <span class="badge rounded-pill bg-secondary ms-1">1</span>
               </button>
             </li>
-            <li ?data-hidden=${ !user }><hr class="dropdown-divider"></li>
-            <li ?data-hidden=${ !user }><h6 class="dropdown-header" data-lang="header_created">${ dms.text.header_created }</h6></li>
+            <li ?data-hidden=${ !user || !components.length && !apps.length }><hr class="dropdown-divider"></li>
+            <li ?data-hidden=${ !user || !components.length && !apps.length }><h6 class="dropdown-header" data-lang="header_created">${ dms.text.header_created }</h6></li>
             <li ?data-hidden=${ !user || !components.length }>
               <button class="dropdown-item hover-bg-tools d-flex align-items-center" type="button" @click=${ () => dms.events.onList( 'tools', { creator: user && user.name } ) }>
                 <span data-lang="tools">${ dms.text.tools }</span>
