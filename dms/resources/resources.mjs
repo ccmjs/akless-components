@@ -801,7 +801,8 @@ export const demo = {
     "active": "de",
     "translations": { "de": de, "en": en }
   } ],
-  "text": de
+  "text": de,
+  "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.2.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/resources.js", "cloud" ] ]
 };
 
 /**
@@ -851,5 +852,6 @@ export const live = {
   "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/versions/ccm.lang-1.0.0.min.js", {
     "translations": { "de": de, "en": en }
   } ],
-  "text": de
+  "text": de,
+  "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.2.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/resources.js", "cloud" ] ]
 };
