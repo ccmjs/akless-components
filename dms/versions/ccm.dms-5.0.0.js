@@ -2,7 +2,7 @@
  * @overview ccmjs-based web component for a digital makerspace
  * @author André Kless <andre.kless@web.de> 2018-2022
  * @license The MIT License (MIT)
- * @version 5.0.0
+ * @version latest (5.0.0)
  * @changes
  * version 5.0.0 (12.01.2022): reimplementation
  * (for older version changes see ccm.dms-4.5.0.js)
@@ -11,7 +11,6 @@
 ( () => {
   const component = {
     name: 'dms',
-    version: [ 5, 0, 0 ],
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-27.1.2.min.js',
     config: {
       "apps": [ "ccm.store" ],
@@ -144,17 +143,17 @@
         ratings.components.forEach( user => {
           for ( const key in user.ratings )
             if ( data.components.meta[ key ] )
-              data.components.meta[ key ].ratings.components[ user.key ] = user.ratings[ key ];
+              data.components.meta[ key ].ratings.components[ user.user ] = user.ratings[ key ];
           for ( const key in user.tools )
             if ( data.components.meta[ key ] )
-              data.components.meta[ key ].ratings.tools[ user.key ] = user.tools[ key ];
+              data.components.meta[ key ].ratings.tools[ user.user ] = user.tools[ key ];
         } );
 
         // integrate user ratings in meta data of apps
         ratings.apps.forEach( user => {
           for ( const key in user.ratings )
             if ( data.apps.meta[ key ] )
-              data.apps.meta[ key ].ratings[ user.key ] = user.ratings[ key ];
+              data.apps.meta[ key ].ratings[ user.user ] = user.ratings[ key ];
         } );
 
         // calculate average of ratings for all components

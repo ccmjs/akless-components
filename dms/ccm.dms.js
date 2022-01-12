@@ -143,17 +143,17 @@
         ratings.components.forEach( user => {
           for ( const key in user.ratings )
             if ( data.components.meta[ key ] )
-              data.components.meta[ key ].ratings.components[ user.key ] = user.ratings[ key ];
+              data.components.meta[ key ].ratings.components[ user.user ] = user.ratings[ key ];
           for ( const key in user.tools )
             if ( data.components.meta[ key ] )
-              data.components.meta[ key ].ratings.tools[ user.key ] = user.tools[ key ];
+              data.components.meta[ key ].ratings.tools[ user.user ] = user.tools[ key ];
         } );
 
         // integrate user ratings in meta data of apps
         ratings.apps.forEach( user => {
           for ( const key in user.ratings )
             if ( data.apps.meta[ key ] )
-              data.apps.meta[ key ].ratings[ user.key ] = user.ratings[ key ];
+              data.apps.meta[ key ].ratings[ user.user ] = user.ratings[ key ];
         } );
 
         // calculate average of ratings for all components
