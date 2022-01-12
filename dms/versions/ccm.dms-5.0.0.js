@@ -452,11 +452,12 @@
           const meta = data[ section === 'app' ? 'apps' : 'components' ].meta[ meta_key ];
           const comments_key = section + '_comments';
           if ( !meta[ comments_key ] )
-            meta[ comments_key ] = await this.comment.start( {
+            meta[ comments_key ] = await this.comment.instance( {
               'data.key': [].concat( section, meta_key.split( ',' ) ),
               user: [ 'ccm.instance', this.user.component.url, JSON.parse( this.user.config ) ]
             } );
           $.setContent( this.element.querySelector( '#comments' ), meta[ comments_key ].root );
+          await meta[ comments_key ].start();
         },
         rating: ( section, meta_key ) => {
           this.html.render( this.html.rating( section, meta_key ), element.querySelector( '#rating article' ) );
