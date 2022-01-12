@@ -96,19 +96,19 @@ export function header( active ) {
             </li>
             <li ?data-hidden=${ !user }><hr class="dropdown-divider"></li>
             <li ?data-hidden=${ !user }><h6 class="dropdown-header" data-lang="header_created">${ dms.text.header_created }</h6></li>
-            <li ?data-hidden=${ !user || !components }>
+            <li ?data-hidden=${ !user || !components.length }>
               <button class="dropdown-item hover-bg-tools d-flex align-items-center" type="button" @click=${ () => dms.events.onList( 'tools', { creator: user && user.name } ) }>
                 <span data-lang="tools">${ dms.text.tools }</span>
                 <span class="badge rounded-pill bg-primary ms-1">${ components.length }</span>
               </button>
             </li>
-            <li ?data-hidden=${ !user || !apps }>
+            <li ?data-hidden=${ !user || !apps.length }>
               <button class="dropdown-item hover-bg-apps d-flex align-items-center" type="button" @click=${ () => dms.events.onList( 'apps', { creator: user && user.name } ) }>
                 <span data-lang="apps">${ dms.text.apps }</span>
                 <span class="badge rounded-pill bg-success ms-1">${ apps.length }</span>
               </button>
             </li>
-            <li ?data-hidden=${ !user || !components }>
+            <li ?data-hidden=${ !user || !components.length }>
               <button class="dropdown-item hover-bg-components d-flex align-items-center" type="button" @click=${ () => dms.events.onList( 'components', { creator: user && user.name } ) }>
                 <span data-lang="components">${ dms.text.components }</span>
                 <span class="badge rounded-pill bg-warning ms-1">${ components.length }
