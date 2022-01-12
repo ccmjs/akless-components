@@ -2,7 +2,7 @@
  * @overview ccmjs-based web component for a digital makerspace
  * @author André Kless <andre.kless@web.de> 2018-2022
  * @license The MIT License (MIT)
- * @version latest (5.0.0)
+ * @version 5.0.0
  * @changes
  * version 5.0.0 (12.01.2022): reimplementation
  * (for older version changes see ccm.dms-4.5.0.js)
@@ -11,6 +11,7 @@
 ( () => {
   const component = {
     name: 'dms',
+    version: [ 5, 0, 0 ],
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-27.1.2.min.js',
     config: {
       "apps": [ "ccm.store" ],
