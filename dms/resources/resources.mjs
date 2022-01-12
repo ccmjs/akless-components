@@ -794,7 +794,7 @@ export const test = {
  */
 export const demo = {
   "apps": [ "ccm.store", example_apps ],
-  "comment": [ "ccm.component", "https://ccmjs.github.io/tkless-components/comment/versions/ccm.comment-7.0.0.min.js", [ "ccm.load", "https://ccmjs.github.io/tkless-components/comment/resources/resources.mjs#demo" ] ],
+  "comment": [ "ccm.component", "https://ccmjs.github.io/tkless-components/comment/versions/ccm.comment-7.1.0.min.js", [ "ccm.load", "https://ccmjs.github.io/tkless-components/comment/resources/resources.mjs#demo" ] ],
   "components": [ "ccm.store", example_components ],
   "handover": [ "ccm.component", "https://ccmjs.github.io/akless-components/handover_app/versions/ccm.handover_app-3.0.0.min.js", [ "ccm.load", "https://ccmjs.github.io/akless-components/handover_app/resources/resources.mjs#demo" ] ],
   "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/versions/ccm.lang-1.0.0.min.js", {
@@ -811,7 +811,7 @@ export const demo = {
  */
 export const live = {
   "apps": [ "ccm.store", { "url": "https://ccm2.inf.h-brs.de", "name": "dms2-apps" } ],
-  "comment": [ "ccm.component", "https://ccmjs.github.io/tkless-components/comment/versions/ccm.comment-7.0.0.min.js", {
+  "comment": [ "ccm.component", "https://ccmjs.github.io/tkless-components/comment/versions/ccm.comment-7.1.0.min.js", {
     "data": { "store": [ "ccm.store", { "url": "https://ccm2.inf.h-brs.de", "name": "dms2-comments" } ] },
     "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/versions/ccm.lang-1.0.0.min.js", {
       "translations": {
