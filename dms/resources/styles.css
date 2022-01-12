@@ -155,10 +155,6 @@
   cursor: pointer;
 }
 
-*[disabled] {
-  cursor: not-allowed;
-}
-
 *[data-hidden] {
   display: none !important;
 }

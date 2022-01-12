@@ -4,7 +4,7 @@
  * @license The MIT License (MIT)
  * @version 5.0.0
  * @changes
- * version 5.0.0 (05.01.2022): reimplementation
+ * version 5.0.0 (12.01.2022): reimplementation
  * (for older version changes see ccm.dms-4.5.0.js)
  */
 
@@ -27,6 +27,7 @@
       "components": [ "ccm.store" ],
       "configs": [ "ccm.store" ],
       "icon": "https://ccmjs.github.io/akless-components/dms/resources/icon.png",
+//    "handover": [ "ccm.component", "https://ccmjs.github.io/akless-components/handover_app/versions/ccm.handover_app-3.0.0.min.js" ],
       "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-7.10.0.min.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/dms/resources/templates.mjs" ],
 //    "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/versions/ccm.lang-1.0.0.min.js" ],
@@ -533,6 +534,12 @@
           this.html.render( this.html.show( app_key ), element );
           this.lang && this.lang.translate();
           await this.ccm.start( tool_meta.path, { src: await $.solveDependency( app_meta.ignore.config ), parent: this, root: this.element.querySelector( '#app' ) } );
+          await this.handover.start( {
+            root: this.element.querySelector( '#handover' ),
+            'ignore.config': app_meta.ignore.config,
+            tool: tool_meta.path,
+            url: 'https://ccmjs.github.io/akless-components/dms/resources/app.html'
+          } );
         }
       };
 

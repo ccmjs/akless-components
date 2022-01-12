@@ -153,7 +153,7 @@ export function home() {
     ${ section( 'tools', 'home_tools_title', 'home_tools_text', 'btn_toolbox' ) }
     ${ section( 'apps', 'home_apps_title', 'home_apps_text', 'btn_explore' ) }
     ${ section( 'developer', 'home_developer_title', 'home_developer_text', 'btn_guide' ) }
-    <section class="bg-more-light py-5 border-top">
+    <section class="bg-more-light py-5 border-top" data-hidden>
       <div class="container text-center">
         <div class="mb-4 display-4" data-lang="home_more_title">${ dms.text.home_more_title }</div>
         <div class="lead mb-4" data-lang="home_more_text">${ dms.text.home_more_text }</div>
@@ -841,7 +841,7 @@ export function show( app_key ) {
       ] ) }
       <div class="container bg-white border px-0" id="app"></div>
       <div class="container px-0 py-3 d-flex flex-wrap justify-content-between text-nowrap">
-        <button class="btn btn-success mb-2" disabled @click=${ () => dms.events.onShare( app_meta.key ) }>
+        <button class="btn btn-success mb-2" data-bs-toggle="modal" data-bs-target="#modal" ?data-invisible="${ !dms.handover }">
           <i class="bi bi-share"></i>
           <span data-lang="btn_share">${ dms.text.btn_share }</span>
         </button>
@@ -853,6 +853,17 @@ export function show( app_key ) {
           <span data-lang="${ is_creator ? 'btn_edit' : 'btn_template' }">${ dms.text[ is_creator ? 'btn_edit' : 'btn_template' ] }</span>
           <i class="bi bi-chevron-right"></i>
         </button>
+      </div>
+    </div>
+    <div class="modal" id="modal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" data-lang="handover">${ dms.text.handover }</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body" id="handover"></div>
+        </div>
       </div>
     </div>
   `;

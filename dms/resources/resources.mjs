@@ -61,6 +61,7 @@ const en = {
   "date_format": "en-EN",
   "developer": "Developer",
   "editor": "App Editor",
+  "handover": "App Handover",
   "header_created": "created by me:",
   "home_apps_title": "Use Apps as a Template",
   "home_apps_text": "Use apps created by others as templates for your own apps and then adapt them to your own individual needs.",
@@ -206,6 +207,7 @@ const de = {
   "date_format": "de-DE",
   "developer": "Entwickler",
   "editor": "App-Editor",
+  "handover": "Übergabe der App",
   "header_created": "Von mir erstellt:",
   "home_apps_title": "Nutze Apps als Vorlage",
   "home_apps_text": "Schau dir an, welche Apps von anderen bereits erstellt wurden und nutze sie, um ähnliche Apps zu erstellen und an deine Bedürfnisse anzupassen.",
@@ -768,6 +770,7 @@ export const test = {
     "./../libs/bootstrap-5/css/bootstrap-icons.css",
     { "url": "./../libs/bootstrap-5/css/bootstrap-fonts.css", "context": "head" }
   ],
+  "handover": [ "ccm.component", "./../handover_app/ccm.handover_app.js", [ "ccm.load", "./../handover_app/resources/resources.mjs#test" ] ],
   "helper.1": "./../modules/helper.mjs",
   "html.1": "./../dms/resources/templates.mjs",
   "icon": "./../dms/resources/icon.png",
@@ -809,6 +812,16 @@ export const demo = {
     "text": [ "ccm.load", "https://ccmjs.github.io/tkless-components/comment/resources/resources.mjs#de" ]
   } ],
   "components": [ "ccm.store", example_components ],
+  "handover": [ "ccm.component", "https://ccmjs.github.io/akless-components/handover_app/versions/ccm.handover_app-3.0.0.min.js", {
+    "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/versions/ccm.lang-1.0.0.min.js", {
+      "active": "de",
+      "translations": {
+        "de": [ "ccm.load", "https://ccmjs.github.io/akless-components/handover_app/resources/resources.mjs#de" ],
+        "en": [ "ccm.load", "https://ccmjs.github.io/akless-components/handover_app/resources/resources.mjs#en" ]
+      }
+    } ],
+    "text": [ "ccm.load", "https://ccmjs.github.io/akless-components/handover_app/resources/resources.mjs#de" ]
+  } ],
   "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/versions/ccm.lang-1.0.0.min.js", {
     "active": "de",
     "translations": { "de": de, "en": en }
@@ -842,6 +855,15 @@ export const live = {
   } ],
   "components": [ "ccm.store", { "url": "https://ccm2.inf.h-brs.de", "name": "dms-components" } ],
   "configs": [ "ccm.store", { "url": "https://ccm2.inf.h-brs.de", "name": "dms-configs" } ],
+  "handover": [ "ccm.component", "https://ccmjs.github.io/akless-components/handover_app/versions/ccm.handover_app-3.0.0.min.js", {
+    "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/versions/ccm.lang-1.0.0.min.js", {
+      "translations": {
+        "de": [ "ccm.load", "https://ccmjs.github.io/akless-components/handover_app/resources/resources.mjs#de" ],
+        "en": [ "ccm.load", "https://ccmjs.github.io/akless-components/handover_app/resources/resources.mjs#en" ]
+      }
+    } ],
+    "text": [ "ccm.load", "https://ccmjs.github.io/akless-components/handover_app/resources/resources.mjs#en" ]
+  } ],
   "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/versions/ccm.lang-1.0.0.min.js", {
     "translations": { "de": de, "en": en }
   } ],
