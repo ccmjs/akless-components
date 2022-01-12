@@ -861,7 +861,17 @@ export const live = {
         "en": [ "ccm.load", "https://ccmjs.github.io/akless-components/handover_app/resources/resources.mjs#en" ]
       }
     } ],
-    "text": [ "ccm.load", "https://ccmjs.github.io/akless-components/handover_app/resources/resources.mjs#de" ]
+    "qr_code": [ "ccm.load", "https://ccmjs.github.io/akless-components/libs/qrcode-generator/qrcode.min.js" ],
+    "text": [ "ccm.load", "https://ccmjs.github.io/akless-components/handover_app/resources/resources.mjs#de" ],
+    "window": [ "ccm.component", "https://ccmjs.github.io/akless-components/window/versions/ccm.window-2.0.0.min.js", {
+      "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/versions/ccm.lang-1.0.0.min.js", {
+        "translations": {
+          "de": [ "ccm.load", "https://ccmjs.github.io/akless-components/window/resources/resources.mjs#de" ],
+          "en": [ "ccm.load", "https://ccmjs.github.io/akless-components/window/resources/resources.mjs#en" ]
+        }
+      } ],
+      "text": [ "ccm.load", "https://ccmjs.github.io/akless-components/window/resources/resources.mjs#de" ]
+    } ]
   } ],
   "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/versions/ccm.lang-1.0.0.min.js", {
     "translations": { "de": de, "en": en }
