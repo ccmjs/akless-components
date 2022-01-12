@@ -2,7 +2,7 @@
  * @overview ccmjs-based web component for an app handover
  * @author André Kless <andre.kless@web.de> 2019-2020, 2022
  * @license The MIT License (MIT)
- * @version latest (3.0.0)
+ * @version 3.0.0
  * @changes
  * version 3.0.0 (08.01.2022): reimplementation
  * (for older version changes see ccm.handover_app-2.0.0.js)
@@ -11,6 +11,7 @@
 ( () => {
   const component = {
     name: 'handover_app',
+    version: [ 3, 0, 0 ],
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-27.1.2.min.js',
     config: {
       "css": [ "ccm.load",
