@@ -309,7 +309,7 @@
           const user_key = ( await this.user.login() ).key;
           const prop = type === 'app' ? 'apps' : 'components';
           const meta = data[ prop ].meta[ meta_key.toString() ];
-          if ( user_key === meta._.creator ) return;
+          if ( user_key === meta._.creator ) return this.refresh();
           const priodata = { key: '_' + user_key }
           priodata[ ( type === 'tool' ? 'tools' : 'ratings' ) + '.' + meta.key.toString() ] = rating;
           let ratings = type === 'app' ? meta.ratings : meta.ratings[ type + 's' ];
