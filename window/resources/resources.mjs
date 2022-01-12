@@ -62,17 +62,3 @@ export const demo = {
   } ],
   "text": de
 };
-
-/**
- * live configuration
- * @type {Object}
- */
-export const live = {
-  "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/versions/ccm.lang-1.0.0.min.js", {
-    "translations": {
-      "de": [ "ccm.load", "https://ccmjs.github.io/akless-components/window/resources/resources.mjs#de" ],
-      "en": [ "ccm.load", "https://ccmjs.github.io/akless-components/window/resources/resources.mjs#en" ]
-    }
-  } ],
-  "text": {}
-};
