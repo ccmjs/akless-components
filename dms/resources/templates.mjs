@@ -306,7 +306,8 @@ function metaSearch( section, values = {} ) {
  */
 export function cards( section, values ) {
   const meta = data[ section !== 'apps' ? 'components' : section ].arr.filter( meta =>
-       ( !values.title    || meta.title  .toLowerCase().includes( values.title  .toLowerCase() ) )
+       ( meta.listed || ( dms.user.getValue() || {} ).key === meta._.creator )
+    && ( !values.title    || meta.title  .toLowerCase().includes( values.title  .toLowerCase() ) )
     && ( !values.tool     || meta.tool   .toLowerCase().includes( values.tool   .toLowerCase() ) )
     && ( !values.creator  || meta.creator.toLowerCase().includes( values.creator.toLowerCase() ) )
     && ( !values.category || meta.tags.find( tag => tag.toLowerCase().includes( values.category.toLowerCase() ) ) )
