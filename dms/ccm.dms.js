@@ -200,9 +200,9 @@
         data.apps.arr.forEach( app => {
           if ( !app.listed && ( !user || user.key !== app._.creator ) ) return;
           const component = data.components.meta[ app.component ];
-          component.apps++;  // increase app counter for corresponding component
+          component && component.apps++;  // increase app counter for corresponding component
           add( data.apps.options.title, app.title );
-          add( data.apps.options.tool, component.title );
+          component && add( data.apps.options.tool, component.title );
           add( data.apps.options.creator, app.creator );
           app.tags.forEach( tag => add( data.apps.options.tags, tag ) );
         } );
