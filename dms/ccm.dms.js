@@ -102,8 +102,8 @@
 
         // load metadata of all components and apps
         data = await Promise.all( [
-          this.components.get( { deleted: undefined } ),
-          this.apps.get( { deleted: undefined } )
+          this.components.get( { deleted: null } ),
+          this.apps.get( { deleted: null } )
         ] );
         data = {
           components: {
