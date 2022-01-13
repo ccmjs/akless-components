@@ -236,11 +236,11 @@
       this.events = {
         onLogin: async () => {
           await this.user.login();
-          this.refresh();
+          await this.start();
         },
         onLogout: async () => {
           await this.user.logout();
-          this.refresh();
+          await this.start();
         },
         onHome: async () => {
           $.params( { view: 'home' }, true, true );

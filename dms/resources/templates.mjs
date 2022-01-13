@@ -671,21 +671,21 @@ export function inputs( type, meta_key ) {
       <div class="form-label mb-1">
         <span data-lang="meta_agree">${ dms.text.meta_agree }</span>:
       </div>
-      <div class="form-check form-check-inline" ?data-hidden=${ type !== 'app' }>
+      <div class="form-check" ?data-hidden=${ type !== 'app' }>
         <input class="form-check-input" type="checkbox" name="agree.content" id="form-agree-content" ?required=${ type === 'app' } ?checked=${ meta.agree && meta.agree.content }>
         <label class="form-check-label" for="form-agree-content">
           <small data-lang="meta_agree_content">${ dms.text.meta_agree_content }</small>
           <small class="text-danger">*</small>
         </label>
       </div>
-      <div class="form-check form-check-inline">
+      <div class="form-check">
         <input class="form-check-input" type="checkbox" name="agree.software" id="form-agree-software" required ?checked=${ meta.agree && meta.agree.software }>
         <label class="form-check-label" for="form-agree-software">
           <small data-lang="meta_agree_software">${ dms.text.meta_agree_software }</small>
           <small class="text-danger">*</small>
         </label>
       </div>
-      <div class="form-check form-check-inline">
+      <div class="form-check">
         <input class="form-check-input" type="checkbox" name="agree.copyright" id="form-agree-copyright" required ?checked=${ meta.agree && meta.agree.copyright }>
         <label class="form-check-label" for="form-agree-copyright">
           <small data-lang="meta_agree_copyright">${ dms.text.meta_agree_copyright }</small>
