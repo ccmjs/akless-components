@@ -316,6 +316,7 @@ export const example_components = {
       "software": true,
       "copyright": true
     },
+    "listed": true,
     "ignore": {
       "editors": [
         [ "ccm.component", "https://ccmjs.github.io/akless-components/config_builder/versions/ccm.config_builder-1.1.0.min.js", [ "ccm.load", "https://ccmjs.github.io/akless-components/config_builder/resources/pdf_viewer/resources.mjs#live" ] ]
@@ -384,6 +385,7 @@ export const example_components = {
       "software": true,
       "copyright": true
     },
+    "listed": true,
     "ignore": {
       "editors": [
         [ "ccm.component", "https://ccmjs.github.io/akless-components/config_builder/versions/ccm.config_builder-1.1.0.min.js", [ "ccm.load", "https://ccmjs.github.io/akless-components/config_builder/resources/comment/resources.mjs#live" ] ]

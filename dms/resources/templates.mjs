@@ -378,6 +378,7 @@ export function cards( section, values ) {
 export function item( section, meta_key ) {
   const color = section + 's';
   const meta = data[ section !== 'app' ? 'components' : 'apps' ].meta[ meta_key ];
+  if ( !meta ) return html``;
   const date_format = dms.lang.translate( 'date_format' );
   const created_at = new Date( meta.created_at ).toLocaleDateString( date_format, { year: 'numeric', month: 'long', day: 'numeric' } );
   const updated_at = new Date( meta.updated_at ).toLocaleDateString( date_format, { year: 'numeric', month: 'long', day: 'numeric' } );
