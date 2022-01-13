@@ -4,7 +4,7 @@
  * @license The MIT License (MIT)
  * @version 5.0.0
  * @changes
- * version 5.0.0 (12.01.2022): reimplementation
+ * version 5.0.0 (13.01.2022): reimplementation
  * (for older version changes see ccm.dms-4.5.0.js)
  */
 
@@ -466,8 +466,8 @@
           this.render.header( section === 'component' ? 'developer' : section + 's' );
           this.html.render( this.html.item( section, meta_key ), element );
           this.lang && this.lang.translate();
-          if ( !this.comment ) return;
           const meta = data[ section === 'app' ? 'apps' : 'components' ].meta[ meta_key ];
+          if ( !this.comment || !meta ) return;
           const comments_key = section + '_comments';
           if ( !meta[ comments_key ] )
             meta[ comments_key ] = await this.comment.instance( {
