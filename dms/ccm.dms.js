@@ -388,6 +388,7 @@
             }
           };
           delete form.visibility;
+          tool_meta.apps++;
 
           await Promise.all( [ this.apps.set( form ), this.configs.set( config ) ] );
           form.ratings = {};
