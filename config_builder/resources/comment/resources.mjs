@@ -281,9 +281,6 @@ export const demo = {
  */
 export const live = {
   "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/config_builder/resources/styles.min.css" ],
-  "defaults": {
-    "text": [ "ccm.load", "https://ccmjs.github.io/tkless-components/comment/resources/resources.mjs#en" ]
-  },
   "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/config_builder/resources/comment/templates.mjs" ],
   "ignore": {
     "defaults": {
