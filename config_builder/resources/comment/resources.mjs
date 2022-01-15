@@ -272,7 +272,7 @@ export const demo = {
     "translations": { "de": de, "en": en }
   } ],
   "text": de,
-  "tool": [ "ccm.component", "https://ccmjs.github.io/tkless-components/comment/ccm.comment.min.js" ]
+  "tool": [ "ccm.component", "https://ccmjs.github.io/tkless-components/comment/versions/ccm.comment-7.1.0.min.js" ]
 };
 
 /**
@@ -284,7 +284,16 @@ export const live = {
   "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/config_builder/resources/comment/templates.mjs" ],
   "ignore": {
     "defaults": {
-      "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.2.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/resources.min.js", "guest" ] ]
+      "data": { "store": [ "ccm.store", { "name": "dms2-comment-data", "url": "https://ccm2.inf.h-brs.de" } ] },
+      "libs": [ "ccm.load", [
+        [
+          "https://ccmjs.github.io/tkless-components/libs/dayjs/dayjs.min.js",
+          "https://ccmjs.github.io/tkless-components/libs/dayjs/relativeTime.min.js"
+        ],
+        "https://ccmjs.github.io/tkless-components/libs/dayjs/de.min.js"
+      ] ],
+      "text": [ "ccm.load", "https://ccmjs.github.io/tkless-components/comment/resources/resources.mjs#de" ],
+      "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.2.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/resources.min.js", "cloud" ] ]
     },
     "mapping": {
       "user": {
@@ -327,7 +336,7 @@ export const live = {
   "libs": "",
   "onstart": onStart,
   "text": de,
-  "tool": [ "ccm.component", "https://ccmjs.github.io/tkless-components/comment/ccm.comment.min.js", [ "ccm.load", "https://ccmjs.github.io/tkless-components/comment/resources/resources.mjs#demo" ] ]
+  "tool": [ "ccm.component", "https://ccmjs.github.io/tkless-components/comment/ccm.comment.min.js" ]
 };
 
 /**
