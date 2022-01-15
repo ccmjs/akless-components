@@ -230,6 +230,13 @@ export const demo = {
   "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/config_builder/resources/comment/templates.mjs" ],
   "ignore": {
     "defaults": {
+      "libs": [ "ccm.load", [
+        [
+          "https://ccmjs.github.io/tkless-components/libs/dayjs/dayjs.min.js",
+          "https://ccmjs.github.io/tkless-components/libs/dayjs/relativeTime.min.js"
+        ],
+        "https://ccmjs.github.io/tkless-components/libs/dayjs/de.min.js"
+      ] ],
       "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.2.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/resources.min.js", "guest" ] ]
     },
     "mapping": {
