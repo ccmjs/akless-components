@@ -343,19 +343,6 @@ export const live = {
   "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/versions/ccm.lang-1.0.0.min.js", {
     "translations": { "de": de, "en": en }
   } ],
-  "libs": "",
-  "onstart": onStart,
   "text": de,
   "tool": [ "ccm.component", "https://ccmjs.github.io/tkless-components/comment/ccm.comment.min.js" ]
 };
-
-/**
- * when config builder is started and the initial app configuration is loaded
- * @param instance - config builder instance
- * @param config - initial app configuration
- * @returns {Promise<*>}
- */
-async function onStart( instance, config ) {
-  config.text = await instance.ccm.helper.solveDependency( config.text );
-  return config;
-}
