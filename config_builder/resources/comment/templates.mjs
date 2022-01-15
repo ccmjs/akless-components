@@ -104,6 +104,21 @@ export function main( config, builder, events ) {
           </h2>
           <div id="${ id }-labels" class="accordion-collapse collapse" aria-labelledby="${ id }-labels-heading" data-bs-parent="#${ id }-accordion">
             <div class="accordion-body">
+              <div class="mb-3">
+                ${ heading( 'text_locale' ) }
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="text.locale" value="de" id="${ id }-text-de">
+                  <label class="form-check-label" for="${ id }-text-de">
+                    ${ builder.text.locale_de }
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="text.locale" value="en" id="${ id }-text-en">
+                  <label class="form-check-label" for="${ id }-text-en">
+                    ${ builder.text.locale_en }
+                  </label>
+                </div>
+              </div>
               ${ text( 'text.comments') }
               ${ text( { prop: 'text.sort_by_date', hidden: !config.controls.sort } ) }
               ${ text( { prop: 'text.sort_by_rating', hidden: !config.controls.sort } ) }

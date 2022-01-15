@@ -30,6 +30,8 @@ export const de = {
   "controls_sort_info": "Oben befindet sich ein Button, über den die Sortierung der Kommentare jederzeit geändert werden kann.",
   "general": "Allgemeine Einstellungen",
   "labels": "Texte und Beschriftungen",
+  "locale_de": "Deutsch",
+  "locale_en": "Englisch",
   "picture": "Standard-Portrait für Kommentare",
   "picture_info": "Das Bild hinter dieser URL wird als Portrait für den Verfasser eines Kommentars verwendet, wenn dieser kein eigenes Portrait in seinen Benutzerdaten hat. Erfolgt hier keine Angabe, wird bei Kommentaren kein Portrait angezeigt.",
   "preview": "Vorschau",
@@ -57,6 +59,8 @@ export const de = {
   "text_heart_info": "Text der angezeigt wird, wenn der Mauszeiger über dem \"Herz\"-Button eines Kommentars verbleibt.",
   "text_like": "Button-Tooltip: \"Like\"",
   "text_like_info": "Text der angezeigt wird, wenn der Mauszeiger über dem \"Like\"-Button eines Kommentars verbleibt.",
+  "text_locale": "Zeitstempel in",
+  "text_locale_info": "Soll der Zeitstempel eines Kommentars auf deutsch oder englisch angezeigt werden?",
   "text_picture": "Alternativtext für das Portrait eines Benutzers",
   "text_picture_info": "Der Text wird statt dem Portrait eines Benutzers angezeigt, falls es aus irgendwelchen Gründen nicht dargestellt werden kann.",
   "text_recycle": "Button-Tooltip: Kommentar wiederherstellen",
@@ -105,6 +109,8 @@ export const en = {
   "controls_sort_info": "At the top there is a button that can be used to change the sorting of the comments at any time.",
   "general": "General Settings",
   "labels": "Texts and Labels",
+  "locale_de": "German",
+  "locale_en": "English",
   "picture": "Default User Picture",
   "picture_info": "The picture behind this URL is used as the picture for the author of a comment if he does not have his own picture in his user data. If no input is made here, no user picture will be displayed for comments.",
   "preview": "Preview",
@@ -132,6 +138,8 @@ export const en = {
   "text_heart_info": "Tooltip for the \"Heart\" button of a comment.",
   "text_like": "Button-Tooltip: Like Comment",
   "text_like_info": "Tooltip for the \"Like\" button of a comment.",
+  "text_locale": "Show Timestamps in",
+  "text_locale_info": "Should the timestamp of a comment be displayed in German or English?",
   "text_picture": "Alternative Text: User Picture",
   "text_picture_info": "Alternative text for the user picture of a comment.",
   "text_recycle": "Button: Restore Comment",
@@ -168,6 +176,13 @@ export const test = {
     { "url": "./../../../libs/bootstrap-5/css/bootstrap-fonts.css", "context": "head" }
   ],
   "defaults": {
+    "libs": [ "ccm.load", [
+      [
+        "https://ccmjs.github.io/tkless-components/libs/dayjs/dayjs.min.js",
+        "https://ccmjs.github.io/tkless-components/libs/dayjs/relativeTime.min.js"
+      ],
+      "https://ccmjs.github.io/tkless-components/libs/dayjs/de.min.js"
+    ] ],
     "text": [ "ccm.load", "https://ccmjs.github.io/tkless-components/comment/resources/resources.mjs#en" ]
   },
   "html": [ "ccm.load", "./templates.mjs" ],
