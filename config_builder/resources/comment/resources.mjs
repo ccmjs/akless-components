@@ -176,18 +176,18 @@ export const test = {
     { "url": "./../../../libs/bootstrap-5/css/bootstrap-fonts.css", "context": "head" }
   ],
   "defaults": {
-    "libs": [ "ccm.load", [
-      [
-        "https://ccmjs.github.io/tkless-components/libs/dayjs/dayjs.min.js",
-        "https://ccmjs.github.io/tkless-components/libs/dayjs/relativeTime.min.js"
-      ],
-      "https://ccmjs.github.io/tkless-components/libs/dayjs/de.min.js"
-    ] ],
     "text": [ "ccm.load", "https://ccmjs.github.io/tkless-components/comment/resources/resources.mjs#en" ]
   },
   "html": [ "ccm.load", "./templates.mjs" ],
   "ignore": {
     "defaults": {
+      "libs": [ "ccm.load", [
+        [
+          "https://ccmjs.github.io/tkless-components/libs/dayjs/dayjs.min.js",
+          "https://ccmjs.github.io/tkless-components/libs/dayjs/relativeTime.min.js"
+        ],
+        "https://ccmjs.github.io/tkless-components/libs/dayjs/de.min.js"
+      ] ],
       "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.2.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/resources.min.js", "guest" ] ]
     },
     "mapping": {
