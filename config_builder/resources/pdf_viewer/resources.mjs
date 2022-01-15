@@ -81,13 +81,14 @@ export const test = {
     "./../../../libs/bootstrap-5/css/bootstrap-icons.css",
     { "url": "./../../../libs/bootstrap-5/css/bootstrap-fonts.css", "context": "head" }
   ],
+  "defaults": {
+    "text": [ "ccm.load", "https://ccmjs.github.io/tkless-components/pdf_viewer/resources/resources.mjs#en" ]
+  },
   "html": [ "ccm.load", "./templates.mjs" ],
-  "id": "pvb",
   "lang": [ "ccm.start", "./../../../lang/ccm.lang.js", {
     "active": "en",
     "translations": { "de": de, "en": en }
   } ],
-  "onstart": onStart,
   "onfinish": { "log": true },
   "text": en,
   "tool": [ "ccm.component", "https://ccmjs.github.io/tkless-components/pdf_viewer/ccm.pdf_viewer.js" ]
@@ -98,15 +99,16 @@ export const test = {
  * @type {Object}
  */
 export const demo = {
+  "defaults": {
+    "text": [ "ccm.load", "https://ccmjs.github.io/tkless-components/pdf_viewer/resources/resources.mjs#de" ]
+  },
   "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/config_builder/resources/pdf_viewer/templates.mjs" ],
-  "id": "pvb",
   "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/versions/ccm.lang-1.0.0.min.js", {
     "active": "de",
     "translations": { "de": de, "en": en }
   } ],
-  "onstart": onStart,
   "text": de,
-  "tool": [ "ccm.component", "https://ccmjs.github.io/tkless-components/pdf_viewer/ccm.pdf_viewer.min.js", [ "ccm.load", "https://ccmjs.github.io/tkless-components/pdf_viewer/resources/resources.mjs#demo" ] ]
+  "tool": [ "ccm.component", "https://ccmjs.github.io/tkless-components/pdf_viewer/versions/ccm.pdf_viewer-7.1.0.min.js" ]
 };
 
 /**
@@ -119,19 +121,6 @@ export const live = {
   "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/versions/ccm.lang-1.0.0.min.js", {
     "translations": { "de": de, "en": en }
   } ],
-  "libs": "",
-  "onstart": onStart,
   "text": de,
-  "tool": [ "ccm.component", "https://ccmjs.github.io/tkless-components/pdf_viewer/ccm.pdf_viewer.min.js", [ "ccm.load", "https://ccmjs.github.io/tkless-components/pdf_viewer/resources/resources.mjs#demo" ] ]
+  "tool": [ "ccm.component", "https://ccmjs.github.io/tkless-components/pdf_viewer/ccm.pdf_viewer.min.js" ]
 };
-
-/**
- * when config builder is started and the initial app configuration is loaded
- * @param instance - config builder instance
- * @param config - initial app configuration
- * @returns {Promise<*>}
- */
-async function onStart( instance, config ) {
-  config.text = await instance.ccm.helper.solveDependency( config.text );
-  return config;
-}
