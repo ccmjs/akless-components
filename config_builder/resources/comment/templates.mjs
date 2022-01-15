@@ -107,15 +107,15 @@ export function main( config, builder, events ) {
               <div class="mb-3">
                 ${ heading( 'text_locale' ) }
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="text.locale" value="de" id="${ id }-text-de">
-                  <label class="form-check-label" for="${ id }-text-de">
-                    ${ builder.text.locale_de }
+                  <input class="form-check-input" type="radio" name="text.locale" value="en" id="${ id }-text-en" ?checked=${ config.text.locale === 'en' }>
+                  <label class="form-check-label" for="${ id }-text-en">
+                    ${ builder.text.locale_en }
                   </label>
                 </div>
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="text.locale" value="en" id="${ id }-text-en">
-                  <label class="form-check-label" for="${ id }-text-en">
-                    ${ builder.text.locale_en }
+                  <input class="form-check-input" type="radio" name="text.locale" value="de" id="${ id }-text-de" ?checked=${ config.text.locale === 'de' }>
+                  <label class="form-check-label" for="${ id }-text-de">
+                    ${ builder.text.locale_de }
                   </label>
                 </div>
               </div>
