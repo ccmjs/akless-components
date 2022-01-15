@@ -283,38 +283,6 @@ export const live = {
   "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/config_builder/resources/styles.min.css" ],
   "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/config_builder/resources/comment/templates.mjs" ],
   "ignore": {
-    "defaults": {
-      "data": { "store": [ "ccm.store", { "name": "dms2-comment-data", "url": "https://ccm2.inf.h-brs.de" } ] },
-      "libs": [ "ccm.load", [
-        [
-          "https://ccmjs.github.io/tkless-components/libs/dayjs/dayjs.min.js",
-          "https://ccmjs.github.io/tkless-components/libs/dayjs/relativeTime.min.js"
-        ],
-        "https://ccmjs.github.io/tkless-components/libs/dayjs/de.min.js"
-      ] ],
-      "text": {
-        "key": "de",
-        "answer": "ANTWORTEN",
-        "answers": "Zeige %% Antworten",
-        "comments": "%% Kommentare",
-        "delete": "Kommentar löschen",
-        "deleted": "(gelöscht)",
-        "dislike": "Ich mag diesen Kommentar nicht",
-        "edit": "Kommentar editieren",
-        "heart": "Ich liebe diesen Kommentar",
-        "like": "Ich mag diesen Kommentar",
-        "picture": "Profilbild des Benutzers",
-        "recycle": "Löschen des Kommentars rückgängig machen",
-        "report": "Diesen Kommentar als unangemessen markieren",
-        "sort_by_date": "Sortierung nach Datum",
-        "sort_by_rating": "Sortierung nach Bewertung",
-        "submit": "Abschicken",
-        "updated": "(bearbeitet)",
-        "write_answer": "Schreibe eine Antwort...",
-        "write_comment": "Schreibe einen Kommentar..."
-      },
-      "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.2.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/resources.min.js", "cloud" ] ]
-    },
     "mapping": {
       "user": {
         "guest": {
