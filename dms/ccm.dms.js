@@ -4,7 +4,7 @@
  * @license The MIT License (MIT)
  * @version latest (5.0.0)
  * @changes
- * version 5.0.0 (13.01.2022): reimplementation
+ * version 5.0.0 (16.01.2022): reimplementation
  * (for older version changes see ccm.dms-4.5.0.js)
  */
 
@@ -510,9 +510,9 @@
             return $.setContent( this.element.querySelector( '#editor' ), tmp.editor.root );
           const config = app_key && data.apps.meta[ app_key ].ignore.config;
           Promise.all( [
-            this.ccm.helper.solveDependency( tool_meta.ignore.editors[ 0 ] ),
-            this.ccm.helper.solveDependency( tool_meta.ignore.defaults ),
-            this.ccm.helper.solveDependency( config )
+            $.solveDependency( tool_meta.ignore.editors[ 0 ] ),
+            $.solveDependency( tool_meta.ignore.defaults ),
+            $.solveDependency( config )
           ] ).then( ( [ editor_comp, defaults, config = {} ] ) => editor_comp.start( {
             data: { store: [ 'ccm.store', { app: config } ], key: 'app' },
             'ignore.defaults': defaults,
@@ -552,7 +552,7 @@
           const tool_meta = data.components.meta[ app_meta.component ];
           this.html.render( this.html.show( app_key ), element );
           this.lang && this.lang.translate();
-          await this.ccm.start( tool_meta.path, { src: await $.solveDependency( app_meta.ignore.config ), parent: this, root: this.element.querySelector( '#app' ) } );
+          await this.ccm.start( tool_meta.path, { src: app_meta.ignore.config, parent: this, root: this.element.querySelector( '#app' ) } );
           await this.handover.start( {
             root: this.element.querySelector( '#handover' ),
             'ignore.config': app_meta.ignore.config,
