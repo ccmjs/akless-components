@@ -12,7 +12,7 @@
   const component = {
     name: 'window',
     version: [ 2, 0, 0 ],
-    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-27.1.2.min.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-27.2.0.min.js',
     config: {
       "app": [ "ccm.start", "https://ccmjs.github.io/akless-components/blank/ccm.blank.js" ],
       "css": [ "ccm.load",
