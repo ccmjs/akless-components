@@ -4,14 +4,14 @@
  * @license The MIT License (MIT)
  * @version latest (5.0.0)
  * @changes
- * version 5.0.0 (16.01.2022): reimplementation
+ * version 5.0.0 (17.01.2022): reimplementation
  * (for older version changes see ccm.dms-4.5.0.js)
  */
 
 ( () => {
   const component = {
     name: 'dms',
-    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-27.1.2.min.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-27.2.0.min.js',
     config: {
       "apps": [ "ccm.store" ],
       "comment": [ "ccm.component", "https://ccmjs.github.io/tkless-components/comment/versions/ccm.comment-7.0.0.min.js" ],
@@ -45,6 +45,7 @@
       } ],
       "shadow": "none",
       "text": [ "ccm.load", "https://ccmjs.github.io/akless-components/dms/resources/resources.mjs#en" ],
+      "url": "https://ccmjs.github.io/akless-components/dms/resources/app.html",
       "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.2.js" ]
     },
     Instance: function () {
@@ -557,7 +558,11 @@
             root: this.element.querySelector( '#handover' ),
             'ignore.config': app_meta.ignore.config,
             tool: tool_meta.path,
-            url: 'https://ccmjs.github.io/akless-components/dms/resources/app.html'
+            url: ( component, config ) => {
+              debugger;
+              const index = $.convertComponentURL( component ).index
+              return this.url + '?component=' + index + '&config=' + config;
+            }
           } );
         }
       };
