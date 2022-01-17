@@ -12,14 +12,15 @@
 -->
 <title>App</title>
 <style>body { margin: 0 }</style>
-<script src="https://ccmjs.github.io/ccm/versions/ccm-27.1.2.min.js"></script>
+<script src="https://ccmjs.github.io/ccm/versions/ccm-27.2.0.min.js"></script>
 <body>
 <script>
-
-  const searchParams = new URL( window.location.href ).searchParams;
-  const component = searchParams.get( 'component' );
-  const config = { root: document.body, src: JSON.parse( searchParams.get( 'config' ) ) };
-  window.ccm.start( component, config );
+  ( async () => {
+    let [ component, config ] = new URL( window.location.href ).searchParams.get( 'app' ).split( ',' );
+    component = ( await window.ccm.get( { name: 'dms2-components', url: 'https://ccm2.inf.h-brs.de' }, component ) ).path;
+    config = [ 'ccm.get', { name: 'dms2-configs', url: 'https://ccm2.inf.h-brs.de' }, [ component, config ] ];
+    await window.ccm.start( component, { root: document.body, src: config } );
+  } )();
 
 /*
   // <link rel="manifest" href="manifest.webmanifest">

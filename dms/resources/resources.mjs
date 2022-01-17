@@ -745,7 +745,7 @@ export const example_apps = {
  * @type {Object}
  */
 export const test = {
-  "apps": [ "ccm.store", example_apps ],
+  "apps": [ "ccm.store", { "url": "https://ccm2.inf.h-brs.de", "name": "dms2-apps" } ],
   "comment": [ "ccm.component", "https://ccmjs.github.io/tkless-components/comment/ccm.comment.js", {
     "lang": [ "ccm.start", "./../lang/ccm.lang.js", {
       "active": "en",
@@ -763,7 +763,8 @@ export const test = {
     ] ],
     "text": [ "ccm.load", "https://ccmjs.github.io/tkless-components/comment/resources/resources.mjs#en" ]
   } ],
-  "components": [ "ccm.store", example_components ],
+  "components": [ "ccm.store", { "url": "https://ccm2.inf.h-brs.de", "name": "dms2-components" } ],
+  "configs": [ "ccm.store", { "url": "https://ccm2.inf.h-brs.de", "name": "dms2-configs" } ],
   "css": [ "ccm.load",
     [
       "./../libs/bootstrap-5/css/bootstrap.css",
