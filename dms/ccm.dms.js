@@ -45,7 +45,7 @@
       } ],
       "shadow": "none",
       "text": [ "ccm.load", "https://ccmjs.github.io/akless-components/dms/resources/resources.mjs#en" ],
-      "url": "https://ccmjs.github.io/akless-components/dms/resources/app.html",
+      "url": "https://ccmjs.github.io/akless-components/dms/app.html",
       "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.2.js" ]
     },
     Instance: function () {
