@@ -16,10 +16,14 @@
 <body>
 <script>
   ( async () => {
-    const app = new URL( window.location.href ).searchParams.get( 'app' ).split( ',' );
-    const component = ( await window.ccm.get( { name: 'dms2-components', url: 'https://ccm2.inf.h-brs.de' }, app[ 0 ] ) ).path;
-    const config = { root: document.body, src: [ 'ccm.get', { name: 'dms2-configs', url: 'https://ccm2.inf.h-brs.de' }, app ] };
-    await window.ccm.start( component, config );
+    const key = new URL( location.href ).searchParams.get( 'app' ).split( ',' );
+    const [ component, app, config ] = await Promise.all( [
+      ccm.get( { name: 'dms2-components', url: 'https://ccm2.inf.h-brs.de' }, key[ 0 ] ),
+      ccm.get( { name: 'dms2-apps', url: 'https://ccm2.inf.h-brs.de' }, key ),
+      ccm.get( { name: 'dms2-configs', url: 'https://ccm2.inf.h-brs.de' }, key )
+    ] );
+    document.title = app.title;
+    await ccm.start( component.path, { root: document.body, src: config } );
   } )();
 
 /*
