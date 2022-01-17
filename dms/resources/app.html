@@ -16,9 +16,10 @@
 <body>
 <script>
   ( async () => {
-    const [ component, config ] = new URL( window.location.href ).searchParams.get( 'app' ).split( ',' );
-    const { index, path } = ( await window.ccm.get( { name: 'dms2-components', url: 'https://ccm2.inf.h-brs.de' }, component ) );
-    await window.ccm.start( path, { root: document.body, src: [ 'ccm.get', { name: 'dms2-configs', url: 'https://ccm2.inf.h-brs.de' }, [ index, config ] ] } );
+    const app = new URL( window.location.href ).searchParams.get( 'app' );
+    const component = ( await window.ccm.get( { name: 'dms2-components', url: 'https://ccm2.inf.h-brs.de' }, app.split( ',' )[ 0 ] ) ).path;
+    const config = { root: document.body, src: [ 'ccm.get', { name: 'dms2-configs', url: 'https://ccm2.inf.h-brs.de' }, app ] };
+    await window.ccm.start( component, config );
   } )();
 
 /*
