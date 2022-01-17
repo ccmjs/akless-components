@@ -3,10 +3,12 @@
  * Core script of _ccmjs_ that is automatically loaded as soon as a component is integrated into a webpage.
  * The core script sets an object in the namespace [window.ccm]{@link ccm} that represents the loaded _ccmjs_ version
  * and defines the Custom Element <code>\<ccm-app\></code>.
- * @author André Kless <andre.kless@web.de> 2014-2021
+ * @author André Kless <andre.kless@web.de> 2014-2022
  * @license The MIT License (MIT)
- * @version latest (27.1.2)
+ * @version latest (27.2.0)
  * @changes
+ * version 27.2.0 (17.01.2022)
+ * - ccm.helper.isSubset() can check if a property not exists with value 'null'
  * version 27.1.2 (27.12.2021)
  * - highestByProperty() and nearestByProperty() returns null if there is no start instance
  * version 27.1.1 (28.09.2021)
@@ -505,7 +507,7 @@
      * @description Returns the _ccmjs_ version.
      * @returns {ccm.types.version_nr}
      */
-    version: () => '27.1.2',
+    version: () => '27.2.0',
 
     /**
      * @summary loads resources
@@ -2501,7 +2503,11 @@
       isSubset( obj, other ) {
 
         for ( const key in obj )
-          if ( obj[ key ] === true ) {
+          if ( obj[ key ] === null ) {
+            if ( other[ key ] !== undefined )
+              return false;
+          }
+          else if ( obj[ key ] === true ) {
             if ( !other[ key ] )
               return false;
           }
