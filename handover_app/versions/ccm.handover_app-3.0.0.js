@@ -91,7 +91,7 @@
          * app URL
          * @type {string}
          */
-        const app_url = this.url && $.appURL( this.url, this.tool, this.ignore.config );
+        const app_url = this.url && ( typeof this.url === 'function' ? this.url( this.tool, this.ignore.config ) : $.appURL( this.url, this.tool, this.ignore.config ) );
 
         /**
          * different forms of how the app configuration is provided
