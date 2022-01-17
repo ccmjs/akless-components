@@ -558,11 +558,7 @@
             root: this.element.querySelector( '#handover' ),
             'ignore.config': app_meta.ignore.config,
             tool: tool_meta.path,
-            url: ( component, config ) => {
-              debugger;
-              const index = $.convertComponentURL( component ).index
-              return this.url + '?component=' + index + '&config=' + config;
-            }
+            url: ( component, config ) => this.url + '?component=' + $.convertComponentURL( component ).index + '&config=' + config[ 2 ].toString()
           } );
         }
       };
