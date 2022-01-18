@@ -4,7 +4,7 @@
  * @license The MIT License (MIT)
  * @version 5.0.0
  * @changes
- * version 5.0.0 (17.01.2022): reimplementation
+ * version 5.0.0 (18.01.2022): reimplementation
  * (for older version changes see ccm.dms-4.5.0.js)
  */
 
@@ -515,16 +515,20 @@
             $.solveDependency( tool_meta.ignore.editors[ 0 ] ),
             $.solveDependency( tool_meta.ignore.defaults ),
             $.solveDependency( config )
-          ] ).then( ( [ editor_comp, defaults, config = {} ] ) => editor_comp.start( {
-            data: { store: [ 'ccm.store', { app: config } ], key: 'app' },
-            'ignore.defaults': defaults,
-            parent: this,
-            preview: false,
-            root: this.element.querySelector( '#editor' )
-          } ).then( editor_inst => {
-            tmp.editor = editor_inst;
-            tmp.app_key = app_key;
-          } ) );
+          ] ).then( ( [ editor_comp, defaults, config = {} ] ) => {
+            if ( config.data && config.data.store && config.data.key && data.apps.meta[ app_key ]._.creator !== ( this.user.getValue() || {} ).key )
+              delete config.data.key;
+            editor_comp.start( {
+              data: { store: [ 'ccm.store', { app: config } ], key: 'app' },
+              'ignore.defaults': defaults,
+              parent: this,
+              preview: false,
+              root: this.element.querySelector( '#editor' )
+            } ).then( editor_inst => {
+              tmp.editor = editor_inst;
+              tmp.app_key = app_key;
+            } )
+          } );
         },
         create: async tool_key => {
           this.render.header( 'tools' );

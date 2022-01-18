@@ -751,8 +751,8 @@ export function editor( tool_key, app_key ) {
         <button class="btn btn-apps text-nowrap m-1" title="${ dms.text.tooltip_save }" data-lang="tooltip_save-title" ?data-hidden=${ !is_creator } @click=${ () => dms.events.onSave( app_meta.key ) }>
           <span data-lang="btn_save_app">${ dms.text.save_app }</span>
         </button>
-        <button class="btn btn-tools text-nowrap m-1" title="${ dms.text.tooltip_create }" data-lang="tooltip_create-title" @click=${ () => dms.events.onCreate( tool_key ) }>
-          <span data-lang="${ is_creator ? 'btn_create_new' : 'btn_create_app' }">${ dms.text[ is_creator ? 'btn_create_new' : 'btn_create_app' ] }</span>
+        <button class="btn btn-tools text-nowrap m-1" title="${ dms.text.tooltip_create }" data-lang="tooltip_create-title" ?data-hidden=${ is_creator } @click=${ () => dms.events.onCreate( tool_key ) }>
+          <span data-lang="btn_create_app">${ dms.text.btn_create_app }</span>
         </button>
         <button class="btn btn-light text-nowrap m-1" title="tooltip_take" disabled data-lang="tooltip_take-title" ?data-hidden=${ !is_creator } @click=${ () => {} }>
           <i class="bi bi-share"></i>
