@@ -519,6 +519,7 @@
             if ( config.data && config.data.store && config.data.key && data.apps.meta[ app_key ]._.creator !== ( this.user.getValue() || {} ).key )
               delete config.data.key;
             editor_comp.start( {
+              bootstrap: '',
               data: { store: [ 'ccm.store', { app: config } ], key: 'app' },
               'ignore.defaults': defaults,
               parent: this,
