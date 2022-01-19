@@ -167,6 +167,7 @@ export const en = {
  * @type {Object}
  */
 export const test = {
+  "bootstrap": [ "ccm.load", "./../libs/bootstrap-5/js/bootstrap.bundle.js" ],
   "css": [ "ccm.load",
     [  // serial
       "./../../../libs/bootstrap-5/css/bootstrap.css",
