@@ -34,3 +34,7 @@
 #btn-abort {
   float: right;
 }
+
+.well-sm {
+  padding: 3px !important;
+}
