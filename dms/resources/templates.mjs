@@ -40,7 +40,7 @@ export function main() {
       </a>
     </div>
     <div class="m-3 p-1 rounded bg-white border">
-      <img src="https://ccmjs.github.io/digital-makerspace/img/bmbf-de.jpg" title="Diese Anwendung wurde mit Mitteln des Bundesministeriums für Bildung und Forschung unter dem Förderkennzeichen 01|S21S56 gefördert. Die Verantwortung für den Inhalt dieser Anwendung liegt bei dem Entwickler André Kless.">
+      <img src="${ dms.text.src_bmbf }" data-lang="src_bmbf-src" title="Diese Anwendung wurde mit Mitteln des Bundesministeriums für Bildung und Forschung unter dem Förderkennzeichen 01|S21S56 gefördert. Die Verantwortung für den Inhalt dieser Anwendung liegt bei dem Entwickler André Kless.">
     </div>
     <nav class="m-2">
       <a class="btn btn-link btn-sm" href="${ dms.text.href_contact }" target="_blank" role="button" data-lang="href_contact-href a_contact">${ dms.text.a_contact }</a>
