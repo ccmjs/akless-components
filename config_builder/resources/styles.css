@@ -1,15 +1,11 @@
 /**
  * @overview default layout of ccmjs-based web component for building an app configuration
- * @author André Kless <andre.kless@web.de.de> 2021
+ * @author André Kless <andre.kless@web.de.de> 2021-2022
  * @license The MIT License (MIT)
  */
 
 .config_builder header > * {
-  padding: 0.5em;
-}
-
-.config_builder header:empty {
-  display: none !important;
+  padding: 0.5em 0 0.5em 0.5em;
 }
 
 .config_builder .heading {

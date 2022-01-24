@@ -1,6 +1,6 @@
 /**
  * @overview HTML templates for building an app configuration
- * @author André Kless <andre.kless@web.de> 2021
+ * @author André Kless <andre.kless@web.de> 2021-2022
  */
 
 import { html, render, unsafeHTML } from 'https://ccmjs.github.io/akless-components/libs/lit/lit.js';
@@ -111,19 +111,19 @@ export function checkbox( setup ) {
 
 /**
  * returns the HTML template for the preview and submit button
- * @param {boolean} disabled - both buttons are disabled
+ * @param {boolean} [disabled] - both buttons are disabled
  * @returns {TemplateResult}
  */
 export function buttons( disabled ) {
   return html`
-    <div class="d-grid">
-      <button type="button" class="btn btn-info rounded-0" data-bs-toggle="modal" data-bs-target="#${ id }-preview" data-lang="preview" ?disabled=${ disabled } ?data-hidden=${ !builder.preview } @click=${ events.onPreview }>
+    <footer class="border-top d-flex align-items-center flex-wrap text-nowrap p-3">
+      <button type="button" class="btn btn-info me-3" data-bs-toggle="modal" data-bs-target="#${ id }-preview" data-lang="preview" ?disabled=${ disabled } ?data-hidden=${ !builder.preview } @click=${ events.onPreview }>
         ${ builder.text.preview }
       </button>
-      <button class="btn btn-primary rounded-0" type="submit" data-lang="submit" ?disabled=${ disabled } ?data-hidden=${ !builder.onfinish || !builder.text.submit }>
+      <button class="btn btn-primary" type="submit" data-lang="submit" ?disabled=${ disabled } ?data-hidden=${ !builder.onfinish || !builder.text.submit }>
         ${ builder.text.submit }
       </button>
-    </div>
+    </footer>
   `;
 }
 
