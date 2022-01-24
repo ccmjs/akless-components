@@ -13,6 +13,7 @@
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-27.1.1.min.js',
     version: [ 1, 0, 0 ],
     config: {
+      "bootstrap": [ "ccm.load", "https://ccmjs.github.io/akless-components/libs/bootstrap-5/js/bootstrap.bundle.min.js" ],
       "comment_builder": [ "ccm.instance", "https://ccmjs.github.io/akless-components/config_builder/versions/ccm.config_builder-1.0.0.js", {
         "src": [ "ccm.load", "https://ccmjs.github.io/akless-components/config_builder/resources/comment/resources.mjs#basic" ],
         "libs": "",
@@ -37,7 +38,6 @@
       },
       "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-7.8.0.min.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/qa_slidecast_builder/resources/templates.mjs" ],
-      "libs": [ "ccm.load", "https://ccmjs.github.io/akless-components/libs/bootstrap-5/js/bootstrap.bundle.min.js" ],
 //    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-5.0.1.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.min.js", "greedy" ] ],
 //    "onfinish": { "log": true },
       "preview": true,
