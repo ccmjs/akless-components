@@ -25,8 +25,8 @@ export function heading( key  ) {
       </button>
     </div>
     <div class="collapse info" id="${ id }-${ key }-info">
-      <small class="card card-body bg-info p-2">
-        <span data-lang="${ key }_info">${ unsafeHTML( builder.text[ key + '_info' ] ) }</span>
+      <small class="card card-body bg-info p-2" data-lang="${ key }_info">
+        ${ unsafeHTML( builder.text[ key + '_info' ] ) }
       </small>
     </div>
   `;
@@ -116,7 +116,7 @@ export function checkbox( setup ) {
  */
 export function buttons( disabled ) {
   return html`
-    <footer class="border-top d-flex align-items-center flex-wrap text-nowrap p-3">
+    <footer class="border-top border-dark d-flex align-items-center flex-wrap text-nowrap p-3">
       <button type="button" class="btn btn-info me-3" data-bs-toggle="modal" data-bs-target="#${ id }-preview" data-lang="preview" ?disabled=${ disabled } ?data-hidden=${ !builder.preview } @click=${ events.onPreview }>
         ${ builder.text.preview }
       </button>
