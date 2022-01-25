@@ -15,7 +15,7 @@
 ( () => {
   const component = {
     name: 'config_builder',
-    version: [ 1, 0, 0 ],
+    version: [ 1, 1, 0 ],
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-27.1.2.min.js',
     config: {
       "bootstrap": [ "ccm.load", "https://ccmjs.github.io/akless-components/libs/bootstrap-5/js/bootstrap.bundle.min.js" ],
