@@ -14,9 +14,9 @@
   /* Backgrounds */
 
   .bg-info {
-    color: #5dbecd;
+    color: #5dbecd !important;
     background-color: #0c515c !important;
-    border-color: #0e616e;
+    border-color: #0e616e !important;
   }
 
   /* Borders */
@@ -28,38 +28,38 @@
   /* Forms */
 
   .form-control, .form-select {
-    color: #b1b1b1;
-    background-color: #222;
-    border: 1px solid #515151;
+    color: #b1b1b1 !important;
+    background-color: #222 !important;
+    border: 1px solid #515151 !important;
   }
 
   .form-control:focus, .form-select:focus {
-    color: #b1b1b1;
-    background-color: #222;
-    border-color: #9badbf;
-    outline: 0;
-    box-shadow: 0 0 0 0.25rem rgba( 55, 90, 127, 0.25 );
+    color: #b1b1b1 !important;
+    background-color: #222 !important;
+    border-color: #9badbf !important;
+    outline: 0 !important;
+    box-shadow: 0 0 0 0.25rem rgba( 55, 90, 127, 0.25 ) !important;
   }
 
   .form-check-input {
-    background-color: #222;
+    background-color: #222 !important;
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba%28250, 250, 250, 0.25%29'/%3e%3c/svg%3e") !important;
-    border: 1px solid rgba( 255, 255, 255, 0.25 );
+    border: 1px solid rgba( 255, 255, 255, 0.25 ) !important;
   }
 
   .form-check-input:focus {
-    border-color: #86b7fe;
-    outline: 0;
-    box-shadow: 0 0 0 0.25rem rgba( 13, 110, 253, 0.25 );
+    border-color: #86b7fe !important;
+    outline: 0 !important;
+    box-shadow: 0 0 0 0.25rem rgba( 13, 110, 253, 0.25 ) !important;
   }
 
   .form-check-input:active {
-    filter: brightness( 0.9 );
+    filter: brightness( 0.9 ) !important;
   }
 
   .form-check-input:checked {
-    background-color: #375a7f;
-    border-color: #375a7f;
+    background-color: #375a7f !important;
+    border-color: #375a7f !important;
   }
 
   /* Buttons */
@@ -69,55 +69,55 @@
   }
 
   .btn-primary {
-    background-color: #375a7f;
-    border-color: #375a7f;
+    background-color: #375a7f !important;
+    border-color: #375a7f !important;
   }
 
   .btn-primary:hover {
-    background-color: #2f4d6c;
-    border-color: #2c4866;
+    background-color: #2f4d6c !important;
+    border-color: #2c4866 !important;
   }
 
   .btn-primary:active {
-    background-color: #2c4866;
-    border-color: #29445f;
+    background-color: #2c4866 !important;
+    border-color: #29445f !important;
   }
 
   .btn-primary:focus {
-    background-color: #2f4d6c;
-    border-color: #2c4866;
-    box-shadow: 0 0 0 0.25rem rgba( 84, 114, 145, 0.5 );
+    background-color: #2f4d6c !important;
+    border-color: #2c4866 !important;
+    box-shadow: 0 0 0 0.25rem rgba( 84, 114, 145, 0.5 ) !important;
   }
 
   .btn-info {
-    background-color: #17a2b8;
-    border-color: #17a2b8;
+    background-color: #17a2b8 !important;
+    border-color: #17a2b8 !important;
   }
 
   .btn-info:hover {
-    background-color: #148a9c;
-    border-color: #128293;
+    background-color: #148a9c !important;
+    border-color: #128293 !important;
   }
 
   .btn-info:active {
-    background-color: #128293;
-    border-color: #117a8a;
+    background-color: #128293 !important;
+    border-color: #117a8a !important;
   }
 
   .btn-info:focus {
-    background-color: #148a9c;
-    border-color: #128293;
-    box-shadow: 0 0 0 0.25rem rgba( 57, 175, 194, 0.5 );
+    background-color: #148a9c !important;
+    border-color: #128293 !important;
+    box-shadow: 0 0 0 0.25rem rgba( 57, 175, 194, 0.5 ) !important;
   }
 
   /* Modal */
 
   .modal-content {
-    background-color: black;
+    background-color: black !important;
   }
 
   .btn-close {
-    background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fafafa'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3e%3c/svg%3e") center/1em auto no-repeat;
+    background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fafafa'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3e%3c/svg%3e") center/1em auto no-repeat !important;
   }
 
 }
