@@ -19,11 +19,9 @@ export function main( config, builder, events ) {
   return html`
     <form @submit=${ events.onSubmit }>
       <header class="d-flex justify-content-end align-items-center border-bottom px-3"></header>
-      <main>
-          <div class="p-3">
-            ${ text( { prop: 'pdf', type: 'url' } ) }
-            ${ checkbox( { prop: 'downloadable', switcher: true } ) }
-          </div>
+      <main class="p-3">
+        ${ text( { prop: 'pdf', type: 'url' } ) }
+        ${ checkbox( { prop: 'downloadable', switcher: true } ) }
       </main>
       ${ buttons() }
     </form>

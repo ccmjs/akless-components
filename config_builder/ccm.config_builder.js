@@ -115,6 +115,7 @@
         let form_data = $.formData( this.element.querySelector( 'form' ) );
         for ( const key in this.ignore.mapping )
           form_data[ key ] = this.ignore.mapping[ key ][ form_data[ key ] ].value;
+        delete form_data.parent;
         return Object.assign( {}, config, form_data );
       };
 

@@ -8,7 +8,7 @@
  * german texts and labels for PDF viewer builder
  * @type {Object}
  */
-const de = {
+export const de = {
   "downloadable": "PDF kann heruntergeladen werden",
   "downloadable_info": "Wenn aktiviert, gibt es in der Navigationsleiste einen zusätzlichen Button, über den das PDF heruntergeladen werden kann. Außerdem kann die aktuelle Seite mittels Rechtsklick als Bild gespeichert werden. Sie können den Download des PDFs über die Weboberfläche verhindern, indem Sie dieses Feld deaktivieren.",
   "pdf": "URL des PDF",
@@ -22,7 +22,7 @@ const de = {
  * english texts and labels for PDF viewer builder
  * @type {Object}
  */
-const en = {
+export const en = {
   "downloadable": "PDF can be downloaded",
   "downloadable_info": "If enabled, there is an additional button in the navigation bar that can be used to download the PDF. In addition, the current page can be saved as an image by right-clicking on a page. You can prevent the PDF from being downloaded via the web interface by deactivating this field.",
   "pdf": "URL of the PDF",
@@ -36,7 +36,7 @@ const en = {
  * default values for app configuration
  * @type {Object}
  */
-const defaults = {
+export const defaults = {
   "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/versions/ccm.lang-1.0.0.min.js", {
     "translations": {
       "de": [ "ccm.load", "https://ccmjs.github.io/tkless-components/pdf_viewer/resources/resources.mjs#de" ],
@@ -78,9 +78,6 @@ export const test = {
  * @type {Object}
  */
 export const demo = {
-  "defaults": {
-    "text": [ "ccm.load", "https://ccmjs.github.io/tkless-components/pdf_viewer/resources/resources.mjs#de" ]
-  },
   "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/config_builder/resources/pdf_viewer/templates.mjs" ],
   "ignore": { "defaults": defaults },
   "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/versions/ccm.lang-1.0.0.min.js", {

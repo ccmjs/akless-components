@@ -2,7 +2,7 @@
  * @overview ccmjs-based web component for building an app configuration
  * @author André Kless <andre.kless@web.de> 2021-2022
  * @license The MIT License (MIT)
- * @version 1.1.0
+ * @version latest (1.1.0)
  * @changes
  * version 1.1.0 (29.12.2021):
  * - added optional multilingualism
@@ -15,7 +15,6 @@
 ( () => {
   const component = {
     name: 'config_builder',
-    version: [ 1, 1, 0 ],
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-27.1.2.min.js',
     config: {
       "bootstrap": [ "ccm.load", "https://ccmjs.github.io/akless-components/libs/bootstrap-5/js/bootstrap.bundle.min.js" ],
@@ -116,6 +115,7 @@
         let form_data = $.formData( this.element.querySelector( 'form' ) );
         for ( const key in this.ignore.mapping )
           form_data[ key ] = this.ignore.mapping[ key ][ form_data[ key ] ].value;
+        delete form_data.parent;
         return Object.assign( {}, config, form_data );
       };
 
