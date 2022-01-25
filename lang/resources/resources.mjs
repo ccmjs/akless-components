@@ -9,7 +9,6 @@
  * @type {Object}
  */
 export const test = {
-  "active": "en",
   "css.1": "./../lang/resources/styles.css",
   "html.1": "./../lang/resources/templates.mjs",
   "onchange": lang => console.log( lang )
@@ -19,6 +18,4 @@ export const test = {
  * demo configuration (absolute paths)
  * @type {Object}
  */
-export const demo = {
-  "active": "de"
-};
+export const demo = {};

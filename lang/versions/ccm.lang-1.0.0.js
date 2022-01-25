@@ -1,6 +1,6 @@
 /**
  * @overview ccmjs-based web component for multilingualism
- * @author André Kless <andre.kless@web.de> 2021
+ * @author André Kless <andre.kless@web.de> 2021-2022
  * @license The MIT License (MIT)
  * @version 1.0.0
  * @changes
@@ -11,7 +11,7 @@
   const component = {
     name: 'lang',
     version: [ 1, 0, 0 ],
-    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-27.1.2.min.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-27.2.0.min.js',
     config: {
       "translations": {
         "de": {},

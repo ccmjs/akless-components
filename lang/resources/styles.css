@@ -11,3 +11,21 @@ select {
   padding: 0.25rem;
   width: 3.6em;
 }
+
+@media (prefers-color-scheme: dark) {
+
+  select {
+    color: #b1b1b1;
+    background-color: #222;
+    border: 1px solid #515151;
+  }
+
+  select:focus {
+    color: #b1b1b1;
+    background-color: #222;
+    border-color: #9badbf;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba( 55, 90, 127, 0.25 );
+  }
+
+}
