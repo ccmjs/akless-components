@@ -102,7 +102,7 @@ export function checkbox( setup ) {
       </button>
     </div>
     <div class="collapse info" id="${ id }-${ key }-info">
-      <small class="card card-body bg-info p-2">
+      <small class="card card-body d-inline-block bg-info p-2">
         <span data-lang="${ key }_info">${ unsafeHTML( builder.text[ key + '_info' ] ) }</span>
       </small>
     </div>
