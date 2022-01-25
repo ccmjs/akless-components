@@ -57,6 +57,7 @@ export const test = {
   "css": [ "ccm.load",
     [  // serial
       "./../../../libs/bootstrap-5/css/bootstrap.css",
+      "./../../../libs/bootstrap-5/css/bootstrap-dark.css",
       "./../styles.css"
     ],
     "./../../../libs/bootstrap-5/css/bootstrap-icons.css",

@@ -1,6 +1,6 @@
 /**
  * @overview ccmjs-based web component for building an app configuration
- * @author André Kless <andre.kless@web.de> 2021
+ * @author André Kless <andre.kless@web.de> 2021-2022
  * @license The MIT License (MIT)
  * @version 1.1.0
  * @changes
@@ -22,6 +22,7 @@
       "css": [ "ccm.load",
         [  // serial
           "https://ccmjs.github.io/akless-components/libs/bootstrap-5/css/bootstrap.min.css",
+          "https://ccmjs.github.io/akless-components/libs/bootstrap-5/css/bootstrap-dark.min.css",
           "https://ccmjs.github.io/akless-components/config_builder/resources/styles.min.css"
         ],
         "https://ccmjs.github.io/akless-components/libs/bootstrap-5/css/bootstrap-icons.min.css",
