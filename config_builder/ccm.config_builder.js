@@ -4,18 +4,19 @@
  * @license The MIT License (MIT)
  * @version latest (1.1.0)
  * @changes
- * version 1.1.0 (29.12.2021):
+ * version 1.1.0 (26.02.2022):
  * - added optional multilingualism
  * - added optional user authentication
  * - added HTML class for CSS prefixing
- * - uses ccmjs v27.1.2 as default
+ * - uses ccmjs v27.2.0 as default
+ * - uses helper.mjs v8.0.0 as default
  * version 1.0.0 (19.10.2021)
  */
 
 ( () => {
   const component = {
     name: 'config_builder',
-    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-27.1.2.min.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-27.2.0.min.js',
     config: {
       "bootstrap": [ "ccm.load", "https://ccmjs.github.io/akless-components/libs/bootstrap-5/js/bootstrap.bundle.min.js" ],
       "css": [ "ccm.load",
@@ -30,7 +31,7 @@
 //    "data": { "store": [ "ccm.store" ] },
       "defaults": {},
       "ignore": { "defaults": {} },
-      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-7.8.0.min.mjs" ],
+      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-8.0.0.min.mjs" ],
 //    "html": [ "ccm.load", "templates.mjs" ],
 //    "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/versions/ccm.lang-1.0.0.min.js" ],
 //    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-5.0.1.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.min.js", "greedy" ] ],
