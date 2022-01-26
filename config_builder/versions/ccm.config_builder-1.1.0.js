@@ -134,7 +134,8 @@
         onPreview: () => {
           const preview_body = this.element.querySelector( '.modal-body' );
           $.setContent( preview_body, '' );
-          this.tool.start( Object.assign( this.getValue(), { root: preview_body } ) );
+          this.logger && this.logger.log( 'preview', $.clone( config ) );               // logging of 'preview' event
+          this.tool.start( Object.assign( this.getValue(), { root: preview_body } ) );  // render app in preview
         },
 
         /**
