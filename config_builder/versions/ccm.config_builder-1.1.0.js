@@ -68,7 +68,7 @@
        */
       this.ready = async () => {
         $ = Object.assign( {}, this.ccm.helper, this.helper ); $.use( this.ccm );  // set shortcut to help functions
-        this.element.classList.add( 'config_builder' );
+        this.element.classList.add( this.component.name );
         this.logger && this.logger.log( 'ready', $.privatize( this, true ) );      // logging of 'ready' event
       };
 
