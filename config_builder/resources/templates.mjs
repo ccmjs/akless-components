@@ -25,7 +25,7 @@ export function heading( key  ) {
       </button>
     </div>
     <div class="collapse info" id="${ id }-${ key }-info">
-      <small class="card card-body bg-info p-2" data-lang="${ key }_info">
+      <small class="card card-body bg-info p-2 d-inline-block" data-lang="${ key }_info">
         ${ unsafeHTML( builder.text[ key + '_info' ] ) }
       </small>
     </div>
