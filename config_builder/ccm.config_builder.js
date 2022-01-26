@@ -127,7 +127,7 @@
       const events = {
 
         /** when the value of an input field changes */
-        onChange: () => this.render( this.getValue() ),
+        onChange: () => this.render(),
 
         /** when 'preview' button is clicked */
         onPreview: () => {
