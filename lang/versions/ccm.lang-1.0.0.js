@@ -122,9 +122,10 @@
         if ( index ) return this.translations[ this.active ][ index ];
         this.parent && this.parent.element.querySelectorAll( '*[data-lang]' ).forEach( elem => {
           elem.dataset.lang.split( ' ' ).forEach( index => {
-            const split = index.split( '-' );
             if ( !index ) return;
+            const split = index.split( '-' );
             let translation = this.translations[ this.active ][ split[ 0 ] ];
+            if ( !translation ) return;
             if ( split.length > 2 ) {
               let i = 2;
               translation = translation.replace( /%%/g, match => split[ i++ ] || match );
