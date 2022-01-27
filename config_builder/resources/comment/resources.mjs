@@ -4,7 +4,7 @@
  * @license The MIT License (MIT)
  */
 
-import { de as comment_de, en as comment_en, ignore } from 'https://ccmjs.github.io/tkless-components/comment/resources/resources.mjs';
+import { de as comment_de, en as comment_en } from 'https://ccmjs.github.io/tkless-components/comment/resources/resources.mjs';
 
 /**
  * german texts and labels for commentary builder
