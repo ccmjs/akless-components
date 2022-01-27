@@ -4,11 +4,13 @@
  * @license The MIT License (MIT)
  */
 
+import { de as comment_de, en as comment_en, ignore } from 'https://ccmjs.github.io/tkless-components/comment/resources/resources.mjs';
+
 /**
  * german texts and labels for commentary builder
  * @type {Object}
  */
-export const de = {
+export const builder_de = {
   "controls": "Kontrollelemente",
   "controls_answer": "Antworten auf einen Kommentar",
   "controls_answer_info": "Jeder Kommentar hat einen Button, über den man gezielt auf diesen Kommentar antworten kann. Man kann auch auf einen eigenen Kommentar antworten.",
@@ -45,7 +47,7 @@ export const de = {
  * english texts and labels for commentary builder
  * @type {Object}
  */
-export const en = {
+export const builder_en = {
   "controls": "Controls",
   "controls_answer": "Answerable Comments",
   "controls_answer_info": "Every comment has an \"Answer\" button that can be used to answer to the comment.",
@@ -84,6 +86,9 @@ export const en = {
  */
 export const ignore = {
   "defaults": {
+    "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/versions/ccm.lang-1.0.0.min.js", {
+      "translations": { "de": comment_de, "en": comment_en }
+    } ],
     "libs": [ "ccm.load", [
       [
         "https://ccmjs.github.io/tkless-components/libs/dayjs/dayjs.min.js",
@@ -148,10 +153,10 @@ export const test = {
   "html": [ "ccm.load", "./templates.mjs" ],
   "ignore": ignore,
   "lang": [ "ccm.start", "./../../../lang/ccm.lang.js", {
-    "translations": { "de": de, "en": en }
+    "translations": { "de": builder_de, "en": builder_en }
   } ],
   "onfinish": { "log": true },
-  "text": de,
+  "text": builder_de,
   "tool": [ "ccm.component", "https://ccmjs.github.io/tkless-components/comment/ccm.comment.js" ]
 };
 
@@ -163,8 +168,8 @@ export const demo = {
   "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/config_builder/resources/comment/templates.mjs" ],
   "ignore": ignore,
   "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/versions/ccm.lang-1.0.0.min.js", {
-    "translations": { "de": de, "en": en }
+    "translations": { "de": builder_de, "en": builder_en }
   } ],
-  "text": de,
+  "text": builder_de,
   "tool": [ "ccm.component", "https://ccmjs.github.io/tkless-components/comment/versions/ccm.comment-7.1.0.min.js" ]
 };
