@@ -1,12 +1,11 @@
 /**
- * @overview data-based resources for building a "Q&A Slidecast"
- * @author André Kless <andre.kless@web.de> 2021
+ * @overview data-based resources for building a slidecast with commentary
+ * @author André Kless <andre.kless@web.de> 2021-2022
  * @license The MIT License (MIT)
  */
 
-import { slides_de } from 'https://ccmjs.github.io/tkless-components/qa_slidecast/resources/resources.mjs';
-import { text_en as slidecast_en, text_de as slidecast_de } from 'https://ccmjs.github.io/tkless-components/qa_slidecast/resources/resources.mjs';
-import { de as comment_de } from 'https://ccmjs.github.io/tkless-components/comment/resources/resources.mjs';
+import { text_de as slidecast_de, text_en as slidecast_en } from 'https://ccmjs.github.io/tkless-components/qa_slidecast/resources/resources.mjs';
+//import { de as comment_de } from 'https://ccmjs.github.io/tkless-components/comment/resources/resources.mjs';
 
 /**
  * english texts and labels for "Q&A Slidecast" builder
@@ -21,7 +20,7 @@ const builder_en = {
   "description": "..have an optional description",
   "description_info": "If enabled, each slide can optionally have an individual description, which is then displayed below the slide. A separate app can be specified as a description instead of a text.",
   "expand": "What should be added?",
-  "expand_info": "You can add an app, image, or video. To add a slide, the slide can be added as an image. Please note that a slide added in this way will not be included in a slide download.",
+  "expand_info": "You can add an app, image, or video. To add a slide, the slide can be added as an image. Please note that a slide added in this way will not be included in a slides download.",
   "expand_app": "App",
   "expand_app_input": "HTML Embed Code of the App",
   "expand_app_input_info": "Enter the HTML embed code of an app that has already been created in the Digital Makerspace.",
@@ -133,7 +132,7 @@ const builder_de = {
   "pdf_viewer_2_text_protected_info": "Meldung, die beim passwortgeschützten PDF erscheint.",
   "preview": "Vorschau",
   "preview_title": "Vorschau der App",
-  "section_basis": "Grundlage",
+  "section_basis": "Basis",
   "section_commentary": "Kommentierung",
   "section_labels": "Texte",
   "section_slides": "Folien",
@@ -186,52 +185,50 @@ const viewer_de = {
 };
 
 /**
- * example for app state data
- * @type {Object}
- */
-const example = {
-  "comment": [ "ccm.component", "https://ccmjs.github.io/tkless-components/comment/versions/ccm.comment-7.0.0.min.js", { "text": comment_de } ],
-  "ignore": { "slides": slides_de },
-  "pdf_viewer": [ "ccm.start", "https://ccmjs.github.io/tkless-components/pdf_viewer/versions/ccm.pdf_viewer-7.0.0.min.js", {
-    "downloadable": true,
-    "pdf": "https://ccmjs.github.io/tkless-components/pdf_viewer/resources/demo/de/slides.pdf",
-    "text": viewer_de
-  } ],
-  "text": slidecast_de
-};
-
-/**
  * test configuration (relative paths)
  * @type {Object}
  */
 export const test = {
   "comment_builder.1": "./../config_builder/ccm.config_builder.js",
-  "comment_builder.2.src.1": "./../config_builder/resources/comment/resources.mjs#basic",
+  "comment_builder.2.src.1": "./../config_builder/resources/comment/resources.mjs#demo",
   "css": [ "ccm.load",
     [  // serial
       "./../libs/bootstrap-5/css/bootstrap.css",
+      "./../libs/bootstrap-5/css/bootstrap-dark.css",
       "./../qa_slidecast_builder/resources/styles.css"
     ],
     "./../libs/bootstrap-5/css/bootstrap-icons.css",
     { "url": "./../libs/bootstrap-5/css/bootstrap-fonts.css", "context": "head" }
   ],
   "data": {
-    "store": [ "ccm.store", { "app": example } ],
+    "store": [ "ccm.store"/*, { "app": example }*/ ],
     "key": "app"
-  },
-  "defaults": {
-    "pdf_viewer.2": {
-      "downloadable": true,
-      "pdf": "https://ccmjs.github.io/tkless-components/pdf_viewer/resources/demo/en/slides.pdf",
-      "text": viewer_en
-    },
-    "text": slidecast_en
   },
   "helper.1": "./../modules/helper.mjs",
   "html.1": "./../qa_slidecast_builder/resources/templates.mjs",
+  "ignore": {
+    "defaults": {
+      "description": true,
+      "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/ccm.lang.js", {
+        "translations": { "de": slidecast_de, "en": slidecast_en }
+      } ],
+      "pdf_viewer.2": {
+        "downloadable": true,
+        "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/ccm.lang.js", {
+          "translations": { "de": viewer_de, "en": viewer_en }
+        } ],
+        "pdf": "https://ccmjs.github.io/tkless-components/pdf_viewer/resources/demo/de/slides.pdf",
+        "text": viewer_de
+      },
+      "text": slidecast_de
+    }
+  },
+  "lang": [ "ccm.start", "./../../../lang/ccm.lang.js", {
+    "translations": { "de": builder_de, "en": builder_en }
+  } ],
   "logger": [ "ccm.instance", "./../log/ccm.log.js", [ "ccm.get", "./../log/resources/configs.js", "greedy" ] ],
   "onfinish": { "log": true },
-  "text": builder_en
+  "text": builder_de
 };
 
 /**
@@ -251,12 +248,14 @@ export const demo = {
     "text": [ "ccm.load", "https://ccmjs.github.io/akless-components/config_builder/resources/comment/resources.mjs#de" ]
   },
   "defaults": {
+    /*
     "pdf_viewer.2": {
       "downloadable": true,
       "pdf": "https://ccmjs.github.io/tkless-components/pdf_viewer/resources/demo/de/slides.pdf",
       "text": viewer_de,
     },
     "text": slidecast_de
+     */
   },
   "text": builder_de
 };

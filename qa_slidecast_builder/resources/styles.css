@@ -1,42 +1,51 @@
 /**
- * @overview default layout of ccmjs-based web component for building a "Q&A Slidecast"
- * @author André Kless <andre.kless@web.de.de> 2021
+ * @overview default layout of ccmjs-based web component for building a slidecast with commentary
+ * @author André Kless <andre.kless@web.de.de> 2021-2022
  * @license The MIT License (MIT)
  */
 
-.qsb .btn-sm {
+.qa_slidecast_builder {
+  background-color: white !important;
+  color: black !important;
+}
+
+.qa_slidecast_builder header > * {
+  padding: 0.5em 0 0.5em 0.5em;
+}
+
+.qa_slidecast_builder .btn-sm {
   padding: .25rem;
 }
 
-.qsb .heading {
+.qa_slidecast_builder .heading {
   display: flex;
   align-items: center;
 }
 
-.qsb .heading label {
+.qa_slidecast_builder .heading label {
   margin-bottom: 0;
 }
 
-.qsb .info {
+.qa_slidecast_builder .info {
   margin-bottom: 0.5rem;
 }
 
-.qsb .form-check {
+.qa_slidecast_builder .form-check {
   margin-bottom: 0;
 }
 
-.qsb input[type="checkbox"] {
+.qa_slidecast_builder input[type="checkbox"] {
   cursor: pointer;
 }
 
-.qsb *[data-invisible] {
+.qa_slidecast_builder *[data-invisible] {
   visibility: hidden;
 }
 
-.qsb *[data-hidden] {
+.qa_slidecast_builder *[data-hidden] {
   display: none;
 }
 
-.qsb .modal-body {
+.qa_slidecast_builder .modal-body {
   padding: 0;
 }

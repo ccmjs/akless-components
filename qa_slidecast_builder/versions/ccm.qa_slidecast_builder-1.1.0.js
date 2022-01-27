@@ -2,7 +2,7 @@
  * @overview ccmjs-based web component for building a slidecast with commentary
  * @author André Kless <andre.kless@web.de> 2021
  * @license The MIT License (MIT)
- * @version latest (1.1.0)
+ * @version 1.1.0
  * @changes
  * version 1.1.0 (27.01.2022):
  * - added optional multilingualism
@@ -17,6 +17,7 @@
 ( () => {
   const component = {
     name: 'qa_slidecast_builder',
+    version: [ 1, 1, 0 ],
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-27.2.0.min.js',
     config: {
       "bootstrap": [ "ccm.load", "https://ccmjs.github.io/akless-components/libs/bootstrap-5/js/bootstrap.bundle.min.js" ],

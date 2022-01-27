@@ -1,5 +1,5 @@
 /**
- * @overview HTML templates for building a "Q&A Slidecast"
+ * @overview HTML templates for building a slidecast with commentary
  * @author André Kless <andre.kless@web.de> 2021
  */
 
@@ -19,26 +19,27 @@ export function main( config, builder, events ) {
   return html`
     <form @submit=${ events.onSubmit }>
 
+      <header class="d-flex justify-content-end align-items-center border-bottom px-3"></header>
+
       <!-- Sections -->
       <nav class="btn-group m-2 d-flex" role="group">
         <input type="radio" class="btn-check" name="section" id="${ id }-nav-basis" autocomplete="off" value="basis" checked @change=${ events.onChange }>
-        <label class="btn btn-outline-primary" for="${ id }-nav-basis">${ builder.text.section_basis }</label>
+        <label class="btn btn-outline-primary" for="${ id }-nav-basis" data-lang="section_basis">${ builder.text.section_basis }</label>
 
         <input type="radio" class="btn-check" name="section" id="${ id }-nav-slides" autocomplete="off" value="slides" @change=${ events.onChange } ?disabled=${ !config.pdf_viewer[ 2 ].pdf }>
-        <label class="btn btn-outline-primary" for="${ id }-nav-slides">${ builder.text.section_slides }</label>
+        <label class="btn btn-outline-primary" for="${ id }-nav-slides" data-lang="section_slides">${ builder.text.section_slides }</label>
 
+        <!--
         <input type="radio" class="btn-check" name="section" id="${ id }-nav-commentary" autocomplete="off" value="commentary" @change=${ events.onChange } ?disabled=${ !config.comment }>
         <label class="btn btn-outline-primary" for="${ id }-nav-commentary">${ builder.text.section_commentary }</label>
-
-        <input type="radio" class="btn-check" name="section" id="${ id }-nav-labels" autocomplete="off" value="labels" @change=${ events.onChange }>
-        <label class="btn btn-outline-primary" for="${ id }-nav-labels">${ builder.text.section_labels }</label>
+        -->
       </nav>
 
       <!-- Section: Basis -->
       <section id="${ id }-basis" class="mx-3 mt-3" ?data-hidden=${ builder.section !== 'basis' }>
         ${ text( { prop: 'pdf_viewer.2.pdf', type: 'url' } ) }
         <div class="mb-3">
-          ${ builder.text.headline }
+          <span data-lang="headline">${ builder.text.headline }</span>
           ${ checkbox( { prop: 'pdf_viewer.2.downloadable', switcher: true } ) }
           ${ checkbox( { prop: 'comment', switcher: true } ) }
           ${ checkbox( { prop: 'description', switcher: true } ) }
@@ -49,14 +50,14 @@ export function main( config, builder, events ) {
       <section id="${ id }-slides" ?data-hidden=${ builder.section !== 'slides' }>
         <article id="${ id }-viewer"></article>
         <nav class="mx-2 mb-3 text-center">
-          <button class="btn m-1 btn-primary" title="${ builder.text.expand_left }" data-bs-toggle="modal" data-bs-target="#${ id }-expand" @click=${ events.onExpandLeft }>
+          <button class="btn m-1 btn-primary" title="${ builder.text.expand_left }" data-lang="expand_left-title" data-bs-toggle="modal" data-bs-target="#${ id }-expand" @click=${ events.onExpandLeft }>
             <i class="bi bi-caret-left-fill"></i>
             <i class="bi bi-plus-square-fill"></i>
           </button>
-          <button class="btn m-1 btn-primary" title="${ builder.text.settings_button_title }" data-bs-toggle="modal" data-bs-target="#${ id }-settings" @click=${ events.onClickSlideSettings }>
-            <i class="bi bi-gear-fill"></i> ${ builder.text.settings_button }
+          <button class="btn m-1 btn-primary" title="${ builder.text.settings_button_title }" data-lang="settings_button_title-title" data-bs-toggle="modal" data-bs-target="#${ id }-settings" @click=${ events.onClickSlideSettings }>
+            <i class="bi bi-gear-fill"></i> <span data-lang="settings_button">${ builder.text.settings_button }</span>
           </button>
-          <button class="btn m-1 btn-primary" title="${ builder.text.expand_right }" data-bs-toggle="modal" data-bs-target="#${ id }-expand" @click=${ events.onExpandRight }>
+          <button class="btn m-1 btn-primary" title="${ builder.text.expand_right }" data-lang="expand_right-title" data-bs-toggle="modal" data-bs-target="#${ id }-expand" @click=${ events.onExpandRight }>
             <i class="bi bi-plus-square-fill"></i>
             <i class="bi bi-caret-right-fill"></i>
           </button>
@@ -64,23 +65,11 @@ export function main( config, builder, events ) {
       </section>
 
       <!-- Section: Commentary -->
+      <!--
       <section id="${ id }-commentary" class="mx-2 mb-2 border" ?data-hidden=${ builder.section !== 'commentary' }></section>
+      -->
 
-      <!-- Section: Labels -->
-      <section id="${ id }-labels" class="mx-3 mt-3 mb-4" ?data-hidden=${ builder.section !== 'labels' }>
-        ${ text( 'pdf_viewer.2.text.first' ) }
-        ${ text( 'pdf_viewer.2.text.prev' ) }
-        ${ text( 'pdf_viewer.2.text.next' ) }
-        ${ text( 'pdf_viewer.2.text.last' ) }
-        ${ text( 'pdf_viewer.2.text.jump' ) }
-        ${ text( 'pdf_viewer.2.text.protected' ) }
-        ${ text( 'pdf_viewer.2.text.denied' ) }
-        ${ text( { prop: 'pdf_viewer.2.text.download', hidden: !config.pdf_viewer[ 2 ].downloadable } ) }
-        ${ text( { prop: 'text.comments', hidden: !config.comment } ) }
-        ${ text( { prop: 'text.description', hidden: !config.description } ) }
-      </section>
-
-      ${ buttons( !config.pdf_viewer[ 2 ].pdf ) }
+      ${ buttons( /*!config.pdf_viewer[ 2 ].pdf*/ ) }
     </form>
     ${ modal() }
     ${ modalExpandSlides() }
@@ -98,7 +87,7 @@ export function main( config, builder, events ) {
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="${ id }-expand-title">${ builder.text.expand_title }</h5>
+                <h5 class="modal-title" id="${ id }-expand-title" data-lang="expand_title">${ builder.text.expand_title }</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body m-3">
@@ -114,7 +103,7 @@ export function main( config, builder, events ) {
                 ${ input( 'youtube' ) }
               </div>
               <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">${ builder.text.confirm }</button>
+                <button type="submit" class="btn btn-primary" data-lang="confirm">${ builder.text.confirm }</button>
               </div>
             </div>
           </div>
@@ -131,7 +120,7 @@ export function main( config, builder, events ) {
       return html`
         <div class="form-check form-check-inline">
           <input class="form-check-input" type="radio" name="expand" id="${ id }-expand-${ key }-heading" value="${ key }" @change=${ () => helper( key ) }>
-          <label class="form-check-label" for="${ id }-expand-${ key }-heading">${ builder.text[ 'expand_' + key ] }</label>
+          <label class="form-check-label" for="${ id }-expand-${ key }-heading" data-lang="expand_${ key }">${ builder.text[ 'expand_' + key ] }</label>
         </div>
       `;
     }
@@ -162,7 +151,7 @@ export function main( config, builder, events ) {
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="${ id }-settings-title">${ builder.text.settings_title }</h5>
+                <h5 class="modal-title" id="${ id }-settings-title" data-lang="settings_title">${ builder.text.settings_title }</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body m-3">
@@ -175,7 +164,7 @@ export function main( config, builder, events ) {
               </div>
               <div class="modal-footer justify-content-between">
                 <button type="button" id="${ id }-settings-delete" class="btn btn-danger" data-bs-dismiss="modal" @click=${ events.onDelete }>${ builder.text.delete }</button>
-                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">${ builder.text.confirm }</button>
+                <button type="submit" class="btn btn-primary" data-lang="confirm" data-bs-dismiss="modal">${ builder.text.confirm }</button>
               </div>
             </div>
           </div>
