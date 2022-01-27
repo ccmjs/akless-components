@@ -82,7 +82,7 @@ export const en = {
  * default values and mappings for app configuration
  * @type {Object}
  */
-const { defaults, mapping } = {
+export const ignore = {
   "defaults": {
     "libs": [ "ccm.load", [
       [
@@ -146,7 +146,7 @@ export const test = {
     { "url": "./../../../libs/bootstrap-5/css/bootstrap-fonts.css", "context": "head" }
   ],
   "html": [ "ccm.load", "./templates.mjs" ],
-  "ignore": { defaults: defaults, mapping: mapping },
+  "ignore": ignore,
   "lang": [ "ccm.start", "./../../../lang/ccm.lang.js", {
     "translations": { "de": de, "en": en }
   } ],
@@ -161,7 +161,7 @@ export const test = {
  */
 export const demo = {
   "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/config_builder/resources/comment/templates.mjs" ],
-  "ignore": { defaults: defaults, mapping: mapping },
+  "ignore": ignore,
   "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/versions/ccm.lang-1.0.0.min.js", {
     "translations": { "de": de, "en": en }
   } ],
