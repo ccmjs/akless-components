@@ -5,7 +5,6 @@
  */
 
 import { text_de as slidecast_de, text_en as slidecast_en } from 'https://ccmjs.github.io/tkless-components/qa_slidecast/resources/resources.mjs';
-//import { de as comment_de } from 'https://ccmjs.github.io/tkless-components/comment/resources/resources.mjs';
 
 /**
  * english texts and labels for "Q&A Slidecast" builder
@@ -190,7 +189,8 @@ const viewer_de = {
  */
 export const test = {
   "comment_builder.1": "./../config_builder/ccm.config_builder.js",
-  "comment_builder.2.src.1": "./../config_builder/resources/comment/resources.mjs#demo",
+  "comment_builder.2.css.1": "./../config_builder/resources/styles.css",
+  "comment_builder.2.src": [ "ccm.load", "https://ccmjs.github.io/akless-components/config_builder/resources/comment/resources.mjs#demo" ],
   "css": [ "ccm.load",
     [  // serial
       "./../libs/bootstrap-5/css/bootstrap.css",
@@ -208,6 +208,7 @@ export const test = {
   "html.1": "./../qa_slidecast_builder/resources/templates.mjs",
   "ignore": {
     "defaults": {
+      "comment": [ "ccm.component", "https://ccmjs.github.io/tkless-components/comment/ccm.comment.js" ],
       "description": true,
       "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/ccm.lang.js", {
         "translations": { "de": slidecast_de, "en": slidecast_en }

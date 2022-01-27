@@ -29,10 +29,8 @@ export function main( config, builder, events ) {
         <input type="radio" class="btn-check" name="section" id="${ id }-nav-slides" autocomplete="off" value="slides" @change=${ events.onChange } ?disabled=${ !config.pdf_viewer[ 2 ].pdf }>
         <label class="btn btn-outline-primary" for="${ id }-nav-slides" data-lang="section_slides">${ builder.text.section_slides }</label>
 
-        <!--
         <input type="radio" class="btn-check" name="section" id="${ id }-nav-commentary" autocomplete="off" value="commentary" @change=${ events.onChange } ?disabled=${ !config.comment }>
-        <label class="btn btn-outline-primary" for="${ id }-nav-commentary">${ builder.text.section_commentary }</label>
-        -->
+        <label class="btn btn-outline-primary" for="${ id }-nav-commentary" data-lang="section_commentary">${ builder.text.section_commentary }</label>
       </nav>
 
       <!-- Section: Basis -->
@@ -65,11 +63,9 @@ export function main( config, builder, events ) {
       </section>
 
       <!-- Section: Commentary -->
-      <!--
       <section id="${ id }-commentary" class="mx-2 mb-2 border" ?data-hidden=${ builder.section !== 'commentary' }></section>
-      -->
 
-      ${ buttons( /*!config.pdf_viewer[ 2 ].pdf*/ ) }
+      ${ buttons( !config.pdf_viewer[ 2 ].pdf ) }
     </form>
     ${ modal() }
     ${ modalExpandSlides() }

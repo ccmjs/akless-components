@@ -1,6 +1,6 @@
 /**
  * @overview ccmjs-based web component for building a slidecast with commentary
- * @author André Kless <andre.kless@web.de> 2021
+ * @author André Kless <andre.kless@web.de> 2021-2022
  * @license The MIT License (MIT)
  * @version latest (1.1.0)
  * @changes
@@ -20,7 +20,12 @@
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-27.2.0.min.js',
     config: {
       "bootstrap": [ "ccm.load", "https://ccmjs.github.io/akless-components/libs/bootstrap-5/js/bootstrap.bundle.min.js" ],
-      //"comment_builder": [ "ccm.instance", "https://ccmjs.github.io/akless-components/config_builder/versions/ccm.config_builder-1.1.0.js", [ "ccm.load", "https://ccmjs.github.io/akless-components/config_builder/resources/comment/resources.mjs#live" ] ],
+      "comment_builder": [ "ccm.instance", "https://ccmjs.github.io/akless-components/config_builder/versions/ccm.config_builder-1.1.0.js", {
+        "bootstrap": "",
+        "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/config_builder/resources/styles.min.css" ],
+        "preview": false,
+        "src": [ "ccm.load", "https://ccmjs.github.io/akless-components/config_builder/resources/comment/resources.mjs#demo" ]
+      } ],
       "css": [ "ccm.load",
         [  // serial
           "https://ccmjs.github.io/akless-components/libs/bootstrap-5/css/bootstrap.min.css",
@@ -35,6 +40,7 @@
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/qa_slidecast_builder/resources/templates.mjs" ],
       "ignore": {
         "defaults": {
+          "comment": [ "ccm.component", "https://ccmjs.github.io/tkless-components/comment/versions/ccm.comment-7.1.0.min.js" ],
           "description": true,
           "pdf_viewer.2": {
             "downloadable": true,
@@ -113,13 +119,11 @@
           routing: '',
           text: config.text
         } );
-//      $.remove( slides_viewer.element.querySelector( '#control' ) );
 
-        /*
         // prepare app builder for commentary
-        this.comment_builder.data = config.comment[ 2 ];
+        if ( config.comment ) this.comment_builder.data = config.comment[ 2 ];
         await this.comment_builder.start();
-         */
+        $.remove( this.comment_builder.element.querySelector( 'footer' ) );
 
         // render webpage area
         this.render( config );
@@ -133,7 +137,7 @@
 
         // render slides viewer and app builder for commentary
         $.setContent( this.element.querySelector( '#' + this.component.name + '-viewer' ), slides_viewer.root );
-        //$.setContent( this.element.querySelector( '#' + this.component.name + '-commentary' ), this.comment_builder.root );
+        $.setContent( this.element.querySelector( '#' + this.component.name + '-commentary' ), this.comment_builder.root );
 
       };
 
@@ -155,8 +159,8 @@
         this.section = form_data.section; delete form_data.section;
         slides_viewer.ignore.slides.forEach( slide => { delete slide._content; delete slide._decription; } );
         $.deepValue( form_data, 'ignore.slides', slides_viewer.ignore.slides );
-//      const comment = form_data.comment; delete form_data.comment;
-//      comment ? form_data.comment[ 2 ] = this.comment_builder.getValue() : form_data.comment = '';
+        const comment = form_data.comment; delete form_data.comment;
+        comment ? $.deepValue( form_data, 'comment.2', this.comment_builder.getValue() ) : form_data.comment = '';
         return $.assign( config, form_data );
       };
 
@@ -181,8 +185,8 @@
             }
           }
 
-          // switched to slide settings? => refresh slides viewer
-          event.target.name === 'section' && await slides_viewer.pdf_viewer.refresh();
+          // switched to commentary settings? => refresh comment builder translations
+          event.target.name === 'section' && event.target.value === 'commentary' && this.comment_builder.lang.translate();
 
         },
 
