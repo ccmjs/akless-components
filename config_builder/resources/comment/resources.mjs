@@ -168,18 +168,3 @@ export const demo = {
   "text": de,
   "tool": [ "ccm.component", "https://ccmjs.github.io/tkless-components/comment/versions/ccm.comment-7.1.0.min.js" ]
 };
-
-/**
- * live configuration (absolute paths)
- * @type {Object}
- */
-export const live = {
-  "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/config_builder/resources/styles.min.css" ],
-  "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/config_builder/resources/comment/templates.mjs" ],
-  "ignore": { "defaults": defaults, "mapping": mapping },
-  "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/versions/ccm.lang-1.0.0.min.js", {
-    "translations": { "de": de, "en": en }
-  } ],
-  "text": de,
-  "tool": [ "ccm.component", "https://ccmjs.github.io/tkless-components/comment/ccm.comment.min.js" ]
-};
