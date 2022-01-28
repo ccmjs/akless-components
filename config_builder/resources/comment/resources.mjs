@@ -30,6 +30,7 @@ export const builder_de = {
   "controls_report_info": "Jeder Kommentar hat einen Button, über den er als unangemessen markiert wird. Klicke erneut, um dies rückgängig zu machen. Bitte beachte, dass es durch den dezentralen Ansatz dieser Anwendung keinen Betreiber gibt, der gemeldete Kommentare überprüft. Solche Kommentare werden aber deutlich mit einem roten Hintergrund als unangemessen gekennzeichnet. Bei gesetzeswidrigen Inhalten sollte eine Anzeige gegen den Verfasser des Kommentars gestellt werden.",
   "controls_sort": "Änderbare Kommentar-Sortierung",
   "controls_sort_info": "Oben befindet sich ein Button, über den die Sortierung der Kommentare jederzeit geändert werden kann.",
+  "option_guest": "Gastmodus",
   "picture": "Standard-Portrait für Kommentare",
   "picture_info": "Das Bild hinter dieser URL wird als Portrait für den Verfasser eines Kommentars verwendet, wenn dieser kein eigenes Portrait in seinen Benutzerdaten hat. Erfolgt hier keine Angabe, wird bei Kommentaren kein Portrait angezeigt.",
   "preview": "Vorschau",
@@ -40,7 +41,13 @@ export const builder_de = {
   "sort_info": "Legt fest, ob die Kommentare anfänglich nach Datum oder Bewertung sortiert werden.",
   "submit": "Abschicken",
   "user": "Authentifizierung der Benutzer",
-  "user_info": "Spätestens wenn ein Kommentar abgeschickt oder bewertet wird, muss sich der Benutzer anmelden. <ul class=\"m-0 pl-4\"><li><u>Gastmodus:</u> Der Benutzer kann sich mit einem beliebigen Namen ohne Passwort anmelden.</li><li><u>Digital Makerspace Account:</u> Anmeldung mit einem kostenlosen Digital Makerspace-Account.</li><li><u>H-BRS FB02 Account:</u> Der Benutzer muss sich mit mit einem Account des Fachbereichs Informatik der Hochschule Bonn-Rhein-Sieg anmelden.</li><li><u>H-BRS FB02 Account mit Pseudonym:</u> Das gleiche wie die vorherige Option, aber im Frontend wird der Benutzername durch ein Pseudonym ersetzt.</li><li><u>Einmaliges Pseudonym:</u> Man ist automatisch angemeldet unter einem zufällig generierten Pseudonym. Bei jedem Login nach Ablauf einer Session wird ein neues Pseudonym generiert.</li><li><u>Deaktiviert:</u> Weder das Schreiben noch das Bewerten von Kommentaren ist möglich. Kommentare können nur gelesen werden.</li></ul>"
+  "user_cloud": "Digital Makerspace Account",
+  "user_guest": "Gastmodus",
+  "user_hbrsinfkaul": "H-BRS FB02 Account",
+  "user_hbrsinfpseudo": "H-BRS FB02 Account mit Pseudonym",
+  "user_info": "Spätestens wenn ein Kommentar abgeschickt oder bewertet wird, muss sich der Benutzer anmelden. <ul class=\"m-0 pl-4\"><li><u>Gastmodus:</u> Der Benutzer kann sich mit einem beliebigen Namen ohne Passwort anmelden.</li><li><u>Digital Makerspace Account:</u> Anmeldung mit einem kostenlosen Digital Makerspace-Account.</li><li><u>H-BRS FB02 Account:</u> Der Benutzer muss sich mit mit einem Account des Fachbereichs Informatik der Hochschule Bonn-Rhein-Sieg anmelden.</li><li><u>H-BRS FB02 Account mit Pseudonym:</u> Das gleiche wie die vorherige Option, aber im Frontend wird der Benutzername durch ein Pseudonym ersetzt.</li><li><u>Einmaliges Pseudonym:</u> Man ist automatisch angemeldet unter einem zufällig generierten Pseudonym. Bei jedem Login nach Ablauf einer Session wird ein neues Pseudonym generiert.</li><li><u>Deaktiviert:</u> Weder das Schreiben noch das Bewerten von Kommentaren ist möglich. Kommentare können nur gelesen werden.</li></ul>",
+  "user_none": "Deaktiviert",
+  "user_pseudo": "Einmaliges Pseudonym"
 };
 
 /**
@@ -77,7 +84,13 @@ export const builder_en = {
   "sort_info": "Determines whether the comments are initial sorted by date or rating.",
   "submit": "Submit",
   "user": "User Authentication",
-  "user_info": "The user must log in to send or rate a comment.<ul class=\"m-0 pl-4\"><li><u>Guest Mode:</u> The user can authenticate with any username and without a password.</li><li><u>Digital Makerspace Account:</u> The user must log in with a Digital Makerspace account.</li><li><u>H-BRS FB02 Account:</u> The user has to authenticate with an account from the Department of Computer Sciences at Hochschule Bonn-Rhein-Sieg University of Applied Sciences.</li><li><u>H-BRS FB02 Account with Pseudonym:</u> The same as the previous option, but the username is replaced with a pseudonym.</li><li><u>One-time Pseudonym:</u> The user is automatically logged in with a one-time pseudonym. Each login after the end of a session returns a different pseudonym.</li><li><u>Deactivated:</u> It is not possible to write or rate comments. Comments can only be read.</li></ul>"
+  "user_cloud": "Digital Makerspace Account",
+  "user_guest": "Guest Mode",
+  "user_hbrsinfkaul": "H-BRS FB02 Account",
+  "user_hbrsinfpseudo": "H-BRS FB02 Account with Pseudonym",
+  "user_info": "The user must log in to send or rate a comment.<ul class=\"m-0 pl-4\"><li><u>Guest Mode:</u> The user can authenticate with any username and without a password.</li><li><u>Digital Makerspace Account:</u> The user must log in with a Digital Makerspace account.</li><li><u>H-BRS FB02 Account:</u> The user has to authenticate with an account from the Department of Computer Sciences at Hochschule Bonn-Rhein-Sieg University of Applied Sciences.</li><li><u>H-BRS FB02 Account with Pseudonym:</u> The same as the previous option, but the username is replaced with a pseudonym.</li><li><u>One-time Pseudonym:</u> The user is automatically logged in with a one-time pseudonym. Each login after the end of a session returns a different pseudonym.</li><li><u>Deactivated:</u> It is not possible to write or rate comments. Comments can only be read.</li></ul>",
+  "user_none": "Disabled",
+  "user_pseudo": "One-time Pseudonym"
 };
 
 /**

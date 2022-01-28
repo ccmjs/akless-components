@@ -55,7 +55,7 @@ export function main( config, builder, events ) {
         <div class="mb-3">
           ${ heading( 'user' ) }
           <select name="user" class="form-select" aria-label="${ builder.text.user }">
-            ${ Object.values( builder.ignore.mapping.user ).map( obj => html`<option value="${ obj.key }" ?selected=${ JSON.stringify( config.user ) === JSON.stringify( obj.value ) }>${ obj.title }</option>` ) }
+            ${ Object.values( builder.ignore.mapping.user ).map( obj => html`<option value="${ obj.key }" data-lang="user_${ obj.key }" ?selected=${ JSON.stringify( config.user ) === JSON.stringify( obj.value ) }>${ obj.title }</option>` ) }
           </select>
         </div>
 
