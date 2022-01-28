@@ -89,7 +89,7 @@ export const builder_en = {
   "user_hbrsinfkaul": "H-BRS FB02 Account",
   "user_hbrsinfpseudo": "H-BRS FB02 Account with Pseudonym",
   "user_info": "The user must log in to send or rate a comment.<ul class=\"m-0 pl-4\"><li><u>Guest Mode:</u> The user can authenticate with any username and without a password.</li><li><u>Digital Makerspace Account:</u> The user must log in with a Digital Makerspace account.</li><li><u>H-BRS FB02 Account:</u> The user has to authenticate with an account from the Department of Computer Sciences at Hochschule Bonn-Rhein-Sieg University of Applied Sciences.</li><li><u>H-BRS FB02 Account with Pseudonym:</u> The same as the previous option, but the username is replaced with a pseudonym.</li><li><u>One-time Pseudonym:</u> The user is automatically logged in with a one-time pseudonym. Each login after the end of a session returns a different pseudonym.</li><li><u>Deactivated:</u> It is not possible to write or rate comments. Comments can only be read.</li></ul>",
-  "user_none": "Disabled",
+  "user_none": "Deactivated",
   "user_pseudo": "One-time Pseudonym"
 };
 
