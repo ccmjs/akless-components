@@ -5,18 +5,21 @@
  */
 
 import { text_de as slidecast_de, text_en as slidecast_en } from 'https://ccmjs.github.io/tkless-components/qa_slidecast/resources/resources.mjs';
+import { builder_de as comment_builder_de, builder_en as comment_builder_en, ignore } from 'https://ccmjs.github.io/akless-components/config_builder/resources/comment/resources.mjs';
+
+slidecast_de.commentary_status = "Gibt an, ob die Folie kommentiert werden kann.";
+slidecast_en.commentary_status = "Indicates whether the slide can be commented.";
 
 /**
  * english texts and labels for "Q&A Slidecast" builder
  * @type {Object}
  */
-const builder_en = {
+const slidecast_builder_en = {
   "comment": "..be commented",
   "comment_info": "If enabled, there is a comment area under each slide for questions and answers about the slide. Commenting can also be deactivated for certain slides. Further settings can be made in the \"Commentary\" tab.",
-  "commentary": "Commentary",
   "confirm": "Confirm",
   "delete": "Delete Slide",
-  "description": "..have an optional description",
+  "description": "..have an description",
   "description_info": "If enabled, each slide can optionally have an individual description, which is then displayed below the slide. A separate app can be specified as a description instead of a text.",
   "expand": "What should be added?",
   "expand_info": "You can add an app, image, or video. To add a slide, the slide can be added as an image. Please note that a slide added in this way will not be included in a slides download.",
@@ -84,12 +87,12 @@ const builder_en = {
  * german texts and labels for "Q&A Slidecast" builder
  * @type {Object}
  */
-const builder_de = {
+const slidecast_builder_de = {
   "comment": "..kommentiert werden",
   "comment_info": "Wenn aktiviert, gibt es unter jeder Folie einen Kommentarbereich für Fragen und Antworten zur Folie. Die Kommentierung kann für bestimmte Folien auch deaktiviert werden. Im Reiter \"Kommentierung\" können noch weitere Einstellungen vorgenommen werden.",
   "confirm": "Bestätigen",
   "delete": "Folie löschen",
-  "description": "..optionale Beschreibung haben",
+  "description": "..eine Beschreibung haben",
   "description_info": "Wenn aktiviert, kann für jede Folie optional eine individuelle Beschreibung hinterlegt werden, die dann unter der Folie angezeigt wird. Statt einem Text kann auch eine separate App angegeben werden.",
   "expand": "Was soll hinzugefügt werden?",
   "expand_info": "Sie können eine separate App, ein Bild oder ein Video hinzufügen. Um eine Folie zu ergänzen, kann die Folie als Bild hinzugefügt werden. Bitte beachte, dass eine auf diese Weise hinzugefügte Folie in einem Download der Folien nicht enthalten sein wird.",
@@ -188,9 +191,18 @@ const viewer_de = {
  * @type {Object}
  */
 export const test = {
-  "comment_builder.1": "./../config_builder/ccm.config_builder.js",
-  "comment_builder.2.css.1": "./../config_builder/resources/styles.css",
-  "comment_builder.2.src": [ "ccm.load", "https://ccmjs.github.io/akless-components/config_builder/resources/comment/resources.mjs#demo" ],
+  "comment_builder": [ "ccm.instance", "./../config_builder/ccm.config_builder.js", {
+    "bootstrap": "",
+    "css": [ "ccm.load", "./../config_builder/resources/styles.css" ],
+    "html": [ "ccm.load", "./../config_builder/resources/comment/templates.mjs" ],
+    "ignore": ignore,
+    "lang": [ "ccm.start", "./../lang/ccm.lang.js", {
+      "translations": { "de": comment_builder_de, "en": comment_builder_en }
+    } ],
+    "preview": false,
+    "text": comment_builder_de,
+    "tool": [ "ccm.component", "https://ccmjs.github.io/tkless-components/comment/ccm.comment.js" ]
+  } ],
   "css": [ "ccm.load",
     [  // serial
       "./../libs/bootstrap-5/css/bootstrap.css",
@@ -225,11 +237,11 @@ export const test = {
     }
   },
   "lang": [ "ccm.start", "./../../../lang/ccm.lang.js", {
-    "translations": { "de": builder_de, "en": builder_en }
+    "translations": { "de": slidecast_builder_de, "en": slidecast_builder_en }
   } ],
   "logger": [ "ccm.instance", "./../log/ccm.log.js", [ "ccm.get", "./../log/resources/configs.js", "greedy" ] ],
   "onfinish": { "log": true },
-  "text": builder_de
+  "text": slidecast_builder_de
 };
 
 /**
@@ -258,5 +270,5 @@ export const demo = {
     "text": slidecast_de
      */
   },
-  "text": builder_de
+  "text": slidecast_builder_de
 };

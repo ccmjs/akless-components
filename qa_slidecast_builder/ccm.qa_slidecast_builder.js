@@ -23,8 +23,56 @@
       "comment_builder": [ "ccm.instance", "https://ccmjs.github.io/akless-components/config_builder/versions/ccm.config_builder-1.1.0.js", {
         "bootstrap": "",
         "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/config_builder/resources/styles.min.css" ],
+        "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/config_builder/resources/comment/templates.mjs" ],
+        "ignore": {
+          "defaults": {
+            "libs": [ "ccm.load", [
+              [
+                "https://ccmjs.github.io/tkless-components/libs/dayjs/dayjs.min.js",
+                "https://ccmjs.github.io/tkless-components/libs/dayjs/relativeTime.min.js"
+              ],
+              "https://ccmjs.github.io/tkless-components/libs/dayjs/de.min.js"
+            ] ],
+            "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.2.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/resources.min.js", "guest" ] ]
+          },
+          "mapping": {
+            "user": {
+              "guest": {
+                "key": "guest",
+                "title": "Gastmodus",
+                "value": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.2.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/resources.min.js", "guest" ] ]
+              },
+              "cloud": {
+                "key": "cloud",
+                "title": "Digital Makerspace Account",
+                "value": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.2.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/resources.min.js", "cloud" ] ]
+              },
+              "hbrsinfkaul": {
+                "key": "hbrsinfkaul",
+                "title": "H-BRS FB02 Account",
+                "value": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.2.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/resources.min.js", "hbrsinfkaul" ] ]
+              },
+              "hbrsinfpseudo": {
+                "key": "hbrsinfpseudo",
+                "title": "H-BRS FB02 Account mit Pseudonym",
+                "value": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.2.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/resources.min.js", "hbrsinfpseudo" ] ]
+              },
+              "pseudo": {
+                "key": "pseudo",
+                "title": "Einmaliges Pseudonym",
+                "value": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.2.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/resources.min.js", "pseudo" ] ]
+              },
+              "none": {
+                "key": "none",
+                "title": "Deaktiviert",
+                "value": ""
+              }
+            }
+          }
+        },
         "preview": false,
-        "src": [ "ccm.load", "https://ccmjs.github.io/akless-components/config_builder/resources/comment/resources.mjs#demo" ]
+        "text": [ "ccm.load", "https://ccmjs.github.io/akless-components/config_builder/resources/comment/resources.mjs#en" ],
+        "tool": [ "ccm.component", "https://ccmjs.github.io/tkless-components/comment/versions/ccm.comment-7.1.0.min.js" ]
       } ],
       "css": [ "ccm.load",
         [  // serial
@@ -119,6 +167,10 @@
           routing: '',
           text: config.text
         } );
+        const div = slides_viewer.element.querySelector( '#control > div:last-child' );
+        config.comment ? delete div.dataset.hidden : div.dataset.hidden = true;
+        div.dataset.lang = 'commentary_status-title'; div.title = config.text.commentary_status;
+        div.firstElementChild.style.cursor = 'default';
 
         // prepare app builder for commentary
         if ( config.comment ) this.comment_builder.data = config.comment[ 2 ];
@@ -155,13 +207,13 @@
        * @returns {Object} current resulting app configuration
        */
       this.getValue = () => {
-        const form_data = $.formData( this.element.querySelector( 'form' ) );
+        const form_data = $.filterProperties( $.formData( this.element.querySelector( 'form' ) ), 'comment', 'description', 'pdf_viewer', 'section' );
         this.section = form_data.section; delete form_data.section;
         slides_viewer.ignore.slides.forEach( slide => { delete slide._content; delete slide._decription; } );
         $.deepValue( form_data, 'ignore.slides', slides_viewer.ignore.slides );
         const comment = form_data.comment; delete form_data.comment;
         comment ? $.deepValue( form_data, 'comment.2', this.comment_builder.getValue() ) : form_data.comment = '';
-        return $.assign( config, form_data );
+        return $.assign( $.clone( config ), form_data );
       };
 
       /**
@@ -185,8 +237,11 @@
             }
           }
 
-          // switched to commentary settings? => refresh comment builder translations
-          event.target.name === 'section' && event.target.value === 'commentary' && this.comment_builder.lang.translate();
+          // enabled/disabled commentary? => show/hide commentary status for a slide
+          if ( event.target.name === 'comment' ) {
+            const div = slides_viewer.element.querySelector( '#control > div:last-child' );
+            event.target.checked ? delete div.dataset.hidden : div.dataset.hidden = true;
+          }
 
         },
 
