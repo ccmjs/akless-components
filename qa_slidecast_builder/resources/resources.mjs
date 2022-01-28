@@ -212,10 +212,6 @@ export const test = {
     "./../libs/bootstrap-5/css/bootstrap-icons.css",
     { "url": "./../libs/bootstrap-5/css/bootstrap-fonts.css", "context": "head" }
   ],
-  "data": {
-    "store": [ "ccm.store"/*, { "app": example }*/ ],
-    "key": "app"
-  },
   "helper.1": "./../modules/helper.mjs",
   "html.1": "./../qa_slidecast_builder/resources/templates.mjs",
   "ignore": {
@@ -250,25 +246,16 @@ export const test = {
  */
 export const demo = {
   "comment_builder.2": {
-    "src": [ "ccm.load", "https://ccmjs.github.io/akless-components/config_builder/resources/comment/resources.mjs#basic" ],
-    "defaults.text.1": "https://ccmjs.github.io/tkless-components/comment/resources/resources.mjs#de",
-    "ignore.mapping.user.guest.title": "Gastmodus",
-    "ignore.mapping.user.hbrsinfpseudo.title": "H-BRS FB02 Account mit Pseudonym",
-    "ignore.mapping.user.pseudo.title": "Einmaliges Pseudonym",
-    "ignore.mapping.user.none.title": "Deaktiviert",
-    "libs": "",
-    "preview": "",
-    "text": [ "ccm.load", "https://ccmjs.github.io/akless-components/config_builder/resources/comment/resources.mjs#de" ]
-  },
-  "defaults": {
-    /*
-    "pdf_viewer.2": {
-      "downloadable": true,
-      "pdf": "https://ccmjs.github.io/tkless-components/pdf_viewer/resources/demo/de/slides.pdf",
-      "text": viewer_de,
-    },
-    "text": slidecast_de
-     */
+    "bootstrap": "",
+    "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/config_builder/resources/styles.min.css" ],
+    "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/config_builder/resources/comment/templates.mjs" ],
+    "ignore": ignore,
+    "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/versions/ccm.lang-1.0.0.min.js", {
+      "translations": { "de": comment_builder_de, "en": comment_builder_en }
+    } ],
+    "preview": false,
+    "text": comment_builder_de,
+    "tool": [ "ccm.component", "https://ccmjs.github.io/tkless-components/comment/versions/ccm.comment-7.1.0.min.js" ]
   },
   "text": slidecast_builder_de
 };
