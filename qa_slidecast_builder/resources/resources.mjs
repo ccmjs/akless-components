@@ -257,5 +257,26 @@ export const demo = {
     "text": comment_builder_de,
     "tool": [ "ccm.component", "https://ccmjs.github.io/tkless-components/comment/versions/ccm.comment-7.1.0.min.js" ]
   },
+  "ignore": {
+    "defaults": {
+      "comment": [ "ccm.component", "https://ccmjs.github.io/tkless-components/comment/ccm.comment.js" ],
+      "description": true,
+      "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/ccm.lang.js", {
+        "translations": { "de": slidecast_de, "en": slidecast_en }
+      } ],
+      "pdf_viewer.2": {
+        "downloadable": true,
+        "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/ccm.lang.js", {
+          "translations": { "de": viewer_de, "en": viewer_en }
+        } ],
+        "pdf": "https://ccmjs.github.io/tkless-components/pdf_viewer/resources/demo/de/slides.pdf",
+        "text": viewer_de
+      },
+      "text": slidecast_de
+    }
+  },
+  "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/versions/ccm.lang-1.0.0.min.js", {
+    "translations": { "de": slidecast_builder_de, "en": slidecast_builder_en }
+  } ],
   "text": slidecast_builder_de
 };
