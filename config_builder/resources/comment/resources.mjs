@@ -5,7 +5,6 @@
  */
 
 import { de as comment_de, en as comment_en } from 'https://ccmjs.github.io/tkless-components/comment/resources/resources.mjs';
-import {de, en} from "../pdf_viewer/resources.mjs";
 
 /**
  * german texts and labels for commentary builder
@@ -98,7 +97,7 @@ export const builder_en = {
  * default values and mappings for app configuration
  * @type {Object}
  */
-export const ignore = {
+export const { defaults, mapping } = {
   "defaults": {
     "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/versions/ccm.lang-1.0.0.min.js", {
       "translations": { "de": comment_de, "en": comment_en }
@@ -165,7 +164,7 @@ export const test = {
     { "url": "./../../../libs/bootstrap-5/css/bootstrap-fonts.css", "context": "head" }
   ],
   "html": [ "ccm.load", "./templates.mjs" ],
-  "ignore": ignore,
+  "ignore": { "defaults": defaults, "mapping": mapping },
   "lang": [ "ccm.start", "./../../../lang/ccm.lang.js", {
     "translations": { "de": builder_de, "en": builder_en }
   } ],
@@ -180,7 +179,7 @@ export const test = {
  */
 export const demo = {
   "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/config_builder/resources/comment/templates.mjs" ],
-  "ignore": ignore,
+  "ignore": { "defaults": defaults, "mapping": mapping },
   "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/versions/ccm.lang-1.0.0.min.js", {
     "translations": { "de": builder_de, "en": builder_en }
   } ],
@@ -196,7 +195,26 @@ export const dms = {
   "bootstrap": "",
   "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/dms/resources/styles.min.css" ],
   "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/config_builder/resources/comment/templates.mjs" ],
-  "ignore": ignore,
+  "ignore": {
+    "defaults": {
+      "data": {
+        "store": [ "ccm.store", { "name": "dms2-comment-data", "url": "https://ccm2.inf.h-brs.de" } ]
+      },
+      "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/versions/ccm.lang-1.0.0.min.js", {
+        "translations": { "de": comment_de, "en": comment_en }
+      } ],
+      "libs": [ "ccm.load", [
+        [
+          "https://ccmjs.github.io/tkless-components/libs/dayjs/dayjs.min.js",
+          "https://ccmjs.github.io/tkless-components/libs/dayjs/relativeTime.min.js"
+        ],
+        "https://ccmjs.github.io/tkless-components/libs/dayjs/de.min.js"
+      ] ],
+      "text": [ "ccm.load", "https://ccmjs.github.io/tkless-components/comment/resources/resources.mjs#de" ],
+      "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.2.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/user/resources/resources.min.js", "guest" ] ]
+    },
+    "mapping": mapping
+  },
   "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/versions/ccm.lang-1.0.0.min.js", {
     "translations": { "de": builder_de, "en": builder_en }
   } ],
