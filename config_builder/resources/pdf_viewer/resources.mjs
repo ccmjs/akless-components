@@ -36,7 +36,7 @@ export const en = {
  * default values for app configuration
  * @type {Object}
  */
-export const defaults = {
+const defaults = {
   "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/versions/ccm.lang-1.0.0.min.js", {
     "translations": {
       "de": [ "ccm.load", "https://ccmjs.github.io/tkless-components/pdf_viewer/resources/resources.mjs#de" ],
@@ -86,3 +86,22 @@ export const demo = {
   "text": de,
   "tool": [ "ccm.component", "https://ccmjs.github.io/tkless-components/pdf_viewer/versions/ccm.pdf_viewer-7.1.0.min.js" ]
 };
+
+/**
+ * configuration for Digital Makerspace
+ * @type {Object}
+ */
+export const dms = {
+  "bootstrap": "",
+  "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/dms/resources/styles.min.css" ],
+  "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/config_builder/resources/pdf_viewer/templates.mjs" ],
+  "ignore": {
+    "defaults": defaults
+  },
+  "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/versions/ccm.lang-1.0.0.min.js", {
+    "translations": { "de": de, "en": en }
+  } ],
+  "preview": false,
+  "text": de,
+  "tool": [ "ccm.component", "https://ccmjs.github.io/tkless-components/pdf_viewer/versions/ccm.pdf_viewer-7.1.0.min.js" ]
+}
