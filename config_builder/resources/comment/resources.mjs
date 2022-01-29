@@ -5,6 +5,7 @@
  */
 
 import { de as comment_de, en as comment_en } from 'https://ccmjs.github.io/tkless-components/comment/resources/resources.mjs';
+import {de, en} from "../pdf_viewer/resources.mjs";
 
 /**
  * german texts and labels for commentary builder
@@ -186,3 +187,20 @@ export const demo = {
   "text": builder_de,
   "tool": [ "ccm.component", "https://ccmjs.github.io/tkless-components/comment/versions/ccm.comment-7.1.0.min.js" ]
 };
+
+/**
+ * configuration for Digital Makerspace
+ * @type {Object}
+ */
+export const dms = {
+  "bootstrap": "",
+  "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/dms/resources/styles.min.css" ],
+  "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/config_builder/resources/comment/templates.mjs" ],
+  "ignore": ignore,
+  "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/versions/ccm.lang-1.0.0.min.js", {
+    "translations": { "de": builder_de, "en": builder_en }
+  } ],
+  "preview": false,
+  "text": builder_de,
+  "tool": [ "ccm.component", "https://ccmjs.github.io/tkless-components/comment/versions/ccm.comment-7.1.0.min.js" ]
+}
