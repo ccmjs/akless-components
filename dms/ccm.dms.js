@@ -4,7 +4,7 @@
  * @license The MIT License (MIT)
  * @version latest (5.0.0)
  * @changes
- * version 5.0.0 (18.01.2022): reimplementation
+ * version 5.0.0 (29.01.2022): reimplementation
  * (for older version changes see ccm.dms-4.5.0.js)
  */
 
@@ -21,7 +21,7 @@
           "https://ccmjs.github.io/akless-components/dms/resources/styles.min.css"
         ],
         "https://ccmjs.github.io/akless-components/libs/bootstrap-5/css/bootstrap-icons.min.css",
-        { "url": "https://ccmjs.github.io/akless-components/libs/bootstrap-5/css/bootstrap-fonts.min.css", "context": "head" },
+        { "url": "https://ccmjs.github.io/akless-components/libs/bootstrap-5/css/bootstrap-fonts.min.css", "context": "head" }
       ],
       "components": [ "ccm.store" ],
       "configs": [ "ccm.store" ],
@@ -512,17 +512,13 @@
           const config = app_key && data.apps.meta[ app_key ].ignore.config;
           Promise.all( [
             $.solveDependency( tool_meta.ignore.editors[ 0 ] ),
-            $.solveDependency( tool_meta.ignore.defaults ),
             $.solveDependency( config )
-          ] ).then( ( [ editor_comp, defaults, config = {} ] ) => {
+          ] ).then( ( [ editor_comp, config = {} ] ) => {
             if ( config.data && config.data.store && config.data.key && data.apps.meta[ app_key ]._.creator !== ( this.user.getValue() || {} ).key )
               delete config.data.key;
             editor_comp.start( {
-              bootstrap: '',
               data: { store: [ 'ccm.store', { app: config } ], key: 'app' },
-              'ignore.defaults': defaults,
               parent: this,
-              preview: false,
               root: this.element.querySelector( '#editor' )
             } ).then( editor_inst => {
               tmp.editor = editor_inst;
