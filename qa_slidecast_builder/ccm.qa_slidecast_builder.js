@@ -267,6 +267,7 @@
 
           // fill HTML form for slide settings with initial values
           const form = this.element.querySelector( '#' + this.component.name + '-settings-form' );
+          form.reset();
           const { audio, content, commentary, description } = slides_viewer.ignore.slides[ slides_viewer.slide_nr - 1 ];
           $.fillForm( form, {
             slide: {
@@ -296,7 +297,6 @@
           if ( parseInt( form_data.content ) ) delete form_data.content;
           Object.assign( slide_data, form_data );
           slides_viewer.start();
-          form.reset();
         },
 
         /** when 'delete' button in the slide settings is clicked */
