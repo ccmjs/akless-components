@@ -5,7 +5,7 @@
  */
 
 import { text_de as slidecast_de, text_en as slidecast_en } from 'https://ccmjs.github.io/tkless-components/qa_slidecast/resources/resources.mjs';
-import { builder_de as comment_builder_de, builder_en as comment_builder_en, ignore } from 'https://ccmjs.github.io/akless-components/config_builder/resources/comment/resources.mjs';
+import { builder_de as comment_builder_de, builder_en as comment_builder_en, defaults, mapping } from 'https://ccmjs.github.io/akless-components/config_builder/resources/comment/resources.mjs';
 
 slidecast_de.commentary_status = "Gibt an, ob die Folie kommentiert werden kann.";
 slidecast_en.commentary_status = "Indicates whether the slide can be commented.";
@@ -195,7 +195,7 @@ export const test = {
     "bootstrap": "",
     "css": [ "ccm.load", "./../config_builder/resources/styles.css" ],
     "html": [ "ccm.load", "./../config_builder/resources/comment/templates.mjs" ],
-    "ignore": ignore,
+    "ignore": { "defaults": defaults, "mapping": mapping },
     "lang": [ "ccm.start", "./../lang/ccm.lang.js", {
       "translations": { "de": comment_builder_de, "en": comment_builder_en }
     } ],
@@ -249,7 +249,7 @@ export const demo = {
     "bootstrap": "",
     "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/config_builder/resources/styles.min.css" ],
     "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/config_builder/resources/comment/templates.mjs" ],
-    "ignore": ignore,
+    "ignore": { "defaults": defaults, "mapping": mapping },
     "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/versions/ccm.lang-1.0.0.min.js", {
       "translations": { "de": comment_builder_de, "en": comment_builder_en }
     } ],
