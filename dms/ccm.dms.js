@@ -545,7 +545,7 @@
           this.render.header( 'tools' );
           const tool_meta = data.components.meta[ tool_key ];
           this.html.render( this.html.preview( tool_key ), element );
-          this.ccm.start( tool_meta.path, { root: this.element.querySelector( '#preview' ), src: tmp.editor.getValue() } );
+          this.ccm.start( tool_meta.path, { parent: this, root: this.element.querySelector( '#preview' ), src: tmp.editor.getValue() } );
           this.lang && this.lang.translate();
         },
         show: async app_key => {
