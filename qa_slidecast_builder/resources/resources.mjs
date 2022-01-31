@@ -5,7 +5,7 @@
  */
 
 import { text_de as slidecast_de, text_en as slidecast_en } from 'https://ccmjs.github.io/tkless-components/qa_slidecast/resources/resources.mjs';
-import { builder_de as comment_builder_de, builder_en as comment_builder_en, defaults, mapping } from 'https://ccmjs.github.io/akless-components/config_builder/resources/comment/resources.mjs';
+import { builder_de as comment_builder_de, builder_en as comment_builder_en, defaults as comment_builder_defaults, comment_builder_mapping } from 'https://ccmjs.github.io/akless-components/config_builder/resources/comment/resources.mjs';
 
 slidecast_de.commentary_status = "Gibt an, ob die Folie kommentiert werden kann.";
 slidecast_en.commentary_status = "Indicates whether the slide can be commented.";
@@ -187,6 +187,27 @@ const viewer_de = {
 };
 
 /**
+ * default values for app configuration
+ * @type {Object}
+ */
+const slidecast_builder_defaults = {
+  "comment": [ "ccm.component", "https://ccmjs.github.io/tkless-components/comment/ccm.comment.js" ],
+  "description": true,
+  "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/ccm.lang.js", {
+    "translations": { "de": slidecast_de, "en": slidecast_en }
+  } ],
+  "pdf_viewer.2": {
+    "downloadable": true,
+    "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/ccm.lang.js", {
+      "translations": { "de": viewer_de, "en": viewer_en }
+    } ],
+    "pdf": "https://ccmjs.github.io/tkless-components/pdf_viewer/resources/demo/de/slides.pdf",
+    "text": viewer_de
+  },
+  "text": slidecast_de
+};
+
+/**
  * test configuration (relative paths)
  * @type {Object}
  */
@@ -195,7 +216,7 @@ export const test = {
     "bootstrap": "",
     "css": [ "ccm.load", "./../config_builder/resources/styles.css" ],
     "html": [ "ccm.load", "./../config_builder/resources/comment/templates.mjs" ],
-    "ignore": { "defaults": defaults, "mapping": mapping },
+    "ignore": { "defaults": comment_builder_defaults, "mapping": comment_builder_mapping },
     "lang": [ "ccm.start", "./../lang/ccm.lang.js", {
       "translations": { "de": comment_builder_de, "en": comment_builder_en }
     } ],
@@ -214,24 +235,7 @@ export const test = {
   ],
   "helper.1": "./../modules/helper.mjs",
   "html.1": "./../qa_slidecast_builder/resources/templates.mjs",
-  "ignore": {
-    "defaults": {
-      "comment": [ "ccm.component", "https://ccmjs.github.io/tkless-components/comment/ccm.comment.js" ],
-      "description": true,
-      "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/ccm.lang.js", {
-        "translations": { "de": slidecast_de, "en": slidecast_en }
-      } ],
-      "pdf_viewer.2": {
-        "downloadable": true,
-        "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/ccm.lang.js", {
-          "translations": { "de": viewer_de, "en": viewer_en }
-        } ],
-        "pdf": "https://ccmjs.github.io/tkless-components/pdf_viewer/resources/demo/de/slides.pdf",
-        "text": viewer_de
-      },
-      "text": slidecast_de
-    }
-  },
+  "ignore": { "defaults": slidecast_builder_defaults },
   "lang": [ "ccm.start", "./../../../lang/ccm.lang.js", {
     "translations": { "de": slidecast_builder_de, "en": slidecast_builder_en }
   } ],
@@ -249,7 +253,7 @@ export const demo = {
     "bootstrap": "",
     "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/config_builder/resources/styles.min.css" ],
     "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/config_builder/resources/comment/templates.mjs" ],
-    "ignore": { "defaults": defaults, "mapping": mapping },
+    "ignore": { "defaults": comment_builder_defaults, "mapping": comment_builder_mapping },
     "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/versions/ccm.lang-1.0.0.min.js", {
       "translations": { "de": comment_builder_de, "en": comment_builder_en }
     } ],
@@ -257,26 +261,47 @@ export const demo = {
     "text": comment_builder_de,
     "tool": [ "ccm.component", "https://ccmjs.github.io/tkless-components/comment/versions/ccm.comment-7.1.0.min.js" ]
   },
-  "ignore": {
-    "defaults": {
-      "comment": [ "ccm.component", "https://ccmjs.github.io/tkless-components/comment/ccm.comment.js" ],
-      "description": true,
-      "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/ccm.lang.js", {
-        "translations": { "de": slidecast_de, "en": slidecast_en }
-      } ],
-      "pdf_viewer.2": {
-        "downloadable": true,
-        "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/ccm.lang.js", {
-          "translations": { "de": viewer_de, "en": viewer_en }
-        } ],
-        "pdf": "https://ccmjs.github.io/tkless-components/pdf_viewer/resources/demo/de/slides.pdf",
-        "text": viewer_de
-      },
-      "text": slidecast_de
-    }
-  },
+  "ignore": { "defaults": slidecast_builder_defaults },
   "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/versions/ccm.lang-1.0.0.min.js", {
     "translations": { "de": slidecast_builder_de, "en": slidecast_builder_en }
   } ],
+  "text": slidecast_builder_de
+};
+
+/**
+ * configuration for Digital Makerspace
+ * @type {Object}
+ */
+export const dms = {
+  "bootstrap": "",
+  "comment_builder.2": {
+    "bootstrap": "",
+    "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/config_builder/resources/styles.min.css" ],
+    "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/config_builder/resources/comment/templates.mjs" ],
+    "ignore": {
+      "defaults": {
+        "data": {
+          "store": [ "ccm.store", { "name": "dms2-comment-slides", "url": "https://ccm2.inf.h-brs.de" } ]
+        },
+        "lang": comment_builder_defaults.lang,
+        "libs": comment_builder_defaults.libs,
+        "text": comment_builder_defaults.text,
+        "user": comment_builder_defaults.user
+      },
+      "mapping": comment_builder_mapping
+    },
+    "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/versions/ccm.lang-1.0.0.min.js", {
+      "translations": { "de": comment_builder_de, "en": comment_builder_en }
+    } ],
+    "preview": false,
+    "text": comment_builder_de,
+    "tool": [ "ccm.component", "https://ccmjs.github.io/tkless-components/comment/versions/ccm.comment-7.1.0.min.js" ]
+  },
+  "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/qa_slidecast_builder/resources/styles.min.css" ],
+  "ignore": { "defaults": slidecast_builder_defaults },
+  "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/versions/ccm.lang-1.0.0.min.js", {
+    "translations": { "de": slidecast_builder_de, "en": slidecast_builder_en }
+  } ],
+  "preview": false,
   "text": slidecast_builder_de
 };
