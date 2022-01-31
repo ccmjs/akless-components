@@ -5,7 +5,7 @@
  */
 
 import { text_de as slidecast_de, text_en as slidecast_en } from 'https://ccmjs.github.io/tkless-components/qa_slidecast/resources/resources.mjs';
-import { builder_de as comment_builder_de, builder_en as comment_builder_en, defaults as comment_builder_defaults, comment_builder_mapping } from 'https://ccmjs.github.io/akless-components/config_builder/resources/comment/resources.mjs';
+import { builder_de as comment_builder_de, builder_en as comment_builder_en, defaults as comment_builder_defaults, mapping as comment_builder_mapping } from 'https://ccmjs.github.io/akless-components/config_builder/resources/comment/resources.mjs';
 
 slidecast_de.commentary_status = "Gibt an, ob die Folie kommentiert werden kann.";
 slidecast_en.commentary_status = "Indicates whether the slide can be commented.";
