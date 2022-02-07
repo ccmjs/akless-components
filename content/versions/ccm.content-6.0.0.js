@@ -2,7 +2,7 @@
  * @overview ccmjs-based web component for predefined content
  * @author André Kless <andre.kless@web.de> 2016-2022
  * @license The MIT License (MIT)
- * @version latest (6.0.0)
+ * @version 6.0.0
  * @changes
  * version 6.0.0 (07.02.2022):
  * - uses ccmjs v27.2.0 as default
@@ -14,6 +14,7 @@
 ( () => {
   const component = {
     name: 'content',
+    version: [ 6, 0, 0 ],
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-27.2.0.min.js',
     config: {
 //    "onstart": instance => {},       // callback after instances has started
