@@ -16,13 +16,14 @@
     name: 'content',
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-27.2.0.min.js',
     config: {
-//    "onstart": instance => {},       // callback after instances has started
       "components": [],                // contains the components that are reused in the predefined content
+      "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/content/resources/styles.min.css" ],
       "dependencies": [],              // contains the dependencies on the apps reused in the predefined content
       "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-8.0.0.min.mjs" ],
 //    "inner": "Hello, World!",        // predefined content (could be given as HTML string, DOM Element Nodes or ccm HTML data)
 //    "json2json": json => json,       // converts placeholders to different data structure (placeholders are passed as first parameter)
 //    "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/versions/ccm.lang-1.0.0.min.js" ],
+//    "onstart": instance => {},       // callback after instances has started
 //    "placeholder": { "foo": "bar" }  // replaces all '%foo%' in predefined content with 'bar'
     },
     Instance: function () {
