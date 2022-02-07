@@ -1,3 +1,5 @@
+/*----------------------------------------------------- DEPRECATED ---------------------------------------------------*/
+
 /**
  * @overview unit tests of ccmjs-based web component for rendering a predefined content
  * @author André Kless <andre.kless@web.de> 2017-2018
