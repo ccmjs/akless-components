@@ -9,8 +9,15 @@
   color: black;
 }
 
+/* Dark Mode */
+
+#element.dark_mode {
+  background-color: black;
+  color: white;
+}
+
 @media (prefers-color-scheme: dark) {
-  #element {
+  #element.dark_auto {
     background-color: black;
     color: white;
   }
