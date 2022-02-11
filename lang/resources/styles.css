@@ -12,15 +12,31 @@ select {
   width: 3.6em;
 }
 
+/* Dark Mode */
+
+#element.dark_mode select {
+  color: #b1b1b1;
+  background-color: #222;
+  border: 1px solid #515151;
+}
+
+#element.dark_mode select:focus {
+  color: #b1b1b1;
+  background-color: #222;
+  border-color: #9badbf;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgba( 55, 90, 127, 0.25 );
+}
+
 @media (prefers-color-scheme: dark) {
 
-  select {
+  #element.dark_auto select {
     color: #b1b1b1;
     background-color: #222;
     border: 1px solid #515151;
   }
 
-  select:focus {
+  #element.dark_auto select:focus {
     color: #b1b1b1;
     background-color: #222;
     border-color: #9badbf;
