@@ -7,3 +7,8 @@
 ccm-app {
   white-space: normal;
 }
+
+button {
+  font-size: revert;
+  line-height: normal;
+}
