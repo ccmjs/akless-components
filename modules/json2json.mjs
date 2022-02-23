@@ -175,3 +175,27 @@ export function upload2data( json ) {
 export function userWithEmail( user ) {
   return `<span title="${user.mail}">${user.name}</span>`;
 }
+
+/**
+ * converts app state data of ccm.quill.js to a configuration of ccm.content.js
+ * @param {Object} json - result data of ccm.quill.js
+ * @returns {Object} configuration of ccm.content.js
+ */
+export function quill2content( json ) {
+  json.inner = json.value;
+  delete json.value;
+  console.log( json );
+  return json;
+}
+
+/**
+ * converts a configuration of ccm.content.js to app state data of ccm.quill.js
+ * @param {Object} json - configuration of ccm.content.js
+ * @returns {Object} result data of ccm.quill.js
+ */
+export function content2quill( json ) {
+  json.value = json.inner;
+  delete json.inner;
+  console.log( json );
+  return json;
+}
