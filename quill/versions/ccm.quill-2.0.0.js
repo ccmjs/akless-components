@@ -34,19 +34,27 @@
       "libs": [ "ccm.load", "https://ccmjs.github.io/akless-components/libs/quill-1/quill.min.js" ],
 //    "onchange": event => console.log( event.instance.getValue() ),
 //    "onstart": event => console.log( event.instance.getValue() ),
-      "options": { "theme": "snow" },
+      "options": {
+        "theme": "snow",
+        "modules": {
+          "toolbar": [
+            [ { "header": [ 1, 2, 3, 4, 5, 6, false ] } ],
+            [ "bold", "italic", "underline", "strike" ],
+            [ { "color": [] }, { "background": [] } ],
+            [ { "script": "super" }, { "script": "sub" } ],
+            [ { "list": "ordered" }, { "list": "bullet" } ],
+            [ "link", "image", "video" ],
+            [ "clean" ]
+          ]
+        }
+      },
       "shadow": "none"
     },
     Instance: function () {
       let $;
-      this.start = async () => {
+      this.ready = async () => {
         $ = Object.assign( {}, this.ccm.helper, this.helper ); $.use( this.ccm );
         this.quill = new Quill( this.element, this.options );
-        if ( this.data ) {
-          const data = await $.dataset( this.data );
-          this.html ? this.setHTML( data.value ) : this.quill.setContents( data );
-        }
-        this.onchange && this.quill.on( 'text-change', () => this.onchange( { instance: this } ) );
         if ( this.buttons ) {
           const format = $.html( { tag: 'span', class: 'ql-formats' } );
           this.buttons.forEach( button => {
@@ -58,7 +66,6 @@
           this.quill.getModule( 'toolbar' ).container.appendChild( format );
         }
         if ( this.html && this.embed ) {
-          startApps();
           const format = $.html( { tag: 'span', class: 'ql-formats' } );
           this.quill.getModule( 'toolbar' ).container.appendChild( format );
           format.appendChild( $.html( {
@@ -71,7 +78,7 @@
               if ( !app ) return;
               this.quill.insertEmbed( range.index, 'embed-app', app, Quill.sources.USER );
               this.quill.setSelection( range.index + 1, Quill.sources.SILENT );
-              startApps();
+              startApp( this.quill.root.querySelector( 'ccm-app:empty' ) );
             }
           } ) );
           const BlockEmbed = Quill.import( 'blots/block/embed' );
@@ -87,17 +94,22 @@
           EmbedContent.tagName = 'ccm-app';
           Quill.register( EmbedContent, true );
         }
+      };
+      this.start = async () => {
+        if ( this.data ) {
+          const data = await $.dataset( this.data );
+          this.html ? this.setHTML( data.value ) : this.quill.setContents( data );
+        }
+        this.quill.root.querySelectorAll( 'ccm-app' ).forEach( startApp );
+        this.onchange && this.quill.on( 'text-change', () => this.onchange( { instance: this } ) );
         this.onstart && await this.onstart( { instance: this } );
       };
       this.getValue = () => this.html ? { value: this.getHTML() } : this.quill.getContents();
       this.getHTML = () => this.quill.root.innerHTML;
       this.setHTML = html => this.quill.root.innerHTML = html;
-      const startApps = () => {
-        this.quill.root.querySelectorAll( 'ccm-app' ).forEach( app => {
-          if ( app.innerHTML ) return;
-          app.appendChild( $.loading() );
-          this.ccm.start( app.getAttribute( 'component' ), { root: app, src: JSON.parse( app.getAttribute( 'src' ) ) } );
-        } );
+      const startApp = app => {
+        $.setContent( app, $.loading() );
+        this.ccm.start( app.getAttribute( 'component' ), { root: app, src: JSON.parse( app.getAttribute( 'src' ) ) } );
       };
     }
   };
