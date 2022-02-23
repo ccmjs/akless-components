@@ -97,7 +97,7 @@
       this.start = async () => {
         if ( this.data ) {
           const data = await $.dataset( this.data );
-          this.html ? this.setHTML( data.value ) : this.quill.setContents( data );
+          this.html ? this.setHTML( data.value || '' ) : this.quill.setContents( data );
         }
         this.quill.root.querySelectorAll( 'ccm-app' ).forEach( startApp );
         this.onchange && this.quill.on( 'text-change', () => this.onchange( { instance: this } ) );
