@@ -4,11 +4,11 @@
  * @license The MIT License (MIT)
  */
 
-ccm-app {
+.ql-editor ccm-app {
   white-space: normal;
 }
 
-button {
+.ql-formats button {
   font-size: revert;
   line-height: normal;
 }
