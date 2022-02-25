@@ -1137,6 +1137,7 @@ export const formData = ( elem, settings = {} ) => {
  */
 export const appDependency = async app => {
   if ( typeof app !== 'string' ) return null;
+  if ( ccm.helper.isDependency( app ) ) { app[ 0 ] = 'ccm.start'; return app; }
 
   // URL
   if ( app.startsWith( 'http' ) ) {
