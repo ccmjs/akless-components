@@ -1,132 +1,157 @@
 
 export const submit_app_collection = {
   "entries": [
-    "<div class='pb-2 mt-4 mb-4 border-bottom'><h2>Settings <small class='text-primary'>Chat</small></h2></div>",
+    "<br>",
     {
-      "label": "App Title",
+      "label": "Titel der App-Sammlung:",
       "name": "title",
-      "type": "text",
-      "info": "Give here the title of your app collection. This may be the name of the course you want to represent as an app collection."
+      "type": "text"
     },
-    "<legend>User Login</legend>",
+    "<legend>Sektionen und Apps</legend>",
     {
-      "label": "User Authentication",
-      "name": "user",
-      "type": "select",
-      "info": "<p>If you select a sign-on mode here, authentication will be requested. The various sign-on modes are described below. Without a sign-on mode the user can only see the chat history and can't send an own message.</p><h5>Guest Mode</h5><p>The user can authenticate with any username and without password. This mode is mostly used for test and demo scenarios.</p><h5>DMS Account</h5><p>The user must log in with a valid Digital Makerspace (DMS) account.</p><h5>H-BRS FB02 Account</h5><p>In this mode the user has to authenticate access with a valid account from the Department of Computer Sciences at Hochschule Bonn-Rhein-Sieg University of Applied Sciences.</p><h5>H-BRS FB02 Account with Pseudonym</h5><p>The same as H-BRS FB02, but the username is a pseudonym.</p><h5>One-time Pseudonym</h5><p>The user is automatically logged in with a one-time pseudonym. Each login returns a different pseudonym.</p>",
-      "items": [
-        {
-          "inner": "None",
-          "value": "null"
-        },
-        {
-          "inner": "Guest Mode",
-          "value": "[%'%ccm.instance%'%,%'%https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.0.js%'%,{%'%realm%'%:%'%guest%'%,%'%title%'%:%'%Guest Mode: Please enter any username%'%}]"
-        },
-        {
-          "inner": "DMS Account",
-          "value": "[%'%ccm.instance%'%,%'%https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.0.js%'%,{%'%hash%'%:[%'%ccm.load%'%,{%'%url%'%:%'%https://ccmjs.github.io/akless-components/modules/md5.mjs%'%,%'%type%'%:%'%module%'%}],%'%realm%'%:%'%cloud%'%,%'%store%'%:%'%dms-user%'%,%'%url%'%:%'%https://ccm2.inf.h-brs.de%'%}]"
-        },
-        {
-          "inner": "H-BRS FB02 Account",
-          "value": "[%'%ccm.instance%'%,%'%https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.0.js%'%,{%'%key%'%:%'%hbrsinfkaul%'%,%'%realm%'%:%'%hbrsinfkaul%'%}]"
-        },
-        {
-          "inner": "H-BRS FB02 Account with Pseudonym",
-          "value": "[%'%ccm.instance%'%,%'%https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.0.js%'%,{%'%key%'%:%'%hbrsinfpseudo%'%,%'%realm%'%:%'%hbrsinfpseudo%'%}]"
-        },
-        {
-          "inner": "One-time Pseudonym",
-          "value": "[%'%ccm.instance%'%,%'%https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.0.js%'%,{%'%key%'%:%'%pseudo%'%,%'%realm%'%:%'%guest%'%,%'%guest%'%:true}]"
-        }
-      ]
-    },
-    "<legend>Your App Content</legend>",
-    {
-      "name": "content",
+      "name": "sections",
       "type": "several",
-      "info": "Text Text Text",
       "items": [
         {
-          "label": "Section Title",
-          "name": "section",
+          "label": "Titel der Sektion:",
+          "name": "title",
           "type": "text"
         },
         {
-          "label": "Section Content",
+          "label": "Enthaltene Apps:",
           "name": "entries",
           "type": "several",
           "items": [
             {
-              "label": "Content Heading",
+              "label": "Titel der App:",
               "name": "title",
               "type": "text"
             },
             {
-              "label": "Content as App URL",
+              "label": "Icon der App:",
+              "name": "icon",
+              "type": "url",
+              "info": "Hier können Sie ein individuelles App-Icon für die App festlegen, in dem Sie die URL einer Bilddatei angeben. Bitte achten Sie darauf, kein Urheberrecht zu verletzen."
+            },
+            {
+              "label": "App-URL oder Einbettungscode:",
               "name": "ignore",
-              "type": "app"
+              "type": "text",
+              "info": "Jede App aus dem Digital Makerspace kann hier platziert werden. Geben Sie dafür die App-URL oder den Einbettungscode der App an."
             }
           ]
         }
       ]
     },
-    "<legend>Your App Footer </legend>",
+    "<legend>Apps im Footer</legend>",
     {
-      "label": "App Settings",
       "name": "footer",
       "type": "several",
       "items": [
         {
-          "label": "URL of the App",
-          "name": "ignore",
-          "type": "app"
-        },
-        {
-          "label": "Icon for the App",
-          "name": "icon",
-          "type": "icon_picker",
-          "info": "Icon from https://material.io/resources/icons"
-        },
-        {
-          "label": "Subtitle of Icon",
+          "label": "Titel der App:",
           "name": "title",
           "type": "text"
         },
         {
-          "label": "User",
-          "name": "user",
+          "label": "Icon der App:",
+          "name": "icon",
+          "type": "url",
+          "info": "Hier können Sie ein individuelles App-Icon für die App festlegen, in dem Sie die URL einer Bilddatei angeben. Bitte achten Sie darauf, kein Urheberrecht zu verletzen."
+        },
+        {
+          "label": "App-URL oder Einbettungscode:",
+          "name": "ignore",
           "type": "text",
-          "info": "The app is only visible for the user entered here. For example you can set the username of an admin or teacher."
+          "info": "Jede App aus dem Digital Makerspace kann hier platziert werden. Geben Sie dafür die App-URL oder den Einbettungscode der App an."
+        }
+      ]
+    },
+    "<legend>Erweiterte Einstellungen</legend>",
+    {
+      "label": "Anmeldung von Benutzern:",
+      "name": "user",
+      "type": "select",
+      "info": "Legt fest, ob man sich in der App-Sammlung anmelden kann. Dies ist dann sinnvoll, wenn die App-Sammlung Apps enthält, die eine Anmeldung erfordern und es einen übergeordneten Login geben soll.<br><br>Folgende Anmeldeverfahren sind möglich:<ul><li><u>Gastmodus:</u> Der Benutzer kann sich mit einem beliebigen Namen ohne Passwort anmelden.</li><li><u>Digital Makerspace Account:</u> Anmeldung mit einem kostenlosen Digital Makerspace-Account.</li><li><u>H-BRS FB02 Account:</u> Der Benutzer muss sich mit mit einem Account des Fachbereichs Informatik der Hochschule Bonn-Rhein-Sieg anmelden.</li><li><u>H-BRS FB02 Account mit Pseudonym:</u> Das gleiche wie die vorherige Option, aber im Frontend wird der Benutzername durch ein Pseudonym ersetzt.</li><li><u>Einmaliges Pseudonym:</u> Man ist automatisch angemeldet unter einem zufällig generierten Pseudonym. Bei jeder Anmeldung nach Ablauf einer Session wird ein neues Pseudonym generiert.</li></ul>",
+      "items": [
+        {
+          "inner": "Deaktiviert",
+          "value": null
+        },
+        {
+          "inner": "Gastmodus",
+          "value": "[%'%ccm.start%'%,%'%https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.2.min.js%'%,[%'%ccm.get%'%,%'%https://ccmjs.github.io/akless-components/user/resources/resources.min.js%'%,%'%guest%'%]]"
+        },
+        {
+          "inner": "Digital Makerspace Account",
+          "value": "[%'%ccm.start%'%,%'%https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.2.min.js%'%,[%'%ccm.get%'%,%'%https://ccmjs.github.io/akless-components/user/resources/resources.min.js%'%,%'%cloud%'%]]"
+        },
+        {
+          "inner": "H-BRS FB02 Account",
+          "value": "[%'%ccm.start%'%,%'%https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.2.min.js%'%,[%'%ccm.get%'%,%'%https://ccmjs.github.io/akless-components/user/resources/resources.min.js%'%,%'%hbrsinfkaul%'%]]"
+        },
+        {
+          "inner": "H-BRS FB02 Account mit Pseudonym",
+          "value": "[%'%ccm.start%'%,%'%https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.2.min.js%'%,[%'%ccm.get%'%,%'%https://ccmjs.github.io/akless-components/user/resources/resources.min.js%'%,%'%hbrsinfpseudo%'%]]"
+        },
+        {
+          "inner": "Einmaliges Pseudonym",
+          "value": "[%'%ccm.start%'%,%'%https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.2.min.js%'%,[%'%ccm.get%'%,%'%https://ccmjs.github.io/akless-components/user/resources/resources.min.js%'%,%'%pseudo%'%]]"
         }
       ]
     },
     {
-      "name": "html",
-      "type": "hidden"
+      "label": "Dark Mode",
+      "name": "dark",
+      "type": "select",
+      "info": "Im Dark Mode erscheint die App-Sammlung in einem dunklen Layout, was Augen und Batterie schont. Standardmäßig wird automatisch vom Betriebssystem des App-Nutzers ermittelt, ob ein Dark Mode bevorzugt wird.",
+      "items": [
+        {
+          "inner": "Automatisch",
+          "value": "auto"
+        },
+        {
+          "inner": "Ein",
+          "value": true
+        },
+        {
+          "inner": "Aus",
+          "value": false
+        }
+      ]
     },
     {
-      "name": "feedback",
-      "type": "hidden"
+      "label": "URL für Standard-Icon",
+      "name": "icon",
+      "type": "text",
+      "info": "Wenn für eine App kein individuelles Icon festgelegt wird, wird das hier angegebene Icon eingesetzt. Wird auch hier kein Icon festgelegt, wird kein Icon dargestellt. Bitte achten Sie darauf, kein Urheberrecht zu verletzen."
     },
     {
-      "name": "menu",
-      "type": "hidden"
+      "label": "Mehrsprachigkeit",
+      "name": "lang",
+      "type": "select",
+      "info": "Geben Sie hier an, ob man in der App-Sammlung die Sprache wechseln kann. Dies ist dann sinnvoll, wenn die App-Sammlung mehrsprachige Apps enthält und es einen übergeordnete Sprachauswahl geben soll.",
+      "items": [
+        {
+          "inner": "Aus",
+          "value": null
+        },
+        {
+          "inner": "Ein",
+          "value": "[%'%ccm.start%'%,%'%https://ccmjs.github.io/akless-components/lang/versions/ccm.lang-1.1.0.min.js%'%]"
+        }
+      ]
     },
+    "<br>",
     {
-      "name": "css",
-      "type": "hidden"
-    },
-    {
-      "name": "js",
-      "type": "hidden"
-    },
-    {
-      "name": "helper",
+      "name": "routing",
       "type": "hidden"
     }
   ],
-  "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-8.1.0.min.mjs" ],
+  "helper": [
+    "ccm.load",
+    "https://ccmjs.github.io/akless-components/modules/versions/helper-8.1.0.min.mjs"
+  ],
   "html": {
     "entry": {
       "class": "form-group"
@@ -200,7 +225,8 @@ export const submit_app_collection = {
       ]
     }
   },
-  "css": [ "ccm.load",
+  "css": [
+    "ccm.load",
     {
       "context": "head",
       "url": "https://ccmjs.github.io/akless-components/libs/bootstrap/css/font-face.css"
@@ -212,9 +238,10 @@ export const submit_app_collection = {
     "defaults": {
       "content": [],
       "footer": [],
-      "user": null,
-      "feedback": null,
-      "routing": null
+      "routing": [
+        "ccm.instance",
+        "https://ccmjs.github.io/akless-components/routing/versions/ccm.routing-3.0.0.min.js"
+      ]
     }
   }
-}
+};
