@@ -4,7 +4,7 @@
  * @license The MIT License (MIT)
  * @version 5.0.0
  * @changes
- * version 5.0.0 (29.01.2022): reimplementation
+ * version 5.0.0 (25.02.2022): reimplementation
  * (for older version changes see ccm.dms-4.5.0.js)
  */
 
@@ -512,7 +512,7 @@
             return $.setContent( this.element.querySelector( '#editor' ), tmp.editor.root );
           const config = app_key && data.apps.meta[ app_key ].ignore.config;
           Promise.all( [
-            $.solveDependency( tool_meta.ignore.editors[ 0 ] ),
+            $.solveDependency( tool_meta.ignore.editors[ 0 ].app || tool_meta.ignore.editors[ 0 ].comp || tool_meta.ignore.editors[ 0 ] ),
             $.solveDependency( config )
           ] ).then( ( [ editor_comp, config = {} ] ) => {
             if ( config.data && config.data.store && config.data.key && data.apps.meta[ app_key ]._.creator !== ( this.user.getValue() || {} ).key )
@@ -535,8 +535,8 @@
               options: data.apps.options.tags
             } );
           tmp.quill = await this.quill.start( {
-              root: this.element.querySelector( '#form-description' )
-            } );
+            root: this.element.querySelector( '#form-description' )
+          } );
           const radio = element.querySelector( '#form-visibility-private' );
           radio.click();
           radio.checked = false;
