@@ -5,8 +5,12 @@
  * and defines the Custom Element <code>\<ccm-app\></code>.
  * @author André Kless <andre.kless@web.de> 2014-2022
  * @license The MIT License (MIT)
- * @version latest (27.2.0)
+ * @version latest (27.3.1)
  * @changes
+ * version 27.3.1 (14.02.2022)
+ * - store.set() and store.del() returns original operation result
+ * version 27.3.0 (14.02.2022)
+ * - ccm.helper.html() accepts a instance reference and returns it as result
  * version 27.2.0 (17.01.2022)
  * - ccm.helper.isSubset() can check if a property not exists with value 'null'
  * version 27.1.2 (27.12.2021)
@@ -240,14 +244,14 @@
         // dataset not exists? => create
         else that.local[ priodata.key ] = priodata;
 
-        resolve( priodata.key );
+        resolve( priodata );
       }
 
       /** creates/updates dataset in client-side database */
       function clientDB() {
 
         const request = getStore().put( priodata );
-        request.onsuccess = event => event.target.result.toString() === priodata.key.toString() ? resolve( event.target.result ) : reject( event.target.result );
+        request.onsuccess = event => resolve( event.target.result );
         request.onerror   = event => reject( event.target.errorCode );
 
       }
@@ -255,7 +259,7 @@
       /** creates/updates dataset in server-side database */
       function serverDB() {
 
-        ( that.socket ? useWebsocket : useHttp )( prepareParams( { set: priodata } ) ).then( response => ( ccm.helper.isObject( priodata.key ) || response.toString() === priodata.key.toString() ? resolve : reject )( response ) ).catch( error => checkError( error, reject ) );
+        ( that.socket ? useWebsocket : useHttp )( prepareParams( { set: priodata } ) ).then( resolve ).catch( error => checkError( error, reject ) );
 
       }
 
@@ -277,7 +281,9 @@
       /** deletes dataset in local cache */
       function localCache() {
 
-        delete that.local[ key ]; resolve( true );
+        const dataset = that.local[ key ];
+        delete that.local[ key ];
+        resolve( dataset );
 
       }
 
@@ -285,7 +291,7 @@
       function clientDB() {
 
         const request = getStore().delete( key );
-        request.onsuccess = event => event.target.result === undefined ? resolve( true ) : reject( event.target.result );
+        request.onsuccess = event => resolve( event.target.result );
         request.onerror   = event => reject( event.target.errorCode );
 
       }
@@ -293,7 +299,7 @@
       /** deletes dataset in server-side database */
       function serverDB() {
 
-        ( that.socket ? useWebsocket : useHttp )( prepareParams( { del: key } ) ).then( response => ( response === true ? resolve : reject )( response ) ).catch( error => checkError( error, reject ) );
+        ( that.socket ? useWebsocket : useHttp )( prepareParams( { del: key } ) ).then( resolve ).catch( error => checkError( error, reject ) );
 
       }
 
@@ -507,7 +513,7 @@
      * @description Returns the _ccmjs_ version.
      * @returns {ccm.types.version_nr}
      */
-    version: () => '27.2.0',
+    version: () => '27.3.1',
 
     /**
      * @summary loads resources
@@ -1911,7 +1917,7 @@
         // convert to HTML element
         element = ccm.helper.html( element, undefined, { no_evaluation: true } );
 
-        // innerHTML is a JSON string? => move it to attribture 'inner'
+        // innerHTML is a JSON string? => move it to attribute 'inner'
         if ( ccm.helper.regex( 'json' ).test( element.innerHTML ) ) { element.setAttribute( 'inner', element.innerHTML ); element.innerHTML = ''; }
 
         const config = {};
@@ -2066,8 +2072,8 @@
        */
       html: function ( html, ...values ) {
 
-        // no HTML? => abort
-        if ( !html ) return html;
+        // no HTML or is instance? => let it be
+        if ( !html || ccm.helper.isInstance( html ) ) return html;
 
         // is already a HTML element and no placeholders have to be replaced? => nothing to do
         if ( ccm.helper.isElement( html ) && !values.length ) return html;

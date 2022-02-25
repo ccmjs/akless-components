@@ -1136,8 +1136,8 @@ export const formData = ( elem, settings = {} ) => {
  * @memberOf ModuleHelper.AppHandover
  */
 export const appDependency = async app => {
-  if ( typeof app !== 'string' ) return null;
   if ( ccm.helper.isDependency( app ) ) { app[ 0 ] = 'ccm.start'; return app; }
+  if ( typeof app !== 'string' ) return null;
 
   // URL
   if ( app.startsWith( 'http' ) ) {

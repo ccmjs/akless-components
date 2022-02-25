@@ -3,7 +3,7 @@
  * ES6 module that exports useful help functions for <i>ccmjs</i> component developers.
  * @author André Kless <andre.kless@web.de> 2019-2022
  * @license The MIT License (MIT)
- * @version 8.1.0
+ * @version latest (8.1.0)
  * @changes
  * version 8.1.0 (23.02.2022):
  * - added appDependency(string):Array - converts the URL or the HTML embed code of an app to an app dependency
@@ -1136,8 +1136,8 @@ export const formData = ( elem, settings = {} ) => {
  * @memberOf ModuleHelper.AppHandover
  */
 export const appDependency = async app => {
-  if ( typeof app !== 'string' ) return null;
   if ( ccm.helper.isDependency( app ) ) { app[ 0 ] = 'ccm.start'; return app; }
+  if ( typeof app !== 'string' ) return null;
 
   // URL
   if ( app.startsWith( 'http' ) ) {
