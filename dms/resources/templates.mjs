@@ -634,6 +634,12 @@ export function inputs( type, meta_key ) {
       <input type="text" name="title" class="form-control" id="form-title" required .value=${ meta.title || '' }>
     </div>
     <div class="mt-3">
+      <label for="form-icon" class="form-label mb-1">
+        <span data-lang="meta_icon">${ dms.text.meta_icon }</span>:
+      </label>
+      <input type="url" name="icon" class="form-control" id="form-icon" .value=${ meta.icon || '' }>
+    </div>
+    <div class="mt-3">
       <label for="form-subject" class="form-label mb-1">
         <span data-lang="meta_subject">${ dms.text.meta_subject }</span>:
       </label>
