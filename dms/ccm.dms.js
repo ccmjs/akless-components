@@ -104,7 +104,7 @@
         // load metadata of all components and apps
         data = await Promise.all( [
           this.components.get( { deleted: null } ),
-          this.apps.get( { deleted: null } )
+          this.apps.get( { deleted: false } )
         ] );
         data = {
           components: {
@@ -371,6 +371,7 @@
           form.tags = tmp.selectize.getValue();
           form.description = tmp.quill.getHTML();
           form.listed = form.visibility === 'public';
+          form.deleted = false;
 
           const config = tmp.editor.getValue();
           const app_key = $.generateKey();
