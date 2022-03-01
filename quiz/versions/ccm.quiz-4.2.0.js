@@ -2,7 +2,7 @@
  * @overview ccmjs-based web component for a quiz
  * @author André Kless <andre.kless@web.de> 2016-2022
  * @license The MIT License (MIT)
- * @version latest (4.2.0)
+ * @version 4.2.0
  * @changes
  * version 4.2.0 (01.03.2022):
  * - configurable placeholder of question prefix
@@ -38,7 +38,7 @@
 ( () => {
 
   const component = {
-    name: 'quiz',
+    name: 'quiz', version: [ 4, 2, 0 ],
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.1.1.js',
     config: {
 //    "answers": [],
