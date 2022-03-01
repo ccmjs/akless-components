@@ -4,7 +4,7 @@
  * @license The MIT License (MIT)
  * @version latest (5.0.0)
  * @changes
- * version 5.0.0 (25.02.2022): reimplementation
+ * version 5.0.0 (28.02.2022): reimplementation
  * (for older version changes see ccm.dms-4.5.0.js)
  */
 
@@ -103,7 +103,7 @@
 
         // load metadata of all components and apps
         data = await Promise.all( [
-          this.components.get( { deleted: null } ),
+          this.components.get( { deleted: false } ),
           this.apps.get( { deleted: false } )
         ] );
         data = {
