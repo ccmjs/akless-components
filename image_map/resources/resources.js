@@ -1,3 +1,5 @@
+/*----------------------------------------------------- DEPRECATED ---------------------------------------------------*/
+
 /**
  * @overview static data-based resources of ccm component for an image map
  * @author André Kless <andre.kless@web.de> 2019-2020

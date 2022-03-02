@@ -1,11 +1,17 @@
 /**
- * @overview default layout of ccm component for an image map
- * @author André Kless <andre.kless@web.de> 2019-2020
+ * @overview default layout of ccmjs-based web component for an image map
+ * @author André Kless <andre.kless@web.de> 2019-2020, 2022
  * @license The MIT License (MIT)
  */
 
 #element {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+#element,
+#info {
+  background-color: white;
+  color: black;
 }
 
 #map {
@@ -28,13 +34,14 @@
 #info {
   padding: 0.5em;
   border: 3px double lightgrey;
-  background-color: white;
   height: 5em;
   overflow: auto;
+  position: sticky;
+  bottom: 0;
 }
 
 #back {
-  margin: 0.25em 1em;
+  margin: 0.5em;
 }
 
 img {
@@ -54,4 +61,20 @@ h1, h2, h3, h4, h5, h6, p {
 p {
   margin-top: 0.5em;
   font-size: small;
+}
+
+/* Dark Mode */
+
+#element.dark_mode,
+#element.dark_mode #info {
+  background-color: black;
+  color: white;
+}
+
+@media (prefers-color-scheme: dark) {
+  #element.dark_auto,
+  #element.dark_auto #info {
+    background-color: black;
+    color: white;
+  }
 }

@@ -2,7 +2,7 @@
  * @overview ccmjs-based web component for an image map
  * @author André Kless <andre.kless@web.de> 2019-2020, 2022
  * @license The MIT License (MIT)
- * @version latest (3.0.0)
+ * @version 3.0.0
  * @changes
  * version 3.0.0 (02.03.2022):
  * - uses ccmjs v27.3.1 as default
@@ -17,6 +17,7 @@
 ( () => {
   const component = {
     name: 'image_map',
+    version: [ 3, 0, 0 ],
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-27.3.1.js',
     config: {
       "back": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-map\" viewBox=\"0 0 16 16\"><path fill-rule=\"evenodd\" d=\"M15.817.113A.5.5 0 0 1 16 .5v14a.5.5 0 0 1-.402.49l-5 1a.502.502 0 0 1-.196 0L5.5 15.01l-4.902.98A.5.5 0 0 1 0 15.5v-14a.5.5 0 0 1 .402-.49l5-1a.5.5 0 0 1 .196 0L10.5.99l4.902-.98a.5.5 0 0 1 .415.103zM10 1.91l-4-.8v12.98l4 .8V1.91zm1 12.98 4-.8V1.11l-4 .8v12.98zm-6-.8V1.11l-4 .8v12.98l4-.8z\"/></svg> <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-arrow-return-left\" viewBox=\"0 0 16 16\"><path fill-rule=\"evenodd\" d=\"M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5z\"/></svg>",
