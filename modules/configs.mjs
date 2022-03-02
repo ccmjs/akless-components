@@ -516,7 +516,8 @@ export const submit_quiz = {
         "submit": "Abschicken",
         "next": "Nächste Frage",
         "correct": "Korrekte Lösung: ",
-        "finish": "Quiz abschließen"
+        "finish": "Quiz abschließen",
+        "prefix": "Frage"
       },
       "feedback": true,
       "progress_bar": true,
