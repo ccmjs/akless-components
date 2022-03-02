@@ -513,7 +513,7 @@ export const submit_quiz = {
       "placeholder": {
         "cancel": "Abbrechen",
         "prev": "Vorherige Frage",
-        "submit": "Auswerten",
+        "submit": "Abschicken",
         "next": "Nächste Frage",
         "correct": "Korrekte Lösung: ",
         "finish": "Quiz abschließen",
