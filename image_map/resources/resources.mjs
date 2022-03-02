@@ -90,7 +90,6 @@ export const test = {
  * @type {Object}
  */
 export const demo = {
-  "back": "← Zurück zur Karte",
   "ignore": {
     "areas": example.areas
   },
