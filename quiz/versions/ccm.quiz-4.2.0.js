@@ -51,7 +51,7 @@
 //    "escape": true,
 //    "feedback": true,
       "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-7.0.0.mjs" ],
-      "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/quiz/resources/templates.html" ],
+      "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/quiz/resources/templates-v2.html" ],
 //    "input": 'radio',
 //    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-5.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.js", "greedy" ] ],
 //    "navigation": true,

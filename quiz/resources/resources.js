@@ -14,7 +14,7 @@ ccm.files[ 'resources.js' ] = {
     ],
     "feedback": true,
     "helper.1": "./../modules/helper.mjs",
-    "html.1": "./../quiz/resources/templates.html",
+    "html.1": "./../quiz/resources/templates-v2.html",
     "logger": [ "ccm.instance", "./../log/ccm.log.js", [ "ccm.get", "./../log/resources/configs.js", "greedy" ] ],
     "navigation": true,
     "onfinish": { "restart": false },
