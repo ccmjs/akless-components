@@ -1,10 +1,19 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="author" content="André Kless <andre.kless@web.de> 2020">
+<meta name="author" content="André Kless <andre.kless@web.de> 2020, 2022">
 <meta name="license" content="The MIT License (MIT)">
-<title>Image Map Builder</title>
-
-<style>html, body { margin: 0; }</style>
-<script src="https://ccmjs.github.io/akless-components/image_map_builder/versions/ccm.image_map_builder-2.1.1.js"></script>
-<ccm-image_map_builder-2-1-1></ccm-image_map_builder-2-1-1>
+<title>Demo | App-Editor | Bildkarte</title>
+<style>
+  body {
+    margin: 0;
+    background-color: white;
+  }
+  @media (prefers-color-scheme: dark) {
+    body {
+      background-color: black;
+    }
+  }
+</style>
+<script src="https://ccmjs.github.io/akless-components/image_map_builder/versions/ccm.image_map_builder-3.0.0.min.js"></script>
+<ccm-image_map_builder-3-0-0 src='["ccm.load","https://ccmjs.github.io/akless-components/image_map_builder/resources/resources.mjs#demo"]'></ccm-image_map_builder-3-0-0>

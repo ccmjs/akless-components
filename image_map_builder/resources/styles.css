@@ -1,17 +1,37 @@
 /**
- * @overview default layout of ccm component for building image maps
- * @author André Kless <andre.kless@web.de> 2020
+ * @overview default layout of ccm component for building an image maps
+ * @author André Kless <andre.kless@web.de> 2020, 2022
  * @license The MIT License (MIT)
  */
 
 #element {
+  background-color: white;
+  color: black;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
-#settings > div {
-  padding: 0.5em;
+#settings {
+  padding: 0 1em;
 }
 
 #grid-x {
   margin-right: 0.5em;
+}
+
+#placement {
+  margin: 1em;
+}
+
+/* Dark Mode */
+
+#element.dark_mode {
+  background-color: black;
+  color: white;
+}
+
+@media (prefers-color-scheme: dark) {
+  #element.dark_auto {
+    background-color: black;
+    color: white;
+  }
 }
