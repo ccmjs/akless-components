@@ -4,7 +4,7 @@
  * @license The MIT License (MIT)
  * @version 5.0.0
  * @changes
- * version 5.0.0 (28.02.2022): reimplementation
+ * version 5.0.0 (03.03.2022): reimplementation
  * (for older version changes see ccm.dms-4.5.0.js)
  */
 
@@ -380,7 +380,7 @@
           form.component = config.component = tool_key;
           form.app = config.app = app_key;
           form.ignore = { config: [ 'ccm.get', this.configs.source(), form.key ] };
-          config.ignore = { meta: [ 'ccm.get', this.apps.source(), form.key ] };
+          $.deepValue( config, 'ignore.meta', [ 'ccm.get', this.apps.source(), form.key ] );
           form._ = config._ = {
             creator: this.user.getValue().key,
             realm: 'cloud',
