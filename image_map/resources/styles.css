@@ -16,7 +16,6 @@
 
 #map {
   border: 1px solid lightgrey;
-  border-bottom: none;
   position: relative;
   overflow: hidden;
 }
@@ -32,12 +31,11 @@
 }
 
 #info {
-  padding: 0.5em;
-  border: 3px double lightgrey;
-  height: 5em;
-  overflow: auto;
   position: sticky;
   bottom: 0;
+  border: 3px double lightgrey;
+  padding: 0.5em;
+  overflow: auto;
 }
 
 #back {

@@ -145,9 +145,9 @@
        * @param {ccm.types.html} content
        */
       this.renderInfo = content => {
-        const info_elem = this.element.querySelector( '#info' );             // select info section
-        info_elem.style.display = content === undefined ? 'none' : 'block';  // no content? => hide info section
-        $.setContent( info_elem, $.html( content ) );                        // render content of info section
+        const info_elem = this.element.querySelector( '#info' );  // select info section
+        info_elem.style.display = !content ? 'none' : 'block';    // no content? => hide info section
+        $.setContent( info_elem, $.html( content ) );             // render content of info section
       };
 
     }
