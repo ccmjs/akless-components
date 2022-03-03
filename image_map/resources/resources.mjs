@@ -9,58 +9,58 @@
  * @type {Object}
  */
 const example = {
+  "image": "https://akless.github.io/akless/resources/images/goldgrotte.png",
+  "info": "<h3>Expedition Goldgrotte</h3><p>Der Forschungsdrang hat dich zu einer Goldgrotte geführt, in der es 6 Schätze zu entdecken gibt. Jeder Schatz enthält ein Quiz zum Thema HTML.</p>",
   "areas": [
     {
+      "app": "https://ccmjs.github.io/akless-components/dms/app.html?app=quiz,1581493641369X7741789624303226",
       "image": "https://akless.github.io/akless/resources/images/treasure.png",
-      "x": 240,
-      "y": 460,
-      "size": 30,
       "info": "<h3>Quiz 1: Was ist HTML?</h3><p>Klicke auf den Schatz um den Quiz zu starten.</p>",
-      "app": "https://ccmjs.github.io/akless-components/dms/app.html?app=quiz,1581493641369X7741789624303226"
+      "size": 30,
+      "x": 240,
+      "y": 460
     },
     {
+      "app": "https://ccmjs.github.io/akless-components/dms/app.html?app=quiz,1570790042636X6007448809895479",
       "image": "https://akless.github.io/akless/resources/images/treasure.png",
-      "x": 940,
-      "y": 270,
-      "size": 30,
       "info": "<h3>Quiz 2: Erste 'Hallo Welt!'-Webseite</h3><p>Klicke auf den Schatz um den Quiz zu starten.</p>",
-      "app": "https://ccmjs.github.io/akless-components/dms/app.html?app=quiz,1570790042636X6007448809895479"
+      "size": 30,
+      "x": 940,
+      "y": 270
     },
     {
-      "image": "https://akless.github.io/akless/resources/images/treasure.png",
-      "x": 410,
-      "y": 880,
-      "size": 30,
-      "info": "<h3>Quiz 3: Was ist ein HTML-Tag?</h3><p>Klicke auf den Schatz um den Quiz zu starten.</p>",
       "app": "https://ccmjs.github.io/akless-components/dms/app.html?app=quiz,1570780952206X867147145335694",
+      "image": "https://akless.github.io/akless/resources/images/treasure.png",
+      "info": "<h3>Quiz 3: Was ist ein HTML-Tag?</h3><p>Klicke auf den Schatz um den Quiz zu starten.</p>",
+      "size": 30,
+      "x": 410,
+      "y": 880
     },
     {
+      "app": "https://ccmjs.github.io/akless-components/dms/app.html?app=quiz,1570786190915X9305013258816224",
       "image": "https://akless.github.io/akless/resources/images/treasure.png",
-      "x": 100,
-      "y": 820,
-      "size": 30,
       "info": "<h3>Quiz 4: HTML-Grundgerüst</h3><p>Klicke auf den Schatz um den Quiz zu starten.</p>",
-      "app": "https://ccmjs.github.io/akless-components/dms/app.html?app=quiz,1570786190915X9305013258816224"
+      "size": 30,
+      "x": 100,
+      "y": 820
     },
     {
+      "app": "https://ccmjs.github.io/akless-components/dms/app.html?app=quiz,1570789265711X24350815479118437",
       "image": "https://akless.github.io/akless/resources/images/treasure.png",
-      "x": 740,
-      "y": 770,
-      "size": 30,
       "info": "<h3>Quiz 5: Was ist ein HTML-Attribut?</h3><p>Klicke auf den Schatz um den Quiz zu starten.</p>",
-      "app": "https://ccmjs.github.io/akless-components/dms/app.html?app=quiz,1570789265711X24350815479118437"
+      "size": 30,
+      "x": 740,
+      "y": 770
     },
     {
+      "app": "https://ccmjs.github.io/akless-components/dms/app.html?app=quiz,1570789457373X2851937579430084",
       "image": "https://akless.github.io/akless/resources/images/treasure.png",
-      "x": 790,
-      "y": 600,
-      "size": 30,
       "info": "<h3>Quiz 6: HTML-Tags und Attribute</h3><p>Klicke auf den Schatz um den Quiz zu starten.</p>",
-      "app": "https://ccmjs.github.io/akless-components/dms/app.html?app=quiz,1570789457373X2851937579430084"
+      "size": 30,
+      "x": 790,
+      "y": 600
     }
-  ],
-  "image": "https://akless.github.io/akless/resources/images/goldgrotte.png",
-  "info": "<h3>Expedition Goldgrotte</h3><p>Der Forschungsdrang hat dich zu einer Goldgrotte geführt, in der es 6 Schätze zu entdecken gibt. Jeder Schatz enthält ein Quiz zum Thema HTML.</p>"
+  ]
 }
 
 /**
