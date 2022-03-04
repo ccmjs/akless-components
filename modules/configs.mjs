@@ -148,92 +148,6 @@ export const submit_app_collection = {
       "type": "hidden"
     }
   ],
-  "helper": [
-    "ccm.load",
-    "https://ccmjs.github.io/akless-components/modules/versions/helper-8.1.0.min.mjs"
-  ],
-  "html": {
-    "entry": {
-      "class": "form-group"
-    },
-    "label": {
-      "tag": "label",
-      "class": "item-label",
-      "inner": "%label%"
-    },
-    "info": {
-      "tag": "span",
-      "class": "info",
-      "inner": [
-        {
-          "tag": "input",
-          "type": "checkbox",
-          "id": "%id%"
-        },
-        {
-          "tag": "label",
-          "for": "%id%",
-          "inner": {
-            "tag": "span",
-            "class": "info-icon glyphicon glyphicon-info-sign"
-          }
-        },
-        {
-          "tag": "span",
-          "class": "alert alert-info",
-          "inner": "%info%"
-        }
-      ]
-    },
-    "section": {
-      "class": "section",
-      "inner": [
-        {
-          "tag": "input",
-          "type": "hidden",
-          "name": "%name%",
-          "value": "%value%"
-        },
-        {
-          "class": "items"
-        },
-        {
-          "class": "buttons btn-group",
-          "inner": [
-            {
-              "tag": "a",
-              "class": "add btn btn-default btn-sm",
-              "role": "button",
-              "inner": {
-                "tag": "span",
-                "class": "glyphicon glyphicon-plus"
-              },
-              "onclick": "%add%"
-            },
-            {
-              "tag": "a",
-              "class": "del btn btn-default btn-sm",
-              "role": "button",
-              "inner": {
-                "tag": "span",
-                "class": "glyphicon glyphicon-minus"
-              },
-              "onclick": "%del%"
-            }
-          ]
-        }
-      ]
-    }
-  },
-  "css": [
-    "ccm.load",
-    {
-      "context": "head",
-      "url": "https://ccmjs.github.io/akless-components/libs/bootstrap/css/font-face.css"
-    },
-    "https://ccmjs.github.io/akless-components/libs/bootstrap/css/bootstrap.css",
-    "https://ccmjs.github.io/akless-components/submit/resources/default.css"
-  ],
   "ignore": {
     "defaults": {
       "content": [],
@@ -241,6 +155,230 @@ export const submit_app_collection = {
       "routing": [
         "ccm.instance",
         "https://ccmjs.github.io/akless-components/routing/versions/ccm.routing-3.0.0.min.js"
+      ]
+    }
+  }
+};
+
+export const submit_live_poll = {
+  "entries": [
+    "<br>",
+    {
+      "name": "chart",
+      "type": "hidden"
+    },
+    {
+      "name": "converter",
+      "type": "hidden"
+    },
+    {
+      "name": "css",
+      "type": "hidden"
+    },
+    {
+      "name": "data",
+      "type": "hidden"
+    },
+    {
+      "name": "data.key",
+      "type": "key"
+    },
+    {
+      "name": "helper",
+      "type": "hidden"
+    },
+    {
+      "name": "html",
+      "type": "hidden"
+    },
+    {
+      "name": "logger",
+      "type": "hidden"
+    },
+    {
+      "name": "placeholder",
+      "type": "hidden"
+    },
+    {
+      "name": "show_results",
+      "type": "hidden"
+    },
+    {
+      "name": "user",
+      "type": "hidden"
+    },
+    {
+      "label": "Benutzeranmeldung",
+      "name": "user",
+      "type": "select",
+      "info": "Wählen aus, wie sich ein Benutzer in der App anmelden muss.<ul class=\"m-0 pl-4\"><li><b>Gastmodus:</b> Der Benutzer kann sich mit einem beliebigen Benutzernamen und ohne Passwort anmelden.</li><li><b>Digital Makerspace Account:</b> Der Benutzer muss sich mit einem Digital Makerspace-Account anmelden.</li><li><b>H-BRS FB02 Account:</b> Der Nutzer muss sich mit einem Account des Fachbereichs Informatik der Hochschule Bonn-Rhein-Sieg authentifizieren.</li><li><b>H-BRS FB02 Account mit Pseudonym:</b> Dasselbe wie die vorherige Option, jedoch wird der Benutzername durch ein Pseudonym ersetzt.</li><li><b>Einmaliges Pseudonym:</b> Der Benutzer wird automatisch mit einem einmaligen Pseudonym angemeldet. Jede Anmeldung gibt nach dem Ablauf einer Session ein anderes Pseudonym zurück.</li></ul>",
+      "items": [
+        {
+          "inner": "Gastmodus",
+          "value": "[%'%ccm.instance%'%,%'%https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.3.1.js%'%]"
+        },
+        {
+          "inner": "DMS Account",
+          "value": "[%'%ccm.instance%'%,%'%https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.3.1.js%'%,{%'%hash%'%:[%'%ccm.load%'%,{%'%url%'%:%'%https://ccmjs.github.io/akless-components/modules/md5.mjs%'%,%'%type%'%:%'%module%'%}],%'%realm%'%:%'%cloud%'%,%'%store%'%:%'%dms-user%'%,%'%url%'%:%'%https://ccm2.inf.h-brs.de%'%}]"
+        },
+        {
+          "inner": "H-BRS FB02 Account",
+          "value": "[%'%ccm.instance%'%,%'%https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.3.1.js%'%,{%'%key%'%:%'%hbrsinfkaul%'%,%'%realm%'%:%'%hbrsinfkaul%'%}]"
+        },
+        {
+          "inner": "H-BRS FB02 Account mit Pseudonym",
+          "value": "[%'%ccm.instance%'%,%'%https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.3.1.js%'%,{%'%key%'%:%'%hbrsinfpseudo%'%,%'%realm%'%:%'%hbrsinfpseudo%'%}]"
+        },
+        {
+          "inner": "Einmaliges Pseudonym",
+          "value": "[%'%ccm.instance%'%,%'%https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.3.1.js%'%,{%'%key%'%:%'%pseudo%'%,%'%realm%'%:%'%guest%'%,%'%guest%'%:true}]"
+        }
+      ]
+    },
+    {
+      "label": "Umfrageleiter",
+      "name": "admin",
+      "type": "text",
+      "info": "Benutzername des Umfrageleiters. Der Umfrageleiter kontrolliert die Umfrage. Alle anderen Benutzer können nur eine Antwort auswählen, wenn die Umfrage aktiv ist. Wenn kein Umfrageleiter angegeben ist, kann jeder Benutzer die Umfrage steuern."
+    },
+    {
+      "label": "Passwort",
+      "name": "password",
+      "type": "password",
+      "info": "Wenn angegeben, muss dieses Passwort eingegeben werden, um eine Umfrage abzuschließen und die Ergebnisse anzuzeigen."
+    },
+    {
+      "label": "Refresh-Button",
+      "name": "data.store.1",
+      "type": "radio",
+      "info": "Die Umfrage kann entweder über einen Refresh-Button aktualisiert werden, oder sie aktualisiert sich automatisch in Echtzeit (Echtzeit funktioniert nur für wenige Mitglieder, da der Server sonst überlastet ist).",
+      "items": [
+        {
+          "label": "Refresh-Button",
+          "value": "{%'%url%'%:%'%https://ccm2.inf.h-brs.de%'%,%'%name%'%:%'%live_poll_data%'%}"
+        },
+        {
+          "label": "Echtzeit",
+          "value": "{%'%url%'%:%'%wss://ccm2.inf.h-brs.de%'%,%'%name%'%:%'%live_poll_data%'%}"
+        }
+      ]
+    },
+    {
+      "label": "Bearbeitbare Fragen und Antworten",
+      "name": "editable",
+      "type": "checkbox",
+      "info": "Wenn aktiviert, können die Fragen und Antworten direkt vor Beginn der Umfrage bearbeitet werden. Wenn ein Umfrageleiter angegeben ist, kann nur der Umfrageleiter bearbeiten."
+    },
+    {
+      "label": "Teilnehmer verbergen",
+      "name": "no_members_section",
+      "type": "checkbox",
+      "info": "Wenn aktiviert, wird der Teilnehmerbereich ausgeblendet. Der Teilnehmerbereich zeigt, wer anwesend ist und wer bereits abgestimmt hat."
+    },
+    {
+      "label": "Kontrolle per LOCK-Button",
+      "name": "lock",
+      "type": "checkbox",
+      "info": "Wenn aktiviert, gibt es einen LOCK-Button, über den man wie der Umfrageleiter die Kontrolle über die Umfrage erlangen kann. Ein anderer Benutzer kann diese Rechte erst erhalten, nachdem sie durch einen erneuten Klick auf den LOCK-Button zurückgegeben wurden. Die Rechte des Umfrageleiters werden durch den LOCK-Button in keiner Weise eingeschränkt. Der Umfrageleiter kann jederzeit die alleinige Kontrolle übernehmen."
+    },
+    "<legend class='text-primary'>Button-Beschriftungen und Textmeldungen</legend>",
+    {
+      "label": "START-Button",
+      "name": "placeholder.start",
+      "type": "text",
+      "info": "Beschriftung für den Button, mit dem die Umfrage gestartet wird."
+    },
+    {
+      "label": "FERTIG-Button",
+      "name": "placeholder.finish",
+      "type": "text",
+      "info": "Beschriftung für den Button, der die Umfrage abschließt und die Ergebnisse anzeigt."
+    },
+    {
+      "label": "RESET-Button",
+      "name": "placeholder.reset",
+      "type": "text",
+      "info": "Beschriftung für den Button, der die Umfrage zurücksetzt, nachdem die Ergebnisse angezeigt wurden. Danach können Frage und Antworten erneut editiert und die Umfrage neu gestartet werden."
+    },
+    {
+      "label": "LOCK-Button",
+      "name": "placeholder.locked",
+      "type": "text",
+      "info": "Beschriftung für den Button, mit dem die Kontrolle über die Umfrage für die anderen Benutzer gesperrt wird."
+    },
+    {
+      "label": "UNLOCK-Button",
+      "name": "placeholder.unlocked",
+      "type": "text",
+      "info": "Beschriftung für den Button, mit dem die Kontrolle über die Umfrage für alle Benutzer wieder freigegeben wird."
+    },
+    {
+      "label": "Passworteingabe",
+      "name": "prompt",
+      "type": "text",
+      "info": "Text der erscheint, wenn für den Abbschluss der Umfrage zur Eingabe des Passwort aufgefordert wird."
+    },
+    {
+      "label": "Falsches Passwort",
+      "name": "denied",
+      "type": "text",
+      "info": "Text der erscheint, wenn ein falsches Passwort eingegeben wird."
+    }
+  ],
+  "ignore": {
+    "defaults": {
+      "chart": [
+        "ccm.component",
+        "https://ccmjs.github.io/akless-components/highchart/versions/ccm.highchart-3.0.4.js"
+      ],
+      "converter": [
+        "ccm.load",
+        {
+          "url": "https://ccmjs.github.io/akless-components/modules/json2json.mjs",
+          "type": "module",
+          "import": "poll_to_highchart"
+        }
+      ],
+      "css": [
+        "ccm.load",
+        "https://ccmjs.github.io/akless-components/live_poll/resources/styles.css"
+      ],
+      "data": {
+        "store": [
+          "ccm.store",
+          {
+            "url": "https://ccm2.inf.h-brs.de",
+            "name": "live_poll_data"
+          }
+        ]
+      },
+      "denied": "Das eingegebene Passwort ist nicht korrekt.",
+      "editable": true,
+      "helper": [
+        "ccm.load",
+        "https://ccmjs.github.io/akless-components/modules/versions/helper-4.2.0.mjs"
+      ],
+      "html": [
+        "ccm.load",
+        "https://ccmjs.github.io/akless-components/live_poll/resources/templates.html"
+      ],
+      "lock": true,
+      "placeholder": {
+        "start": "START",
+        "finish": "AUSWERTUNG",
+        "reset": "RESET",
+        "locked": "🔒 LOCKED",
+        "unlocked": "🔓"
+      },
+      "prompt": "Passwort:",
+      "user": [
+        "ccm.instance",
+        "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.3.1.js",
+        {
+          "key": "pseudo",
+          "realm": "guest",
+          "guest": true
+        }
       ]
     }
   }
@@ -537,58 +675,5 @@ export const submit_quiz = {
         }
       ]
     }
-  },
-  "_": {
-    "access": {
-      "get": "all",
-      "set": "creator",
-      "del": "creator"
-    },
-    "creator": "akless",
-    "realm": "cloud"
-  },
-  "meta": [
-    {
-      "name": "dms-apps",
-      "url": "https://ccm2.inf.h-brs.de"
-    },
-    "1581669159921X781491117126752"
-  ],
-  "updated_at": "2020-11-04T10:25:36+01:00",
-  "created_at": "2020-02-14T09:32:41+01:00",
-  "css": [
-    "ccm.load",
-    [
-      [
-        "https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css",
-        {
-          "url": "https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css",
-          "context": "head"
-        },
-        {
-          "url": "https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp",
-          "type": "css"
-        },
-        {
-          "url": "https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp",
-          "type": "css",
-          "context": "head"
-        }
-      ],
-      "https://ccmjs.github.io/akless-components/submit/resources/default_b4.css"
-    ]
-  ],
-  "data": {
-    "store": [
-      "ccm.store"
-    ]
-  },
-  "helper": [
-    "ccm.load",
-    "https://ccmjs.github.io/akless-components/modules/versions/helper-4.0.2.mjs"
-  ],
-  "html": [
-    "ccm.load",
-    "https://ccmjs.github.io/akless-components/submit/resources/templates_b4.html"
-  ]
+  }
 };
