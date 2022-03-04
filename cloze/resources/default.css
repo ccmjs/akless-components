@@ -12,6 +12,7 @@
   flex-direction: column;
   justify-content: flex-start;
   padding: 0.5em;
+  overflow: auto;
 }
 
 button {
