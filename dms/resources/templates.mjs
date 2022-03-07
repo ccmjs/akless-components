@@ -289,7 +289,7 @@ function metaSearch( section, values = {} ) {
     return html`
       <div class="col">
         <label for="section-${ section }-${ key }" class="col-form-label" data-lang="${ title }">${ dms.text[ title ] }</label>
-        <input type="search" list="section-${ section }-${ key }-list" autocomplete="off" id="section-${ section }-${ key }" class="form-control" .value="${ value }" @input=${ () => dms.events.onSearch( section ) }>
+        <input type="search" list="section-${ section }-${ key }-list" multiple autocomplete="off" id="section-${ section }-${ key }" class="form-control" .value="${ value }" @input=${ () => dms.events.onSearch( section ) }>
         <datalist id="section-${ section }-${ key }-list">
           ${ options[ key === 'category' ? 'tags' : key ].map( word => html`<option value="${ word }">` ) }
         </datalist>
@@ -326,8 +326,10 @@ export function cards( section, values ) {
     }
   } );
   return html`
-    <div class="row p-2">
-      ${ repeat( meta, meta => meta.key, meta => card( meta ) ) }
+    <div class="container-fluid p-2">
+      <div class="d-flex justify-content-center flex-wrap">
+        ${ repeat( meta, meta => meta.key, meta => card( meta ) ) }
+      </div>
     </div>
   `;
 
@@ -336,7 +338,7 @@ export function cards( section, values ) {
     const rating = section === 'apps' ? meta.rating : meta.rating[ item ];
     const ratings = section === 'apps' ? meta.ratings : meta.ratings[ section ];
     return html`
-      <div class="col p-2">
+      <div class="p-2">
         <div class="card h-100" @click=${ () => dms.events.onItem( item, meta.key ) }>
           <div class="card-header d-flex p-3">
             <img class="me-3" src="${ meta.icon || dms.icon }" width="64" height="64" alt="${ dms.text[ 'alt_' + item ] }" data-lang="alt_${ item }-alt">
@@ -391,8 +393,8 @@ export function item( section, meta_key ) {
       ${ breadcrumb( color, [
         { title: `<span data-lang="${ section + 's' }">${ dms.text[ section + 's' ] }</span>`, onClick: () => dms.events.onList( section + 's' ) },
         { title: meta.title }
-      ] ) }
-      <div class="container bg-white rounded border">
+      ], 'sm' ) }
+      <div class="container sm bg-white rounded border">
         
         <!-- Trailer -->
         <section class="container trailer">
@@ -540,11 +542,12 @@ export function item( section, meta_key ) {
  * HTML template for a breadcrumb
  * @param {string} color - 'tools', 'apps' or 'components'
  * @param {Array.<{title:string,onClick:Function}>} entries - breadcrumb entries
+ * @param {string} [size] - maximum width, example 'sm'
  * @returns {TemplateResult}
  */
-function breadcrumb( color, entries ) {
+function breadcrumb( color, entries, size ) {
   return html`
-    <div id="breadcrumb" class="container px-0">
+    <div id="breadcrumb" class="container px-0${ size ? ' ' + size : '' }">
       <small>
         <nav class="d-flex align-items-center flex-wrap mt-2">
           <span class="mb-1" data-lang="breadcrumb">${ dms.text.breadcrumb }</span>

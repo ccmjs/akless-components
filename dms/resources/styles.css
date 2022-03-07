@@ -140,7 +140,7 @@
 
 .star {
   cursor: pointer;
-  padding-right: 0.2em;
+  padding-right: 0.2rem;
 }
 
 .dropdown-menu {
@@ -168,11 +168,11 @@
 }
 
 #trailer .col {
-  min-width: 16em;
+  min-width: 16rem;
 }
 
 #trailer video {
-  height: 10em;
+  height: 10rem;
 }
 
 #search_controls label {
@@ -180,11 +180,12 @@
 }
 
 #home_trailer .col {
-  min-width: 23em;
+  min-width: 23rem;
 }
 
 #search_results .card {
   cursor: pointer;
+  width: 20rem;
 }
 
 #search_results .card:hover {
@@ -193,7 +194,7 @@
 
 
 #comments {
-  margin: 0 -1em;
+  margin: 0 -1rem;
 }
 
 footer .text-muted {
@@ -225,14 +226,18 @@ input + label {
 }
 
 table button {
-  margin-left: -0.4em;
+  margin-left: -0.4rem;
 }
 
 table .bi-dot {
-  margin-left: -0.4em;
+  margin-left: -0.4rem;
   font-size: larger;
 }
 
 img {
   max-width: 100%;
+}
+
+.sm {
+  max-width: 540px;
 }
