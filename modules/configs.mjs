@@ -158,7 +158,7 @@ export const submit_app_collection = {
     "defaults": {
       "content": [],
       "footer": [],
-      "color": "#00BFF",
+      "color": "#00BFFF",
       "routing": [
         "ccm.instance",
         "https://ccmjs.github.io/akless-components/routing/versions/ccm.routing-3.0.0.min.js"
