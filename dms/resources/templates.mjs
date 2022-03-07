@@ -666,16 +666,16 @@ export function inputs( type, meta_key ) {
         <small class="text-danger">*</small>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="visibility" id="form-visibility-private" value="private" required ?checked=${ meta_key && is_private } @click=${ onClick }>
-        <label class="form-check-label" for="form-visibility-private"><span class="badge rounded-pill bg-secondary" data-lang="meta_private">${ dms.text.meta_private }</span></label>
+        <input class="form-check-input" type="radio" name="visibility" id="form-visibility-public" value="public" ?checked=${ meta_key && !is_private && meta.listed } @click=${ onClick }>
+        <label class="form-check-label" for="form-visibility-public"><span class="badge rounded-pill bg-secondary" data-lang="meta_public">${ dms.text.meta_public }</span></label>
       </div>
       <div class="form-check form-check-inline">
         <input class="form-check-input" type="radio" name="visibility" id="form-visibility-not_listed" value="not_listed" ?checked=${ meta_key && !is_private && !meta.listed } @click=${ onClick }>
         <label class="form-check-label" for="form-visibility-not_listed"><span class="badge rounded-pill bg-secondary" data-lang="meta_not_listed">${ dms.text.meta_not_listed }</span></label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="visibility" id="form-visibility-public" value="public" ?checked=${ meta_key && !is_private && meta.listed } @click=${ onClick }>
-        <label class="form-check-label" for="form-visibility-public"><span class="badge rounded-pill bg-secondary" data-lang="meta_public">${ dms.text.meta_public }</span></label>
+        <input class="form-check-input" type="radio" name="visibility" id="form-visibility-private" value="private" required ?checked=${ meta_key && is_private } @click=${ onClick }>
+        <label class="form-check-label" for="form-visibility-private"><span class="badge rounded-pill bg-secondary" data-lang="meta_private">${ dms.text.meta_private }</span></label>
       </div>
     </div>
     <div class="mt-3" id="form-agree" ?data-hidden=${ !meta_key || is_private }>
