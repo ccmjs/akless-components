@@ -69,6 +69,38 @@ export const submit_app_collection = {
     },
     "<legend>Erweiterte Einstellungen</legend>",
     {
+      "label": "Farbe einer Sektion",
+      "name": "color",
+      "type": "color",
+      "info": "Hintergrundfarbe für den Titel der Sektionen."
+    },
+    {
+      "label": "URL für Standard-Icon",
+      "name": "icon",
+      "type": "text",
+      "info": "Wenn für eine App kein individuelles Icon festgelegt wird, wird das hier angegebene Icon eingesetzt. Wird auch hier kein Icon festgelegt, wird kein Icon dargestellt. Bitte achten Sie darauf, kein Urheberrecht zu verletzen."
+    },
+    {
+      "label": "Dark Mode",
+      "name": "dark",
+      "type": "select",
+      "info": "Im Dark Mode erscheint die App-Sammlung in einem dunklen Layout, was Augen und Batterie schont. Standardmäßig wird automatisch vom Betriebssystem des App-Nutzers ermittelt, ob ein Dark Mode bevorzugt wird.",
+      "items": [
+        {
+          "inner": "Automatisch",
+          "value": "auto"
+        },
+        {
+          "inner": "Ein",
+          "value": true
+        },
+        {
+          "inner": "Aus",
+          "value": false
+        }
+      ]
+    },
+    {
       "label": "Anmeldung von Benutzern:",
       "name": "user",
       "type": "select",
@@ -99,32 +131,6 @@ export const submit_app_collection = {
           "value": "[%'%ccm.start%'%,%'%https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.2.min.js%'%,[%'%ccm.get%'%,%'%https://ccmjs.github.io/akless-components/user/resources/resources.min.js%'%,%'%pseudo%'%]]"
         }
       ]
-    },
-    {
-      "label": "Dark Mode",
-      "name": "dark",
-      "type": "select",
-      "info": "Im Dark Mode erscheint die App-Sammlung in einem dunklen Layout, was Augen und Batterie schont. Standardmäßig wird automatisch vom Betriebssystem des App-Nutzers ermittelt, ob ein Dark Mode bevorzugt wird.",
-      "items": [
-        {
-          "inner": "Automatisch",
-          "value": "auto"
-        },
-        {
-          "inner": "Ein",
-          "value": true
-        },
-        {
-          "inner": "Aus",
-          "value": false
-        }
-      ]
-    },
-    {
-      "label": "URL für Standard-Icon",
-      "name": "icon",
-      "type": "text",
-      "info": "Wenn für eine App kein individuelles Icon festgelegt wird, wird das hier angegebene Icon eingesetzt. Wird auch hier kein Icon festgelegt, wird kein Icon dargestellt. Bitte achten Sie darauf, kein Urheberrecht zu verletzen."
     },
     {
       "label": "Mehrsprachigkeit",
