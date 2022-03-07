@@ -111,7 +111,7 @@ export function header( active ) {
             <li ?data-hidden=${ !user || !components.length }>
               <button class="dropdown-item hover-bg-components d-flex align-items-center" type="button" @click=${ () => dms.events.onList( 'components', { creator: user && user.name } ) }>
                 <span data-lang="components">${ dms.text.components }</span>
-                <span class="badge rounded-pill bg-warning ms-1">${ components.length }
+                <span class="badge rounded-pill bg-components ms-1">${ components.length }
               </button>
             </li>
             <li ?data-hidden=${ !user }><hr class="dropdown-divider"></li>

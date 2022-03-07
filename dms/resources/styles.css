@@ -1,17 +1,17 @@
 /**
  * @overview default layout of ccmjs-based web component for a digital makerspace
- * @author André Kless <andre.kless@web.de.de> 2021
+ * @author André Kless <andre.kless@web.de.de> 2021-2022
  * @license The MIT License (MIT)
  */
 
 #element {
   --dms-tools: var( --bs-primary );
   --dms-apps: var( --bs-success );
-  --dms-components: var( --bs-warning );
+  --dms-components: darkorange;
   --dms-more: var( --bs-info );
   --dms-tools-rgb: var( --bs-primary-rgb );
   --dms-apps-rgb: var( --bs-success-rgb );
-  --dms-components-rgb: var( --bs-warning-rgb );
+  --dms-components-rgb: 255, 140, 0;
   --dms-more-rgb: var( --bs-info-rgb );
   --dms-alpha: 0.125;
   --dms-focus: 0.5;
@@ -91,7 +91,7 @@
 }
 
 .btn-components {
-  color: black !important;
+  color: white !important;
   background-color: var( --dms-components );
   border-color: var( --dms-components );
 }
