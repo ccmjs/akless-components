@@ -126,8 +126,16 @@
   background-color: var( --dms-components );
 }
 
-#search_results .card:hover {
+#search_results.bg-tools-light .card:hover {
   border-color: rgb( var( --dms-tools-rgb ) );
+}
+
+#search_results.bg-apps-light .card:hover {
+  border-color: rgb( var( --dms-apps-rgb ) );
+}
+
+#search_results.bg-components-light .card:hover {
+  border-color: rgb( var( --dms-components-rgb ) );
 }
 
 .btn-xs {
