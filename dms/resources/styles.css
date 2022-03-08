@@ -7,11 +7,11 @@
 #element {
   --dms-tools: var( --bs-primary );
   --dms-apps: var( --bs-success );
-  --dms-components: darkorange;
+  --dms-components: #b23cfd;
   --dms-more: var( --bs-info );
   --dms-tools-rgb: var( --bs-primary-rgb );
   --dms-apps-rgb: var( --bs-success-rgb );
-  --dms-components-rgb: 255, 140, 0;
+  --dms-components-rgb: 178, 60, 253;
   --dms-more-rgb: var( --bs-info-rgb );
   --dms-alpha: 0.125;
   --dms-focus: 0.5;
