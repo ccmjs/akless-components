@@ -29,7 +29,7 @@ export const submit_config = {
       "type": "several",
       "items": [
         {
-          "label": "App",
+          "label": "App-URL oder Einbettungscode",
           "name": "app",
           "type": "text",
           "info": "Jede App aus dem Digital Makerspace kann hier platziert werden. Geben Sie dafür die App-URL oder den Einbettungscode der App an."
@@ -39,6 +39,12 @@ export const submit_config = {
           "name": "image",
           "type": "url",
           "info": "Webadresse der Grafik, die auf der Karte die App repräsentieren soll."
+        },
+        {
+          "label": "Infotext",
+          "name": "info",
+          "type": "textarea",
+          "info": "Infotext zur App-Region, der in der Infobox angezeigt wird, wenn sich der Mauszeiger über der App-Region befindet. Der Text kann auch HTML zur Schriftformatierung enthalten."
         },
         {
           "label": "Größe",
@@ -53,12 +59,6 @@ export const submit_config = {
           "type": "number",
           "min": 0,
           "info": "Hier können Sie festlegen, welche App-Regionen im Vordergrund und welche im Hintergrund angezeigt werden. Eine App-Region mit einer höheren Ordnungsnummer wird vor einer App-Region mit einer niedrigeren Ordnungsnummer angezeigt."
-        },
-        {
-          "label": "Infotext",
-          "name": "info",
-          "type": "textarea",
-          "info": "Infotext zur App-Region, der in der Infobox angezeigt wird, wenn sich der Mauszeiger über der App-Region befindet. Der Text kann auch HTML zur Schriftformatierung enthalten."
         }
       ]
     },
