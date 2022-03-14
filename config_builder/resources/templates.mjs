@@ -128,7 +128,7 @@ export function select( setup ) {
     <div class="mb-3" ?data-hidden=${ hidden }>
       ${ heading( key ) }
       <select class="form-select" name="${ prop }" id="${ id }-${ key }" ?disabled=${ disabled } @change=${ events.onChange }>
-        ${ options.map( ( { inner, value } ) => html`<option value="${ value }" ?selected=${ value === initial_value } data-lang="${ key }-${ value }">${ inner }</option>` ) }
+        ${ options.map( ( { inner, value } ) => html`<option value="${ value }" ?selected=${ value === initial_value } data-lang="${ key }_${ value }">${ inner }</option>` ) }
       </select>
     </div>
   `;
