@@ -110,6 +110,31 @@ export function checkbox( setup ) {
 }
 
 /**
+ * returns the HTML template for a select element
+ * @param {Object|string} setup
+ * @param {string} setup.prop - configuration property
+ * @param {{inner:string,value:string}[]} setup.options - values for selector box options
+ * @param {string|number|boolean} [setup.initial_value = config.prop] - initial property value
+ * @param {string} [setup.key = prop] - used key for this property
+ * @param {boolean} [setup.disabled] - checkbox is disabled
+ * @param {boolean} [setup.hidden] - hole template is hidden
+ * @returns {TemplateResult}
+ */
+export function select( setup ) {
+  let { prop, options, initial_value, key = prop, disabled, hidden } = typeof setup === 'string' ? { prop: setup } : setup;
+  if ( !initial_value ) initial_value = builder.ccm.helper.deepValue( config, prop );
+  key = key.replaceAll( '.', '_' );
+  return html`
+    <div class="mb-3" ?data-hidden=${ hidden }>
+      ${ heading( key ) }
+      <select class="form-select" name="${ prop }" id="${ id }-${ key }" ?disabled=${ disabled } @change=${ events.onChange }>
+        ${ options.map( ( { inner, value } ) => html`<option value="${ value }" ?selected=${ value === initial_value }>${ inner }</option>` ) }
+      </select>
+    </div>
+  `;
+}
+
+/**
  * returns the HTML template for the preview and submit button
  * @param {boolean} [disabled] - both buttons are disabled
  * @returns {TemplateResult}

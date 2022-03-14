@@ -38,6 +38,10 @@
   margin-bottom: 0 !important;
 }
 
+.config_builder .form-check-input {
+  margin-bottom: 3px;
+}
+
 .config_builder *[disabled] {
   cursor: not-allowed;
 }
