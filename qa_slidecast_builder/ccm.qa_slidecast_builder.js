@@ -212,7 +212,7 @@
         slides_viewer.ignore.slides.forEach( slide => { delete slide._content; delete slide._decription; } );
         $.deepValue( form_data, 'ignore.slides', slides_viewer.ignore.slides );
         const comment = form_data.comment; delete form_data.comment;
-        comment ? $.deepValue( form_data, 'comment.2', this.comment_builder.getValue() ) : form_data.comment = '';
+        comment ? $.deepValue( form_data, 'comment.2', this.comment_builder.getValue() ) : form_data.comment = null;
         return $.assign( $.clone( config ), form_data );
       };
 
