@@ -234,6 +234,7 @@
             const value = this.element.querySelector( 'input[name="pdf_viewer.2.pdf"]' ).value;
             if ( value ) {
               slides_viewer.pdf_viewer.pdf = value;
+              delete slides_viewer.pdf_viewer.ignore.slides;
               await slides_viewer.start();
             }
           }
