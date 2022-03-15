@@ -252,15 +252,15 @@ export const demo = {
     "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/config_builder/resources/styles.min.css" ],
     "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/config_builder/resources/comment/templates.mjs" ],
     "ignore": { "defaults": comment_builder_defaults, "mapping": comment_builder_mapping },
-    "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/versions/ccm.lang-1.0.0.min.js", {
+    "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/versions/ccm.lang-1.1.0.min.js", {
       "translations": { "de": comment_builder_de, "en": comment_builder_en }
     } ],
     "preview": false,
     "text": comment_builder_de,
-    "tool": [ "ccm.component", "https://ccmjs.github.io/tkless-components/comment/versions/ccm.comment-7.1.0.min.js" ]
+    "tool": [ "ccm.component", "https://ccmjs.github.io/tkless-components/comment/versions/ccm.comment-7.2.0.min.js" ]
   },
   "ignore": { "defaults": slidecast_builder_defaults },
-  "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/versions/ccm.lang-1.0.0.min.js", {
+  "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/versions/ccm.lang-1.1.0.min.js", {
     "translations": { "de": slidecast_builder_de, "en": slidecast_builder_en }
   } ],
   "text": slidecast_builder_de
@@ -288,7 +288,7 @@ export const dms = {
       },
       "mapping": comment_builder_mapping
     },
-    "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/versions/ccm.lang-1.0.0.min.js", {
+    "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/versions/ccm.lang-1.1.0.min.js", {
       "translations": { "de": comment_builder_de, "en": comment_builder_en }
     } ],
     "preview": false,
@@ -297,7 +297,7 @@ export const dms = {
   },
   "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/qa_slidecast_builder/resources/styles.min.css" ],
   "ignore": { "defaults": slidecast_builder_defaults },
-  "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/versions/ccm.lang-1.0.0.min.js", {
+  "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/versions/ccm.lang-1.1.0.min.js", {
     "translations": { "de": slidecast_builder_de, "en": slidecast_builder_en }
   } ],
   "preview": false,
