@@ -49,3 +49,7 @@
 .qa_slidecast_builder .modal-body {
   padding: 0;
 }
+
+[data-hidden] {
+  display: none;
+}
