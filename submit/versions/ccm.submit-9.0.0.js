@@ -2,7 +2,7 @@
  * @overview ccm-based web component for submitting data
  * @author André Kless <andre.kless@web.de> 2018-2022
  * @license The MIT License (MIT)
- * @version latest (9.0.0)
+ * @version 9.0.0
  * @changes
  * version 9.0.0 (15.03.2021)
  * - uses ccmjs v27.3.1 as default
@@ -46,6 +46,7 @@
 ( () => {
   const component = {
     name: 'submit',
+    version: [ 1, 0, 0 ],
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-27.3.1.min.js',
     config: {
   //  "autosave": true,
