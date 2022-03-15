@@ -50,6 +50,6 @@
   padding: 0;
 }
 
-[data-hidden] {
+.qa_slidecast_builder *[data-hidden] {
   display: none;
 }
