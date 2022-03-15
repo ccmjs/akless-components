@@ -642,7 +642,7 @@
             $.deepValue( results, input.name, result );
         } );
 
-        return $.assign( $.clone( dataset ), results );
+        return $.solveDotNotation( $.assign( $.clone( dataset ), results ) );
       }
 
     }
