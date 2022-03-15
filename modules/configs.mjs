@@ -639,22 +639,6 @@ export const submit_quiz = {
   ],
   "ignore": {
     "defaults": {
-      "css": [
-        "ccm.load",
-        "https://ccmjs.github.io/akless-components/quiz/resources/weblysleek.css",
-        {
-          "context": "head",
-          "url": "https://ccmjs.github.io/akless-components/resources/fonts/WeblySleekUI/font.css"
-        }
-      ],
-      "helper": [
-        "ccm.load",
-        "https://ccmjs.github.io/akless-components/modules/versions/helper-4.1.0.mjs"
-      ],
-      "html": [
-        "ccm.load",
-        "https://ccmjs.github.io/akless-components/quiz/resources/templates.html"
-      ],
       "placeholder": {
         "cancel": "Abbrechen",
         "prev": "Vorherige Frage",
