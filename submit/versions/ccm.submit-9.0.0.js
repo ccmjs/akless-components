@@ -8,39 +8,7 @@
  * - uses ccmjs v27.3.1 as default
  * - uses helper.mjs v8.1.0 as default
  * - getValue() considers initial values
- * version 8.2.1 (30.09.2021):
- * - uses ccmjs v26.4.4 as default
- * - uses helper.mjs v7.7.0 as default
- * - autosave considers user instance
- * version 8.2.0 (23.04.2021):
- * - added optional autosave
- * - uses ccmjs v26.3.1 as default
- * - uses helper.mjs v7.2.0 as default
- * - uses Bootstrap 4 from own GitHub Pages as default
- * version 8.1.4 (26.02.2020):
- * - uses ccmjs v26.1.1 as default
- * - uses helper.mjs v7.0.0 as default
- * - updated minified component line
- * version 8.1.3 (25.06.2020):
- * - uses ccm v25.5.3
- * - backwards compatibility for decomposing of an App URL
- * version 8.1.2 (24.05.2020):
- * - uses ccm v25.5.2
- * - bug fix for ccm-based input elements with string as result
- * version 8.1.1 (21.04.2020):
- * - uses ccm v25.5.0
- * - uses helper.mjs v5.1.0 as default
- * - no global loading of bootstrap 4 as default
- * version 8.1.0 (30.03.2020):
- * - added optional config property 'enabled_only' (ignores values from disabled input elements)
- * version 8.0.1 (23.03.2020):
- * - bug fix for initial value of a checkbox
- * - uses helper.mjs v4.1.1 as default
- * - uses ccm v25.1.0
- * version 8.0.0 (02.03.2020):
- * - default layout with bootstrap 4
- * - updated 'onchange' callback parameters
- * (for older version changes see ccm.submit-7.3.3.js)
+ * (for older version changes see ccm.submit-8.2.1.js)
  */
 
 ( () => {
