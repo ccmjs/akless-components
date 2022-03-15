@@ -43,13 +43,9 @@
 }
 
 .qa_slidecast_builder *[data-hidden] {
-  display: none;
+  display: none !important;
 }
 
 .qa_slidecast_builder .modal-body {
   padding: 0;
-}
-
-.qa_slidecast_builder *[data-hidden] {
-  display: none;
 }
