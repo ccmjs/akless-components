@@ -763,7 +763,7 @@ export function editor( tool_key, app_key ) {
         <button class="btn btn-tools text-nowrap m-1" title="${ dms.text.tooltip_create }" data-lang="tooltip_create-title" ?data-hidden=${ is_creator } @click=${ () => dms.events.onCreate( tool_key ) }>
           <span data-lang="btn_create_app">${ dms.text.btn_create_app }</span>
         </button>
-        <button class="btn btn-light text-nowrap m-1" title="tooltip_take" disabled data-lang="tooltip_take-title" ?data-hidden=${ !is_creator } @click=${ () => {} }>
+        <button class="btn btn-light text-nowrap m-1 disabled" title="tooltip_take" data-lang="tooltip_take-title" ?data-hidden=${ !is_creator } @click=${ () => dms.events.onTake }>
           <i class="bi bi-share"></i>
           <span data-lang="btn_take">${ dms.text.btn_take }</span>
         </button>
@@ -828,7 +828,7 @@ export function preview( tool_key ) {
           <i class="bi bi-chevron-left"></i>
           <span title="${ dms.text.tooltip_back_editor }" data-lang="btn_back tooltip_back_editor-title">${ dms.text.btn_back }</span>
         </button>
-        <button class="btn btn-tools" title="${ dms.text.tooltip_create }" data-lang="btn_create_app tooltip_create-title" @click=${ () => dms.events.onCreate( tool_key ) }>${ dms.text.btn_create_app }</button>
+        <button data-invisible>_____</button>
         <button data-invisible>_____</button>
       </div>
     </div>

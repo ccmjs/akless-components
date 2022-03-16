@@ -25,6 +25,7 @@
       ],
       "components": [ "ccm.store" ],
       "configs": [ "ccm.store" ],
+      "dark": "auto",
       "icon": "https://ccmjs.github.io/akless-components/dms/resources/icon.png",
 //    "handover": [ "ccm.component", "https://ccmjs.github.io/akless-components/handover_app/versions/ccm.handover_app-3.0.0.min.js" ],
       "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-7.10.0.min.mjs" ],
@@ -75,14 +76,26 @@
       const tmp = {};
 
       /**
+       * when the instance is created, when all dependencies have been resolved and before the dependent sub-instances are initialized and ready
+       * @returns {Promise<void>}
+       */
+      this.init = async () => {
+        $ = Object.assign( {}, this.ccm.helper, this.helper ); $.use( this.ccm );  // set shortcut to help functions
+        if ( this.lang ) this.lang.dark = this.dark;                               // pass setting for dark mode to multilingualism
+      };
+
+      /**
        * when all dependencies are solved after creation and before the app starts
        * @returns {Promise<void>}
        */
       this.ready = async () => {
 
-        $ = Object.assign( {}, this.ccm.helper, this.helper ); $.use( this.ccm );  // set shortcut to help functions
         this.logger && this.logger.log( 'ready', $.privatize( this, true ) );      // logging of 'ready' event
         window.addEventListener( 'popstate', this.refresh );                       // check route on 'popstate' event
+
+        // setup dark mode
+        this.dark === 'auto' && this.element.classList.add( 'dark_auto' );
+        this.dark === true && this.element.classList.add( 'dark_mode' );
 
         // listen to language change event
         this.lang && this.lang.observe( lang => {
@@ -473,6 +486,7 @@
           const comments_key = section + '_comments';
           if ( !meta[ comments_key ] )
             meta[ comments_key ] = await this.comment.instance( {
+              dark: this.dark,
               'data.key': [].concat( section, meta_key.split( ',' ) ),
               user: [ 'ccm.instance', this.user.component.url, JSON.parse( this.user.config ) ]
             } );
