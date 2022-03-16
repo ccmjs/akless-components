@@ -296,6 +296,7 @@ export const dms = {
     "tool": [ "ccm.component", "https://ccmjs.github.io/tkless-components/comment/versions/ccm.comment-7.1.0.min.js" ]
   },
   "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/qa_slidecast_builder/resources/styles.min.css" ],
+  "dark": false,
   "ignore": { "defaults": slidecast_builder_defaults },
   "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/versions/ccm.lang-1.1.0.min.js", {
     "translations": { "de": slidecast_builder_de, "en": slidecast_builder_en }
