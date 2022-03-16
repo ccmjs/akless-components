@@ -77,7 +77,7 @@
         },
         "preview": false,
         "text": [ "ccm.load", "https://ccmjs.github.io/akless-components/config_builder/resources/comment/resources.mjs#en" ],
-        "tool": [ "ccm.component", "https://ccmjs.github.io/tkless-components/comment/versions/ccm.comment-7.1.0.min.js" ]
+        "tool": [ "ccm.component", "https://ccmjs.github.io/tkless-components/comment/versions/ccm.comment-7.2.0.min.js" ]
       } ],
       "css": [ "ccm.load",
         [  // serial
@@ -232,6 +232,10 @@
 
           // update webpage area
           this.render();
+
+          // switch to slides section? => refresh PDF viewer
+          if ( event.target.name === 'section' && event.target.value === 'slides' )
+            slides_viewer.pdf_viewer.refresh();
 
           // changed PDF? => update slides viewer
           if ( event.target.name === 'pdf_viewer.2.pdf' ) {
