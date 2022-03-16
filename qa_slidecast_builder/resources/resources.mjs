@@ -190,6 +190,7 @@ const viewer_de = {
  */
 const slidecast_builder_defaults = {
   "comment": [ "ccm.component", "https://ccmjs.github.io/tkless-components/comment/ccm.comment.js" ],
+  "dark": false,
   "description": true,
   "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/ccm.lang.js", {
     "translations": { "de": slidecast_de, "en": slidecast_en }
