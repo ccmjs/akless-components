@@ -9,6 +9,7 @@
  * - uses helper.mjs v8.1.0 as default
  * - sets ccm.comment.js v7.2.0 as default
  * - uses ccm.qa_slidecast.js v3.0.0 as default
+ * - pass dark mode settings to child instances
  * version 1.1.0 (27.01.2022):
  * - added optional multilingualism
  * - added optional user authentication
@@ -90,6 +91,7 @@
         { "url": "https://ccmjs.github.io/akless-components/libs/bootstrap-5/css/bootstrap-fonts.min.css", "context": "head" },
       ],
 //    "data": { "store": [ "ccm.store" ] },
+      "dark": "auto",
       "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-8.1.0.min.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/qa_slidecast_builder/resources/templates.mjs" ],
       "ignore": {
@@ -134,13 +136,34 @@
       let slides_viewer;
 
       /**
+       * when the instance is created, when all dependencies have been resolved and before the dependent sub-instances are initialized and ready
+       * @returns {Promise<void>}
+       */
+      this.init = async () => {
+
+        // set shortcut to help functions
+        $ = Object.assign( {}, this.ccm.helper, this.helper ); $.use( this.ccm );
+
+        // pass setting for dark mode to child instances
+        if ( this.lang ) this.lang.dark = this.dark;
+        this.comment_builder.dark = this.dark;
+
+      };
+
+      /**
        * when all dependencies are solved after creation and before the app starts
        * @returns {Promise<void>}
        */
       this.ready = async () => {
+
         $ = Object.assign( {}, this.ccm.helper, this.helper ); $.use( this.ccm );  // set shortcut to help functions
-        this.element.classList.add( this.component.name );
         this.logger && this.logger.log( 'ready', $.privatize( this, true ) );      // logging of 'ready' event
+        this.element.classList.add( this.component.name );
+
+        // setup dark mode
+        this.dark === 'auto' && this.element.classList.add( 'dark_auto' );
+        this.dark === true && this.element.classList.add( 'dark_mode' );
+
       };
 
       /**
@@ -162,6 +185,7 @@
         // prepare slides viewer (used for slides editing)
         slides_viewer = await this.tool.start( {
           comment: '',
+          dark: this.dark,
           description: config.description,
           'ignore.slides': config.ignore.slides,
           lang: config.lang,
