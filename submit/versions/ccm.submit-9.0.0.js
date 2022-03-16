@@ -643,7 +643,7 @@
             $.deepValue( results, input.name, result );
         } );
 
-        return $.solveDotNotation( $.assign( $.clone( dataset ), results ) );
+        return $.solveDotNotation( results );
       }
 
     }
