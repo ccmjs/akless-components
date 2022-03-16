@@ -635,6 +635,12 @@ export const submit_quiz = {
       "name": "placeholder.finish",
       "type": "text",
       "info": "Beschriftung für den Button, mit dem man den Quiz abschließt."
+    },
+    {
+      "label": "Prefix einer Frage",
+      "name": "placeholder.prefix",
+      "type": "text",
+      "info": "Vor jeder Frage steht ein Prefix gefolgt von der Nummer der aktuellen Frage und der Gesamtzahl der Fragen. Der Prefix kann hier individuell festgelegt werden."
     }
   ],
   "ignore": {
