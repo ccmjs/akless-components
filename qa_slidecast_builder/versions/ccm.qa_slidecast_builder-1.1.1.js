@@ -10,6 +10,7 @@
  * - sets ccm.comment.js v7.2.0 as default
  * - uses ccm.qa_slidecast.js v3.0.0 as default
  * - pass dark mode settings to child instances
+ * - bugfix for commentary of slides enabled later
  * version 1.1.0 (27.01.2022):
  * - added optional multilingualism
  * - added optional user authentication
@@ -239,10 +240,11 @@
       this.getValue = () => {
         const form_data = $.filterProperties( $.formData( this.element.querySelector( 'form' ) ), 'comment', 'description', 'pdf_viewer', 'section' );
         this.section = form_data.section; delete form_data.section;
-        slides_viewer.ignore.slides.forEach( slide => { delete slide._content; delete slide._decription; } );
+        slides_viewer.ignore.slides.forEach( slide => { delete slide._content; delete slide._description; } );
         $.deepValue( form_data, 'ignore.slides', slides_viewer.ignore.slides );
-        const comment = form_data.comment; delete form_data.comment;
-        comment ? $.deepValue( form_data, 'comment.2', this.comment_builder.getValue() ) : form_data.comment = false;
+        const comment = this.ignore.defaults.comment;
+        comment[ 2 ] = this.comment_builder.getValue();
+        form_data.comment = form_data.comment ? comment : false;
         return $.assign( $.clone( config ), form_data );
       };
 
