@@ -17,7 +17,7 @@ ccm.files[ 'resources.js' ] = {
     "helper.1": "./../modules/helper.mjs",
 //  "hide_login": true,
     "html.1": "./../chat/resources/templates_v2.html",
-//  "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js", [ "ccm.get", "./../chat/resources/resources.js", "lang" ] ],
+//  "lang": [ "ccm.instance", "https://ccmjs.github.io/akless-components/lang/versions/ccm.lang-1.1.0.js", [ "ccm.get", "./../chat/resources/resources.js", "lang" ] ],
 //  "logger": [ "ccm.instance", "./../log/ccm.log.js", [ "ccm.get", "./../log/resources/configs.js", "greedy" ] ],
     "onchange": event => console.log( event ),
     "onstart": instance => console.log( instance ),
@@ -30,7 +30,7 @@ ccm.files[ 'resources.js' ] = {
       "store": [ "ccm.store", { "name": "chat-data", "url": "wss://ccm2.inf.h-brs.de" } ],
       "key": "demo"
     },
-    "lang": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/lang/versions/ccm.lang-1.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/chat/resources/resources.js", "lang" ] ],
+    "lang": [ "ccm.instance", "https://ccmjs.github.io/akless-components/lang/versions/ccm.lang-1.a.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/chat/resources/resources.js", "lang" ] ],
     "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/chat/resources/resources.js", "user" ] ]
   },
 
