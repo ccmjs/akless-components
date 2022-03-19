@@ -28,10 +28,11 @@
 
 #info {
   position: sticky;
-  bottom: 0;
+  top: 0;
   border: 3px double lightgrey;
   padding: 0.5em;
   overflow: auto;
+  z-index: 100;
 }
 
 #back {
