@@ -1,19 +1,19 @@
 <!--
-@overview HTML template of ccm component for an image map
-@author André Kless <andre.kless@web.de.de> 2019
+@overview HTML templates of ccmjs-based web component for an image map
+@author André Kless <andre.kless@web.de.de> 2019, 2022
 -->
 
 <ccm-template key="main">
   <div id="main">
+    <div id="info"></div>
     <div id="map">
       <img src="%image%">
     </div>
-    <div id="info"></div>
   </div>
 </ccm-template>
 
 <ccm-template key="area">
-  <div class="area" style="position: absolute; left: %x%%; top: %y%%; width: %size%%; z-index: %order%;">
+  <div class="area" style="position: absolute; left: %x%%; top: %y%%; width: %size%%; z-index: %order%;" data-bs-toggle="tooltip" data-bs-placement="top" title="%info%">
     <img src="%image%">
   </div>
 </ccm-template>
@@ -21,7 +21,7 @@
 <ccm-template key="app">
   <div id="area">
     <div id="back">
-      <button onclick="%onclick%">%caption%</button>
+      <button class="btn btn-secondary btn-sm" type="button" onclick="%onclick%">%caption%</button>
     </div>
     <div id="app"></div>
   </div>

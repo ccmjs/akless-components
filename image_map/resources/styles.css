@@ -4,10 +4,6 @@
  * @license The MIT License (MIT)
  */
 
-#element {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-}
-
 #element,
 #info {
   background-color: white;
@@ -59,6 +55,10 @@ h1, h2, h3, h4, h5, h6, p {
 p {
   margin-top: 0.5em;
   font-size: small;
+}
+
+.tooltip-inner {
+  text-align: left !important;
 }
 
 /* Dark Mode */
