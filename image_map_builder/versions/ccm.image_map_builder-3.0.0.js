@@ -118,7 +118,7 @@
           copy.root = this.element.querySelector( '#placement' );
           const image_map = await this.image_map.start( copy );
           const draggable = ( element, i ) => {
-            element.style.backgroundColor = 'rgba( 255, 255, 255, 0.2 )';
+            element.style.backgroundColor = 'rgba( 0, 0, 0, 0.2 )';
             element.onmousedown = event => {
               let x, y;
               event.preventDefault();
