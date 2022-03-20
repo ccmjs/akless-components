@@ -8,7 +8,7 @@
  * - uses ccmjs v27.3.1 as default
  * - uses helper.mjs v8.1.0 as default
  * - uses ccm.submit.js v8.2.1 as default
- * - uses ccm.image_map.js v3.0.0 as default
+ * - uses ccm.image_map.js v3.1.0 as default
  * - added optional dark mode (not completely finished)
  * - image URL's instead of large base64 data via image upload
  * - canceled quest map support
@@ -33,7 +33,7 @@
   //  "onchange": event => console.log( 'onchange', event.instance.getValue() ),
   //  "onstart": event => { console.log( 'onstart', event ); return event.config; },
       "submit": [ "ccm.component", "https://ccmjs.github.io/akless-components/submit/versions/ccm.submit-8.2.1.js", [ "ccm.load", "https://ccmjs.github.io/akless-components/image_map_builder/resources/resources.mjs#submit_config" ] ],
-      "tool": [ "ccm.component", "https://ccmjs.github.io/akless-components/image_map/versions/ccm.image_map-3.0.0.min.js" ],
+      "tool": [ "ccm.component", "https://ccmjs.github.io/akless-components/image_map/versions/ccm.image_map-3.1.0.min.js" ],
     },
     Instance: function () {
 
