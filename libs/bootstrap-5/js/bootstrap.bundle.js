@@ -8,6 +8,7 @@
   typeof define === 'function' && define.amd ? define(factory) :
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.bootstrap = factory());
 })(this, (function () { 'use strict';
+  if ( window.bootstrap ) return; // already loaded? => abort
 
   /**
    * --------------------------------------------------------------------------
@@ -6809,4 +6810,3 @@
   return index_umd;
 
 }));
-//# sourceMappingURL=bootstrap.bundle.js.map
