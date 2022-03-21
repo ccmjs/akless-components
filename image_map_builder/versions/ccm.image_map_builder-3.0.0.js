@@ -112,7 +112,7 @@
           copy.ignore.areas.forEach( area => {
             if ( area.x === undefined ) area.x = area.y = 1;
             delete area.app;
-            delete area.info;
+            area.info = '';
           } );
           delete copy.info; delete copy.user; delete copy.lang; delete copy.routing;
           copy.root = this.element.querySelector( '#placement' );
