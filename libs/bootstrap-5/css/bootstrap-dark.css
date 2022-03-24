@@ -136,7 +136,8 @@
   border-color: #ad392d;
 }
 
-#element.dark_mode .btn-check:focus + .btn-danger, .btn-danger:focus {
+#element.dark_mode .btn-check:focus + .btn-danger,
+#element.dark_auto .btn-danger:focus {
   background-color: #c44133;
   border-color: #b93d30;
   box-shadow: 0 0 0 0.25rem rgb(234 102 89 / 50%);
@@ -174,7 +175,8 @@
   border-color: #f4a62a;
 }
 
-#element.dark_mode .btn-check:focus + .btn-warning, .btn-warning:focus {
+#element.dark_mode .btn-check:focus + .btn-warning,
+#element.dark_auto .btn-warning:focus {
   background-color: #f5ab36;
   border-color: #f4a62a;
   box-shadow: 0 0 0 0.25rem rgb(209 135 18 / 50%);
@@ -445,7 +447,8 @@
     border-color: #ad392d;
   }
 
-  #element.dark_auto .btn-check:focus + .btn-danger, .btn-danger:focus {
+  #element.dark_auto .btn-check:focus + .btn-danger,
+  #element.dark_auto .btn-danger:focus {
     background-color: #c44133;
     border-color: #b93d30;
     box-shadow: 0 0 0 0.25rem rgb(234 102 89 / 50%);
@@ -483,7 +486,8 @@
     border-color: #f4a62a;
   }
 
-  #element.dark_auto .btn-check:focus + .btn-warning, .btn-warning:focus {
+  #element.dark_auto .btn-check:focus + .btn-warning,
+  #element.dark_auto .btn-warning:focus {
     background-color: #f5ab36;
     border-color: #f4a62a;
     box-shadow: 0 0 0 0.25rem rgb(209 135 18 / 50%);
@@ -544,13 +548,15 @@
 
   /* Forms */
 
-  #element.dark_auto .form-control, .form-select {
+  #element.dark_auto .form-control,
+  #element.dark_auto .form-select {
     color: #b1b1b1;
     background-color: #222;
     border: 1px solid #515151;
   }
 
-  #element.dark_auto .form-control:focus, .form-select:focus {
+  #element.dark_auto .form-control:focus,
+  #element.dark_auto .form-select:focus {
     color: #b1b1b1;
     background-color: #222;
     border-color: #9badbf;
