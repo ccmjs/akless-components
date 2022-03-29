@@ -4,23 +4,12 @@
  * @license The MIT License (MIT)
  * @version latest (4.0.0)
  * @changes
- * version 4.0.0 (23.03.2022):
+ * version 4.0.0 (29.03.2022):
  * - changed default caption of 'back to map' button
  * - config.max_width='original' sets the limit to the original width of the image
  * - area.x, area.y and area.size are no more divided by 10
  * - added area.width and area.height (area.size can still be used)
- * version 3.1.0 (19.03.2022):
- * - added bootstrap 5 with popper.js for tooltips as default
- * - tooltips on mouseover for app regions
- * - infobox moves to top in default layout
- * - infobox only shows map info
- * version 3.0.0 (02.03.2022):
- * - uses ccmjs v27.3.1 as default
- * - uses helper.mjs v8.1.0 as default
- * - changed default caption for 'back to map' button
- * - added optional dark mode
- * - renamed action property in area data
- * (for older version changes see ccm.image_map-2.1.0.js)
+ * (for older version changes see ccm.image_map-3.1.0.js)
  */
 
 ( () => {

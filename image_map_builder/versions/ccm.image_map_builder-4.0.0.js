@@ -4,7 +4,7 @@
  * @license The MIT License (MIT)
  * @version 4.0.0
  * @changes
- * version 4.0.0 (28.03.2022):
+ * version 4.0.0 (29.03.2022):
  * - uses Bootstrap 5 as default
  * - set default for dark mode setting to false
  * - added preview
@@ -20,7 +20,7 @@
  * - default texts and labels are in german
  * - added support for multilingualism
  * - added language selection and user login in header
- * (for older version changes see ccm.image_map-2.1.1.js)
+ * (for older version changes see ccm.image_map_builder-3.0.0.js)
  */
 
 ( () => {

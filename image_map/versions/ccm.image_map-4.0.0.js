@@ -4,23 +4,12 @@
  * @license The MIT License (MIT)
  * @version 4.0.0
  * @changes
- * version 4.0.0 (23.03.2022):
+ * version 4.0.0 (29.03.2022):
  * - changed default caption of 'back to map' button
  * - config.max_width='original' sets the limit to the original width of the image
  * - area.x, area.y and area.size are no more divided by 10
  * - added area.width and area.height (area.size can still be used)
- * version 3.1.0 (19.03.2022):
- * - added bootstrap 5 with popper.js for tooltips as default
- * - tooltips on mouseover for app regions
- * - infobox moves to top in default layout
- * - infobox only shows map info
- * version 3.0.0 (02.03.2022):
- * - uses ccmjs v27.3.1 as default
- * - uses helper.mjs v8.1.0 as default
- * - changed default caption for 'back to map' button
- * - added optional dark mode
- * - renamed action property in area data
- * (for older version changes see ccm.image_map-2.1.0.js)
+ * (for older version changes see ccm.image_map-3.1.0.js)
  */
 
 ( () => {
@@ -38,23 +27,24 @@
         { "url": "https://ccmjs.github.io/akless-components/libs/bootstrap-5/css/bootstrap-fonts.min.css", "context": "head" }
       ],
       "dark": false,
+//    "height": 500,
       "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-8.1.0.min.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/image_map/resources/templates.mjs" ],
       "ignore": { "areas": [] },
       "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=",
-  //  "info": "",
+//    "info": "",
       "libs": [ "ccm.load", [
         "https://ccmjs.github.io/akless-components/libs/bootstrap-5/js/popper.min.js",
         "https://ccmjs.github.io/akless-components/libs/bootstrap-5/js/bootstrap.bundle.min.js"
       ] ],
-  //  "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-5.0.1.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.min.js", "greedy" ] ],
-  //  "max_width": "original",
-  //  "onchange": event => console.log( 'onchange', event ),
-  //  "onmouseout": event => console.log( 'onmouseout', event ),
-  //  "onmouseover": event => console.log( 'onmouseover', event ),
-  //  "onstart": event => console.log( 'onstart', event ),
-  //  "preclick": event => { console.log( 'preclick', event ); return true; },
-  //  "render": event => console.log( 'render', event )
+//    "logger": [ "ccm.instance", "https://ccmjs.github.io/akless-components/log/versions/ccm.log-5.0.1.min.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/log/resources/configs.min.js", "greedy" ] ],
+//    "onchange": event => console.log( 'onchange', event ),
+//    "onmouseout": event => console.log( 'onmouseout', event ),
+//    "onmouseover": event => console.log( 'onmouseover', event ),
+//    "onstart": event => console.log( 'onstart', event ),
+//    "preclick": event => { console.log( 'preclick', event ); return true; },
+//    "render": event => console.log( 'render', event ),
+//    "width": 500,
     },
     Instance: function () {
 
@@ -77,14 +67,8 @@
         this.dark === 'auto' && this.element.classList.add( 'dark_auto' );
         this.dark === true && this.element.classList.add( 'dark_mode' );
 
-        // the original width of the map image can be used as maximum width of the map
-        if ( this.max_width === 'original' )
-          await new Promise( (resolve, reject ) => {
-            const img = new Image();
-            img.onload = () => resolve( this.max_width = img.width + 'px' );
-            img.onerror = reject;
-            img.src = this.image;
-          } );
+        // preload map and area images and set initial width
+        await Promise.all( this.ignore.areas.map( preload ).concat( preload( this ) ) );
 
         // logging of 'ready' event
         this.logger && this.logger.log( 'ready', $.privatize( this, true ) );
@@ -103,8 +87,9 @@
         // render map
         $.setContent( this.element, $.html( this.html.map( {
           image: this.image,
-          info: this.info,
-          max_width: this.max_width
+          width: this.width,
+          height: this.height,
+          info: this.info
         } ) ) );
 
         // render areas
@@ -112,7 +97,7 @@
 
         // initialize bootstrap tooltips
         this.libs && [ ...this.element.querySelectorAll( '[data-bs-toggle="tooltip"]' ) ].forEach( tooltipTriggerEl =>
-          new bootstrap.Tooltip(tooltipTriggerEl, { container: this.element, html: true, placement: 'auto' } )
+          new bootstrap.Tooltip( tooltipTriggerEl, { container: this.element, html: true, placement: 'auto' } )
         );
 
         // trigger 'onstart' callback
@@ -126,6 +111,7 @@
        */
       this.renderArea = area_data => {
 
+        // render area in map
         const $map = this.element.querySelector( '#map' );
         const $area = $.html( this.html.area( area_data ) );
         $map.appendChild( $area );
@@ -146,12 +132,13 @@
           // trigger 'preclick' callback
           if ( this.preclick && !( await this.preclick( { area_data: $.clone( area_data ), element: $area, instance: this } ) ) ) return;
 
-          // show app
+          // render HTMl template for an clicked app
           $.setContent( this.element, $.html( this.html.app, { caption: this.back } ) );
 
           // set click event for 'back to map' button
           this.element.querySelector( '#back' ).addEventListener( 'click', this.start );
 
+          // show app
           const $app = this.element.querySelector( '#app' );
           if ( !$.isInstance( area_data.app ) ) {
             $.setContent( $app, $.loading( this ) );
@@ -168,6 +155,17 @@
         } );
 
       };
+
+      /**
+       * preloads an image and sets the initial width
+       * @param {Object} obj - contains the image and the width
+       */
+      const preload = obj => obj.image && !obj.width && new Promise( ( resolve, reject ) => {
+        const img = new Image();
+        img.onload = () => { if ( !obj.width ) obj.width = img.width; resolve(); }
+        img.onerror = reject;
+        img.src = obj.image;
+      } );
 
     }
   };
