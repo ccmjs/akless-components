@@ -10,6 +10,10 @@
   overflow: auto;
 }
 
+#info {
+  overflow: auto;
+}
+
 #map {
   position: relative;
   overflow: auto;
@@ -25,25 +29,9 @@
   cursor: not-allowed;
 }
 
-#info {
-  overflow: auto;
-}
-
-img {
-  display: block;
-}
-
 .area img {
   width: 100%;
   height: 100%;
-}
-
-img[src=''] {
-  visibility: hidden;
-}
-
-h1, p {
-  margin-bottom: 0.5rem;
 }
 
 .tooltip-inner {
@@ -54,8 +42,20 @@ h1, p {
   font-size: large;
 }
 
+h1, p {
+  margin-bottom: 0.5rem;
+}
+
 p:last-child {
   margin-bottom: 0;
+}
+
+img {
+  display: block;
+}
+
+img[src=''] {
+  visibility: hidden;
 }
 
 /* Dark Mode */
