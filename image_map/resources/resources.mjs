@@ -16,49 +16,55 @@ const example = {
       "app": "https://ccmjs.github.io/akless-components/dms/app.html?app=quiz,1581493641369X7741789624303226",
       "image": "https://akless.github.io/akless/resources/images/treasure.png",
       "info": "<h1>Quiz 1: Was ist HTML?</h1><p>Klicke auf den Schatz um den Quiz zu starten.</p>",
-      "width": 40,
-      "x": 410,
-      "y": 530
+      "width": 30,
+      "x": 406,
+      "y": 550,
+      "height": 0
     },
     {
       "app": "https://ccmjs.github.io/akless-components/dms/app.html?app=quiz,1570790042636X6007448809895479",
       "image": "https://akless.github.io/akless/resources/images/treasure.png",
       "info": "<h1>Quiz 2: Erste 'Hallo Welt!'-Webseite</h1><p>Klicke auf den Schatz um den Quiz zu starten.</p>",
       "width": 30,
-      "x": 94,
-      "y": 27
+      "x": 1492,
+      "y": 331,
+      "height": 0
     },
     {
       "app": "https://ccmjs.github.io/akless-components/dms/app.html?app=quiz,1570780952206X867147145335694",
       "image": "https://akless.github.io/akless/resources/images/treasure.png",
       "info": "<h1>Quiz 3: Was ist ein HTML-Tag?</h1><p>Klicke auf den Schatz um den Quiz zu starten.</p>",
       "width": 30,
-      "x": 41,
-      "y": 88
+      "x": 682,
+      "y": 1044,
+      "height": 0
     },
     {
       "app": "https://ccmjs.github.io/akless-components/dms/app.html?app=quiz,1570786190915X9305013258816224",
       "image": "https://akless.github.io/akless/resources/images/treasure.png",
       "info": "<h1>Quiz 4: HTML-Grundgerüst</h1><p>Klicke auf den Schatz um den Quiz zu starten.</p>",
       "width": 30,
-      "x": 10,
-      "y": 82
+      "x": 186,
+      "y": 980,
+      "height": 0
     },
     {
       "app": "https://ccmjs.github.io/akless-components/dms/app.html?app=quiz,1570789265711X24350815479118437",
       "image": "https://akless.github.io/akless/resources/images/treasure.png",
       "info": "<h1>Quiz 5: Was ist ein HTML-Attribut?</h1><p>Klicke auf den Schatz um den Quiz zu starten.</p>",
       "width": 30,
-      "x": 74,
-      "y": 77
+      "x": 1560,
+      "y": 898,
+      "height": 0
     },
     {
       "app": "https://ccmjs.github.io/akless-components/dms/app.html?app=quiz,1570789457373X2851937579430084",
       "image": "https://akless.github.io/akless/resources/images/treasure.png",
       "info": "<h1>Quiz 6: HTML-Tags und Attribute</h1><p>Klicke auf den Schatz um den Quiz zu starten.</p>",
       "width": 30,
-      "x": 79,
-      "y": 60
+      "x": 1241,
+      "y": 720,
+      "height": 0
     }
   ]
 }
