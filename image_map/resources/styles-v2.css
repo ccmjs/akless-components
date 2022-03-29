@@ -1,0 +1,70 @@
+/**
+ * @overview default layout of ccmjs-based web component for an image map
+ * @author André Kless <andre.kless@web.de> 2019-2020, 2022
+ * @license The MIT License (MIT)
+ */
+
+#element {
+  background-color: white;
+  color: black;
+  overflow: auto;
+}
+
+#map {
+  position: relative;
+  overflow: hidden;
+}
+
+.area {
+  position: absolute;
+  cursor: pointer;
+}
+
+.area.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+#info {
+  overflow: auto;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+img[src=''] {
+  visibility: hidden;
+}
+
+h1, p {
+  margin-bottom: 0.5rem;
+}
+
+.tooltip-inner {
+  text-align: left !important;
+}
+
+.tooltip-inner h1 {
+  font-size: large;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+/* Dark Mode */
+
+#element.dark_mode {
+  background-color: black;
+  color: white;
+}
+
+@media (prefers-color-scheme: dark) {
+  #element.dark_auto {
+    background-color: black;
+    color: white;
+  }
+}
