@@ -313,7 +313,7 @@
         await $.solveDependency( preload );
         image_map = await this.image_map.start( copy );
         image_map.element.querySelectorAll( '.area' ).forEach( ( $area, i ) => {
-          $area.style.backgroundColor = 'rgba( 0, 0, 0, 0.2 )';
+          $area.style.backgroundColor = 'rgba( 128, 128, 128, 0.2 )';
           $area.addEventListener( 'dblclick', () => events.onDblClickArea( i + 1 ) );
           new Moveable( image_map.element.querySelector( '#map' ), {
             target: $area,
