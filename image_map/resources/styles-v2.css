@@ -12,7 +12,7 @@
 
 #map {
   position: relative;
-  overflow: hidden;
+  overflow: auto;
 }
 
 .area {
