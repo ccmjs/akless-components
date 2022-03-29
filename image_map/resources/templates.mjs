@@ -24,7 +24,7 @@ export function map( { image, width, height, info = '' } ) {
  */
 export function area( { disabled, height, image, info, size = 8, width = size, x = 0, y = 0 } ) {
   return `
-    <div class="area${ disabled ? ' disabled' : '' }" style="position: absolute; left: ${ x }px; top: ${ y }px; width: ${ width }px; ${ height ? 'height: ' + height + 'px' : '' }"${ info ? ' title="' + info + '"' : '' } data-bs-toggle="tooltip" data-bs-placement="top">
+    <div class="area${ disabled ? ' disabled' : '' }" style="position: absolute; left: ${ x }px; top: ${ y }px; width: ${ width }px; ${ height ? 'height: ' + height + 'px' : '' }"${ info ? ' title="' + info.replaceAll( '"', "'" ) + '"' : '' } data-bs-toggle="tooltip" data-bs-placement="top">
       <img src="${ image }">
     </div>
   `;
