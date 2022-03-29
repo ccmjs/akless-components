@@ -11,8 +11,8 @@
 export function map( { image, width, height, info = '' } ) {
   return `
     <div class="m-2${ info ? '' : ' d-none' }" id="info">${ info }</div>
-    <div class="border rounded m-2" id="map" style="width: ${ width }px${ height ? '; height: ' + height + 'px' : '' }">
-      <img src="${ image }">
+    <div class="border rounded m-2" id="map">
+      <img src="${ image }" style="width: ${ width }px${ height ? '; height: ' + height + 'px' : '' }">
     </div>
   `;
 }
