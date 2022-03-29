@@ -2,7 +2,7 @@
  * @overview ccmjs-based web component for building an image map
  * @author André Kless <andre.kless@web.de> 2020, 2022
  * @license The MIT License (MIT)
- * @version latest (4.0.0)
+ * @version 4.0.0
  * @changes
  * version 4.0.0 (28.03.2022):
  * - uses Bootstrap 5 as default
@@ -26,6 +26,7 @@
 ( () => {
   const component = {
     name: 'image_map_builder',
+    version: [ 4, 0, 0 ],
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-27.3.1.min.js',
     config: {
       "blank": "https://akless.github.io/akless/resources/images/blank/1x1.svg",

@@ -4,33 +4,94 @@
  * @license The MIT License (MIT)
  */
 
-#element {
+.image_map_builder#element {
   background-color: white;
   color: black;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
-#settings {
+.image_map_builder #settings {
   padding: 0 1em;
 }
 
-#grid-x {
+.image_map_builder #grid-x {
   margin-right: 0.5em;
 }
 
-#placement {
+.image_map_builder #placement {
   margin: 1em;
+}
+
+.image_map_builder header > * {
+  padding: 0.5em 0 0 0.5em;
+}
+
+.image_map_builder .heading {
+  display: flex !important;
+  align-items: center;
+}
+
+.image_map_builder .heading label {
+  margin-bottom: 0;
+}
+
+.image_map_builder .btn-sm {
+  padding: .25rem .25rem !important;
+}
+
+.image_map_builder .info {
+  margin-bottom: 0.5rem;
+}
+
+.image_map_builder input[type="checkbox"] {
+  cursor: pointer;
+}
+
+.image_map_builder .form-check {
+  margin-bottom: 0 !important;
+}
+
+.image_map_builder .form-check-input {
+  margin-bottom: 3px;
+}
+
+.image_map_builder *[disabled] {
+  cursor: not-allowed;
+}
+
+.image_map_builder *[data-hidden] {
+  display: none !important;
+}
+
+.image_map_builder .modal {
+  z-index: 3001;
+}
+
+.image_map_builder .modal-body {
+  padding: 0;
+}
+
+.image_map_builder .modal .ql-editor h1,
+.image_map_builder .modal .ql-editor p {
+  margin-bottom: 0.5rem;
+}
+
+.image_map_builder .modal .ql-editor h1 {
+  font-size: large;
+}
+
+.image_map_builder .modal .ql-editor p:last-child {
+  margin-bottom: 0;
 }
 
 /* Dark Mode */
 
-#element.dark_mode {
+.image_map_builder #element.dark_mode {
   background-color: black;
   color: white;
 }
 
 @media (prefers-color-scheme: dark) {
-  #element.dark_auto {
+  .image_map_builder#element.dark_auto {
     background-color: black;
     color: white;
   }
