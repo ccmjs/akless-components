@@ -204,14 +204,10 @@
       this.getValue = () => {
         const value = $.assign( $.clone( config ), $.formData( this.element.querySelector( '#' + this.component.name + '-form' ) ) );
         value.info = quill_map.getValue().value;
-        const $areas = image_map.element.querySelectorAll( '.area' );
-        value.ignore.areas.forEach( ( area, i ) => {
-          const style = $areas[ i ].style;
-          area.x = parseFloat( style.left );
-          area.y = parseFloat( style.top );
-          area.width = parseFloat( style.width );
-          area.height = parseFloat( style.height ) || 0;
+        value.ignore.areas.forEach( area => {
           delete area.quill;
+          if ( !area.height )
+            delete area.height;
         } );
         return value;
       };
@@ -282,8 +278,9 @@
         /**
          * when 'submit' event of the area form is triggered
          * @param {Object} event
+         * @returns {Promise<void>}
          */
-        onSubmitArea: event => {
+        onSubmitArea: async event => {
           event.preventDefault();
           const $modal = this.element.querySelector( '#' + this.component.name + '-modal' );
           const { area, nr } = $.formData( $modal );
@@ -294,7 +291,7 @@
           area_data.info = ( area_data.quill || quill_area ).getValue().value;
           area_data.app = area.app;
           bootstrap.Modal.getInstance( $modal ).hide();
-          !nr && renderAreaPlacement();
+          if ( !nr ) await renderAreaPlacement();
         }
 
       };
@@ -304,17 +301,24 @@
        * @returns {Promise<void>}
        */
       const renderAreaPlacement = async () => {
-        const copy = $.assign( $.clone( config ), $.formData( this.element.querySelector( '#' + this.component.name + '-form' ) ) );
+        const copy = this.getValue();
         const preload = [ 'ccm.load' ];
         copy.ignore.areas.forEach( area => { delete area.app; delete area.info; area.image && preload.push( area.image ) } );
         delete copy.info; delete copy.user; delete copy.lang; delete copy.routing; copy.libs = false;
         copy.dark = this.dark;
         copy.root = this.element.querySelector( '#' + this.component.name + '-placement' );
         await $.solveDependency( preload );
-        image_map = await this.image_map.start( copy );
+        if ( image_map ) {
+          image_map.image = copy.image;
+          image_map.ignore.areas = copy.ignore.areas;
+          await image_map.start();
+        }
+        else
+          image_map = await this.image_map.start( copy );
         image_map.element.querySelectorAll( '.area' ).forEach( ( $area, i ) => {
           $area.style.backgroundColor = 'rgba( 128, 128, 128, 0.2 )';
           $area.addEventListener( 'dblclick', () => events.onDblClickArea( i + 1 ) );
+          const area = config.ignore.areas[ i ];
           new Moveable( image_map.element.querySelector( '#map' ), {
             target: $area,
             draggable: true,
@@ -325,9 +329,11 @@
           } ).on( 'drag', ( { target, left, top } ) => {
             target.style.left = `${ left }px`;
             target.style.top = `${ top }px`;
+            area.x = left;
+            area.y = top;
           } ).on( 'resize', ( { target, width, height, delta } ) => {
-            delta[ 0 ] && ( target.style.width = `${ width }px` );
-            delta[ 1 ] && ( target.style.height = `${ height }px` );
+            delta[ 0 ] && ( target.style.width = `${ area.width = width }px` );
+            delta[ 1 ] && ( target.style.height = `${ area.height = height }px` );
           } );
         } );
       };
@@ -339,10 +345,14 @@
        */
       const openAreaModal = async area_nr => {
         const $modal = this.element.querySelector( '#' + this.component.name + '-modal' );
-        const area_data = config.ignore.areas[ area_nr - 1 ] || { image: this.blank, app: '', info: '' };
-        $.fillForm( $modal, { area: area_data, nr: area_nr } );
+        const areas = config.ignore.areas;
+        const area_data = areas[ area_nr - 1 ] || { image: this.blank, app: '', info: '' };
+        $.fillForm( $modal, { area: area_data, nr: area_nr || '' } );
         $modal.querySelector( '#' + this.component.name + '-delete' ).style.display = area_nr ? 'block' : 'none';
-        if ( !area_data.quill ) area_data.quill = quill_area = await this.quill.comp.start( { data: { value: area_data.info }, src: this.quill.area } );
+        if ( area_data.quill )
+          area_data.quill.setHTML( area_data.info );
+        else
+          area_data.quill = quill_area = await this.quill.comp.start( { data: { value: area_data.info }, src: this.quill.area } );
         $.setContent( $modal.querySelector( '#' + this.component.name + '-area-info' ), area_data.quill.root );
         bootstrap.Modal.getInstance( $modal ).show();
       };
