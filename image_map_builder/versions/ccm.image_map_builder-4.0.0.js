@@ -42,7 +42,7 @@
       ],
       "dark": false,
       "data": {},
-      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-8.1.0.min.mjs" ],
+      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-8.1.1.min.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/image_map_builder/resources/templates.mjs" ],
       "ignore": { "defaults": {
         "dark": false

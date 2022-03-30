@@ -20,6 +20,7 @@
  * - default texts and labels are in german
  * - added support for multilingualism
  * - added language selection and user login in header
+ * - uses helper.mjs v8.1.1 as default
  * (for older version changes see ccm.image_map_builder-3.0.0.js)
  */
 
@@ -41,7 +42,7 @@
       ],
       "dark": false,
       "data": {},
-      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-8.1.0.min.mjs" ],
+      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-8.1.1.min.mjs" ],
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/image_map_builder/resources/templates.mjs" ],
       "ignore": { "defaults": {
         "dark": false
