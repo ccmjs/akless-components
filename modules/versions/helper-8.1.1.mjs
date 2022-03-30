@@ -3,7 +3,7 @@
  * ES6 module that exports useful help functions for <i>ccmjs</i> component developers.
  * @author André Kless <andre.kless@web.de> 2019-2022
  * @license The MIT License (MIT)
- * @version latest (8.1.1)
+ * @version 8.1.1
  * @changes
  * version 8.1.1 (30.03.2022):
  * - bugfix for fillForm(elem,obj):void - set no value on undefined instead of falsy
