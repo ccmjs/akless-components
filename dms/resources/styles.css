@@ -205,9 +205,8 @@
   margin: 0 -1rem;
 }
 
-footer .text-muted {
-  line-height: 16px;
-  text-decoration: none;
+footer a {
+  text-decoration: unset !important;
 }
 
 .heading {
