@@ -65,7 +65,7 @@ export function main() {
               </div>
             </div>
             <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-              <h6 class="text-uppercase fw-bold mb-4">${ dms.text.links }</h6>
+              <h6 class="text-uppercase fw-bold mb-4" data-lang="links">${ dms.text.links }</h6>
               <p>
                 <a href="https://ccmjs.github.io/digital-makerspace/" target="_blank" class="text-reset" data-lang="old_dms">Alter Digital Makerspace</a>
               </p>
@@ -73,7 +73,7 @@ export function main() {
                 <a href="https://prototypefund.de/project/digital-makerspace/" target="_blank" class="text-reset">Prototpe Fund</a>
               </p>
               <p>
-                <a href="https://github.com/ccmjs" class="text-reset" target="_blank" data-lang="for-developers">${ dms.text.for_developers }</a>
+                <a href="https://github.com/ccmjs" class="text-reset" target="_blank" data-lang="for_developers">${ dms.text.for_developers }</a>
               </p>
               <p>
                 <a href="mailto:andre.kless@h-brs.de?subject=Digital Makerspace" class="text-reset" data-lang="help">${ dms.text.help }</a>
