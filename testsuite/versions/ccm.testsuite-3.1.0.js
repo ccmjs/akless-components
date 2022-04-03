@@ -2,7 +2,7 @@
  * @overview ccm component for unit tests
  * @author André Kless <andre.kless@web.de> 2016-2017, 2019-2020, 2022
  * @license The MIT License (MIT)
- * @version latest (3.1.0)
+ * @version 3.1.0
  * @changes
  * version 3.1.0 (03.04.2022)
  * - added optional delta parameter in assertEquals for comparing floats
@@ -21,7 +21,7 @@
 
   const component = {
 
-    name: 'testsuite',
+    name: 'testsuite', version: [ 3, 1, 0 ],
 
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-25.4.0.js',
 
