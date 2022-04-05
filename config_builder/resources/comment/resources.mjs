@@ -193,7 +193,7 @@ export const demo = {
  */
 export const dms = {
   "bootstrap": "",
-  "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/dms/resources/styles.min.css" ],
+  "css": [ "ccm.load", "https://ccmjs.github.io/digital-makerspace/resources/styles.min.css" ],
   "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/config_builder/resources/comment/templates.mjs" ],
   "ignore": {
     "defaults": {
