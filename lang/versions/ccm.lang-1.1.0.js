@@ -138,7 +138,7 @@
           elem.dataset.lang.split( ' ' ).forEach( index => {
             if ( !index ) return;
             const split = index.split( '-' );
-            let translation = this.translations[ this.active ][ split[ 0 ] ];
+            let translation = this.ccm.helper.deepValue( this.translations[ this.active ], split[ 0 ] );
             if ( !translation ) return;
             if ( split.length > 2 ) {
               let i = 2;
