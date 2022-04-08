@@ -127,13 +127,16 @@
       };
 
       /**
-       * translates an index or translates the content of the parent instance
-       * @type {string} [index] - translation index
+       * translates an index or website area
+       * @param {string|Element} [index_or_elem] - translation index or website area (default: website area of the parent instance)
        * @returns {string} corresponding translation for the given index (if specified)
        */
-      this.translate = index => {
-        if ( index ) return this.translations[ this.active ][ index ];
-        this.parent && this.parent.element.querySelectorAll( '*[data-lang]' ).forEach( elem => {
+      this.translate = index_or_elem => {
+        if ( typeof index_or_elem === 'string' )
+          return this.translations[ this.active ][ index_or_elem ];
+        else if ( !index_or_elem )
+          index_or_elem = this.parent.element;
+        index_or_elem && index_or_elem.querySelectorAll( '*[data-lang]' ).forEach( elem => {
           elem.dataset.lang.split( ' ' ).forEach( index => {
             if ( !index ) return;
             const split = index.split( '-' );
