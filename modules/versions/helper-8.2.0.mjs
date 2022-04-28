@@ -3,7 +3,7 @@
  * ES6 module that exports useful help functions for <i>ccmjs</i> component developers.
  * @author André Kless <andre.kless@web.de> 2019-2022
  * @license The MIT License (MIT)
- * @version latest (8.2.0)
+ * @version 8.2.0
  * @changes
  * version 8.2.0 (28.04.2022):
  * - updated onFinish(obj,obj,obj):void - set 'unique' flag without 'user' flag for anonym result data
