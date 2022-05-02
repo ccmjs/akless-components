@@ -121,7 +121,11 @@
                 result = await renderLogin( this.title, true );
                 if ( !result ) { await this.start(); throw new Error( 'login aborted' ); }
                 if ( result.user.charAt( result.user.length - 2 ) === '2' ) {
-                  result = await this.ccm.load( { url: 'https://kaul.inf.h-brs.de/login/login.php', method: 'JSONP', params: { realm: my.realm } } );
+                  result = await this.ccm.load( {
+                    url: 'https://kaul.inf.h-brs.de/cors/token.php',
+                    method: 'POST',
+                    params: { realm: 'hbrsinfkaul', user: result.user, password: result.token }
+                  } );
                   if ( $.isObject( result ) ) {
                     result.key = result.user;
                     result.token = result.user + '#' + result.token;
