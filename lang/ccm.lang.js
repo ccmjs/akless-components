@@ -15,7 +15,7 @@
     config: {
 //    "active": "en",
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/lang/resources/styles.min.css" ],
-      "dark": "auto",
+      "dark": false,
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/lang/resources/templates.mjs" ],
       "languages": {
         "de": {
