@@ -1,4 +1,6 @@
 /**
+ *----------------------------------------------------- DEPRECATED -----------------------------------------------------
+ *
  * @overview configurations of ccmjs-baed web component for a "Highchart.js" chart
  * @author André Kless <andre.kless@web.de> 2017-2019, 2021
  * @license The MIT License (MIT)
