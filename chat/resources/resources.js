@@ -30,7 +30,7 @@ ccm.files[ 'resources.js' ] = {
       "store": [ "ccm.store", { "name": "chat-data", "url": "wss://ccm2.inf.h-brs.de" } ],
       "key": "demo"
     },
-    "lang": [ "ccm.instance", "https://ccmjs.github.io/akless-components/lang/versions/ccm.lang-1.a.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/chat/resources/resources.js", "lang" ] ],
+    "lang": [ "ccm.instance", "https://ccmjs.github.io/akless-components/lang/versions/ccm.lang-1.0.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/chat/resources/resources.js", "lang" ] ],
     "user": [ "ccm.instance", "https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.0.js", [ "ccm.get", "https://ccmjs.github.io/akless-components/chat/resources/resources.js", "user" ] ]
   },
 
