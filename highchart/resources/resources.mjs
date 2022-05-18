@@ -2540,7 +2540,7 @@ export const xrange = {
 
 export const gantt = {
   libs: [
-    'https://ccmjs.github.io/akless-components/libs/highcharts-10/gantt/highcharts-gantt.js',
+    'https://ccmjs.github.io/akless-components/libs/highcharts-10/highcharts-gantt.js',
     'https://ccmjs.github.io/akless-components/libs/highcharts-10/exporting.js',
     'https://ccmjs.github.io/akless-components/libs/highcharts-10/accessibility.js'
   ],
