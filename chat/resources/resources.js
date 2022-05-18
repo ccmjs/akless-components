@@ -16,7 +16,7 @@ ccm.files[ 'resources.js' ] = {
     },
     "helper.1": "./../modules/helper.mjs",
 //  "hide_login": true,
-    "html.1": "./../chat/resources/templates_v2.html",
+    "html.1": "./../chat/resources/templates_v3.html",
 //  "lang": [ "ccm.instance", "https://ccmjs.github.io/akless-components/lang/versions/ccm.lang-1.1.0.js", [ "ccm.get", "./../chat/resources/resources.js", "lang" ] ],
 //  "logger": [ "ccm.instance", "./../log/ccm.log.js", [ "ccm.get", "./../log/resources/configs.js", "greedy" ] ],
     "onchange": event => console.log( event ),
