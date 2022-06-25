@@ -3,7 +3,7 @@
  * ES6 module that exports useful help functions for <i>ccmjs</i> component developers.
  * @author André Kless <andre.kless@web.de> 2019-2022
  * @license The MIT License (MIT)
- * @version latest (8.3.0)
+ * @version 8.3.0
  * @changes
  * version 8.3.0 (25.06.2022):
  * - added isEqual(obj,obj):boolean by m0xai (https://github.com/ccmjs/ccm/pull/8)
