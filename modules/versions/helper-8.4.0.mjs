@@ -3,7 +3,7 @@
  * ES6 module that exports useful help functions for <i>ccmjs</i> component developers.
  * @author André Kless <andre.kless@web.de> 2019-2022
  * @license The MIT License (MIT)
- * @version latest (8.4.0)
+ * @version 8.4.0
  * @changes
  * version 8.4.0 (18.07.2022):
  * - updated progressBar(obj):void
