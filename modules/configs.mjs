@@ -647,7 +647,7 @@ export const submit_quiz = {
     "defaults": {
       "css": [
         "ccm.load",
-        "https://ccmjs.github.io/akless-components/quiz/resources/weblysleek.css",
+        "https://ccmjs.github.io/akless-components/quiz/resources/weblysleek-v2.css",
         {
           "context": "head",
           "url": "https://ccmjs.github.io/akless-components/resources/fonts/WeblySleekUI/font.css"
