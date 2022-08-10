@@ -204,6 +204,8 @@
       this.getValue = () => {
         const value = $.assign( $.clone( config ), $.formData( this.element.querySelector( '#' + this.component.name + '-form' ) ) );
         value.info = quill_map.getValue().value;
+        if ( !$.cleanData( value.info ) )
+          delete value.info;
         value.ignore.areas.forEach( area => {
           delete area.quill;
           if ( !area.height )
