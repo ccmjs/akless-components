@@ -310,6 +310,7 @@
         await $.solveDependency( preload );
         if ( image_map ) {
           image_map.image = copy.image;
+          image_map.width = copy.width;
           image_map.ignore.areas = copy.ignore.areas;
           await image_map.start();
         }
