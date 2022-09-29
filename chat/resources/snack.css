@@ -4,6 +4,10 @@
  * @license The MIT License (MIT)
  */
 
+#element {
+  white-space: normal;
+}
+
 #main {
   margin: 0.5em 0;
 }
