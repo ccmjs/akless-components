@@ -2,7 +2,7 @@
  * @overview ccmjs-based web component for predefined content
  * @author André Kless <andre.kless@web.de> 2016-2022
  * @license The MIT License (MIT)
- * @version latest (6.1.1)
+ * @version 6.1.1
  * @changes
  * version 6.1.1 (20.10.2022): uses ccmjs v27.4.1 as default
  * version 6.1.0 (11.02.2022): controllable dark mode
@@ -16,6 +16,7 @@
 ( () => {
   const component = {
     name: 'content',
+    version: [ 6, 1, 1 ],
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-27.4.1.min.js',
     config: {
       "components": [],                // contains the components that are reused in the predefined content
