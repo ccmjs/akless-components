@@ -28,7 +28,7 @@
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-27.4.2.min.js',
     config: {
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/markdown/resources/styles-v1.min.css" ],
-      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper.8.4.0.min.mjs" ],
+      "helper": [ "ccm.load", "https://ccmjs.github.io/akless-components/modules/versions/helper-8.4.0.min.mjs" ],
       "html": { "tag": "main" },
       "input": "# Hello Markdown!",
       "lib": [ "ccm.load", "https://ccmjs.github.io/akless-components/libs/showdown-2/showdown.min.js" ],
