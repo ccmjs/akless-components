@@ -1,0 +1,1 @@
+#element{background-color:#fff;color:#000;padding:.5rem 1rem}img{width:100%}#element.dark_mode{background-color:#000;color:#fff}@media (prefers-color-scheme:dark){#element.dark_auto{background-color:#000;color:#fff}}
