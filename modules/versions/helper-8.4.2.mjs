@@ -3,7 +3,7 @@
  * ES6 module that exports useful help functions for <i>ccmjs</i> component developers.
  * @author André Kless <andre.kless@web.de> 2019-2022
  * @license The MIT License (MIT)
- * @version latest (8.4.2)
+ * @version 8.4.2
  * @changes
  * version 8.4.2 (29.11.2022):
  * - bugfix for formData(elem):obj - correct return of float values
