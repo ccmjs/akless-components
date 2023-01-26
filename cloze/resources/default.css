@@ -1,10 +1,11 @@
 /**
  * @overview default layout of ccmjs-based web component for a fill-in-the-blank text
- * @author André Kless <andre.kless@web.de> 2017, 2019-2020
+ * @author André Kless <andre.kless@web.de> 2017, 2019-2020, 2023
  * @license The MIT License (MIT)
  */
 
 #element {
+  background-color: white;
   height: 100%;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 16px;
