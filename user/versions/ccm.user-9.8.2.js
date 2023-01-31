@@ -21,6 +21,7 @@
 
   const component = {
     name: 'user',
+    version: [ 9, 7, 2 ],
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.4.3.js',
     config: {
       "css": [ "ccm.load",
@@ -42,7 +43,7 @@
 //    "restart": true,
 //    "store": "ccm-user",
       "title": "Guest Mode: Please enter any username"
-//    "url": "ccm2.inf.h-brs.de",
+//    "url": "ccm2.inf.h-brs.de"
 //    "reLogIn": true
     },
     Instance: function () {
@@ -84,8 +85,8 @@
 
         // correct state is already rendered or no login/logout button wanted? => abort
         if ( this.isLoggedIn() && this.element.querySelector( '#logged_in' )
-          || !this.isLoggedIn() && this.element.querySelector( '#logged_out' )
-          || this.norender ) return;
+            || !this.isLoggedIn() && this.element.querySelector( '#logged_out' )
+            || this.norender ) return;
 
         // render logged in or logged out view
         if ( this.isLoggedIn() )
