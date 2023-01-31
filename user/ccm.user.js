@@ -2,9 +2,9 @@
  * @overview ccmjs-based web component for user authentication
  * @author André Kless <andre.kless@web.de> 2017-2023
  * @license The MIT License (MIT)
- * @version latest (9.8.2)
+ * @version latest (9.8.0)
  * @changes
- * version 9.8.2 (31.01.2023):
+ * version 9.8.0 (31.01.2023):
  * - added config property for Login after logout
  * version 9.7.2 (19.07.2021):
  * - logout with unknown realm only with URL
