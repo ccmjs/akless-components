@@ -103,5 +103,5 @@ export const dms = {
   } ],
   "preview": false,
   "text": de,
-  "tool": [ "ccm.component", "https://ccmjs.github.io/tkless-components/pdf_viewer/versions/ccm.pdf_viewer-7.1.0.min.js" ]
+  "tool": [ "ccm.component", "https://ccmjs.github.io/tkless-components/pdf_viewer/ccm.pdf_viewer.min.js" ]
 }
