@@ -220,5 +220,5 @@ export const dms = {
   } ],
   "preview": false,
   "text": builder_de,
-  "tool": [ "ccm.component", "https://ccmjs.github.io/tkless-components/comment/versions/ccm.comment.min.js" ]
+  "tool": [ "ccm.component", "https://ccmjs.github.io/tkless-components/comment/ccm.comment.min.js" ]
 }
