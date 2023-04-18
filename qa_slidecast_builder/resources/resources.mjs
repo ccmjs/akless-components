@@ -294,7 +294,7 @@ export const dms = {
     } ],
     "preview": false,
     "text": comment_builder_de,
-    "tool": [ "ccm.component", "https://ccmjs.github.io/tkless-components/comment/versions/ccm.comment-7.2.0.min.js" ]
+    "tool": [ "ccm.component", "https://ccmjs.github.io/tkless-components/comment/ccm.comment.min.js" ]
   },
   "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/qa_slidecast_builder/resources/styles.min.css" ],
   "dark": false,
