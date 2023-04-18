@@ -98,10 +98,10 @@
         "defaults": {
           "comment": [ "ccm.component", "https://ccmjs.github.io/tkless-components/comment/ccm.comment.min.js" ],
           "description": true,
-          "pdf_viewer.2": {
+          "pdf_viewer": [ "ccm.instance", "https://ccmjs.github.io/tkless-components/pdf_viewer/ccm.pdf_viewer.min.js", {
             "downloadable": true,
             "pdf": "https://ccmjs.github.io/tkless-components/pdf_viewer/resources/demo/en/slides.pdf"
-          }
+          } ],
         }
       },
 //    "lang": [ "ccm.start", "https://ccmjs.github.io/akless-components/lang/versions/ccm.lang-1.1.0.min.js" ],
