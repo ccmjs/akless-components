@@ -79,7 +79,7 @@
         },
         "preview": false,
         "text": [ "ccm.load", "https://ccmjs.github.io/akless-components/config_builder/resources/comment/resources.mjs#en" ],
-        "tool": [ "ccm.component", "https://ccmjs.github.io/tkless-components/comment/versions/ccm.comment-7.2.0.min.js" ]
+        "tool": [ "ccm.component", "https://ccmjs.github.io/tkless-components/comment/ccm.comment.min.js" ]
       } ],
       "css": [ "ccm.load",
         [  // serial
@@ -96,7 +96,7 @@
       "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/qa_slidecast_builder/resources/templates.mjs" ],
       "ignore": {
         "defaults": {
-          "comment": [ "ccm.component", "https://ccmjs.github.io/tkless-components/comment/versions/ccm.comment-7.2.0.min.js" ],
+          "comment": [ "ccm.component", "https://ccmjs.github.io/tkless-components/comment/ccm.comment.min.js" ],
           "description": true,
           "pdf_viewer.2": {
             "downloadable": true,
