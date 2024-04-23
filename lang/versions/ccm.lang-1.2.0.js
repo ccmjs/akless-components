@@ -12,6 +12,7 @@
 ( () => {
   const component = {
     name: 'lang',
+    version: [ 1, 2, 0 ],
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-27.2.0.min.js',
     config: {
 //    "active": "en",
