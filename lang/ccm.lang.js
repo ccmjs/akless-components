@@ -4,7 +4,7 @@
  * @license The MIT License (MIT)
  * @version latest (1.2.0)
  * @changes
- * version 1.2.0 (23.04.2024): support for dataset translation
+ * version 1.2.0 (23.04.2024): support for dataset translation, detect initial language from URL parameter
  * version 1.1.0 (11.02.2022): controllable dark mode
  * version 1.0.0 (29.12.2021)
  */
@@ -55,6 +55,7 @@
         if ( context )
           this.active = context.active;                                            // detect from highest instance
         else {
+          if ( !this.active ) this.active = this.helper.params().lang;             // detect from URL parameter
           if ( !this.active ) this.active = document.body.getAttribute( 'lang' );  // detect from <body lang="">
           if ( !this.active ) this.active = navigator.language;                    // detect from browser
           this.active = this.active.split( '-' )[ 0 ].toLowerCase();
@@ -91,7 +92,7 @@
        */
       this.start = async () => {
 
-        // not highest instance? => remove root element
+        // not the highest instance? => remove root element
         if ( context ) { this.element.innerHTML = ''; return; }
 
         // render language selection
