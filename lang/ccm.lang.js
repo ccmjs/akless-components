@@ -135,9 +135,9 @@
       this.translate = content => {
         if ( typeof content === 'string' )
           return translateIndex( content );
-        else if ( $.isElement( content ) )
+        else if ( this.ccm.helper.isElement( content ) )
           return translateElement( content );
-        else if ( $.isObject( content ))
+        else if ( this.ccm.helper.isObject( content ))
           return translateDataset();
         else
           return translateElement(this.parent.element);
