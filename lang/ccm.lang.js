@@ -55,7 +55,7 @@
         if ( context )
           this.active = context.active;                                            // detect from highest instance
         else {
-          if ( !this.active ) this.active = this.helper.params().lang;             // detect from URL parameter
+          if ( !this.active ) this.active =  new URLSearchParams( window.location.search ).get( 'lang' );  // detect from URL parameter
           if ( !this.active ) this.active = document.body.getAttribute( 'lang' );  // detect from <body lang="">
           if ( !this.active ) this.active = navigator.language;                    // detect from browser
           this.active = this.active.split( '-' )[ 0 ].toLowerCase();
