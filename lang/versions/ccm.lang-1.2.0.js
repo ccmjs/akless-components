@@ -139,7 +139,7 @@
         else if ( this.ccm.helper.isElement( content ) )
           return translateElement( content );
         else if ( this.ccm.helper.isObject( content ))
-          return translateDataset();
+          return translateDataset( content );
         else
           return translateElement(this.parent.element);
       }
