@@ -682,3 +682,295 @@ export const submit_quiz = {
     }
   }
 };
+
+export const submit_quiz_en = {
+  "entries": [
+    {
+      "name": "css",
+      "type": "hidden"
+    },
+    {
+      "name": "data",
+      "type": "hidden"
+    },
+    {
+      "name": "data.key",
+      "type": "key"
+    },
+    {
+      "name": "onfinish",
+      "type": "hidden"
+    },
+    "<legend class='text-primary'>Questions and Answers</legend>",
+    {
+      "name": "questions",
+      "type": "several",
+      "items": [
+        {
+          "label": "Question",
+          "name": "text",
+          "type": "text",
+          "info": "Enter the text of the question here. Additional questions can be added and removed using the corresponding plus and minus buttons."
+        },
+        {
+          "label": "Type",
+          "name": "input",
+          "type": "radio",
+          "info": "Choose Single Choice if only one answer or Multiple Choice if multiple answers can be selected.",
+          "items": [
+            {
+              "label": "Single Choice",
+              "value": "radio"
+            },
+            {
+              "label": "Multiple Choice",
+              "value": "checkbox"
+            }
+          ]
+        },
+        {
+          "label": "Description",
+          "name": "description",
+          "type": "textarea",
+          "info": "An additional description of the question can be entered here."
+        },
+        "<br>",
+        {
+          "name": "answers",
+          "type": "several",
+          "items": [
+            {
+              "label": "Answer",
+              "name": "text",
+              "type": "text",
+              "info": "Enter the text for an answer option here. Additional answers can be added and removed using the corresponding plus and minus buttons."
+            },
+            {
+              "label": "Correct",
+              "name": "correct",
+              "type": "checkbox",
+              "info": "Indicates whether this answer is correct."
+            },
+            {
+              "label": "Comment",
+              "name": "comment",
+              "type": "text",
+              "info": "A comment can provide a hint as to why an answer is correct or incorrect. The comment will then be displayed along with the direct feedback."
+            }
+          ]
+        }
+      ]
+    },
+    "<br>",
+    "<legend class=\"text-primary\">Advanced Settings</legend>",
+    {
+      "label": "START Button",
+      "name": "start_button",
+      "type": "checkbox",
+      "info": "If activated, a START BUTTON is displayed before the quiz starts."
+    },
+    {
+      "label": "Feedback",
+      "name": "feedback",
+      "type": "checkbox",
+      "info": "If activated, direct feedback is displayed after answering a question."
+    },
+    {
+      "label": "Progress Bar",
+      "name": "progress_bar",
+      "type": "checkbox",
+      "info": "Wenn aktiviert, wird ein Fortschrittsbalken angezeigt, wenn das Quiz abgeschlossen ist."
+    },
+    {
+      "label": "Navigation",
+      "name": "navigation",
+      "type": "checkbox",
+      "info": "If activated, you can navigate between questions."
+    },
+    {
+      "label": "Skippable",
+      "name": "skippable",
+      "type": "checkbox",
+      "info": "If activated, questions can be skipped."
+    },
+    {
+      "label": "Anytime Finish",
+      "name": "anytime_finish",
+      "type": "checkbox",
+      "info": "If activated, not all questions need to be answered to complete the quiz."
+    },
+    {
+      "label": "Time Limit",
+      "name": "time",
+      "type": "number",
+      "min": 1,
+      "info": "If specified, the quiz has a time limit and will automatically end after the specified number of seconds."
+    },
+    {
+      "label": "Shuffle Questions",
+      "name": "shuffle",
+      "type": "checkbox",
+      "info": "If activated, the questions are shuffled so that their order is random each time."
+    },
+    {
+      "label": "Shuffle Answers",
+      "name": "random",
+      "type": "checkbox",
+      "info": "If activated, the answers to the questions are displayed in random order."
+    },
+    {
+      "label": "Escape HTML code",
+      "name": "escape",
+      "type": "checkbox",
+      "info": "If activated, HTML code contained in questions and answers is not evaluated, but displayed unchanged."
+    },
+    {
+      "label": "Save Results",
+      "name": "data.store",
+      "type": "select",
+      "info": "Choose where to save the results.<ul class=\"m-0 pl-4\"><b>Local Database:</b> The results are saved in the local database of the web browser and are therefore only available on this device and also offline.</li><li><b>Server-side Database:</b> The results are stored in a server-side database. Specifically, it is a data server from the computer science department at the Bonn-Rhein-Sieg University of Applied Sciences in Germany.</li></ul>",
+      "items": [
+        {
+          "inner": "Disabled",
+          "value": "[%'%ccm.store%'%]"
+        },
+        {
+          "inner": "Local Database",
+          "value": "[%'%ccm.store%'%,{%'%name%'%:%'%quiz_results%'%}]"
+        },
+        {
+          "inner": "Server-side Database",
+          "value": "[%'%ccm.store%'%,{%'%name%'%:%'%quiz_results%'%,%'%url%'%:%'%https://ccm2.inf.h-brs.de%'%}]"
+        }
+      ]
+    },
+    {
+      "label": "User Authentication",
+      "name": "user",
+      "type": "select",
+      "info": "Select how a user must log in when completing the quiz so that their result can be saved.<ul class=\"m-0 pl-4\"><li><b>Guest Mode:</b> The user can log in with any username and without a password.</li><li><b>Digital Makerspace Account:</b> The user must log in with a Digital Makerspace account.</li><li><b>H-BRS FB02 Account:</b> The user must authenticate himself with an account from the Computer Science Department at Bonn-Rhein-Sieg University of Applied Sciences.</li><li><b>H-BRS FB02 Account with Pseudonym:</b> The same as the previous option, but the username is replaced with a pseudonym.</li><li><b>One-time Pseudonym:</b> The user is automatically logged in with a unique pseudonym. Each login returns a different pseudonym after a session has ended.</li></ul>",
+      "items": [
+        {
+          "inner": "Disabled",
+          "value": "null"
+        },
+        {
+          "inner": "Guest Mode",
+          "value": "[%'%ccm.instance%'%,%'%https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.3.1.js%'%]"
+        },
+        {
+          "inner": "DMS Account",
+          "value": "[%'%ccm.instance%'%,%'%https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.3.1.js%'%,{%'%hash%'%:[%'%ccm.load%'%,{%'%url%'%:%'%https://ccmjs.github.io/akless-components/modules/md5.mjs%'%,%'%type%'%:%'%module%'%}],%'%realm%'%:%'%cloud%'%,%'%store%'%:%'%dms-user%'%,%'%url%'%:%'%https://ccm2.inf.h-brs.de%'%}]"
+        },
+        {
+          "inner": "H-BRS FB02 Account",
+          "value": "[%'%ccm.instance%'%,%'%https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.3.1.js%'%,{%'%key%'%:%'%hbrsinfkaul%'%,%'%realm%'%:%'%hbrsinfkaul%'%}]"
+        },
+        {
+          "inner": "H-BRS FB02 Account with Pseudonym",
+          "value": "[%'%ccm.instance%'%,%'%https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.3.1.js%'%,{%'%key%'%:%'%hbrsinfpseudo%'%,%'%realm%'%:%'%hbrsinfpseudo%'%}]"
+        },
+        {
+          "inner": "One-time Pseudonym",
+          "value": "[%'%ccm.instance%'%,%'%https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.3.1.js%'%,{%'%key%'%:%'%pseudo%'%,%'%realm%'%:%'%guest%'%,%'%guest%'%:true}]"
+        }
+      ]
+    },
+    "<br>",
+    "<legend class=\"text-primary\">Finish actions after the quiz</legend>",
+    {
+      "label": "Confirmation Dialog",
+      "name": "onfinish.confirm",
+      "type": "text",
+      "info": "If activated, the user must explicitly confirm before saving a solution. To activate this, specify the text that will be displayed to the user in the confirmation dialog."
+    },
+    {
+      "label": "Clear Content",
+      "name": "onfinish.clear",
+      "type": "checkbox",
+      "info": "If activated, the quiz is hidden after completion."
+    },
+    {
+      "label": "Restart",
+      "name": "onfinish.restart",
+      "type": "checkbox",
+      "info": "Indicates whether the quiz is restarted after completion."
+    },
+    {
+      "label": "Success Dialog",
+      "name": "onfinish.alert",
+      "type": "text",
+      "info": "Message displayed to the user when the submitted solution has been successfully saved."
+    },
+    "<br>",
+    "<legend class=\"text-primary\">Labeling of Buttons</legend>",
+    {
+      "label": "Previous Question",
+      "name": "placeholder.prev",
+      "type": "text",
+      "info": "Label for the button that switches to the previous question."
+    },
+    {
+      "label": "Abschicken",
+      "name": "placeholder.submit",
+      "type": "text",
+      "info": "Beschriftung für den Button, mit dem man die Lösung zu einer Frage abschickt."
+    },
+    {
+      "label": "Next Question",
+      "name": "placeholder.next",
+      "type": "text",
+      "info": "Label for the button that switches to the next question."
+    },
+    {
+      "label": "Finish",
+      "name": "placeholder.finish",
+      "type": "text",
+      "info": "Label for the button that completes the quiz."
+    },
+    {
+      "label": "Prefix of a Question",
+      "name": "placeholder.prefix",
+      "type": "text",
+      "info": "Before each question there is a prefix followed by the number of the current question and the total number of questions. The prefix can be individually defined here."
+    }
+  ],
+  "ignore": {
+    "defaults": {
+      "css": [
+        "ccm.load",
+        "https://ccmjs.github.io/akless-components/quiz/resources/weblysleek-v2.css",
+        {
+          "context": "head",
+          "url": "https://ccmjs.github.io/akless-components/resources/fonts/WeblySleekUI/font.css"
+        }
+      ],
+      "placeholder": {
+        "cancel": "Cancel",
+        "prev": "Previous Question",
+        "submit": "Submit",
+        "next": "Next Question",
+        "correct": "Correct solution: ",
+        "finish": "Finish Quiz",
+        "prefix": "Question"
+      },
+      "feedback": true,
+      "progress_bar": true,
+      "questions": [
+        {
+          "text": "First Question",
+          "input": "radio",
+          "answers": [
+            {
+              "text": "Answer A",
+              "correct": true
+            },
+            {
+              "text": "Answer B"
+            }
+          ]
+        }
+      ]
+    }
+  }
+};
