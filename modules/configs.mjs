@@ -167,6 +167,174 @@ export const submit_app_collection = {
   }
 };
 
+export const submit_app_collection_en = {
+  "entries": [
+    "<br>",
+    {
+      "label": "Title of the app collection:",
+      "name": "title",
+      "type": "text"
+    },
+    "<legend>Sections and Apps</legend>",
+    {
+      "name": "sections",
+      "type": "several",
+      "items": [
+        {
+          "label": "Title of the section:",
+          "name": "title",
+          "type": "text"
+        },
+        {
+          "label": "Included apps:",
+          "name": "entries",
+          "type": "several",
+          "items": [
+            {
+              "label": "Title of the App:",
+              "name": "title",
+              "type": "text"
+            },
+            {
+              "label": "App Icon:",
+              "name": "icon",
+              "type": "url",
+              "info": "Here you can set an individual app icon for the app by specifying the URL of an image file. Please make sure not to violate any copyrights."
+            },
+            {
+              "label": "App URL or Embed Code:",
+              "name": "ignore",
+              "type": "text",
+              "info": "Any app from the Digital Makerspace can be placed here. To do this, specify the app URL or the embed code of the app."
+            }
+          ]
+        }
+      ]
+    },
+    "<legend>Apps in the Footer</legend>",
+    {
+      "name": "footer",
+      "type": "several",
+      "items": [
+        {
+          "label": "Title of the App:",
+          "name": "title",
+          "type": "text"
+        },
+        {
+          "label": "App Icon:",
+          "name": "icon",
+          "type": "url",
+          "info": "Here you can set an individual app icon for the app by specifying the URL of an image file. Please make sure not to violate any copyrights."
+        },
+        {
+          "label": "App URL or Embed Code:",
+          "name": "ignore",
+          "type": "text",
+          "info": "Any app from the Digital Makerspace can be placed here. To do this, specify the app URL or the embed code of the app."
+        }
+      ]
+    },
+    "<legend>Advanced Settings</legend>",
+    {
+      "label": "Color of a Section",
+      "name": "color",
+      "type": "color",
+      "info": "Background color for the titles of the sections."
+    },
+    {
+      "label": "URL for Default Icon",
+      "name": "icon",
+      "type": "text",
+      "info": "If no individual icon is set for an app, the icon specified here is used. If no icon is set here either, no icon is displayed. Please make sure not to violate any copyrights."
+    },
+    {
+      "label": "Dark Mode",
+      "name": "dark",
+      "type": "select",
+      "info": "In Dark Mode, the app collection appears in a dark layout, which is easy on the eyes and battery. By default, it is automatically determined by the operating system of the app user whether a Dark Mode is preferred.",
+      "items": [
+        {
+          "inner": "Auto",
+          "value": "auto"
+        },
+        {
+          "inner": "On",
+          "value": true
+        },
+        {
+          "inner": "Off",
+          "value": false
+        }
+      ]
+    },
+    {
+      "label": "User Authentication:",
+      "name": "user",
+      "type": "select",
+      "info": "Determines whether you can log in to the app collection. This makes sense if the app collection contains apps that require a login and there should be a higher-level login.<br><br>The following authentication procedures are possible:<ul><li><u>Guest Mode:</u> The user can log in with any name without a password.</li><li><u>Digital Makerspace Account:</u> Login with a free Digital Makerspace account.</li><li><u>H-BRS FB02 Account:</u> The user must log in with an account from the Computer Science Department at Bonn-Rhein-Sieg University of Applied Sciences.</li><li><u>H-BRS FB02 Account with Pseudonym:</u> The same as the previous option, but in the frontend the username is replaced with a pseudonym.</li><li><u>One-time Pseudonym:</u> You are automatically logged in under a randomly generated pseudonym. Every time you log in after a session has ended, a new pseudonym is generated.</li></ul>",
+      "items": [
+        {
+          "inner": "Disabled",
+          "value": null
+        },
+        {
+          "inner": "Guest Mode",
+          "value": "[%'%ccm.start%'%,%'%https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.2.min.js%'%,[%'%ccm.get%'%,%'%https://ccmjs.github.io/akless-components/user/resources/resources.min.js%'%,%'%guest%'%]]"
+        },
+        {
+          "inner": "Digital Makerspace Account",
+          "value": "[%'%ccm.start%'%,%'%https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.2.min.js%'%,[%'%ccm.get%'%,%'%https://ccmjs.github.io/akless-components/user/resources/resources.min.js%'%,%'%cloud%'%]]"
+        },
+        {
+          "inner": "H-BRS FB02 Account",
+          "value": "[%'%ccm.start%'%,%'%https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.2.min.js%'%,[%'%ccm.get%'%,%'%https://ccmjs.github.io/akless-components/user/resources/resources.min.js%'%,%'%hbrsinfkaul%'%]]"
+        },
+        {
+          "inner": "H-BRS FB02 Account with Pseudonym",
+          "value": "[%'%ccm.start%'%,%'%https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.2.min.js%'%,[%'%ccm.get%'%,%'%https://ccmjs.github.io/akless-components/user/resources/resources.min.js%'%,%'%hbrsinfpseudo%'%]]"
+        },
+        {
+          "inner": "One-time Pseudonym",
+          "value": "[%'%ccm.start%'%,%'%https://ccmjs.github.io/akless-components/user/versions/ccm.user-9.7.2.min.js%'%,[%'%ccm.get%'%,%'%https://ccmjs.github.io/akless-components/user/resources/resources.min.js%'%,%'%pseudo%'%]]"
+        }
+      ]
+    },
+    {
+      "label": "Multilingualism",
+      "name": "lang",
+      "type": "select",
+      "info": "Specify here whether you can change the language in the app collection. This makes sense if the app collection contains multilingual apps and there should be a higher-level language selection.",
+      "items": [
+        {
+          "inner": "Off",
+          "value": null
+        },
+        {
+          "inner": "On",
+          "value": "[%'%ccm.start%'%,%'%https://ccmjs.github.io/akless-components/lang/versions/ccm.lang-1.1.0.min.js%'%]"
+        }
+      ]
+    },
+    "<br>",
+    {
+      "name": "routing",
+      "type": "hidden"
+    }
+  ],
+  "ignore": {
+    "defaults": {
+      "content": [],
+      "footer": [],
+      "color": "#00BFFF",
+      "routing": [
+        "ccm.instance",
+        "https://ccmjs.github.io/akless-components/routing/versions/ccm.routing-3.0.0.min.js"
+      ]
+    }
+  }
+};
+
 export const submit_live_poll = {
   "entries": [
     "<br>",
