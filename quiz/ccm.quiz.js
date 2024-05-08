@@ -41,7 +41,7 @@
 
   const component = {
     name: 'quiz',
-    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-26.1.1.js',
+    ccm: 'https://ccmjs.github.io/ccm/versions/ccm-27.5.0.js',
     config: {
 //    "answers": [],
 //    "anytime_finish": true,
