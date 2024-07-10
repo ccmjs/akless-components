@@ -2,7 +2,7 @@
  * @overview ccmjs-based web component for multilingualism
  * @author André Kless <andre.kless@web.de> 2021-2022, 2024
  * @license The MIT License (MIT)
- * @version latest (1.2.0)
+ * @version 1.2.0
  * @changes
  * version 1.2.0 (23.04.2024): support for dataset translation, detect initial language from URL parameter
  * version 1.1.0 (11.02.2022): controllable dark mode
@@ -12,6 +12,7 @@
 ( () => {
   const component = {
     name: 'lang',
+    version: [ 1, 2, 1 ],
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-27.2.0.min.js',
     config: {
 //    "active": "en",
