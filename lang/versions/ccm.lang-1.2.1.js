@@ -18,7 +18,7 @@
 //    "active": "en",
       "css": [ "ccm.load", "https://ccmjs.github.io/akless-components/lang/resources/styles.min.css" ],
       "dark": false,
-      "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/lang/resources/templates.mjs" ],
+      "html": [ "ccm.load", "https://ccmjs.github.io/akless-components/lang/resources/templates_v1.mjs" ],
       "languages": {
         "de": {
           "de": "Deutsch",
