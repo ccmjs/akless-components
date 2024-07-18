@@ -2,7 +2,7 @@
  * @overview ccmjs-based web component for routing
  * @author André Kless <andre.kless@web.de> 2019-2024
  * @license MIT License
- * @version latest (4.0.0)
+ * @version 4.0.0
  * @changes
  * version 4.0.0 (18.07.2024):
  * - configurable separator for route parameters
@@ -13,6 +13,7 @@
 ( () => {
   const component = {
     name: 'routing',
+    version: [ 4, 0, 0 ],
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-27.5.0.min.js',
     config: {
 //    "app": "1558132111384X2108359471753687",
