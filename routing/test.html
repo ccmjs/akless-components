@@ -22,17 +22,16 @@
           <button id="page">Open</button>
           <p id="content">
         `;
-        home();
         this.element.querySelector( '#home' ).addEventListener( 'click', () => home() );
         this.element.querySelector( '#page' ).addEventListener( 'click', () => page( this.element.querySelector( '#nr' ).value ) );
-        this.routing.refresh();
+        (this.routing.get() ? this.routing.refresh : home)();
       };
       const home = () => {
         this.routing.set( 'home' );
         this.element.querySelector( '#content' ).innerHTML = 'Welcome Home';
       }
       const page = page_nr => {
-        this.routing.set( 'page-' + page_nr );
+        this.routing.set( 'page' + this.routing.separator + page_nr );
         this.element.querySelector( '#content' ).innerHTML = 'Page ' + page_nr;
       }
     }

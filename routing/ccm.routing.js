@@ -6,6 +6,7 @@
  * @changes
  * version 4.0.0 (18.07.2024):
  * - configurable separator for route parameters
+ * - default separator for route parameters is '*' (instead of '-')
  * - uses ccmjs v27.5.0 as default
  * (for older version changes see ccm.routing-3.0.0.js)
  */
@@ -16,7 +17,7 @@
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-27.5.0.min.js',
     config: {
 //    "app": "1558132111384X2108359471753687",
-      "separator": "+"
+      "separator": "*"
     },
     Instance: function () {
 
