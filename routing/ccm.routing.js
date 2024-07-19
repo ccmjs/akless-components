@@ -7,6 +7,7 @@
  * version 4.0.0 (18.07.2024):
  * - configurable separator for route parameters
  * - default separator for route parameters is '*' (instead of '-')
+ * - numbers in route parameters are no more parsed to int
  * - uses ccmjs v27.5.0 as default
  * (for older version changes see ccm.routing-3.0.0.js)
  */
@@ -93,7 +94,7 @@
       this.refresh = async () => {
         const route = this.get();
         if ( route === current_route ) return;
-        const split = route.split( this.separator ).map( value => parseInt( value ) || value );
+        const split = route.split( this.separator );
         current_route = route;
         if ( routes[ split[ 0 ] ] )
           await routes[ split[ 0 ] ].apply( undefined, split.slice( 1 ) )
