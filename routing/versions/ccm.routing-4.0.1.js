@@ -2,7 +2,7 @@
  * @overview ccmjs-based web component for routing
  * @author André Kless <andre.kless@web.de> 2019-2025
  * @license MIT License
- * @version latest (4.0.1)
+ * @version 4.0.1
  * @changes
  * version 4.0.1 (13.05.2025):
  * - bugfix: no lost of pathname in URL
@@ -17,6 +17,7 @@
 ( () => {
   const component = {
     name: 'routing',
+    version: [4, 0, 1],
     ccm: 'https://ccmjs.github.io/ccm/versions/ccm-27.5.0.min.js',
     config: {
 //    "app": "1558132111384X2108359471753687",
