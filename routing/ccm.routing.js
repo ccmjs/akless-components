@@ -86,7 +86,7 @@
         if ( route === current_route ) return;
         const url = new URL( location.href );
         url.searchParams.set( 'ccm-' + this.app, current_route = route );
-        window.history[ ( first ? 'replace' : 'push' ) + 'State' ]( '', '', '?' + url.toString() );
+        window.history[ ( first ? 'replace' : 'push' ) + 'State' ]( '', '', url.toString() );
         first = false;
       }
 
